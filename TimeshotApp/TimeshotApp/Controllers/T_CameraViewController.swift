@@ -7,29 +7,45 @@
 //
 
 import UIKit
+import CameraManager
 
 class T_CameraViewController: UIViewController {
-
+    
+    let cameraManager = CameraManager()
+    
+    @IBOutlet weak var cameraView: UIView!
+    @IBOutlet weak var buttonTakePicture: UIButton!
+    
+    @IBAction func actionTakePicture(sender: AnyObject) {
+        
+        var image:UIImage?
+        cameraManager.capturePictureWithCompletition({
+            (img, error) -> Void in
+            image = img
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        
+        // Camera init
+        cameraManager.addPreviewLayerToView(self.cameraView)
+        self.cameraView.layer.zPosition = 0
+        self.buttonTakePicture.layer.zPosition = 1
+        
+        cameraManager.cameraDevice = .Back
+        cameraManager.cameraOutputMode = .StillImage
+        cameraManager.cameraOutputQuality = .High
+        cameraManager.flashMode = .Off
+        cameraManager.writeFilesToPhoneLibrary = false
+        cameraManager.showAccessPermissionPopupAutomatically = true
+        
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

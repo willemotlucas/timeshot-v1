@@ -20,6 +20,7 @@
 		B46B2B7F1C9ABB1200135920 /* T_CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B7E1C9ABB1200135920 /* T_CameraViewController.swift */; };
 		B46B2B811C9ABB2900135920 /* T_AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */; };
 		B46B2B831C9ABB3100135920 /* T_ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B821C9ABB3100135920 /* T_ProfilViewController.swift */; };
+		B46B2B851C9B129D00135920 /* T_EditCameraImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B841C9B129D00135920 /* T_EditCameraImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		B46B2B7E1C9ABB1200135920 /* T_CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_CameraViewController.swift; sourceTree = "<group>"; };
 		B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumViewController.swift; sourceTree = "<group>"; };
 		B46B2B821C9ABB3100135920 /* T_ProfilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ProfilViewController.swift; sourceTree = "<group>"; };
+		B46B2B841C9B129D00135920 /* T_EditCameraImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_EditCameraImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				B46B2B7E1C9ABB1200135920 /* T_CameraViewController.swift */,
 				B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */,
 				B46B2B821C9ABB3100135920 /* T_ProfilViewController.swift */,
+				B46B2B841C9B129D00135920 /* T_EditCameraImageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			files = (
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
 				B46B2B7F1C9ABB1200135920 /* T_CameraViewController.swift in Sources */,
+				B46B2B851C9B129D00135920 /* T_EditCameraImageViewController.swift in Sources */,
 				B46B2B7D1C9ABB0400135920 /* T_HomePageViewController.swift in Sources */,
 				B46B2B811C9ABB2900135920 /* T_AlbumViewController.swift in Sources */,
 				B46B2B831C9ABB3100135920 /* T_ProfilViewController.swift in Sources */,
