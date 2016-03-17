@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--Album View Controller-->
+        <scene sceneID="ghp-dF-rIM">
+            <objects>
+                <viewController storyboardIdentifier="AlbumViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OWY-Fx-QfT" customClass="T_AlbumViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5aC-qd-aOg"/>
+                        <viewControllerLayoutGuide type="bottom" id="qfy-LV-2LM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pDO-ZS-0Pk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AlbumViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oco-rA-bYG">
+                                <rect key="frame" x="219.5" y="290" width="161" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oco-rA-bYG" firstAttribute="centerY" secondItem="pDO-ZS-0Pk" secondAttribute="centerY" id="dmv-ej-xcX"/>
+                            <constraint firstItem="oco-rA-bYG" firstAttribute="centerX" secondItem="pDO-ZS-0Pk" secondAttribute="centerX" id="plL-Na-WaY"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vM7-0i-KOQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="403" y="267"/>
+        </scene>
+    </scenes>
+</document>

@@ -9,10 +9,17 @@
 /* Begin PBXBuildFile section */
 		40BF472DC51952247A14DBC9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9E238D3F9C0AE128133098 /* Pods.framework */; };
 		7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */; };
-		7D8699211C8F4A9D003BC1DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8699201C8F4A9D003BC1DC /* ViewController.swift */; };
 		7D8699241C8F4A9D003BC1DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699221C8F4A9D003BC1DC /* Main.storyboard */; };
 		7D8699261C8F4A9D003BC1DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699251C8F4A9D003BC1DC /* Assets.xcassets */; };
 		7D8699291C8F4A9D003BC1DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699271C8F4A9D003BC1DC /* LaunchScreen.storyboard */; };
+		B46B2B751C9ABAC500135920 /* Profil.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B741C9ABAC500135920 /* Profil.storyboard */; };
+		B46B2B771C9ABADA00135920 /* Album.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B761C9ABADA00135920 /* Album.storyboard */; };
+		B46B2B791C9ABAE000135920 /* AlbumLive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B781C9ABAE000135920 /* AlbumLive.storyboard */; };
+		B46B2B7B1C9ABAEB00135920 /* AlbumFinished.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B7A1C9ABAEB00135920 /* AlbumFinished.storyboard */; };
+		B46B2B7D1C9ABB0400135920 /* T_HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B7C1C9ABB0400135920 /* T_HomePageViewController.swift */; };
+		B46B2B7F1C9ABB1200135920 /* T_CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B7E1C9ABB1200135920 /* T_CameraViewController.swift */; };
+		B46B2B811C9ABB2900135920 /* T_AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */; };
+		B46B2B831C9ABB3100135920 /* T_ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B821C9ABB3100135920 /* T_ProfilViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +28,18 @@
 		78F7AD880E89307F1E906BF3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7D86991B1C8F4A9D003BC1DC /* TimeshotApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeshotApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7D8699201C8F4A9D003BC1DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7D8699231C8F4A9D003BC1DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7D8699251C8F4A9D003BC1DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D8699281C8F4A9D003BC1DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D86992A1C8F4A9D003BC1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B46B2B741C9ABAC500135920 /* Profil.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profil.storyboard; sourceTree = "<group>"; };
+		B46B2B761C9ABADA00135920 /* Album.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Album.storyboard; sourceTree = "<group>"; };
+		B46B2B781C9ABAE000135920 /* AlbumLive.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AlbumLive.storyboard; sourceTree = "<group>"; };
+		B46B2B7A1C9ABAEB00135920 /* AlbumFinished.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AlbumFinished.storyboard; sourceTree = "<group>"; };
+		B46B2B7C1C9ABB0400135920 /* T_HomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_HomePageViewController.swift; sourceTree = "<group>"; };
+		B46B2B7E1C9ABB1200135920 /* T_CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_CameraViewController.swift; sourceTree = "<group>"; };
+		B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumViewController.swift; sourceTree = "<group>"; };
+		B46B2B821C9ABB3100135920 /* T_ProfilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ProfilViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +75,10 @@
 		7D86991D1C8F4A9D003BC1DC /* TimeshotApp */ = {
 			isa = PBXGroup;
 			children = (
+				B46B2B731C9ABA8300135920 /* Views */,
+				B46B2B721C9ABA7E00135920 /* Models */,
+				B46B2B711C9ABA7800135920 /* Controllers */,
 				7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */,
-				7D8699201C8F4A9D003BC1DC /* ViewController.swift */,
-				7D8699221C8F4A9D003BC1DC /* Main.storyboard */,
 				7D8699251C8F4A9D003BC1DC /* Assets.xcassets */,
 				7D8699271C8F4A9D003BC1DC /* LaunchScreen.storyboard */,
 				7D86992A1C8F4A9D003BC1DC /* Info.plist */,
@@ -77,6 +92,36 @@
 				4F9E238D3F9C0AE128133098 /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B46B2B711C9ABA7800135920 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B46B2B7C1C9ABB0400135920 /* T_HomePageViewController.swift */,
+				B46B2B7E1C9ABB1200135920 /* T_CameraViewController.swift */,
+				B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */,
+				B46B2B821C9ABB3100135920 /* T_ProfilViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B46B2B721C9ABA7E00135920 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B46B2B731C9ABA8300135920 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7D8699221C8F4A9D003BC1DC /* Main.storyboard */,
+				B46B2B741C9ABAC500135920 /* Profil.storyboard */,
+				B46B2B761C9ABADA00135920 /* Album.storyboard */,
+				B46B2B781C9ABAE000135920 /* AlbumLive.storyboard */,
+				B46B2B7A1C9ABAEB00135920 /* AlbumFinished.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D760AC12C96F9D24EAB7A1B4 /* Pods */ = {
@@ -150,9 +195,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B46B2B791C9ABAE000135920 /* AlbumLive.storyboard in Resources */,
+				B46B2B751C9ABAC500135920 /* Profil.storyboard in Resources */,
+				B46B2B7B1C9ABAEB00135920 /* AlbumFinished.storyboard in Resources */,
 				7D8699291C8F4A9D003BC1DC /* LaunchScreen.storyboard in Resources */,
 				7D8699261C8F4A9D003BC1DC /* Assets.xcassets in Resources */,
 				7D8699241C8F4A9D003BC1DC /* Main.storyboard in Resources */,
+				B46B2B771C9ABADA00135920 /* Album.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,8 +260,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D8699211C8F4A9D003BC1DC /* ViewController.swift in Sources */,
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
+				B46B2B7F1C9ABB1200135920 /* T_CameraViewController.swift in Sources */,
+				B46B2B7D1C9ABB0400135920 /* T_HomePageViewController.swift in Sources */,
+				B46B2B811C9ABB2900135920 /* T_AlbumViewController.swift in Sources */,
+				B46B2B831C9ABB3100135920 /* T_ProfilViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +277,7 @@
 				7D8699231C8F4A9D003BC1DC /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		7D8699271C8F4A9D003BC1DC /* LaunchScreen.storyboard */ = {
