@@ -34,7 +34,7 @@ class T_DesignHelper {
         navbar.translucent = false
     }
     
-    static func colorHeaderTableView(view: UIView){
+    static func colorUIView(view: UIView){
         let gradient = CAGradientLayer()
         gradient.frame = view.bounds
         
