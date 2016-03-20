@@ -18,14 +18,22 @@ class T_AlbumViewController: UIViewController{
     var liveArray = [true, false, false,false]
     var dateArray = ["13 mai","10 avril","19 mars", "3 janvier"]
     
+    // orange clair = F37CA1
+    // orange fonce = E87975
+    
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
-
+        
+        // Design the navbar
+        T_DesignHelper.colorNavBar(self.navigationController!)
+        
+        
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,7 +62,6 @@ extension T_AlbumViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if liveArray[indexPath.row] == true {
-            print("je suis live")
             let cell = tableView.dequeueReusableCellWithIdentifier("liveAlbum") as! T_AlbumLiveTableViewCell
 
             cell.initCell(UIImage(named: imageArray[indexPath.row])!,
@@ -64,7 +71,6 @@ extension T_AlbumViewController : UITableViewDelegate, UITableViewDataSource {
             return cell
 
         } else {
-            print("je suis finish")
             let cell = tableView.dequeueReusableCellWithIdentifier("finishAlbum") as! T_AlbumFinishTableViewCell
             
             cell.initCell(UIImage(named: imageArray[indexPath.row])!,
