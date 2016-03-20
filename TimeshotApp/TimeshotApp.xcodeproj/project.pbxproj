@@ -19,6 +19,7 @@
 		5D7BB2D81C9EF131009F6B17 /* icon_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D7BB2CE1C9EF131009F6B17 /* icon_setting@2x.png */; };
 		5D7BB2D91C9EF131009F6B17 /* icon_setting@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D7BB2CF1C9EF131009F6B17 /* icon_setting@3x.png */; };
 		5DF8BEB81C9F2C600029556C /* T_SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF8BEB71C9F2C600029556C /* T_SettingsViewController.swift */; };
+		5DF8BEBA1C9F30DA0029556C /* T_ProfileEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF8BEB91C9F30DA0029556C /* T_ProfileEditionViewController.swift */; };
 		7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */; };
 		7D8699241C8F4A9D003BC1DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699221C8F4A9D003BC1DC /* Main.storyboard */; };
 		7D8699261C8F4A9D003BC1DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699251C8F4A9D003BC1DC /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		5D7BB2CE1C9EF131009F6B17 /* icon_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_setting@2x.png"; sourceTree = "<group>"; };
 		5D7BB2CF1C9EF131009F6B17 /* icon_setting@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_setting@3x.png"; sourceTree = "<group>"; };
 		5DF8BEB71C9F2C600029556C /* T_SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SettingsViewController.swift; sourceTree = "<group>"; };
+		5DF8BEB91C9F30DA0029556C /* T_ProfileEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ProfileEditionViewController.swift; sourceTree = "<group>"; };
 		78F7AD880E89307F1E906BF3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7D86991B1C8F4A9D003BC1DC /* TimeshotApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeshotApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */,
 				B46B2B821C9ABB3100135920 /* T_ProfileViewController.swift */,
 				5DF8BEB71C9F2C600029556C /* T_SettingsViewController.swift */,
+				5DF8BEB91C9F30DA0029556C /* T_ProfileEditionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */,
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
 				B46B2B7F1C9ABB1200135920 /* T_CameraViewController.swift in Sources */,
+				5DF8BEBA1C9F30DA0029556C /* T_ProfileEditionViewController.swift in Sources */,
 				5DF8BEB81C9F2C600029556C /* T_SettingsViewController.swift in Sources */,
 				B46B2B7D1C9ABB0400135920 /* T_HomePageViewController.swift in Sources */,
 				5D7BB2A61C9EEB7F009F6B17 /* T_ProfileTableViewCell.swift in Sources */,
