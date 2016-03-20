@@ -46,7 +46,7 @@
                                             <inset key="contentEdgeInsets" minX="10" minY="10" maxX="0.0" maxY="10"/>
                                             <state key="normal" image="icon_setting"/>
                                             <connections>
-                                                <segue destination="ZPw-gB-iH8" kind="presentation" id="Z2v-yM-blh"/>
+                                                <segue destination="5he-NX-sDT" kind="presentation" id="Z2v-yM-blh"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16 albums" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DsJ-VR-23i">
@@ -226,10 +226,10 @@
             </objects>
             <point key="canvasLocation" x="143" y="236"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings Controller-->
         <scene sceneID="STl-NM-5NH">
             <objects>
-                <viewController id="ZPw-gB-iH8" sceneMemberID="viewController">
+                <viewController title="Settings Controller" id="ZPw-gB-iH8" customClass="T_SettingsViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="828-01-Mmu"/>
                         <viewControllerLayoutGuide type="bottom" id="pC6-bn-o2G"/>
@@ -237,17 +237,40 @@
                     <view key="view" contentMode="scaleToFill" id="ADK-QS-4jw">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vNJ-bB-b63">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vNJ-bB-b63" firstAttribute="top" secondItem="828-01-Mmu" secondAttribute="bottom" id="5lM-QX-QE9"/>
+                            <constraint firstAttribute="trailing" secondItem="vNJ-bB-b63" secondAttribute="trailing" id="OXd-6Q-vG2"/>
+                            <constraint firstItem="vNJ-bB-b63" firstAttribute="leading" secondItem="ADK-QS-4jw" secondAttribute="leading" id="OXe-5u-OsF"/>
+                            <constraint firstItem="pC6-bn-o2G" firstAttribute="top" secondItem="vNJ-bB-b63" secondAttribute="bottom" id="Z3K-vH-V3H"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Settings" id="AUU-68-d2P">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="DRZ-VS-XJS">
+                            <color key="tintColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="ZPw-gB-iH8" id="Scm-Xm-SZg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="vNJ-bB-b63" id="Weo-KM-riG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jPS-Bw-jsf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="973" y="-43"/>
+            <point key="canvasLocation" x="1785" y="-43"/>
         </scene>
-        <!--View Controller-->
+        <!--Edition Controller-->
         <scene sceneID="meJ-mG-AwG">
             <objects>
-                <viewController id="1k2-2m-mAE" sceneMemberID="viewController">
+                <viewController title="Edition Controller" id="1k2-2m-mAE" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4zM-kQ-1EY"/>
                         <viewControllerLayoutGuide type="bottom" id="uSk-ki-LEv"/>
@@ -282,6 +305,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5zh-g4-dWd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-669" y="236"/>
+        </scene>
+        <!--Settings Navigation Controller-->
+        <scene sceneID="e4R-Bc-HSt">
+            <objects>
+                <navigationController title="Settings Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="5he-NX-sDT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WPh-2j-o4M">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZPw-gB-iH8" kind="relationship" relationship="rootViewController" id="nPn-5t-j8V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yVH-0I-JXI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973" y="-43"/>
         </scene>
     </scenes>
     <resources>
