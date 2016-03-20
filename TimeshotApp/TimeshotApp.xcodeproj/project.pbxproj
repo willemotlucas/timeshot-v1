@@ -12,6 +12,12 @@
 		7D8699241C8F4A9D003BC1DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699221C8F4A9D003BC1DC /* Main.storyboard */; };
 		7D8699261C8F4A9D003BC1DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699251C8F4A9D003BC1DC /* Assets.xcassets */; };
 		7D8699291C8F4A9D003BC1DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699271C8F4A9D003BC1DC /* LaunchScreen.storyboard */; };
+		7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0F9AB1C9DC6BE00A856B9 /* T_AlbumLiveTableViewCell.swift */; };
+		7DD0F9AE1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0F9AD1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift */; };
+		7DD0F9B41C9EA0FB00A856B9 /* festival.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B01C9EA0FB00A856B9 /* festival.jpg */; };
+		7DD0F9B51C9EA0FB00A856B9 /* mariage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B11C9EA0FB00A856B9 /* mariage.jpg */; };
+		7DD0F9B61C9EA0FB00A856B9 /* soiree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */; };
+		7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */; };
 		B46B2B751C9ABAC500135920 /* Profil.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B741C9ABAC500135920 /* Profil.storyboard */; };
 		B46B2B771C9ABADA00135920 /* Album.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B761C9ABADA00135920 /* Album.storyboard */; };
 		B46B2B791C9ABAE000135920 /* AlbumLive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B781C9ABAE000135920 /* AlbumLive.storyboard */; };
@@ -32,6 +38,12 @@
 		7D8699251C8F4A9D003BC1DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D8699281C8F4A9D003BC1DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D86992A1C8F4A9D003BC1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DD0F9AB1C9DC6BE00A856B9 /* T_AlbumLiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumLiveTableViewCell.swift; sourceTree = "<group>"; };
+		7DD0F9AD1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumFinishTableViewCell.swift; sourceTree = "<group>"; };
+		7DD0F9B01C9EA0FB00A856B9 /* festival.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = festival.jpg; sourceTree = "<group>"; };
+		7DD0F9B11C9EA0FB00A856B9 /* mariage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mariage.jpg; sourceTree = "<group>"; };
+		7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = soiree.jpg; sourceTree = "<group>"; };
+		7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = voyage.jpg; sourceTree = "<group>"; };
 		B46B2B741C9ABAC500135920 /* Profil.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profil.storyboard; sourceTree = "<group>"; };
 		B46B2B761C9ABADA00135920 /* Album.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Album.storyboard; sourceTree = "<group>"; };
 		B46B2B781C9ABAE000135920 /* AlbumLive.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AlbumLive.storyboard; sourceTree = "<group>"; };
@@ -80,10 +92,31 @@
 				B46B2B711C9ABA7800135920 /* Controllers */,
 				7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */,
 				7D8699251C8F4A9D003BC1DC /* Assets.xcassets */,
+				7DD0F9AF1C9EA0FB00A856B9 /* ImageTestAlbums */,
 				7D8699271C8F4A9D003BC1DC /* LaunchScreen.storyboard */,
 				7D86992A1C8F4A9D003BC1DC /* Info.plist */,
 			);
 			path = TimeshotApp;
+			sourceTree = "<group>";
+		};
+		7DD0F9AA1C9DC68D00A856B9 /* Album */ = {
+			isa = PBXGroup;
+			children = (
+				7DD0F9AB1C9DC6BE00A856B9 /* T_AlbumLiveTableViewCell.swift */,
+				7DD0F9AD1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift */,
+			);
+			path = Album;
+			sourceTree = "<group>";
+		};
+		7DD0F9AF1C9EA0FB00A856B9 /* ImageTestAlbums */ = {
+			isa = PBXGroup;
+			children = (
+				7DD0F9B01C9EA0FB00A856B9 /* festival.jpg */,
+				7DD0F9B11C9EA0FB00A856B9 /* mariage.jpg */,
+				7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */,
+				7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */,
+			);
+			path = ImageTestAlbums;
 			sourceTree = "<group>";
 		};
 		82A90CB2B4101E6652DA70AD /* Frameworks */ = {
@@ -97,6 +130,7 @@
 		B46B2B711C9ABA7800135920 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7DD0F9AA1C9DC68D00A856B9 /* Album */,
 				B46B2B7C1C9ABB0400135920 /* T_HomePageViewController.swift */,
 				B46B2B7E1C9ABB1200135920 /* T_CameraViewController.swift */,
 				B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */,
@@ -195,10 +229,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DD0F9B61C9EA0FB00A856B9 /* soiree.jpg in Resources */,
 				B46B2B791C9ABAE000135920 /* AlbumLive.storyboard in Resources */,
+				7DD0F9B41C9EA0FB00A856B9 /* festival.jpg in Resources */,
 				B46B2B751C9ABAC500135920 /* Profil.storyboard in Resources */,
+				7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */,
 				B46B2B7B1C9ABAEB00135920 /* AlbumFinished.storyboard in Resources */,
 				7D8699291C8F4A9D003BC1DC /* LaunchScreen.storyboard in Resources */,
+				7DD0F9B51C9EA0FB00A856B9 /* mariage.jpg in Resources */,
 				7D8699261C8F4A9D003BC1DC /* Assets.xcassets in Resources */,
 				7D8699241C8F4A9D003BC1DC /* Main.storyboard in Resources */,
 				B46B2B771C9ABADA00135920 /* Album.storyboard in Resources */,
@@ -260,6 +298,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DD0F9AE1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift in Sources */,
+				7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */,
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
 				B46B2B7F1C9ABB1200135920 /* T_CameraViewController.swift in Sources */,
 				B46B2B7D1C9ABB0400135920 /* T_HomePageViewController.swift in Sources */,
@@ -379,7 +419,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TimeshotApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Timeshot.TimeshotApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Valentin.TimeshotApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -391,7 +431,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TimeshotApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Timeshot.TimeshotApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Valentin.TimeshotApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
