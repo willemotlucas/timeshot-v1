@@ -18,9 +18,6 @@ class T_DesignHelper {
         layer.frame = navbar.navigationBar.bounds
         layer.frame.size.height += 20
         
-        
-        
-        
         layer.colors = [orangeFonce,orangeClair]
         layer.startPoint = CGPointMake(0.0, 0.0)
         layer.endPoint = CGPointMake(1.0, 0.0)

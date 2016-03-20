@@ -19,6 +19,8 @@ class T_AlbumLiveTableViewCell: UITableViewCell {
         coverAlbum.image = cover
         dateLabel.text = date
         titleAlbumLabel.text = title
+        
+        //T_DesignHelper .colorBackgroundLabel(titleAlbumLabel)
     }
     
     

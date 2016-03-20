@@ -18,9 +18,6 @@ class T_AlbumViewController: UIViewController{
     var liveArray = [true, false, false,false]
     var dateArray = ["13 mai","10 avril","19 mars", "3 janvier"]
     
-    // orange clair = F37CA1
-    // orange fonce = E87975
-    
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
