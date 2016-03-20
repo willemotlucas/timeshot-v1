@@ -1,8 +1,8 @@
 //
-//  T_ProfilViewController.swift
+//  T_ProfileViewController.swift
 //  TimeshotApp
 //
-//  Created by Paul Jeannot on 17/03/2016.
+//  Created by Lucas Willemot on 20/03/2016.
 //  Copyright © 2016 Timeshot. All rights reserved.
 //
 
@@ -19,13 +19,13 @@ class T_ProfileViewController: UIViewController {
     @IBOutlet weak var segmentedView: UIView!
     @IBOutlet weak var profileView: UIView!
     
-    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     // MARK : Properties
     var friends: [String] = ["Lucas Willemot", "Valentin Paul", "Romain Pellerin", "Paul Jeannot", "Gabriel Hurtado", "Maxime Churin", "Karim Lamouri"]
     var contentToDisplay : ContentType = .Friends
 
+    // MARK: Overrided functions
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -33,6 +33,9 @@ class T_ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        T_DesignHelper.colorHeaderTableView(profileView)
+        //T_DesignHelper.colorSegmentedControl(segmentedControl)
+        T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
         tableView.tableHeaderView = profileView
         tableView.delegate = self
         tableView.dataSource = self

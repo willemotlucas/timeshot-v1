@@ -129,15 +129,15 @@
 		7D86991D1C8F4A9D003BC1DC /* TimeshotApp */ = {
 			isa = PBXGroup;
 			children = (
-				5D7BB2D01C9EF131009F6B17 /* ProfileImageTest */,
-				5D7BB2A41C9EEB67009F6B17 /* Profile */,
-				B46B2B731C9ABA8300135920 /* Views */,
 				B46B2B721C9ABA7E00135920 /* Models */,
+				B46B2B731C9ABA8300135920 /* Views */,
 				B46B2B711C9ABA7800135920 /* Controllers */,
-				7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */,
-				7D8699251C8F4A9D003BC1DC /* Assets.xcassets */,
+				5D7BB2A41C9EEB67009F6B17 /* Profile */,
 				7DD0F9B81C9EB8D700A856B9 /* DesignHelper */,
 				7DD0F9AF1C9EA0FB00A856B9 /* ImageTestAlbums */,
+				5D7BB2D01C9EF131009F6B17 /* ProfileImageTest */,
+				7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */,
+				7D8699251C8F4A9D003BC1DC /* Assets.xcassets */,
 				7D8699271C8F4A9D003BC1DC /* LaunchScreen.storyboard */,
 				7D86992A1C8F4A9D003BC1DC /* Info.plist */,
 			);

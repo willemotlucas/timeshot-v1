@@ -26,7 +26,7 @@ class T_AlbumViewController: UIViewController{
         tableView.dataSource = self
         
         // Design the navbar
-        T_DesignHelper.colorNavBar(self.navigationController!)
+        T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
         
         
         // Do any additional setup after loading the view.
