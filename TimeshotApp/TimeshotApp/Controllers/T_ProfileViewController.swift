@@ -18,6 +18,7 @@ class T_ProfileViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedView: UIView!
     @IBOutlet weak var profileView: UIView!
+    @IBOutlet weak var buttonView: UIView!
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
@@ -33,7 +34,8 @@ class T_ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        T_DesignHelper.colorHeaderTableView(profileView)
+        T_DesignHelper.colorUIView(profileView)
+        T_DesignHelper.colorUIView(buttonView)
         //T_DesignHelper.colorSegmentedControl(segmentedControl)
         T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
         tableView.tableHeaderView = profileView
