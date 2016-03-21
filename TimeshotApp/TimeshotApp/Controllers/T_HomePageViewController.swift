@@ -21,7 +21,7 @@ class T_HomePageViewController: UIPageViewController {
     }
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newController("Profil"),
+        return [self.newController("Profile"),
             self.newController("Main"),
             self.newController("Album")]
     }()
