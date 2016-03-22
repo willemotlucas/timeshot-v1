@@ -2,7 +2,7 @@
 //  DesignHelper.swift
 //  TimeshotApp
 //
-//  Created by Valentin PAUL on 20/03/16.
+//  Created by Valentin PAUL on 22/03/16.
 //  Copyright © 2016 Timeshot. All rights reserved.
 //
 
@@ -65,5 +65,3 @@ class T_DesignHelper {
         segmentedControl.setBackgroundImage(image, forState: .Normal, barMetrics: UIBarMetrics.Default)
     }
 }
-
-
