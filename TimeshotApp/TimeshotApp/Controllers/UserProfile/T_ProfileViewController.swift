@@ -24,7 +24,7 @@ class T_ProfileViewController: UIViewController {
     
     // MARK : Properties
     var friends = ["Lucas Willemot", "Valentin Paul", "Romain Pellerin", "Paul Jeannot", "Gabriel Hurtado", "Maxime Churin", "Karim Lamouri"]
-    var pendingRequests = ["Marie Dagugyiviyvyvyvyvtyftdqzin", "Alphonso Lupi"]
+    var pendingRequests = ["Marie Daguin", "Alphonso Lupi"]
     var sectionTitles = ["Pending requests", "Friends"]
     var contentToDisplay : ContentType = .Friends
 
