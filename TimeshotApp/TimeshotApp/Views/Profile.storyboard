@@ -100,7 +100,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="T_ProfileTableViewCell" rowHeight="60" id="8ei-IH-Tff" customClass="T_ProfileTableViewCell" customModule="TimeshotApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="T_FriendTableViewCell" rowHeight="60" id="8ei-IH-Tff" customClass="T_FriendTableViewCell" customModule="TimeshotApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="265" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8ei-IH-Tff" id="rW1-jO-c0o">
@@ -143,8 +143,8 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="imageViewCell" destination="KpI-1t-Q6t" id="Bal-7Z-Xjd"/>
-                                            <outlet property="textLabelCell" destination="W6O-u5-Gnt" id="rhC-kz-lS2"/>
+                                            <outlet property="friendNameLabel" destination="W6O-u5-Gnt" id="5ZP-5Y-cMX"/>
+                                            <outlet property="profileImage" destination="KpI-1t-Q6t" id="g1a-uc-gpD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

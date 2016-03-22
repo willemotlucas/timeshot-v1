@@ -170,7 +170,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Albums" id="e0w-ba-saM">
-                        <barButtonItem key="leftBarButtonItem" image="camera icon" style="done" id="bY7-vS-7Fc"/>
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="camera" id="bY7-vS-7Fc">
+                            <color key="tintColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="hTn-bo-KJR" id="lvT-ED-3fA"/>
@@ -238,7 +240,4 @@
             <point key="canvasLocation" x="403" y="267"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="camera icon" width="25" height="20"/>
-    </resources>
 </document>
