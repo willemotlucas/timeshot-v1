@@ -69,8 +69,8 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMz-rs-BKQ">
-                                            <rect key="frame" x="0.0" y="148" width="44" height="44"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMz-rs-BKQ">
+                                            <rect key="frame" x="4" y="148" width="44" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="DEi-3a-yLU"/>
                                                 <constraint firstAttribute="width" constant="44" id="n5o-sm-Ne0"/>
@@ -100,8 +100,64 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="T_FriendTableViewCell" rowHeight="60" id="8ei-IH-Tff" customClass="T_FriendTableViewCell" customModule="TimeshotApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="T_FriendRequestTableViewCell" id="cJd-v6-6xd" customClass="T_FriendRequestTableViewCell" customModule="TimeshotApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="265" width="600" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cJd-v6-6xd" id="odj-RA-YCK">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar.png" translatesAutoresizingMaskIntoConstraints="NO" id="0We-p4-TDV">
+                                                    <rect key="frame" x="8" y="10" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="8Cr-Gw-9uO"/>
+                                                        <constraint firstAttribute="height" constant="40" id="sfG-6f-N7e"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLG-vf-KL7">
+                                                    <rect key="frame" x="482" y="8" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="KGY-ts-i4J"/>
+                                                        <constraint firstAttribute="width" constant="44" id="ZHt-18-mAW"/>
+                                                    </constraints>
+                                                    <state key="normal" image="refuse"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGz-OM-Dli">
+                                                    <rect key="frame" x="546" y="8" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="R82-g8-AyE"/>
+                                                        <constraint firstAttribute="width" constant="44" id="VM2-Zp-i9m"/>
+                                                    </constraints>
+                                                    <state key="normal" image="accept"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snE-qg-euw">
+                                                    <rect key="frame" x="56" y="19.5" width="406" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="IGz-OM-Dli" firstAttribute="centerY" secondItem="odj-RA-YCK" secondAttribute="centerY" id="2wi-rv-Y16"/>
+                                                <constraint firstItem="0We-p4-TDV" firstAttribute="centerY" secondItem="odj-RA-YCK" secondAttribute="centerY" id="A8v-Yr-3Ov"/>
+                                                <constraint firstItem="IGz-OM-Dli" firstAttribute="leading" secondItem="FLG-vf-KL7" secondAttribute="trailing" constant="20" id="E3q-0Y-UlX"/>
+                                                <constraint firstAttribute="trailing" secondItem="IGz-OM-Dli" secondAttribute="trailing" constant="10" id="EVS-lZ-cvh"/>
+                                                <constraint firstItem="snE-qg-euw" firstAttribute="centerY" secondItem="odj-RA-YCK" secondAttribute="centerY" id="Iyc-qq-NmU"/>
+                                                <constraint firstItem="FLG-vf-KL7" firstAttribute="centerY" secondItem="odj-RA-YCK" secondAttribute="centerY" id="Qbe-Zm-XYq"/>
+                                                <constraint firstItem="0We-p4-TDV" firstAttribute="leading" secondItem="odj-RA-YCK" secondAttribute="leading" constant="8" id="VPX-Md-314"/>
+                                                <constraint firstItem="FLG-vf-KL7" firstAttribute="leading" secondItem="snE-qg-euw" secondAttribute="trailing" constant="20" id="far-0D-ZK4"/>
+                                                <constraint firstItem="snE-qg-euw" firstAttribute="leading" secondItem="0We-p4-TDV" secondAttribute="trailing" constant="8" id="fvi-dh-Kqq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="acceptButton" destination="IGz-OM-Dli" id="mKq-7Z-jSu"/>
+                                            <outlet property="friendNameLabel" destination="snE-qg-euw" id="Zvi-6U-mZW"/>
+                                            <outlet property="friendProfileImage" destination="0We-p4-TDV" id="L2B-JM-aZm"/>
+                                            <outlet property="refuseButton" destination="FLG-vf-KL7" id="taj-AH-izE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="T_FriendTableViewCell" rowHeight="60" id="8ei-IH-Tff" customClass="T_FriendTableViewCell" customModule="TimeshotApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="325" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8ei-IH-Tff" id="rW1-jO-c0o">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
@@ -115,11 +171,11 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6O-u5-Gnt">
-                                                    <rect key="frame" x="56" y="19" width="250" height="20.5"/>
+                                                    <rect key="frame" x="56" y="19.5" width="250" height="19.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="250" id="MGQ-Hc-05G"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -136,6 +192,7 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="EQN-Lp-T7a"/>
                                                     <exclude reference="PVd-C1-Fag"/>
                                                     <exclude reference="ZDM-Is-VOj"/>
                                                     <exclude reference="wfV-WV-nFL"/>
@@ -309,7 +366,7 @@
             </objects>
             <point key="canvasLocation" x="973" y="-43"/>
         </scene>
-        <!--Title-->
+        <!--Profile Edition-->
         <scene sceneID="yZ9-tN-I8y">
             <objects>
                 <viewController id="Nrm-Cj-qkO" customClass="T_ProfileEditionViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -334,7 +391,7 @@
                             <constraint firstItem="Z06-LL-2h9" firstAttribute="leading" secondItem="KCb-If-HHW" secondAttribute="leading" id="rGe-Of-F2r"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="ION-pV-gSh">
+                    <navigationItem key="navigationItem" title="Profile Edition" id="ION-pV-gSh">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jmU-H1-b8U">
                             <color key="tintColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -347,10 +404,10 @@
             </objects>
             <point key="canvasLocation" x="1785" y="672"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Profile Edition Controller-->
         <scene sceneID="iUw-z6-QbT">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SAj-oj-A7p" sceneMemberID="viewController">
+                <navigationController title="Profile Edition Controller" automaticallyAdjustsScrollViewInsets="NO" id="SAj-oj-A7p" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uw0-jw-PBt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -371,7 +428,10 @@
     </scenes>
     <resources>
         <image name="Avatar" width="119" height="119"/>
+        <image name="Avatar.png" width="119" height="119"/>
         <image name="Edit button" width="16" height="16"/>
+        <image name="accept" width="35" height="35"/>
         <image name="icon_setting" width="22" height="22"/>
+        <image name="refuse" width="35" height="35"/>
     </resources>
 </document>

@@ -23,7 +23,9 @@ class T_ProfileViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     // MARK : Properties
-    var friends: [String] = ["Lucas Willemot", "Valentin Paul", "Romain Pellerin", "Paul Jeannot", "Gabriel Hurtado", "Maxime Churin", "Karim Lamouri"]
+    var friends = ["Lucas Willemot", "Valentin Paul", "Romain Pellerin", "Paul Jeannot", "Gabriel Hurtado", "Maxime Churin", "Karim Lamouri"]
+    var pendingRequests = ["Marie Dagugyiviyvyvyvyvtyftdqzin", "Alphonso Lupi"]
+    var sectionTitles = ["Pending requests", "Friends"]
     var contentToDisplay : ContentType = .Friends
 
     // MARK: Overrided functions
@@ -36,8 +38,9 @@ class T_ProfileViewController: UIViewController {
         super.viewDidLoad()
         T_DesignHelper.colorUIView(profileView)
         T_DesignHelper.colorUIView(buttonView)
-        //T_DesignHelper.colorSegmentedControl(segmentedControl)
         T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
+        //T_DesignHelper.colorSegmentedControl(segmentedControl)
+
         tableView.tableHeaderView = profileView
         tableView.delegate = self
         tableView.dataSource = self
@@ -70,20 +73,32 @@ class T_ProfileViewController: UIViewController {
 }
 
 extension T_ProfileViewController: UITableViewDelegate {
-    
+
 }
 
 extension T_ProfileViewController: UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return sectionTitles.count
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitles[section]
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch contentToDisplay {
         case .Friends:
-            let cell = tableView.dequeueReusableCellWithIdentifier("T_FriendTableViewCell", forIndexPath: indexPath) as! T_FriendTableViewCell
-            cell.friendNameLabel.text = friends[indexPath.row]
-            return cell
+            if indexPath.section == 0 {
+                //Pending request cell
+                let cell = tableView.dequeueReusableCellWithIdentifier("T_FriendRequestTableViewCell", forIndexPath: indexPath) as! T_FriendRequestTableViewCell
+                cell.friendNameLabel.text = pendingRequests[indexPath.row]
+                return cell
+            } else {
+                //Friend cell
+                let cell = tableView.dequeueReusableCellWithIdentifier("T_FriendTableViewCell", forIndexPath: indexPath) as! T_FriendTableViewCell
+                cell.friendNameLabel.text = friends[indexPath.row]
+                return cell
+            }
         case .Notifications:
             let cell = UITableViewCell()
             cell.textLabel?.text = "Valentin a commenté votre photo"
@@ -94,7 +109,12 @@ extension T_ProfileViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch contentToDisplay {
         case .Friends:
-            return friends.count
+            if section == 0 {
+                return pendingRequests.count
+            }
+            else {
+                return friends.count
+            }
         case .Notifications:
             return 40
         }
