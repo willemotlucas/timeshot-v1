@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AddressBook
+import AddressBookUI
 
 enum ContentType {
     case Friends, Notifications
@@ -71,6 +73,17 @@ class T_ProfileViewController: UIViewController {
         let addressBookAction = UIAlertAction(title: "Add from Address Book", style: .Default){
             (action) in
             // Callback function (closure) called when user selects address book
+            let authorizationStatus = ABAddressBookGetAuthorizationStatus()
+            
+            switch authorizationStatus {
+            case .Denied, .Restricted:
+                T_ContactsHelper.displayCantAddContactAlert(self)
+            case .Authorized:
+                let personViewController = ABPeoplePickerNavigationController()
+                self.presentViewController(personViewController, animated: true, completion: nil)
+            case .NotDetermined:
+                T_ContactsHelper.promptForAddressBookRequestAccess(self)
+            }
         }
         alertController.addAction(addressBookAction)
         
