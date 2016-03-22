@@ -20,6 +20,7 @@
 		5DB5A0291CA1AD1000AADC9F /* T_ProfileEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0241CA1AD1000AADC9F /* T_ProfileEditionViewController.swift */; };
 		5DB5A02A1CA1AD1000AADC9F /* T_ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0251CA1AD1000AADC9F /* T_ProfileViewController.swift */; };
 		5DB5A02B1CA1AD1000AADC9F /* T_SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0261CA1AD1000AADC9F /* T_SettingsViewController.swift */; };
+		5DB5A02F1CA1C8D400AADC9F /* T_SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A02E1CA1C8D400AADC9F /* T_SearchUserViewController.swift */; };
 		5DE918C61CA02CF300459AA3 /* Avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918BD1CA02CF300459AA3 /* Avatar.png */; };
 		5DE918C71CA02CF300459AA3 /* Avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918BE1CA02CF300459AA3 /* Avatar@2x.png */; };
 		5DE918C81CA02CF300459AA3 /* Avatar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918BF1CA02CF300459AA3 /* Avatar@3x.png */; };
@@ -61,6 +62,7 @@
 		5DB5A0241CA1AD1000AADC9F /* T_ProfileEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ProfileEditionViewController.swift; sourceTree = "<group>"; };
 		5DB5A0251CA1AD1000AADC9F /* T_ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ProfileViewController.swift; sourceTree = "<group>"; };
 		5DB5A0261CA1AD1000AADC9F /* T_SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SettingsViewController.swift; sourceTree = "<group>"; };
+		5DB5A02E1CA1C8D400AADC9F /* T_SearchUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SearchUserViewController.swift; sourceTree = "<group>"; };
 		5DE918BD1CA02CF300459AA3 /* Avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Avatar.png; sourceTree = "<group>"; };
 		5DE918BE1CA02CF300459AA3 /* Avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Avatar@2x.png"; sourceTree = "<group>"; };
 		5DE918BF1CA02CF300459AA3 /* Avatar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Avatar@3x.png"; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				5DB5A0241CA1AD1000AADC9F /* T_ProfileEditionViewController.swift */,
 				5DB5A0251CA1AD1000AADC9F /* T_ProfileViewController.swift */,
 				5DB5A0261CA1AD1000AADC9F /* T_SettingsViewController.swift */,
+				5DB5A02E1CA1C8D400AADC9F /* T_SearchUserViewController.swift */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */,
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
 				5DB5A00D1CA1905200AADC9F /* T_DesignHelper.swift in Sources */,
+				5DB5A02F1CA1C8D400AADC9F /* T_SearchUserViewController.swift in Sources */,
 				5DB5A0291CA1AD1000AADC9F /* T_ProfileEditionViewController.swift in Sources */,
 				5DB5A02A1CA1AD1000AADC9F /* T_ProfileViewController.swift in Sources */,
 				5DB5A0271CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift in Sources */,

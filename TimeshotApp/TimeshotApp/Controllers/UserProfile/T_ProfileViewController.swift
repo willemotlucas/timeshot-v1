@@ -18,9 +18,10 @@ class T_ProfileViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedView: UIView!
     @IBOutlet weak var profileView: UIView!
-    @IBOutlet weak var buttonView: UIView!
+    @IBOutlet weak var addFriendsButtonView: UIView!
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var addFriendsButton: UIButton!
     
     // MARK : Properties
     var friends = ["Lucas Willemot", "Valentin Paul", "Romain Pellerin", "Paul Jeannot", "Gabriel Hurtado", "Maxime Churin", "Karim Lamouri"]
@@ -37,7 +38,7 @@ class T_ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         T_DesignHelper.colorUIView(profileView)
-        T_DesignHelper.colorUIView(buttonView)
+        T_DesignHelper.colorUIView(addFriendsButtonView)
         T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
         //T_DesignHelper.colorSegmentedControl(segmentedControl)
 
@@ -59,6 +60,28 @@ class T_ProfileViewController: UIViewController {
         tableView.reloadData()
     }
     
+    @IBAction func addFriendsButtonTapped(sender: UIButton) {
+        // Constructs the UIAlert
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        
+        //Add actions to the UIAlert
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let addressBookAction = UIAlertAction(title: "Add from Address Book", style: .Default){
+            (action) in
+            // Callback function (closure) called when user selects address book
+        }
+        alertController.addAction(addressBookAction)
+        
+        let usernameAction = UIAlertAction(title: "Add by Username", style: .Default) {
+            (action) in
+            self.performSegueWithIdentifier("showUserSearch", sender: nil)
+        }
+        alertController.addAction(usernameAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation

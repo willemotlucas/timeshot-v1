@@ -237,17 +237,22 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M8b-GY-fna">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZA-M0-C4r">
-                                        <rect key="frame" x="225" y="5" width="151" height="33"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZA-M0-C4r">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="ADD NEW FRIENDS">
                                             <color key="titleColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addFriendsButtonTapped:" destination="tGm-Pl-crw" eventType="touchUpInside" id="C9q-Bv-De8"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="JZA-M0-C4r" secondAttribute="trailing" id="3Sy-Mo-hxR"/>
                                     <constraint firstItem="JZA-M0-C4r" firstAttribute="centerX" secondItem="M8b-GY-fna" secondAttribute="centerX" id="f7b-VD-NAN"/>
+                                    <constraint firstItem="JZA-M0-C4r" firstAttribute="leading" secondItem="M8b-GY-fna" secondAttribute="leading" id="hHY-o4-faW"/>
                                     <constraint firstItem="JZA-M0-C4r" firstAttribute="centerY" secondItem="M8b-GY-fna" secondAttribute="centerY" id="lfN-7Q-xj0"/>
                                     <constraint firstAttribute="height" constant="44" id="mCk-qr-i7x"/>
                                 </constraints>
@@ -275,17 +280,82 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="buttonView" destination="M8b-GY-fna" id="bpa-p3-YdN"/>
+                        <outlet property="addFriendsButton" destination="JZA-M0-C4r" id="jEI-rb-SKD"/>
+                        <outlet property="addFriendsButtonView" destination="M8b-GY-fna" id="Mhn-7p-UBG"/>
                         <outlet property="headerView" destination="0qr-g3-NJH" id="djx-Eu-lMz"/>
                         <outlet property="profileView" destination="VWd-q1-MIa" id="Oac-Qj-2jB"/>
                         <outlet property="segmentedControl" destination="6hK-4M-IIa" id="d2k-mD-oWa"/>
                         <outlet property="segmentedView" destination="784-dO-Zi0" id="Rxm-06-bQv"/>
                         <outlet property="tableView" destination="lEp-Ii-GgI" id="mhx-Aw-s8Y"/>
+                        <segue destination="4Eo-Tb-7cS" kind="presentation" identifier="showUserSearch" id="uD6-Wk-zkB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgq-JR-jjC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="143" y="236"/>
+            <point key="canvasLocation" x="152" y="207"/>
+        </scene>
+        <!--Search a user-->
+        <scene sceneID="FZK-XW-yiC">
+            <objects>
+                <viewController id="g12-0N-Rsy" customClass="T_SearchUserViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c9n-ID-D8H"/>
+                        <viewControllerLayoutGuide type="bottom" id="vce-3b-qsT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vH9-vA-DuI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search by username" translatesAutoresizingMaskIntoConstraints="NO" id="IJH-5d-aOb">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="zb2-0K-qx7"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="g12-0N-Rsy" id="JxD-Zz-v0O"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kgZ-JQ-2Ac">
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kgZ-JQ-2Ac" firstAttribute="leading" secondItem="vH9-vA-DuI" secondAttribute="leading" id="DFE-gi-s4m"/>
+                            <constraint firstAttribute="trailing" secondItem="kgZ-JQ-2Ac" secondAttribute="trailing" id="Ks9-Zo-qsU"/>
+                            <constraint firstItem="kgZ-JQ-2Ac" firstAttribute="top" secondItem="IJH-5d-aOb" secondAttribute="bottom" id="Ujo-cs-XdN"/>
+                            <constraint firstAttribute="trailing" secondItem="IJH-5d-aOb" secondAttribute="trailing" id="VOp-53-ptL"/>
+                            <constraint firstItem="vce-3b-qsT" firstAttribute="top" secondItem="kgZ-JQ-2Ac" secondAttribute="bottom" id="aOo-3z-j5G"/>
+                            <constraint firstItem="IJH-5d-aOb" firstAttribute="leading" secondItem="vH9-vA-DuI" secondAttribute="leading" id="jt7-mk-zls"/>
+                            <constraint firstItem="IJH-5d-aOb" firstAttribute="top" secondItem="c9n-ID-D8H" secondAttribute="bottom" id="kwK-mE-Pbl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Search a user" id="nVC-5b-BT3">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Tze-MF-422">
+                            <color key="tintColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="g12-0N-Rsy" id="Buu-tg-ISp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="C0l-xh-IJz" id="vqA-fK-WYT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1c5-Qd-qOk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="C0l-xh-IJz">
+                    <connections>
+                        <outlet property="delegate" destination="g12-0N-Rsy" id="uJH-u0-IKO"/>
+                        <outlet property="searchBar" destination="IJH-5d-aOb" id="FPQ-pe-pgZ"/>
+                        <outlet property="searchContentsController" destination="g12-0N-Rsy" id="VAf-65-ZKd"/>
+                        <outlet property="searchResultsDataSource" destination="g12-0N-Rsy" id="p00-91-6o1"/>
+                        <outlet property="searchResultsDelegate" destination="g12-0N-Rsy" id="9hK-os-lBb"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="-669" y="2257"/>
         </scene>
         <!--Settings Controller-->
         <scene sceneID="STl-NM-5NH">
@@ -428,6 +498,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JVn-XL-9Qd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="973" y="672"/>
+        </scene>
+        <!--Search User Navigation-->
+        <scene sceneID="kPC-Cw-l6b">
+            <objects>
+                <navigationController title="Search User Navigation" automaticallyAdjustsScrollViewInsets="NO" id="4Eo-Tb-7cS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Q0c-kl-wsJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="g12-0N-Rsy" kind="relationship" relationship="rootViewController" id="SeN-PI-8x2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a1j-UR-XMY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-669" y="1385"/>
         </scene>
     </scenes>
     <resources>
