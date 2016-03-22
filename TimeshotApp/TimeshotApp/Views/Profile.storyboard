@@ -269,7 +269,11 @@
                             <constraint firstItem="lEp-Ii-GgI" firstAttribute="top" secondItem="9EI-Zi-xwf" secondAttribute="bottom" id="zdK-eW-50J"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Lucas Willemot" id="kF2-1X-6gn"/>
+                    <navigationItem key="navigationItem" title="Lucas Willemot" id="kF2-1X-6gn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="mL5-gk-GZc">
+                            <color key="tintColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="buttonView" destination="M8b-GY-fna" id="bpa-p3-YdN"/>
                         <outlet property="headerView" destination="0qr-g3-NJH" id="djx-Eu-lMz"/>
