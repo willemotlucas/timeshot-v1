@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		40BF472DC51952247A14DBC9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9E238D3F9C0AE128133098 /* Pods.framework */; };
-		5DB59FFB1CA1893B00AADC9F /* DesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB59FFA1CA1893B00AADC9F /* DesignHelper.swift */; };
-		5DB59FFD1CA1895A00AADC9F /* T_FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB59FFC1CA1895A00AADC9F /* T_FriendTableViewCell.swift */; };
+		5DB5A00D1CA1905200AADC9F /* T_DesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A00C1CA1905200AADC9F /* T_DesignHelper.swift */; };
+		5DB5A00F1CA1908F00AADC9F /* T_FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A00E1CA1908F00AADC9F /* T_FriendTableViewCell.swift */; };
 		5DE918C61CA02CF300459AA3 /* Avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918BD1CA02CF300459AA3 /* Avatar.png */; };
 		5DE918C71CA02CF300459AA3 /* Avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918BE1CA02CF300459AA3 /* Avatar@2x.png */; };
 		5DE918C81CA02CF300459AA3 /* Avatar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918BF1CA02CF300459AA3 /* Avatar@3x.png */; };
@@ -40,8 +40,8 @@
 /* Begin PBXFileReference section */
 		4770CD7F4BA867BF6C3AA239 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F9E238D3F9C0AE128133098 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5DB59FFA1CA1893B00AADC9F /* DesignHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignHelper.swift; sourceTree = "<group>"; };
-		5DB59FFC1CA1895A00AADC9F /* T_FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendTableViewCell.swift; sourceTree = "<group>"; };
+		5DB5A00C1CA1905200AADC9F /* T_DesignHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_DesignHelper.swift; sourceTree = "<group>"; };
+		5DB5A00E1CA1908F00AADC9F /* T_FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendTableViewCell.swift; sourceTree = "<group>"; };
 		5DE918BD1CA02CF300459AA3 /* Avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Avatar.png; sourceTree = "<group>"; };
 		5DE918BE1CA02CF300459AA3 /* Avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Avatar@2x.png"; sourceTree = "<group>"; };
 		5DE918BF1CA02CF300459AA3 /* Avatar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Avatar@3x.png"; sourceTree = "<group>"; };
@@ -84,20 +84,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5DB59FF41CA188A600AADC9F /* Profile */ = {
+		5DB5A00A1CA1901900AADC9F /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
-				5DB59FFC1CA1895A00AADC9F /* T_FriendTableViewCell.swift */,
+				5DB5A00E1CA1908F00AADC9F /* T_FriendTableViewCell.swift */,
 			);
-			path = Profile;
+			path = UserProfile;
 			sourceTree = "<group>";
 		};
-		5DB59FF91CA1893B00AADC9F /* DesignHelper */ = {
+		5DB5A00B1CA1902500AADC9F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				5DB59FFA1CA1893B00AADC9F /* DesignHelper.swift */,
+				5DB5A00C1CA1905200AADC9F /* T_DesignHelper.swift */,
 			);
-			path = DesignHelper;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		5DE918BC1CA02CF300459AA3 /* ProfileImageTest */ = {
@@ -137,7 +137,7 @@
 		7D86991D1C8F4A9D003BC1DC /* TimeshotApp */ = {
 			isa = PBXGroup;
 			children = (
-				5DB59FF91CA1893B00AADC9F /* DesignHelper */,
+				5DB5A00B1CA1902500AADC9F /* Helpers */,
 				5DE918BC1CA02CF300459AA3 /* ProfileImageTest */,
 				B46B2B721C9ABA7E00135920 /* Models */,
 				B46B2B731C9ABA8300135920 /* Views */,
@@ -182,7 +182,7 @@
 		B46B2B711C9ABA7800135920 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5DB59FF41CA188A600AADC9F /* Profile */,
+				5DB5A00A1CA1901900AADC9F /* UserProfile */,
 				7DD0F9AA1C9DC68D00A856B9 /* Album */,
 				B46B2B7C1C9ABB0400135920 /* T_HomePageViewController.swift */,
 				B46B2B7E1C9ABB1200135920 /* T_CameraViewController.swift */,
@@ -361,12 +361,12 @@
 				7DD0F9AE1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift in Sources */,
 				7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */,
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
+				5DB5A00D1CA1905200AADC9F /* T_DesignHelper.swift in Sources */,
 				B46B2B7F1C9ABB1200135920 /* T_CameraViewController.swift in Sources */,
 				B46B2B7D1C9ABB0400135920 /* T_HomePageViewController.swift in Sources */,
+				5DB5A00F1CA1908F00AADC9F /* T_FriendTableViewCell.swift in Sources */,
 				B46B2B811C9ABB2900135920 /* T_AlbumViewController.swift in Sources */,
-				5DB59FFD1CA1895A00AADC9F /* T_FriendTableViewCell.swift in Sources */,
 				B46B2B831C9ABB3100135920 /* T_ProfileViewController.swift in Sources */,
-				5DB59FFB1CA1893B00AADC9F /* DesignHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

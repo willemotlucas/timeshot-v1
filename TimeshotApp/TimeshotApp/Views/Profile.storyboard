@@ -143,8 +143,8 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="friendNameLabel" destination="W6O-u5-Gnt" id="5ZP-5Y-cMX"/>
-                                            <outlet property="profileImage" destination="KpI-1t-Q6t" id="g1a-uc-gpD"/>
+                                            <outlet property="friendNameLabel" destination="W6O-u5-Gnt" id="bxS-RP-39R"/>
+                                            <outlet property="friendProfileImage" destination="KpI-1t-Q6t" id="8Od-Ie-Orq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
