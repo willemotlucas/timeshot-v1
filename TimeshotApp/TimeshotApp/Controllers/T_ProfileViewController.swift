@@ -81,8 +81,8 @@ extension T_ProfileViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch contentToDisplay {
         case .Friends:
-            let cell = tableView.dequeueReusableCellWithIdentifier("T_ProfileTableViewCell", forIndexPath: indexPath) as! T_ProfileTableViewCell
-            cell.textLabelCell.text = friends[indexPath.row]
+            let cell = tableView.dequeueReusableCellWithIdentifier("T_FriendTableViewCell", forIndexPath: indexPath) as! T_FriendTableViewCell
+            cell.friendNameLabel.text = friends[indexPath.row]
             return cell
         case .Notifications:
             let cell = UITableViewCell()
