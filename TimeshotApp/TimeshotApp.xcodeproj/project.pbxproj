@@ -18,6 +18,7 @@
 		5DE918CC1CA02CF300459AA3 /* icon_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918C31CA02CF300459AA3 /* icon_setting.png */; };
 		5DE918CD1CA02CF300459AA3 /* icon_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918C41CA02CF300459AA3 /* icon_setting@2x.png */; };
 		5DE918CE1CA02CF300459AA3 /* icon_setting@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918C51CA02CF300459AA3 /* icon_setting@3x.png */; };
+		7D2AC5C01CA188B8004D20BE /* DesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AC5BF1CA188B8004D20BE /* DesignHelper.swift */; };
 		7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */; };
 		7D8699241C8F4A9D003BC1DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699221C8F4A9D003BC1DC /* Main.storyboard */; };
 		7D8699261C8F4A9D003BC1DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699251C8F4A9D003BC1DC /* Assets.xcassets */; };
@@ -28,7 +29,6 @@
 		7DD0F9B51C9EA0FB00A856B9 /* mariage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B11C9EA0FB00A856B9 /* mariage.jpg */; };
 		7DD0F9B61C9EA0FB00A856B9 /* soiree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */; };
 		7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */; };
-		7DD0FA021C9EB9AB00A856B9 /* DesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0FA011C9EB9AB00A856B9 /* DesignHelper.swift */; };
 		B46B2B751C9ABAC500135920 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B741C9ABAC500135920 /* Profile.storyboard */; };
 		B46B2B771C9ABADA00135920 /* Album.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B761C9ABADA00135920 /* Album.storyboard */; };
 		B46B2B7D1C9ABB0400135920 /* T_HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B7C1C9ABB0400135920 /* T_HomePageViewController.swift */; };
@@ -51,6 +51,7 @@
 		5DE918C41CA02CF300459AA3 /* icon_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_setting@2x.png"; sourceTree = "<group>"; };
 		5DE918C51CA02CF300459AA3 /* icon_setting@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_setting@3x.png"; sourceTree = "<group>"; };
 		78F7AD880E89307F1E906BF3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		7D2AC5BF1CA188B8004D20BE /* DesignHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignHelper.swift; sourceTree = "<group>"; };
 		7D86991B1C8F4A9D003BC1DC /* TimeshotApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeshotApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D8699231C8F4A9D003BC1DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,7 +64,6 @@
 		7DD0F9B11C9EA0FB00A856B9 /* mariage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mariage.jpg; sourceTree = "<group>"; };
 		7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = soiree.jpg; sourceTree = "<group>"; };
 		7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = voyage.jpg; sourceTree = "<group>"; };
-		7DD0FA011C9EB9AB00A856B9 /* DesignHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignHelper.swift; sourceTree = "<group>"; };
 		B46B2B741C9ABAC500135920 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		B46B2B761C9ABADA00135920 /* Album.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Album.storyboard; sourceTree = "<group>"; };
 		B46B2B7C1C9ABB0400135920 /* T_HomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_HomePageViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +109,14 @@
 			path = ProfileImageTest;
 			sourceTree = "<group>";
 		};
+		7D2AC5BE1CA18897004D20BE /* DesignHelper */ = {
+			isa = PBXGroup;
+			children = (
+				7D2AC5BF1CA188B8004D20BE /* DesignHelper.swift */,
+			);
+			path = DesignHelper;
+			sourceTree = "<group>";
+		};
 		7D8699121C8F4A9D003BC1DC = {
 			isa = PBXGroup;
 			children = (
@@ -134,8 +142,8 @@
 				B46B2B721C9ABA7E00135920 /* Models */,
 				B46B2B731C9ABA8300135920 /* Views */,
 				B46B2B711C9ABA7800135920 /* Controllers */,
-				7DD0F9B81C9EB8D700A856B9 /* DesignHelper */,
 				7DD0F9AF1C9EA0FB00A856B9 /* ImageTestAlbums */,
+				7D2AC5BE1CA18897004D20BE /* DesignHelper */,
 				7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */,
 				7D8699251C8F4A9D003BC1DC /* Assets.xcassets */,
 				7D8699271C8F4A9D003BC1DC /* LaunchScreen.storyboard */,
@@ -162,15 +170,6 @@
 				7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */,
 			);
 			path = ImageTestAlbums;
-			sourceTree = "<group>";
-		};
-		7DD0F9B81C9EB8D700A856B9 /* DesignHelper */ = {
-			isa = PBXGroup;
-			children = (
-				7DD0FA011C9EB9AB00A856B9 /* DesignHelper.swift */,
-			);
-			name = DesignHelper;
-			path = Controllers/DesignHelper;
 			sourceTree = "<group>";
 		};
 		82A90CB2B4101E6652DA70AD /* Frameworks */ = {
@@ -367,8 +366,8 @@
 				B46B2B7D1C9ABB0400135920 /* T_HomePageViewController.swift in Sources */,
 				5D7BB2A61C9EEB7F009F6B17 /* T_ProfileTableViewCell.swift in Sources */,
 				B46B2B811C9ABB2900135920 /* T_AlbumViewController.swift in Sources */,
+				7D2AC5C01CA188B8004D20BE /* DesignHelper.swift in Sources */,
 				B46B2B831C9ABB3100135920 /* T_ProfileViewController.swift in Sources */,
-				7DD0FA021C9EB9AB00A856B9 /* DesignHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
