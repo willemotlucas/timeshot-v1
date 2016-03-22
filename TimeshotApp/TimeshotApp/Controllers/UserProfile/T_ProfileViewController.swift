@@ -78,11 +78,21 @@ extension T_ProfileViewController: UITableViewDelegate {
 
 extension T_ProfileViewController: UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return sectionTitles.count
+        switch contentToDisplay {
+        case .Friends:
+            return sectionTitles.count
+        case .Notifications:
+            return 1
+        }
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionTitles[section]
+        switch contentToDisplay {
+        case .Friends:
+            return sectionTitles[section]
+        case .Notifications:
+            return ""
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
