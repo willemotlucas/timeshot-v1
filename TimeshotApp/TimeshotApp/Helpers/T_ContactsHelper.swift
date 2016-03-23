@@ -47,4 +47,20 @@ class T_ContactsHelper {
         cantAddContactAlert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
         viewController.presentViewController(cantAddContactAlert, animated: true, completion: nil)
     }
+    
+    static func getAllContacts() -> [String] {
+        var contacts: [String] = []
+        let contactsRef: NSArray = ABAddressBookCopyArrayOfAllPeople(T_ContactsHelper.addressBookRef).takeRetainedValue()
+        for contactRef:ABRecordRef in contactsRef {
+            // first name
+            if let firstName = ABRecordCopyValue(contactRef, kABPersonFirstNameProperty).takeUnretainedValue() as? NSString {
+                if let lastName = ABRecordCopyValue(contactRef, kABPersonLastNameProperty).takeUnretainedValue() as? NSString {
+                    let fullName = (firstName as String) + " " + (lastName as String)
+                    contacts.append(fullName)
+                }
+            }
+        }
+        
+        return contacts
+    }
 }

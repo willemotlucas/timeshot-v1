@@ -22,6 +22,7 @@
 		5DB5A02B1CA1AD1000AADC9F /* T_SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0261CA1AD1000AADC9F /* T_SettingsViewController.swift */; };
 		5DB5A02F1CA1C8D400AADC9F /* T_SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A02E1CA1C8D400AADC9F /* T_SearchUserViewController.swift */; };
 		5DB5A0331CA1D2D900AADC9F /* T_ContactsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0321CA1D2D900AADC9F /* T_ContactsHelper.swift */; };
+		5DB5A0351CA2879B00AADC9F /* T_SearchContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0341CA2879B00AADC9F /* T_SearchContactViewController.swift */; };
 		5DE918C61CA02CF300459AA3 /* Avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918BD1CA02CF300459AA3 /* Avatar.png */; };
 		5DE918C71CA02CF300459AA3 /* Avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918BE1CA02CF300459AA3 /* Avatar@2x.png */; };
 		5DE918C81CA02CF300459AA3 /* Avatar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918BF1CA02CF300459AA3 /* Avatar@3x.png */; };
@@ -65,6 +66,7 @@
 		5DB5A0261CA1AD1000AADC9F /* T_SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SettingsViewController.swift; sourceTree = "<group>"; };
 		5DB5A02E1CA1C8D400AADC9F /* T_SearchUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SearchUserViewController.swift; sourceTree = "<group>"; };
 		5DB5A0321CA1D2D900AADC9F /* T_ContactsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ContactsHelper.swift; sourceTree = "<group>"; };
+		5DB5A0341CA2879B00AADC9F /* T_SearchContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SearchContactViewController.swift; sourceTree = "<group>"; };
 		5DE918BD1CA02CF300459AA3 /* Avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Avatar.png; sourceTree = "<group>"; };
 		5DE918BE1CA02CF300459AA3 /* Avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Avatar@2x.png"; sourceTree = "<group>"; };
 		5DE918BF1CA02CF300459AA3 /* Avatar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Avatar@3x.png"; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				5DB5A0251CA1AD1000AADC9F /* T_ProfileViewController.swift */,
 				5DB5A0261CA1AD1000AADC9F /* T_SettingsViewController.swift */,
 				5DB5A02E1CA1C8D400AADC9F /* T_SearchUserViewController.swift */,
+				5DB5A0341CA2879B00AADC9F /* T_SearchContactViewController.swift */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				5DB5A0271CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift in Sources */,
 				B46B2B7F1C9ABB1200135920 /* T_CameraViewController.swift in Sources */,
 				5DB5A02B1CA1AD1000AADC9F /* T_SettingsViewController.swift in Sources */,
+				5DB5A0351CA2879B00AADC9F /* T_SearchContactViewController.swift in Sources */,
 				5DB5A0281CA1AD1000AADC9F /* T_FriendTableViewCell.swift in Sources */,
 				B46B2B7D1C9ABB0400135920 /* T_HomePageViewController.swift in Sources */,
 				B46B2B811C9ABB2900135920 /* T_AlbumViewController.swift in Sources */,

@@ -288,16 +288,17 @@
                         <outlet property="segmentedView" destination="784-dO-Zi0" id="Rxm-06-bQv"/>
                         <outlet property="tableView" destination="lEp-Ii-GgI" id="mhx-Aw-s8Y"/>
                         <segue destination="4Eo-Tb-7cS" kind="presentation" identifier="showUserSearch" id="uD6-Wk-zkB"/>
+                        <segue destination="1Xf-ec-09x" kind="presentation" identifier="showContactSearch" id="POi-tO-0d9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgq-JR-jjC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="152" y="207"/>
         </scene>
-        <!--Search a user-->
+        <!--Search User Controller-->
         <scene sceneID="FZK-XW-yiC">
             <objects>
-                <viewController id="g12-0N-Rsy" customClass="T_SearchUserViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Search User Controller" id="g12-0N-Rsy" customClass="T_SearchUserViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c9n-ID-D8H"/>
                         <viewControllerLayoutGuide type="bottom" id="vce-3b-qsT"/>
@@ -499,6 +500,74 @@
             </objects>
             <point key="canvasLocation" x="973" y="672"/>
         </scene>
+        <!--Search Contact Controller-->
+        <scene sceneID="3fF-lt-2HQ">
+            <objects>
+                <viewController title="Search Contact Controller" id="Iqk-LG-TUb" customClass="T_SearchContactViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ins-qJ-OXj"/>
+                        <viewControllerLayoutGuide type="bottom" id="BiG-B1-kPE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fwS-rk-pBh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search in your address book" translatesAutoresizingMaskIntoConstraints="NO" id="j4d-8D-3sm">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="dL8-tk-IKC"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Iqk-LG-TUb" id="jz1-ra-rUW"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cxb-xp-vo7">
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Iqk-LG-TUb" id="QYc-ps-g2O"/>
+                                    <outlet property="delegate" destination="Iqk-LG-TUb" id="kqA-XS-EkB"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="j4d-8D-3sm" firstAttribute="leading" secondItem="fwS-rk-pBh" secondAttribute="leading" id="8OQ-Zb-Fuw"/>
+                            <constraint firstAttribute="trailing" secondItem="Cxb-xp-vo7" secondAttribute="trailing" id="Beh-Ud-9ya"/>
+                            <constraint firstItem="BiG-B1-kPE" firstAttribute="top" secondItem="Cxb-xp-vo7" secondAttribute="bottom" id="Gq6-eV-eqt"/>
+                            <constraint firstAttribute="trailing" secondItem="j4d-8D-3sm" secondAttribute="trailing" id="JNr-lW-w2V"/>
+                            <constraint firstItem="Cxb-xp-vo7" firstAttribute="top" secondItem="j4d-8D-3sm" secondAttribute="bottom" id="VJA-7H-Wab"/>
+                            <constraint firstItem="j4d-8D-3sm" firstAttribute="top" secondItem="Ins-qJ-OXj" secondAttribute="bottom" id="ecx-Ig-b9b"/>
+                            <constraint firstItem="Cxb-xp-vo7" firstAttribute="leading" secondItem="fwS-rk-pBh" secondAttribute="leading" id="ngx-yt-RQj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Search a contact" id="kK1-mQ-cSp">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="FKP-RM-Stt">
+                            <color key="tintColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="Iqk-LG-TUb" id="bny-4n-Pg4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contactsTableView" destination="Cxb-xp-vo7" id="c3G-6y-ucv"/>
+                        <outlet property="searchDisplayController" destination="JOQ-uW-r0x" id="l5p-Zi-chn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vzx-nN-Hpv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="JOQ-uW-r0x">
+                    <connections>
+                        <outlet property="delegate" destination="Iqk-LG-TUb" id="3bu-Nf-QEU"/>
+                        <outlet property="searchBar" destination="j4d-8D-3sm" id="1dA-1V-bjs"/>
+                        <outlet property="searchContentsController" destination="Iqk-LG-TUb" id="0xY-oL-iBY"/>
+                        <outlet property="searchResultsDataSource" destination="Iqk-LG-TUb" id="4eU-rw-gOY"/>
+                        <outlet property="searchResultsDelegate" destination="Iqk-LG-TUb" id="131-0m-O6d"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="343" y="2257"/>
+        </scene>
         <!--Search User Navigation-->
         <scene sceneID="kPC-Cw-l6b">
             <objects>
@@ -519,6 +588,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a1j-UR-XMY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-669" y="1385"/>
+        </scene>
+        <!--Search Contact Navigation-->
+        <scene sceneID="AOL-z2-dX9">
+            <objects>
+                <navigationController title="Search Contact Navigation" automaticallyAdjustsScrollViewInsets="NO" id="1Xf-ec-09x" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="30f-gN-Mjy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Iqk-LG-TUb" kind="relationship" relationship="rootViewController" id="Uul-ua-YOH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Fb-MY-CNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="343" y="1385"/>
         </scene>
     </scenes>
     <resources>

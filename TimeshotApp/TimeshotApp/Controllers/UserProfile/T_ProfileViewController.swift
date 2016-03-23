@@ -30,6 +30,7 @@ class T_ProfileViewController: UIViewController {
     var pendingRequests = ["Marie Daguin", "Alphonso Lupi"]
     var sectionTitles = ["Pending requests", "Friends"]
     var contentToDisplay : ContentType = .Friends
+    let contacts = T_ContactsHelper.getAllContacts()
 
     // MARK: Overrided functions
     override func didReceiveMemoryWarning() {
@@ -79,8 +80,10 @@ class T_ProfileViewController: UIViewController {
             case .Denied, .Restricted:
                 T_ContactsHelper.displayCantAddContactAlert(self)
             case .Authorized:
-                let personViewController = ABPeoplePickerNavigationController()
-                self.presentViewController(personViewController, animated: true, completion: nil)
+                //let personViewController = ABPeoplePickerNavigationController()
+                //self.presentViewController(personViewController, animated: true, completion: nil)
+                self.performSegueWithIdentifier("showContactSearch", sender: nil)
+                
             case .NotDetermined:
                 T_ContactsHelper.promptForAddressBookRequestAccess(self)
             }
