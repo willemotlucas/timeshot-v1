@@ -15,10 +15,11 @@ class T_SearchContactViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     // MARK: Properties
-    var contacts = T_ContactsHelper.getAllContacts().sort()
-    var filteredContacts = [String]()
-    var sectionHeaderTitles = [String]()
+    var contactsWithNumbers = T_ContactsHelper.getAllContacts()
     var contactsWithSection = [String:[String]]()
+    var sectionHeaderTitles = [String]()
+    var contacts = [String]()
+    var filteredContacts = [String]()
 
     // MARK: Override functions
     override func viewDidLoad() {
@@ -26,6 +27,7 @@ class T_SearchContactViewController: UIViewController {
         
         T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
         
+        contacts = Array(contactsWithNumbers.keys).sort()
         filteredContacts = contacts
         self.updateTableViewSections(self.filteredContacts)
         
@@ -84,13 +86,15 @@ extension T_SearchContactViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCellWithIdentifier("T_ContactTableViewCell") as! T_ContactTableViewCell
         
         let key = sectionHeaderTitles[indexPath.section]
         let values = contactsWithSection[key]
         let name = values![indexPath.row]
+        let phoneNumber = contactsWithNumbers[name]
         
-        cell.textLabel?.text = name
+        cell.contactNameLabel.text = name
+        cell.contactTelephoneLabel.text = phoneNumber
         
         return cell
     }

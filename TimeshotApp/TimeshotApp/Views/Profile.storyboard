@@ -514,9 +514,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cxb-xp-vo7">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cxb-xp-vo7">
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="T_ContactTableViewCell" rowHeight="60" id="Uhe-tf-e8q" customClass="T_ContactTableViewCell" customModule="TimeshotApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uhe-tf-e8q" id="fT8-gR-eMT">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDv-vE-h6X">
+                                                    <rect key="frame" x="8" y="8" width="584" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wd3-ev-mEg">
+                                                    <rect key="frame" x="8" y="30" width="584" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Wd3-ev-mEg" secondAttribute="trailing" constant="8" id="1KU-3Y-JUV"/>
+                                                <constraint firstItem="Wd3-ev-mEg" firstAttribute="top" secondItem="oDv-vE-h6X" secondAttribute="bottom" constant="1" id="7vg-ZG-LJx"/>
+                                                <constraint firstItem="oDv-vE-h6X" firstAttribute="top" secondItem="fT8-gR-eMT" secondAttribute="top" constant="8" id="PM9-QP-C52"/>
+                                                <constraint firstItem="Wd3-ev-mEg" firstAttribute="leading" secondItem="fT8-gR-eMT" secondAttribute="leading" constant="8" id="Rd5-hv-1V6"/>
+                                                <constraint firstAttribute="trailing" secondItem="oDv-vE-h6X" secondAttribute="trailing" constant="8" id="Rva-oS-eb9"/>
+                                                <constraint firstAttribute="bottom" secondItem="Wd3-ev-mEg" secondAttribute="bottom" constant="8.5" id="aJ3-Bv-eHL"/>
+                                                <constraint firstItem="oDv-vE-h6X" firstAttribute="leading" secondItem="fT8-gR-eMT" secondAttribute="leading" constant="8" id="kKg-IU-ia9"/>
+                                                <constraint firstAttribute="bottom" secondItem="oDv-vE-h6X" secondAttribute="bottom" constant="30.5" id="sgM-i6-gEe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contactNameLabel" destination="oDv-vE-h6X" id="yFD-zc-wlU"/>
+                                            <outlet property="contactTelephoneLabel" destination="Wd3-ev-mEg" id="Mdw-2d-D8g"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="Iqk-LG-TUb" id="QYc-ps-g2O"/>
                                     <outlet property="delegate" destination="Iqk-LG-TUb" id="kqA-XS-EkB"/>

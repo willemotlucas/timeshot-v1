@@ -47,22 +47,46 @@ class T_ContactsHelper {
         viewController.presentViewController(cantAddContactAlert, animated: true, completion: nil)
     }
     
-    static func getAllContacts() -> [String] {
-        var contacts: [String] = []
+    static func getAllContacts() -> [String:String] {
+        var contactsWithNumbers = [String:String]()
         let contactsRef: NSArray = ABAddressBookCopyArrayOfAllPeople(T_ContactsHelper.addressBookRef).takeRetainedValue()
+        
         for contactRef:ABRecordRef in contactsRef {
-            // first name
-            if let firstName = ABRecordCopyValue(contactRef, kABPersonFirstNameProperty).takeRetainedValue() as? NSString {
-                if let lastNameRef = ABRecordCopyValue(contactRef, kABPersonLastNameProperty) {
-                    let lastName = lastNameRef.takeRetainedValue() as? NSString
-                    let fullName = (firstName as String) + " " + (lastName as! String)
-                    contacts.append(fullName)
-                } else {
-                    contacts.append(String(firstName))
+            //Get all the phone numbers of the current contact
+            if let telNumberRefs:ABMultiValueRef = ABRecordCopyValue(contactRef, kABPersonPhoneProperty).takeRetainedValue() {
+                //We continue only if we find a phone number
+                if(ABMultiValueGetCount(telNumberRefs) > 0) {
+                    //We get the phone number as a string
+                    let value = ABMultiValueCopyValueAtIndex(telNumberRefs,0).takeRetainedValue() as! NSString
+                    var telNumber = String(value)
+                    //We format the string to replace +33 by 0
+                    telNumber = telNumber.stringByReplacingOccurrencesOfString("+33", withString: "0").stringByReplacingOccurrencesOfString(" ", withString: "")
+                    
+                    //We continue only if the phone number has 10 characters, otherwise it is wrong
+                    if telNumber.characters.count == 10 {
+                        //We add a space to format the string to : xx xx xx xx xx
+                        for var i=2; i <= 14; i+=3 {
+                            telNumber.insert(" " as Character, atIndex: telNumber.startIndex.advancedBy(i))
+                        }
+                        
+                        //We get the first name associated with the phone number
+                        if let firstName = ABRecordCopyValue(contactRef, kABPersonFirstNameProperty).takeRetainedValue() as? NSString {
+                            //We get the last name associated with the phone number
+                            if let lastNameRef = ABRecordCopyValue(contactRef, kABPersonLastNameProperty) {
+                                let lastName = lastNameRef.takeRetainedValue() as! NSString
+                                //We construct the full name
+                                let fullName = String(firstName) + " " + String(lastName)
+                                contactsWithNumbers[fullName] = telNumber
+                            } else {
+                                //We don't find a last name so we just keep the first name
+                                contactsWithNumbers[String(firstName)] = telNumber
+                            }
+                        }
+                    }
                 }
             }
         }
         
-        return contacts
+        return contactsWithNumbers
     }
 }
