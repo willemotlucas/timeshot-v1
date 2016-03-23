@@ -43,8 +43,8 @@
                                                 <constraint firstAttribute="width" constant="44" id="TE0-4r-6lt"/>
                                                 <constraint firstAttribute="height" constant="44" id="q0g-YH-FzY"/>
                                             </constraints>
-                                            <inset key="contentEdgeInsets" minX="10" minY="10" maxX="0.0" maxY="10"/>
-                                            <state key="normal" image="icon_setting"/>
+                                            <inset key="contentEdgeInsets" minX="12" minY="12" maxX="12" maxY="12"/>
+                                            <state key="normal" image="Setting"/>
                                             <connections>
                                                 <segue destination="5he-NX-sDT" kind="presentation" id="Z2v-yM-blh"/>
                                             </connections>
@@ -75,8 +75,8 @@
                                                 <constraint firstAttribute="height" constant="44" id="DEi-3a-yLU"/>
                                                 <constraint firstAttribute="width" constant="44" id="n5o-sm-Ne0"/>
                                             </constraints>
-                                            <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="10" maxY="10"/>
-                                            <state key="normal" image="Edit button"/>
+                                            <inset key="contentEdgeInsets" minX="12" minY="12" maxX="12" maxY="12"/>
+                                            <state key="normal" image="Edit"/>
                                             <connections>
                                                 <segue destination="SAj-oj-A7p" kind="presentation" id="43O-46-CCt"/>
                                             </connections>
@@ -107,7 +107,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar.png" translatesAutoresizingMaskIntoConstraints="NO" id="0We-p4-TDV">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar" translatesAutoresizingMaskIntoConstraints="NO" id="0We-p4-TDV">
                                                     <rect key="frame" x="8" y="10" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="8Cr-Gw-9uO"/>
@@ -120,7 +120,8 @@
                                                         <constraint firstAttribute="height" constant="44" id="KGY-ts-i4J"/>
                                                         <constraint firstAttribute="width" constant="44" id="ZHt-18-mAW"/>
                                                     </constraints>
-                                                    <state key="normal" image="refuse"/>
+                                                    <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                    <state key="normal" image="Refuse"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGz-OM-Dli">
                                                     <rect key="frame" x="546" y="8" width="44" height="44"/>
@@ -128,7 +129,8 @@
                                                         <constraint firstAttribute="height" constant="44" id="R82-g8-AyE"/>
                                                         <constraint firstAttribute="width" constant="44" id="VM2-Zp-i9m"/>
                                                     </constraints>
-                                                    <state key="normal" image="accept"/>
+                                                    <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                    <state key="normal" image="Accept"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snE-qg-euw">
                                                     <rect key="frame" x="56" y="20" width="406" height="19.5"/>
@@ -275,7 +277,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Lucas Willemot" id="kF2-1X-6gn">
-                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="mL5-gk-GZc">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="camera" id="mL5-gk-GZc">
                             <color key="tintColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
@@ -625,11 +627,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Accept" width="46" height="46"/>
         <image name="Avatar" width="119" height="119"/>
-        <image name="Avatar.png" width="119" height="119"/>
-        <image name="Edit button" width="16" height="16"/>
-        <image name="accept" width="35" height="35"/>
-        <image name="icon_setting" width="22" height="22"/>
-        <image name="refuse" width="35" height="35"/>
+        <image name="Edit" width="44" height="44"/>
+        <image name="Refuse" width="46" height="46"/>
+        <image name="Setting" width="45" height="44"/>
     </resources>
 </document>

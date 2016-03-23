@@ -9,12 +9,6 @@
 /* Begin PBXBuildFile section */
 		40BF472DC51952247A14DBC9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9E238D3F9C0AE128133098 /* Pods.framework */; };
 		5DB5A00D1CA1905200AADC9F /* T_DesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A00C1CA1905200AADC9F /* T_DesignHelper.swift */; };
-		5DB5A0161CA1A33700AADC9F /* accept.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DB5A0101CA1A33700AADC9F /* accept.png */; };
-		5DB5A0171CA1A33700AADC9F /* accept@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DB5A0111CA1A33700AADC9F /* accept@2x.png */; };
-		5DB5A0181CA1A33700AADC9F /* accept@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DB5A0121CA1A33700AADC9F /* accept@3x.png */; };
-		5DB5A0191CA1A33700AADC9F /* refuse.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DB5A0131CA1A33700AADC9F /* refuse.png */; };
-		5DB5A01A1CA1A33700AADC9F /* refuse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DB5A0141CA1A33700AADC9F /* refuse@2x.png */; };
-		5DB5A01B1CA1A33700AADC9F /* refuse@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DB5A0151CA1A33700AADC9F /* refuse@3x.png */; };
 		5DB5A0271CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0221CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift */; };
 		5DB5A0281CA1AD1000AADC9F /* T_FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0231CA1AD1000AADC9F /* T_FriendTableViewCell.swift */; };
 		5DB5A0291CA1AD1000AADC9F /* T_ProfileEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0241CA1AD1000AADC9F /* T_ProfileEditionViewController.swift */; };
@@ -23,15 +17,6 @@
 		5DB5A02F1CA1C8D400AADC9F /* T_SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A02E1CA1C8D400AADC9F /* T_SearchUserViewController.swift */; };
 		5DB5A0331CA1D2D900AADC9F /* T_ContactsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0321CA1D2D900AADC9F /* T_ContactsHelper.swift */; };
 		5DB5A0351CA2879B00AADC9F /* T_SearchContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0341CA2879B00AADC9F /* T_SearchContactViewController.swift */; };
-		5DE918C61CA02CF300459AA3 /* Avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918BD1CA02CF300459AA3 /* Avatar.png */; };
-		5DE918C71CA02CF300459AA3 /* Avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918BE1CA02CF300459AA3 /* Avatar@2x.png */; };
-		5DE918C81CA02CF300459AA3 /* Avatar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918BF1CA02CF300459AA3 /* Avatar@3x.png */; };
-		5DE918C91CA02CF300459AA3 /* Edit button.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918C01CA02CF300459AA3 /* Edit button.png */; };
-		5DE918CA1CA02CF300459AA3 /* Edit button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918C11CA02CF300459AA3 /* Edit button@2x.png */; };
-		5DE918CB1CA02CF300459AA3 /* Edit button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918C21CA02CF300459AA3 /* Edit button@3x.png */; };
-		5DE918CC1CA02CF300459AA3 /* icon_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918C31CA02CF300459AA3 /* icon_setting.png */; };
-		5DE918CD1CA02CF300459AA3 /* icon_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918C41CA02CF300459AA3 /* icon_setting@2x.png */; };
-		5DE918CE1CA02CF300459AA3 /* icon_setting@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918C51CA02CF300459AA3 /* icon_setting@3x.png */; };
 		7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */; };
 		7D8699241C8F4A9D003BC1DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699221C8F4A9D003BC1DC /* Main.storyboard */; };
 		7D8699261C8F4A9D003BC1DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699251C8F4A9D003BC1DC /* Assets.xcassets */; };
@@ -54,12 +39,6 @@
 		4770CD7F4BA867BF6C3AA239 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F9E238D3F9C0AE128133098 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DB5A00C1CA1905200AADC9F /* T_DesignHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_DesignHelper.swift; sourceTree = "<group>"; };
-		5DB5A0101CA1A33700AADC9F /* accept.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accept.png; sourceTree = "<group>"; };
-		5DB5A0111CA1A33700AADC9F /* accept@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "accept@2x.png"; sourceTree = "<group>"; };
-		5DB5A0121CA1A33700AADC9F /* accept@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "accept@3x.png"; sourceTree = "<group>"; };
-		5DB5A0131CA1A33700AADC9F /* refuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refuse.png; sourceTree = "<group>"; };
-		5DB5A0141CA1A33700AADC9F /* refuse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refuse@2x.png"; sourceTree = "<group>"; };
-		5DB5A0151CA1A33700AADC9F /* refuse@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refuse@3x.png"; sourceTree = "<group>"; };
 		5DB5A0221CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendRequestTableViewCell.swift; sourceTree = "<group>"; };
 		5DB5A0231CA1AD1000AADC9F /* T_FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendTableViewCell.swift; sourceTree = "<group>"; };
 		5DB5A0241CA1AD1000AADC9F /* T_ProfileEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ProfileEditionViewController.swift; sourceTree = "<group>"; };
@@ -68,15 +47,6 @@
 		5DB5A02E1CA1C8D400AADC9F /* T_SearchUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SearchUserViewController.swift; sourceTree = "<group>"; };
 		5DB5A0321CA1D2D900AADC9F /* T_ContactsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ContactsHelper.swift; sourceTree = "<group>"; };
 		5DB5A0341CA2879B00AADC9F /* T_SearchContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SearchContactViewController.swift; sourceTree = "<group>"; };
-		5DE918BD1CA02CF300459AA3 /* Avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Avatar.png; sourceTree = "<group>"; };
-		5DE918BE1CA02CF300459AA3 /* Avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Avatar@2x.png"; sourceTree = "<group>"; };
-		5DE918BF1CA02CF300459AA3 /* Avatar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Avatar@3x.png"; sourceTree = "<group>"; };
-		5DE918C01CA02CF300459AA3 /* Edit button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Edit button.png"; sourceTree = "<group>"; };
-		5DE918C11CA02CF300459AA3 /* Edit button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Edit button@2x.png"; sourceTree = "<group>"; };
-		5DE918C21CA02CF300459AA3 /* Edit button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Edit button@3x.png"; sourceTree = "<group>"; };
-		5DE918C31CA02CF300459AA3 /* icon_setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_setting.png; sourceTree = "<group>"; };
-		5DE918C41CA02CF300459AA3 /* icon_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_setting@2x.png"; sourceTree = "<group>"; };
-		5DE918C51CA02CF300459AA3 /* icon_setting@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_setting@3x.png"; sourceTree = "<group>"; };
 		78F7AD880E89307F1E906BF3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7D86991B1C8F4A9D003BC1DC /* TimeshotApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeshotApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,28 +111,6 @@
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
-		5DE918BC1CA02CF300459AA3 /* ProfileImageTest */ = {
-			isa = PBXGroup;
-			children = (
-				5DB5A0101CA1A33700AADC9F /* accept.png */,
-				5DB5A0111CA1A33700AADC9F /* accept@2x.png */,
-				5DB5A0121CA1A33700AADC9F /* accept@3x.png */,
-				5DB5A0131CA1A33700AADC9F /* refuse.png */,
-				5DB5A0141CA1A33700AADC9F /* refuse@2x.png */,
-				5DB5A0151CA1A33700AADC9F /* refuse@3x.png */,
-				5DE918BD1CA02CF300459AA3 /* Avatar.png */,
-				5DE918BE1CA02CF300459AA3 /* Avatar@2x.png */,
-				5DE918BF1CA02CF300459AA3 /* Avatar@3x.png */,
-				5DE918C01CA02CF300459AA3 /* Edit button.png */,
-				5DE918C11CA02CF300459AA3 /* Edit button@2x.png */,
-				5DE918C21CA02CF300459AA3 /* Edit button@3x.png */,
-				5DE918C31CA02CF300459AA3 /* icon_setting.png */,
-				5DE918C41CA02CF300459AA3 /* icon_setting@2x.png */,
-				5DE918C51CA02CF300459AA3 /* icon_setting@3x.png */,
-			);
-			path = ProfileImageTest;
-			sourceTree = "<group>";
-		};
 		7D8699121C8F4A9D003BC1DC = {
 			isa = PBXGroup;
 			children = (
@@ -185,7 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				5DB5A00B1CA1902500AADC9F /* Helpers */,
-				5DE918BC1CA02CF300459AA3 /* ProfileImageTest */,
 				B46B2B721C9ABA7E00135920 /* Models */,
 				B46B2B731C9ABA8300135920 /* Views */,
 				B46B2B711C9ABA7800135920 /* Controllers */,
@@ -328,31 +275,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B46B2B751C9ABAC500135920 /* Profile.storyboard in Resources */,
-				5DE918CC1CA02CF300459AA3 /* icon_setting.png in Resources */,
-				5DB5A0171CA1A33700AADC9F /* accept@2x.png in Resources */,
-				5DE918CA1CA02CF300459AA3 /* Edit button@2x.png in Resources */,
 				7D8699291C8F4A9D003BC1DC /* LaunchScreen.storyboard in Resources */,
-				5DB5A0181CA1A33700AADC9F /* accept@3x.png in Resources */,
 				7DD0F9B61C9EA0FB00A856B9 /* soiree.jpg in Resources */,
-				5DB5A0191CA1A33700AADC9F /* refuse.png in Resources */,
 				7DD0F9B41C9EA0FB00A856B9 /* festival.jpg in Resources */,
-				5DE918C61CA02CF300459AA3 /* Avatar.png in Resources */,
-				5DE918C71CA02CF300459AA3 /* Avatar@2x.png in Resources */,
-				5DB5A01A1CA1A33700AADC9F /* refuse@2x.png in Resources */,
-				5DE918C91CA02CF300459AA3 /* Edit button.png in Resources */,
-				5DE918CD1CA02CF300459AA3 /* icon_setting@2x.png in Resources */,
 				B46B2B751C9ABAC500135920 /* Profile.storyboard in Resources */,
-				5DB5A01B1CA1A33700AADC9F /* refuse@3x.png in Resources */,
 				7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */,
-				5DB5A0161CA1A33700AADC9F /* accept.png in Resources */,
-				5DE918C81CA02CF300459AA3 /* Avatar@3x.png in Resources */,
 				7D8699291C8F4A9D003BC1DC /* LaunchScreen.storyboard in Resources */,
 				7DD0F9B51C9EA0FB00A856B9 /* mariage.jpg in Resources */,
 				7D8699261C8F4A9D003BC1DC /* Assets.xcassets in Resources */,
 				7D8699241C8F4A9D003BC1DC /* Main.storyboard in Resources */,
 				B46B2B771C9ABADA00135920 /* Album.storyboard in Resources */,
-				5DE918CB1CA02CF300459AA3 /* Edit button@3x.png in Resources */,
-				5DE918CE1CA02CF300459AA3 /* icon_setting@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
