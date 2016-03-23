@@ -53,10 +53,13 @@ class T_ContactsHelper {
         let contactsRef: NSArray = ABAddressBookCopyArrayOfAllPeople(T_ContactsHelper.addressBookRef).takeRetainedValue()
         for contactRef:ABRecordRef in contactsRef {
             // first name
-            if let firstName = ABRecordCopyValue(contactRef, kABPersonFirstNameProperty).takeUnretainedValue() as? NSString {
-                if let lastName = ABRecordCopyValue(contactRef, kABPersonLastNameProperty).takeUnretainedValue() as? NSString {
-                    let fullName = (firstName as String) + " " + (lastName as String)
+            if let firstName = ABRecordCopyValue(contactRef, kABPersonFirstNameProperty).takeRetainedValue() as? NSString {
+                if let lastNameRef = ABRecordCopyValue(contactRef, kABPersonLastNameProperty) {
+                    let lastName = lastNameRef.takeRetainedValue() as? NSString
+                    let fullName = (firstName as String) + " " + (lastName as! String)
                     contacts.append(fullName)
+                } else {
+                    contacts.append(String(firstName))
                 }
             }
         }
