@@ -23,8 +23,7 @@ class T_ContactsHelper {
                 if !granted {
                     self.displayCantAddContactAlert(viewController)
                 } else {
-                    let personViewController = ABPeoplePickerNavigationController()
-                    viewController.presentViewController(personViewController, animated: true, completion: nil)
+                    viewController.performSegueWithIdentifier("showContactSearch", sender: nil)
                 }
             }
         }

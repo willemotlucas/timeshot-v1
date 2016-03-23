@@ -48,8 +48,6 @@
 		B46B2B7F1C9ABB1200135920 /* T_CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B7E1C9ABB1200135920 /* T_CameraViewController.swift */; };
 		B46B2B811C9ABB2900135920 /* T_AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */; };
 		B46B2B851C9B129D00135920 /* T_EditCameraImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B841C9B129D00135920 /* T_EditCameraImageViewController.swift */; };
-		B46B2B831C9ABB3100135920 /* T_ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B821C9ABB3100135920 /* T_ProfileViewController.swift */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,7 +96,6 @@
 		B46B2B7E1C9ABB1200135920 /* T_CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_CameraViewController.swift; sourceTree = "<group>"; };
 		B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumViewController.swift; sourceTree = "<group>"; };
 		B46B2B841C9B129D00135920 /* T_EditCameraImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_EditCameraImageViewController.swift; sourceTree = "<group>"; };
-		B46B2B821C9ABB3100135920 /* T_ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,7 +235,6 @@
 				B46B2B7E1C9ABB1200135920 /* T_CameraViewController.swift */,
 				B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */,
 				B46B2B841C9B129D00135920 /* T_EditCameraImageViewController.swift */,
-				B46B2B821C9ABB3100135920 /* T_ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -546,6 +542,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TimeshotApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Valentin.TimeshotApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -561,6 +558,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TimeshotApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Valentin.TimeshotApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
