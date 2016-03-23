@@ -9,7 +9,20 @@
 /* Begin PBXBuildFile section */
 		40BF472DC51952247A14DBC9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9E238D3F9C0AE128133098 /* Pods.framework */; };
 		5DB5A00D1CA1905200AADC9F /* T_DesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A00C1CA1905200AADC9F /* T_DesignHelper.swift */; };
-		5DB5A00F1CA1908F00AADC9F /* T_FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A00E1CA1908F00AADC9F /* T_FriendTableViewCell.swift */; };
+		5DB5A0161CA1A33700AADC9F /* accept.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DB5A0101CA1A33700AADC9F /* accept.png */; };
+		5DB5A0171CA1A33700AADC9F /* accept@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DB5A0111CA1A33700AADC9F /* accept@2x.png */; };
+		5DB5A0181CA1A33700AADC9F /* accept@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DB5A0121CA1A33700AADC9F /* accept@3x.png */; };
+		5DB5A0191CA1A33700AADC9F /* refuse.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DB5A0131CA1A33700AADC9F /* refuse.png */; };
+		5DB5A01A1CA1A33700AADC9F /* refuse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DB5A0141CA1A33700AADC9F /* refuse@2x.png */; };
+		5DB5A01B1CA1A33700AADC9F /* refuse@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DB5A0151CA1A33700AADC9F /* refuse@3x.png */; };
+		5DB5A0271CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0221CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift */; };
+		5DB5A0281CA1AD1000AADC9F /* T_FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0231CA1AD1000AADC9F /* T_FriendTableViewCell.swift */; };
+		5DB5A0291CA1AD1000AADC9F /* T_ProfileEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0241CA1AD1000AADC9F /* T_ProfileEditionViewController.swift */; };
+		5DB5A02A1CA1AD1000AADC9F /* T_ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0251CA1AD1000AADC9F /* T_ProfileViewController.swift */; };
+		5DB5A02B1CA1AD1000AADC9F /* T_SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0261CA1AD1000AADC9F /* T_SettingsViewController.swift */; };
+		5DB5A02F1CA1C8D400AADC9F /* T_SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A02E1CA1C8D400AADC9F /* T_SearchUserViewController.swift */; };
+		5DB5A0331CA1D2D900AADC9F /* T_ContactsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0321CA1D2D900AADC9F /* T_ContactsHelper.swift */; };
+		5DB5A0351CA2879B00AADC9F /* T_SearchContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0341CA2879B00AADC9F /* T_SearchContactViewController.swift */; };
 		5DE918C61CA02CF300459AA3 /* Avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918BD1CA02CF300459AA3 /* Avatar.png */; };
 		5DE918C71CA02CF300459AA3 /* Avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918BE1CA02CF300459AA3 /* Avatar@2x.png */; };
 		5DE918C81CA02CF300459AA3 /* Avatar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE918BF1CA02CF300459AA3 /* Avatar@3x.png */; };
@@ -36,13 +49,27 @@
 		B46B2B811C9ABB2900135920 /* T_AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */; };
 		B46B2B851C9B129D00135920 /* T_EditCameraImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B841C9B129D00135920 /* T_EditCameraImageViewController.swift */; };
 		B46B2B831C9ABB3100135920 /* T_ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B821C9ABB3100135920 /* T_ProfileViewController.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4770CD7F4BA867BF6C3AA239 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F9E238D3F9C0AE128133098 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DB5A00C1CA1905200AADC9F /* T_DesignHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_DesignHelper.swift; sourceTree = "<group>"; };
-		5DB5A00E1CA1908F00AADC9F /* T_FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendTableViewCell.swift; sourceTree = "<group>"; };
+		5DB5A0101CA1A33700AADC9F /* accept.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accept.png; sourceTree = "<group>"; };
+		5DB5A0111CA1A33700AADC9F /* accept@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "accept@2x.png"; sourceTree = "<group>"; };
+		5DB5A0121CA1A33700AADC9F /* accept@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "accept@3x.png"; sourceTree = "<group>"; };
+		5DB5A0131CA1A33700AADC9F /* refuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refuse.png; sourceTree = "<group>"; };
+		5DB5A0141CA1A33700AADC9F /* refuse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refuse@2x.png"; sourceTree = "<group>"; };
+		5DB5A0151CA1A33700AADC9F /* refuse@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refuse@3x.png"; sourceTree = "<group>"; };
+		5DB5A0221CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendRequestTableViewCell.swift; sourceTree = "<group>"; };
+		5DB5A0231CA1AD1000AADC9F /* T_FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendTableViewCell.swift; sourceTree = "<group>"; };
+		5DB5A0241CA1AD1000AADC9F /* T_ProfileEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ProfileEditionViewController.swift; sourceTree = "<group>"; };
+		5DB5A0251CA1AD1000AADC9F /* T_ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ProfileViewController.swift; sourceTree = "<group>"; };
+		5DB5A0261CA1AD1000AADC9F /* T_SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SettingsViewController.swift; sourceTree = "<group>"; };
+		5DB5A02E1CA1C8D400AADC9F /* T_SearchUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SearchUserViewController.swift; sourceTree = "<group>"; };
+		5DB5A0321CA1D2D900AADC9F /* T_ContactsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ContactsHelper.swift; sourceTree = "<group>"; };
+		5DB5A0341CA2879B00AADC9F /* T_SearchContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SearchContactViewController.swift; sourceTree = "<group>"; };
 		5DE918BD1CA02CF300459AA3 /* Avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Avatar.png; sourceTree = "<group>"; };
 		5DE918BE1CA02CF300459AA3 /* Avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Avatar@2x.png"; sourceTree = "<group>"; };
 		5DE918BF1CA02CF300459AA3 /* Avatar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Avatar@3x.png"; sourceTree = "<group>"; };
@@ -86,25 +113,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5DB5A00A1CA1901900AADC9F /* UserProfile */ = {
-			isa = PBXGroup;
-			children = (
-				5DB5A00E1CA1908F00AADC9F /* T_FriendTableViewCell.swift */,
-			);
-			path = UserProfile;
-			sourceTree = "<group>";
-		};
 		5DB5A00B1CA1902500AADC9F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				5DB5A00C1CA1905200AADC9F /* T_DesignHelper.swift */,
+				5DB5A0321CA1D2D900AADC9F /* T_ContactsHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		5DB5A0201CA1AD1000AADC9F /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				5DB5A0211CA1AD1000AADC9F /* CustomTableViewCell */,
+				5DB5A0241CA1AD1000AADC9F /* T_ProfileEditionViewController.swift */,
+				5DB5A0251CA1AD1000AADC9F /* T_ProfileViewController.swift */,
+				5DB5A0261CA1AD1000AADC9F /* T_SettingsViewController.swift */,
+				5DB5A02E1CA1C8D400AADC9F /* T_SearchUserViewController.swift */,
+				5DB5A0341CA2879B00AADC9F /* T_SearchContactViewController.swift */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		5DB5A0211CA1AD1000AADC9F /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5DB5A0221CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift */,
+				5DB5A0231CA1AD1000AADC9F /* T_FriendTableViewCell.swift */,
+			);
+			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 		5DE918BC1CA02CF300459AA3 /* ProfileImageTest */ = {
 			isa = PBXGroup;
 			children = (
+				5DB5A0101CA1A33700AADC9F /* accept.png */,
+				5DB5A0111CA1A33700AADC9F /* accept@2x.png */,
+				5DB5A0121CA1A33700AADC9F /* accept@3x.png */,
+				5DB5A0131CA1A33700AADC9F /* refuse.png */,
+				5DB5A0141CA1A33700AADC9F /* refuse@2x.png */,
+				5DB5A0151CA1A33700AADC9F /* refuse@3x.png */,
 				5DE918BD1CA02CF300459AA3 /* Avatar.png */,
 				5DE918BE1CA02CF300459AA3 /* Avatar@2x.png */,
 				5DE918BF1CA02CF300459AA3 /* Avatar@3x.png */,
@@ -184,7 +232,7 @@
 		B46B2B711C9ABA7800135920 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5DB5A00A1CA1901900AADC9F /* UserProfile */,
+				5DB5A0201CA1AD1000AADC9F /* UserProfile */,
 				7DD0F9AA1C9DC68D00A856B9 /* Album */,
 				B46B2B7C1C9ABB0400135920 /* T_HomePageViewController.swift */,
 				B46B2B7E1C9ABB1200135920 /* T_CameraViewController.swift */,
@@ -285,16 +333,22 @@
 			files = (
 				B46B2B751C9ABAC500135920 /* Profile.storyboard in Resources */,
 				5DE918CC1CA02CF300459AA3 /* icon_setting.png in Resources */,
+				5DB5A0171CA1A33700AADC9F /* accept@2x.png in Resources */,
 				5DE918CA1CA02CF300459AA3 /* Edit button@2x.png in Resources */,
 				7D8699291C8F4A9D003BC1DC /* LaunchScreen.storyboard in Resources */,
+				5DB5A0181CA1A33700AADC9F /* accept@3x.png in Resources */,
 				7DD0F9B61C9EA0FB00A856B9 /* soiree.jpg in Resources */,
+				5DB5A0191CA1A33700AADC9F /* refuse.png in Resources */,
 				7DD0F9B41C9EA0FB00A856B9 /* festival.jpg in Resources */,
 				5DE918C61CA02CF300459AA3 /* Avatar.png in Resources */,
 				5DE918C71CA02CF300459AA3 /* Avatar@2x.png in Resources */,
+				5DB5A01A1CA1A33700AADC9F /* refuse@2x.png in Resources */,
 				5DE918C91CA02CF300459AA3 /* Edit button.png in Resources */,
 				5DE918CD1CA02CF300459AA3 /* icon_setting@2x.png in Resources */,
 				B46B2B751C9ABAC500135920 /* Profile.storyboard in Resources */,
+				5DB5A01B1CA1A33700AADC9F /* refuse@3x.png in Resources */,
 				7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */,
+				5DB5A0161CA1A33700AADC9F /* accept.png in Resources */,
 				5DE918C81CA02CF300459AA3 /* Avatar@3x.png in Resources */,
 				7D8699291C8F4A9D003BC1DC /* LaunchScreen.storyboard in Resources */,
 				7DD0F9B51C9EA0FB00A856B9 /* mariage.jpg in Resources */,
@@ -365,12 +419,18 @@
 				7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */,
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
 				5DB5A00D1CA1905200AADC9F /* T_DesignHelper.swift in Sources */,
+				5DB5A02F1CA1C8D400AADC9F /* T_SearchUserViewController.swift in Sources */,
+				5DB5A0291CA1AD1000AADC9F /* T_ProfileEditionViewController.swift in Sources */,
+				5DB5A02A1CA1AD1000AADC9F /* T_ProfileViewController.swift in Sources */,
+				5DB5A0271CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift in Sources */,
 				B46B2B7F1C9ABB1200135920 /* T_CameraViewController.swift in Sources */,
 				B46B2B851C9B129D00135920 /* T_EditCameraImageViewController.swift in Sources */,
+				5DB5A02B1CA1AD1000AADC9F /* T_SettingsViewController.swift in Sources */,
+				5DB5A0351CA2879B00AADC9F /* T_SearchContactViewController.swift in Sources */,
+				5DB5A0281CA1AD1000AADC9F /* T_FriendTableViewCell.swift in Sources */,
 				B46B2B7D1C9ABB0400135920 /* T_HomePageViewController.swift in Sources */,
-				5DB5A00F1CA1908F00AADC9F /* T_FriendTableViewCell.swift in Sources */,
 				B46B2B811C9ABB2900135920 /* T_AlbumViewController.swift in Sources */,
-				B46B2B831C9ABB3100135920 /* T_ProfileViewController.swift in Sources */,
+				5DB5A0331CA1D2D900AADC9F /* T_ContactsHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
