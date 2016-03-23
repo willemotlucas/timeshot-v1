@@ -12,17 +12,36 @@ class T_SearchContactViewController: UIViewController {
     
     // MARK: IBOutlet
     @IBOutlet weak var contactsTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     // MARK: Properties
     var contacts = T_ContactsHelper.getAllContacts().sort()
+    var filteredContacts = [String]()
     var sectionHeaderTitles = [String]()
     var contactsWithSection = [String:[String]]()
 
-    // MARK : Override functions
+    // MARK: Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
         T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
+        
+        filteredContacts = contacts
+        self.updateTableViewSections(self.filteredContacts)
+        
+        self.contactsTableView.delegate = self
+        self.contactsTableView.dataSource = self
+        self.searchBar.delegate = self
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: Methods
+    private func updateTableViewSections(contacts: [String]) {
+        contactsWithSection.removeAll()
+        sectionHeaderTitles.removeAll()
         
         for contact in contacts {
             if let letter = contact.characters.first {
@@ -36,17 +55,9 @@ class T_SearchContactViewController: UIViewController {
                 }
             }
         }
-        
-        self.contactsTableView.delegate = self
-        self.contactsTableView.dataSource = self
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     // MARK: IBAction
-    
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -68,6 +79,7 @@ extension T_SearchContactViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let key = sectionHeaderTitles[section]
         let values = contactsWithSection[key]
+        
         return (values?.count)!
     }
     
@@ -81,5 +93,29 @@ extension T_SearchContactViewController: UITableViewDataSource {
         cell.textLabel?.text = name
         
         return cell
+    }
+}
+
+extension T_SearchContactViewController: UISearchBarDelegate {
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredContacts = searchText.isEmpty ? contacts : contacts.filter({(dataString: String) -> Bool in
+            return dataString.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
+        })
+        
+        self.updateTableViewSections(filteredContacts)
+        contactsTableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        filteredContacts = contacts
+        self.updateTableViewSections(filteredContacts)
+        contactsTableView.reloadData()
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
     }
 }

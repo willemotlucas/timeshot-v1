@@ -56,7 +56,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="536 photos shared" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKF-S7-IwP">
-                                            <rect key="frame" x="227.5" y="159" width="145.5" height="20.5"/>
+                                            <rect key="frame" x="227" y="159" width="145.5" height="20.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="171" id="36H-OM-UfU"/>
                                             </constraints>
@@ -131,7 +131,7 @@
                                                     <state key="normal" image="accept"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snE-qg-euw">
-                                                    <rect key="frame" x="56" y="19.5" width="406" height="19.5"/>
+                                                    <rect key="frame" x="56" y="20" width="406" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -171,7 +171,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6O-u5-Gnt">
-                                                    <rect key="frame" x="56" y="19.5" width="250" height="19.5"/>
+                                                    <rect key="frame" x="56" y="20" width="250" height="19.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="250" id="MGQ-Hc-05G"/>
                                                     </constraints>
@@ -237,8 +237,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M8b-GY-fna">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZA-M0-C4r">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZA-M0-C4r">
+                                        <rect key="frame" x="0.0" y="5.5" width="600" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="ADD NEW FRIENDS">
                                             <color key="titleColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -512,16 +512,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Search in your address book" translatesAutoresizingMaskIntoConstraints="NO" id="j4d-8D-3sm">
-                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="dL8-tk-IKC"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Iqk-LG-TUb" id="jz1-ra-rUW"/>
-                                </connections>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cxb-xp-vo7">
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -530,16 +520,23 @@
                                     <outlet property="delegate" destination="Iqk-LG-TUb" id="kqA-XS-EkB"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="P6P-uL-cAs">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="vvC-IH-yH9"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="j4d-8D-3sm" firstAttribute="leading" secondItem="fwS-rk-pBh" secondAttribute="leading" id="8OQ-Zb-Fuw"/>
-                            <constraint firstAttribute="trailing" secondItem="Cxb-xp-vo7" secondAttribute="trailing" id="Beh-Ud-9ya"/>
-                            <constraint firstItem="BiG-B1-kPE" firstAttribute="top" secondItem="Cxb-xp-vo7" secondAttribute="bottom" id="Gq6-eV-eqt"/>
-                            <constraint firstAttribute="trailing" secondItem="j4d-8D-3sm" secondAttribute="trailing" id="JNr-lW-w2V"/>
-                            <constraint firstItem="Cxb-xp-vo7" firstAttribute="top" secondItem="j4d-8D-3sm" secondAttribute="bottom" id="VJA-7H-Wab"/>
-                            <constraint firstItem="j4d-8D-3sm" firstAttribute="top" secondItem="Ins-qJ-OXj" secondAttribute="bottom" id="ecx-Ig-b9b"/>
-                            <constraint firstItem="Cxb-xp-vo7" firstAttribute="leading" secondItem="fwS-rk-pBh" secondAttribute="leading" id="ngx-yt-RQj"/>
+                            <constraint firstAttribute="trailing" secondItem="Cxb-xp-vo7" secondAttribute="trailing" id="2Sr-eu-T2C"/>
+                            <constraint firstItem="P6P-uL-cAs" firstAttribute="top" secondItem="Ins-qJ-OXj" secondAttribute="bottom" id="7cQ-xK-wSE"/>
+                            <constraint firstAttribute="trailing" secondItem="P6P-uL-cAs" secondAttribute="trailing" id="SP7-36-pYq"/>
+                            <constraint firstItem="Cxb-xp-vo7" firstAttribute="leading" secondItem="fwS-rk-pBh" secondAttribute="leading" id="Y9E-T2-QTr"/>
+                            <constraint firstItem="P6P-uL-cAs" firstAttribute="leading" secondItem="fwS-rk-pBh" secondAttribute="leading" id="h6t-K6-uT7"/>
+                            <constraint firstItem="BiG-B1-kPE" firstAttribute="top" secondItem="Cxb-xp-vo7" secondAttribute="bottom" id="n3V-VT-9wZ"/>
+                            <constraint firstItem="Cxb-xp-vo7" firstAttribute="top" secondItem="P6P-uL-cAs" secondAttribute="bottom" id="twz-4t-K6L"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Search a contact" id="kK1-mQ-cSp">
@@ -552,17 +549,33 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contactsTableView" destination="Cxb-xp-vo7" id="c3G-6y-ucv"/>
-                        <outlet property="searchDisplayController" destination="JOQ-uW-r0x" id="l5p-Zi-chn"/>
+                        <outlet property="searchBar" destination="P6P-uL-cAs" id="mbK-s0-bhJ"/>
+                        <outlet property="searchDisplayController" destination="5Yu-Wa-9zg" id="KrF-um-6KC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vzx-nN-Hpv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="JOQ-uW-r0x">
                     <connections>
                         <outlet property="delegate" destination="Iqk-LG-TUb" id="3bu-Nf-QEU"/>
-                        <outlet property="searchBar" destination="j4d-8D-3sm" id="1dA-1V-bjs"/>
                         <outlet property="searchContentsController" destination="Iqk-LG-TUb" id="0xY-oL-iBY"/>
                         <outlet property="searchResultsDataSource" destination="Iqk-LG-TUb" id="4eU-rw-gOY"/>
                         <outlet property="searchResultsDelegate" destination="Iqk-LG-TUb" id="131-0m-O6d"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="7dF-Vm-Qqj">
+                    <connections>
+                        <outlet property="delegate" destination="Iqk-LG-TUb" id="lmU-vc-3s2"/>
+                        <outlet property="searchContentsController" destination="Iqk-LG-TUb" id="vfr-DD-Ofh"/>
+                        <outlet property="searchResultsDataSource" destination="Iqk-LG-TUb" id="1fp-Aa-fy7"/>
+                        <outlet property="searchResultsDelegate" destination="Iqk-LG-TUb" id="hai-eU-wK0"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="5Yu-Wa-9zg">
+                    <connections>
+                        <outlet property="delegate" destination="Iqk-LG-TUb" id="fAG-cV-mc8"/>
+                        <outlet property="searchContentsController" destination="Iqk-LG-TUb" id="1PH-QE-uRj"/>
+                        <outlet property="searchResultsDataSource" destination="Iqk-LG-TUb" id="AZt-g5-YFF"/>
+                        <outlet property="searchResultsDelegate" destination="Iqk-LG-TUb" id="zcC-7k-zFh"/>
                     </connections>
                 </searchDisplayController>
             </objects>
