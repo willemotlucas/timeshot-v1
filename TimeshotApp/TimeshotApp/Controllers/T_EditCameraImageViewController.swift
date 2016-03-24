@@ -14,10 +14,24 @@ class T_EditCameraImageViewController: UIViewController {
     
     var slider: T_Slider!
     var image:UIImage!
+    var isFrontCamera:Bool!
+    
+    @IBOutlet weak var buttonNext: UIButton!
+    @IBOutlet weak var buttonCancel: UIButton!
+    
+    @IBAction func actionNext(sender: AnyObject) {
+        screenShotMethod()
+    }
+    
+    @IBAction func actionCancel(sender: AnyObject) {
+        self.dismissViewControllerAnimated(false, completion: {});
+    }
+    
+    
     
     override func viewDidLoad() {
         
-        let slides = T_Slider.slidesWithFilterFromImage(image)
+        let slides = T_Slider.slidesWithFilterFromImage(image, isFrontCamera: isFrontCamera)
         self.slider = T_Slider(slides: slides, frame: CGRect(origin: CGPointZero, size: T_EditCameraImageViewController.screenSize), target: self)
         self.slider.show()
         
@@ -29,19 +43,9 @@ class T_EditCameraImageViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self.slider, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self.slider, selector: "keyboardTypeChanged:", name: UIKeyboardDidShowNotification, object: nil)
         
-        let btn: UIButton = UIButton(frame: CGRectMake(10, 10, 30, 30))
-        btn.backgroundColor = UIColor.greenColor()
-        btn.setTitle("Click Me", forState: UIControlState.Normal)
-        btn.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
-        btn.layer.zPosition = 20
-        self.view.addSubview(btn)
+        self.buttonCancel.layer.zPosition = 20
+        self.buttonNext.layer.zPosition = 20
         
-        let btn2: UIButton = UIButton(frame: CGRectMake(100, 100, 30, 30))
-        btn2.backgroundColor = UIColor.greenColor()
-        btn2.setTitle("Click Me", forState: UIControlState.Normal)
-        btn2.addTarget(self, action: "buttonAction2:", forControlEvents: UIControlEvents.TouchUpInside)
-        btn2.layer.zPosition = 20
-        self.view.addSubview(btn2)
     }
     
     //MARK: ScreenShot tools
@@ -54,15 +58,6 @@ class T_EditCameraImageViewController: UIViewController {
         //Save it to the camera roll
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
     }
-    
-    func buttonAction(sender: UIButton!) {
-        screenShotMethod()
-    }
-    
-    func buttonAction2(sender: UIButton!) {
-        self.dismissViewControllerAnimated(false, completion: {});
-    }
-    
     
     //MARK: - Touch EvenT_
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

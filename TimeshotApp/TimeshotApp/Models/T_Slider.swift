@@ -39,14 +39,22 @@ class T_Slider: NSObject, UITextFieldDelegate {
     //    static let filterNameList = ["No Filter" ,"CIPhotoEffectChrome", "CIPhotoEffectFade", "CIPhotoEffectInstant", "CIPhotoEffectMono", "CIPhotoEffectNoir", "CIPhotoEffectProcess", "CIPhotoEffectTonal", "CIPhotoEffectTransfer"]
     
     //MARK: Static methods
-    static func slidesWithFilterFromImage(image: UIImage) -> [T_Filter]
+    static func slidesWithFilterFromImage(image: UIImage, isFrontCamera: Bool) -> [T_Filter]
     {
         var slides:[T_Filter] = []
         for filter in filterNameList
         {
             if filter == "No Filter" {
                 // set image selected image
-                slides.append(T_Filter(frame: CGRect(origin: CGPointZero, size: T_EditCameraImageViewController.screenSize), image: image))
+                
+                if (isFrontCamera)
+                {
+                    slides.append(T_Filter(frame: CGRect(origin: CGPointZero, size: T_EditCameraImageViewController.screenSize), image: flipH(image)))
+                }
+                else
+                {
+                    slides.append(T_Filter(frame: CGRect(origin: CGPointZero, size: T_EditCameraImageViewController.screenSize), image: image))
+                }
             }
             else
             {
@@ -68,7 +76,11 @@ class T_Slider: NSObject, UITextFieldDelegate {
                 let outputCGImage = context.createCGImage(myFilter!.outputImage!, fromRect: myFilter!.outputImage!.extent)
                 
                 // 6 - convert filtered CGImage to UIImage
-                let filteredImage = UIImage(CGImage: outputCGImage, scale: 1.0, orientation: UIImageOrientation.Right)
+                var filteredImage = UIImage(CGImage: outputCGImage, scale: 1.0, orientation: UIImageOrientation.Right)
+                if (isFrontCamera)
+                {
+                    filteredImage = flipH(filteredImage)
+                }
                 
                 // 7 - set filtered image to array
                 slides.append(T_Filter(frame: CGRect(origin: CGPointZero, size: T_EditCameraImageViewController.screenSize), image: filteredImage))
@@ -76,6 +88,29 @@ class T_Slider: NSObject, UITextFieldDelegate {
         }
         
         return slides
+    }
+    
+    static func flipH(im:UIImage)->UIImage {
+        var newOrient:UIImageOrientation
+        switch im.imageOrientation {
+        case .Up:
+            newOrient = .UpMirrored
+        case .UpMirrored:
+            newOrient = .Up
+        case .Down:
+            newOrient = .DownMirrored
+        case .DownMirrored:
+            newOrient = .Down
+        case .Left:
+            newOrient = .RightMirrored
+        case .LeftMirrored:
+            newOrient = .Right
+        case .Right:
+            newOrient = .LeftMirrored
+        case .RightMirrored:
+            newOrient = .Left
+        }
+        return UIImage(CGImage: im.CGImage!, scale: im.scale, orientation: newOrient)
     }
     
     //MARK: Constructor

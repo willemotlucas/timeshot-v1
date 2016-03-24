@@ -74,7 +74,7 @@ class T_CameraViewController: UIViewController {
         
         cameraManager.cameraDevice = .Back
         cameraManager.cameraOutputMode = .StillImage
-        cameraManager.cameraOutputQuality = .Medium
+        cameraManager.cameraOutputQuality = .High
         cameraManager.flashMode = .Off
         cameraManager.writeFilesToPhoneLibrary = false
         cameraManager.showAccessPermissionPopupAutomatically = true
@@ -83,6 +83,7 @@ class T_CameraViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let destinationVC = segue.destinationViewController as! T_EditCameraImageViewController
         destinationVC.image = self.image
+        destinationVC.isFrontCamera = !self.isBackCameraActivated
     }
     
     //MARK: - Systems methods
