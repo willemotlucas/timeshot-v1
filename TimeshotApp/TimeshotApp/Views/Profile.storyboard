@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Profile Controller-->
@@ -526,32 +527,48 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDv-vE-h6X">
-                                                    <rect key="frame" x="8" y="8" width="584" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="492" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FNs-zm-VUC" customClass="T_SendMessageUIButton" customModule="TimeshotApp" customModuleProvider="target">
+                                                    <rect key="frame" x="558" y="19" width="22" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="22" id="CQk-vt-J1m"/>
+                                                        <constraint firstAttribute="height" constant="22" id="VV5-3s-CUC"/>
+                                                    </constraints>
+                                                    <color key="tintColor" red="0.90980392160000001" green="0.47450980390000003" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="sendSMS:" destination="Iqk-LG-TUb" eventType="touchUpInside" id="FFN-8e-f5h"/>
+                                                    </connections>
+                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wd3-ev-mEg">
-                                                    <rect key="frame" x="8" y="30" width="584" height="21"/>
+                                                    <rect key="frame" x="8" y="30" width="299" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="JU8-fi-nCj"/>
+                                                        <constraint firstAttribute="width" constant="299" id="SzJ-eh-7te"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="Wd3-ev-mEg" secondAttribute="trailing" constant="8" id="1KU-3Y-JUV"/>
-                                                <constraint firstItem="Wd3-ev-mEg" firstAttribute="top" secondItem="oDv-vE-h6X" secondAttribute="bottom" constant="1" id="7vg-ZG-LJx"/>
-                                                <constraint firstItem="oDv-vE-h6X" firstAttribute="top" secondItem="fT8-gR-eMT" secondAttribute="top" constant="8" id="PM9-QP-C52"/>
-                                                <constraint firstItem="Wd3-ev-mEg" firstAttribute="leading" secondItem="fT8-gR-eMT" secondAttribute="leading" constant="8" id="Rd5-hv-1V6"/>
-                                                <constraint firstAttribute="trailing" secondItem="oDv-vE-h6X" secondAttribute="trailing" constant="8" id="Rva-oS-eb9"/>
-                                                <constraint firstAttribute="bottom" secondItem="Wd3-ev-mEg" secondAttribute="bottom" constant="8.5" id="aJ3-Bv-eHL"/>
-                                                <constraint firstItem="oDv-vE-h6X" firstAttribute="leading" secondItem="fT8-gR-eMT" secondAttribute="leading" constant="8" id="kKg-IU-ia9"/>
-                                                <constraint firstAttribute="bottom" secondItem="oDv-vE-h6X" secondAttribute="bottom" constant="30.5" id="sgM-i6-gEe"/>
+                                                <constraint firstItem="oDv-vE-h6X" firstAttribute="top" secondItem="fT8-gR-eMT" secondAttribute="top" constant="8" id="1NW-A7-Lp5"/>
+                                                <constraint firstItem="FNs-zm-VUC" firstAttribute="leading" secondItem="oDv-vE-h6X" secondAttribute="trailing" constant="58" id="1RQ-nE-du6"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Wd3-ev-mEg" secondAttribute="bottom" constant="0.5" id="1Vj-ju-onm"/>
+                                                <constraint firstAttribute="trailing" secondItem="FNs-zm-VUC" secondAttribute="trailing" constant="20" id="Auu-p9-3hK"/>
+                                                <constraint firstItem="FNs-zm-VUC" firstAttribute="centerY" secondItem="fT8-gR-eMT" secondAttribute="centerY" id="Ho0-Y7-VpF"/>
+                                                <constraint firstItem="Wd3-ev-mEg" firstAttribute="top" secondItem="oDv-vE-h6X" secondAttribute="bottom" constant="1" id="Kiq-AO-ad1"/>
+                                                <constraint firstItem="Wd3-ev-mEg" firstAttribute="leading" secondItem="oDv-vE-h6X" secondAttribute="leading" id="Y6n-cc-CVx"/>
+                                                <constraint firstItem="oDv-vE-h6X" firstAttribute="leading" secondItem="fT8-gR-eMT" secondAttribute="leading" constant="8" id="d9R-Zm-1Ns"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="contactNameLabel" destination="oDv-vE-h6X" id="yFD-zc-wlU"/>
                                             <outlet property="contactTelephoneLabel" destination="Wd3-ev-mEg" id="Mdw-2d-D8g"/>
+                                            <outlet property="sendSMSButton" destination="FNs-zm-VUC" id="Hp9-hh-Iqd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

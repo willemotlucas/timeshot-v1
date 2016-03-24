@@ -11,7 +11,8 @@ import UIKit
 class T_ContactTableViewCell: UITableViewCell {
     @IBOutlet weak var contactNameLabel: UILabel!
     @IBOutlet weak var contactTelephoneLabel: UILabel!
-
+    @IBOutlet weak var sendSMSButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,5 +23,18 @@ class T_ContactTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    /*@IBAction func addContactButtonTapped(sender: UIButton) {
+        print(self.contactTelephoneLabel.text!)
+        print(self.contactNameLabel.text!)
+        
+        let messageVC = MFMessageComposeViewController()
+        
+        if((delegate?.respondsToSelector("loadNewScreen:")) != nil)
+        {
+            messageVC.body = "Join me on Timeshot :)";
+            messageVC.recipients = [self.contactNameLabel.text!]
+            //messageVC.messageComposeDelegate = delegate;
+            delegate?.loadNewScreen(messageVC);
+        }*/
 }

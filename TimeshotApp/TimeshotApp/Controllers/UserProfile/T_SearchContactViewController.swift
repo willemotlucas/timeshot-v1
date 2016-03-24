@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class T_SearchContactViewController: UIViewController {
     
@@ -63,10 +64,33 @@ class T_SearchContactViewController: UIViewController {
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func sendSMS(sender: UIButton) {
+        let button = sender as! T_SendMessageUIButton
+        let phoneNumber = button.telNumber.stringByReplacingOccurrencesOfString(" ", withString: "")
+        
+        let messageVC = MFMessageComposeViewController()
+        messageVC.body = "I discovered a new awesome app! Download it on http://timeshot.co :)";
+        messageVC.recipients = [phoneNumber]
+        messageVC.messageComposeDelegate = self;
+        self.presentViewController(messageVC, animated: false, completion: nil)
+    }
 }
 
 extension T_SearchContactViewController: UITableViewDelegate {
     
+}
+
+extension T_SearchContactViewController: MFMessageComposeViewControllerDelegate {
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+        if result.rawValue == MessageComposeResultCancelled.rawValue {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        } else if result.rawValue == MessageComposeResultFailed.rawValue {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        } else if result.rawValue == MessageComposeResultSent.rawValue {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
 }
 
 extension T_SearchContactViewController: UITableViewDataSource {
@@ -93,6 +117,8 @@ extension T_SearchContactViewController: UITableViewDataSource {
         let name = values![indexPath.row]
         let phoneNumber = contactsWithNumbers[name]
         
+        let button = cell.sendSMSButton as! T_SendMessageUIButton
+        button.telNumber = phoneNumber!
         cell.contactNameLabel.text = name
         cell.contactTelephoneLabel.text = phoneNumber
         
