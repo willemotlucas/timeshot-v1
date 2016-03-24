@@ -20,6 +20,8 @@ class T_CameraViewController: UIViewController {
     
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var buttonTakePicture: UIButton!
+    @IBOutlet weak var albumTitle: UILabel!
+    @IBOutlet weak var albumImage: UIImageView!
     
     @IBOutlet weak var buttonReturnCamera: UIButton!
     @IBOutlet weak var buttonFlash: UIButton!
@@ -62,16 +64,20 @@ class T_CameraViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Camera init
-        cameraManager.addPreviewLayerToView(self.cameraView)
+    override func viewWillLayoutSubviews() {
         self.cameraView.layer.zPosition = 0
         self.buttonTakePicture.layer.zPosition = 1
         self.buttonFlash.layer.zPosition = 1
         self.buttonReturnCamera.layer.zPosition = 1
         
+        setLabelText("Soirées des finaux 2016")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Camera init
+        cameraManager.addPreviewLayerToView(self.cameraView)
         cameraManager.cameraDevice = .Back
         cameraManager.cameraOutputMode = .StillImage
         cameraManager.cameraOutputQuality = .High
@@ -80,11 +86,31 @@ class T_CameraViewController: UIViewController {
         cameraManager.showAccessPermissionPopupAutomatically = true
     }
     
+    func setLabelText(text: String)
+    {
+        let finalText = "    \(text.trunc(30))"
+        let textSize = finalText.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(15.0)])
+        self.albumTitle.frame.size.width = 55 + textSize.width
+        self.albumTitle.frame.origin = CGPoint(x: T_EditCameraImageViewController.screenSize.width/2 - self.albumTitle.frame.size.width/2, y: self.albumTitle.frame.origin.y)
+        
+        self.albumImage.frame.origin = CGPoint(x: T_EditCameraImageViewController.screenSize.width/2 + self.albumTitle.frame.size.width/2 - 40, y: self.albumImage.frame.origin.y)
+        
+        self.albumTitle.layer.zPosition = 1
+        self.albumTitle.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.7)
+        self.albumTitle.layer.cornerRadius = 15
+        self.albumTitle.font = UIFont.systemFontOfSize(15)
+        self.albumTitle.textColor = UIColor.whiteColor()
+        self.albumTitle.layer.masksToBounds = true
+        self.albumImage.layer.zPosition = 11
+        self.albumTitle.text = finalText
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let destinationVC = segue.destinationViewController as! T_EditCameraImageViewController
         destinationVC.image = self.image
         destinationVC.isFrontCamera = !self.isBackCameraActivated
     }
+    
     
     //MARK: - Systems methods
     override func prefersStatusBarHidden() -> Bool {

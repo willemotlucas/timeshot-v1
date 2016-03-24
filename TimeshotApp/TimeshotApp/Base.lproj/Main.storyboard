@@ -29,7 +29,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJx-zu-Kjj">
-                                        <rect key="frame" x="231" y="442" width="138" height="138"/>
+                                        <rect key="frame" x="231" y="462" width="138" height="138"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="138" id="HnX-tR-0xK"/>
                                             <constraint firstAttribute="width" constant="138" id="SXG-T5-PtO"/>
@@ -54,19 +54,64 @@
                                             <action selector="switchCamera:" destination="scp-YI-GI3" eventType="touchUpInside" id="crI-Bc-uTr"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="AlbumName" translatesAutoresizingMaskIntoConstraints="NO" id="FZc-bV-Ua4">
+                                        <rect key="frame" x="315" y="15" width="24" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="lo2-u4-c4u"/>
+                                            <constraint firstAttribute="width" constant="24" id="oln-6F-vOj"/>
+                                            <constraint firstAttribute="width" constant="47" id="s2t-cK-keT"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="s2t-cK-keT"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiE-LN-cfZ">
+                                        <rect key="frame" x="250" y="10" width="100" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.76335743293561364" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="gu8-ke-2UK"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="xMY-IR-PWG"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Label">
+                                                <attributes>
+                                                    <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="19" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="xMY-IR-PWG"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.37169437205138722" blue="0.30253964776457332" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="eON-zA-s3Z" firstAttribute="top" secondItem="aAZ-uj-fBF" secondAttribute="top" constant="30" id="4wu-bl-D2r"/>
-                                    <constraint firstAttribute="bottom" secondItem="CJx-zu-Kjj" secondAttribute="bottom" constant="20" id="5Fk-63-uqr"/>
+                                    <constraint firstAttribute="bottom" secondItem="CJx-zu-Kjj" secondAttribute="bottom" id="5Fk-63-uqr"/>
+                                    <constraint firstItem="FZc-bV-Ua4" firstAttribute="top" secondItem="UiE-LN-cfZ" secondAttribute="bottom" constant="-25" id="DLV-LE-XdE"/>
+                                    <constraint firstItem="FZc-bV-Ua4" firstAttribute="leading" secondItem="aAZ-uj-fBF" secondAttribute="leading" constant="20" id="JWW-jo-ejT"/>
+                                    <constraint firstItem="UiE-LN-cfZ" firstAttribute="top" secondItem="aAZ-uj-fBF" secondAttribute="top" constant="10" id="Tw5-AC-ZIH"/>
                                     <constraint firstAttribute="trailing" secondItem="eON-zA-s3Z" secondAttribute="trailing" constant="10" id="VCh-WX-h6D"/>
+                                    <constraint firstItem="UiE-LN-cfZ" firstAttribute="centerX" secondItem="aAZ-uj-fBF" secondAttribute="centerX" id="Vvl-zC-bYb"/>
                                     <constraint firstItem="eON-zA-s3Z" firstAttribute="centerY" secondItem="aAZ-uj-fBF" secondAttribute="centerY" constant="40" id="aca-Zb-mtY"/>
+                                    <constraint firstItem="UiE-LN-cfZ" firstAttribute="centerY" secondItem="aAZ-uj-fBF" secondAttribute="centerY" id="gJ6-vv-Jgt"/>
+                                    <constraint firstItem="FZc-bV-Ua4" firstAttribute="leading" secondItem="UiE-LN-cfZ" secondAttribute="trailing" constant="-35" id="ge2-Hj-vgL"/>
                                     <constraint firstItem="CJx-zu-Kjj" firstAttribute="centerX" secondItem="aAZ-uj-fBF" secondAttribute="centerX" id="pVU-DH-5JM"/>
                                     <constraint firstAttribute="trailing" secondItem="sC6-0S-8KZ" secondAttribute="trailing" constant="10" id="qTh-yC-1Qf"/>
                                     <constraint firstItem="sC6-0S-8KZ" firstAttribute="centerY" secondItem="aAZ-uj-fBF" secondAttribute="centerY" constant="-4" id="xhD-Cf-vzm"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="gJ6-vv-Jgt"/>
+                                        <exclude reference="JWW-jo-ejT"/>
                                         <exclude reference="4wu-bl-D2r"/>
                                     </mask>
                                 </variation>
@@ -84,6 +129,8 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="albumImage" destination="FZc-bV-Ua4" id="C68-Wv-2XL"/>
+                        <outlet property="albumTitle" destination="UiE-LN-cfZ" id="nHX-cT-0BM"/>
                         <outlet property="buttonFlash" destination="sC6-0S-8KZ" id="FRN-CM-ByF"/>
                         <outlet property="buttonReturnCamera" destination="eON-zA-s3Z" id="Shd-Hh-c94"/>
                         <outlet property="buttonTakePicture" destination="CJx-zu-Kjj" id="Qu7-82-6gk"/>
@@ -154,6 +201,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AlbumName" width="64" height="44"/>
         <image name="Cancel" width="44" height="44"/>
         <image name="Flash" width="39" height="44"/>
         <image name="Fleche" width="36" height="44"/>
