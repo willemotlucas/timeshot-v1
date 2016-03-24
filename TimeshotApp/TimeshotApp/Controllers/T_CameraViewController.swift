@@ -14,6 +14,8 @@ class T_CameraViewController: UIViewController {
     let cameraManager = CameraManager()
     var image:UIImage?
     
+    let createAlbum:Bool = true
+    
     private
     var isFlashActivated:Bool = false
     var isBackCameraActivated:Bool = true
@@ -32,7 +34,16 @@ class T_CameraViewController: UIViewController {
         cameraManager.capturePictureWithCompletition({
             (img, error) -> Void in
             self.image = img
-            self.performSegueWithIdentifier("segueEditCameraImage", sender: nil)
+            
+            if (self.createAlbum == true)
+            {
+                self.performSegueWithIdentifier("segueCreateAlbum", sender: nil)
+            }
+            else
+            {
+                self.performSegueWithIdentifier("segueEditCameraImage", sender: nil)
+            }
+            
         })
     }
     
@@ -106,9 +117,19 @@ class T_CameraViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let destinationVC = segue.destinationViewController as! T_EditCameraImageViewController
-        destinationVC.image = self.image
-        destinationVC.isFrontCamera = !self.isBackCameraActivated
+        
+        if (self.createAlbum == true)
+        {
+            let destinationVC = segue.destinationViewController as! T_CreateAlbumViewController
+            destinationVC.image = self.image
+            destinationVC.isFrontCamera = !self.isBackCameraActivated
+        }
+        else
+        {
+            let destinationVC = segue.destinationViewController as! T_EditCameraImageViewController
+            destinationVC.image = self.image
+            destinationVC.isFrontCamera = !self.isBackCameraActivated
+        }
     }
     
     

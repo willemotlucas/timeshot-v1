@@ -13,6 +13,77 @@
             </objects>
             <point key="canvasLocation" x="-582" y="41"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="iYn-OX-CdG">
+            <objects>
+                <tableViewController id="uPI-lO-EQn" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="NQF-je-IrD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="EwK-dC-9Si">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EwK-dC-9Si" id="1LC-Ou-HoM">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="uPI-lO-EQn" id="WJF-3I-kHr"/>
+                            <outlet property="delegate" destination="uPI-lO-EQn" id="3Ft-Nk-iZC"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z8Q-P2-Hub" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-564" y="2324"/>
+        </scene>
+        <!--Create Album View Controller-->
+        <scene sceneID="5ly-RS-PeA">
+            <objects>
+                <viewController id="xLi-KZ-wFS" customClass="T_CreateAlbumViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="O5G-bf-dCg"/>
+                        <viewControllerLayoutGuide type="bottom" id="K6V-23-Z5Y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sgt-jO-OYx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dot-2V-rU6">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vhl-us-YRJ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Vhl-us-YRJ" firstAttribute="bottom" secondItem="K6V-23-Z5Y" secondAttribute="top" id="9kg-nc-MPR"/>
+                            <constraint firstAttribute="trailing" secondItem="Vhl-us-YRJ" secondAttribute="trailing" id="Mpn-jW-Hf3"/>
+                            <constraint firstItem="Dot-2V-rU6" firstAttribute="bottom" secondItem="K6V-23-Z5Y" secondAttribute="top" id="N8K-7n-E5x"/>
+                            <constraint firstItem="Dot-2V-rU6" firstAttribute="trailing" secondItem="Vhl-us-YRJ" secondAttribute="trailing" id="SST-7M-Rxp"/>
+                            <constraint firstItem="Dot-2V-rU6" firstAttribute="top" secondItem="Vhl-us-YRJ" secondAttribute="top" id="Zb8-Ha-eiH"/>
+                            <constraint firstItem="Dot-2V-rU6" firstAttribute="leading" secondItem="Vhl-us-YRJ" secondAttribute="leading" id="hgx-SG-VKh"/>
+                            <constraint firstItem="Vhl-us-YRJ" firstAttribute="leading" secondItem="sgt-jO-OYx" secondAttribute="leading" id="liG-1I-hW9"/>
+                            <constraint firstItem="Vhl-us-YRJ" firstAttribute="top" secondItem="O5G-bf-dCg" secondAttribute="bottom" id="u87-rD-iK3"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="imageView" destination="Dot-2V-rU6" id="BKd-9R-2az"/>
+                        <outlet property="scrollView" destination="Vhl-us-YRJ" id="2Ts-0S-9El"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wb1-em-2et" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-552" y="1611"/>
+        </scene>
         <!--Camera View Controller-->
         <scene sceneID="5Iw-R3-TSJ">
             <objects>
@@ -136,11 +207,12 @@
                         <outlet property="buttonTakePicture" destination="CJx-zu-Kjj" id="Qu7-82-6gk"/>
                         <outlet property="cameraView" destination="aAZ-uj-fBF" id="wRt-RV-pIm"/>
                         <segue destination="fWL-dc-uT3" kind="show" identifier="segueEditCameraImage" animates="NO" id="itZ-bj-KsU"/>
+                        <segue destination="xLi-KZ-wFS" kind="show" identifier="segueCreateAlbum" animates="NO" id="BCQ-Fc-svL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7XL-W2-H71" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-564" y="807"/>
+            <point key="canvasLocation" x="-552" y="807"/>
         </scene>
         <!--Edit Camera Image View Controller-->
         <scene sceneID="fHZ-rl-yHo">

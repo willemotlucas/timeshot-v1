@@ -49,7 +49,7 @@ class T_Slider: NSObject, UITextFieldDelegate {
                 
                 if (isFrontCamera)
                 {
-                    slides.append(T_Filter(frame: CGRect(origin: CGPointZero, size: T_EditCameraImageViewController.screenSize), image: flipH(image)))
+                    slides.append(T_Filter(frame: CGRect(origin: CGPointZero, size: T_EditCameraImageViewController.screenSize), image: T_DesignHelper.flipH(image)))
                 }
                 else
                 {
@@ -79,7 +79,7 @@ class T_Slider: NSObject, UITextFieldDelegate {
                 var filteredImage = UIImage(CGImage: outputCGImage, scale: 1.0, orientation: UIImageOrientation.Right)
                 if (isFrontCamera)
                 {
-                    filteredImage = flipH(filteredImage)
+                    filteredImage = T_DesignHelper.flipH(filteredImage)
                 }
                 
                 // 7 - set filtered image to array
@@ -90,28 +90,6 @@ class T_Slider: NSObject, UITextFieldDelegate {
         return slides
     }
     
-    static func flipH(im:UIImage)->UIImage {
-        var newOrient:UIImageOrientation
-        switch im.imageOrientation {
-        case .Up:
-            newOrient = .UpMirrored
-        case .UpMirrored:
-            newOrient = .Up
-        case .Down:
-            newOrient = .DownMirrored
-        case .DownMirrored:
-            newOrient = .Down
-        case .Left:
-            newOrient = .RightMirrored
-        case .LeftMirrored:
-            newOrient = .Right
-        case .Right:
-            newOrient = .LeftMirrored
-        case .RightMirrored:
-            newOrient = .Left
-        }
-        return UIImage(CGImage: im.CGImage!, scale: im.scale, orientation: newOrient)
-    }
     
     //MARK: Constructor
     init(slides: [T_Filter], frame: CGRect, target: T_EditCameraImageViewController) {

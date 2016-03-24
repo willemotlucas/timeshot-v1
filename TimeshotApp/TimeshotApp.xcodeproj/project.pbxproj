@@ -36,6 +36,7 @@
 		B4C14BB91CA3DF2000413A1F /* T_Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C14BB81CA3DF2000413A1F /* T_Slider.swift */; };
 		B4C14BBB1CA3DF5000413A1F /* T_Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C14BBA1CA3DF5000413A1F /* T_Filter.swift */; };
 		B4D9BDAA1CA4885100B28C52 /* T_String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D9BDA91CA4885100B28C52 /* T_String+Extension.swift */; };
+		B4D9BDAC1CA48E0200B28C52 /* T_CreateAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D9BDAB1CA48E0200B28C52 /* T_CreateAlbumViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		B4C14BB81CA3DF2000413A1F /* T_Slider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Slider.swift; sourceTree = "<group>"; };
 		B4C14BBA1CA3DF5000413A1F /* T_Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Filter.swift; sourceTree = "<group>"; };
 		B4D9BDA91CA4885100B28C52 /* T_String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "T_String+Extension.swift"; sourceTree = "<group>"; };
+		B4D9BDAB1CA48E0200B28C52 /* T_CreateAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_CreateAlbumViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 				B46B2B7E1C9ABB1200135920 /* T_CameraViewController.swift */,
 				B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */,
 				B46B2B841C9B129D00135920 /* T_EditCameraImageViewController.swift */,
+				B4D9BDAB1CA48E0200B28C52 /* T_CreateAlbumViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */,
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
 				5DB5A00D1CA1905200AADC9F /* T_DesignHelper.swift in Sources */,
+				B4D9BDAC1CA48E0200B28C52 /* T_CreateAlbumViewController.swift in Sources */,
 				5DB5A02F1CA1C8D400AADC9F /* T_SearchUserViewController.swift in Sources */,
 				5DB5A0291CA1AD1000AADC9F /* T_ProfileEditionViewController.swift in Sources */,
 				B4C14BB91CA3DF2000413A1F /* T_Slider.swift in Sources */,

@@ -13,6 +13,7 @@ class T_DesignHelper {
     // MARK: Properties
     static let orangeClair = UIColor.init(colorLiteralRed: 243.0/255.0, green: 199.0/255.0, blue: 161.0/255.0, alpha: 1.0).CGColor
     static let orangeFonce = UIColor.init(colorLiteralRed: 232.0/255.0, green: 121.0/255.0, blue: 117.0/255.0, alpha: 1.0).CGColor
+    static let screenSize = CGSize(width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
     
     // MARK: Methods
     static func colorNavBar(navbar: UINavigationBar){
@@ -64,4 +65,28 @@ class T_DesignHelper {
         
         segmentedControl.setBackgroundImage(image, forState: .Normal, barMetrics: UIBarMetrics.Default)
     }
+    
+    static func flipH(im:UIImage)->UIImage {
+        var newOrient:UIImageOrientation
+        switch im.imageOrientation {
+        case .Up:
+            newOrient = .UpMirrored
+        case .UpMirrored:
+            newOrient = .Up
+        case .Down:
+            newOrient = .DownMirrored
+        case .DownMirrored:
+            newOrient = .Down
+        case .Left:
+            newOrient = .RightMirrored
+        case .LeftMirrored:
+            newOrient = .Right
+        case .Right:
+            newOrient = .LeftMirrored
+        case .RightMirrored:
+            newOrient = .Left
+        }
+        return UIImage(CGImage: im.CGImage!, scale: im.scale, orientation: newOrient)
+    }
+    
 }

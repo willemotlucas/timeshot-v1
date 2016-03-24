@@ -27,8 +27,6 @@ class T_EditCameraImageViewController: UIViewController {
         self.dismissViewControllerAnimated(false, completion: {});
     }
     
-    
-    
     override func viewDidLoad() {
         
         let slides = T_Slider.slidesWithFilterFromImage(image, isFrontCamera: isFrontCamera)
