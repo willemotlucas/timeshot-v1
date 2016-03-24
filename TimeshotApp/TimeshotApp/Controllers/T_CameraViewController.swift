@@ -12,22 +12,22 @@ import CameraManager
 class T_CameraViewController: UIViewController {
     
     let cameraManager = CameraManager()
+    var image:UIImage?
     
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var buttonTakePicture: UIButton!
     
     @IBAction func actionTakePicture(sender: AnyObject) {
         
-        var image:UIImage?
         cameraManager.capturePictureWithCompletition({
             (img, error) -> Void in
-            image = img
+            self.image = img
+            self.performSegueWithIdentifier("segueEditCameraImage", sender: nil)
         })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         // Camera init
         cameraManager.addPreviewLayerToView(self.cameraView)
@@ -40,8 +40,20 @@ class T_CameraViewController: UIViewController {
         cameraManager.flashMode = .Off
         cameraManager.writeFilesToPhoneLibrary = false
         cameraManager.showAccessPermissionPopupAutomatically = true
-        
-        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let destinationVC = segue.destinationViewController as! T_EditCameraImageViewController
+        destinationVC.image = self.image
+    }
+    
+    //MARK: - Systems methods
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarHidden=true
     }
     
     override func didReceiveMemoryWarning() {

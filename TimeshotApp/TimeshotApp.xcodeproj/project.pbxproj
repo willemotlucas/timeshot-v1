@@ -33,6 +33,8 @@
 		B46B2B7F1C9ABB1200135920 /* T_CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B7E1C9ABB1200135920 /* T_CameraViewController.swift */; };
 		B46B2B811C9ABB2900135920 /* T_AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */; };
 		B46B2B851C9B129D00135920 /* T_EditCameraImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B841C9B129D00135920 /* T_EditCameraImageViewController.swift */; };
+		B4C14BB91CA3DF2000413A1F /* T_Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C14BB81CA3DF2000413A1F /* T_Slider.swift */; };
+		B4C14BBB1CA3DF5000413A1F /* T_Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C14BBA1CA3DF5000413A1F /* T_Filter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +68,8 @@
 		B46B2B7E1C9ABB1200135920 /* T_CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_CameraViewController.swift; sourceTree = "<group>"; };
 		B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumViewController.swift; sourceTree = "<group>"; };
 		B46B2B841C9B129D00135920 /* T_EditCameraImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_EditCameraImageViewController.swift; sourceTree = "<group>"; };
+		B4C14BB81CA3DF2000413A1F /* T_Slider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Slider.swift; sourceTree = "<group>"; };
+		B4C14BBA1CA3DF5000413A1F /* T_Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Filter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +193,8 @@
 		B46B2B721C9ABA7E00135920 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B4C14BB81CA3DF2000413A1F /* T_Slider.swift */,
+				B4C14BBA1CA3DF5000413A1F /* T_Filter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -196,9 +202,9 @@
 		B46B2B731C9ABA8300135920 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7D8699221C8F4A9D003BC1DC /* Main.storyboard */,
 				B46B2B741C9ABAC500135920 /* Profile.storyboard */,
 				B46B2B761C9ABADA00135920 /* Album.storyboard */,
+				7D8699221C8F4A9D003BC1DC /* Main.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -247,7 +253,7 @@
 				TargetAttributes = {
 					7D86991A1C8F4A9D003BC1DC = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = N82MC72NZP;
+						DevelopmentTeam = VH6T8695X3;
 					};
 				};
 			};
@@ -343,12 +349,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4C14BBB1CA3DF5000413A1F /* T_Filter.swift in Sources */,
 				7DD0F9AE1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift in Sources */,
 				7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */,
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
 				5DB5A00D1CA1905200AADC9F /* T_DesignHelper.swift in Sources */,
 				5DB5A02F1CA1C8D400AADC9F /* T_SearchUserViewController.swift in Sources */,
 				5DB5A0291CA1AD1000AADC9F /* T_ProfileEditionViewController.swift in Sources */,
+				B4C14BB91CA3DF2000413A1F /* T_Slider.swift in Sources */,
 				5DB5A02A1CA1AD1000AADC9F /* T_ProfileViewController.swift in Sources */,
 				5DB5A0271CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift in Sources */,
 				B46B2B7F1C9ABB1200135920 /* T_CameraViewController.swift in Sources */,
@@ -476,7 +484,7 @@
 				INFOPLIST_FILE = TimeshotApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Valentin.TimeshotApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Paul.TimeshotApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -492,7 +500,7 @@
 				INFOPLIST_FILE = TimeshotApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Valentin.TimeshotApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Paul.TimeshotApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
