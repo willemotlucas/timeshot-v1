@@ -14,8 +14,16 @@ class T_CameraViewController: UIViewController {
     let cameraManager = CameraManager()
     var image:UIImage?
     
+    private
+    var isFlashActivated:Bool = false
+    var isBackCameraActivated:Bool = true
+    
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var buttonTakePicture: UIButton!
+    
+    @IBOutlet weak var buttonReturnCamera: UIButton!
+    @IBOutlet weak var buttonFlash: UIButton!
+    
     
     @IBAction func actionTakePicture(sender: AnyObject) {
         
@@ -26,6 +34,34 @@ class T_CameraViewController: UIViewController {
         })
     }
     
+    @IBAction func switchCamera(sender: AnyObject) {
+        
+        if (isBackCameraActivated == true)
+        {
+            cameraManager.cameraDevice = .Front
+            isBackCameraActivated = false
+            isFlashActivated = false
+        }
+        else
+        {
+            cameraManager.cameraDevice = .Back
+            isBackCameraActivated = true
+        }
+    }
+    @IBAction func switchFlashStatus(sender: AnyObject) {
+        
+        if (cameraManager.hasFlash && !isFlashActivated)
+        {
+            cameraManager.changeFlashMode()
+            isFlashActivated = true
+        }
+        else if (self.isFlashActivated == true)
+        {
+            cameraManager.changeFlashMode()
+            isFlashActivated = false
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,10 +69,12 @@ class T_CameraViewController: UIViewController {
         cameraManager.addPreviewLayerToView(self.cameraView)
         self.cameraView.layer.zPosition = 0
         self.buttonTakePicture.layer.zPosition = 1
+        self.buttonFlash.layer.zPosition = 1
+        self.buttonReturnCamera.layer.zPosition = 1
         
         cameraManager.cameraDevice = .Back
         cameraManager.cameraOutputMode = .StillImage
-        cameraManager.cameraOutputQuality = .High
+        cameraManager.cameraOutputQuality = .Medium
         cameraManager.flashMode = .Off
         cameraManager.writeFilesToPhoneLibrary = false
         cameraManager.showAccessPermissionPopupAutomatically = true

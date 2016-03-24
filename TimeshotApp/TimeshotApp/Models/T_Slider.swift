@@ -42,9 +42,6 @@ class T_Slider: NSObject, UITextFieldDelegate {
     static func slidesWithFilterFromImage(image: UIImage) -> [T_Filter]
     {
         var slides:[T_Filter] = []
-        
-        print(T_EditCameraImageViewController.screenSize)
-        
         for filter in filterNameList
         {
             if filter == "No Filter" {
@@ -257,7 +254,7 @@ class T_Slider: NSObject, UITextFieldDelegate {
         }
     }
     
-    func selecT_wipeAnimation(toRight: Bool) -> filterAnimation
+    func selectSwipeAnimation(toRight: Bool) -> filterAnimation
     {
         if (self.slides[previousIndex()].maskSize?.width != 0)
         {
@@ -353,11 +350,12 @@ class T_Slider: NSObject, UITextFieldDelegate {
         return true;
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacemenT_tring string: String) -> Bool {
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         let text:NSString = (self.textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
-        let texT_ize = text.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(16.0)])
-        self.textFieldWidth = texT_ize.width
-        return texT_ize.width <= ((self.frame?.width)! - 20)
+        let textSize = text.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(16.0)])
+        self.textFieldWidth = textSize.width
+        
+        return textSize.width <= ((self.frame?.width)! - 20)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -371,11 +369,18 @@ class T_Slider: NSObject, UITextFieldDelegate {
         }
     }
     
+    func keyboardTypeChanged(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.textField.frame.origin.y = self.frame!.size.height - keyboardSize.height - self.textField.frame.size.height
+        }
+    }
+    
+    
     func keyboardWillHide(notification: NSNotification) {
         self.textField.frame.origin.y = self.textFieldPosition.y
     }
     
-    //MARK: Touches evenT_
+    //MARK: Touches events
     
     func touchesBegan(touch: CGPoint)
     {
@@ -419,7 +424,7 @@ class T_Slider: NSObject, UITextFieldDelegate {
     
     func touchesEndedWithSwipe(toRight: Bool)
     {
-        let animationToProcess = selecT_wipeAnimation(toRight)
+        let animationToProcess = selectSwipeAnimation(toRight)
         startAnimation(animationToProcess)
     }
     

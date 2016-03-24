@@ -28,19 +28,48 @@
                             <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="aAZ-uj-fBF">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJx-zu-Kjj">
-                                        <rect key="frame" x="277" y="530" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJx-zu-Kjj">
+                                        <rect key="frame" x="246" y="472" width="108" height="108"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="108" id="HnX-tR-0xK"/>
+                                            <constraint firstAttribute="width" constant="108" id="SXG-T5-PtO"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="30" minY="30" maxX="30" maxY="30"/>
+                                        <state key="normal" image="TakePicture"/>
                                         <connections>
                                             <action selector="actionTakePicture:" destination="scp-YI-GI3" eventType="touchUpInside" id="WJk-kh-Gea"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sC6-0S-8KZ">
+                                        <rect key="frame" x="551" y="274" width="39" height="44"/>
+                                        <state key="normal" image="Flash"/>
+                                        <connections>
+                                            <action selector="switchFlashStatus:" destination="scp-YI-GI3" eventType="touchUpInside" id="N5X-HV-eCk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eON-zA-s3Z">
+                                        <rect key="frame" x="551" y="318" width="39" height="44"/>
+                                        <state key="normal" image="ReturnCamera"/>
+                                        <connections>
+                                            <action selector="switchCamera:" destination="scp-YI-GI3" eventType="touchUpInside" id="crI-Bc-uTr"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.37169437205138722" blue="0.30253964776457332" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="eON-zA-s3Z" firstAttribute="top" secondItem="aAZ-uj-fBF" secondAttribute="top" constant="30" id="4wu-bl-D2r"/>
                                     <constraint firstAttribute="bottom" secondItem="CJx-zu-Kjj" secondAttribute="bottom" constant="20" id="5Fk-63-uqr"/>
+                                    <constraint firstAttribute="trailing" secondItem="eON-zA-s3Z" secondAttribute="trailing" constant="10" id="VCh-WX-h6D"/>
+                                    <constraint firstItem="eON-zA-s3Z" firstAttribute="centerY" secondItem="aAZ-uj-fBF" secondAttribute="centerY" constant="40" id="aca-Zb-mtY"/>
                                     <constraint firstItem="CJx-zu-Kjj" firstAttribute="centerX" secondItem="aAZ-uj-fBF" secondAttribute="centerX" id="pVU-DH-5JM"/>
+                                    <constraint firstAttribute="trailing" secondItem="sC6-0S-8KZ" secondAttribute="trailing" constant="10" id="qTh-yC-1Qf"/>
+                                    <constraint firstItem="sC6-0S-8KZ" firstAttribute="centerY" secondItem="aAZ-uj-fBF" secondAttribute="centerY" constant="-4" id="xhD-Cf-vzm"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4wu-bl-D2r"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -55,6 +84,8 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="buttonFlash" destination="sC6-0S-8KZ" id="FRN-CM-ByF"/>
+                        <outlet property="buttonReturnCamera" destination="eON-zA-s3Z" id="Shd-Hh-c94"/>
                         <outlet property="buttonTakePicture" destination="CJx-zu-Kjj" id="Qu7-82-6gk"/>
                         <outlet property="cameraView" destination="aAZ-uj-fBF" id="wRt-RV-pIm"/>
                         <segue destination="fWL-dc-uT3" kind="show" identifier="segueEditCameraImage" animates="NO" id="itZ-bj-KsU"/>
@@ -75,29 +106,20 @@
                     <view key="view" contentMode="scaleToFill" id="p01-PA-s3J">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jsI-wS-DCv">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="jsI-wS-DCv" firstAttribute="leading" secondItem="p01-PA-s3J" secondAttribute="leading" id="A1X-IS-7SB"/>
-                            <constraint firstItem="vPs-rN-LA8" firstAttribute="top" secondItem="jsI-wS-DCv" secondAttribute="bottom" id="DRl-wh-2i1"/>
-                            <constraint firstAttribute="trailing" secondItem="jsI-wS-DCv" secondAttribute="trailing" id="IFS-po-8Mn"/>
-                            <constraint firstItem="jsI-wS-DCv" firstAttribute="top" secondItem="nJk-Pw-jq2" secondAttribute="bottom" id="twW-xb-Ezl"/>
-                        </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <connections>
-                        <outlet property="imgv" destination="jsI-wS-DCv" id="A1Z-x7-MKi"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yJF-l2-aHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="199" y="807"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Flash" width="39" height="44"/>
+        <image name="ReturnCamera" width="39" height="44"/>
+        <image name="TakePicture" width="54" height="54"/>
+    </resources>
 </document>

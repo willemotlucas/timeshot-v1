@@ -12,14 +12,10 @@ class T_EditCameraImageViewController: UIViewController {
     
     static let screenSize = CGSize(width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
     
-    @IBOutlet weak var imgv: UIImageView!
     var slider: T_Slider!
     var image:UIImage!
     
     override func viewDidLoad() {
-        
-        //        imgv.contentMode = .ScaleAspectFill
-        //        imgv.image = self.image
         
         let slides = T_Slider.slidesWithFilterFromImage(image)
         self.slider = T_Slider(slides: slides, frame: CGRect(origin: CGPointZero, size: T_EditCameraImageViewController.screenSize), target: self)
@@ -31,6 +27,7 @@ class T_EditCameraImageViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self.slider, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self.slider, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self.slider, selector: "keyboardTypeChanged:", name: UIKeyboardDidShowNotification, object: nil)
         
         let btn: UIButton = UIButton(frame: CGRectMake(10, 10, 30, 30))
         btn.backgroundColor = UIColor.greenColor()
@@ -46,8 +43,6 @@ class T_EditCameraImageViewController: UIViewController {
         btn2.layer.zPosition = 20
         self.view.addSubview(btn2)
     }
-    
-    
     
     //MARK: ScreenShot tools
     func screenShotMethod() {
@@ -88,8 +83,7 @@ class T_EditCameraImageViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NSNotificationCenter.defaultCenter().removeObserver(self.slider)
     }
     
 }
