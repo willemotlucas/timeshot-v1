@@ -89,7 +89,7 @@
                                 <action selector="actionBackButton:" destination="uPI-lO-EQn" id="g1L-eM-QH6"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Create Album" id="V9g-EK-2pD">
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="V9g-EK-2pD">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="actionCreateButton:" destination="uPI-lO-EQn" id="mxf-pj-TnE"/>
