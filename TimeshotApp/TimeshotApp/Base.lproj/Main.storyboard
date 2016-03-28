@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S8P-ti-UKe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S8P-ti-UKe">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Home Page View Controller-->
@@ -13,20 +13,20 @@
             </objects>
             <point key="canvasLocation" x="-582" y="41"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Choose Contacts Album Creation View Controller-->
         <scene sceneID="iYn-OX-CdG">
             <objects>
-                <tableViewController id="uPI-lO-EQn" sceneMemberID="viewController">
+                <tableViewController id="uPI-lO-EQn" customClass="T_ChooseContactsAlbumCreationViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="NQF-je-IrD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="EwK-dC-9Si">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EwK-dC-9Si" id="1LC-Ou-HoM">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -36,10 +36,11 @@
                             <outlet property="delegate" destination="uPI-lO-EQn" id="3Ft-Nk-iZC"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="mWp-Oq-cJu"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8Q-P2-Hub" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-564" y="2324"/>
+            <point key="canvasLocation" x="960" y="1607"/>
         </scene>
         <!--Create Album View Controller-->
         <scene sceneID="5ly-RS-PeA">
@@ -59,30 +60,66 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vhl-us-YRJ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Moc-iY-mwf">
+                                <rect key="frame" x="20" y="536" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="Hew-Ri-iRV"/>
+                                    <constraint firstAttribute="height" constant="44" id="VMf-Vx-Ec2"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" image="Cancel"/>
+                                <connections>
+                                    <action selector="actionCancel:" destination="xLi-KZ-wFS" eventType="touchUpInside" id="5aG-Pp-Hdt"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOy-73-VDf">
+                                <rect key="frame" x="536" y="536" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="9vn-5W-UeJ"/>
+                                    <constraint firstAttribute="width" constant="44" id="nI2-11-hfK"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="16" maxY="10"/>
+                                <state key="normal" image="Fleche"/>
+                                <connections>
+                                    <action selector="actionNext:" destination="xLi-KZ-wFS" eventType="touchUpInside" id="5yj-Nr-dZA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Vhl-us-YRJ" firstAttribute="bottom" secondItem="K6V-23-Z5Y" secondAttribute="top" id="9kg-nc-MPR"/>
                             <constraint firstAttribute="trailing" secondItem="Vhl-us-YRJ" secondAttribute="trailing" id="Mpn-jW-Hf3"/>
                             <constraint firstItem="Dot-2V-rU6" firstAttribute="bottom" secondItem="K6V-23-Z5Y" secondAttribute="top" id="N8K-7n-E5x"/>
+                            <constraint firstItem="Moc-iY-mwf" firstAttribute="leading" secondItem="sgt-jO-OYx" secondAttribute="leading" constant="20" id="PbT-kS-Gyi"/>
                             <constraint firstItem="Dot-2V-rU6" firstAttribute="trailing" secondItem="Vhl-us-YRJ" secondAttribute="trailing" id="SST-7M-Rxp"/>
                             <constraint firstItem="Dot-2V-rU6" firstAttribute="top" secondItem="Vhl-us-YRJ" secondAttribute="top" id="Zb8-Ha-eiH"/>
+                            <constraint firstItem="K6V-23-Z5Y" firstAttribute="top" secondItem="NOy-73-VDf" secondAttribute="bottom" constant="20" id="dPd-uH-ete"/>
+                            <constraint firstAttribute="trailing" secondItem="NOy-73-VDf" secondAttribute="trailing" constant="20" id="dqO-lb-wWo"/>
+                            <constraint firstItem="K6V-23-Z5Y" firstAttribute="top" secondItem="Moc-iY-mwf" secondAttribute="bottom" constant="20" id="fef-DO-N1v"/>
+                            <constraint firstAttribute="trailing" secondItem="Moc-iY-mwf" secondAttribute="trailing" constant="20" id="flg-3z-mkj"/>
                             <constraint firstItem="Dot-2V-rU6" firstAttribute="leading" secondItem="Vhl-us-YRJ" secondAttribute="leading" id="hgx-SG-VKh"/>
                             <constraint firstItem="Vhl-us-YRJ" firstAttribute="leading" secondItem="sgt-jO-OYx" secondAttribute="leading" id="liG-1I-hW9"/>
                             <constraint firstItem="Vhl-us-YRJ" firstAttribute="top" secondItem="O5G-bf-dCg" secondAttribute="bottom" id="u87-rD-iK3"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="flg-3z-mkj"/>
+                            </mask>
+                        </variation>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="buttonNext" destination="NOy-73-VDf" id="HhM-hz-k8Y"/>
                         <outlet property="imageView" destination="Dot-2V-rU6" id="BKd-9R-2az"/>
                         <outlet property="scrollView" destination="Vhl-us-YRJ" id="2Ts-0S-9El"/>
+                        <segue destination="0Es-HL-F9I" kind="show" identifier="segueChooseContactsAlbumCreation" animates="NO" id="kTd-RW-Kaq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wb1-em-2et" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-552" y="1611"/>
+            <point key="canvasLocation" x="-552" y="1607"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="5Iw-R3-TSJ">
@@ -149,7 +186,7 @@
                                         <attributedString key="attributedText">
                                             <fragment content="Label">
                                                 <attributes>
-                                                    <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <font key="NSFont" size="15" name="HelveticaNeue"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="19" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
@@ -270,6 +307,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yJF-l2-aHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="199" y="807"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Izn-zO-84R">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Es-HL-F9I" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Hr-cs-9HN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uPI-lO-EQn" kind="relationship" relationship="rootViewController" id="V4r-Lo-sOo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tvR-9L-PHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="148" y="1607"/>
         </scene>
     </scenes>
     <resources>

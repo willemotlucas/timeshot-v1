@@ -81,7 +81,9 @@ class T_CameraViewController: UIViewController {
         self.buttonFlash.layer.zPosition = 1
         self.buttonReturnCamera.layer.zPosition = 1
         
-        setLabelText("Soirées des finaux 2016")
+        if (createAlbum == false) {
+            setLabelText("Soirées des finaux 2016")
+       }
     }
     
     override func viewDidLoad() {

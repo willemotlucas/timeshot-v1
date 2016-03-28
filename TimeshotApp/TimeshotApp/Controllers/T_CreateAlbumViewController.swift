@@ -8,37 +8,133 @@
 
 import UIKit
 
-class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegate {
+class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegate, UIPickerViewDelegate,UIPickerViewDataSource, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var buttonNext: UIButton!
     
     var image:UIImage!
     var isFrontCamera:Bool = true
     var textField:UITextField!
     let textFieldPosition = T_DesignHelper.screenSize.height/2
+    var timePicker:UIPickerView!
+    var timePickerTextField:UITextField!
     
+    private
+    let timeData = [3, 6, 12, 24, 48]
+    
+    
+    //MARK: Outlets Methods
+    @IBAction func actionNext(sender: AnyObject) {
+        self.performSegueWithIdentifier("segueChooseContactsAlbumCreation", sender: nil)
+    }
+    @IBAction func actionCancel(sender: AnyObject) {
+        self.dismissViewControllerAnimated(false, completion: {});
+    }
+    
+    //MARK: - Systems methods
+
     override func viewDidLoad() {
         
         self.scrollView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
         initBackgroundImage()
         initScrollView()
         initTextField()
+        initTimerPicker()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardTypeChanged:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CreateAlbumViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CreateAlbumViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CreateAlbumViewController.keyboardTypeChanged(_:)), name: UIKeyboardDidShowNotification, object: nil)
         
-        // TODO : 
-        // Choisir la durée de l'album
-        // Boutons cancel et next
-        // TableViewController
+        let tap = UITapGestureRecognizer(target: self, action: #selector(T_CreateAlbumViewController.handleTap(_:)))
+        tap.delegate = self
+        self.view.addGestureRecognizer(tap)
+        
+        self.buttonNext.hidden = true
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarHidden=true
+    }
+
+    
+    func handleTap(gestureRecognizer: UITapGestureRecognizer) {
+
+        textField.resignFirstResponder();
+        timePickerTextField.resignFirstResponder();
         
     }
+
     
     override func viewWillDisappear(animated: Bool) {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
+
+    
+    //MARK: TimePicker methods
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
+    {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        return timeData.count
+    }
+
+    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: "\(self.timeData[row]) heures", attributes: [NSForegroundColorAttributeName:UIColor.whiteColor()])
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.timePickerTextField.text = "\(timeData[row])h"
+    }
+    
+    //MARK: Init methods
+    func initTimerPicker()
+    {
+        self.timePickerTextField = UITextField(frame: CGRect(x: T_DesignHelper.screenSize.width/2 - 22, y: T_DesignHelper.screenSize.height - 20 - 44, width: 44, height: 44))
+        self.timePickerTextField.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        self.timePickerTextField.textColor = UIColor.whiteColor()
+        self.timePickerTextField.layer.zPosition = 16
+        self.timePickerTextField.layer.cornerRadius = 22
+        self.timePickerTextField.layer.masksToBounds = true
+        self.timePickerTextField.textAlignment = .Center
+        self.timePickerTextField.text = "\(timeData[0])h"
+        self.view.addSubview(self.timePickerTextField)
+
+        self.timePicker = UIPickerView(frame: CGRect(x: 0, y: T_DesignHelper.screenSize.height - 90, width: T_DesignHelper.screenSize.width, height: 90))
+        self.timePicker.backgroundColor = UIColor.blackColor()
+        self.timePicker.layer.zPosition = 16
+        self.timePicker.delegate = self
+        self.timePicker.dataSource = self
+        self.timePickerTextField.inputView = self.timePicker
+        self.timePicker.showsSelectionIndicator = true
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.BlackTranslucent
+        toolBar.translucent = true
+        toolBar.tintColor = UIColor.whiteColor()
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .Done, target: self, action: #selector(T_CreateAlbumViewController.donePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        
+        toolBar.setItems([spaceButton, doneButton, spaceButton], animated: false)
+        toolBar.userInteractionEnabled = true
+        self.timePickerTextField.inputAccessoryView = toolBar
+    }
+    
+    func donePicker()
+    {
+        self.timePickerTextField.resignFirstResponder();
+    }
+    
     
     func initBackgroundImage()
     {
@@ -82,7 +178,7 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
             attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
         self.textField.font = UIFont.systemFontOfSize(16)
         self.textField.textColor = UIColor.whiteColor()
-        self.textField.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.3)
+        self.textField.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         self.textField.borderStyle = UITextBorderStyle.None
         self.textField.autocorrectionType = UITextAutocorrectionType.No
         self.textField.keyboardType = UIKeyboardType.Default
@@ -99,7 +195,6 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     
     // MARK:- ---> Textfield Delegates
     func textFieldDidBeginEditing(textField: UITextField) {
-        
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
@@ -114,38 +209,76 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     }
     
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        if (self.textField.isFirstResponder() == true) {
+            if (self.textField.text?.isEmpty == true) {
+                print("vide")
+                self.buttonNext.hidden = true
+            }
+            else {
+                print("plein")
+                self.buttonNext.hidden = false
+            }
+        }
         return true;
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let text:NSString = (self.textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
-        let textSize = text.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(16.0)])
         
-        return textSize.width <= ((self.scrollView.frame.size.width) - 20)
+        if (self.textField.isFirstResponder() == true)
+        {
+            let text:NSString = (self.textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
+            let textSize = text.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(16.0)])
+            
+            return textSize.width <= ((self.scrollView.frame.size.width) - 20)
+        }
+        else
+        {
+            return true
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder();
+        if (self.textField.isFirstResponder() == true)
+        {
+            textField.resignFirstResponder();
+        }
         return true;
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.textField.frame.origin.y = self.scrollView.frame.size.height - keyboardSize.height - self.textField.frame.size.height
+        if (self.textField.isFirstResponder() == true)
+        {
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                self.textField.frame.origin.y = self.scrollView.frame.size.height - keyboardSize.height - self.textField.frame.size.height
+            }
+        }
+        else if (self.timePickerTextField.isFirstResponder() == true)
+        {
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                self.timePickerTextField.frame.origin.y = self.scrollView.frame.size.height - keyboardSize.height - self.timePickerTextField.frame.size.height - 20
+            }
         }
     }
     
     func keyboardTypeChanged(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.textField.frame.origin.y = self.scrollView.frame.size.height - keyboardSize.height - self.textField.frame.size.height
+        if (self.textField.isFirstResponder() == true)
+        {
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
+                self.textField.frame.origin.y = self.scrollView.frame.size.height - keyboardSize.height - self.textField.frame.size.height
+            }
         }
     }
     
-    
     func keyboardWillHide(notification: NSNotification) {
-        self.textField.frame.origin.y = textFieldPosition
+        if (self.textField.isFirstResponder() == true)
+        {
+            self.textField.frame.origin.y = textFieldPosition
+        }
+        else if (self.timePickerTextField.isFirstResponder() == true)
+        {
+            self.timePickerTextField.frame.origin.y = T_DesignHelper.screenSize.height - 20 - 44
+        }
     }
-    
     
     
 }
