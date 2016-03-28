@@ -34,7 +34,7 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     }
     
     //MARK: - Systems methods
-
+    
     override func viewDidLoad() {
         
         self.scrollView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
@@ -50,8 +50,6 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
         let tap = UITapGestureRecognizer(target: self, action: #selector(T_CreateAlbumViewController.handleTap(_:)))
         tap.delegate = self
         self.view.addGestureRecognizer(tap)
-        
-        self.buttonNext.hidden = true
     }
     
     override func prefersStatusBarHidden() -> Bool {
