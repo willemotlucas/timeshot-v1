@@ -13,7 +13,7 @@
             </objects>
             <point key="canvasLocation" x="-582" y="41"/>
         </scene>
-        <!--Choose Contacts Album Creation View Controller-->
+        <!--Ajouter des amis-->
         <scene sceneID="iYn-OX-CdG">
             <objects>
                 <tableViewController id="uPI-lO-EQn" customClass="T_ChooseContactsAlbumCreationViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -36,7 +36,17 @@
                             <outlet property="delegate" destination="uPI-lO-EQn" id="3Ft-Nk-iZC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="mWp-Oq-cJu"/>
+                    <navigationItem key="navigationItem" title="Ajouter des amis" id="mWp-Oq-cJu">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="woq-cl-cSY">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="actionBackButton:" destination="uPI-lO-EQn" id="g1L-eM-QH6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="backButton" destination="woq-cl-cSY" id="sNN-fy-Qxl"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8Q-P2-Hub" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

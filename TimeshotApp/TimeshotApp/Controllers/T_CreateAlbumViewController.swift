@@ -211,11 +211,9 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
         if (self.textField.isFirstResponder() == true) {
             if (self.textField.text?.isEmpty == true) {
-                print("vide")
                 self.buttonNext.hidden = true
             }
             else {
-                print("plein")
                 self.buttonNext.hidden = false
             }
         }
@@ -251,6 +249,9 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
             if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
                 self.textField.frame.origin.y = self.scrollView.frame.size.height - keyboardSize.height - self.textField.frame.size.height
             }
+            
+            // If the user change from the TimePickerTextField Keyboard directly to the textField Keyboard, we have to replace the origin position of TimePickerTextField :
+            resetOriginTimePickerTextField()
         }
         else if (self.timePickerTextField.isFirstResponder() == true)
         {
@@ -276,9 +277,13 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
         }
         else if (self.timePickerTextField.isFirstResponder() == true)
         {
-            self.timePickerTextField.frame.origin.y = T_DesignHelper.screenSize.height - 20 - 44
+            resetOriginTimePickerTextField()
         }
     }
     
+    func resetOriginTimePickerTextField()
+    {
+        self.timePickerTextField.frame.origin.y = T_DesignHelper.screenSize.height - 20 - 44
+    }
     
 }
