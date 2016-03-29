@@ -28,6 +28,9 @@ class T_CameraViewController: UIViewController {
     @IBOutlet weak var buttonReturnCamera: UIButton!
     @IBOutlet weak var buttonFlash: UIButton!
     
+    @IBOutlet weak var buttonAlbumVC: UIButton!
+    
+    @IBOutlet weak var buttonProfileVC: UIButton!
     
     @IBAction func actionTakePicture(sender: AnyObject) {
         
@@ -80,6 +83,9 @@ class T_CameraViewController: UIViewController {
         self.buttonTakePicture.layer.zPosition = 1
         self.buttonFlash.layer.zPosition = 1
         self.buttonReturnCamera.layer.zPosition = 1
+        
+        self.buttonAlbumVC.layer.zPosition = 10
+        self.buttonProfileVC.layer.zPosition = 10
         
         if (createAlbum == false) {
             setLabelText("Soirées des finaux 2016")

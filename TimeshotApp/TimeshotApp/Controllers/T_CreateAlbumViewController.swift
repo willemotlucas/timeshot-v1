@@ -86,7 +86,7 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     }
 
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return NSAttributedString(string: "\(self.timeData[row]) heures", attributes: [NSForegroundColorAttributeName:UIColor.whiteColor()])
+        return NSAttributedString(string: "\(self.timeData[row]) hours", attributes: [NSForegroundColorAttributeName:UIColor.whiteColor()])
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
