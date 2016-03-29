@@ -14,13 +14,6 @@ class T_AddFriendToAlbumTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var picture: UIImageView!
     
-    var friendSelected:Bool = false
-    
-    func changeStateFriendSelected()
-    {
-        self.friendSelected = !self.friendSelected
-    }
-    
     func setProfilPicture(picture: UIImage) {
         self.picture.image = picture
         self.picture.layer.cornerRadius = 20

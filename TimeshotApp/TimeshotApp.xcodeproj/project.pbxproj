@@ -27,7 +27,7 @@
 		7DD0F9B51C9EA0FB00A856B9 /* mariage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B11C9EA0FB00A856B9 /* mariage.jpg */; };
 		7DD0F9B61C9EA0FB00A856B9 /* soiree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */; };
 		7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */; };
-		B46B2B751C9ABAC500135920 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B741C9ABAC500135920 /* Profile.storyboard */; };
+		B45977071CAAE7CA00D57BED /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B741C9ABAC500135920 /* Profile.storyboard */; };
 		B46B2B771C9ABADA00135920 /* Album.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B761C9ABADA00135920 /* Album.storyboard */; };
 		B46B2B7D1C9ABB0400135920 /* T_HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B7C1C9ABB0400135920 /* T_HomePageViewController.swift */; };
 		B46B2B7F1C9ABB1200135920 /* T_CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B7E1C9ABB1200135920 /* T_CameraViewController.swift */; };
@@ -39,6 +39,7 @@
 		B4D9BDAA1CA4885100B28C52 /* T_String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D9BDA91CA4885100B28C52 /* T_String+Extension.swift */; };
 		B4D9BDAC1CA48E0200B28C52 /* T_CreateAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D9BDAB1CA48E0200B28C52 /* T_CreateAlbumViewController.swift */; };
 		B4ED0F931CA96DB70036D019 /* T_ChooseContactsAlbumCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ED0F921CA96DB70036D019 /* T_ChooseContactsAlbumCreationViewController.swift */; };
+		B4FF35D31CAB16EE00932B15 /* T_FriendAddedToAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FF35D21CAB16EE00932B15 /* T_FriendAddedToAlbum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		B4D9BDA91CA4885100B28C52 /* T_String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "T_String+Extension.swift"; sourceTree = "<group>"; };
 		B4D9BDAB1CA48E0200B28C52 /* T_CreateAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_CreateAlbumViewController.swift; sourceTree = "<group>"; };
 		B4ED0F921CA96DB70036D019 /* T_ChooseContactsAlbumCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ChooseContactsAlbumCreationViewController.swift; sourceTree = "<group>"; };
+		B4FF35D21CAB16EE00932B15 /* T_FriendAddedToAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendAddedToAlbum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 			children = (
 				B4C14BB81CA3DF2000413A1F /* T_Slider.swift */,
 				B4C14BBA1CA3DF5000413A1F /* T_Filter.swift */,
+				B4FF35D21CAB16EE00932B15 /* T_FriendAddedToAlbum.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -292,11 +295,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B46B2B751C9ABAC500135920 /* Profile.storyboard in Resources */,
+				B45977071CAAE7CA00D57BED /* Profile.storyboard in Resources */,
 				7D8699291C8F4A9D003BC1DC /* LaunchScreen.storyboard in Resources */,
 				7DD0F9B61C9EA0FB00A856B9 /* soiree.jpg in Resources */,
 				7DD0F9B41C9EA0FB00A856B9 /* festival.jpg in Resources */,
-				B46B2B751C9ABAC500135920 /* Profile.storyboard in Resources */,
 				7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */,
 				7D8699291C8F4A9D003BC1DC /* LaunchScreen.storyboard in Resources */,
 				7DD0F9B51C9EA0FB00A856B9 /* mariage.jpg in Resources */,
@@ -367,6 +369,7 @@
 				7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */,
 				B475A9401CA99EEE0028786F /* T_AddFriendToAlbumTableViewCell.swift in Sources */,
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
+				B4FF35D31CAB16EE00932B15 /* T_FriendAddedToAlbum.swift in Sources */,
 				5DB5A00D1CA1905200AADC9F /* T_DesignHelper.swift in Sources */,
 				B4D9BDAC1CA48E0200B28C52 /* T_CreateAlbumViewController.swift in Sources */,
 				5DB5A02F1CA1C8D400AADC9F /* T_SearchUserViewController.swift in Sources */,
