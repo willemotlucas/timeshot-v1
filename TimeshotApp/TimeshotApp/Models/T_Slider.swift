@@ -11,7 +11,7 @@ import UIKit
 class T_Slider: NSObject, UITextFieldDelegate {
     
     //MARK: Properties
-    var target: T_EditCameraImageViewController!
+    unowned var target: T_EditCameraImageViewController
     var slides:[T_Filter]!
     var frame: CGRect?
     var swipeThreshold:CGFloat = 500
@@ -93,17 +93,30 @@ class T_Slider: NSObject, UITextFieldDelegate {
     
     //MARK: Constructor
     init(slides: [T_Filter], frame: CGRect, target: T_EditCameraImageViewController) {
-        super.init()
-        
         // At least 2 T_Filter or crash
         self.frame = frame
         self.slides = slides
         self.target = target
         self.textField = UITextField(frame: CGRectMake(0, 100, self.frame!.width, 40))
         self.textField.hidden = true
+        
+        super.init()
+        self.initTextField()
+
+    }
+
+    init(image: UIImage, isFrontCamera: Bool, frame: CGRect, target: T_EditCameraImageViewController) {
+        
+        self.frame = frame
+        self.slides = T_Slider.slidesWithFilterFromImage(image, isFrontCamera: isFrontCamera)
+        self.target = target
+        self.textField = UITextField(frame: CGRectMake(0, 100, self.frame!.width, 40))
+        self.textField.hidden = true
+
+        super.init()
         self.initTextField()
     }
-    
+
     deinit
     {
 

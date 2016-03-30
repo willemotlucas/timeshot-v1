@@ -28,8 +28,7 @@ class T_EditCameraImageViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        let slides = T_Slider.slidesWithFilterFromImage(image, isFrontCamera: isFrontCamera)
-        self.slider = T_Slider(slides: slides, frame: CGRect(origin: CGPointZero, size: T_DesignHelper.screenSize), target: self)
+        self.slider = T_Slider(image: image, isFrontCamera: isFrontCamera, frame: CGRect(origin: CGPointZero, size: T_DesignHelper.screenSize), target: self)
         self.slider.show()
         
         let recognizer = UIPanGestureRecognizer(target: self.slider, action: Selector("handleDragging:"))
