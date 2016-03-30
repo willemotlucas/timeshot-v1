@@ -49,11 +49,11 @@ class T_Slider: NSObject, UITextFieldDelegate {
                 
                 if (isFrontCamera)
                 {
-                    slides.append(T_Filter(frame: CGRect(origin: CGPointZero, size: T_EditCameraImageViewController.screenSize), image: T_DesignHelper.flipH(image)))
+                    slides.append(T_Filter(frame: CGRect(origin: CGPointZero, size: T_DesignHelper.screenSize), image: T_DesignHelper.flipH(image)))
                 }
                 else
                 {
-                    slides.append(T_Filter(frame: CGRect(origin: CGPointZero, size: T_EditCameraImageViewController.screenSize), image: image))
+                    slides.append(T_Filter(frame: CGRect(origin: CGPointZero, size: T_DesignHelper.screenSize), image: image))
                 }
             }
             else
@@ -83,7 +83,7 @@ class T_Slider: NSObject, UITextFieldDelegate {
                 }
                 
                 // 7 - set filtered image to array
-                slides.append(T_Filter(frame: CGRect(origin: CGPointZero, size: T_EditCameraImageViewController.screenSize), image: filteredImage))
+                slides.append(T_Filter(frame: CGRect(origin: CGPointZero, size: T_DesignHelper.screenSize), image: filteredImage))
             }
         }
         
@@ -102,6 +102,11 @@ class T_Slider: NSObject, UITextFieldDelegate {
         self.textField = UITextField(frame: CGRectMake(0, 100, self.frame!.width, 40))
         self.textField.hidden = true
         self.initTextField()
+    }
+    
+    deinit
+    {
+
     }
     
     //MARK: Init Methods

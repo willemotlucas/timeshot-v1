@@ -14,7 +14,7 @@ class T_CameraViewController: UIViewController {
     let cameraManager = CameraManager()
     var image:UIImage?
     
-    let createAlbum:Bool = true
+    let createAlbum:Bool = false
     
     private
     var isFlashActivated:Bool = false
@@ -110,9 +110,9 @@ class T_CameraViewController: UIViewController {
         let finalText = "    \(text.trunc(30))"
         let textSize = finalText.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(15.0)])
         self.albumTitle.frame.size.width = 55 + textSize.width
-        self.albumTitle.frame.origin = CGPoint(x: T_EditCameraImageViewController.screenSize.width/2 - self.albumTitle.frame.size.width/2, y: self.albumTitle.frame.origin.y)
+        self.albumTitle.frame.origin = CGPoint(x: T_DesignHelper.screenSize.width/2 - self.albumTitle.frame.size.width/2, y: self.albumTitle.frame.origin.y)
         
-        self.albumImage.frame.origin = CGPoint(x: T_EditCameraImageViewController.screenSize.width/2 + self.albumTitle.frame.size.width/2 - 40, y: self.albumImage.frame.origin.y)
+        self.albumImage.frame.origin = CGPoint(x: T_DesignHelper.screenSize.width/2 + self.albumTitle.frame.size.width/2 - 40, y: self.albumImage.frame.origin.y)
         
         self.albumTitle.layer.zPosition = 1
         self.albumTitle.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.7)

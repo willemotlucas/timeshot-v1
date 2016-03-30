@@ -10,8 +10,6 @@ import UIKit
 
 class T_EditCameraImageViewController: UIViewController {
     
-    static let screenSize = CGSize(width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
-    
     var slider: T_Slider!
     var image:UIImage!
     var isFrontCamera:Bool!
@@ -21,6 +19,7 @@ class T_EditCameraImageViewController: UIViewController {
     
     @IBAction func actionNext(sender: AnyObject) {
         screenShotMethod()
+        self.dismissViewControllerAnimated(false, completion: {});
     }
     
     @IBAction func actionCancel(sender: AnyObject) {
@@ -30,20 +29,25 @@ class T_EditCameraImageViewController: UIViewController {
     override func viewDidLoad() {
         
         let slides = T_Slider.slidesWithFilterFromImage(image, isFrontCamera: isFrontCamera)
-        self.slider = T_Slider(slides: slides, frame: CGRect(origin: CGPointZero, size: T_EditCameraImageViewController.screenSize), target: self)
+        self.slider = T_Slider(slides: slides, frame: CGRect(origin: CGPointZero, size: T_DesignHelper.screenSize), target: self)
         self.slider.show()
         
         let recognizer = UIPanGestureRecognizer(target: self.slider, action: Selector("handleDragging:"))
         self.view.userInteractionEnabled = true
         self.view.addGestureRecognizer(recognizer)
         
-        NSNotificationCenter.defaultCenter().addObserver(self.slider, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self.slider, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self.slider, selector: "keyboardTypeChanged:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self.slider, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self.slider, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self.slider, selector: Selector("keyboardTypeChanged:"), name: UIKeyboardDidShowNotification, object: nil)
         
         self.buttonCancel.layer.zPosition = 20
         self.buttonNext.layer.zPosition = 20
         
+    }
+    
+    deinit
+    {
+        print("Edit VC")
     }
     
     //MARK: ScreenShot tools

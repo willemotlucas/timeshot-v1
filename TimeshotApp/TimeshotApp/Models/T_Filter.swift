@@ -29,6 +29,11 @@ class T_Filter: UIImageView {
         self.image = image
     }
     
+    deinit
+    {
+        print("deinit filter")
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

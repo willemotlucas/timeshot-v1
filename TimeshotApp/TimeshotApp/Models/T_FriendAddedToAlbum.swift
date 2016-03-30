@@ -30,6 +30,11 @@ class T_FriendAddedToAlbum: Equatable {
         T_FriendAddedToAlbum.count += 1
     }
     
+    deinit
+    {
+//        print("T_FriendAddedToAlbum : \(name)")
+    }
+    
     func changeStateFriendSelected()
     {
         if(self.selected)

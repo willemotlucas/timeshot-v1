@@ -20,4 +20,9 @@ class T_AddFriendToAlbumTableViewCell: UITableViewCell {
         self.picture.layer.masksToBounds = true
         self.picture.contentMode = .ScaleAspectFill
     }
+    
+    deinit
+    {
+//        print("Cells")
+    }
 }

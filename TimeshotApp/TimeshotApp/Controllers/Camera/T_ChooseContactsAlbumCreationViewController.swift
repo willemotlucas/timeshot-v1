@@ -22,7 +22,7 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
     
     let friends = ["Laurie Boulanger", "Antoine Jeannot", "Valentin Paul", "Lucas Willemot", "Karim Lamouri", "Antoine Chwatacz", "Clément Dubois", "Alexandre Delarouzée", "Théo Hordequin", "Florian Cartier", "Thibaut Sannier", "Tanguy Lucci", "Romain Marlot", "Pauline Bento", "Pauline Burg", "Théo Bastoul", "Laurène Gigandet"]
     
-    var friendCells:[T_FriendAddedToAlbum] = []
+    var friendCells:[T_FriendAddedToAlbum]! = []
     
     //MARK: Outlets methods
     
@@ -72,6 +72,14 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
         for i in 0..<friends.count {
             self.friendCells.append(T_FriendAddedToAlbum(n: friends[i], p: UIImage(named: "SelfySample")!))
         }
+    }
+    
+    deinit
+    {
+        self.friendCells.removeAll()
+        T_FriendAddedToAlbum.selectedFriends.removeAll()
+        T_FriendAddedToAlbum.selectedFriends = []
+//        print("chose deinit")
     }
 
     //MARK: - TableView Datasource and Delegate

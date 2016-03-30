@@ -52,6 +52,11 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
         self.view.addGestureRecognizer(tap)
     }
     
+    deinit
+    {
+
+    }
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }

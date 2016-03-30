@@ -192,9 +192,9 @@
 			isa = PBXGroup;
 			children = (
 				B43C0E8B1CABF4E900EF51E9 /* T_CameraViewController.swift */,
-				B43C0E8C1CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift */,
-				B43C0E8D1CABF4E900EF51E9 /* T_CreateAlbumViewController.swift */,
 				B43C0E8E1CABF4E900EF51E9 /* T_EditCameraImageViewController.swift */,
+				B43C0E8D1CABF4E900EF51E9 /* T_CreateAlbumViewController.swift */,
+				B43C0E8C1CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift */,
 				B43C0E891CABF48300EF51E9 /* T_AddFriendToAlbumTableViewCell.swift */,
 			);
 			path = Camera;
