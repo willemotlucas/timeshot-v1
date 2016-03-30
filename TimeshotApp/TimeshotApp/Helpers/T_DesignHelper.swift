@@ -14,16 +14,18 @@ class T_DesignHelper {
     static let orangeClair = UIColor.init(colorLiteralRed: 243.0/255.0, green: 199.0/255.0, blue: 161.0/255.0, alpha: 1.0).CGColor
     static let orangeFonce = UIColor.init(colorLiteralRed: 232.0/255.0, green: 121.0/255.0, blue: 117.0/255.0, alpha: 1.0).CGColor
     static let screenSize = CGSize(width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
-    
+    static let startPoint:CGFloat = 0.2
+    static let endPoint:CGFloat = 0.8
+
     // MARK: Methods
     static func colorNavBar(navbar: UINavigationBar){
         let layer = CAGradientLayer()
         layer.frame = navbar.bounds
         layer.frame.size.height += 20
-        
+
         layer.colors = [orangeFonce,orangeClair]
-        layer.startPoint = CGPointMake(0.2, 0.0)
-        layer.endPoint = CGPointMake(0.8, 0.0)
+        layer.startPoint = CGPointMake(startPoint, 0.0)
+        layer.endPoint = CGPointMake(endPoint, 0.0)
         
         UIGraphicsBeginImageContext(layer.bounds.size)
         layer.renderInContext(UIGraphicsGetCurrentContext()!)
@@ -38,10 +40,11 @@ class T_DesignHelper {
     static func colorUIView(view: UIView){
         let gradient = CAGradientLayer()
         gradient.frame = view.bounds
+        let scale = screenSize.width/gradient.frame.width
         
         gradient.colors = [orangeFonce,orangeClair]
-        gradient.startPoint = CGPointMake(0.1, 0.0)
-        gradient.endPoint = CGPointMake(0.42, 0.0)
+        gradient.startPoint = CGPointMake(startPoint * scale, 0.0)
+        gradient.endPoint = CGPointMake(endPoint * scale, 0.0)
         
         UIGraphicsBeginImageContext(gradient.bounds.size)
         gradient.renderInContext(UIGraphicsGetCurrentContext()!)

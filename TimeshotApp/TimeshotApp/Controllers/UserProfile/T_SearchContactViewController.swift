@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class T_SearchContactViewController: UIViewController {
     
@@ -15,10 +16,11 @@ class T_SearchContactViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     // MARK: Properties
-    var contacts = T_ContactsHelper.getAllContacts().sort()
-    var filteredContacts = [String]()
-    var sectionHeaderTitles = [String]()
+    var contactsWithNumbers = T_ContactsHelper.getAllContacts()
     var contactsWithSection = [String:[String]]()
+    var sectionHeaderTitles = [String]()
+    var contacts = [String]()
+    var filteredContacts = [String]()
 
     // MARK: Override functions
     override func viewDidLoad() {
@@ -26,6 +28,7 @@ class T_SearchContactViewController: UIViewController {
         
         T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
         
+        contacts = Array(contactsWithNumbers.keys).sort()
         filteredContacts = contacts
         self.updateTableViewSections(self.filteredContacts)
         
@@ -61,10 +64,33 @@ class T_SearchContactViewController: UIViewController {
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func sendSMS(sender: UIButton) {
+        let button = sender as! T_SendMessageUIButton
+        let phoneNumber = button.telNumber.stringByReplacingOccurrencesOfString(" ", withString: "")
+        
+        let messageVC = MFMessageComposeViewController()
+        messageVC.body = "I discovered a new awesome app! Download it on http://timeshot.co :)";
+        messageVC.recipients = [phoneNumber]
+        messageVC.messageComposeDelegate = self;
+        self.presentViewController(messageVC, animated: false, completion: nil)
+    }
 }
 
 extension T_SearchContactViewController: UITableViewDelegate {
     
+}
+
+extension T_SearchContactViewController: MFMessageComposeViewControllerDelegate {
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+        if result.rawValue == MessageComposeResultCancelled.rawValue {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        } else if result.rawValue == MessageComposeResultFailed.rawValue {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        } else if result.rawValue == MessageComposeResultSent.rawValue {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
 }
 
 extension T_SearchContactViewController: UITableViewDataSource {
@@ -84,13 +110,17 @@ extension T_SearchContactViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCellWithIdentifier("T_ContactTableViewCell") as! T_ContactTableViewCell
         
         let key = sectionHeaderTitles[indexPath.section]
         let values = contactsWithSection[key]
         let name = values![indexPath.row]
+        let phoneNumber = contactsWithNumbers[name]
         
-        cell.textLabel?.text = name
+        let button = cell.sendSMSButton as! T_SendMessageUIButton
+        button.telNumber = phoneNumber!
+        cell.contactNameLabel.text = name
+        cell.contactTelephoneLabel.text = phoneNumber
         
         return cell
     }
