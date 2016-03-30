@@ -69,7 +69,7 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
         self.friendAddedLabel.textAlignment = .Left
         self.friendAddedItem.customView = self.friendAddedLabel
         
-        for var i in 0..<friends.count {
+        for i in 0..<friends.count {
             self.friendCells.append(T_FriendAddedToAlbum(n: friends[i], p: UIImage(named: "SelfySample")!))
         }
     }

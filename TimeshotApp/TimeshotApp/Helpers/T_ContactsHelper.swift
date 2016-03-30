@@ -52,7 +52,7 @@ class T_ContactsHelper {
         let contactsRef: NSArray = ABAddressBookCopyArrayOfAllPeople(T_ContactsHelper.addressBookRef).takeRetainedValue()
         for contactRef:ABRecordRef in contactsRef {
             // first name
-            if let firstName = ABRecordCopyValue(contactRef, kABPersonFirstNameProperty).takeRetainedValue() as? NSString {
+            if let firstName = ABRecordCopyValue(contactRef, kABPersonFirstNameProperty)?.takeRetainedValue() as? NSString {
                 if let lastNameRef = ABRecordCopyValue(contactRef, kABPersonLastNameProperty) {
                     let lastName = lastNameRef.takeRetainedValue() as? NSString
                     let fullName = (firstName as String) + " " + (lastName as! String)
