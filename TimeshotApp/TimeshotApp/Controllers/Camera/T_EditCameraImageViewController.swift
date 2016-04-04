@@ -10,13 +10,16 @@ import UIKit
 
 class T_EditCameraImageViewController: UIViewController {
     
+    //MARK: Properties
     var slider: T_Slider!
     var image:UIImage!
     var isFrontCamera:Bool!
     
+    //MARK: Outlets properties
     @IBOutlet weak var buttonNext: UIButton!
     @IBOutlet weak var buttonCancel: UIButton!
     
+    //MARK: Outlets actions
     @IBAction func actionNext(sender: AnyObject) {
         screenShotMethod()
         self.dismissViewControllerAnimated(false, completion: {});
@@ -26,26 +29,41 @@ class T_EditCameraImageViewController: UIViewController {
         self.dismissViewControllerAnimated(false, completion: {});
     }
     
+    //MARK: System methods
     override func viewDidLoad() {
         
+        // Init and show the slider, composed by filters created from the image
         self.slider = T_Slider(image: image, isFrontCamera: isFrontCamera, frame: CGRect(origin: CGPointZero, size: T_DesignHelper.screenSize), target: self)
         self.slider.show()
         
-        let recognizer = UIPanGestureRecognizer(target: self.slider, action: Selector("handleDragging:"))
+        // Init the gesture recognizer to detect swipe / finger movements on the screen
+        let recognizer = UIPanGestureRecognizer(target: self.slider, action: #selector(T_Slider.handleDragging(_:)))
         self.view.userInteractionEnabled = true
         self.view.addGestureRecognizer(recognizer)
         
-        NSNotificationCenter.defaultCenter().addObserver(self.slider, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self.slider, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self.slider, selector: Selector("keyboardTypeChanged:"), name: UIKeyboardDidShowNotification, object: nil)
-        
+        // Init keyboard observer to manage correctly the keyboard behaviour
+        NSNotificationCenter.defaultCenter().addObserver(self.slider.textField, selector: #selector(T_SnapTextField.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self.slider.textField, selector: #selector(T_SnapTextField.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self.slider.textField, selector: #selector(T_SnapTextField.keyboardTypeChanged(_:)), name: UIKeyboardDidShowNotification, object: nil)
+
+        // Update button's zPosition to put them over the slider
         self.buttonCancel.layer.zPosition = 20
         self.buttonNext.layer.zPosition = 20
-        
     }
     
-    deinit
-    {
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarHidden=true
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self.slider)
+    }
+    
+    deinit {
         print("Edit VC")
     }
     
@@ -60,7 +78,7 @@ class T_EditCameraImageViewController: UIViewController {
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
     }
     
-    //MARK: - Touch EvenT_
+    //MARK: - Touch Events
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.slider.touchesBegan((touches.first?.locationInView(self.view))!)
     }
@@ -68,18 +86,4 @@ class T_EditCameraImageViewController: UIViewController {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.slider.touchesEndedWithUpdate((touches.first?.locationInView(self.view))!)
     }
-    
-    //MARK: - Systems methods
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        UIApplication.sharedApplication().statusBarHidden=true
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().removeObserver(self.slider)
-    }
-    
 }

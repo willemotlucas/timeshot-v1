@@ -14,7 +14,7 @@ class T_CameraViewController: UIViewController {
     let cameraManager = CameraManager()
     var image:UIImage?
     
-    let createAlbum:Bool = false
+    let createAlbum:Bool = true
     
     private
     var isFlashActivated:Bool = false

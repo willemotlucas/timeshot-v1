@@ -37,6 +37,9 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
         {
             print("   - \(friend.name)")
         }
+        
+        
+        
         self.presentingViewController?.presentingViewController!.dismissViewControllerAnimated(false, completion: {})
     }
     
@@ -108,6 +111,18 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
         return cell
     }
     
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let contactCell = cell as! T_AddFriendToAlbumTableViewCell
+        
+        if (friendCells[indexPath.row].isSelected()) {
+            selectFriendDesign(contactCell)
+        }
+        else {
+            unselectFriendDesign(contactCell)
+        }
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! T_AddFriendToAlbumTableViewCell
@@ -128,6 +143,7 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
         return 50
     }
     
+    //MARK: Methods for designing cells
     func selectFriendDesign(cell: T_AddFriendToAlbumTableViewCell)
     {
         cell.checkbox.image = UIImage(named: "checkbox-active")
@@ -144,7 +160,7 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
 
     func updateLabel()
     {
-        if (T_FriendAddedToAlbum.nbSelected == 0) {
+        if (T_FriendAddedToAlbum.selectedFriends.count == 0) {
             self.friendAddedLabel.text = "Select some friends to start !"
             self.friendAddedLabel.sizeToFit()
             if (self.bottomBar.items?.indexOf(self.createButton) != nil)
@@ -153,13 +169,13 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
             }
         }
         else {
-            if (T_FriendAddedToAlbum.nbSelected == 1)
+            if (T_FriendAddedToAlbum.selectedFriends.count == 1)
             {
-                self.friendAddedLabel.text = "\(T_FriendAddedToAlbum.nbSelected) friend selected"
+                self.friendAddedLabel.text = "\(T_FriendAddedToAlbum.selectedFriends.count) friend selected"
             }
             else
             {
-                self.friendAddedLabel.text = "\(T_FriendAddedToAlbum.nbSelected) friends selected"
+                self.friendAddedLabel.text = "\(T_FriendAddedToAlbum.selectedFriends.count) friends selected"
             }
             self.friendAddedLabel.sizeToFit()
             
