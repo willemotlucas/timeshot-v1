@@ -20,6 +20,7 @@ class T_FriendsAlbumLiveViewController: UIViewController {
         tableView.dataSource = self
         T_DesignHelper.colorUIView(addFriendsButtonView)
         // Do any additional setup after loading the view.
+        //TODO Load Parse Friends
     }
     
     override func didReceiveMemoryWarning() {
@@ -27,19 +28,15 @@ class T_FriendsAlbumLiveViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Navigation
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    @IBAction func addFriend(sender: UIButton) {
-        
+    @IBAction func unwindToFriendsAlbumLive(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.sourceViewController as? T_AddFriendAlbumLiveViewController {
+            let addedFriend = sourceViewController.selected
+            friends += addedFriend
+            //TODO Refresh view
+            
+        }
     }
 }
 
@@ -57,9 +54,9 @@ extension T_FriendsAlbumLiveViewController : UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCellWithIdentifier("T_FriendTableViewCell", forIndexPath: indexPath) as! T_FriendTableViewCell
-            cell.friendNameLabel.text = friends[indexPath.row]
-            return cell
+        let cell = tableView.dequeueReusableCellWithIdentifier("T_FriendTableViewCell", forIndexPath: indexPath) as! T_FriendTableViewCell
+        cell.friendNameLabel.text = friends[indexPath.row]
+        return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

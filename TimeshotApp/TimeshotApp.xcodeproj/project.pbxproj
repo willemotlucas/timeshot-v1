@@ -29,6 +29,8 @@
 		7DD0F9B51C9EA0FB00A856B9 /* mariage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B11C9EA0FB00A856B9 /* mariage.jpg */; };
 		7DD0F9B61C9EA0FB00A856B9 /* soiree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */; };
 		7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */; };
+		8A516C9A1CAD65ED001885D9 /* T_AddFriendAlbumLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A516C991CAD65ED001885D9 /* T_AddFriendAlbumLiveViewController.swift */; };
+		8A61C3F91CADA4A50053DC52 /* T_AddFriendAlbumLiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61C3F81CADA4A50053DC52 /* T_AddFriendAlbumLiveTableViewCell.swift */; };
 		8A6916B91CAD174B0020CEF1 /* T_AlbumLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6916B81CAD174B0020CEF1 /* T_AlbumLiveViewController.swift */; };
 		8A6916BB1CAD282A0020CEF1 /* T_PhotosAlbumLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6916BA1CAD282A0020CEF1 /* T_PhotosAlbumLiveViewController.swift */; };
 		8A6916BD1CAD28430020CEF1 /* T_FriendsAlbumLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6916BC1CAD28430020CEF1 /* T_FriendsAlbumLiveViewController.swift */; };
@@ -74,6 +76,8 @@
 		7DD0F9B11C9EA0FB00A856B9 /* mariage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mariage.jpg; sourceTree = "<group>"; };
 		7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = soiree.jpg; sourceTree = "<group>"; };
 		7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = voyage.jpg; sourceTree = "<group>"; };
+		8A516C991CAD65ED001885D9 /* T_AddFriendAlbumLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AddFriendAlbumLiveViewController.swift; sourceTree = "<group>"; };
+		8A61C3F81CADA4A50053DC52 /* T_AddFriendAlbumLiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AddFriendAlbumLiveTableViewCell.swift; sourceTree = "<group>"; };
 		8A6916B81CAD174B0020CEF1 /* T_AlbumLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumLiveViewController.swift; sourceTree = "<group>"; };
 		8A6916BA1CAD282A0020CEF1 /* T_PhotosAlbumLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PhotosAlbumLiveViewController.swift; sourceTree = "<group>"; };
 		8A6916BC1CAD28430020CEF1 /* T_FriendsAlbumLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendsAlbumLiveViewController.swift; sourceTree = "<group>"; };
@@ -175,11 +179,13 @@
 		7DD0F9AA1C9DC68D00A856B9 /* Album */ = {
 			isa = PBXGroup;
 			children = (
+				8A61C3F71CADA47F0053DC52 /* CustomTableViewCell */,
 				7DD0F9AB1C9DC6BE00A856B9 /* T_AlbumLiveTableViewCell.swift */,
 				7DD0F9AD1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift */,
 				8A6916B81CAD174B0020CEF1 /* T_AlbumLiveViewController.swift */,
 				8A6916BA1CAD282A0020CEF1 /* T_PhotosAlbumLiveViewController.swift */,
 				8A6916BC1CAD28430020CEF1 /* T_FriendsAlbumLiveViewController.swift */,
+				8A516C991CAD65ED001885D9 /* T_AddFriendAlbumLiveViewController.swift */,
 			);
 			path = Album;
 			sourceTree = "<group>";
@@ -201,6 +207,14 @@
 				4F9E238D3F9C0AE128133098 /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8A61C3F71CADA47F0053DC52 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8A61C3F81CADA4A50053DC52 /* T_AddFriendAlbumLiveTableViewCell.swift */,
+			);
+			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 		B43C0E881CABF43D00EF51E9 /* Camera */ = {
@@ -291,7 +305,7 @@
 				TargetAttributes = {
 					7D86991A1C8F4A9D003BC1DC = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = VH6T8695X3;
+						DevelopmentTeam = 6T9PST97YR;
 					};
 				};
 			};
@@ -394,10 +408,12 @@
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
 				B4FF35D31CAB16EE00932B15 /* T_FriendAddedToAlbum.swift in Sources */,
 				5DB5A00D1CA1905200AADC9F /* T_DesignHelper.swift in Sources */,
+				8A61C3F91CADA4A50053DC52 /* T_AddFriendAlbumLiveTableViewCell.swift in Sources */,
 				5DB5A02F1CA1C8D400AADC9F /* T_SearchUserViewController.swift in Sources */,
 				5DB5A0291CA1AD1000AADC9F /* T_ProfileEditionViewController.swift in Sources */,
 				8A6916BB1CAD282A0020CEF1 /* T_PhotosAlbumLiveViewController.swift in Sources */,
 				B43C0E8F1CABF4E900EF51E9 /* T_CameraViewController.swift in Sources */,
+				8A516C9A1CAD65ED001885D9 /* T_AddFriendAlbumLiveViewController.swift in Sources */,
 				B4C14BB91CA3DF2000413A1F /* T_Slider.swift in Sources */,
 				5DB5A02A1CA1AD1000AADC9F /* T_ProfileViewController.swift in Sources */,
 				5DB5A0271CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift in Sources */,
@@ -531,7 +547,7 @@
 				INFOPLIST_FILE = TimeshotApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Paul.TimeshotApp-2";
+				PRODUCT_BUNDLE_IDENTIFIER = me.lamouri.Timeshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -547,7 +563,7 @@
 				INFOPLIST_FILE = TimeshotApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Paul.TimeshotApp-2";
+				PRODUCT_BUNDLE_IDENTIFIER = me.lamouri.Timeshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

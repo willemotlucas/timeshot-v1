@@ -48,6 +48,18 @@ class T_AlbumViewController: UIViewController{
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: - Systems methods
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarHidden=false
+        
+        navigationController?.navigationBarHidden = false
+    }
+
 
 }
 

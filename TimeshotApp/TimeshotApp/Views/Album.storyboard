@@ -282,6 +282,133 @@
             </objects>
             <point key="canvasLocation" x="2357" y="1126"/>
         </scene>
+        <!--Add Friends View Controller-->
+        <scene sceneID="9FV-xB-tf7">
+            <objects>
+                <viewController id="0hi-Wt-wiA" userLabel="Add Friends View Controller" customClass="T_AddFriendAlbumLiveViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gzL-rJ-X8b"/>
+                        <viewControllerLayoutGuide type="bottom" id="K2V-a6-ieY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rYf-OE-s66">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gh8-xF-DPm">
+                                <rect key="frame" x="0.0" y="448" width="600" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBa-ee-dem">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="ADD FRIENDS">
+                                            <color key="titleColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="x8J-tT-zVm" kind="unwind" unwindAction="unwindToFriendsAlbumLive:" id="D7x-38-YWS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.57263511550000001" blue="0.14353882100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="vBa-ee-dem" firstAttribute="leading" secondItem="Gh8-xF-DPm" secondAttribute="leading" id="Au6-yv-7x3"/>
+                                    <constraint firstAttribute="trailing" secondItem="vBa-ee-dem" secondAttribute="trailing" id="Msw-Gx-wBa"/>
+                                    <constraint firstAttribute="height" constant="44" id="QhY-sN-pFH"/>
+                                    <constraint firstAttribute="bottom" secondItem="vBa-ee-dem" secondAttribute="bottom" id="UmC-d8-VVM"/>
+                                    <constraint firstItem="vBa-ee-dem" firstAttribute="top" secondItem="Gh8-xF-DPm" secondAttribute="top" id="uIZ-Ug-Fck"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c3H-kg-Q9t">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="448"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.61131982129999995" green="1" blue="0.96831504560000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="0.61131982129999995" green="1" blue="0.96831504560000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="T_AddFriendAlbumLiveTableViewCell" rowHeight="60" id="DWt-4y-8Uq" customClass="T_AddFriendAlbumLiveTableViewCell" customModule="TimeshotApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DWt-4y-8Uq" id="CH4-jM-v9v">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar" translatesAutoresizingMaskIntoConstraints="NO" id="Y4Q-vs-UYw">
+                                                    <rect key="frame" x="8" y="10" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="Evi-O0-T5o"/>
+                                                        <constraint firstAttribute="height" constant="40" id="d6o-nH-Ou7"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgM-cz-slu">
+                                                    <rect key="frame" x="56" y="20" width="250" height="19.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="250" id="4kX-eR-zXY"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbY-B6-el3">
+                                                    <rect key="frame" x="548" y="8" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="RXe-dZ-om8"/>
+                                                        <constraint firstAttribute="height" constant="44" id="ovD-OI-UaV"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                                    <state key="normal" title="+"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Y4Q-vs-UYw" firstAttribute="leading" secondItem="CH4-jM-v9v" secondAttribute="leading" constant="8" id="0bW-O3-Lvb"/>
+                                                <constraint firstItem="lgM-cz-slu" firstAttribute="leading" secondItem="Y4Q-vs-UYw" secondAttribute="trailing" constant="8" id="3Sf-uj-hdR"/>
+                                                <constraint firstItem="lgM-cz-slu" firstAttribute="centerY" secondItem="CH4-jM-v9v" secondAttribute="centerY" id="65e-N4-biC"/>
+                                                <constraint firstAttribute="trailing" secondItem="lgM-cz-slu" secondAttribute="trailing" constant="502" id="6kI-k4-Qc0"/>
+                                                <constraint firstAttribute="trailing" secondItem="Y4Q-vs-UYw" secondAttribute="trailing" constant="552" id="OfX-ta-Ima"/>
+                                                <constraint firstItem="Y4Q-vs-UYw" firstAttribute="centerY" secondItem="CH4-jM-v9v" secondAttribute="centerY" id="QHz-ls-zPI"/>
+                                                <constraint firstItem="dbY-B6-el3" firstAttribute="centerY" secondItem="CH4-jM-v9v" secondAttribute="centerY" id="QlZ-gj-uK2"/>
+                                                <constraint firstItem="lgM-cz-slu" firstAttribute="centerY" secondItem="CH4-jM-v9v" secondAttribute="centerY" id="g05-JW-GsY"/>
+                                                <constraint firstItem="lgM-cz-slu" firstAttribute="leading" secondItem="Y4Q-vs-UYw" secondAttribute="trailing" constant="8" id="jl5-oO-07t"/>
+                                                <constraint firstAttribute="trailing" secondItem="dbY-B6-el3" secondAttribute="trailing" constant="8" id="t6F-W7-4VI"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="OfX-ta-Ima"/>
+                                                    <exclude reference="6kI-k4-Qc0"/>
+                                                    <exclude reference="g05-JW-GsY"/>
+                                                    <exclude reference="jl5-oO-07t"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="friendAddButton" destination="dbY-B6-el3" id="Ilh-6f-MKz"/>
+                                            <outlet property="friendNameLabel" destination="lgM-cz-slu" id="6Qu-ga-pUn"/>
+                                            <outlet property="friendProfileImage" destination="Y4Q-vs-UYw" id="sTE-uz-9X9"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Gh8-xF-DPm" secondAttribute="trailing" id="6dc-qC-2ab"/>
+                            <constraint firstItem="c3H-kg-Q9t" firstAttribute="top" secondItem="gzL-rJ-X8b" secondAttribute="bottom" id="JZv-yF-id0"/>
+                            <constraint firstItem="Gh8-xF-DPm" firstAttribute="top" secondItem="c3H-kg-Q9t" secondAttribute="bottom" id="OP1-18-2sW"/>
+                            <constraint firstItem="K2V-a6-ieY" firstAttribute="top" secondItem="Gh8-xF-DPm" secondAttribute="bottom" id="Z05-Ly-P78"/>
+                            <constraint firstAttribute="trailing" secondItem="c3H-kg-Q9t" secondAttribute="trailing" id="aMP-ZM-dWQ"/>
+                            <constraint firstItem="Gh8-xF-DPm" firstAttribute="leading" secondItem="rYf-OE-s66" secondAttribute="leading" id="dWR-FQ-F7j"/>
+                            <constraint firstItem="c3H-kg-Q9t" firstAttribute="leading" secondItem="rYf-OE-s66" secondAttribute="leading" id="ovv-PM-FP4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="AddFriendButtonView" destination="Gh8-xF-DPm" id="Y1w-Jl-pdf"/>
+                        <outlet property="addFriendButton" destination="vBa-ee-dem" id="yUc-wa-qga"/>
+                        <outlet property="addFriendButtonView" destination="Gh8-xF-DPm" id="Jyz-Ml-lU8"/>
+                        <outlet property="tableView" destination="c3H-kg-Q9t" id="wvj-ok-hJv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="76J-Zf-yj0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="x8J-tT-zVm" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3046" y="627"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="yiW-sF-9ky">
             <objects>
@@ -397,7 +524,7 @@
                                             <color key="titleColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="addFriend:" destination="fPD-4R-z5T" eventType="touchUpInside" id="nmq-Ov-1tD"/>
+                                            <segue destination="0hi-Wt-wiA" kind="show" id="nXY-j7-epx"/>
                                         </connections>
                                     </button>
                                 </subviews>
