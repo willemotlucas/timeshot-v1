@@ -43,10 +43,12 @@
 		B46B2B771C9ABADA00135920 /* Album.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B761C9ABADA00135920 /* Album.storyboard */; };
 		B46B2B7D1C9ABB0400135920 /* T_HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B7C1C9ABB0400135920 /* T_HomePageViewController.swift */; };
 		B46B2B811C9ABB2900135920 /* T_AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */; };
-		B4C14BB91CA3DF2000413A1F /* T_Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C14BB81CA3DF2000413A1F /* T_Slider.swift */; };
-		B4C14BBB1CA3DF5000413A1F /* T_Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C14BBA1CA3DF5000413A1F /* T_Filter.swift */; };
 		B4D9BDAA1CA4885100B28C52 /* T_String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D9BDA91CA4885100B28C52 /* T_String+Extension.swift */; };
-		B4FF35D31CAB16EE00932B15 /* T_FriendAddedToAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FF35D21CAB16EE00932B15 /* T_FriendAddedToAlbum.swift */; };
+		B4EA9DCA1CB52D37003F5A75 /* T_FriendAddedToAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EA9DC61CB52D37003F5A75 /* T_FriendAddedToAlbum.swift */; };
+		B4EA9DCB1CB52D37003F5A75 /* T_SnapTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EA9DC71CB52D37003F5A75 /* T_SnapTextField.swift */; };
+		B4EA9DCC1CB52D37003F5A75 /* T_Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EA9DC81CB52D37003F5A75 /* T_Slider.swift */; };
+		B4EA9DCD1CB52D37003F5A75 /* T_Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EA9DC91CB52D37003F5A75 /* T_Filter.swift */; };
+		B4EA9DD21CB52DE3003F5A75 /* T_User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EA9DD11CB52DE3003F5A75 /* T_User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,10 +92,12 @@
 		B46B2B761C9ABADA00135920 /* Album.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Album.storyboard; sourceTree = "<group>"; };
 		B46B2B7C1C9ABB0400135920 /* T_HomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_HomePageViewController.swift; sourceTree = "<group>"; };
 		B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumViewController.swift; sourceTree = "<group>"; };
-		B4C14BB81CA3DF2000413A1F /* T_Slider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Slider.swift; sourceTree = "<group>"; };
-		B4C14BBA1CA3DF5000413A1F /* T_Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Filter.swift; sourceTree = "<group>"; };
 		B4D9BDA91CA4885100B28C52 /* T_String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "T_String+Extension.swift"; sourceTree = "<group>"; };
-		B4FF35D21CAB16EE00932B15 /* T_FriendAddedToAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendAddedToAlbum.swift; sourceTree = "<group>"; };
+		B4EA9DC61CB52D37003F5A75 /* T_FriendAddedToAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendAddedToAlbum.swift; sourceTree = "<group>"; };
+		B4EA9DC71CB52D37003F5A75 /* T_SnapTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SnapTextField.swift; sourceTree = "<group>"; };
+		B4EA9DC81CB52D37003F5A75 /* T_Slider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Slider.swift; sourceTree = "<group>"; };
+		B4EA9DC91CB52D37003F5A75 /* T_Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Filter.swift; sourceTree = "<group>"; };
+		B4EA9DD11CB52DE3003F5A75 /* T_User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,9 +248,10 @@
 		B46B2B721C9ABA7E00135920 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B4C14BB81CA3DF2000413A1F /* T_Slider.swift */,
-				B4C14BBA1CA3DF5000413A1F /* T_Filter.swift */,
-				B4FF35D21CAB16EE00932B15 /* T_FriendAddedToAlbum.swift */,
+				B4EA9DD01CB52DE3003F5A75 /* Parse */,
+				B4EA9DCF1CB52DAE003F5A75 /* Album */,
+				B4EA9DCE1CB52DA9003F5A75 /* UserProfile */,
+				B4EA9DC51CB52D1D003F5A75 /* Camera */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -259,6 +264,39 @@
 				7D8699221C8F4A9D003BC1DC /* Main.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B4EA9DC51CB52D1D003F5A75 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				B4EA9DC61CB52D37003F5A75 /* T_FriendAddedToAlbum.swift */,
+				B4EA9DC71CB52D37003F5A75 /* T_SnapTextField.swift */,
+				B4EA9DC81CB52D37003F5A75 /* T_Slider.swift */,
+				B4EA9DC91CB52D37003F5A75 /* T_Filter.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		B4EA9DCE1CB52DA9003F5A75 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		B4EA9DCF1CB52DAE003F5A75 /* Album */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Album;
+			sourceTree = "<group>";
+		};
+		B4EA9DD01CB52DE3003F5A75 /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				B4EA9DD11CB52DE3003F5A75 /* T_User.swift */,
+			);
+			path = Parse;
 			sourceTree = "<group>";
 		};
 		D760AC12C96F9D24EAB7A1B4 /* Pods */ = {
@@ -400,16 +438,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4C14BBB1CA3DF5000413A1F /* T_Filter.swift in Sources */,
 				5DE8FFF31CA4275C006BEBAE /* T_SendMessageUIButton.swift in Sources */,
 				5DE8FFF11CA325B1006BEBAE /* T_ContactTableViewCell.swift in Sources */,
 				7DD0F9AE1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift in Sources */,
 				7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */,
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
-				B4FF35D31CAB16EE00932B15 /* T_FriendAddedToAlbum.swift in Sources */,
+				B4EA9DCA1CB52D37003F5A75 /* T_FriendAddedToAlbum.swift in Sources */,
 				5DB5A00D1CA1905200AADC9F /* T_DesignHelper.swift in Sources */,
 				8A61C3F91CADA4A50053DC52 /* T_AddFriendAlbumLiveTableViewCell.swift in Sources */,
 				5DB5A02F1CA1C8D400AADC9F /* T_SearchUserViewController.swift in Sources */,
+				B4EA9DCD1CB52D37003F5A75 /* T_Filter.swift in Sources */,
 				5DB5A0291CA1AD1000AADC9F /* T_ProfileEditionViewController.swift in Sources */,
 				8A6916BB1CAD282A0020CEF1 /* T_PhotosAlbumLiveViewController.swift in Sources */,
 				B43C0E8F1CABF4E900EF51E9 /* T_CameraViewController.swift in Sources */,
@@ -421,6 +459,7 @@
 				B43C0E911CABF4E900EF51E9 /* T_CreateAlbumViewController.swift in Sources */,
 				B43C0E901CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift in Sources */,
 				5DB5A02B1CA1AD1000AADC9F /* T_SettingsViewController.swift in Sources */,
+				B4EA9DD21CB52DE3003F5A75 /* T_User.swift in Sources */,
 				B4D9BDAA1CA4885100B28C52 /* T_String+Extension.swift in Sources */,
 				B43C0E921CABF4E900EF51E9 /* T_EditCameraImageViewController.swift in Sources */,
 				8A6916B91CAD174B0020CEF1 /* T_AlbumLiveViewController.swift in Sources */,
@@ -429,7 +468,9 @@
 				5DB5A0281CA1AD1000AADC9F /* T_FriendTableViewCell.swift in Sources */,
 				B46B2B7D1C9ABB0400135920 /* T_HomePageViewController.swift in Sources */,
 				B46B2B811C9ABB2900135920 /* T_AlbumViewController.swift in Sources */,
+				B4EA9DCC1CB52D37003F5A75 /* T_Slider.swift in Sources */,
 				5DB5A0331CA1D2D900AADC9F /* T_ContactsHelper.swift in Sources */,
+				B4EA9DCB1CB52D37003F5A75 /* T_SnapTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

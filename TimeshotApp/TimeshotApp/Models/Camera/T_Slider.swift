@@ -8,25 +8,21 @@
 
 import UIKit
 
-class T_Slider: NSObject, UITextFieldDelegate {
+class T_Slider: UIView {
     
     //MARK: Properties
     unowned var target: T_EditCameraImageViewController
     var slides:[T_Filter]!
-    var frame: CGRect?
     var swipeThreshold:CGFloat = 500
     var animation = NSTimer()
     var currentIndex = 0
-    var textField:UITextField!
+    var textField:T_SnapTextField!
     
     private
     var currentTouchLocation = CGPointZero
     var firstTouchLocation = CGPointZero
     var deltaLocation:CGFloat = 0
     var exFilterWidth:CGFloat = 0
-    var touchInTextField:Bool = false
-    var textFieldPosition:CGPoint = CGPointZero
-    var textFieldWidth:CGFloat = 1.0
     
     enum filterAnimation: Int {
         case attractedToRight = 1
@@ -35,12 +31,13 @@ class T_Slider: NSObject, UITextFieldDelegate {
         case dismissToLeft = 4
     }
     
+    //----------------------------------------------------------------------------------------------------
+    //MARK: Static methods
     static let filterNameList = ["No Filter" ,"CIPhotoEffectChrome", "CIPhotoEffectFade", "CIPhotoEffectInstant"]
     //    static let filterNameList = ["No Filter" ,"CIPhotoEffectChrome", "CIPhotoEffectFade", "CIPhotoEffectInstant", "CIPhotoEffectMono", "CIPhotoEffectNoir", "CIPhotoEffectProcess", "CIPhotoEffectTonal", "CIPhotoEffectTransfer"]
     
-    //MARK: Static methods
-    static func slidesWithFilterFromImage(image: UIImage, isFrontCamera: Bool) -> [T_Filter]
-    {
+    // Render filters from an image
+    static func slidesWithFilterFromImage(image: UIImage, isFrontCamera: Bool) -> [T_Filter] {
         var slides:[T_Filter] = []
         for filter in filterNameList
         {
@@ -90,41 +87,44 @@ class T_Slider: NSObject, UITextFieldDelegate {
         return slides
     }
     
-    
-    //MARK: Constructor
+    //----------------------------------------------------------------------------------------------------
+    //MARK: Constructors
+    // Init the slider from filters
     init(slides: [T_Filter], frame: CGRect, target: T_EditCameraImageViewController) {
         // At least 2 T_Filter or crash
-        self.frame = frame
         self.slides = slides
         self.target = target
-        self.textField = UITextField(frame: CGRectMake(0, 100, self.frame!.width, 40))
-        self.textField.hidden = true
-        
-        super.init()
-        self.initTextField()
+        super.init(frame: frame)
 
+        self.frame = frame
+        self.textField = T_SnapTextField(frame: CGRectMake(0, 100, self.frame.width, 40), target: self.target.view, parentFrameSize: self.frame)
+        self.textField.hidden = true
     }
 
+    // Init the slider from an image, creating the slides itself
     init(image: UIImage, isFrontCamera: Bool, frame: CGRect, target: T_EditCameraImageViewController) {
         
-        self.frame = frame
         self.slides = T_Slider.slidesWithFilterFromImage(image, isFrontCamera: isFrontCamera)
         self.target = target
-        self.textField = UITextField(frame: CGRectMake(0, 100, self.frame!.width, 40))
+        super.init(frame: frame)
+        
+        self.frame = frame
+        self.textField = T_SnapTextField(frame: CGRectMake(0, 100, self.frame.width, 40), target: self.target.view, parentFrameSize: self.frame)
         self.textField.hidden = true
-
-        super.init()
-        self.initTextField()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
-    deinit
-    {
+    deinit {
 
     }
     
+    //----------------------------------------------------------------------------------------------------
     //MARK: Init Methods
-    func show()
-    {
+    // Show the slider
+    func show() {
         initFiltersMask()
         
         self.target.view.addSubview(slides[currentIndex])
@@ -132,17 +132,17 @@ class T_Slider: NSObject, UITextFieldDelegate {
         self.target.view.addSubview(slides[previousIndex()])
     }
     
-    func initFiltersMask()
-    {
+    // Init 3 filters on the screen with differents masks initialization (one on the right, left and middle)
+    func initFiltersMask() {
         slides[currentIndex].mainFilterInit()
         slides[nextIndex()].rightSideFilterInit()
         slides[previousIndex()].leftSideFilterInit()
         self.exFilterWidth = 0
     }
     
+    //----------------------------------------------------------------------------------------------------
     //MARK: Methods
-    func nextIndex() -> Int
-    {
+    func nextIndex() -> Int {
         let nextIndex = currentIndex + 1
         
         if (nextIndex == slides.count)
@@ -155,8 +155,7 @@ class T_Slider: NSObject, UITextFieldDelegate {
         }
     }
     
-    func previousIndex() -> Int
-    {
+    func previousIndex() -> Int {
         let previousIndex = currentIndex - 1
         
         if (previousIndex == -1)
@@ -169,10 +168,11 @@ class T_Slider: NSObject, UITextFieldDelegate {
         }
     }
     
+    //----------------------------------------------------------------------------------------------------
     //MARK: Animation methods
     
-    func filterApplied(leftFilter: Bool)
-    {
+    // When a filter is applied on the entire screen (to replace this filter as the main filter on the screen)
+    func filterApplied(leftFilter: Bool) {
         if (leftFilter == true)
         {
             self.currentIndex = previousIndex()
@@ -185,30 +185,30 @@ class T_Slider: NSObject, UITextFieldDelegate {
         }
     }
     
-    func updateMaskFilter()
-    {
+    // Update the filter's mask
+    func updateMaskFilter() {
         self.deltaLocation = self.currentTouchLocation.x - self.firstTouchLocation.x + self.exFilterWidth
         if (self.deltaLocation  >= 0)
         {
-            // Filtre gauche qui s'applique vers la droite
+            // Left filter going to the right
             self.slides[previousIndex()].leftSideFilterUpdate(self.deltaLocation)
             self.slides[nextIndex()].rightSideFilterInit()
         }
         else
         {
-            // Filtre droite qui s'applique vers la gauche
+            // Right filter going to the left
             self.slides[nextIndex()].rightSideFilterUpdate(self.deltaLocation)
             self.slides[previousIndex()].leftSideFilterInit()
         }
         
     }
     
-    func selectAnimation(endPoint: CGPoint) -> filterAnimation
-    {
-        if(self.deltaLocation >= ((self.frame?.width)!/2)) {
+    // Selecting the animation according to the last point touched, without swipe
+    func selectAnimation(endPoint: CGPoint) -> filterAnimation {
+        if(self.deltaLocation >= (self.frame.width/2)) {
             return .attractedToRight
         }
-        else if(self.deltaLocation <= (-(self.frame?.width)!/2)) {
+        else if(self.deltaLocation <= (-self.frame.width/2)) {
             return .attractedToLeft
         }
         else if(self.deltaLocation >= 0) {
@@ -222,29 +222,29 @@ class T_Slider: NSObject, UITextFieldDelegate {
         }
     }
     
-    func startAnimation(animationToProcess: filterAnimation)
-    {
+    // Starting the animation for a special filter
+    func startAnimation(animationToProcess: filterAnimation) {
         switch (animationToProcess) {
         case .attractedToRight:
-            self.animation = NSTimer.scheduledTimerWithTimeInterval(0.0007, target:self, selector: Selector("animating:"), userInfo: "animateLeftFilterToRight", repeats: true)
+            self.animation = NSTimer.scheduledTimerWithTimeInterval(0.0007, target:self, selector: #selector(T_Slider.animating(_:)), userInfo: "animateLeftFilterToRight", repeats: true)
             break
             
         case .attractedToLeft:
-            self.animation = NSTimer.scheduledTimerWithTimeInterval(0.0007, target:self, selector: Selector("animating:"), userInfo: "animateRightFilterToLeft", repeats: true)
+            self.animation = NSTimer.scheduledTimerWithTimeInterval(0.0007, target:self, selector: #selector(T_Slider.animating(_:)), userInfo: "animateRightFilterToLeft", repeats: true)
             break
             
         case .dismissToLeft:
-            self.animation = NSTimer.scheduledTimerWithTimeInterval(0.0007, target:self, selector: Selector("animating:"), userInfo: "leftFilterGoBackLeft", repeats: true)
+            self.animation = NSTimer.scheduledTimerWithTimeInterval(0.0007, target:self, selector: #selector(T_Slider.animating(_:)), userInfo: "leftFilterGoBackLeft", repeats: true)
             break
             
         case .dismissToRight:
-            self.animation = NSTimer.scheduledTimerWithTimeInterval(0.0007, target:self, selector: Selector("animating:"), userInfo: "rightFilterGoBackRight", repeats: true)
+            self.animation = NSTimer.scheduledTimerWithTimeInterval(0.0007, target:self, selector: #selector(T_Slider.animating(_:)), userInfo: "rightFilterGoBackRight", repeats: true)
             break
         }
     }
     
-    func animating(timer: NSTimer)
-    {
+    // Managing the animation timer
+    func animating(timer: NSTimer) {
         switch (timer.userInfo as! String) {
         case "animateLeftFilterToRight":
             if (self.slides[previousIndex()].animate("animateLeftFilterToRight") == false)
@@ -285,8 +285,8 @@ class T_Slider: NSObject, UITextFieldDelegate {
         }
     }
     
-    func selectSwipeAnimation(toRight: Bool) -> filterAnimation
-    {
+    // Selecting the animation after a swipe
+    func selectSwipeAnimation(toRight: Bool) -> filterAnimation {
         if (self.slides[previousIndex()].maskSize?.width != 0)
         {
             if(toRight == true) {
@@ -313,111 +313,13 @@ class T_Slider: NSObject, UITextFieldDelegate {
         }
     }
     
-    //MARK: Text Input
-    
-    func initTextField()
-    {
-        self.textField.frame.origin.y = self.currentTouchLocation.y
-        self.textField.placeholder = ""
-        self.textField.font = UIFont.systemFontOfSize(16)
-        self.textField.textColor = UIColor.whiteColor()
-        self.textField.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.3)
-        self.textField.borderStyle = UITextBorderStyle.None
-        self.textField.autocorrectionType = UITextAutocorrectionType.No
-        self.textField.keyboardType = UIKeyboardType.Default
-        self.textField.returnKeyType = UIReturnKeyType.Done
-        self.textField.clearButtonMode = UITextFieldViewMode.Never;
-        self.textField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
-        self.textField.delegate = self
-        self.target.view.addSubview(self.textField)
-        self.textField.layer.zPosition = 15
-        self.textField.textAlignment = .Center
-        self.textField.contentHorizontalAlignment = .Center
-    }
-    
-    func showTextInput()
-    {
-        if(self.currentTouchLocation.y < 0)
-        {
-            self.textFieldPosition.y = 0
-            self.textField.frame.origin.y = 0
-        }
-        else if(self.currentTouchLocation.y <= ((self.frame?.height)! - 40))
-        {
-            self.textFieldPosition = self.currentTouchLocation
-            self.textField.frame.origin.y = self.textFieldPosition.y
-        }
-        else
-        {
-            self.textFieldPosition.y = (self.frame?.height)! - 40
-            self.textField.frame.origin.y = (self.frame?.height)! - 40
-        }
-        
-        self.textField.hidden = false
-        self.textField.becomeFirstResponder()
-    }
-    
-    // MARK:- ---> Textfield Delegates
-    func textFieldDidBeginEditing(textField: UITextField) {
-        
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        if (self.textField.text == "")
-        {
-            self.textField.hidden = true
-        }
-    }
-    
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        return true;
-    }
-    
-    func textFieldShouldClear(textField: UITextField) -> Bool {
-        return true;
-    }
-    
-    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        return true;
-    }
-    
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let text:NSString = (self.textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
-        let textSize = text.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(16.0)])
-        self.textFieldWidth = textSize.width
-        
-        return textSize.width <= ((self.frame?.width)! - 20)
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder();
-        return true;
-    }
-    
-    func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.textField.frame.origin.y = self.frame!.size.height - keyboardSize.height - self.textField.frame.size.height
-        }
-    }
-    
-    func keyboardTypeChanged(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.textField.frame.origin.y = self.frame!.size.height - keyboardSize.height - self.textField.frame.size.height
-        }
-    }
-    
-    
-    func keyboardWillHide(notification: NSNotification) {
-        self.textField.frame.origin.y = self.textFieldPosition.y
-    }
-    
-    //MARK: Touches events
-    
-    func touchesBegan(touch: CGPoint)
-    {
+    //----------------------------------------------------------------------------------------------------
+    //MARK: - Touches events
+    func touchesBegan(touch: CGPoint) {
         animation.invalidate()
         firstTouchLocation = touch
         
+        // If any filter is visible
         if (((self.slides[previousIndex()].maskSize?.width)! + (self.slides[nextIndex()].maskSize?.width)!) == 0)
         {
             currentTouchLocation = touch
@@ -427,17 +329,19 @@ class T_Slider: NSObject, UITextFieldDelegate {
         self.exFilterWidth = (self.slides[previousIndex()].maskSize?.width)! + (self.slides[nextIndex()].maskSize?.width)!
     }
     
-    // Quand un tap à été fait à l'écran (donc sans mouvement, ce qui n'est pas pris pas UIPanGesture)
-    func touchesEndedWithUpdate(touch: CGPoint)
-    {
+    // When a tap on the screen happens (not managed by UIGesture)
+    func touchesEndedWithUpdate(touch: CGPoint) {
+        // If no filter and no textfield = show the textfield
         if (((((self.slides[previousIndex()].maskSize?.width)! + (self.slides[nextIndex()].maskSize?.width)!) == 0)) && (self.textField.hidden == true))
         {
-            showTextInput()
+            self.textField.showTextInput(self.currentTouchLocation)
         }
+        // If no filter and textfield = hide the keyboard
         else if (((((self.slides[previousIndex()].maskSize?.width)! + (self.slides[nextIndex()].maskSize?.width)!) == 0)) && (self.textField.hidden == false))
         {
-            textField.resignFirstResponder();
+            textField.hideKeyboard();
         }
+        // Update Masks and call touchEnded
         else
         {
             updateMaskFilter()
@@ -445,16 +349,16 @@ class T_Slider: NSObject, UITextFieldDelegate {
         }
     }
     
-    func touchesEnded(touch: CGPoint)
-    {
+    // Select the right animation to execute and animate the filter, without swipe
+    func touchesEnded(touch: CGPoint) {
         let endPoint = touch
         let animationToProcess = selectAnimation(endPoint)
-        self.touchInTextField = false
+        self.textField.touched = false
         startAnimation(animationToProcess)
     }
     
-    func touchesEndedWithSwipe(toRight: Bool)
-    {
+    // Start animation with a swipe
+    func touchesEndedWithSwipe(toRight: Bool) {
         let animationToProcess = selectSwipeAnimation(toRight)
         startAnimation(animationToProcess)
     }
@@ -463,46 +367,39 @@ class T_Slider: NSObject, UITextFieldDelegate {
         
         self.currentTouchLocation = recognizer.locationInView(recognizer.view?.superview)
         
-        if (((((self.slides[previousIndex()].maskSize?.width)! + (self.slides[nextIndex()].maskSize?.width)!) == 0) && (CGRectContainsPoint(self.textField.frame, self.currentTouchLocation))) || (self.touchInTextField == true))
+        // If (no filter shown and the touch location is on the TextField) or if touch is in textfield
+        if (((((self.slides[previousIndex()].maskSize?.width)! + (self.slides[nextIndex()].maskSize?.width)!) == 0) && (self.textField.containsTouch(self.currentTouchLocation))) || (self.textField.touched == true))
         {
+            // Touch is now ended, so nothing happens
             if ((recognizer.state == .Ended) || (recognizer.state == .Cancelled) || (recognizer.state == .Failed))
             {
-                self.touchInTextField = false
+                self.textField.touched = false
             }
+                // Move the textfield to the finger's position
             else
             {
-                self.touchInTextField = true
-                if(self.currentTouchLocation.y < 0)
-                {
-                    self.textFieldPosition.y = 0
-                    self.textField.frame.origin.y = 0
-                }
-                else if(self.currentTouchLocation.y <= ((self.frame?.height)! - 40))
-                {
-                    self.textFieldPosition = self.currentTouchLocation
-                    self.textField.frame.origin.y = self.textFieldPosition.y
-                }
-                else
-                {
-                    self.textFieldPosition.y = (self.frame?.height)! - 40
-                    self.textField.frame.origin.y = (self.frame?.height)! - 40
-                }
+                self.textField.touched = true
+                self.textField.setLocation(self.currentTouchLocation)
             }
         }
+            // If a mask is shawn
         else
         {
+            // Update mask position
             updateMaskFilter()
             
+            // If touch is ended,
             if ((recognizer.state == .Ended) || (recognizer.state == .Cancelled) || (recognizer.state == .Failed))
             {
                 let velocity = recognizer.velocityInView(recognizer.view?.superview)
                 
+                // If a swipe is detected
                 if(velocity.x >= swipeThreshold) {
-                    // Swipe vers la droite
+                    // Swipe to the right
                     touchesEndedWithSwipe(true)
                 }
                 else if (velocity.x <= -swipeThreshold) {
-                    // Swipe vers la droite
+                    // Swipe to the left
                     touchesEndedWithSwipe(false)
                 }
                 else

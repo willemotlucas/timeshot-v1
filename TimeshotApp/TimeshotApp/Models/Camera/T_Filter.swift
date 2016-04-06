@@ -14,6 +14,7 @@ class T_Filter: UIImageView {
     var maskSize:CGSize?
     
     //MARK: Constructors
+    // Init with an image name
     init(frame: CGRect, named: String) {
         super.init(frame: frame)
         
@@ -21,6 +22,7 @@ class T_Filter: UIImageView {
         self.image = UIImage(named: named)
     }
     
+    // Init with a UIImage
     init(frame: CGRect, image: UIImage) {
         super.init(frame: frame)
         
@@ -29,17 +31,16 @@ class T_Filter: UIImageView {
         self.image = image
     }
     
-    deinit
-    {
-        print("deinit filter")
+    deinit {
+//        print("deinit filter")
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     //MARK: Tools methods
+    // Apply a mask to a certain CGRect
     func mask(viewToMask: UIView, maskRect: CGRect) {
         let maskLayer = CAShapeLayer()
         let path = CGPathCreateMutable()
@@ -48,10 +49,9 @@ class T_Filter: UIImageView {
         viewToMask.layer.mask = maskLayer;
     }
     
-    
     //MARK: Filter's mask update
-    func animate(animation: String) -> Bool
-    {
+    // Animation to update filters masks
+    func animate(animation: String) -> Bool {
         switch (animation) {
         case "animateLeftFilterToRight":
             
@@ -104,33 +104,33 @@ class T_Filter: UIImageView {
         }
     }
     
-    func leftSideFilterUpdate(width: CGFloat)
-    {
+    // Change the width of a left side Filter
+    func leftSideFilterUpdate(width: CGFloat) {
         self.maskSize?.width = width
         mask(self, maskRect: CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: abs(width), height: self.frame.size.height))
     }
     
-    func rightSideFilterUpdate(width: CGFloat)
-    {
+    // Change the width of a right side Filter
+    func rightSideFilterUpdate(width: CGFloat) {
         self.maskSize?.width = width
         mask(self, maskRect: CGRect(x: self.frame.origin.x + self.frame.size.width - abs(width), y: self.frame.origin.y, width: abs(width), height: self.frame.size.height))
     }
     
     //MARK: Filter's mask initilization
-    func mainFilterInit()
-    {
+    // Full screen visible filter
+    func mainFilterInit() {
         mask(self, maskRect: CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.size.width, height: self.frame.size.height))
         self.maskSize?.width = self.frame.size.width
     }
     
-    func leftSideFilterInit()
-    {
+    // Hidden left filter
+    func leftSideFilterInit() {
         mask(self, maskRect: CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: 0, height: self.frame.size.height))
         self.maskSize?.width = 0
     }
     
-    func rightSideFilterInit()
-    {
+    // Hidden right filter
+    func rightSideFilterInit() {
         mask(self, maskRect: CGRect(x: self.frame.origin.x + self.frame.size.width, y: self.frame.origin.y, width: 0, height: self.frame.size.height))
         self.maskSize?.width = 0
     }

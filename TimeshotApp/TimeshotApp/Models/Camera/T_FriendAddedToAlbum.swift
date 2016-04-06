@@ -10,8 +10,6 @@ import UIKit
 
 class T_FriendAddedToAlbum: Equatable {
     
-    static var nbSelected:Int = 0
-    static var count:Int = 0
     static var selectedFriends:[T_FriendAddedToAlbum] = []
     
     var name:String
@@ -27,12 +25,10 @@ class T_FriendAddedToAlbum: Equatable {
         self.selected = false
         
         self.selected = false
-        T_FriendAddedToAlbum.count += 1
     }
     
     deinit
     {
-//        print("T_FriendAddedToAlbum : \(name)")
     }
     
     func changeStateFriendSelected()
@@ -40,7 +36,6 @@ class T_FriendAddedToAlbum: Equatable {
         if(self.selected)
         {
             self.selected = false
-            T_FriendAddedToAlbum.nbSelected -= 1
             
             if let index = T_FriendAddedToAlbum.selectedFriends.indexOf(self)
             {
@@ -49,11 +44,7 @@ class T_FriendAddedToAlbum: Equatable {
         }
         else {
             self.selected = true
-            T_FriendAddedToAlbum.nbSelected += 1
-            if let index = T_FriendAddedToAlbum.selectedFriends.indexOf(self)
-            {
-            }
-            else
+            if (T_FriendAddedToAlbum.selectedFriends.indexOf(self) == nil)
             {
                 T_FriendAddedToAlbum.selectedFriends.append(self)
             }
@@ -63,6 +54,10 @@ class T_FriendAddedToAlbum: Equatable {
     func isSelected() -> Bool
     {
         return selected
+    }
+    
+    static func reset() {
+        selectedFriends.removeAll()
     }
 }
 
