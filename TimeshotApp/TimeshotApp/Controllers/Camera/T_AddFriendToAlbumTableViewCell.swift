@@ -23,6 +23,5 @@ class T_AddFriendToAlbumTableViewCell: UITableViewCell {
     
     deinit
     {
-//        print("Cells")
     }
 }
