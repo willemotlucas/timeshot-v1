@@ -18,6 +18,8 @@ class T_AlbumViewController: UIViewController{
     var liveArray = [true, false, false,false]
     var dateArray = ["13 mai","10 avril","19 mars", "3 janvier"]
     
+    var navigationBar : UINavigationBar?
+    
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +27,30 @@ class T_AlbumViewController: UIViewController{
         tableView.delegate = self
         tableView.dataSource = self
         
+        navigationBar = self.navigationController?.navigationBar
+        
         // Design the navbar
         T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
         
         
+
+        
         // Do any additional setup after loading the view.
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarHidden=false
+        
+        navigationController?.navigationBarHidden = false
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        navigationBar!.frame =  CGRectMake(0, 0, self.view.frame.size.width, CGFloat(64))
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        navigationBar!.frame =  CGRectMake(0, 0, self.view.frame.size.width, CGFloat(64))
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,11 +74,7 @@ class T_AlbumViewController: UIViewController{
         return false
     }
     
-    override func viewWillAppear(animated: Bool) {
-        UIApplication.sharedApplication().statusBarHidden=false
-        
-        navigationController?.navigationBarHidden = false
-    }
+
 
 
 }
