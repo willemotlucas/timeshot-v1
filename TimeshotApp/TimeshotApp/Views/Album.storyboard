@@ -267,7 +267,7 @@
         <!--Finised Albums View Controller-->
         <scene sceneID="ze0-Gy-Zu6">
             <objects>
-                <viewController id="MPp-2O-PLD" userLabel="Finised Albums View Controller" sceneMemberID="viewController">
+                <viewController id="MPp-2O-PLD" userLabel="Finised Albums View Controller" customClass="AlbumFinishedViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FZG-Qg-rOk"/>
                         <viewControllerLayoutGuide type="bottom" id="yVl-cw-QyR"/>
@@ -275,12 +275,236 @@
                     <view key="view" contentMode="scaleToFill" id="U7p-Lc-dCC">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hc9-Og-6RQ">
+                                <rect key="frame" x="0.0" y="40" width="600" height="496"/>
+                                <connections>
+                                    <segue destination="vYW-Q6-7ln" kind="embed" id="W2Z-CJ-lq4"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w4w-fV-RXl">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qTP-s4-aW1">
+                                        <rect key="frame" x="20" y="5" width="560" height="31"/>
+                                        <segments>
+                                            <segment title="Photos"/>
+                                            <segment title="Friends"/>
+                                        </segments>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="changeMenuOption:" destination="MPp-2O-PLD" eventType="valueChanged" id="PUz-Md-aR7"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="qTP-s4-aW1" secondAttribute="bottom" constant="5" id="JEl-JE-dxl"/>
+                                    <constraint firstItem="qTP-s4-aW1" firstAttribute="leading" secondItem="w4w-fV-RXl" secondAttribute="leading" constant="20" id="PaQ-0Y-48Z"/>
+                                    <constraint firstItem="qTP-s4-aW1" firstAttribute="top" secondItem="w4w-fV-RXl" secondAttribute="top" constant="5" id="PcP-Lx-Ske"/>
+                                    <constraint firstAttribute="height" constant="40" id="VrZ-9y-MjI"/>
+                                    <constraint firstAttribute="trailing" secondItem="qTP-s4-aW1" secondAttribute="trailing" constant="20" id="ac9-W0-2P2"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6a3-J7-rXL">
+                                <rect key="frame" x="0.0" y="40" width="600" height="496"/>
+                                <connections>
+                                    <segue destination="Emn-oU-lYF" kind="embed" id="uvv-Xg-CGe"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="w4w-fV-RXl" secondAttribute="trailing" id="2Ey-EP-r3k"/>
+                            <constraint firstAttribute="bottom" secondItem="Hc9-Og-6RQ" secondAttribute="bottom" id="58M-E9-R1E"/>
+                            <constraint firstAttribute="trailing" secondItem="Hc9-Og-6RQ" secondAttribute="trailing" id="9hf-vU-8QQ"/>
+                            <constraint firstItem="Hc9-Og-6RQ" firstAttribute="top" secondItem="w4w-fV-RXl" secondAttribute="bottom" id="Gyb-HY-jqT"/>
+                            <constraint firstItem="w4w-fV-RXl" firstAttribute="leading" secondItem="U7p-Lc-dCC" secondAttribute="leading" id="K88-1L-UY1"/>
+                            <constraint firstItem="Hc9-Og-6RQ" firstAttribute="leading" secondItem="U7p-Lc-dCC" secondAttribute="leading" id="S39-Oj-BiO"/>
+                            <constraint firstItem="w4w-fV-RXl" firstAttribute="top" secondItem="FZG-Qg-rOk" secondAttribute="bottom" id="Xxw-qK-Ff1"/>
+                            <constraint firstItem="6a3-J7-rXL" firstAttribute="leading" secondItem="U7p-Lc-dCC" secondAttribute="leading" id="kxt-e6-7Zd"/>
+                            <constraint firstItem="yVl-cw-QyR" firstAttribute="top" secondItem="6a3-J7-rXL" secondAttribute="bottom" id="rhT-Yj-bbb"/>
+                            <constraint firstItem="6a3-J7-rXL" firstAttribute="top" secondItem="w4w-fV-RXl" secondAttribute="bottom" id="sHH-eD-Arx"/>
+                            <constraint firstAttribute="trailing" secondItem="6a3-J7-rXL" secondAttribute="trailing" id="xQi-K0-5F5"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="friendsContainerView" destination="Hc9-Og-6RQ" id="JmH-SZ-fhf"/>
+                        <outlet property="photosContainerView" destination="6a3-J7-rXL" id="OgM-ip-Ygv"/>
+                        <outlet property="segmentedControl" destination="qTP-s4-aW1" id="OY0-OY-mFI"/>
+                        <outlet property="segmentedView" destination="w4w-fV-RXl" id="JoV-Ty-cib"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AnX-lj-8nP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2221" y="1402"/>
+            <point key="canvasLocation" x="2321" y="1374"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Kg7-a6-51x">
+            <objects>
+                <viewController id="vYW-Q6-7ln" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7Og-ZB-g6o"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZsZ-kx-sJl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Y5w-PB-Xng">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="496"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zOQ-gf-feN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3147" y="1374"/>
+        </scene>
+        <!--Photos Collection View Controller-->
+        <scene sceneID="fxW-b3-yBb">
+            <objects>
+                <viewController id="Emn-oU-lYF" customClass="PhotosCollectionViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6e4-DO-eVs"/>
+                        <viewControllerLayoutGuide type="bottom" id="q5A-We-xeA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mlw-aZ-HhL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="496"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Yqq-7B-dA8">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="496"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="7" minimumInteritemSpacing="7" id="ecc-eJ-rnp">
+                                    <size key="itemSize" width="200" height="200"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="storyCell" id="Uur-Zj-mzS" customClass="StoryCollectionViewCell" customModule="TimeshotApp" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="55" width="307" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="307" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="phc-5e-Bcu">
+                                                    <rect key="frame" x="0.0" y="0.0" width="307" height="200"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="phc-5e-Bcu" secondAttribute="trailing" id="1gb-Bb-o5f"/>
+                                            <constraint firstAttribute="bottom" secondItem="phc-5e-Bcu" secondAttribute="bottom" id="Lsk-xd-3Kf"/>
+                                            <constraint firstItem="phc-5e-Bcu" firstAttribute="leading" secondItem="Uur-Zj-mzS" secondAttribute="leading" id="Wru-lN-sw9"/>
+                                            <constraint firstItem="phc-5e-Bcu" firstAttribute="top" secondItem="Uur-Zj-mzS" secondAttribute="top" id="dkR-8i-sUz"/>
+                                        </constraints>
+                                        <size key="customSize" width="307" height="200"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="phc-5e-Bcu" id="hpK-kc-Ekl"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="hourCell" id="WYJ-mQ-uUB" customClass="HourCollectionViewCell" customModule="TimeshotApp" customModuleProvider="target">
+                                        <rect key="frame" x="395" y="55" width="200" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INL-ej-3yU">
+                                                    <rect key="frame" x="79.5" y="85" width="41.5" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="INL-ej-3yU" firstAttribute="centerX" secondItem="WYJ-mQ-uUB" secondAttribute="centerX" id="8Ce-en-vHZ"/>
+                                            <constraint firstItem="INL-ej-3yU" firstAttribute="centerY" secondItem="WYJ-mQ-uUB" secondAttribute="centerY" id="HQp-wh-P5Y"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="hourLabel" destination="INL-ej-3yU" id="DRi-Db-J03"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="fPZ-7q-3kg" customClass="PhotoCollectionViewCell" customModule="TimeshotApp" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="262" width="200" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5NP-4i-iI3">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="5NP-4i-iI3" secondAttribute="trailing" id="5Ec-02-ztE"/>
+                                            <constraint firstAttribute="bottom" secondItem="5NP-4i-iI3" secondAttribute="bottom" id="AiJ-Wr-HBu"/>
+                                            <constraint firstItem="5NP-4i-iI3" firstAttribute="top" secondItem="fPZ-7q-3kg" secondAttribute="top" id="QL0-5b-BPL"/>
+                                            <constraint firstItem="5NP-4i-iI3" firstAttribute="leading" secondItem="fPZ-7q-3kg" secondAttribute="leading" id="yRg-wh-30f"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="5NP-4i-iI3" id="QHz-JK-dzQ"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="headerCollection" id="Wzu-fs-cBg" customClass="HeaderCollectionReusableView" customModule="TimeshotApp" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qez-Ke-4HZ">
+                                            <rect key="frame" x="28" y="24" width="544" height="2"/>
+                                            <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="2" id="bu0-1i-2iB"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yH-dR-kVJ">
+                                            <rect key="frame" x="280" y="14" width="41" height="21"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="2yH-dR-kVJ" firstAttribute="centerY" secondItem="Wzu-fs-cBg" secondAttribute="centerY" id="CRP-ta-sZo"/>
+                                        <constraint firstItem="Qez-Ke-4HZ" firstAttribute="top" secondItem="Wzu-fs-cBg" secondAttribute="topMargin" constant="16" id="Pc9-dQ-2sz"/>
+                                        <constraint firstItem="Qez-Ke-4HZ" firstAttribute="leading" secondItem="Wzu-fs-cBg" secondAttribute="leadingMargin" constant="20" id="ULQ-Cs-nAr"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Qez-Ke-4HZ" secondAttribute="trailing" constant="20" id="bcm-sj-zlm"/>
+                                        <constraint firstItem="2yH-dR-kVJ" firstAttribute="centerX" secondItem="Wzu-fs-cBg" secondAttribute="centerX" id="mqg-1D-1SF"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="lineView" destination="Qez-Ke-4HZ" id="dCP-c4-5vz"/>
+                                        <outlet property="sectionNameLabel" destination="2yH-dR-kVJ" id="Vj8-07-XcF"/>
+                                    </connections>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="Emn-oU-lYF" id="WCO-Bk-R1w"/>
+                                    <outlet property="delegate" destination="Emn-oU-lYF" id="swr-tw-lkm"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="q5A-We-xeA" firstAttribute="top" secondItem="Yqq-7B-dA8" secondAttribute="bottom" id="Gyn-ZW-Kdf"/>
+                            <constraint firstItem="Yqq-7B-dA8" firstAttribute="top" secondItem="6e4-DO-eVs" secondAttribute="bottom" id="dej-qd-OSd"/>
+                            <constraint firstItem="Yqq-7B-dA8" firstAttribute="leading" secondItem="Mlw-aZ-HhL" secondAttribute="leading" id="eKT-aU-Xt0"/>
+                            <constraint firstAttribute="trailing" secondItem="Yqq-7B-dA8" secondAttribute="trailing" id="ib0-pz-sfZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Yqq-7B-dA8" id="hYg-8j-1LA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c1K-Xy-sPS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2321" y="2353"/>
         </scene>
         <!--Add Friends View Controller-->
         <scene sceneID="9FV-xB-tf7">
