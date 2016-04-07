@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlbumFinishedViewController: UIViewController {
+class T_AlbumFinishedViewController: UIViewController {
     // MARK: Properties
     @IBOutlet weak var friendsContainerView: UIView!
     @IBOutlet weak var photosContainerView: UIView!

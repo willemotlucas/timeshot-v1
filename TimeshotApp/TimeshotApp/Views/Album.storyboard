@@ -267,7 +267,7 @@
         <!--Finised Albums View Controller-->
         <scene sceneID="ze0-Gy-Zu6">
             <objects>
-                <viewController id="MPp-2O-PLD" userLabel="Finised Albums View Controller" customClass="AlbumFinishedViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MPp-2O-PLD" userLabel="Finised Albums View Controller" customClass="T_AlbumFinishedViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FZG-Qg-rOk"/>
                         <viewControllerLayoutGuide type="bottom" id="yVl-cw-QyR"/>
@@ -361,7 +361,7 @@
         <!--Photos Collection View Controller-->
         <scene sceneID="fxW-b3-yBb">
             <objects>
-                <viewController id="Emn-oU-lYF" customClass="PhotosCollectionViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Emn-oU-lYF" customClass="T_PhotosCollectionViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6e4-DO-eVs"/>
                         <viewControllerLayoutGuide type="bottom" id="q5A-We-xeA"/>
@@ -380,15 +380,15 @@
                                     <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="storyCell" id="Uur-Zj-mzS" customClass="StoryCollectionViewCell" customModule="TimeshotApp" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="55" width="307" height="200"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="storyCell" id="Uur-Zj-mzS" customClass="T_StoryCollectionViewCell" customModule="TimeshotApp" customModuleProvider="target">
+                                        <rect key="frame" x="69" y="55" width="462" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="307" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="462" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="phc-5e-Bcu">
-                                                    <rect key="frame" x="0.0" y="0.0" width="307" height="200"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="462" height="200"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -399,13 +399,13 @@
                                             <constraint firstItem="phc-5e-Bcu" firstAttribute="leading" secondItem="Uur-Zj-mzS" secondAttribute="leading" id="Wru-lN-sw9"/>
                                             <constraint firstItem="phc-5e-Bcu" firstAttribute="top" secondItem="Uur-Zj-mzS" secondAttribute="top" id="dkR-8i-sUz"/>
                                         </constraints>
-                                        <size key="customSize" width="307" height="200"/>
+                                        <size key="customSize" width="462" height="200"/>
                                         <connections>
                                             <outlet property="imageView" destination="phc-5e-Bcu" id="hpK-kc-Ekl"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="hourCell" id="WYJ-mQ-uUB" customClass="HourCollectionViewCell" customModule="TimeshotApp" customModuleProvider="target">
-                                        <rect key="frame" x="395" y="55" width="200" height="200"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="hourCell" id="WYJ-mQ-uUB" customClass="T_HourCollectionViewCell" customModule="TimeshotApp" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="262" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -428,8 +428,8 @@
                                             <outlet property="hourLabel" destination="INL-ej-3yU" id="DRi-Db-J03"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="fPZ-7q-3kg" customClass="PhotoCollectionViewCell" customModule="TimeshotApp" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="262" width="200" height="200"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="fPZ-7q-3kg" customClass="T_PhotoCollectionViewCell" customModule="TimeshotApp" customModuleProvider="target">
+                                        <rect key="frame" x="212" y="262" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -449,10 +449,11 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="5NP-4i-iI3" id="QHz-JK-dzQ"/>
+                                            <segue destination="JW7-6F-jAe" kind="showDetail" identifier="ShowSlider" id="9AA-i1-Ank"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="headerCollection" id="Wzu-fs-cBg" customClass="HeaderCollectionReusableView" customModule="TimeshotApp" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="headerCollection" id="Wzu-fs-cBg" customClass="T_HeaderCollectionReusableView" customModule="TimeshotApp" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -505,6 +506,109 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1K-Xy-sPS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2321" y="2353"/>
+        </scene>
+        <!--Slider View Controller-->
+        <scene sceneID="0q3-fT-l9G">
+            <objects>
+                <viewController id="JW7-6F-jAe" customClass="T_SliderViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ku9-pZ-LOG"/>
+                        <viewControllerLayoutGuide type="bottom" id="S2c-gO-d8p"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Kd-Yo-1Gn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fzu-Vi-n2r">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="delegate" destination="JW7-6F-jAe" id="6C4-3p-cAR"/>
+                                    <outletCollection property="gestureRecognizers" destination="NU7-rn-p9T" appends="YES" id="lYB-ZC-SCE"/>
+                                </connections>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bl0-kq-qTR">
+                                <rect key="frame" x="520" y="10" width="50" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="dny-fL-Yp9"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
+                                <state key="normal" image="Dots">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="dotsAction:" destination="JW7-6F-jAe" eventType="touchUpInside" id="Pg5-zS-jrv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQr-Bo-Gcr">
+                                <rect key="frame" x="10" y="10" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="6Dd-qB-LBV"/>
+                                    <constraint firstAttribute="width" constant="44" id="KGo-S7-Fyq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" image="Cancel">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelAction:" destination="JW7-6F-jAe" eventType="touchUpInside" id="hdW-IX-bfX"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zw1-Q8-or0">
+                                <rect key="frame" x="10" y="560" width="61" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYc-SH-3ln">
+                                <rect key="frame" x="81" y="560" width="61" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="S2c-gO-d8p" firstAttribute="top" secondItem="Zw1-Q8-or0" secondAttribute="bottom" constant="10" id="8Ky-BE-ua2"/>
+                            <constraint firstItem="S2c-gO-d8p" firstAttribute="top" secondItem="Fzu-Vi-n2r" secondAttribute="bottom" id="C95-bg-faG"/>
+                            <constraint firstItem="cQr-Bo-Gcr" firstAttribute="top" secondItem="Ku9-pZ-LOG" secondAttribute="bottom" constant="10" id="H63-ml-1Lz"/>
+                            <constraint firstItem="cQr-Bo-Gcr" firstAttribute="leading" secondItem="5Kd-Yo-1Gn" secondAttribute="leading" constant="10" id="HWM-Ge-7us"/>
+                            <constraint firstItem="S2c-gO-d8p" firstAttribute="top" secondItem="qYc-SH-3ln" secondAttribute="bottom" constant="10" id="ObB-zw-kck"/>
+                            <constraint firstItem="Fzu-Vi-n2r" firstAttribute="top" secondItem="Ku9-pZ-LOG" secondAttribute="bottom" id="Ph9-uo-yM9"/>
+                            <constraint firstItem="Zw1-Q8-or0" firstAttribute="leading" secondItem="5Kd-Yo-1Gn" secondAttribute="leading" constant="10" id="Vgg-5i-qIN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bl0-kq-qTR" secondAttribute="trailing" constant="10" id="XcU-hP-OJF"/>
+                            <constraint firstAttribute="trailing" secondItem="Fzu-Vi-n2r" secondAttribute="trailing" id="oik-mg-9Ob"/>
+                            <constraint firstItem="qYc-SH-3ln" firstAttribute="leading" secondItem="Zw1-Q8-or0" secondAttribute="trailing" constant="10" id="qWK-s7-z1Z"/>
+                            <constraint firstItem="Fzu-Vi-n2r" firstAttribute="leading" secondItem="5Kd-Yo-1Gn" secondAttribute="leading" id="seb-aI-sfz"/>
+                            <constraint firstItem="bl0-kq-qTR" firstAttribute="top" secondItem="Ku9-pZ-LOG" secondAttribute="bottom" constant="10" id="uJl-Xe-zaN"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="aa1-Ke-58M" appends="YES" id="ZTv-ZP-Fbu"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="cQr-Bo-Gcr" id="elX-xu-gZR"/>
+                        <outlet property="dotsButton" destination="bl0-kq-qTR" id="HEw-G5-yCP"/>
+                        <outlet property="fromUserLabel" destination="Zw1-Q8-or0" id="EvT-wN-Cw7"/>
+                        <outlet property="hourLabel" destination="qYc-SH-3ln" id="3tL-LH-C4b"/>
+                        <outlet property="scrollView" destination="Fzu-Vi-n2r" id="cGH-IY-oab"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1ul-Id-c4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="down" id="aa1-Ke-58M">
+                    <connections>
+                        <action selector="cancelAction:" destination="JW7-6F-jAe" id="YgR-ke-dx6"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <tapGestureRecognizer id="NU7-rn-p9T">
+                    <connections>
+                        <action selector="showInformationDetail:" destination="JW7-6F-jAe" id="neF-cV-wKT"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3135" y="2353"/>
         </scene>
         <!--Add Friends View Controller-->
         <scene sceneID="9FV-xB-tf7">
@@ -790,5 +894,7 @@
     </scenes>
     <resources>
         <image name="Avatar" width="119" height="119"/>
+        <image name="Cancel" width="44" height="44"/>
+        <image name="Dots" width="87" height="20"/>
     </resources>
 </document>

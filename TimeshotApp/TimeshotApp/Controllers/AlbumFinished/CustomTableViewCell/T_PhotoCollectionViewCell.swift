@@ -1,5 +1,5 @@
 //
-//  StoryCollectionViewCell.swift
+//  PhotoCollectionViewCell.swift
 //  TimeshotApp
 //
 //  Created by Valentin PAUL on 07/04/16.
@@ -8,8 +8,7 @@
 
 import UIKit
 
-class StoryCollectionViewCell: UICollectionViewCell {
+class T_PhotoCollectionViewCell: UICollectionViewCell {
     // MARK: Properties
     @IBOutlet weak var imageView: UIImageView!
-    
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotosCollectionViewController: UIViewController {
+class T_PhotosCollectionViewController: UIViewController {
     // MARK: Properties
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -111,27 +111,18 @@ class PhotosCollectionViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
-//        if segue.identifier == "ShowDetails" {
-//            let slideDetailVC = segue.destinationViewController as! PagedScrollViewController
-//            
-//            // Get the cell that generated this segue
-//            if let selectedPicture = sender as? PhotoCollectionViewCell {
-//                let indexPath = collectionView.indexPathForCell(selectedPicture)
-//                
-//                var indexCell = 0
-//                for i in 0 ..< (indexPath!.section-1){
-//                    indexCell = indexCell + numberSectionsPhoto[i]
-//                }
-//                
-//                // On va donc chercher la photo qui est a l'index suivant
-//                // indexCell : nombre de photos avant dans les autre sections
-//                // indexPath.row : nombre de photos avant dans la section
-//                // -1 : correspond a la bonne image car on a toujours une cell en plus pour l'affichage de l'heure donc on doit l'enlever pour retrouver la bonne image de notre tableau
-//                slideDetailVC.currentPage = indexCell + (indexPath?.row)! - 1
-//                slideDetailVC.pageImages = self.photosArray
-//            }
-//        } else if segue.identifier == "ShowStory" {
+        if segue.identifier == "ShowSlider" {
+            let slideDetailVC = segue.destinationViewController as! T_SliderViewController
+            
+            // Get the cell that generated this segue
+            if let selectedPicture = sender as? T_PhotoCollectionViewCell {
+                let indexPath = collectionView.indexPathForCell(selectedPicture)
+                
+                let indexCell = getPhotoIndex(indexPath!) - 1
+                slideDetailVC.currentSlide = indexCell
+                slideDetailVC.slideImages = self.photosArray
+            }
+        } //else if segue.identifier == "ShowStory" {
 //            let slideDetailVC = segue.destinationViewController as! StoryViewController
 //            slideDetailVC.pageImages = self.photosArray
 //            slideDetailVC.currentPage = storyIndex
@@ -151,7 +142,7 @@ class PhotosCollectionViewController: UIViewController {
 }
 
 // MARK: - UICollectionView DataSource,Delegate,DelegateFlowLayout
-extension PhotosCollectionViewController : UICollectionViewDataSource , UICollectionViewDelegateFlowLayout, UICollectionViewDelegate{
+extension T_PhotosCollectionViewController : UICollectionViewDataSource , UICollectionViewDelegateFlowLayout, UICollectionViewDelegate{
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
@@ -168,7 +159,7 @@ extension PhotosCollectionViewController : UICollectionViewDataSource , UICollec
         // Story section
         if indexPath.section == 0 {
     
-            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("storyCell", forIndexPath: indexPath) as! StoryCollectionViewCell
+            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("storyCell", forIndexPath: indexPath) as! T_StoryCollectionViewCell
             
             cell.layer.cornerRadius = 15
             cell.imageView.image = photosArray[storyIndex].image
@@ -178,7 +169,7 @@ extension PhotosCollectionViewController : UICollectionViewDataSource , UICollec
         // Photos sections
             // Row O = Hour Cell
             if indexPath.row == 0 {
-                let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("hourCell", forIndexPath: indexPath) as! HourCollectionViewCell
+                let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("hourCell", forIndexPath: indexPath) as! T_HourCollectionViewCell
                 
                 cell.layer.cornerRadius = 5
                 
@@ -192,7 +183,7 @@ extension PhotosCollectionViewController : UICollectionViewDataSource , UICollec
                 
             } else {
             // Else = PhotoCell
-                let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("photoCell", forIndexPath: indexPath) as! PhotoCollectionViewCell
+                let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("photoCell", forIndexPath: indexPath) as! T_PhotoCollectionViewCell
                 
                 cell.layer.cornerRadius = 5
                 
@@ -213,7 +204,7 @@ extension PhotosCollectionViewController : UICollectionViewDataSource , UICollec
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "headerCollection", forIndexPath: indexPath) as! HeaderCollectionReusableView
+        let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "headerCollection", forIndexPath: indexPath) as! T_HeaderCollectionReusableView
         
         var title : String
         if indexPath.section == 0 {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HourCollectionViewCell: UICollectionViewCell {
+class T_HourCollectionViewCell: UICollectionViewCell {
     // MARK: Properties
     @IBOutlet weak var hourLabel: UILabel!
     
