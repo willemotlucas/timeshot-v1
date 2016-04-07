@@ -387,7 +387,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="462" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="phc-5e-Bcu">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="phc-5e-Bcu">
                                                     <rect key="frame" x="0.0" y="0.0" width="462" height="200"/>
                                                 </imageView>
                                             </subviews>
@@ -402,6 +402,7 @@
                                         <size key="customSize" width="462" height="200"/>
                                         <connections>
                                             <outlet property="imageView" destination="phc-5e-Bcu" id="hpK-kc-Ekl"/>
+                                            <segue destination="Xnu-7w-UyO" kind="showDetail" identifier="ShowStory" id="8X9-LQ-LUx"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="hourCell" id="WYJ-mQ-uUB" customClass="T_HourCollectionViewCell" customModule="TimeshotApp" customModuleProvider="target">
@@ -506,6 +507,86 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1K-Xy-sPS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2321" y="2353"/>
+        </scene>
+        <!--Story View Controller-->
+        <scene sceneID="GSw-Vs-2Na">
+            <objects>
+                <viewController id="Xnu-7w-UyO" customClass="T_StoryViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qMG-O1-H0o"/>
+                        <viewControllerLayoutGuide type="bottom" id="awt-cQ-mGW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0NT-uN-LL9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4n-lg-zt1">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Xnu-7w-UyO" id="cws-1u-cfk"/>
+                                </connections>
+                            </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fromUser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sjx-fZ-T3m">
+                                <rect key="frame" x="254" y="8" width="91" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hour" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdt-tz-w3G">
+                                <rect key="frame" x="277" y="42.5" width="46" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NxJ-gw-agb">
+                                <rect key="frame" x="562" y="8" width="30" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="D5I-RZ-r2O"/>
+                                    <constraint firstAttribute="height" constant="30" id="csi-J5-Yku"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="P4n-lg-zt1" firstAttribute="top" secondItem="qMG-O1-H0o" secondAttribute="bottom" id="3vN-9c-0zp"/>
+                            <constraint firstAttribute="trailing" secondItem="P4n-lg-zt1" secondAttribute="trailing" id="74e-KQ-BYr"/>
+                            <constraint firstItem="P4n-lg-zt1" firstAttribute="leading" secondItem="0NT-uN-LL9" secondAttribute="leading" id="Ep4-RK-ufP"/>
+                            <constraint firstItem="awt-cQ-mGW" firstAttribute="top" secondItem="P4n-lg-zt1" secondAttribute="bottom" id="G59-ur-vjr"/>
+                            <constraint firstItem="Sjx-fZ-T3m" firstAttribute="top" secondItem="qMG-O1-H0o" secondAttribute="bottom" constant="8" id="Isc-H8-4r9"/>
+                            <constraint firstItem="Sjx-fZ-T3m" firstAttribute="centerX" secondItem="0NT-uN-LL9" secondAttribute="centerX" id="L4P-9K-YOK"/>
+                            <constraint firstItem="NxJ-gw-agb" firstAttribute="top" secondItem="qMG-O1-H0o" secondAttribute="bottom" constant="8" id="UNz-DX-7pG"/>
+                            <constraint firstItem="rdt-tz-w3G" firstAttribute="centerX" secondItem="0NT-uN-LL9" secondAttribute="centerX" id="avj-7j-5xa"/>
+                            <constraint firstAttribute="trailing" secondItem="NxJ-gw-agb" secondAttribute="trailing" constant="8" id="nQS-9x-gJp"/>
+                            <constraint firstItem="rdt-tz-w3G" firstAttribute="top" secondItem="Sjx-fZ-T3m" secondAttribute="bottom" constant="8" id="t1l-z9-c62"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="CIB-bN-rsy" appends="YES" id="lQJ-pY-4Om"/>
+                            <outletCollection property="gestureRecognizers" destination="eFz-a5-H1l" appends="YES" id="GK2-Xf-lUF"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="circleView" destination="NxJ-gw-agb" id="p09-LY-ATz"/>
+                        <outlet property="fromUserLabel" destination="Sjx-fZ-T3m" id="pKe-WZ-9gS"/>
+                        <outlet property="hourLabel" destination="rdt-tz-w3G" id="fFK-xB-MU5"/>
+                        <outlet property="scrollView" destination="P4n-lg-zt1" id="mTR-Vx-SzD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="21S-u2-qOT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="lRd-KM-7KN" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="CIB-bN-rsy">
+                    <connections>
+                        <action selector="userTapped:" destination="Xnu-7w-UyO" id="Prg-Su-Sa8"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="down" id="eFz-a5-H1l">
+                    <connections>
+                        <segue destination="lRd-KM-7KN" kind="unwind" unwindAction="unwindToStoryView:" id="g4z-Dt-CeJ"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2321" y="3065"/>
         </scene>
         <!--Slider View Controller-->
         <scene sceneID="0q3-fT-l9G">

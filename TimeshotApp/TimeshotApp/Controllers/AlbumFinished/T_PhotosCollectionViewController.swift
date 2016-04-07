@@ -86,7 +86,7 @@ class T_PhotosCollectionViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         // Do any additional setup after loading the view.
         navigationController?.navigationBarHidden = false
-        //collectionView.reloadData()
+        collectionView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -122,23 +122,24 @@ class T_PhotosCollectionViewController: UIViewController {
                 slideDetailVC.currentSlide = indexCell
                 slideDetailVC.slideImages = self.photosArray
             }
-        } //else if segue.identifier == "ShowStory" {
-//            let slideDetailVC = segue.destinationViewController as! StoryViewController
-//            slideDetailVC.pageImages = self.photosArray
-//            slideDetailVC.currentPage = storyIndex
-//        }
+        } else if segue.identifier == "ShowStory" {
+            let slideDetailVC = segue.destinationViewController as! T_StoryViewController
+            slideDetailVC.pageImages = self.photosArray
+            slideDetailVC.currentPage = storyIndex
+        }
     }
     
-//    @IBAction func unwindToStoryView(sender: UIStoryboardSegue) {
-//        if let sourceViewController = sender.sourceViewController as? StoryViewController {
-//            if sourceViewController.currentPage > 0 {
-//                storyIndex = sourceViewController.currentPage - 1
-//            } else {
-//                storyIndex = sourceViewController.currentPage
-//            }
-//            
-//        }
-//    }
+    @IBAction func unwindToStoryView(sender: UIStoryboardSegue) {
+        // We nedd the update our view and now where the user stopped the story
+        if let sourceViewController = sender.sourceViewController as? T_StoryViewController {
+            if sourceViewController.currentPage > 0 {
+                storyIndex = sourceViewController.currentPage - 1
+            } else {
+                storyIndex = sourceViewController.currentPage
+            }
+            
+        }
+    }
 }
 
 // MARK: - UICollectionView DataSource,Delegate,DelegateFlowLayout
