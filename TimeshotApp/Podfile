@@ -4,4 +4,4 @@ use_frameworks!
 
 pod 'CameraManager', '~> 2.2'
 pod 'Parse'
-
+pod 'Bond'

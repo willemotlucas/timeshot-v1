@@ -20,19 +20,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         T_User.registerSubclass()
+        T_Album.registerSubclass()
         
         // Set up the Parse SDK
         Parse.setApplicationId("uAhZdofpZFzSCMa83PbQwFx2ls3qmWbvr0BADedv", clientKey: "1PPkLR8lj8bqH9ppX6Y1dMXWKewFhiaxs6oEjrr3")
         
+        PFUser.enableRevocableSessionInBackground()
         
-        PFUser.logInWithUsernameInBackground("paul", password: "paul")
-        
-        if let currentUser = PFUser.currentUser() {
-            print("\(currentUser.username!) logged in successfully")
-        } else {
-            print("No logged in user :(")
+        PFUser.logInWithUsernameInBackground("paul", password: "paul") { (objects, error) -> Void in
+            if error == nil {
+                if let currentUser = PFUser.currentUser() as? T_User {
+                    print("\(currentUser.username!) logged in successfully")
+                    
+                    
+//                    let album = T_Album(attendees: [currentUser], cover: UIImage(named: "SelfySample")!, createdBy: currentUser, duration: "3h", isDeleted: false, title: "Album test")
+//                    
+//                    try! album.save()
+                    
+                    
+                    
+                    
+                } else {
+                    print("Error: \(error) \(error!.userInfo)")
+                }
+            }
         }
-        
         return true
     }
     

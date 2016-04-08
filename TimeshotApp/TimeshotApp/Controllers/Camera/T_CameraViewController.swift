@@ -130,12 +130,14 @@ class T_CameraViewController: UIViewController {
         {
             let destinationVC = segue.destinationViewController as! T_CreateAlbumViewController
             destinationVC.image = self.image
+            // To perform symetry / rotation if needed when computing the image for filters
             destinationVC.isFrontCamera = !self.isBackCameraActivated
         }
         else
         {
             let destinationVC = segue.destinationViewController as! T_EditCameraImageViewController
             destinationVC.image = self.image
+            // To perform symetry / rotation if needed when computing the image for filters
             destinationVC.isFrontCamera = !self.isBackCameraActivated
         }
     }

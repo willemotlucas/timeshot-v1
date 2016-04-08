@@ -7,22 +7,25 @@
 //
 
 import UIKit
+import Parse
 
 class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegate, UIPickerViewDelegate,UIPickerViewDataSource, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var buttonNext: UIButton!
+    @IBOutlet weak var buttonBack: UIButton!
     
     var image:UIImage!
     var isFrontCamera:Bool = true
     var textField:T_SnapTextField!
     var timePicker:UIPickerView!
     var timePickerTextField:UITextField!
+    var duration:Int!
     
     private
     let timeData = [3, 6, 12, 24, 48]
-    
+    var defaultDuration:Int!
     
     //------------------------------------------------------------------------------------------------
     //MARK: Outlets Methods
@@ -39,6 +42,10 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     override func viewDidLoad() {
         
         self.scrollView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
+        
+        self.defaultDuration = timeData[0]
+        self.duration = defaultDuration
+        
         initBackgroundImage()
         initScrollView()
         initTextField()
@@ -77,6 +84,29 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "segueChooseContactsAlbumCreation") {
+            
+            let nav = segue.destinationViewController as! UINavigationController
+            let destinationVC = nav.topViewController as! T_ChooseContactsAlbumCreationViewController
+            
+            timePicker.hidden = true
+            timePickerTextField.hidden = true
+            buttonNext.hidden = true
+            buttonBack.hidden = true
+                        
+            destinationVC.cover = T_CameraHelper.screenShot(self.view)
+            destinationVC.duration = self.duration
+            destinationVC.albumTitle = (self.textField.text)!
+
+            timePicker.hidden = false
+            timePickerTextField.hidden = false
+            buttonNext.hidden = false
+            buttonBack.hidden = false
+
+        }
+    }
+    
     //------------------------------------------------------------------------------------------------
     //MARK: TimePicker methods
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
@@ -95,6 +125,7 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.timePickerTextField.text = "\(timeData[row])h"
+        self.duration = timeData[row]
     }
     
     //------------------------------------------------------------------------------------------------
@@ -107,7 +138,7 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
         self.timePickerTextField.layer.cornerRadius = 22
         self.timePickerTextField.layer.masksToBounds = true
         self.timePickerTextField.textAlignment = .Center
-        self.timePickerTextField.text = "\(timeData[0])h"
+        self.timePickerTextField.text = "\(defaultDuration)h"
         self.view.addSubview(self.timePickerTextField)
 
         self.timePicker = UIPickerView(frame: CGRect(x: 0, y: T_DesignHelper.screenSize.height - 90, width: T_DesignHelper.screenSize.width, height: 90))

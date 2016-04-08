@@ -202,6 +202,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="buttonBack" destination="Moc-iY-mwf" id="SCC-Ul-pDy"/>
                         <outlet property="buttonNext" destination="NOy-73-VDf" id="HhM-hz-k8Y"/>
                         <outlet property="imageView" destination="Dot-2V-rU6" id="BKd-9R-2az"/>
                         <outlet property="scrollView" destination="Vhl-us-YRJ" id="2Ts-0S-9El"/>

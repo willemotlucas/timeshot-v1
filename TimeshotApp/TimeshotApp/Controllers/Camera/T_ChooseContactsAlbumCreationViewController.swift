@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import Bond
 
 class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -19,10 +21,11 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
     @IBOutlet weak var bottomBar: UIToolbar!
     
     var createButton:UIBarButtonItem!
+    var friendCells:[T_User]! = []
     
-    let friends = ["Laurie Boulanger", "Antoine Jeannot", "Valentin Paul", "Lucas Willemot", "Karim Lamouri", "Antoine Chwatacz", "Clément Dubois", "Alexandre Delarouzée", "Théo Hordequin", "Florian Cartier", "Thibaut Sannier", "Tanguy Lucci", "Romain Marlot", "Pauline Bento", "Pauline Burg", "Théo Bastoul", "Laurène Gigandet"]
-    
-    var friendCells:[T_FriendAddedToAlbum]! = []
+    var duration:Int!
+    var cover:UIImage!
+    var albumTitle:String!
     
     //MARK: Outlets methods
     
@@ -33,13 +36,27 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
     func actionCreateButton(sender: AnyObject) {
     
         print("Album Created with : \n")
-        for friend in T_FriendAddedToAlbum.selectedFriends
-        {
-            print("   - \(friend.name)")
+        if let currentUser = PFUser.currentUser() as? T_User {
+            print("Creation ...")
+            
+            
+            let album = T_Album(attendees: T_User.selectedFriends, cover: self.cover, createdBy: currentUser, duration: self.duration, isDeleted: false, title: self.albumTitle)
+            
+            album.saveInBackgroundWithBlock {
+                (success, error) -> Void in
+                if success {
+                    print("Object created with id: (gameScore.objectId)")
+                } else {
+                    print("%@", error)
+                }
+            }
+            
+            
+            print("... End")
         }
-        
-        
-        
+        else {
+            print("not connected")
+        }
         self.presentingViewController?.presentingViewController!.dismissViewControllerAnimated(false, completion: {})
     }
     
@@ -71,18 +88,20 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
         self.friendAddedLabel.backgroundColor = UIColor.clearColor()
         self.friendAddedLabel.textAlignment = .Left
         self.friendAddedItem.customView = self.friendAddedLabel
-        
-        for i in 0..<friends.count {
-            self.friendCells.append(T_FriendAddedToAlbum(n: friends[i], p: UIImage(named: "SelfySample")!))
-        }
+
+        // Fetch data from parse
+        T_User.getAllUsers({
+            (data) -> Void in
+            self.friendCells = data
+            self.tableView.reloadData()
+        })
     }
     
     deinit
     {
         self.friendCells.removeAll()
-        T_FriendAddedToAlbum.selectedFriends.removeAll()
-        T_FriendAddedToAlbum.selectedFriends = []
-//        print("chose deinit")
+        T_User.selectedFriends.removeAll()
+        T_User.selectedFriends = []
     }
 
     //MARK: - TableView Datasource and Delegate
@@ -91,7 +110,7 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friends.count
+        return friendCells.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -104,23 +123,25 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
             unselectFriendDesign(cell)
         }
         
-        cell.backgroundColor = UIColor.whiteColor()
-        cell.label.text = "\(friendCells[indexPath.row].name)"
+        cell.label.text = "\(friendCells[indexPath.row].firstName) \(friendCells[indexPath.row].lastName)"
         cell.selectionStyle = .None
-        cell.setProfilPicture(friendCells[indexPath.row].picture)
+        
+        self.friendCells[indexPath.row].downloadImage()
+        cell.user = self.friendCells[indexPath.row]
+        
         return cell
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        let contactCell = cell as! T_AddFriendToAlbumTableViewCell
-        
-        if (friendCells[indexPath.row].isSelected()) {
-            selectFriendDesign(contactCell)
-        }
-        else {
-            unselectFriendDesign(contactCell)
-        }
+//        let contactCell = cell as! T_AddFriendToAlbumTableViewCell
+//        
+//        if (friendCells[indexPath.row].isSelected()) {
+//            selectFriendDesign(contactCell)
+//        }
+//        else {
+//            unselectFriendDesign(contactCell)
+//        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -160,7 +181,7 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
 
     func updateLabel()
     {
-        if (T_FriendAddedToAlbum.selectedFriends.count == 0) {
+        if (T_User.selectedFriends.count == 0) {
             self.friendAddedLabel.text = "Select some friends to start !"
             self.friendAddedLabel.sizeToFit()
             if (self.bottomBar.items?.indexOf(self.createButton) != nil)
@@ -169,13 +190,13 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
             }
         }
         else {
-            if (T_FriendAddedToAlbum.selectedFriends.count == 1)
+            if (T_User.selectedFriends.count == 1)
             {
-                self.friendAddedLabel.text = "\(T_FriendAddedToAlbum.selectedFriends.count) friend selected"
+                self.friendAddedLabel.text = "\(T_User.selectedFriends.count) friend selected"
             }
             else
             {
-                self.friendAddedLabel.text = "\(T_FriendAddedToAlbum.selectedFriends.count) friends selected"
+                self.friendAddedLabel.text = "\(T_User.selectedFriends.count) friends selected"
             }
             self.friendAddedLabel.sizeToFit()
             
@@ -183,7 +204,6 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
             {
                 self.bottomBar.items?.append(self.createButton)
             }
-
         }
     }
 }
