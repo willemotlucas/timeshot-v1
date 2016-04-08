@@ -20,6 +20,7 @@ class T_User : PFUser {
     @NSManaged var picture:PFFile?
 
     var image: Observable<UIImage?> = Observable(nil)
+    var liveAlbum:T_Album?
     
     static var selectedFriends:[T_User] = []
 
@@ -92,7 +93,6 @@ class T_User : PFUser {
                 if let data = data {
                     let image = UIImage(data: data, scale:1.0)!
                     self.image.value = image
-                    print("donwload ended")
                 }
             }
         }

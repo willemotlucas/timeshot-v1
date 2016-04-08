@@ -64,7 +64,6 @@ class T_EditCameraImageViewController: UIViewController {
     }
     
     deinit {
-        print("Edit VC")
     }
         
     //MARK: - Touch Events

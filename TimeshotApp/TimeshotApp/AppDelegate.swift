@@ -27,24 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         PFUser.enableRevocableSessionInBackground()
         
-        PFUser.logInWithUsernameInBackground("paul", password: "paul") { (objects, error) -> Void in
-            if error == nil {
-                if let currentUser = PFUser.currentUser() as? T_User {
-                    print("\(currentUser.username!) logged in successfully")
-                    
-                    
-//                    let album = T_Album(attendees: [currentUser], cover: UIImage(named: "SelfySample")!, createdBy: currentUser, duration: "3h", isDeleted: false, title: "Album test")
-//                    
-//                    try! album.save()
-                    
-                    
-                    
-                    
-                } else {
-                    print("Error: \(error) \(error!.userInfo)")
-                }
-            }
+        try! PFUser.logInWithUsername("paul", password: "paul")
+        if let currentUser = PFUser.currentUser() as? T_User {
+            print("\(currentUser.username!) logged in successfully")
         }
+    
         return true
     }
     

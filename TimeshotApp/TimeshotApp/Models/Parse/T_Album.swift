@@ -20,6 +20,10 @@ class T_Album : PFObject, PFSubclassing {
     
     static var albumCreationTask: UIBackgroundTaskIdentifier?
 
+    override init()
+    {
+        super.init()
+    }
     
     override class func initialize() {
         struct Static {
@@ -54,7 +58,10 @@ class T_Album : PFObject, PFSubclassing {
         
         if let currentUser = PFUser.currentUser() as? T_User {
            
-            let album = T_Album(attendees: T_User.selectedFriends, cover: cover, createdBy: currentUser, duration: duration, isDeleted: false, title: albumTitle)
+            var attendees = T_User.selectedFriends
+            attendees.append(currentUser)
+            
+            let album = T_Album(attendees: attendees, cover: cover, createdBy: currentUser, duration: duration, isDeleted: false, title: albumTitle)
             
             T_Album.albumCreationTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in
                 UIApplication.sharedApplication().endBackgroundTask(self.albumCreationTask!)
@@ -64,6 +71,7 @@ class T_Album : PFObject, PFSubclassing {
                 (success, error) -> Void in
                 if success {
                     print("Album created")
+                    T_CameraViewController.instance.retrieveExistingAlbum()
                 } else {
                     print("An error occured : %@", error)
                 }
@@ -75,20 +83,37 @@ class T_Album : PFObject, PFSubclassing {
         }
     }
     
-    static func isALiveAlbumAvailable() -> Bool {
+    static func isALiveAlbumAlreadyExisting(withCompletion: (isExisting:Bool) -> ()) {
         
         if let currentUser = PFUser.currentUser() as? T_User {
             
-            
-        
+            let query = PFQuery(className: "Album")
+            query.whereKey("attendees", equalTo: currentUser)
+            query.orderByDescending("createdAt")
+            query.limit = 1
+            query.findObjectsInBackgroundWithBlock {
+                (objects, error) -> Void in
+                if error == nil {
+                    let album = objects![0] as! T_Album
+                    currentUser.liveAlbum = album
+                    let creationDate = (album.createdAt)!
+                    withCompletion(isExisting: T_Album.isDelayExpired(creationDate, duration: album.duration))
+                }
+            }
         }
         else {
             print("Not connected, cannot verify if an album is live")
         }
-
-        return true
     }
     
+    static func isDelayExpired(date:NSDate, duration: Int) -> Bool {
+        if (Int(-(date.timeIntervalSinceNow)/3600) < duration) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
     
     
 }

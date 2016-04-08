@@ -8,13 +8,16 @@
 
 import UIKit
 import CameraManager
+import Parse
 
 class T_CameraViewController: UIViewController {
+    
+    static weak var instance:T_CameraViewController!
     
     let cameraManager = CameraManager()
     var image:UIImage?
     
-    let createAlbum:Bool = true
+    var isLiveAlbumExisting:Bool! = nil
     
     private
     var isFlashActivated:Bool = false
@@ -22,8 +25,8 @@ class T_CameraViewController: UIViewController {
     
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var buttonTakePicture: UIButton!
-    @IBOutlet weak var albumTitle: UILabel!
-    @IBOutlet weak var albumImage: UIImageView!
+    var albumTitle: UILabel!
+    var albumImage: UIImageView!
     
     @IBOutlet weak var buttonReturnCamera: UIButton!
     @IBOutlet weak var buttonFlash: UIButton!
@@ -38,7 +41,7 @@ class T_CameraViewController: UIViewController {
             (img, error) -> Void in
             self.image = img
             
-            if (self.createAlbum == true)
+            if (self.isLiveAlbumExisting == false)
             {
                 self.performSegueWithIdentifier("segueCreateAlbum", sender: nil)
             }
@@ -86,14 +89,12 @@ class T_CameraViewController: UIViewController {
         
         self.buttonAlbumVC.layer.zPosition = 10
         self.buttonProfileVC.layer.zPosition = 10
-        
-        if (createAlbum == false) {
-            setLabelText("Soirées des finaux 2016")
-       }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        T_CameraViewController.instance = self
         
         // Camera init
         cameraManager.addPreviewLayerToView(self.cameraView)
@@ -103,30 +104,63 @@ class T_CameraViewController: UIViewController {
         cameraManager.flashMode = .Off
         cameraManager.writeFilesToPhoneLibrary = false
         cameraManager.showAccessPermissionPopupAutomatically = true
+
+        self.retrieveExistingAlbum()
     }
     
-    func setLabelText(text: String)
-    {
-        let finalText = "    \(text.trunc(30))"
-        let textSize = finalText.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(15.0)])
-        self.albumTitle.frame.size.width = 55 + textSize.width
-        self.albumTitle.frame.origin = CGPoint(x: T_DesignHelper.screenSize.width/2 - self.albumTitle.frame.size.width/2, y: self.albumTitle.frame.origin.y)
-        
-        self.albumImage.frame.origin = CGPoint(x: T_DesignHelper.screenSize.width/2 + self.albumTitle.frame.size.width/2 - 40, y: self.albumImage.frame.origin.y)
+    func retrieveExistingAlbum() {
+        T_Album.isALiveAlbumAlreadyExisting({ (isExisting:Bool) -> () in
+            self.isLiveAlbumExisting = isExisting
+            
+            if (self.isLiveAlbumExisting == true) {
+                if let currentUser = PFUser.currentUser() as? T_User {
+                    if (currentUser.liveAlbum != nil) {
+                        
+                        if(self.albumTitle == nil) {
+                            self.initLabelText()
+                        }
+                        
+                        self.updateLabelText((currentUser.liveAlbum?.title)!)
+                    }
+                }
+            }
+        })
+    }
+    
+    func initLabelText() {
+        self.albumTitle = UILabel(frame: CGRect(x: T_DesignHelper.screenSize.width/2, y: 16, width: 0, height: 24))
+        self.albumImage = UIImageView(frame: CGRect(x: 0, y: 18, width: 24, height: 20))
+        self.albumImage.image = UIImage(named: "AlbumName")
         
         self.albumTitle.layer.zPosition = 1
         self.albumTitle.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.7)
-        self.albumTitle.layer.cornerRadius = 15
+        self.albumTitle.layer.cornerRadius = 12
         self.albumTitle.font = UIFont.systemFontOfSize(15)
         self.albumTitle.textColor = UIColor.whiteColor()
         self.albumTitle.layer.masksToBounds = true
         self.albumImage.layer.zPosition = 11
+        
+        self.view.addSubview(self.albumTitle)
+        self.view.addSubview(self.albumImage)
+    }
+    
+    func updateLabelText(text: String)
+    {
+        let finalText = "    \(text.trunc(30))"
+        let textSize = finalText.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(15.0)])
+
+        self.albumTitle.frame.size.width = 40 + textSize.width
+        self.albumTitle.frame.origin = CGPoint(x: T_DesignHelper.screenSize.width/2 - self.albumTitle.frame.size.width/2, y: self.albumTitle.frame.origin.y)
+        
+        self.albumImage.contentMode = .ScaleAspectFit
+        self.albumImage.frame.origin = CGPoint(x: T_DesignHelper.screenSize.width/2 + self.albumTitle.frame.size.width/2 - 33, y: self.albumImage.frame.origin.y)
+        
         self.albumTitle.text = finalText
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if (self.createAlbum == true)
+        if (self.isLiveAlbumExisting == false)
         {
             let destinationVC = segue.destinationViewController as! T_CreateAlbumViewController
             destinationVC.image = self.image
