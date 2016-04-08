@@ -100,9 +100,9 @@ class T_User : PFUser {
     
     static func getAllUsers(withCompletion: (data: [T_User]) -> ())
     {
-        let query = PFQuery(className:"_User")
-        query.selectKeys(["firstName", "lastName", "picture"])
-        query.findObjectsInBackgroundWithBlock {
+        let query = T_User.query()
+        query!.selectKeys(["firstName", "lastName", "picture"])
+        query!.findObjectsInBackgroundWithBlock {
             (objects, error) -> Void in
             if error == nil {
                 withCompletion(data: objects as! [T_User])

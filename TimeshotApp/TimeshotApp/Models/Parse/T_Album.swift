@@ -75,6 +75,19 @@ class T_Album : PFObject, PFSubclassing {
         }
     }
     
+    static func isALiveAlbumAvailable() -> Bool {
+        
+        if let currentUser = PFUser.currentUser() as? T_User {
+            
+            
+        
+        }
+        else {
+            print("Not connected, cannot verify if an album is live")
+        }
+
+        return true
+    }
     
     
     
