@@ -40,7 +40,6 @@
 		B46B2B811C9ABB2900135920 /* T_AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */; };
 		B4964D261CB6838200B77E4D /* T_CameraHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4964D251CB6838200B77E4D /* T_CameraHelper.swift */; };
 		B4D9BDAA1CA4885100B28C52 /* T_String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D9BDA91CA4885100B28C52 /* T_String+Extension.swift */; };
-		B4EA9DCA1CB52D37003F5A75 /* T_FriendAddedToAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EA9DC61CB52D37003F5A75 /* T_FriendAddedToAlbum.swift */; };
 		B4EA9DCB1CB52D37003F5A75 /* T_SnapTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EA9DC71CB52D37003F5A75 /* T_SnapTextField.swift */; };
 		B4EA9DCC1CB52D37003F5A75 /* T_Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EA9DC81CB52D37003F5A75 /* T_Slider.swift */; };
 		B4EA9DCD1CB52D37003F5A75 /* T_Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EA9DC91CB52D37003F5A75 /* T_Filter.swift */; };
@@ -87,7 +86,6 @@
 		B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumViewController.swift; sourceTree = "<group>"; };
 		B4964D251CB6838200B77E4D /* T_CameraHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_CameraHelper.swift; sourceTree = "<group>"; };
 		B4D9BDA91CA4885100B28C52 /* T_String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "T_String+Extension.swift"; sourceTree = "<group>"; };
-		B4EA9DC61CB52D37003F5A75 /* T_FriendAddedToAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendAddedToAlbum.swift; sourceTree = "<group>"; };
 		B4EA9DC71CB52D37003F5A75 /* T_SnapTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SnapTextField.swift; sourceTree = "<group>"; };
 		B4EA9DC81CB52D37003F5A75 /* T_Slider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Slider.swift; sourceTree = "<group>"; };
 		B4EA9DC91CB52D37003F5A75 /* T_Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Filter.swift; sourceTree = "<group>"; };
@@ -254,7 +252,6 @@
 		B4EA9DC51CB52D1D003F5A75 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
-				B4EA9DC61CB52D37003F5A75 /* T_FriendAddedToAlbum.swift */,
 				B4EA9DC71CB52D37003F5A75 /* T_SnapTextField.swift */,
 				B4EA9DC81CB52D37003F5A75 /* T_Slider.swift */,
 				B4EA9DC91CB52D37003F5A75 /* T_Filter.swift */,
@@ -430,7 +427,6 @@
 				7DD0F9AE1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift in Sources */,
 				7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */,
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
-				B4EA9DCA1CB52D37003F5A75 /* T_FriendAddedToAlbum.swift in Sources */,
 				5DB5A00D1CA1905200AADC9F /* T_DesignHelper.swift in Sources */,
 				5DB5A02F1CA1C8D400AADC9F /* T_SearchUserViewController.swift in Sources */,
 				B4EA9DCD1CB52D37003F5A75 /* T_Filter.swift in Sources */,

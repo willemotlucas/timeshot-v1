@@ -34,30 +34,10 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
     }
     
     func actionCreateButton(sender: AnyObject) {
-    
-        print("Album Created with : \n")
-        if let currentUser = PFUser.currentUser() as? T_User {
-            print("Creation ...")
-            
-            
-            let album = T_Album(attendees: T_User.selectedFriends, cover: self.cover, createdBy: currentUser, duration: self.duration, isDeleted: false, title: self.albumTitle)
-            
-            album.saveInBackgroundWithBlock {
-                (success, error) -> Void in
-                if success {
-                    print("Object created with id: (gameScore.objectId)")
-                } else {
-                    print("%@", error)
-                }
-            }
-            
-            
-            print("... End")
-        }
-        else {
-            print("not connected")
-        }
+
+        T_Album.createAlbum(self.cover, duration: self.duration, albumTitle: self.albumTitle)
         self.presentingViewController?.presentingViewController!.dismissViewControllerAnimated(false, completion: {})
+
     }
     
     //MARK: System Methods
@@ -88,7 +68,7 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
         self.friendAddedLabel.backgroundColor = UIColor.clearColor()
         self.friendAddedLabel.textAlignment = .Left
         self.friendAddedItem.customView = self.friendAddedLabel
-
+        
         // Fetch data from parse
         T_User.getAllUsers({
             (data) -> Void in
@@ -97,13 +77,15 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
         })
     }
     
-    deinit
-    {
+    deinit {
         self.friendCells.removeAll()
         T_User.selectedFriends.removeAll()
         T_User.selectedFriends = []
     }
 
+}
+
+extension T_ChooseContactsAlbumCreationViewController {
     //MARK: - TableView Datasource and Delegate
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
