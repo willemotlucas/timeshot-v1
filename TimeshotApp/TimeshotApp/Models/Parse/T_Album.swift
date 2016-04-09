@@ -78,27 +78,19 @@ class T_Album : PFObject, PFSubclassing {
         }
     }
     
-    static func manageAlbumProcessing(currentUser: T_User) -> Bool {
+    static func manageAlbumProcessing(currentUser: T_User, withCompletion completion: (isLiveAlbum: Bool) -> Void) {
         
+        print("\n\n\nProcessing\n-----")
         // Y'a t'il un album dans currentUser.liveAlbum NON EXPIRÉ ?
         if (isLiveAlbumAssociatedToUser(currentUser.liveAlbum)) {
-            print("in T_User")
-            return true
-        }
-        // Sinon, y'a t'il un liveAlbum pinned NON EXPIRÉ?
-        else if (isLiveAlbumPinned(currentUser)) {
-            print("Pinned")
-            return true
-        }
-        // Sinon, y'a t'il un liveAlbum sur parse NON EXPIRÉ ?
-        else if (isLiveAlbumOnParse(currentUser)) {
-            print("on Parse")
-            return true
+            print("Album found in T_User")
+            completion(isLiveAlbum: true)
+            return
         }
         else {
-            print("No album")
             currentUser.liveAlbum = nil
-            return false
+            isLiveAlbumFetchInBackground(currentUser, withCompletion: completion)
+            return
         }
     }
     
@@ -113,26 +105,47 @@ class T_Album : PFObject, PFSubclassing {
         return true
     }
     
-    static func isLiveAlbumPinned(currentUser: T_User) -> Bool {
+    static func isLiveAlbumFetchInBackground(currentUser: T_User, withCompletion completion: (isLiveAlbum: Bool) -> Void) {
+        
+        isLiveAlbumPinned(currentUser, withEndCompletion: completion) {
+            (currentUser: T_User) -> Void in
+            
+            isLiveAlbumOnParse(currentUser, withEndCompletion: completion)
+        }
+    }
+    
+    //----------------
+    static func isLiveAlbumPinned(currentUser: T_User, withEndCompletion endCompletion: (isLiveAlbum: Bool) -> Void, withDeeperCompletion completion: (currentUser: T_User) -> Void) {
         
         T_ParseAlbumHelper.queryAlbumPinned {
             (liveAlbum: T_Album?) -> () in
         
             currentUser.liveAlbum = liveAlbum
+            
+            if (isLiveAlbumAssociatedToUser(currentUser.liveAlbum)) {
+                print("Found pinned in local data")
+                endCompletion(isLiveAlbum: true)
+                return
+            }
+            
+            completion(currentUser: currentUser)
         }
         
-        return isLiveAlbumAssociatedToUser(currentUser.liveAlbum)
     }
     
-    static func isLiveAlbumOnParse(currentUser: T_User) -> Bool {
+    static func isLiveAlbumOnParse(currentUser: T_User, withEndCompletion endCompletion: (isLiveAlbum: Bool) -> Void) -> () {
         
         T_ParseAlbumHelper.queryLastAlbumOnParse(currentUser) {
             (liveAlbum: T_Album?) -> () in
             
             currentUser.liveAlbum = liveAlbum
+            
+            if (isLiveAlbumAssociatedToUser(currentUser.liveAlbum)) {
+                print("Found on parse online")
+                endCompletion(isLiveAlbum: true)
+                return
+            }
         }
-        
-        return isLiveAlbumAssociatedToUser(currentUser.liveAlbum)
     }
     
     //------------------------------------------------------------------------------------------
@@ -158,64 +171,4 @@ class T_Album : PFObject, PFSubclassing {
     static func getRemainingDuration(date:NSDate, duration: Int) -> Int {
         return (duration*3600 - getDelay(date))
     }
-
-    //------------------------------------------------------------------------------------------------------------
-    
-//    static func exploreObjects(album: T_Album, currentUser: T_User) -> Bool {
-//        
-//            currentUser.liveAlbum = album
-//            let creationDate = (album.createdAt)!
-//            
-//            T_Album.unpinAllObjectsInBackgroundWithName(T_ParseAlbumHelper.liveAlbumPinnedLabel)
-//
-//            if (!T_Album.isDurationExpired(creationDate, duration: album.duration)) {
-//                album.pinInBackgroundWithName(T_ParseAlbumHelper.liveAlbumPinnedLabel)
-//            }
-//            
-//            return !T_Album.isDurationExpired(creationDate, duration: album.duration)
-//    }
-//
-//    
-//    static func isALiveAlbumAlreadyExisting(withCompletion: (isExisting:Bool) -> ()) {
-//        
-//        // If internet connexion
-//        if let currentUser = PFUser.currentUser() as? T_User
-//        {
-//            let query = PFQuery(className: "Album")
-//            query.whereKey("attendees", equalTo: currentUser)
-//            query.orderByDescending("createdAt")
-//            query.limit = 1
-//            query.findObjectsInBackgroundWithBlock
-//            {
-//                (objects, error) -> Void in
-//                if error == nil
-//                {
-//                    withCompletion(isExisting: exploreObjects(T_ParseAlbumHelper.getAlbumFromObjects(objects)!, currentUser: currentUser))
-//                }
-//                else
-//                {
-//                    print("error to find object on the internet in background")
-//                    
-//                    T_ParseUserHelper.queryUserPinned({
-//                        (currentUser: T_User?) -> () in
-//                        if let user = currentUser {
-//                            T_ParseAlbumHelper.queryAlbumPinned({
-//                                (liveAlbum: T_Album?) -> () in
-//                                if let album = liveAlbum {
-//                                    withCompletion(isExisting: exploreObjects(album, currentUser: user))
-//                                }
-//                            })
-//                        }
-//                    })
-//                }
-//            }
-//            
-//            withCompletion(isExisting: false)
-//        }
-//            // If no internet connexion, we take the album from localDataStore of Parse
-//        else
-//        {
-//            print("need to be connected at least once")
-//        }
-//    }
 }

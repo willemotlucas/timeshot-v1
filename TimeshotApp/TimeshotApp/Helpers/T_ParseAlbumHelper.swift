@@ -31,7 +31,6 @@ class T_ParseAlbumHelper {
             (objects, error) -> Void in
             if (error == nil)
             {
-                print("Album found in pinned data")
                 completion(liveAlbum: getAlbumFromObjects(objects))
                 return
             }

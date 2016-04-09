@@ -151,16 +151,23 @@ class T_CameraViewController: UIViewController {
     func manageAlbumProcessing() {
         guard let currentUser = PFUser.currentUser() as? T_User else { return }
         
-        self.isLiveAlbumExisting = T_Album.manageAlbumProcessing(currentUser)
+        self.isLiveAlbumExisting = false
+        self.hideLabelText()
         
-        guard let album = currentUser.liveAlbum else {
-            self.hideLabelText()
-            return
+        T_Album.manageAlbumProcessing(currentUser) {
+            (isLiveAlbum: Bool) -> Void in
+            
+            self.isLiveAlbumExisting = isLiveAlbum
+            
+            if (isLiveAlbum) {
+                
+                guard let album = currentUser.liveAlbum else { return  }
+
+                self.updateLabelText(album.title)
+                
+                self.albumTimer = NSTimer.scheduledTimerWithTimeInterval(Double(T_Album.getRemainingDuration((currentUser.liveAlbum?.createdAt)!, duration: (currentUser.liveAlbum?.duration)!)), target: self, selector: #selector(T_CameraViewController.manageAlbumProcessing), userInfo: nil, repeats: false)
+            }
         }
-        
-        self.updateLabelText(album.title)
-        
-        self.albumTimer = NSTimer.scheduledTimerWithTimeInterval(Double(T_Album.getRemainingDuration((currentUser.liveAlbum?.createdAt)!, duration: (currentUser.liveAlbum?.duration)!)), target: self, selector: #selector(T_CameraViewController.manageAlbumProcessing), userInfo: nil, repeats: false)
     }
 
     func stopAlbumTimer() {
