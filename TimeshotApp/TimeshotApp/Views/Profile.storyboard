@@ -528,6 +528,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="HxV-3k-nrM" kind="show" identifier="lastNameEditionSegue" id="9Y9-e0-1xM"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Nrz-rF-aLh" detailTextLabel="TxE-hJ-CNh" style="IBUITableViewCellStyleValue1" id="B9d-7U-lmO">
                                         <rect key="frame" x="0.0" y="245.5" width="600" height="44"/>
@@ -552,6 +555,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="D36-Nz-kPO" kind="show" identifier="birthdayEditionSegue" id="78b-Z2-cxG"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="XfD-Ui-7C0" detailTextLabel="aQR-MM-Hym" style="IBUITableViewCellStyleValue1" id="ON9-ZT-K4w">
                                         <rect key="frame" x="0.0" y="289.5" width="600" height="44"/>
@@ -705,7 +711,137 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jtp-7Y-4su" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2489" y="-162"/>
+            <point key="canvasLocation" x="2489" y="-434"/>
+        </scene>
+        <!--Last name-->
+        <scene sceneID="dPL-2D-TxD">
+            <objects>
+                <viewController id="HxV-3k-nrM" customClass="T_LastNameEditionViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Owr-w5-9hS"/>
+                        <viewControllerLayoutGuide type="bottom" id="NiF-Qz-arX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Nhb-L2-Bg2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UfA-Dm-kea">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="wTU-9y-b68"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3tc-iw-Qsw">
+                                <rect key="frame" x="20" y="142" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="UfA-Dm-kea" firstAttribute="top" secondItem="Owr-w5-9hS" secondAttribute="bottom" id="6vD-Cq-QCf"/>
+                            <constraint firstAttribute="trailing" secondItem="UfA-Dm-kea" secondAttribute="trailing" id="7yU-J8-N1W"/>
+                            <constraint firstAttribute="trailing" secondItem="3tc-iw-Qsw" secondAttribute="trailing" constant="20" id="GgR-Ht-vaS"/>
+                            <constraint firstItem="3tc-iw-Qsw" firstAttribute="top" secondItem="UfA-Dm-kea" secondAttribute="bottom" constant="34" id="eY8-VP-b4Z"/>
+                            <constraint firstItem="UfA-Dm-kea" firstAttribute="leading" secondItem="Nhb-L2-Bg2" secondAttribute="leading" id="lA8-aS-h2K"/>
+                            <constraint firstItem="3tc-iw-Qsw" firstAttribute="leading" secondItem="Nhb-L2-Bg2" secondAttribute="leading" constant="20" id="tiz-6q-tvg"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Last name" id="czy-Jb-kC2">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="fJJ-m9-bp9">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="HxV-3k-nrM" id="UdT-rd-JFc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="helpTextLabel" destination="3tc-iw-Qsw" id="Dvc-hG-xtL"/>
+                        <outlet property="lastNameTextField" destination="UfA-Dm-kea" id="L29-HI-M8f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dgR-Mz-Rrq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2489" y="215"/>
+        </scene>
+        <!--Birthday-->
+        <scene sceneID="Oi2-F5-7qL">
+            <objects>
+                <viewController id="D36-Nz-kPO" customClass="T_BirthdayEditionViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cZ8-bz-RJC"/>
+                        <viewControllerLayoutGuide type="bottom" id="rgN-vQ-e58"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="d1y-Fh-TfP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your birthday" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aym-dN-sme">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="5My-DN-uzt"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9f7-7H-mi3">
+                                <rect key="frame" x="20" y="138" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="knx-bg-l6g">
+                                <rect key="frame" x="0.0" y="384" width="600" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="7Tk-v0-Zu0"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="481920670.82688802">
+                                    <!--2016-04-09 18:51:10 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="selectedDateChanged:" destination="D36-Nz-kPO" eventType="valueChanged" id="ytc-hT-iMd"/>
+                                </connections>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="aym-dN-sme" secondAttribute="trailing" id="2OK-BU-ICB"/>
+                            <constraint firstAttribute="trailing" secondItem="9f7-7H-mi3" secondAttribute="trailing" constant="20" id="941-ne-o96"/>
+                            <constraint firstItem="aym-dN-sme" firstAttribute="leading" secondItem="d1y-Fh-TfP" secondAttribute="leading" id="EAr-tq-TP9"/>
+                            <constraint firstItem="9f7-7H-mi3" firstAttribute="top" secondItem="aym-dN-sme" secondAttribute="bottom" constant="30" id="EnF-jE-vht"/>
+                            <constraint firstItem="knx-bg-l6g" firstAttribute="leading" secondItem="d1y-Fh-TfP" secondAttribute="leading" id="HBY-at-vUN"/>
+                            <constraint firstItem="rgN-vQ-e58" firstAttribute="top" secondItem="knx-bg-l6g" secondAttribute="bottom" id="OzQ-4l-vjI"/>
+                            <constraint firstItem="aym-dN-sme" firstAttribute="top" secondItem="cZ8-bz-RJC" secondAttribute="bottom" id="P6P-38-Dk9"/>
+                            <constraint firstAttribute="trailing" secondItem="knx-bg-l6g" secondAttribute="trailing" id="pNm-c6-YMj"/>
+                            <constraint firstItem="9f7-7H-mi3" firstAttribute="leading" secondItem="d1y-Fh-TfP" secondAttribute="leading" constant="20" id="quZ-4G-tit"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Birthday" id="Ydv-jr-hdb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="wRM-1U-kbt">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="D36-Nz-kPO" id="1Ic-Ho-NOX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="birthdayDatePicker" destination="knx-bg-l6g" id="lDP-Cj-SFb"/>
+                        <outlet property="birthdayTextField" destination="aym-dN-sme" id="aGN-eL-NY0"/>
+                        <outlet property="helpTextLabel" destination="9f7-7H-mi3" id="bK5-5I-XfT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0xa-6q-43F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2489" y="930"/>
         </scene>
         <!--Search Contact Controller-->
         <scene sceneID="3fF-lt-2HQ">

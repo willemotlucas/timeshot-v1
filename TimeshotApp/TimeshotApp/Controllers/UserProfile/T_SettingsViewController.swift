@@ -29,7 +29,7 @@ class T_SettingsViewController: UITableViewController {
         self.emailLabel.text = currentUser.email!
         if let birthday = currentUser.birthDate {
             let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "yyyy-mm-dd"
+            dateFormatter.dateFormat = "dd/MM/yyyy"
             self.birthdayLabel.text = dateFormatter.stringFromDate(birthday)
         } else {
             self.birthdayLabel.text = ""
@@ -41,6 +41,15 @@ class T_SettingsViewController: UITableViewController {
             if let destinationVC = segue.destinationViewController as? T_FirstNameEditionViewController {
                 destinationVC.firstName = self.firstNameLabel.text!
             }
+        } else if segue.identifier == "lastNameEditionSegue" {
+            if let destinationVC = segue.destinationViewController as? T_LastNameEditionViewController {
+                destinationVC.lastName = self.lastNameLabel.text!
+            }
+        } else if segue.identifier == "birthdayEditionSegue" {
+            if let destinationVC = segue.destinationViewController as? T_BirthdayEditionViewController {
+                destinationVC.birthdayDate = self.birthdayLabel.text!
+            }
+
         }
     }
     
