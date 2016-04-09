@@ -43,17 +43,13 @@ class T_Album : PFObject, PFSubclassing {
         super.init()
         
         self.attendees = attendees
-        self.cover = PFFileFromImage(cover)
+        self.cover = T_ParseUserHelper.fileFromImage(cover)
         self.createdBy = createdBy
         self.duration = duration
         self.isDeleted = isDeleted
         self.title = title
     }
-    
-    func PFFileFromImage(image: UIImage) -> PFFile {
-        return T_ParseUserHelper.fileFromImage(image)
-    }
-    
+        
     static func createAlbum(cover: UIImage, duration: Int, albumTitle: String) {
         
         if let currentUser = PFUser.currentUser() as? T_User {
@@ -97,7 +93,7 @@ class T_Album : PFObject, PFSubclassing {
                     let album = objects![0] as! T_Album
                     currentUser.liveAlbum = album
                     let creationDate = (album.createdAt)!
-                    withCompletion(isExisting: T_Album.isDelayExpired(creationDate, duration: album.duration))
+                    withCompletion(isExisting: !T_Album.isDurationExpired(creationDate, duration: album.duration))
                 }
             }
         }
@@ -106,13 +102,21 @@ class T_Album : PFObject, PFSubclassing {
         }
     }
     
-    static func isDelayExpired(date:NSDate, duration: Int) -> Bool {
-        if (Int(-(date.timeIntervalSinceNow)/3600) < duration) {
-            return true
-        }
-        else {
+    static func isDurationExpired(date:NSDate, duration: Int) -> Bool {
+        if (getRemainingDuration(date, duration: duration) > 0) {
             return false
         }
+        else {
+            return true
+        }
+    }
+    
+    static func getDelay(date:NSDate) -> Int {
+        return Int(-(date.timeIntervalSinceNow))
+    }
+    
+    static func getRemainingDuration(date:NSDate, duration: Int) -> Int {
+        return (duration*3600 - getDelay(date))
     }
     
     

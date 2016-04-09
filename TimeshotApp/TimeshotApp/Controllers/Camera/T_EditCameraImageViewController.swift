@@ -21,7 +21,12 @@ class T_EditCameraImageViewController: UIViewController {
     
     //MARK: Outlets actions
     @IBAction func actionNext(sender: AnyObject) {
-        T_CameraHelper.screenShot(self.view)
+        
+        buttonNext.hidden = true
+        buttonCancel.hidden = true
+        
+        T_Post.createPost(T_CameraHelper.screenShot(self.view))
+        
         self.dismissViewControllerAnimated(false, completion: {});
     }
     

@@ -29,6 +29,7 @@
 		7DD0F9B51C9EA0FB00A856B9 /* mariage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B11C9EA0FB00A856B9 /* mariage.jpg */; };
 		7DD0F9B61C9EA0FB00A856B9 /* soiree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */; };
 		7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */; };
+		B431711C1CB912790080AFDD /* T_Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431711B1CB912790080AFDD /* T_Post.swift */; };
 		B43C0E8A1CABF48300EF51E9 /* T_AddFriendToAlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C0E891CABF48300EF51E9 /* T_AddFriendToAlbumTableViewCell.swift */; };
 		B43C0E8F1CABF4E900EF51E9 /* T_CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C0E8B1CABF4E900EF51E9 /* T_CameraViewController.swift */; };
 		B43C0E901CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C0E8C1CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift */; };
@@ -75,6 +76,7 @@
 		7DD0F9B11C9EA0FB00A856B9 /* mariage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mariage.jpg; sourceTree = "<group>"; };
 		7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = soiree.jpg; sourceTree = "<group>"; };
 		7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = voyage.jpg; sourceTree = "<group>"; };
+		B431711B1CB912790080AFDD /* T_Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Post.swift; sourceTree = "<group>"; };
 		B43C0E891CABF48300EF51E9 /* T_AddFriendToAlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AddFriendToAlbumTableViewCell.swift; sourceTree = "<group>"; };
 		B43C0E8B1CABF4E900EF51E9 /* T_CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_CameraViewController.swift; sourceTree = "<group>"; };
 		B43C0E8C1CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ChooseContactsAlbumCreationViewController.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			children = (
 				B4EA9DD11CB52DE3003F5A75 /* T_User.swift */,
 				B4F2E9101CB64A370029F4BF /* T_Album.swift */,
+				B431711B1CB912790080AFDD /* T_Post.swift */,
 			);
 			path = Parse;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				5DB5A0291CA1AD1000AADC9F /* T_ProfileEditionViewController.swift in Sources */,
 				B4F2E9131CB658500029F4BF /* T_ParseUserHelper.swift in Sources */,
 				B43C0E8F1CABF4E900EF51E9 /* T_CameraViewController.swift in Sources */,
+				B431711C1CB912790080AFDD /* T_Post.swift in Sources */,
 				5DB5A02A1CA1AD1000AADC9F /* T_ProfileViewController.swift in Sources */,
 				5DB5A0271CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift in Sources */,
 				B43C0E911CABF4E900EF51E9 /* T_CreateAlbumViewController.swift in Sources */,

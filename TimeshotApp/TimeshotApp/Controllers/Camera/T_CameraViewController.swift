@@ -18,6 +18,7 @@ class T_CameraViewController: UIViewController {
     var image:UIImage?
     
     var isLiveAlbumExisting:Bool! = nil
+    var albumTimer:NSTimer?
     
     private
     var isFlashActivated:Bool = false
@@ -105,6 +106,11 @@ class T_CameraViewController: UIViewController {
         cameraManager.writeFilesToPhoneLibrary = false
         cameraManager.showAccessPermissionPopupAutomatically = true
 
+        // If the application enter in background, we stop the timer
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CameraViewController.stopAlbumTimer), name:UIApplicationDidEnterBackgroundNotification, object: nil)
+        // If the application is again active, we test once again if the album is existing
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CameraViewController.retrieveExistingAlbum), name:UIApplicationDidBecomeActiveNotification, object: nil)
+        
         self.retrieveExistingAlbum()
     }
     
@@ -121,10 +127,20 @@ class T_CameraViewController: UIViewController {
                         }
                         
                         self.updateLabelText((currentUser.liveAlbum?.title)!)
+                        
+                        self.albumTimer = NSTimer.scheduledTimerWithTimeInterval(Double(T_Album.getRemainingDuration((currentUser.liveAlbum?.createdAt)!, duration: (currentUser.liveAlbum?.duration)!)), target: self, selector: #selector(T_CameraViewController.retrieveExistingAlbum), userInfo: nil, repeats: false)
                     }
                 }
             }
+            else {
+                self.hideLabelText()
+            }
+            
         })
+    }
+    
+    func stopAlbumTimer() {
+        self.albumTimer?.invalidate()
     }
     
     func initLabelText() {
@@ -144,8 +160,7 @@ class T_CameraViewController: UIViewController {
         self.view.addSubview(self.albumImage)
     }
     
-    func updateLabelText(text: String)
-    {
+    func updateLabelText(text: String) {
         let finalText = "    \(text.trunc(30))"
         let textSize = finalText.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(15.0)])
 
@@ -155,7 +170,18 @@ class T_CameraViewController: UIViewController {
         self.albumImage.contentMode = .ScaleAspectFit
         self.albumImage.frame.origin = CGPoint(x: T_DesignHelper.screenSize.width/2 + self.albumTitle.frame.size.width/2 - 33, y: self.albumImage.frame.origin.y)
         
+        self.albumTitle.hidden = false
+        self.albumImage.hidden = false
+        
         self.albumTitle.text = finalText
+    }
+    
+    func hideLabelText() {
+        
+        if (self.albumTitle != nil) {
+            self.albumTitle.hidden = true
+            self.albumImage.hidden = true
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

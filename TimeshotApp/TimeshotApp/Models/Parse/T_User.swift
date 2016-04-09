@@ -50,6 +50,22 @@ class T_User : PFUser {
         self.picture = picture
     }
     
+    init(username: String, password:String, birthDate:NSDate, email:String, firstName:String, lastName:String, image:UIImage)
+    {
+        self.selected = false
+        
+        super.init()
+        
+        self.username = username
+        self.password = password
+        self.birthDate = birthDate
+        self.email = email
+        self.firstName = firstName
+        self.lastName = lastName
+        self.isDeleted = false
+        self.picture = T_ParseUserHelper.fileFromImage(image)
+    }
+    
     override class func initialize() {
         var onceToken : dispatch_once_t = 0;
         dispatch_once(&onceToken) {
