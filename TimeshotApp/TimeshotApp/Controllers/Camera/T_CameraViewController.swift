@@ -110,8 +110,6 @@ class T_CameraViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CameraViewController.stopAlbumTimer), name:UIApplicationDidEnterBackgroundNotification, object: nil)
         // If the application is again active, we test once again if the album is existing
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CameraViewController.retrieveExistingAlbum), name:UIApplicationDidBecomeActiveNotification, object: nil)
-        
-        self.retrieveExistingAlbum()
     }
     
     func retrieveExistingAlbum() {
@@ -135,8 +133,12 @@ class T_CameraViewController: UIViewController {
             else {
                 self.hideLabelText()
             }
-            
         })
+        
+        if (self.isLiveAlbumExisting == nil)
+        {
+            self.isLiveAlbumExisting = false
+        }
     }
     
     func stopAlbumTimer() {

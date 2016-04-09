@@ -234,7 +234,7 @@
                                             <constraint firstAttribute="height" constant="138" id="HnX-tR-0xK"/>
                                             <constraint firstAttribute="width" constant="138" id="SXG-T5-PtO"/>
                                         </constraints>
-                                        <inset key="contentEdgeInsets" minX="30" minY="30" maxX="30" maxY="30"/>
+                                        <inset key="contentEdgeInsets" minX="30" minY="50" maxX="30" maxY="10"/>
                                         <state key="normal" image="TakePicture"/>
                                         <connections>
                                             <action selector="actionTakePicture:" destination="scp-YI-GI3" eventType="touchUpInside" id="WJk-kh-Gea"/>
@@ -255,7 +255,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGm-4P-8H2">
-                                        <rect key="frame" x="525" y="504" width="55" height="55"/>
+                                        <rect key="frame" x="525" y="524" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="MRl-LR-LQP"/>
                                             <constraint firstAttribute="width" constant="55" id="Stl-zh-RZJ"/>
@@ -264,7 +264,7 @@
                                         <state key="normal" image="Albums"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3H-bo-m5J">
-                                        <rect key="frame" x="20" y="503" width="55" height="55"/>
+                                        <rect key="frame" x="20" y="524" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="pk3-2u-Aqd"/>
                                             <constraint firstAttribute="width" constant="55" id="ppS-fr-qxM"/>
@@ -283,8 +283,8 @@
                                     <constraint firstItem="eON-zA-s3Z" firstAttribute="top" secondItem="aAZ-uj-fBF" secondAttribute="top" constant="30" id="4wu-bl-D2r"/>
                                     <constraint firstAttribute="bottom" secondItem="CJx-zu-Kjj" secondAttribute="bottom" id="5Fk-63-uqr"/>
                                     <constraint firstAttribute="trailing" secondItem="AGm-4P-8H2" secondAttribute="trailing" constant="20" id="7SZ-ei-zbQ"/>
-                                    <constraint firstItem="AGm-4P-8H2" firstAttribute="centerY" secondItem="CJx-zu-Kjj" secondAttribute="centerY" id="7hh-JP-ONJ"/>
-                                    <constraint firstItem="d3H-bo-m5J" firstAttribute="centerY" secondItem="CJx-zu-Kjj" secondAttribute="centerY" id="JrG-of-eX0"/>
+                                    <constraint firstItem="AGm-4P-8H2" firstAttribute="centerY" secondItem="CJx-zu-Kjj" secondAttribute="centerY" constant="20" id="7hh-JP-ONJ"/>
+                                    <constraint firstItem="d3H-bo-m5J" firstAttribute="centerY" secondItem="CJx-zu-Kjj" secondAttribute="centerY" constant="20" id="JrG-of-eX0"/>
                                     <constraint firstItem="d3H-bo-m5J" firstAttribute="leading" secondItem="aAZ-uj-fBF" secondAttribute="leading" constant="20" id="KvD-oh-TL0"/>
                                     <constraint firstAttribute="trailing" secondItem="eON-zA-s3Z" secondAttribute="trailing" constant="10" id="VCh-WX-h6D"/>
                                     <constraint firstItem="eON-zA-s3Z" firstAttribute="centerY" secondItem="aAZ-uj-fBF" secondAttribute="centerY" constant="40" id="aca-Zb-mtY"/>

@@ -81,8 +81,8 @@ class T_Album : PFObject, PFSubclassing {
     
     static func isALiveAlbumAlreadyExisting(withCompletion: (isExisting:Bool) -> ()) {
         
+        // If internet connexion
         if let currentUser = PFUser.currentUser() as? T_User {
-            
             let query = PFQuery(className: "Album")
             query.whereKey("attendees", equalTo: currentUser)
             query.orderByDescending("createdAt")
@@ -90,15 +90,58 @@ class T_Album : PFObject, PFSubclassing {
             query.findObjectsInBackgroundWithBlock {
                 (objects, error) -> Void in
                 if error == nil {
-                    let album = objects![0] as! T_Album
-                    currentUser.liveAlbum = album
-                    let creationDate = (album.createdAt)!
-                    withCompletion(isExisting: !T_Album.isDurationExpired(creationDate, duration: album.duration))
-                }
+                    
+                    if (objects?.count == 1) {
+                        let album = objects![0] as! T_Album
+                        currentUser.liveAlbum = album
+                        let creationDate = (album.createdAt)!
+                        
+                        if (!T_Album.isDurationExpired(creationDate, duration: album.duration)) {
+                            album.pinInBackgroundWithName("liveAlbum")
+                        }
+                        else {
+                            T_Album.unpinAllObjectsInBackgroundWithName("liveAlbum")
+                        }
+                        
+                        withCompletion(isExisting: !T_Album.isDurationExpired(creationDate, duration: album.duration))
+                    }
+                    else {
+                        withCompletion(isExisting: false)
+                    }
+                    
+                } else { print("error") }
             }
         }
+            // If no internet connexion, we take the album from localDataStore of Parse
         else {
             print("Not connected, cannot verify if an album is live")
+
+//            if let currentUser = PFUser.currentUser() as? T_User {
+//                let query = PFQuery(className: "Album")
+//                query.fromLocalDatastore()
+//                query.fromPinWithName("liveAlbum")
+//                query.findObjectsInBackgroundWithBlock {
+//                    (objects, error) -> Void in
+//                    if error == nil {
+//                        let album = objects![0] as! T_Album
+//                        currentUser.liveAlbum = album
+//                        let creationDate = (album.createdAt)!
+//                        
+//                        if (!T_Album.isDurationExpired(creationDate, duration: album.duration)) {
+//                            album.pinInBackgroundWithName("liveAlbum")
+//                        }
+//                        else {
+//                            T_Album.unpinAllObjectsInBackgroundWithName("liveAlbum")
+//                        }
+//                        
+//                        withCompletion(isExisting: !T_Album.isDurationExpired(creationDate, duration: album.duration))
+//                    }
+//                }
+//            }
+        
+        
+        
+        
         }
     }
     
