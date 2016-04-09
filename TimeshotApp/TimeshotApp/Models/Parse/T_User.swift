@@ -12,9 +12,9 @@ import Parse
 class T_User : PFUser {
     
     @NSManaged var emailVerified:Bool
-    @NSManaged var birthDate:NSDate
-    @NSManaged var firstName:String
-    @NSManaged var lastName:String
+    @NSManaged var birthDate:NSDate?
+    @NSManaged var firstName:String?
+    @NSManaged var lastName:String?
     @NSManaged var isDeleted:Bool
     
     
@@ -30,6 +30,18 @@ class T_User : PFUser {
         
         self.username = username
         self.password = password
+        self.birthDate = birthDate
+        self.email = email
+        self.firstName = firstName
+        self.lastName = lastName
+        self.isDeleted = false
+    }
+    
+    init(username: String, birthDate:NSDate, email:String, firstName:String, lastName:String)
+    {
+        super.init()
+        
+        self.username = username
         self.birthDate = birthDate
         self.email = email
         self.firstName = firstName
