@@ -12,30 +12,32 @@ import Parse
 
 class T_CameraViewController: UIViewController {
     
+    //MARK: Static properties
     static weak var instance:T_CameraViewController!
     
+    //MARK: Properties
     let cameraManager = CameraManager()
     var image:UIImage?
     
     var isLiveAlbumExisting:Bool! = nil
     var albumTimer:NSTimer?
+    var albumTitle: UILabel!
+    var albumImage: UIImageView!
     
     private
     var isFlashActivated:Bool = false
     var isBackCameraActivated:Bool = true
     
+    //MARK: - Outlets properties
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var buttonTakePicture: UIButton!
-    var albumTitle: UILabel!
-    var albumImage: UIImageView!
-    
     @IBOutlet weak var buttonReturnCamera: UIButton!
     @IBOutlet weak var buttonFlash: UIButton!
-    
     @IBOutlet weak var buttonAlbumVC: UIButton!
-    
     @IBOutlet weak var buttonProfileVC: UIButton!
     
+    
+    //MARK: - Outlets Methods
     @IBAction func actionTakePicture(sender: AnyObject) {
         
         cameraManager.capturePictureWithCompletition({
@@ -68,6 +70,7 @@ class T_CameraViewController: UIViewController {
             isBackCameraActivated = true
         }
     }
+    
     @IBAction func switchFlashStatus(sender: AnyObject) {
         
         if (cameraManager.hasFlash && !isFlashActivated)
@@ -82,6 +85,20 @@ class T_CameraViewController: UIViewController {
         }
     }
     
+    //MARK: - Systems methods
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarHidden=true
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
     override func viewWillLayoutSubviews() {
         self.cameraView.layer.zPosition = 0
         self.buttonTakePicture.layer.zPosition = 1
@@ -109,38 +126,43 @@ class T_CameraViewController: UIViewController {
         // If the application enter in background, we stop the timer
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CameraViewController.stopAlbumTimer), name:UIApplicationDidEnterBackgroundNotification, object: nil)
         // If the application is again active, we test once again if the album is existing
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CameraViewController.retrieveExistingAlbum), name:UIApplicationDidBecomeActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CameraViewController.manageAlbumProcessing), name:UIApplicationDidBecomeActiveNotification, object: nil)
     }
     
-    func retrieveExistingAlbum() {
-        T_Album.isALiveAlbumAlreadyExisting({ (isExisting:Bool) -> () in
-            self.isLiveAlbumExisting = isExisting
-            
-            if (self.isLiveAlbumExisting == true) {
-                if let currentUser = PFUser.currentUser() as? T_User {
-                    if (currentUser.liveAlbum != nil) {
-                        
-                        if(self.albumTitle == nil) {
-                            self.initLabelText()
-                        }
-                        
-                        self.updateLabelText((currentUser.liveAlbum?.title)!)
-                        
-                        self.albumTimer = NSTimer.scheduledTimerWithTimeInterval(Double(T_Album.getRemainingDuration((currentUser.liveAlbum?.createdAt)!, duration: (currentUser.liveAlbum?.duration)!)), target: self, selector: #selector(T_CameraViewController.retrieveExistingAlbum), userInfo: nil, repeats: false)
-                    }
-                }
-            }
-            else {
-                self.hideLabelText()
-            }
-        })
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if (self.isLiveAlbumExisting == nil)
+        if (self.isLiveAlbumExisting == false)
         {
-            self.isLiveAlbumExisting = false
+            let destinationVC = segue.destinationViewController as! T_CreateAlbumViewController
+            destinationVC.image = self.image
+            // To perform symetry / rotation if needed when computing the image for filters
+            destinationVC.isFrontCamera = !self.isBackCameraActivated
+        }
+        else
+        {
+            let destinationVC = segue.destinationViewController as! T_EditCameraImageViewController
+            destinationVC.image = self.image
+            // To perform symetry / rotation if needed when computing the image for filters
+            destinationVC.isFrontCamera = !self.isBackCameraActivated
         }
     }
     
+    //MARK: - Methods
+    func manageAlbumProcessing() {
+        guard let currentUser = PFUser.currentUser() as? T_User else { return }
+        
+        self.isLiveAlbumExisting = T_Album.manageAlbumProcessing(currentUser)
+        
+        guard let album = currentUser.liveAlbum else {
+            self.hideLabelText()
+            return
+        }
+        
+        self.updateLabelText(album.title)
+        
+        self.albumTimer = NSTimer.scheduledTimerWithTimeInterval(Double(T_Album.getRemainingDuration((currentUser.liveAlbum?.createdAt)!, duration: (currentUser.liveAlbum?.duration)!)), target: self, selector: #selector(T_CameraViewController.manageAlbumProcessing), userInfo: nil, repeats: false)
+    }
+
     func stopAlbumTimer() {
         self.albumTimer?.invalidate()
     }
@@ -163,7 +185,12 @@ class T_CameraViewController: UIViewController {
     }
     
     func updateLabelText(text: String) {
-        let finalText = "    \(text.trunc(30))"
+        
+        if(self.albumTitle == nil) {
+            self.initLabelText()
+        }
+
+        let finalText = "   \(text.trunc(30))"
         let textSize = finalText.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(15.0)])
 
         self.albumTitle.frame.size.width = 40 + textSize.width
@@ -186,36 +213,4 @@ class T_CameraViewController: UIViewController {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if (self.isLiveAlbumExisting == false)
-        {
-            let destinationVC = segue.destinationViewController as! T_CreateAlbumViewController
-            destinationVC.image = self.image
-            // To perform symetry / rotation if needed when computing the image for filters
-            destinationVC.isFrontCamera = !self.isBackCameraActivated
-        }
-        else
-        {
-            let destinationVC = segue.destinationViewController as! T_EditCameraImageViewController
-            destinationVC.image = self.image
-            // To perform symetry / rotation if needed when computing the image for filters
-            destinationVC.isFrontCamera = !self.isBackCameraActivated
-        }
-    }
-    
-    
-    //MARK: - Systems methods
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        UIApplication.sharedApplication().statusBarHidden=true
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
