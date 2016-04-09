@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		40BF472DC51952247A14DBC9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9E238D3F9C0AE128133098 /* Pods.framework */; };
+		5D64CA751CB96928005C6E43 /* T_FirstNameEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64CA741CB96928005C6E43 /* T_FirstNameEditionViewController.swift */; };
 		5D8638921CB8EDAA005CBC90 /* T_SearchUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8638911CB8EDAA005CBC90 /* T_SearchUserTableViewCell.swift */; };
 		5D8638941CB8EFA8005CBC90 /* T_UserParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8638931CB8EFA8005CBC90 /* T_UserParseHelper.swift */; };
 		5DB5A00D1CA1905200AADC9F /* T_DesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A00C1CA1905200AADC9F /* T_DesignHelper.swift */; };
@@ -58,6 +59,7 @@
 /* Begin PBXFileReference section */
 		4770CD7F4BA867BF6C3AA239 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F9E238D3F9C0AE128133098 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D64CA741CB96928005C6E43 /* T_FirstNameEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FirstNameEditionViewController.swift; sourceTree = "<group>"; };
 		5D8638911CB8EDAA005CBC90 /* T_SearchUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SearchUserTableViewCell.swift; sourceTree = "<group>"; };
 		5D8638931CB8EFA8005CBC90 /* T_UserParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_UserParseHelper.swift; sourceTree = "<group>"; };
 		5DB5A00C1CA1905200AADC9F /* T_DesignHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_DesignHelper.swift; sourceTree = "<group>"; };
@@ -120,6 +122,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D64CA731CB96902005C6E43 /* ProfileEditionControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5D64CA741CB96928005C6E43 /* T_FirstNameEditionViewController.swift */,
+			);
+			path = ProfileEditionControllers;
+			sourceTree = "<group>";
+		};
 		5DB5A00B1CA1902500AADC9F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +143,7 @@
 		5DB5A0201CA1AD1000AADC9F /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
+				5D64CA731CB96902005C6E43 /* ProfileEditionControllers */,
 				5DB5A0211CA1AD1000AADC9F /* CustomTableViewCell */,
 				5DB5A0241CA1AD1000AADC9F /* T_ProfileEditionViewController.swift */,
 				5DB5A0251CA1AD1000AADC9F /* T_ProfileViewController.swift */,
@@ -480,6 +491,7 @@
 				5DB5A0351CA2879B00AADC9F /* T_SearchContactViewController.swift in Sources */,
 				B43C0E8A1CABF48300EF51E9 /* T_AddFriendToAlbumTableViewCell.swift in Sources */,
 				5DB5A0281CA1AD1000AADC9F /* T_FriendTableViewCell.swift in Sources */,
+				5D64CA751CB96928005C6E43 /* T_FirstNameEditionViewController.swift in Sources */,
 				5DF7C6821CB7C99D00038B90 /* T_FriendRequest.swift in Sources */,
 				B46B2B7D1C9ABB0400135920 /* T_HomePageViewController.swift in Sources */,
 				B46B2B811C9ABB2900135920 /* T_AlbumViewController.swift in Sources */,

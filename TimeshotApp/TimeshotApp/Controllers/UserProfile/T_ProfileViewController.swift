@@ -32,7 +32,7 @@ class T_ProfileViewController: UIViewController {
     var sectionTitles = ["Pending requests", "Friends"]
     var contentToDisplay : ContentType = .Friends
     let contacts = T_ContactsHelper.getAllContacts()
-    let currentUser = PFUser.currentUser()! as! T_User
+    var currentUser: T_User?
 
     // MARK: Overrided functions
     override func didReceiveMemoryWarning() {
@@ -46,10 +46,14 @@ class T_ProfileViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        if let userLogged = PFUser.currentUser() {
+            self.currentUser = userLogged as? T_User
+            self.title = self.currentUser!.firstName! + " " + self.currentUser!.lastName!
+        }
+        
         T_DesignHelper.colorUIView(profileView)
         T_DesignHelper.colorUIView(addFriendsButtonView)
         T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
-        self.title = self.currentUser.firstName! + " " + self.currentUser.lastName!
         
         //Load the friends
         T_FriendRequestParseHelper.getAcceptedFriendRequest { (result: [PFObject]?, error:NSError?) in
@@ -113,17 +117,6 @@ class T_ProfileViewController: UIViewController {
         
         self.presentViewController(alertController, animated: true, completion: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension T_ProfileViewController: UITableViewDelegate {
