@@ -29,16 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         PFUser.enableRevocableSessionInBackground()
         
-        do {
-            try PFUser.logInWithUsername("paul", password: "paul")
-        }
-        catch {
-            print("cannot connect")
-        }
-        if let currentUser = PFUser.currentUser() as? T_User {
-            print("\(currentUser.username!) logged in successfully")
-        }
-    
+        T_ParseUserHelper.login("paul", password: "paul")
+        
         return true
     }
     

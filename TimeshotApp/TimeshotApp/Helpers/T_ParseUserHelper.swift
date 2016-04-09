@@ -41,6 +41,33 @@ class T_ParseUserHelper {
                 withCompletion(currentUser: nil)
             }
         }
+    }
+    
+    static func isLogged() -> Bool {
+        if (PFUser.currentUser() != nil) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    static func login(login: String, password: String) {
+        do {
+            try PFUser.logInWithUsername(login, password: password)
+            
+            if (isLogged()) {
+                print("Logged in successfully (from server) !")
+                return
+            }
+        }
+        catch {
+            if (isLogged()) {
+                print("Logged in successfully (from cache) !")
+                return
+            }
+        }
         
+        print("Not logged : should not go further in the app !")
     }
 }
