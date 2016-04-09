@@ -35,6 +35,7 @@
 		B43C0E901CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C0E8C1CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift */; };
 		B43C0E911CABF4E900EF51E9 /* T_CreateAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C0E8D1CABF4E900EF51E9 /* T_CreateAlbumViewController.swift */; };
 		B43C0E921CABF4E900EF51E9 /* T_EditCameraImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C0E8E1CABF4E900EF51E9 /* T_EditCameraImageViewController.swift */; };
+		B45047D31CB94D08005FF5FB /* T_ParseAlbumHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45047D21CB94D08005FF5FB /* T_ParseAlbumHelper.swift */; };
 		B45977071CAAE7CA00D57BED /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B741C9ABAC500135920 /* Profile.storyboard */; };
 		B46B2B771C9ABADA00135920 /* Album.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B761C9ABADA00135920 /* Album.storyboard */; };
 		B46B2B7D1C9ABB0400135920 /* T_HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B7C1C9ABB0400135920 /* T_HomePageViewController.swift */; };
@@ -82,6 +83,7 @@
 		B43C0E8C1CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ChooseContactsAlbumCreationViewController.swift; sourceTree = "<group>"; };
 		B43C0E8D1CABF4E900EF51E9 /* T_CreateAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_CreateAlbumViewController.swift; sourceTree = "<group>"; };
 		B43C0E8E1CABF4E900EF51E9 /* T_EditCameraImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_EditCameraImageViewController.swift; sourceTree = "<group>"; };
+		B45047D21CB94D08005FF5FB /* T_ParseAlbumHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ParseAlbumHelper.swift; sourceTree = "<group>"; };
 		B46B2B741C9ABAC500135920 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		B46B2B761C9ABADA00135920 /* Album.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Album.storyboard; sourceTree = "<group>"; };
 		B46B2B7C1C9ABB0400135920 /* T_HomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_HomePageViewController.swift; sourceTree = "<group>"; };
@@ -114,8 +116,9 @@
 				5DB5A00C1CA1905200AADC9F /* T_DesignHelper.swift */,
 				5DB5A0321CA1D2D900AADC9F /* T_ContactsHelper.swift */,
 				B4D9BDA91CA4885100B28C52 /* T_String+Extension.swift */,
-				B4F2E9121CB658500029F4BF /* T_ParseUserHelper.swift */,
 				B4964D251CB6838200B77E4D /* T_CameraHelper.swift */,
+				B4F2E9121CB658500029F4BF /* T_ParseUserHelper.swift */,
+				B45047D21CB94D08005FF5FB /* T_ParseAlbumHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				B431711C1CB912790080AFDD /* T_Post.swift in Sources */,
 				5DB5A02A1CA1AD1000AADC9F /* T_ProfileViewController.swift in Sources */,
 				5DB5A0271CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift in Sources */,
+				B45047D31CB94D08005FF5FB /* T_ParseAlbumHelper.swift in Sources */,
 				B43C0E911CABF4E900EF51E9 /* T_CreateAlbumViewController.swift in Sources */,
 				B43C0E901CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift in Sources */,
 				5DB5A02B1CA1AD1000AADC9F /* T_SettingsViewController.swift in Sources */,

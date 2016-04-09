@@ -79,69 +79,61 @@ class T_Album : PFObject, PFSubclassing {
         }
     }
     
+    static func exploreObjects(album: T_Album, currentUser: T_User) -> Bool {
+        
+            currentUser.liveAlbum = album
+            let creationDate = (album.createdAt)!
+            
+            T_Album.unpinAllObjectsInBackgroundWithName("albumLive")
+
+            if (!T_Album.isDurationExpired(creationDate, duration: album.duration)) {
+                album.pinInBackgroundWithName("albumLive")
+            }
+            
+            return !T_Album.isDurationExpired(creationDate, duration: album.duration)
+    }
+
+    
     static func isALiveAlbumAlreadyExisting(withCompletion: (isExisting:Bool) -> ()) {
         
         // If internet connexion
-        if let currentUser = PFUser.currentUser() as? T_User {
+        if let currentUser = PFUser.currentUser() as? T_User
+        {
             let query = PFQuery(className: "Album")
             query.whereKey("attendees", equalTo: currentUser)
             query.orderByDescending("createdAt")
             query.limit = 1
-            query.findObjectsInBackgroundWithBlock {
+            query.findObjectsInBackgroundWithBlock
+            {
                 (objects, error) -> Void in
-                if error == nil {
+                if error == nil
+                {
+                    withCompletion(isExisting: exploreObjects(T_ParseAlbumHelper.getAlbumFromObjects(objects)!, currentUser: currentUser))
+                }
+                else
+                {
+                    print("error to find object on the internet in background")
                     
-                    if (objects?.count == 1) {
-                        let album = objects![0] as! T_Album
-                        currentUser.liveAlbum = album
-                        let creationDate = (album.createdAt)!
-                        
-                        if (!T_Album.isDurationExpired(creationDate, duration: album.duration)) {
-                            album.pinInBackgroundWithName("liveAlbum")
+                    T_ParseUserHelper.queryUserPinned({
+                        (currentUser: T_User?) -> () in
+                        if let user = currentUser {
+                            T_ParseAlbumHelper.queryAlbumPinned({
+                                (liveAlbum: T_Album?) -> () in
+                                if let album = liveAlbum {
+                                    withCompletion(isExisting: exploreObjects(album, currentUser: user))
+                                }
+                            })
                         }
-                        else {
-                            T_Album.unpinAllObjectsInBackgroundWithName("liveAlbum")
-                        }
-                        
-                        withCompletion(isExisting: !T_Album.isDurationExpired(creationDate, duration: album.duration))
-                    }
-                    else {
-                        withCompletion(isExisting: false)
-                    }
-                    
-                } else { print("error") }
+                    })
+                }
             }
+            
+            withCompletion(isExisting: false)
         }
             // If no internet connexion, we take the album from localDataStore of Parse
-        else {
-            print("Not connected, cannot verify if an album is live")
-
-//            if let currentUser = PFUser.currentUser() as? T_User {
-//                let query = PFQuery(className: "Album")
-//                query.fromLocalDatastore()
-//                query.fromPinWithName("liveAlbum")
-//                query.findObjectsInBackgroundWithBlock {
-//                    (objects, error) -> Void in
-//                    if error == nil {
-//                        let album = objects![0] as! T_Album
-//                        currentUser.liveAlbum = album
-//                        let creationDate = (album.createdAt)!
-//                        
-//                        if (!T_Album.isDurationExpired(creationDate, duration: album.duration)) {
-//                            album.pinInBackgroundWithName("liveAlbum")
-//                        }
-//                        else {
-//                            T_Album.unpinAllObjectsInBackgroundWithName("liveAlbum")
-//                        }
-//                        
-//                        withCompletion(isExisting: !T_Album.isDurationExpired(creationDate, duration: album.duration))
-//                    }
-//                }
-//            }
-        
-        
-        
-        
+        else
+        {
+            print("need to be connected at least once")
         }
     }
     

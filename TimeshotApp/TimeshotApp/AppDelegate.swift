@@ -21,13 +21,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         T_User.registerSubclass()
         T_Album.registerSubclass()
+        T_Post.registerSubclass()
+        Parse.enableLocalDatastore()
         
         // Set up the Parse SDK
         Parse.setApplicationId("uAhZdofpZFzSCMa83PbQwFx2ls3qmWbvr0BADedv", clientKey: "1PPkLR8lj8bqH9ppX6Y1dMXWKewFhiaxs6oEjrr3")
         
         PFUser.enableRevocableSessionInBackground()
         
-        try! PFUser.logInWithUsername("paul", password: "paul")
+        do {
+            try PFUser.logInWithUsername("paul", password: "paul")
+        }
+        catch {
+            print("cannot connect")
+        }
         if let currentUser = PFUser.currentUser() as? T_User {
             print("\(currentUser.username!) logged in successfully")
         }
