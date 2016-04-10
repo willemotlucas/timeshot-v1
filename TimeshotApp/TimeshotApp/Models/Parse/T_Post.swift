@@ -46,31 +46,56 @@ class T_Post : PFObject, PFSubclassing {
         self.isDeleted = false
     }
     
-    static func createPost(picture: UIImage) {
+    init(fromUser: T_User, toAlbum:T_Album)
+    {
+        super.init()
         
-        if let currentUser = PFUser.currentUser() as? T_User {
-            
-            if let currentLiveAlbum = currentUser.liveAlbum as T_Album? {
+        self.fromUser = fromUser
+        self.toAlbum = toAlbum
+        self.isDeleted = false
+    }
+
+    
+    static func createAndUploadPost(picture: UIImage) {
         
-                let post = T_Post(fromUser: currentUser, photo: picture, toAlbum: currentLiveAlbum)
-                
-                T_Post.postCreationTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in
-                    UIApplication.sharedApplication().endBackgroundTask(self.postCreationTask!)
-                }
-                
-                post.saveInBackgroundWithBlock {
-                    (success, error) -> Void in
-                    if success {
-                        print("Post created")
-                    } else {
-                        print("An error occured : %@", error)
-                    }
-                    UIApplication.sharedApplication().endBackgroundTask(self.postCreationTask!)
-                }
-            }
+        guard let currentUser = PFUser.currentUser() as? T_User where currentUser.liveAlbum != nil else {
+            print("Not connected, cannot create the post")
+            return
         }
-        else {
-            print("Not connected, cannot create the album")
+
+        let post = T_Post(fromUser: currentUser, photo: picture, toAlbum: currentUser.liveAlbum!)
+        uploadPost(post)
+    }
+    
+    static func createPost() -> T_Post {
+        
+        return T_Post(fromUser: T_ParseUserHelper.getCurrentUser()!, toAlbum: T_ParseUserHelper.getCurrentUser()!.liveAlbum!)
+    }
+    
+    func addPictureToPost(picture: UIImage) {
+        self.photo = T_ParseUserHelper.fileFromImage(picture)
+    }
+    
+    static func uploadPost(post: T_Post) {
+        
+        guard let currentUser = PFUser.currentUser() as? T_User where currentUser.liveAlbum != nil else {
+            print("Not connected, cannot create the post")
+            return
+        }
+        
+        T_Post.postCreationTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in
+            UIApplication.sharedApplication().endBackgroundTask(self.postCreationTask!)
+        }
+        
+        post.saveInBackgroundWithBlock {
+            (success, error) -> Void in
+            if success {
+                print("Post created")
+            } else {
+                print("An error occured : %@", error)
+            }
+            UIApplication.sharedApplication().endBackgroundTask(self.postCreationTask!)
         }
     }
+    
 }

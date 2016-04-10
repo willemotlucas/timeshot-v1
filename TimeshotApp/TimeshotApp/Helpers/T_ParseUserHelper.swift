@@ -70,4 +70,8 @@ class T_ParseUserHelper {
         
         print("Not logged : should not go further in the app !")
     }
+    
+    static func getCurrentUser() -> T_User? {
+        return PFUser.currentUser() as! T_User?
+    }
 }

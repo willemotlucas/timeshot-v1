@@ -30,6 +30,7 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     //------------------------------------------------------------------------------------------------
     //MARK: Outlets Methods
     @IBAction func actionNext(sender: AnyObject) {
+        UIView.setAnimationsEnabled(false)
         self.performSegueWithIdentifier("segueChooseContactsAlbumCreation", sender: nil)
     }
     @IBAction func actionCancel(sender: AnyObject) {

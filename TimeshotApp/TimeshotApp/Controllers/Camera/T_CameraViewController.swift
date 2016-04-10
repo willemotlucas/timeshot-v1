@@ -44,6 +44,7 @@ class T_CameraViewController: UIViewController {
             (img, error) -> Void in
             self.image = img
             
+            UIView.setAnimationsEnabled(false)
             if (self.isLiveAlbumExisting == false)
             {
                 self.performSegueWithIdentifier("segueCreateAlbum", sender: nil)
@@ -52,7 +53,6 @@ class T_CameraViewController: UIViewController {
             {
                 self.performSegueWithIdentifier("segueEditCameraImage", sender: nil)
             }
-            
         })
     }
     
@@ -85,6 +85,15 @@ class T_CameraViewController: UIViewController {
         }
     }
     
+    @IBAction func actionButtonAlbum(sender: AnyObject) {
+        
+        T_HomePageViewController.showAlbumViewController()
+    }
+    @IBAction func actionButtonProfile(sender: AnyObject) {
+        
+        T_HomePageViewController.showProfileViewController()
+
+    }
     //MARK: - Systems methods
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -144,6 +153,7 @@ class T_CameraViewController: UIViewController {
             destinationVC.image = self.image
             // To perform symetry / rotation if needed when computing the image for filters
             destinationVC.isFrontCamera = !self.isBackCameraActivated
+            destinationVC.post = T_Post.createPost()
         }
     }
     

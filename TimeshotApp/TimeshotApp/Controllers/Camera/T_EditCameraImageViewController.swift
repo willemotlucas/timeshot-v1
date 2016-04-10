@@ -14,6 +14,7 @@ class T_EditCameraImageViewController: UIViewController {
     var slider: T_Slider!
     var image:UIImage!
     var isFrontCamera:Bool!
+    var post:T_Post!
     
     //MARK: Outlets properties
     @IBOutlet weak var buttonNext: UIButton!
@@ -24,9 +25,10 @@ class T_EditCameraImageViewController: UIViewController {
         
         buttonNext.hidden = true
         buttonCancel.hidden = true
-        
-        T_Post.createPost(T_CameraHelper.screenShot(self.view))
-        
+
+        self.post.addPictureToPost(T_CameraHelper.screenShot(self.view))
+        T_Post.uploadPost(self.post)
+                
         self.dismissViewControllerAnimated(false, completion: {});
     }
     
