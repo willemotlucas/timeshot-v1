@@ -20,7 +20,7 @@ class T_SearchUserViewController: UIViewController {
         super.viewDidLoad()
         T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
         
-        T_UserParseHelper.gettAllUsers { (result: [PFObject]?, error: NSError?) in
+        T_ParseUserHelper.gettAllUsers { (result: [PFObject]?, error: NSError?) in
             self.users = result as? [T_User] ?? []
             self.tableView.reloadData()
         }

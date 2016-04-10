@@ -36,7 +36,7 @@ class T_EmailEditionViewController: UIViewController {
             self.helpTextLabel.text = T_FormValidationHelper.InvalidEmailAddressError
         }
         else {
-            T_UserParseHelper.editEmail(self.emailAddressTextField.text!)
+            T_ParseUserHelper.editEmail(self.emailAddressTextField.text!)
             navigationController?.popViewControllerAnimated(true)
         }
     }

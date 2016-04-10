@@ -33,7 +33,7 @@ class T_LastNameEditionViewController: UIViewController {
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
         if self.lastNameTextField.text?.characters.count >= T_FormValidationHelper.LastNameMinCharacter{
             if(self.lastNameTextField.text != self.lastName) {
-                T_UserParseHelper.editLastName(self.lastNameTextField.text!)
+                T_ParseUserHelper.editLastName(self.lastNameTextField.text!)
             }
             navigationController?.popViewControllerAnimated(true)
         } else {

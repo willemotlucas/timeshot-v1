@@ -47,7 +47,7 @@ class T_BirthdayEditionViewController: UIViewController {
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
         if let birthString = self.birthdayTextField.text {
             let birthDate = self.dateFormatter.dateFromString(birthString)
-            T_UserParseHelper.editBirthday(birthDate!)
+            T_ParseUserHelper.editBirthday(birthDate!)
             navigationController?.popViewControllerAnimated(true)
         }
     }

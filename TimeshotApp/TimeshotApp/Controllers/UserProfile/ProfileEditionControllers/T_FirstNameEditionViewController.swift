@@ -32,7 +32,7 @@ class T_FirstNameEditionViewController: UIViewController {
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
         if self.firstNameTextField.text?.characters.count >= T_FormValidationHelper.FirstNameMinCharacter{
             if(self.firstNameTextField.text != self.firstName) {
-                T_UserParseHelper.editFirstName(self.firstNameTextField.text!)
+                T_ParseUserHelper.editFirstName(self.firstNameTextField.text!)
             }
             navigationController?.popViewControllerAnimated(true)
         } else {
