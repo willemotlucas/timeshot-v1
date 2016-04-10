@@ -138,6 +138,12 @@ extension T_SearchContactViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         self.searchBar.showsCancelButton = true
+        for ob: UIView in ((self.searchBar.subviews[0] )).subviews {
+            if let z = ob as? UIButton {
+                let btn: UIButton = z
+                btn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+            }
+        }
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {

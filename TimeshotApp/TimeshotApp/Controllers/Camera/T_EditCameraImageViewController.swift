@@ -14,6 +14,7 @@ class T_EditCameraImageViewController: UIViewController {
     var slider: T_Slider!
     var image:UIImage!
     var isFrontCamera:Bool!
+    var post:T_Post!
     
     //MARK: Outlets properties
     @IBOutlet weak var buttonNext: UIButton!
@@ -21,7 +22,13 @@ class T_EditCameraImageViewController: UIViewController {
     
     //MARK: Outlets actions
     @IBAction func actionNext(sender: AnyObject) {
-        screenShotMethod()
+        
+        buttonNext.hidden = true
+        buttonCancel.hidden = true
+
+        self.post.addPictureToPost(T_CameraHelper.screenShot(self.view))
+        T_Post.uploadPost(self.post)
+                
         self.dismissViewControllerAnimated(false, completion: {});
     }
     
@@ -64,20 +71,8 @@ class T_EditCameraImageViewController: UIViewController {
     }
     
     deinit {
-        print("Edit VC")
     }
-    
-    //MARK: ScreenShot tools
-    func screenShotMethod() {
-        //Create the UIImage
-        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, true, 0.0)
-        self.view.drawViewHierarchyInRect(self.view.bounds, afterScreenUpdates: true)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        //Save it to the camera roll
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-    }
-    
+        
     //MARK: - Touch Events
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.slider.touchesBegan((touches.first?.locationInView(self.view))!)

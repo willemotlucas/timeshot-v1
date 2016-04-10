@@ -10,10 +10,13 @@ import UIKit
 
 class T_HomePageViewController: UIPageViewController {
     
+    static var instance:T_HomePageViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         dataSource = self
+        T_HomePageViewController.instance = self
         
         // Starting with the CameraViewController
         let cameraViewController = orderedViewControllers[1]
@@ -38,6 +41,26 @@ class T_HomePageViewController: UIPageViewController {
         }
     }
     
+    static func showProfileViewController() {
+        
+        instance.setViewControllers([instance.orderedViewControllers[0]], direction: .Reverse , animated: true, completion: nil)
+    }
+
+    static func showCameraViewControllerFromProfile() {
+        
+        instance.setViewControllers([instance.orderedViewControllers[1]], direction: .Forward , animated: true, completion: nil)
+    }
+
+    static func showCameraViewControllerFromAlbum() {
+        
+        instance.setViewControllers([instance.orderedViewControllers[1]], direction: .Reverse , animated: true, completion: nil)
+    }
+
+    static func showAlbumViewController() {
+        
+        instance.setViewControllers([instance.orderedViewControllers[2]], direction: .Forward , animated: true, completion: nil)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

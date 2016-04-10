@@ -8,28 +8,71 @@
 
 import Foundation
 import Parse
+import Bond
 
 class T_User : PFUser {
     
     @NSManaged var emailVerified:Bool
-    @NSManaged var birthDate:NSDate
-    @NSManaged var firstName:String
-    @NSManaged var lastName:String
+    @NSManaged var birthDate:NSDate?
+    @NSManaged var firstName:String?
+    @NSManaged var lastName:String?
     @NSManaged var isDeleted:Bool
+    @NSManaged var picture:PFFile?
+
+    var image: Observable<UIImage?> = Observable(nil)
+    var liveAlbum:T_Album?
     
-    
-    
+    static var selectedFriends:[T_User] = []
+
+    private
+    var selected:Bool
+
     //MARK: PFSubclassing Protocol
     override init () {
+        self.selected = false
+        
         super.init()
     }
     
-    init(username: String, password:String, birthDate:NSDate, email:String, firstName:String, lastName:String)
+    init(username: String, password:String, birthDate:NSDate, email:String, firstName:String, lastName:String, picture:PFFile)
     {
+        self.selected = false
+
         super.init()
         
         self.username = username
         self.password = password
+        self.birthDate = birthDate
+        self.email = email
+        self.firstName = firstName
+        self.lastName = lastName
+        self.isDeleted = false
+        self.picture = picture
+    }
+    
+    init(username: String, password:String, birthDate:NSDate, email:String, firstName:String, lastName:String, image:UIImage)
+    {
+        self.selected = false
+        
+        super.init()
+        
+        self.username = username
+        self.password = password
+        self.birthDate = birthDate
+        self.email = email
+        self.firstName = firstName
+        self.lastName = lastName
+        self.isDeleted = false
+        self.picture = T_ParseUserHelper.fileFromImage(image)
+    }
+    
+    init(username: String, birthDate:NSDate, email:String, firstName:String, lastName:String)
+    {
+        self.selected = false
+        
+        super.init()
+        
+        self.username = username
         self.birthDate = birthDate
         self.email = email
         self.firstName = firstName
@@ -45,9 +88,61 @@ class T_User : PFUser {
         }
     }
     
-    func createUser()
+    func changeStateFriendSelected()
     {
-        saveInBackgroundWithBlock(nil)
+        if(self.selected)
+        {
+            self.selected = false
+            
+            if let index = T_User.selectedFriends.indexOf(self)
+            {
+                T_User.selectedFriends.removeAtIndex(index)
+            }
+        }
+        else {
+            self.selected = true
+            if (T_User.selectedFriends.indexOf(self) == nil)
+            {
+                T_User.selectedFriends.append(self)
+            }
+        }
     }
+    
+    func isSelected() -> Bool
+    {
+        return selected
+    }
+
+    static func reset() {
+        selectedFriends.removeAll()
+    }
+    
+    func downloadImage() {
+        if (image.value == nil) {
+            picture?.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
+                if let data = data {
+                    let image = UIImage(data: data, scale:1.0)!
+                    self.image.value = image
+                }
+            }
+        }
+    }
+    
+    static func getAllUsers(withCompletion: (data: [T_User]) -> ())
+    {
+        let query = T_User.query()
+        query!.selectKeys(["firstName", "lastName", "picture"])
+        query!.findObjectsInBackgroundWithBlock {
+            (objects, error) -> Void in
+            if error == nil {
+                withCompletion(data: objects as! [T_User])
+            }
+            else {
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
+
+    }
+    
     
 }
