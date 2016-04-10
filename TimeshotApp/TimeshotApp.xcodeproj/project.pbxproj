@@ -29,26 +29,34 @@
 		7DD0F9B51C9EA0FB00A856B9 /* mariage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B11C9EA0FB00A856B9 /* mariage.jpg */; };
 		7DD0F9B61C9EA0FB00A856B9 /* soiree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */; };
 		7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */; };
+
+
 		8A516C9A1CAD65ED001885D9 /* T_AddFriendAlbumLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A516C991CAD65ED001885D9 /* T_AddFriendAlbumLiveViewController.swift */; };
 		8A61C3F91CADA4A50053DC52 /* T_AddFriendAlbumLiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61C3F81CADA4A50053DC52 /* T_AddFriendAlbumLiveTableViewCell.swift */; };
 		8A6916B91CAD174B0020CEF1 /* T_AlbumLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6916B81CAD174B0020CEF1 /* T_AlbumLiveViewController.swift */; };
 		8A6916BB1CAD282A0020CEF1 /* T_PhotosAlbumLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6916BA1CAD282A0020CEF1 /* T_PhotosAlbumLiveViewController.swift */; };
 		8A6916BD1CAD28430020CEF1 /* T_FriendsAlbumLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6916BC1CAD28430020CEF1 /* T_FriendsAlbumLiveViewController.swift */; };
+
+		B431711C1CB912790080AFDD /* T_Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431711B1CB912790080AFDD /* T_Post.swift */; };
+
 		B43C0E8A1CABF48300EF51E9 /* T_AddFriendToAlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C0E891CABF48300EF51E9 /* T_AddFriendToAlbumTableViewCell.swift */; };
 		B43C0E8F1CABF4E900EF51E9 /* T_CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C0E8B1CABF4E900EF51E9 /* T_CameraViewController.swift */; };
 		B43C0E901CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C0E8C1CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift */; };
 		B43C0E911CABF4E900EF51E9 /* T_CreateAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C0E8D1CABF4E900EF51E9 /* T_CreateAlbumViewController.swift */; };
 		B43C0E921CABF4E900EF51E9 /* T_EditCameraImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C0E8E1CABF4E900EF51E9 /* T_EditCameraImageViewController.swift */; };
+		B45047D31CB94D08005FF5FB /* T_ParseAlbumHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45047D21CB94D08005FF5FB /* T_ParseAlbumHelper.swift */; };
 		B45977071CAAE7CA00D57BED /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B741C9ABAC500135920 /* Profile.storyboard */; };
 		B46B2B771C9ABADA00135920 /* Album.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B761C9ABADA00135920 /* Album.storyboard */; };
 		B46B2B7D1C9ABB0400135920 /* T_HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B7C1C9ABB0400135920 /* T_HomePageViewController.swift */; };
 		B46B2B811C9ABB2900135920 /* T_AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */; };
+		B4964D261CB6838200B77E4D /* T_CameraHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4964D251CB6838200B77E4D /* T_CameraHelper.swift */; };
 		B4D9BDAA1CA4885100B28C52 /* T_String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D9BDA91CA4885100B28C52 /* T_String+Extension.swift */; };
-		B4EA9DCA1CB52D37003F5A75 /* T_FriendAddedToAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EA9DC61CB52D37003F5A75 /* T_FriendAddedToAlbum.swift */; };
 		B4EA9DCB1CB52D37003F5A75 /* T_SnapTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EA9DC71CB52D37003F5A75 /* T_SnapTextField.swift */; };
 		B4EA9DCC1CB52D37003F5A75 /* T_Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EA9DC81CB52D37003F5A75 /* T_Slider.swift */; };
 		B4EA9DCD1CB52D37003F5A75 /* T_Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EA9DC91CB52D37003F5A75 /* T_Filter.swift */; };
 		B4EA9DD21CB52DE3003F5A75 /* T_User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EA9DD11CB52DE3003F5A75 /* T_User.swift */; };
+		B4F2E9111CB64A370029F4BF /* T_Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F2E9101CB64A370029F4BF /* T_Album.swift */; };
+		B4F2E9131CB658500029F4BF /* T_ParseUserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F2E9121CB658500029F4BF /* T_ParseUserHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,26 +86,33 @@
 		7DD0F9B11C9EA0FB00A856B9 /* mariage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mariage.jpg; sourceTree = "<group>"; };
 		7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = soiree.jpg; sourceTree = "<group>"; };
 		7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = voyage.jpg; sourceTree = "<group>"; };
+
 		8A516C991CAD65ED001885D9 /* T_AddFriendAlbumLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AddFriendAlbumLiveViewController.swift; sourceTree = "<group>"; };
 		8A61C3F81CADA4A50053DC52 /* T_AddFriendAlbumLiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AddFriendAlbumLiveTableViewCell.swift; sourceTree = "<group>"; };
 		8A6916B81CAD174B0020CEF1 /* T_AlbumLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumLiveViewController.swift; sourceTree = "<group>"; };
 		8A6916BA1CAD282A0020CEF1 /* T_PhotosAlbumLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PhotosAlbumLiveViewController.swift; sourceTree = "<group>"; };
 		8A6916BC1CAD28430020CEF1 /* T_FriendsAlbumLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendsAlbumLiveViewController.swift; sourceTree = "<group>"; };
+
+		B431711B1CB912790080AFDD /* T_Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Post.swift; sourceTree = "<group>"; };
+
 		B43C0E891CABF48300EF51E9 /* T_AddFriendToAlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AddFriendToAlbumTableViewCell.swift; sourceTree = "<group>"; };
 		B43C0E8B1CABF4E900EF51E9 /* T_CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_CameraViewController.swift; sourceTree = "<group>"; };
 		B43C0E8C1CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ChooseContactsAlbumCreationViewController.swift; sourceTree = "<group>"; };
 		B43C0E8D1CABF4E900EF51E9 /* T_CreateAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_CreateAlbumViewController.swift; sourceTree = "<group>"; };
 		B43C0E8E1CABF4E900EF51E9 /* T_EditCameraImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_EditCameraImageViewController.swift; sourceTree = "<group>"; };
+		B45047D21CB94D08005FF5FB /* T_ParseAlbumHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ParseAlbumHelper.swift; sourceTree = "<group>"; };
 		B46B2B741C9ABAC500135920 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		B46B2B761C9ABADA00135920 /* Album.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Album.storyboard; sourceTree = "<group>"; };
 		B46B2B7C1C9ABB0400135920 /* T_HomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_HomePageViewController.swift; sourceTree = "<group>"; };
 		B46B2B801C9ABB2900135920 /* T_AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumViewController.swift; sourceTree = "<group>"; };
+		B4964D251CB6838200B77E4D /* T_CameraHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_CameraHelper.swift; sourceTree = "<group>"; };
 		B4D9BDA91CA4885100B28C52 /* T_String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "T_String+Extension.swift"; sourceTree = "<group>"; };
-		B4EA9DC61CB52D37003F5A75 /* T_FriendAddedToAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendAddedToAlbum.swift; sourceTree = "<group>"; };
 		B4EA9DC71CB52D37003F5A75 /* T_SnapTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SnapTextField.swift; sourceTree = "<group>"; };
 		B4EA9DC81CB52D37003F5A75 /* T_Slider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Slider.swift; sourceTree = "<group>"; };
 		B4EA9DC91CB52D37003F5A75 /* T_Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Filter.swift; sourceTree = "<group>"; };
 		B4EA9DD11CB52DE3003F5A75 /* T_User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_User.swift; sourceTree = "<group>"; };
+		B4F2E9101CB64A370029F4BF /* T_Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Album.swift; sourceTree = "<group>"; };
+		B4F2E9121CB658500029F4BF /* T_ParseUserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ParseUserHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +133,9 @@
 				5DB5A00C1CA1905200AADC9F /* T_DesignHelper.swift */,
 				5DB5A0321CA1D2D900AADC9F /* T_ContactsHelper.swift */,
 				B4D9BDA91CA4885100B28C52 /* T_String+Extension.swift */,
+				B4964D251CB6838200B77E4D /* T_CameraHelper.swift */,
+				B4F2E9121CB658500029F4BF /* T_ParseUserHelper.swift */,
+				B45047D21CB94D08005FF5FB /* T_ParseAlbumHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -269,7 +287,6 @@
 		B4EA9DC51CB52D1D003F5A75 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
-				B4EA9DC61CB52D37003F5A75 /* T_FriendAddedToAlbum.swift */,
 				B4EA9DC71CB52D37003F5A75 /* T_SnapTextField.swift */,
 				B4EA9DC81CB52D37003F5A75 /* T_Slider.swift */,
 				B4EA9DC91CB52D37003F5A75 /* T_Filter.swift */,
@@ -295,6 +312,8 @@
 			isa = PBXGroup;
 			children = (
 				B4EA9DD11CB52DE3003F5A75 /* T_User.swift */,
+				B4F2E9101CB64A370029F4BF /* T_Album.swift */,
+				B431711B1CB912790080AFDD /* T_Post.swift */,
 			);
 			path = Parse;
 			sourceTree = "<group>";
@@ -439,23 +458,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DE8FFF31CA4275C006BEBAE /* T_SendMessageUIButton.swift in Sources */,
+				B4964D261CB6838200B77E4D /* T_CameraHelper.swift in Sources */,
 				5DE8FFF11CA325B1006BEBAE /* T_ContactTableViewCell.swift in Sources */,
 				7DD0F9AE1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift in Sources */,
 				7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */,
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
-				B4EA9DCA1CB52D37003F5A75 /* T_FriendAddedToAlbum.swift in Sources */,
 				5DB5A00D1CA1905200AADC9F /* T_DesignHelper.swift in Sources */,
 				8A61C3F91CADA4A50053DC52 /* T_AddFriendAlbumLiveTableViewCell.swift in Sources */,
 				5DB5A02F1CA1C8D400AADC9F /* T_SearchUserViewController.swift in Sources */,
 				B4EA9DCD1CB52D37003F5A75 /* T_Filter.swift in Sources */,
 				5DB5A0291CA1AD1000AADC9F /* T_ProfileEditionViewController.swift in Sources */,
-				8A6916BB1CAD282A0020CEF1 /* T_PhotosAlbumLiveViewController.swift in Sources */,
-				B43C0E8F1CABF4E900EF51E9 /* T_CameraViewController.swift in Sources */,
+
+                8A6916BB1CAD282A0020CEF1 /* T_PhotosAlbumLiveViewController.swift in Sources */,
 				8A516C9A1CAD65ED001885D9 /* T_AddFriendAlbumLiveViewController.swift in Sources */,
 				B4C14BB91CA3DF2000413A1F /* T_Slider.swift in Sources */,
+				8A6916BD1CAD28430020CEF1 /* T_FriendsAlbumLiveViewController.swift in Sources */,
+
+                B4F2E9131CB658500029F4BF /* T_ParseUserHelper.swift in Sources */,
+				B43C0E8F1CABF4E900EF51E9 /* T_CameraViewController.swift in Sources */,
+				B431711C1CB912790080AFDD /* T_Post.swift in Sources */,
 				5DB5A02A1CA1AD1000AADC9F /* T_ProfileViewController.swift in Sources */,
 				5DB5A0271CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift in Sources */,
-				8A6916BD1CAD28430020CEF1 /* T_FriendsAlbumLiveViewController.swift in Sources */,
+				B45047D31CB94D08005FF5FB /* T_ParseAlbumHelper.swift in Sources */,
+
 				B43C0E911CABF4E900EF51E9 /* T_CreateAlbumViewController.swift in Sources */,
 				B43C0E901CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift in Sources */,
 				5DB5A02B1CA1AD1000AADC9F /* T_SettingsViewController.swift in Sources */,
@@ -468,6 +493,7 @@
 				5DB5A0281CA1AD1000AADC9F /* T_FriendTableViewCell.swift in Sources */,
 				B46B2B7D1C9ABB0400135920 /* T_HomePageViewController.swift in Sources */,
 				B46B2B811C9ABB2900135920 /* T_AlbumViewController.swift in Sources */,
+				B4F2E9111CB64A370029F4BF /* T_Album.swift in Sources */,
 				B4EA9DCC1CB52D37003F5A75 /* T_Slider.swift in Sources */,
 				5DB5A0331CA1D2D900AADC9F /* T_ContactsHelper.swift in Sources */,
 				B4EA9DCB1CB52D37003F5A75 /* T_SnapTextField.swift in Sources */,
@@ -588,7 +614,9 @@
 				INFOPLIST_FILE = TimeshotApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.lamouri.Timeshot;
+
+				PRODUCT_BUNDLE_IDENTIFIER = com.Paul.TimeshotApp;
+
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -604,7 +632,7 @@
 				INFOPLIST_FILE = TimeshotApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.lamouri.Timeshot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Paul.TimeshotApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

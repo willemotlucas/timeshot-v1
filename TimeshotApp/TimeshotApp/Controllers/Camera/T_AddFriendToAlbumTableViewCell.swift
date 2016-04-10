@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Bond
 
 class T_AddFriendToAlbumTableViewCell: UITableViewCell {
 
@@ -14,8 +15,17 @@ class T_AddFriendToAlbumTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var picture: UIImageView!
     
-    func setProfilPicture(picture: UIImage) {
-        self.picture.image = picture
+    weak var user: T_User? {
+        
+        didSet {
+            if let user = user {
+                user.image.bindTo(self.picture.bnd_image)
+                self.setProfilPicture()
+            }
+        }
+    }
+    
+    func setProfilPicture() {
         self.picture.layer.cornerRadius = 20
         self.picture.layer.masksToBounds = true
         self.picture.contentMode = .ScaleAspectFill
