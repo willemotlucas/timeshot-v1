@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 import AddressBook
 import AddressBookUI
 
@@ -26,11 +27,12 @@ class T_ProfileViewController: UIViewController {
     @IBOutlet weak var addFriendsButton: UIButton!
     
     // MARK : Properties
-    var friends = ["Lucas Willemot", "Valentin Paul", "Romain Pellerin", "Paul Jeannot", "Gabriel Hurtado", "Maxime Churin", "Karim Lamouri"]
-    var pendingRequests = ["Marie Daguin", "Alphonso Lupi"]
+    var friends: [T_User] = []
+    var pendingRequests: [T_FriendRequest] = []
     var sectionTitles = ["Pending requests", "Friends"]
     var contentToDisplay : ContentType = .Friends
     let contacts = T_ContactsHelper.getAllContacts()
+    var currentUser: T_User?
 
     // MARK: Overrided functions
     override func didReceiveMemoryWarning() {
@@ -40,14 +42,31 @@ class T_ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        T_DesignHelper.colorUIView(profileView)
-        T_DesignHelper.colorUIView(addFriendsButtonView)
-        T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
-        //T_DesignHelper.colorSegmentedControl(segmentedControl)
-
         tableView.tableHeaderView = profileView
         tableView.delegate = self
         tableView.dataSource = self
+        
+        if let userLogged = PFUser.currentUser() {
+            self.currentUser = userLogged as? T_User
+            self.title = self.currentUser!.firstName! + " " + self.currentUser!.lastName!
+        }
+        
+        T_DesignHelper.colorUIView(profileView)
+        T_DesignHelper.colorUIView(addFriendsButtonView)
+        T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
+        
+        //Load the friends
+        T_FriendRequestParseHelper.getAcceptedFriendRequest { (result: [PFObject]?, error:NSError?) in
+            let acceptedRequests = result as? [T_FriendRequest] ?? []
+            self.friends = T_FriendRequestParseHelper.getFriendsFromAcceptedRequests(acceptedRequests)
+            self.tableView.reloadData()
+        }
+        
+        //Load the pending requests
+        T_FriendRequestParseHelper.getPendingFriendRequest { (result: [PFObject]?, error:NSError?) in
+            self.pendingRequests = result as? [T_FriendRequest] ?? []
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: IBAction
@@ -98,17 +117,6 @@ class T_ProfileViewController: UIViewController {
         
         self.presentViewController(alertController, animated: true, completion: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension T_ProfileViewController: UITableViewDelegate {
@@ -119,7 +127,11 @@ extension T_ProfileViewController: UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         switch contentToDisplay {
         case .Friends:
-            return sectionTitles.count
+            if self.pendingRequests.count > 0 && self.friends.count > 0 {
+                return sectionTitles.count
+            } else {
+                return 1
+            }
         case .Notifications:
             return 1
         }
@@ -128,7 +140,15 @@ extension T_ProfileViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch contentToDisplay {
         case .Friends:
-            return sectionTitles[section]
+            if self.pendingRequests.count > 0 && self.friends.count > 0 {
+                return sectionTitles[section]
+            } else if self.pendingRequests.count > 0 && self.friends.count == 0 {
+                return sectionTitles[0]
+            } else if self.pendingRequests.count == 0 && self.friends.count > 0 {
+                return sectionTitles[1]
+            } else {
+                return ""
+            }
         case .Notifications:
             return ""
         }
@@ -137,16 +157,20 @@ extension T_ProfileViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch contentToDisplay {
         case .Friends:
-            if indexPath.section == 0 {
-                //Pending request cell
-                let cell = tableView.dequeueReusableCellWithIdentifier("T_FriendRequestTableViewCell", forIndexPath: indexPath) as! T_FriendRequestTableViewCell
-                cell.friendNameLabel.text = pendingRequests[indexPath.row]
-                return cell
+            if self.pendingRequests.count > 0 && self.friends.count > 0 {
+                if indexPath.section == 0 {
+                    //Pending request cell
+                    return createFriendRequestCell(indexPath)
+                } else {
+                    //Friend cell
+                    return createFriendCell(indexPath)
+                }
+            } else if self.pendingRequests.count > 0 && self.friends.count == 0 {
+                return createFriendRequestCell(indexPath)
+            } else if self.pendingRequests.count == 0 && self.friends.count > 0 {
+                return createFriendCell(indexPath)
             } else {
-                //Friend cell
-                let cell = tableView.dequeueReusableCellWithIdentifier("T_FriendTableViewCell", forIndexPath: indexPath) as! T_FriendTableViewCell
-                cell.friendNameLabel.text = friends[indexPath.row]
-                return cell
+                return UITableViewCell()
             }
         case .Notifications:
             let cell = UITableViewCell()
@@ -155,14 +179,37 @@ extension T_ProfileViewController: UITableViewDataSource {
         }
     }
     
+    func createFriendRequestCell(indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("T_FriendRequestTableViewCell", forIndexPath: indexPath) as! T_FriendRequestTableViewCell
+        let user = self.pendingRequests[indexPath.row].fromUser! as! T_User
+        cell.delegate = self
+        cell.friendNameLabel.text = user.firstName! + " " + user.lastName!
+        cell.friendRequest = self.pendingRequests[indexPath.row]
+        return cell
+    }
+    
+    func createFriendCell(indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("T_FriendTableViewCell", forIndexPath: indexPath) as! T_FriendTableViewCell
+        let user = self.friends[indexPath.row]
+        cell.friendNameLabel.text = user.firstName! + " " + user.lastName!
+        return cell
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch contentToDisplay {
         case .Friends:
-            if section == 0 {
-                return pendingRequests.count
-            }
-            else {
-                return friends.count
+            if self.pendingRequests.count > 0 && self.friends.count > 0 {
+                if section == 0 {
+                    return self.pendingRequests.count
+                } else {
+                    return self.friends.count
+                }
+            } else if self.pendingRequests.count > 0 && self.friends.count == 0 {
+                return self.pendingRequests.count
+            } else if self.pendingRequests.count == 0 && self.friends.count > 0 {
+                return self.friends.count
+            } else {
+                return 0
             }
         case .Notifications:
             return 40
@@ -182,7 +229,20 @@ extension T_ProfileViewController: UIScrollViewDelegate {
         segmentTransform = CATransform3DTranslate(segmentTransform, 0, max(segmentViewOffset, -profileView.frame.height + segmentedView.frame.height), 0)
         
         segmentedView.layer.transform = segmentTransform
-        
+    }
+}
+
+extension T_ProfileViewController: TableViewUpdater {
+    func updatePendingRequestsAfterAccepting(pendingRequest: T_FriendRequest) {
+        self.pendingRequests.removeAtIndex(self.pendingRequests.indexOf(pendingRequest)!)
+        let friend = pendingRequest.fromUser as! T_User
+        self.friends.append(friend)
+        tableView.reloadData()
+    }
+    
+    func updatePendingRequestsAfterRejecting(pendingRequest: T_FriendRequest) {
+        self.pendingRequests.removeAtIndex(self.pendingRequests.indexOf(pendingRequest)!)
+        tableView.reloadData()
     }
 }
 

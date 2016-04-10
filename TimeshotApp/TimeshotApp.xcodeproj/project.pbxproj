@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		40BF472DC51952247A14DBC9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9E238D3F9C0AE128133098 /* Pods.framework */; };
+		5D1D921A1CBA4D390085B70C /* T_EmailEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1D92191CBA4D390085B70C /* T_EmailEditionViewController.swift */; };
+		5D1D921C1CBA4F0F0085B70C /* T_FormValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1D921B1CBA4F0F0085B70C /* T_FormValidationHelper.swift */; };
+		5D64CA751CB96928005C6E43 /* T_FirstNameEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64CA741CB96928005C6E43 /* T_FirstNameEditionViewController.swift */; };
+		5D64CA771CB9806E005C6E43 /* T_LastNameEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64CA761CB9806E005C6E43 /* T_LastNameEditionViewController.swift */; };
+		5D64CA791CB986C2005C6E43 /* T_BirthdayEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64CA781CB986C2005C6E43 /* T_BirthdayEditionViewController.swift */; };
+		5D8638921CB8EDAA005CBC90 /* T_SearchUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8638911CB8EDAA005CBC90 /* T_SearchUserTableViewCell.swift */; };
+		5D8638941CB8EFA8005CBC90 /* T_UserParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8638931CB8EFA8005CBC90 /* T_UserParseHelper.swift */; };
 		5DB5A00D1CA1905200AADC9F /* T_DesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A00C1CA1905200AADC9F /* T_DesignHelper.swift */; };
 		5DB5A0271CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0221CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift */; };
 		5DB5A0281CA1AD1000AADC9F /* T_FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0231CA1AD1000AADC9F /* T_FriendTableViewCell.swift */; };
@@ -19,6 +26,8 @@
 		5DB5A0351CA2879B00AADC9F /* T_SearchContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5A0341CA2879B00AADC9F /* T_SearchContactViewController.swift */; };
 		5DE8FFF11CA325B1006BEBAE /* T_ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE8FFF01CA325B1006BEBAE /* T_ContactTableViewCell.swift */; };
 		5DE8FFF31CA4275C006BEBAE /* T_SendMessageUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE8FFF21CA4275C006BEBAE /* T_SendMessageUIButton.swift */; };
+		5DF7C6821CB7C99D00038B90 /* T_FriendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7C6811CB7C99D00038B90 /* T_FriendRequest.swift */; };
+		5DF7C6841CB7CC7E00038B90 /* T_FriendRequestParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7C6831CB7CC7E00038B90 /* T_FriendRequestParseHelper.swift */; };
 		7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */; };
 		7D8699241C8F4A9D003BC1DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699221C8F4A9D003BC1DC /* Main.storyboard */; };
 		7D8699261C8F4A9D003BC1DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699251C8F4A9D003BC1DC /* Assets.xcassets */; };
@@ -62,6 +71,13 @@
 /* Begin PBXFileReference section */
 		4770CD7F4BA867BF6C3AA239 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F9E238D3F9C0AE128133098 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D1D92191CBA4D390085B70C /* T_EmailEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_EmailEditionViewController.swift; sourceTree = "<group>"; };
+		5D1D921B1CBA4F0F0085B70C /* T_FormValidationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FormValidationHelper.swift; sourceTree = "<group>"; };
+		5D64CA741CB96928005C6E43 /* T_FirstNameEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FirstNameEditionViewController.swift; sourceTree = "<group>"; };
+		5D64CA761CB9806E005C6E43 /* T_LastNameEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_LastNameEditionViewController.swift; sourceTree = "<group>"; };
+		5D64CA781CB986C2005C6E43 /* T_BirthdayEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_BirthdayEditionViewController.swift; sourceTree = "<group>"; };
+		5D8638911CB8EDAA005CBC90 /* T_SearchUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SearchUserTableViewCell.swift; sourceTree = "<group>"; };
+		5D8638931CB8EFA8005CBC90 /* T_UserParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_UserParseHelper.swift; sourceTree = "<group>"; };
 		5DB5A00C1CA1905200AADC9F /* T_DesignHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_DesignHelper.swift; sourceTree = "<group>"; };
 		5DB5A0221CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendRequestTableViewCell.swift; sourceTree = "<group>"; };
 		5DB5A0231CA1AD1000AADC9F /* T_FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendTableViewCell.swift; sourceTree = "<group>"; };
@@ -73,6 +89,8 @@
 		5DB5A0341CA2879B00AADC9F /* T_SearchContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SearchContactViewController.swift; sourceTree = "<group>"; };
 		5DE8FFF01CA325B1006BEBAE /* T_ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ContactTableViewCell.swift; sourceTree = "<group>"; };
 		5DE8FFF21CA4275C006BEBAE /* T_SendMessageUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SendMessageUIButton.swift; sourceTree = "<group>"; };
+		5DF7C6811CB7C99D00038B90 /* T_FriendRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendRequest.swift; sourceTree = "<group>"; };
+		5DF7C6831CB7CC7E00038B90 /* T_FriendRequestParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendRequestParseHelper.swift; sourceTree = "<group>"; };
 		78F7AD880E89307F1E906BF3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7D86991B1C8F4A9D003BC1DC /* TimeshotApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeshotApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +145,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D64CA731CB96902005C6E43 /* ProfileEditionControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5D64CA741CB96928005C6E43 /* T_FirstNameEditionViewController.swift */,
+				5D64CA761CB9806E005C6E43 /* T_LastNameEditionViewController.swift */,
+				5D64CA781CB986C2005C6E43 /* T_BirthdayEditionViewController.swift */,
+				5D1D92191CBA4D390085B70C /* T_EmailEditionViewController.swift */,
+			);
+			path = ProfileEditionControllers;
+			sourceTree = "<group>";
+		};
 		5DB5A00B1CA1902500AADC9F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +165,7 @@
 				B4964D251CB6838200B77E4D /* T_CameraHelper.swift */,
 				B4F2E9121CB658500029F4BF /* T_ParseUserHelper.swift */,
 				B45047D21CB94D08005FF5FB /* T_ParseAlbumHelper.swift */,
+				5D1D921B1CBA4F0F0085B70C /* T_FormValidationHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -143,6 +173,7 @@
 		5DB5A0201CA1AD1000AADC9F /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
+				5D64CA731CB96902005C6E43 /* ProfileEditionControllers */,
 				5DB5A0211CA1AD1000AADC9F /* CustomTableViewCell */,
 				5DB5A0241CA1AD1000AADC9F /* T_ProfileEditionViewController.swift */,
 				5DB5A0251CA1AD1000AADC9F /* T_ProfileViewController.swift */,
@@ -160,6 +191,7 @@
 				5DB5A0231CA1AD1000AADC9F /* T_FriendTableViewCell.swift */,
 				5DE8FFF01CA325B1006BEBAE /* T_ContactTableViewCell.swift */,
 				5DE8FFF21CA4275C006BEBAE /* T_SendMessageUIButton.swift */,
+				5D8638911CB8EDAA005CBC90 /* T_SearchUserTableViewCell.swift */,
 			);
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
@@ -297,6 +329,8 @@
 		B4EA9DCE1CB52DA9003F5A75 /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
+				5DF7C6811CB7C99D00038B90 /* T_FriendRequest.swift */,
+				5DF7C6831CB7CC7E00038B90 /* T_FriendRequestParseHelper.swift */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -314,6 +348,7 @@
 				B4EA9DD11CB52DE3003F5A75 /* T_User.swift */,
 				B4F2E9101CB64A370029F4BF /* T_Album.swift */,
 				B431711B1CB912790080AFDD /* T_Post.swift */,
+				5D8638931CB8EFA8005CBC90 /* T_UserParseHelper.swift */,
 			);
 			path = Parse;
 			sourceTree = "<group>";
@@ -362,7 +397,7 @@
 				TargetAttributes = {
 					7D86991A1C8F4A9D003BC1DC = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 6T9PST97YR;
+						DevelopmentTeam = N82MC72NZP;
 					};
 				};
 			};
@@ -460,8 +495,10 @@
 				5DE8FFF31CA4275C006BEBAE /* T_SendMessageUIButton.swift in Sources */,
 				B4964D261CB6838200B77E4D /* T_CameraHelper.swift in Sources */,
 				5DE8FFF11CA325B1006BEBAE /* T_ContactTableViewCell.swift in Sources */,
+				5D1D921C1CBA4F0F0085B70C /* T_FormValidationHelper.swift in Sources */,
 				7DD0F9AE1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift in Sources */,
 				7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */,
+				5D64CA791CB986C2005C6E43 /* T_BirthdayEditionViewController.swift in Sources */,
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
 				5DB5A00D1CA1905200AADC9F /* T_DesignHelper.swift in Sources */,
 				8A61C3F91CADA4A50053DC52 /* T_AddFriendAlbumLiveTableViewCell.swift in Sources */,
@@ -470,27 +507,34 @@
 				5DB5A0291CA1AD1000AADC9F /* T_ProfileEditionViewController.swift in Sources */,
 
                 8A6916BB1CAD282A0020CEF1 /* T_PhotosAlbumLiveViewController.swift in Sources */,
-				8A516C9A1CAD65ED001885D9 /* T_AddFriendAlbumLiveViewController.swift in Sources */,
 				B4C14BB91CA3DF2000413A1F /* T_Slider.swift in Sources */,
-				8A6916BD1CAD28430020CEF1 /* T_FriendsAlbumLiveViewController.swift in Sources */,
 
                 B4F2E9131CB658500029F4BF /* T_ParseUserHelper.swift in Sources */,
 				B43C0E8F1CABF4E900EF51E9 /* T_CameraViewController.swift in Sources */,
 				B431711C1CB912790080AFDD /* T_Post.swift in Sources */,
-				5DB5A02A1CA1AD1000AADC9F /* T_ProfileViewController.swift in Sources */,
-				5DB5A0271CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift in Sources */,
 				B45047D31CB94D08005FF5FB /* T_ParseAlbumHelper.swift in Sources */,
 
+				5D64CA771CB9806E005C6E43 /* T_LastNameEditionViewController.swift in Sources */,
+				5D1D921A1CBA4D390085B70C /* T_EmailEditionViewController.swift in Sources */,
+				8A516C9A1CAD65ED001885D9 /* T_AddFriendAlbumLiveViewController.swift in Sources */,
+				5DB5A02A1CA1AD1000AADC9F /* T_ProfileViewController.swift in Sources */,
+				5DB5A0271CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift in Sources */,
+				5D8638921CB8EDAA005CBC90 /* T_SearchUserTableViewCell.swift in Sources */,
+				5DF7C6841CB7CC7E00038B90 /* T_FriendRequestParseHelper.swift in Sources */,
+				8A6916BD1CAD28430020CEF1 /* T_FriendsAlbumLiveViewController.swift in Sources */,
 				B43C0E911CABF4E900EF51E9 /* T_CreateAlbumViewController.swift in Sources */,
 				B43C0E901CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift in Sources */,
 				5DB5A02B1CA1AD1000AADC9F /* T_SettingsViewController.swift in Sources */,
 				B4EA9DD21CB52DE3003F5A75 /* T_User.swift in Sources */,
+				5D8638941CB8EFA8005CBC90 /* T_UserParseHelper.swift in Sources */,
 				B4D9BDAA1CA4885100B28C52 /* T_String+Extension.swift in Sources */,
 				B43C0E921CABF4E900EF51E9 /* T_EditCameraImageViewController.swift in Sources */,
 				8A6916B91CAD174B0020CEF1 /* T_AlbumLiveViewController.swift in Sources */,
 				5DB5A0351CA2879B00AADC9F /* T_SearchContactViewController.swift in Sources */,
 				B43C0E8A1CABF48300EF51E9 /* T_AddFriendToAlbumTableViewCell.swift in Sources */,
 				5DB5A0281CA1AD1000AADC9F /* T_FriendTableViewCell.swift in Sources */,
+				5D64CA751CB96928005C6E43 /* T_FirstNameEditionViewController.swift in Sources */,
+				5DF7C6821CB7C99D00038B90 /* T_FriendRequest.swift in Sources */,
 				B46B2B7D1C9ABB0400135920 /* T_HomePageViewController.swift in Sources */,
 				B46B2B811C9ABB2900135920 /* T_AlbumViewController.swift in Sources */,
 				B4F2E9111CB64A370029F4BF /* T_Album.swift in Sources */,

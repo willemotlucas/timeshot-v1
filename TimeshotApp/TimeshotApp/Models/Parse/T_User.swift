@@ -13,9 +13,9 @@ import Bond
 class T_User : PFUser {
     
     @NSManaged var emailVerified:Bool
-    @NSManaged var birthDate:NSDate
-    @NSManaged var firstName:String
-    @NSManaged var lastName:String
+    @NSManaged var birthDate:NSDate?
+    @NSManaged var firstName:String?
+    @NSManaged var lastName:String?
     @NSManaged var isDeleted:Bool
     @NSManaged var picture:PFFile?
 
@@ -64,6 +64,18 @@ class T_User : PFUser {
         self.lastName = lastName
         self.isDeleted = false
         self.picture = T_ParseUserHelper.fileFromImage(image)
+    }
+    
+    init(username: String, birthDate:NSDate, email:String, firstName:String, lastName:String)
+    {
+        super.init()
+        
+        self.username = username
+        self.birthDate = birthDate
+        self.email = email
+        self.firstName = firstName
+        self.lastName = lastName
+        self.isDeleted = false
     }
     
     override class func initialize() {
