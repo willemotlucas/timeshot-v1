@@ -68,6 +68,8 @@ class T_User : PFUser {
     
     init(username: String, birthDate:NSDate, email:String, firstName:String, lastName:String)
     {
+        self.selected = false
+        
         super.init()
         
         self.username = username
