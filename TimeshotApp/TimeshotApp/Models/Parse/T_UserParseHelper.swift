@@ -15,6 +15,7 @@ class T_UserParseHelper {
     static let FirstNameParse = "firstName"
     static let LastNameParse = "lastName"
     static let BirthdayDateParse = "birthDate"
+    static let EmailAddressParse = "email"
     
     static let currentUser = PFUser.currentUser() as! T_User
     
@@ -36,6 +37,11 @@ class T_UserParseHelper {
     
     static func editBirthday(birthdayDate: NSDate) {
         self.currentUser.setObject(birthdayDate, forKey: BirthdayDateParse)
+        self.currentUser.saveInBackgroundWithBlock(nil)
+    }
+    
+    static func editEmail(email: String) {
+        self.currentUser.setObject(email, forKey: EmailAddressParse)
         self.currentUser.saveInBackgroundWithBlock(nil)
     }
 }

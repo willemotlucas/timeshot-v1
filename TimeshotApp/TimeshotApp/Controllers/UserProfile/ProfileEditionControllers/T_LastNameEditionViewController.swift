@@ -31,13 +31,13 @@ class T_LastNameEditionViewController: UIViewController {
     }
 
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
-        if self.lastNameTextField.text?.characters.count >= 2{
+        if self.lastNameTextField.text?.characters.count >= T_FormValidationHelper.LastNameMinCharacter{
             if(self.lastNameTextField.text != self.lastName) {
                 T_UserParseHelper.editLastName(self.lastNameTextField.text!)
             }
             navigationController?.popViewControllerAnimated(true)
         } else {
-            self.helpTextLabel.text = "Don't be ridiculous, this last name is too short 😉"
+            self.helpTextLabel.text = T_FormValidationHelper.LastNameMinCharacterError
             self.helpTextLabel.textColor = UIColor.redColor()
         }
     }

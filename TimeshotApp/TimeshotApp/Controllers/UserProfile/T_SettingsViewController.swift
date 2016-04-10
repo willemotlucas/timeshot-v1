@@ -49,7 +49,10 @@ class T_SettingsViewController: UITableViewController {
             if let destinationVC = segue.destinationViewController as? T_BirthdayEditionViewController {
                 destinationVC.birthdayDate = self.birthdayLabel.text!
             }
-
+        } else if segue.identifier == "emailEditionSegue" {
+            if let destinationVC = segue.destinationViewController as? T_EmailEditionViewController {
+                destinationVC.emailAddress = self.emailLabel.text!
+            }
         }
     }
     
