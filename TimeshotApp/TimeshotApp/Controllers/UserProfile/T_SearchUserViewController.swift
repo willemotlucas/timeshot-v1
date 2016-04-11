@@ -20,6 +20,7 @@ class T_SearchUserViewController: UIViewController {
         super.viewDidLoad()
         T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
         
+        // Retrieve all the users stored in Parse database
         T_ParseUserHelper.gettAllUsers { (result: [PFObject]?, error: NSError?) in
             self.users = result as? [T_User] ?? []
             self.tableView.reloadData()
@@ -34,17 +35,6 @@ class T_SearchUserViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK/ IBAction
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
@@ -82,11 +72,18 @@ extension T_SearchUserViewController: UITableViewDataSource {
 
 extension T_SearchUserViewController: UISearchBarDelegate {
     
+    /*
+     * Allows to search in all users according to the search text.
+     * Search is carried out on username, first name and last name
+     */
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        // We search if the search text is empty
         if !searchText.isEmpty {
+            // First, we search for username
             let filteredUsername = searchText.isEmpty ? users: users.filter({(user: T_User) -> Bool in
                 return user.username!.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
             })
+            // Secondly, we search for first name
             let filteredFirstName = searchText.isEmpty ? users: users.filter({(user: T_User) -> Bool in
                 if !filteredUsername.contains(user) {
                     return user.firstName!.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
@@ -94,6 +91,7 @@ extension T_SearchUserViewController: UISearchBarDelegate {
                     return false
                 }
             })
+            // To finish, we search for last name
             let filteredLastName = searchText.isEmpty ? users: users.filter({(user: T_User) -> Bool in
                 if !filteredUsername.contains(user) {
                     return user.lastName!.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
@@ -102,6 +100,7 @@ extension T_SearchUserViewController: UISearchBarDelegate {
                 }
             })
             
+            // We append 3 arrays together to display the results
             self.filteredUsers = filteredUsername + filteredFirstName + filteredLastName
         } else {
             filteredUsers = []
@@ -111,6 +110,7 @@ extension T_SearchUserViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         self.searchBar.showsCancelButton = true
+        // Allows to display cancel button in white rather than blue
         for ob: UIView in ((self.searchBar.subviews[0] )).subviews {
             if let z = ob as? UIButton {
                 let btn: UIButton = z
@@ -130,7 +130,6 @@ extension T_SearchUserViewController: UISearchBarDelegate {
 
 extension T_SearchUserViewController: AddNewFriends {
     func sendUserSelected(userSelected: T_User) {
-        print("send user selected")
         T_FriendRequestParseHelper.sendFriendRequest(userSelected)
     }
 }

@@ -23,6 +23,8 @@ class T_SettingsViewController: UITableViewController {
         T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
         
         currentUser = PFUser.currentUser()! as! T_User
+        
+        //Set label information of the current user to display in static cell of the table view
         self.usernameLabel.text = currentUser.username!
         self.firstNameLabel.text = currentUser.firstName!
         self.lastNameLabel.text = currentUser.lastName!
