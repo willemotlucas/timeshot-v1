@@ -21,6 +21,10 @@ class T_SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         currentUser = PFUser.currentUser()! as! T_User
         
