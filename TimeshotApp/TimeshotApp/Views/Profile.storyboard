@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -271,11 +271,15 @@
                     <navigationItem key="navigationItem" id="kF2-1X-6gn">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="camera" id="mL5-gk-GZc">
                             <color key="tintColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cameraButtonTapped:" destination="tGm-Pl-crw" id="MPx-yL-kel"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addFriendsButton" destination="JZA-M0-C4r" id="jEI-rb-SKD"/>
                         <outlet property="addFriendsButtonView" destination="M8b-GY-fna" id="Mhn-7p-UBG"/>
+                        <outlet property="cameraButton" destination="mL5-gk-GZc" id="NYx-em-hlR"/>
                         <outlet property="headerView" destination="0qr-g3-NJH" id="djx-Eu-lMz"/>
                         <outlet property="profileView" destination="VWd-q1-MIa" id="Oac-Qj-2jB"/>
                         <outlet property="segmentedControl" destination="6hK-4M-IIa" id="d2k-mD-oWa"/>

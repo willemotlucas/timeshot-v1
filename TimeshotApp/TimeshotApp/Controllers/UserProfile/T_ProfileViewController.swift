@@ -25,6 +25,7 @@ class T_ProfileViewController: UIViewController {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var addFriendsButton: UIButton!
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
     
     // MARK : Properties
     var friends: [T_User] = []
@@ -40,17 +41,19 @@ class T_ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let userLogged = PFUser.currentUser() {
+            self.currentUser = userLogged as? T_User
+            self.title = self.currentUser!.firstName! + " " + self.currentUser!.lastName!
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableHeaderView = profileView
         tableView.delegate = self
         tableView.dataSource = self
-        
-        // Set the title view with full name of the user
-        if let userLogged = PFUser.currentUser() {
-            self.currentUser = userLogged as? T_User
-            self.title = self.currentUser!.firstName! + " " + self.currentUser!.lastName!
-        }
         
         // Set design with colors and gradient
         T_DesignHelper.colorUIView(profileView)
@@ -120,6 +123,10 @@ class T_ProfileViewController: UIViewController {
         alertController.addAction(usernameAction)
         
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func cameraButtonTapped(sender: UIBarButtonItem) {
+        T_HomePageViewController.showCameraViewControllerFromProfile()
     }
 }
 
