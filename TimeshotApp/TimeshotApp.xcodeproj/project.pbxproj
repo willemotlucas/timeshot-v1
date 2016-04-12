@@ -30,6 +30,7 @@
 		5DC361E51CBAFBE900B00064 /* T_FormValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC361DC1CBAFBE900B00064 /* T_FormValidationHelper.swift */; };
 		5DC361E61CBAFBE900B00064 /* T_String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC361DD1CBAFBE900B00064 /* T_String+Extension.swift */; };
 		5DC361E81CBAFC0000B00064 /* T_FriendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC361E71CBAFC0000B00064 /* T_FriendRequest.swift */; };
+		5DD10B641CBD8AA300918E3A /* T_Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD10B631CBD8AA300918E3A /* T_Reachability.swift */; };
 		5DE8FFF11CA325B1006BEBAE /* T_ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE8FFF01CA325B1006BEBAE /* T_ContactTableViewCell.swift */; };
 		5DE8FFF31CA4275C006BEBAE /* T_SendMessageUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE8FFF21CA4275C006BEBAE /* T_SendMessageUIButton.swift */; };
 		7D241FF41CB6D39D00F6548B /* T_SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D241FF31CB6D39D00F6548B /* T_SliderViewController.swift */; };
@@ -96,6 +97,7 @@
 		5DC361DC1CBAFBE900B00064 /* T_FormValidationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FormValidationHelper.swift; sourceTree = "<group>"; };
 		5DC361DD1CBAFBE900B00064 /* T_String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "T_String+Extension.swift"; sourceTree = "<group>"; };
 		5DC361E71CBAFC0000B00064 /* T_FriendRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendRequest.swift; sourceTree = "<group>"; };
+		5DD10B631CBD8AA300918E3A /* T_Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Reachability.swift; sourceTree = "<group>"; };
 		5DE8FFF01CA325B1006BEBAE /* T_ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ContactTableViewCell.swift; sourceTree = "<group>"; };
 		5DE8FFF21CA4275C006BEBAE /* T_SendMessageUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SendMessageUIButton.swift; sourceTree = "<group>"; };
 		78F7AD880E89307F1E906BF3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				5DC361DB1CBAFBE900B00064 /* T_DesignHelper.swift */,
 				5DC361DC1CBAFBE900B00064 /* T_FormValidationHelper.swift */,
 				5DC361DD1CBAFBE900B00064 /* T_String+Extension.swift */,
+				5DD10B631CBD8AA300918E3A /* T_Reachability.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -589,6 +592,7 @@
 				5D64CA751CB96928005C6E43 /* T_FirstNameEditionViewController.swift in Sources */,
 				B4F2E9111CB64A370029F4BF /* T_Album.swift in Sources */,
 				B4EA9DCC1CB52D37003F5A75 /* T_Slider.swift in Sources */,
+				5DD10B641CBD8AA300918E3A /* T_Reachability.swift in Sources */,
 				B4EA9DCB1CB52D37003F5A75 /* T_SnapTextField.swift in Sources */,
 				7D2420021CB6E20200F6548B /* T_StoryViewController.swift in Sources */,
 				7D2420001CB6D48100F6548B /* T_PhotosCollectionViewController.swift in Sources */,

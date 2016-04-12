@@ -45,10 +45,15 @@ class T_BirthdayEditionViewController: UIViewController {
     }
     
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
-        if let birthString = self.birthdayTextField.text {
-            let birthDate = self.dateFormatter.dateFromString(birthString)
-            T_ParseUserHelper.editBirthday(birthDate!)
-            navigationController?.popViewControllerAnimated(true)
+        if Reachability.isConnectedToNetwork() {
+            if let birthString = self.birthdayTextField.text {
+                let birthDate = self.dateFormatter.dateFromString(birthString)
+                T_ParseUserHelper.editBirthday(birthDate!)
+                navigationController?.popViewControllerAnimated(true)
+            }
+        } else {
+            self.helpTextLabel.text = T_FormValidationHelper.NetworkError
+            self.helpTextLabel.textColor = UIColor.redColor()
         }
     }
 }
