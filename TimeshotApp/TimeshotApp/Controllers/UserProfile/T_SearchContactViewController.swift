@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import DZNEmptyDataSet
 
 class T_SearchContactViewController: UIViewController {
     
@@ -35,6 +36,9 @@ class T_SearchContactViewController: UIViewController {
         self.contactsTableView.delegate = self
         self.contactsTableView.dataSource = self
         self.searchBar.delegate = self
+        contactsTableView.emptyDataSetSource = self
+        contactsTableView.emptyDataSetDelegate = self
+        contactsTableView.tableFooterView = UIView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -155,3 +159,23 @@ extension T_SearchContactViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
 }
+
+extension T_SearchContactViewController: DZNEmptyDataSetSource {
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        if self.searchBar.text!.isEmpty {
+            let str = "Search one of your contact!"
+            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+            return NSAttributedString(string: str, attributes: attrs)
+        } else {
+            let str = "Nobody have been found ..."
+            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+            return NSAttributedString(string: str, attributes: attrs)
+        }
+    }
+}
+
+extension T_SearchContactViewController: DZNEmptyDataSetDelegate {
+    
+}
+
+

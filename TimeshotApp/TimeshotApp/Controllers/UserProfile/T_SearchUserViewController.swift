@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import DZNEmptyDataSet
 
 class T_SearchUserViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
@@ -29,6 +30,9 @@ class T_SearchUserViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.searchBar.delegate = self
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -126,6 +130,36 @@ extension T_SearchUserViewController: UISearchBarDelegate {
         searchBar.text = ""
         searchBar.resignFirstResponder()
     }
+}
+
+extension T_SearchUserViewController: DZNEmptyDataSetSource {
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        if self.searchBar.text!.isEmpty {
+            let str = "Search a user!"
+            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+            return NSAttributedString(string: str, attributes: attrs)
+        } else {
+            let str = "Nobody have been found ..."
+            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+            return NSAttributedString(string: str, attributes: attrs)
+        }
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        if self.searchBar.text!.isEmpty {
+            let str = "You can search by his full name or username."
+            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+            return NSAttributedString(string: str, attributes: attrs)
+        } else {
+            let str = "Try another username or invite your friends!"
+            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+            return NSAttributedString(string: str, attributes: attrs)
+        }
+    }
+}
+
+extension T_SearchUserViewController: DZNEmptyDataSetDelegate {
+    
 }
 
 extension T_SearchUserViewController: AddNewFriends {

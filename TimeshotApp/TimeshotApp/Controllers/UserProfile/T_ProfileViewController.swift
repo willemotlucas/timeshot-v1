@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import AddressBook
 import AddressBookUI
+import DZNEmptyDataSet
 
 enum ContentType {
     case Friends, Notifications
@@ -54,6 +55,9 @@ class T_ProfileViewController: UIViewController {
         tableView.tableHeaderView = profileView
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
         
         // Set design with colors and gradient
         T_DesignHelper.colorUIView(profileView)
@@ -277,6 +281,36 @@ extension T_ProfileViewController: UIScrollViewDelegate {
         
         segmentedView.layer.transform = segmentTransform
     }
+}
+
+extension T_ProfileViewController: DZNEmptyDataSetSource {
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        if contentToDisplay == .Friends {
+            let str = "You have no friends yet 😟"
+            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+            return NSAttributedString(string: str, attributes: attrs)
+        } else {
+            let str = "You have no notifications..."
+            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+            return NSAttributedString(string: str, attributes: attrs)
+        }
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        if contentToDisplay == .Friends {
+            let str = "Invite some friends, it's more fun!"
+            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+            return NSAttributedString(string: str, attributes: attrs)
+        } else {
+            let str = "Create an album and share your photos!"
+            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+            return NSAttributedString(string: str, attributes: attrs)
+        }
+    }
+}
+
+extension T_ProfileViewController: DZNEmptyDataSetDelegate {
+    
 }
 
 /*
