@@ -170,8 +170,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Albums" id="e0w-ba-saM">
-                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="camera" id="bY7-vS-7Fc">
+                        <barButtonItem key="leftBarButtonItem" image="Camera" style="done" id="bY7-vS-7Fc">
+                            <inset key="imageInsets" minX="-10" minY="8" maxX="25" maxY="9"/>
                             <color key="tintColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="actionButtonCamera:" destination="OWY-Fx-QfT" id="pdf-oc-f6k"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -608,7 +612,7 @@
                                     <outletCollection property="gestureRecognizers" destination="NU7-rn-p9T" appends="YES" id="lYB-ZC-SCE"/>
                                 </connections>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bl0-kq-qTR">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bl0-kq-qTR">
                                 <rect key="frame" x="520" y="10" width="50" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="dny-fL-Yp9"/>
@@ -1033,6 +1037,7 @@
     </scenes>
     <resources>
         <image name="Avatar" width="119" height="119"/>
+        <image name="Camera" width="55" height="44"/>
         <image name="Cancel" width="44" height="44"/>
         <image name="Dislike" width="44" height="44"/>
         <image name="Dots" width="87" height="20"/>

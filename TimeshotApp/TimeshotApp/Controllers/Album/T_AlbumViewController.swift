@@ -58,9 +58,9 @@ class T_AlbumViewController: UIViewController{
     }
     */
     
-    //MARK: - Systems methods
-    override func prefersStatusBarHidden() -> Bool {
-        return false
+    // MARK: Actions
+    @IBAction func actionButtonCamera(sender: UIBarButtonItem) {
+        T_HomePageViewController.showCameraViewControllerFromAlbum()
     }
     
 
