@@ -22,6 +22,7 @@ class T_SearchContactViewController: UIViewController {
     var sectionHeaderTitles = [String]()
     var contacts = [String]()
     var filteredContacts = [String]()
+    var contactsToInvite: [String] = []
 
     // MARK: Override functions
     override func viewDidLoad() {
@@ -69,15 +70,32 @@ class T_SearchContactViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func sendSMS(sender: UIButton) {
-        let button = sender as! T_SendMessageUIButton
-        let phoneNumber = button.telNumber.stringByReplacingOccurrencesOfString(" ", withString: "")
-        
-        let messageVC = MFMessageComposeViewController()
-        messageVC.body = "I discovered a new awesome app! Download it on http://timeshot.co :)";
-        messageVC.recipients = [phoneNumber]
-        messageVC.messageComposeDelegate = self;
-        self.presentViewController(messageVC, animated: false, completion: nil)
+    @IBAction func checkboxButtonSelected(sender: T_SendMessageUIButton) {
+        if sender.selected == false {
+            sender.selected = true
+            let phoneNumber = sender.telNumber.stringByReplacingOccurrencesOfString(" ", withString: "")
+            self.contactsToInvite.append(phoneNumber)
+        } else {
+            sender.selected = false
+            let phoneNumber = sender.telNumber.stringByReplacingOccurrencesOfString(" ", withString: "")
+            //TODO : Remove the phone number
+            self.contactsToInvite = self.contactsToInvite.filter{$0 != phoneNumber}
+        }
+    }
+    
+    @IBAction func inviteButtonTapped(sender: UIBarButtonItem) {
+        if self.contactsToInvite.isEmpty {
+            let alertController = UIAlertController(title: "No contacts selected", message:
+                "Select some contacts to invite them!", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+        } else {
+            let messageVC = MFMessageComposeViewController()
+            messageVC.body = "I discovered a new awesome app! Download it on http://timeshot.co :)";
+            messageVC.recipients = self.contactsToInvite
+            messageVC.messageComposeDelegate = self;
+            self.presentViewController(messageVC, animated: false, completion: nil)
+        }
     }
 }
 
@@ -121,7 +139,7 @@ extension T_SearchContactViewController: UITableViewDataSource {
         let name = values![indexPath.row]
         let phoneNumber = contactsWithNumbers[name]
         
-        let button = cell.sendSMSButton as! T_SendMessageUIButton
+        let button = cell.checkboxButton as! T_SendMessageUIButton
         button.telNumber = phoneNumber!
         cell.contactNameLabel.text = name
         cell.contactTelephoneLabel.text = phoneNumber

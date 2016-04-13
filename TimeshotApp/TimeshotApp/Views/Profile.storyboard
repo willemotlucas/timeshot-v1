@@ -901,7 +901,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cxb-xp-vo7">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cxb-xp-vo7">
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -913,20 +913,23 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDv-vE-h6X">
-                                                    <rect key="frame" x="8" y="8" width="492" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="470" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FNs-zm-VUC" customClass="T_SendMessageUIButton" customModule="TimeshotApp" customModuleProvider="target">
-                                                    <rect key="frame" x="558" y="19" width="22" height="22"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FNs-zm-VUC" customClass="T_SendMessageUIButton" customModule="TimeshotApp" customModuleProvider="target">
+                                                    <rect key="frame" x="536" y="8" width="44" height="44"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="22" id="CQk-vt-J1m"/>
-                                                        <constraint firstAttribute="height" constant="22" id="VV5-3s-CUC"/>
+                                                        <constraint firstAttribute="width" constant="44" id="CQk-vt-J1m"/>
+                                                        <constraint firstAttribute="height" constant="44" id="VV5-3s-CUC"/>
                                                     </constraints>
                                                     <color key="tintColor" red="0.90980392160000001" green="0.47450980390000003" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                                    <state key="normal" image="check-unchecked"/>
+                                                    <state key="selected" image="checkbox-checked"/>
                                                     <connections>
-                                                        <action selector="sendSMS:" destination="Iqk-LG-TUb" eventType="touchUpInside" id="FFN-8e-f5h"/>
+                                                        <action selector="checkboxButtonSelected:" destination="Iqk-LG-TUb" eventType="touchUpInside" id="m5u-MB-cwP"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wd3-ev-mEg">
@@ -952,9 +955,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="checkboxButton" destination="FNs-zm-VUC" id="fZc-6x-EWQ"/>
                                             <outlet property="contactNameLabel" destination="oDv-vE-h6X" id="yFD-zc-wlU"/>
                                             <outlet property="contactTelephoneLabel" destination="Wd3-ev-mEg" id="Mdw-2d-D8g"/>
-                                            <outlet property="sendSMSButton" destination="FNs-zm-VUC" id="Hp9-hh-Iqd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -987,6 +990,12 @@
                             <color key="tintColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="Iqk-LG-TUb" id="bny-4n-Pg4"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Invite" id="De6-3K-WSC">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="inviteButtonTapped:" destination="Iqk-LG-TUb" id="eRB-0h-8hs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1094,5 +1103,7 @@
         <image name="Avatar" width="119" height="119"/>
         <image name="Refuse" width="46" height="46"/>
         <image name="Setting" width="45" height="44"/>
+        <image name="check-unchecked" width="36" height="36"/>
+        <image name="checkbox-checked" width="34" height="34"/>
     </resources>
 </document>
