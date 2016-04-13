@@ -40,17 +40,6 @@ class T_AlbumViewController: UIViewController{
     }
     
     override func viewDidAppear(animated: Bool) {
-        UIApplication.sharedApplication().statusBarHidden=false
-        
-        navigationController?.navigationBarHidden = false
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        navigationBar!.frame =  CGRectMake(0, 0, self.view.frame.size.width, CGFloat(64))
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        navigationBar!.frame =  CGRectMake(0, 0, self.view.frame.size.width, CGFloat(64))
     }
 
     override func didReceiveMemoryWarning() {

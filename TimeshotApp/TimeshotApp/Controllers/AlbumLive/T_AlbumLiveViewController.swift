@@ -52,13 +52,8 @@ class T_AlbumLiveViewController: UIViewController {
         }
 
     }
-    //MARK: - Systems methods
-    override func prefersStatusBarHidden() -> Bool {
-        return false
-    }
     
     override func viewWillAppear(animated: Bool) {
-        UIApplication.sharedApplication().statusBarHidden=false
     }
 
 }
