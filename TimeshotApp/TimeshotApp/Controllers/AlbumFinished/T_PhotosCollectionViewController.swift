@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class T_PhotosCollectionViewController: UIViewController {
     // MARK: Properties
@@ -33,54 +34,58 @@ class T_PhotosCollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // For DZNEmptyState
+        collectionView.emptyDataSetDelegate = self
+        collectionView.emptyDataSetSource = self
         
         
-        // ======== A ENLEVER APRES PARSE =============
-        // ============================================
         
-        //Reussir a savoir sur combien d'heure on a pris des photos ou l'intervalle entre 2 photos
-        let calendar = NSCalendar.currentCalendar()
-        let unit:NSCalendarUnit = .Hour
-        
-        var mySection: Int = 1
-        // On charge les photos
-        for i in 1...20 {
-            let myDate = NSDate().dateByAddingTimeInterval(10*60*Double(i))
-            
-            
-            // Si i vaut 1, c'est la 1ere photo, on initialise
-            if i ==  1 {
-                mySection = 1
-            } else if  i == 20 {
-                // On est arrive a la fin du tableau, on ajoute donc bien la derniere section
-                // MAIS ATTENTION, avant il faut bien ajouter notre derniere image
-                mySection = mySection + 1
-                photoNumberInSections.append(mySection)
-            } else {
-                // On veut d'abord avoir l'heure actuelle que l'on recupere en Int
-                let hourStart = calendar.component(unit, fromDate: photosArray[i-2].createdAt)
-                // Puis on crée une new date grace a ce Int correspondant à l'heure pile actuelle (sans les minutes)
-                let hourDate = calendar.dateBySettingHour(hourStart, minute: 0, second: 0, ofDate: NSDate(), options: [])
-                // On regarde maintenant la diff entre la date de la photo et la date de la derniere photo du tableau
-                // pour savoir si l'on commence une nouvelle section ou pas
-                let diff = calendar.components(unit, fromDate: hourDate!, toDate: myDate, options: [])
-                
-                // Si la diff est supérieure a 0, on veut donc changer de section, on ajoute l'ancienne
-                // section dans notre tableau et on remet le nombre de photo a 1
-                if diff.hour > 0 {
-                    photoNumberInSections.append(mySection)
-                    mySection = 1
-                } else {
-                    mySection = mySection + 1
-                }
-            }
-            
-            let newPost = Post(fromUser: "Valentin", createdAt: myDate, image: UIImage(named: "selfie\(i)"))
-            photosArray.append(newPost)
-        }
-        
-        // =======================================
-        // ======================================
+//        // ======== A ENLEVER APRES PARSE =============
+//        // ============================================
+//        
+//        //Reussir a savoir sur combien d'heure on a pris des photos ou l'intervalle entre 2 photos
+//        let calendar = NSCalendar.currentCalendar()
+//        let unit:NSCalendarUnit = .Hour
+//        
+//        var mySection: Int = 1
+//        // On charge les photos
+//        for i in 1...20 {
+//            let myDate = NSDate().dateByAddingTimeInterval(10*60*Double(i))
+//            
+//            
+//            // Si i vaut 1, c'est la 1ere photo, on initialise
+//            if i ==  1 {
+//                mySection = 1
+//            } else if  i == 20 {
+//                // On est arrive a la fin du tableau, on ajoute donc bien la derniere section
+//                // MAIS ATTENTION, avant il faut bien ajouter notre derniere image
+//                mySection = mySection + 1
+//                photoNumberInSections.append(mySection)
+//            } else {
+//                // On veut d'abord avoir l'heure actuelle que l'on recupere en Int
+//                let hourStart = calendar.component(unit, fromDate: photosArray[i-2].createdAt)
+//                // Puis on crée une new date grace a ce Int correspondant à l'heure pile actuelle (sans les minutes)
+//                let hourDate = calendar.dateBySettingHour(hourStart, minute: 0, second: 0, ofDate: NSDate(), options: [])
+//                // On regarde maintenant la diff entre la date de la photo et la date de la derniere photo du tableau
+//                // pour savoir si l'on commence une nouvelle section ou pas
+//                let diff = calendar.components(unit, fromDate: hourDate!, toDate: myDate, options: [])
+//                
+//                // Si la diff est supérieure a 0, on veut donc changer de section, on ajoute l'ancienne
+//                // section dans notre tableau et on remet le nombre de photo a 1
+//                if diff.hour > 0 {
+//                    photoNumberInSections.append(mySection)
+//                    mySection = 1
+//                } else {
+//                    mySection = mySection + 1
+//                }
+//            }
+//            
+//            let newPost = Post(fromUser: "Valentin", createdAt: myDate, image: UIImage(named: "selfie\(i)"))
+//            photosArray.append(newPost)
+//        }
+//        
+//        // =======================================
+//        // ======================================
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -146,14 +151,19 @@ class T_PhotosCollectionViewController: UIViewController {
 extension T_PhotosCollectionViewController : UICollectionViewDataSource , UICollectionViewDelegateFlowLayout, UICollectionViewDelegate{
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
+        if photoNumberInSections.count > 0 {
+            if section == 0{
+                return 1
+            }
+            // Returning the number of pictures inside each section
+            // photoNumberInSections[section - 1] -> section 1 in our collectionView is section 0 in our Array because we have a story section in the collectionView
+            //  + 1 -> the cell for the hour
+            return photoNumberInSections[section - 1] + 1
+            
+        } else {
+            return 0
         }
-        // Returning the number of pictures inside each section
-        // photoNumberInSections[section - 1] -> section 1 in our collectionView is section 0 in our Array because we have a story section in the collectionView
-        //  + 1 -> the cell for the hour
-        return photoNumberInSections[section - 1] + 1
-        
+    
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -200,8 +210,13 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        // Return the size of our array + the story section
-        return photoNumberInSections.count + 1
+        if photoNumberInSections.count > 0 {
+            // Return the size of our array + the story section
+            return photoNumberInSections.count + 1
+        } else {
+            return 0
+        }
+        
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
@@ -240,6 +255,41 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
     }
     
     
+}
+
+
+// MARK: - DZNEmptyDataState 
+extension T_PhotosCollectionViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = NSLocalizedString("Welcome", comment: "")
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = NSLocalizedString("Tap the button below to add your first dhaodaio", comment: "")
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    //    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+    //        let image = UIImage(named: "selfie3")
+    //        image?.accessibilityFrame = CGRect(origin: scrollView.center, size: CGSize(width: 50, height: 50))
+    //
+    //
+    //        return image
+    //    }
+    
+    func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString! {
+        let str = NSLocalizedString("Add fhiodfhiod", comment: "")
+        return NSAttributedString(string: str, attributes: nil)
+    }
+    
+    func emptyDataSetDidTapButton(scrollView: UIScrollView!) {
+        let ac = UIAlertController(title: NSLocalizedString("Button tapped", comment: ""), message: nil, preferredStyle: .Alert)
+        ac.addAction(UIAlertAction(title: NSLocalizedString("Hurray", comment: ""), style: .Default, handler: nil))
+        presentViewController(ac, animated: true, completion: nil)
+    }
 }
 
 

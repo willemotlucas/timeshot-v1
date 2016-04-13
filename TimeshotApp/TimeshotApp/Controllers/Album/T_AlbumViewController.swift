@@ -7,16 +7,17 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class T_AlbumViewController: UIViewController{
     // MARK: Properties
     @IBOutlet weak var tableView: UITableView!
     
     // Test arrays for the size of each cell
-    var imageArray = ["festival.jpg","mariage.jpg","soiree.jpg","voyage.jpg"]
-    var titleArray = ["Imaginarium Festival 2016", "Mariage Lulu et Marie", "EVG Lucas", "Voyage SurfUt posey"]
-    var liveArray = [true, false, false,false]
-    var dateArray = ["13 mai","10 avril","19 mars", "3 janvier"]
+    var imageArray : [String] = ["festival.jpg","mariage.jpg","soiree.jpg","voyage.jpg"]
+    var titleArray : [String] = ["Imaginarium Festival 2016", "Mariage Lulu et Marie", "EVG Lucas", "Voyage SurfUt posey"]
+    var liveArray : [Bool] = [true, false, false,false]
+    var dateArray : [String] = ["13 mai","10 avril","19 mars", "3 janvier"]
     
     var navigationBar : UINavigationBar?
     
@@ -24,8 +25,14 @@ class T_AlbumViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // For tableView
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // For DZNEmptyState
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
         
         navigationBar = self.navigationController?.navigationBar
         
@@ -95,4 +102,40 @@ extension T_AlbumViewController : UITableViewDelegate, UITableViewDataSource {
 
         }
     }
+}
+
+// MARK: - DZNEmptyState
+extension T_AlbumViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = NSLocalizedString("Welcome", comment: "")
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = NSLocalizedString("Tap the button below to add your first dhaodaio", comment: "")
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+//    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+//        let image = UIImage(named: "selfie3")
+//        image?.accessibilityFrame = CGRect(origin: scrollView.center, size: CGSize(width: 50, height: 50))
+//        
+//        
+//        return image
+//    }
+    
+    func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString! {
+        let str = NSLocalizedString("Add fhiodfhiod", comment: "")
+        return NSAttributedString(string: str, attributes: nil)
+    }
+    
+    func emptyDataSetDidTapButton(scrollView: UIScrollView!) {
+        let ac = UIAlertController(title: NSLocalizedString("Button tapped", comment: ""), message: nil, preferredStyle: .Alert)
+        ac.addAction(UIAlertAction(title: NSLocalizedString("Hurray", comment: ""), style: .Default, handler: nil))
+        presentViewController(ac, animated: true, completion: nil)
+    }
+    
 }
