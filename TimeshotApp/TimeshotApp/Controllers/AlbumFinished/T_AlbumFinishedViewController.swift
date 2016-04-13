@@ -15,6 +15,8 @@ class T_AlbumFinishedViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var segmentedView: UIView!
     
+    var albumPhotos : T_Album?
+    
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,20 +35,27 @@ class T_AlbumFinishedViewController: UIViewController {
         if segmentedControl.selectedSegmentIndex == 0 {
             photosContainerView.hidden = false
             friendsContainerView.hidden = true
+            
         } else {
             photosContainerView.hidden = true
             friendsContainerView.hidden = false
         }
     }
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        if segue.identifier == "attendeesContainer" {
+            print("Les attendees")
+        } else if segue.identifier == "photosContainer" {
+            let finishAlbumVC =  segue.destinationViewController as! T_PhotosCollectionViewController
+            finishAlbumVC.albumPhotos = albumPhotos
+        }
      }
-     */
+ 
 
 }

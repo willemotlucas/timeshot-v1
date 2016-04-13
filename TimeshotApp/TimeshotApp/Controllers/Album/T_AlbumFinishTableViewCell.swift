@@ -22,6 +22,7 @@ class T_AlbumFinishTableViewCell: UITableViewCell {
         
         
         let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MMM"
         dateLabel.text = dateFormatter.stringFromDate(date)
     }
 

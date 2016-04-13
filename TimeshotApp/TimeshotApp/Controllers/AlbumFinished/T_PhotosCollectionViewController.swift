@@ -13,6 +13,8 @@ class T_PhotosCollectionViewController: UIViewController {
     // MARK: Properties
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var albumPhotos : T_Album?
+    
     // A Remplacer par ParseObject
     struct Post {
         var fromUser : String!
@@ -39,53 +41,56 @@ class T_PhotosCollectionViewController: UIViewController {
         collectionView.emptyDataSetSource = self
         
         
+        print(albumPhotos)
         
-//        // ======== A ENLEVER APRES PARSE =============
-//        // ============================================
-//        
-//        //Reussir a savoir sur combien d'heure on a pris des photos ou l'intervalle entre 2 photos
-//        let calendar = NSCalendar.currentCalendar()
-//        let unit:NSCalendarUnit = .Hour
-//        
-//        var mySection: Int = 1
-//        // On charge les photos
-//        for i in 1...20 {
-//            let myDate = NSDate().dateByAddingTimeInterval(10*60*Double(i))
-//            
-//            
-//            // Si i vaut 1, c'est la 1ere photo, on initialise
-//            if i ==  1 {
-//                mySection = 1
-//            } else if  i == 20 {
-//                // On est arrive a la fin du tableau, on ajoute donc bien la derniere section
-//                // MAIS ATTENTION, avant il faut bien ajouter notre derniere image
-//                mySection = mySection + 1
-//                photoNumberInSections.append(mySection)
-//            } else {
-//                // On veut d'abord avoir l'heure actuelle que l'on recupere en Int
-//                let hourStart = calendar.component(unit, fromDate: photosArray[i-2].createdAt)
-//                // Puis on crée une new date grace a ce Int correspondant à l'heure pile actuelle (sans les minutes)
-//                let hourDate = calendar.dateBySettingHour(hourStart, minute: 0, second: 0, ofDate: NSDate(), options: [])
-//                // On regarde maintenant la diff entre la date de la photo et la date de la derniere photo du tableau
-//                // pour savoir si l'on commence une nouvelle section ou pas
-//                let diff = calendar.components(unit, fromDate: hourDate!, toDate: myDate, options: [])
-//                
-//                // Si la diff est supérieure a 0, on veut donc changer de section, on ajoute l'ancienne
-//                // section dans notre tableau et on remet le nombre de photo a 1
-//                if diff.hour > 0 {
-//                    photoNumberInSections.append(mySection)
-//                    mySection = 1
-//                } else {
-//                    mySection = mySection + 1
-//                }
-//            }
-//            
-//            let newPost = Post(fromUser: "Valentin", createdAt: myDate, image: UIImage(named: "selfie\(i)"))
-//            photosArray.append(newPost)
-//        }
-//        
-//        // =======================================
-//        // ======================================
+        
+        
+        // ======== A ENLEVER APRES PARSE =============
+        // ============================================
+        
+        //Reussir a savoir sur combien d'heure on a pris des photos ou l'intervalle entre 2 photos
+        let calendar = NSCalendar.currentCalendar()
+        let unit:NSCalendarUnit = .Hour
+        
+        var mySection: Int = 1
+        // On charge les photos
+        for i in 1...20 {
+            let myDate = NSDate().dateByAddingTimeInterval(10*60*Double(i))
+            
+            
+            // Si i vaut 1, c'est la 1ere photo, on initialise
+            if i ==  1 {
+                mySection = 1
+            } else if  i == 20 {
+                // On est arrive a la fin du tableau, on ajoute donc bien la derniere section
+                // MAIS ATTENTION, avant il faut bien ajouter notre derniere image
+                mySection = mySection + 1
+                photoNumberInSections.append(mySection)
+            } else {
+                // On veut d'abord avoir l'heure actuelle que l'on recupere en Int
+                let hourStart = calendar.component(unit, fromDate: photosArray[i-2].createdAt)
+                // Puis on crée une new date grace a ce Int correspondant à l'heure pile actuelle (sans les minutes)
+                let hourDate = calendar.dateBySettingHour(hourStart, minute: 0, second: 0, ofDate: NSDate(), options: [])
+                // On regarde maintenant la diff entre la date de la photo et la date de la derniere photo du tableau
+                // pour savoir si l'on commence une nouvelle section ou pas
+                let diff = calendar.components(unit, fromDate: hourDate!, toDate: myDate, options: [])
+                
+                // Si la diff est supérieure a 0, on veut donc changer de section, on ajoute l'ancienne
+                // section dans notre tableau et on remet le nombre de photo a 1
+                if diff.hour > 0 {
+                    photoNumberInSections.append(mySection)
+                    mySection = 1
+                } else {
+                    mySection = mySection + 1
+                }
+            }
+            
+            let newPost = Post(fromUser: "Valentin", createdAt: myDate, image: UIImage(named: "selfie\(i)"))
+            photosArray.append(newPost)
+        }
+        
+        // =======================================
+        // ======================================
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -95,7 +95,7 @@
                                             <outlet property="coverAlbum" destination="lxe-cZ-VmM" id="Na1-62-84E"/>
                                             <outlet property="dateLabel" destination="42p-1F-7X8" id="ssY-zv-VvO"/>
                                             <outlet property="titleAlbumLabel" destination="xwE-SG-Gn8" id="5BO-49-Mj1"/>
-                                            <segue destination="lfq-3b-sUf" kind="show" id="7Re-vr-nQf"/>
+                                            <segue destination="lfq-3b-sUf" kind="show" identifier="liveSegue" id="7Re-vr-nQf"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="finishAlbums" selectionStyle="default" indentationWidth="10" reuseIdentifier="finishAlbum" rowHeight="180" id="nSc-5I-DX4" customClass="T_AlbumFinishTableViewCell" customModule="TimeshotApp" customModuleProvider="target">
@@ -155,7 +155,7 @@
                                             <outlet property="coverAlbum" destination="P8i-Pp-W7P" id="pJb-Vl-x1w"/>
                                             <outlet property="dateLabel" destination="3eh-Az-GBR" id="0ye-c3-ehq"/>
                                             <outlet property="titleAlbumLabel" destination="X4G-VO-E0b" id="GPw-P6-HRm"/>
-                                            <segue destination="MPp-2O-PLD" kind="show" id="aVw-7W-aAe"/>
+                                            <segue destination="MPp-2O-PLD" kind="show" identifier="finishSegue" id="aVw-7W-aAe"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -283,7 +283,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hc9-Og-6RQ">
                                 <rect key="frame" x="0.0" y="40" width="600" height="496"/>
                                 <connections>
-                                    <segue destination="vYW-Q6-7ln" kind="embed" id="W2Z-CJ-lq4"/>
+                                    <segue destination="vYW-Q6-7ln" kind="embed" identifier="attendeesContainer" id="W2Z-CJ-lq4"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w4w-fV-RXl">
@@ -314,7 +314,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6a3-J7-rXL">
                                 <rect key="frame" x="0.0" y="40" width="600" height="496"/>
                                 <connections>
-                                    <segue destination="Emn-oU-lYF" kind="embed" id="uvv-Xg-CGe"/>
+                                    <segue destination="Emn-oU-lYF" kind="embed" identifier="photosContainer" id="uvv-Xg-CGe"/>
                                 </connections>
                             </containerView>
                         </subviews>

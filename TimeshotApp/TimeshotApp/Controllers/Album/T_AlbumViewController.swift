@@ -53,8 +53,6 @@ class T_AlbumViewController: UIViewController{
                 // On charge toutes les covers des albums
                 for album in self.albumsArray {
                     let data = try? album.cover.getData()
-                    print(data)
-                    print(album.cover)
                     album.coverImage = UIImage(data: data!, scale:1.0)
                 }
                 self.tableView.reloadData()
@@ -77,15 +75,24 @@ class T_AlbumViewController: UIViewController{
     }
     
 
-    /*
+    
     // MARK:  Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "liveSegue" {
+            print("Album live selectionné")
+        } else if segue.identifier == "finishSegue" {
+            let finishAlbumVC =  segue.destinationViewController as! T_AlbumFinishedViewController
+            
+            // Get the album of the cell clicked
+            if let selectedCell = sender as? T_AlbumFinishTableViewCell {
+                let indexPath = tableView.indexPathForCell(selectedCell)!
+                let selectedAlbum = albumsArray[indexPath.row]
+                finishAlbumVC.albumPhotos = selectedAlbum
+            }
+        }
     }
-    */
     
     // MARK: Actions
     @IBAction func actionButtonCamera(sender: UIBarButtonItem) {
