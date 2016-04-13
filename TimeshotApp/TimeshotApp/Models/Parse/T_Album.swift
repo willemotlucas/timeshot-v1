@@ -18,6 +18,8 @@ class T_Album : PFObject, PFSubclassing {
     @NSManaged var isDeleted: Bool
     @NSManaged var title: String
     
+    var coverImage : UIImage?
+    
     static var albumCreationTask: UIBackgroundTaskIdentifier?
 
     override init()
@@ -47,6 +49,7 @@ class T_Album : PFObject, PFSubclassing {
         self.duration = duration
         self.isDeleted = isDeleted
         self.title = title
+        
     }
         
     static func createAlbum(cover: UIImage, duration: Int, albumTitle: String) {

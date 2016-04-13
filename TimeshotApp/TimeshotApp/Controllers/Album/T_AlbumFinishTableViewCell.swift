@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class T_AlbumFinishTableViewCell: UITableViewCell {
     // MARK: Properties
@@ -15,10 +16,13 @@ class T_AlbumFinishTableViewCell: UITableViewCell {
     @IBOutlet weak var titleAlbumLabel: UILabel!
     
     // MARK: Initialisation
-    func initCell(cover: UIImage, date: String, title :String){
+    func initCell(cover: UIImage, date: NSDate, title :String){
         coverAlbum.image = cover
-        dateLabel.text = date
         titleAlbumLabel.text = title
+        
+        
+        let dateFormatter = NSDateFormatter()
+        dateLabel.text = dateFormatter.stringFromDate(date)
     }
 
     // MARK: View Life Cycle

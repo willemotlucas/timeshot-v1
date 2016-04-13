@@ -8,6 +8,7 @@
 
 import UIKit
 import DZNEmptyDataSet
+import Parse
 
 class T_AlbumViewController: UIViewController{
     // MARK: Properties
@@ -18,6 +19,8 @@ class T_AlbumViewController: UIViewController{
     var titleArray : [String] = ["Imaginarium Festival 2016", "Mariage Lulu et Marie", "EVG Lucas", "Voyage SurfUt posey"]
     var liveArray : [Bool] = [true, false, false,false]
     var dateArray : [String] = ["13 mai","10 avril","19 mars", "3 janvier"]
+    
+    var albumsArray : [T_Album] = [T_Album]()
     
     var navigationBar : UINavigationBar?
     
@@ -40,6 +43,25 @@ class T_AlbumViewController: UIViewController{
         T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
         
         
+        // ========================
+        // ==== TEST PARSE ========
+        // ========================
+        T_ParseAlbumHelper.queryAllAlbumsOnParse { (result : [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                self.albumsArray = (result as? [T_Album])!
+                
+                // On charge toutes les covers des albums
+                for album in self.albumsArray {
+                    let data = try? album.cover.getData()
+                    print(data)
+                    print(album.cover)
+                    album.coverImage = UIImage(data: data!, scale:1.0)
+                }
+                self.tableView.reloadData()
+            } else {
+                print("Erreur")
+            }
+        }
 
         
         // Do any additional setup after loading the view.
@@ -78,29 +100,38 @@ class T_AlbumViewController: UIViewController{
 // MARK: - UITableViewDelegate
 extension T_AlbumViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return imageArray.count
+        return albumsArray.count
+        //return imageArray.count
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if liveArray[indexPath.row] == true {
-            let cell = tableView.dequeueReusableCellWithIdentifier("liveAlbum") as! T_AlbumLiveTableViewCell
-
-            cell.initCell(UIImage(named: imageArray[indexPath.row])!,
-                           date: dateArray[indexPath.row],
-                           title: titleArray[indexPath.row])
-            
-            return cell
-
-        } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("finishAlbum") as! T_AlbumFinishTableViewCell
-            
-            cell.initCell(UIImage(named: imageArray[indexPath.row])!,
-                date: dateArray[indexPath.row],
-                title: titleArray[indexPath.row])
-            
-            return cell
-
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier("finishAlbum") as! T_AlbumFinishTableViewCell
+        
+        let album = albumsArray[indexPath.row]
+        
+        cell.initCell(album.coverImage!, date: album.createdAt!, title: album.title)
+        return cell
+        
+//        if liveArray[indexPath.row] == true {
+//            let cell = tableView.dequeueReusableCellWithIdentifier("liveAlbum") as! T_AlbumLiveTableViewCell
+//
+//            cell.initCell(UIImage(named: imageArray[indexPath.row])!,
+//                           date: dateArray[indexPath.row],
+//                           title: titleArray[indexPath.row])
+//            
+//            return cell
+//
+//        } else {
+//            let cell = tableView.dequeueReusableCellWithIdentifier("finishAlbum") as! T_AlbumFinishTableViewCell
+//            
+//            cell.initCell(UIImage(named: imageArray[indexPath.row])!,
+//                date: dateArray[indexPath.row],
+//                title: titleArray[indexPath.row])
+//            
+//            return cell
+//
+//        }
     }
 }
 
