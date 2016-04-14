@@ -2,66 +2,65 @@
 //  T_AlbumViewController.swift
 //  TimeshotApp
 //
-//  Created by Paul Jeannot on 17/03/2016.
+//  Created by Valentin Paul on 17/03/2016.
 //  Copyright © 2016 Timeshot. All rights reserved.
 //
 
 import UIKit
 import DZNEmptyDataSet
 import Parse
+import ConvenienceKit
 
 class T_AlbumViewController: UIViewController{
     // MARK: Properties
     @IBOutlet weak var tableView: UITableView!
     
+    var timelineComponent: TimelineComponent<T_Album, T_AlbumViewController>!
+    let defaultRange = 0...4
+    let additionalRangeSize = 5
+    
+    // ====================================
     // Test arrays for the size of each cell
     var imageArray : [String] = ["festival.jpg","mariage.jpg","soiree.jpg","voyage.jpg"]
     var titleArray : [String] = ["Imaginarium Festival 2016", "Mariage Lulu et Marie", "EVG Lucas", "Voyage SurfUt posey"]
     var liveArray : [Bool] = [true, false, false,false]
     var dateArray : [String] = ["13 mai","10 avril","19 mars", "3 janvier"]
+    // ====================================
     
-    var albumsArray : [T_Album] = [T_Album]()
     
-    var navigationBar : UINavigationBar?
+    
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // For tableView
-        tableView.delegate = self
-        tableView.dataSource = self
+        // Initialisation of timelineComponent
+        timelineComponent = TimelineComponent(target: self)
         
         // For DZNEmptyState
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         tableView.tableFooterView = UIView()
         
-        navigationBar = self.navigationController?.navigationBar
+        // For tableView
+        tableView.delegate = self
+        tableView.dataSource = self
         
         // Design the navbar
         T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
         
-        
-        // ========================
-        // ==== TEST PARSE ========
-        // ========================
-        T_ParseAlbumHelper.queryAllAlbumsOnParse { (result : [PFObject]?, error: NSError?) -> Void in
-            if error == nil {
-                self.albumsArray = result as? [T_Album] ?? []
-                
-                self.tableView.reloadData()
-            } else {
-                print("Erreur")
-            }
-        }
-
         
         // Do any additional setup after loading the view.
         
     }
     
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        //If the component has already queried the server and stored a user's posts, this method call does nothing at all.
+        //After the initial load, posts will only be reloaded if the user manually chooses to do so (by using the pull-to
+        //refresh mechanism).
+        timelineComponent.loadInitialIfRequired()
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,7 +82,7 @@ class T_AlbumViewController: UIViewController{
             // Get the album of the cell clicked
             if let selectedCell = sender as? T_AlbumFinishTableViewCell {
                 let indexPath = tableView.indexPathForCell(selectedCell)!
-                let selectedAlbum = albumsArray[indexPath.row]
+                let selectedAlbum = timelineComponent.content[indexPath.row]
                 finishAlbumVC.albumPhotos = selectedAlbum
             }
         }
@@ -102,15 +101,14 @@ class T_AlbumViewController: UIViewController{
 // MARK: - UITableViewDelegate
 extension T_AlbumViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return albumsArray.count
-        //return imageArray.count
-        
+        print(timelineComponent)
+        return timelineComponent.content.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("finishAlbum") as! T_AlbumFinishTableViewCell
         
-        let album = albumsArray[indexPath.row]
+        let album = timelineComponent.content[indexPath.row]
         
         album.downloadCoverImage()
         
@@ -137,6 +135,10 @@ extension T_AlbumViewController : UITableViewDelegate, UITableViewDataSource {
 //            return cell
 //
 //        }
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        timelineComponent.targetWillDisplayEntry(indexPath.row)
     }
 }
 
@@ -172,6 +174,22 @@ extension T_AlbumViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
         let ac = UIAlertController(title: NSLocalizedString("Button tapped", comment: ""), message: nil, preferredStyle: .Alert)
         ac.addAction(UIAlertAction(title: NSLocalizedString("Hurray", comment: ""), style: .Default, handler: nil))
         presentViewController(ac, animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: -TimelineComponentTarget
+extension T_AlbumViewController: TimelineComponentTarget {
+    
+    func loadInRange(range: Range<Int>, completionBlock: ([T_Album]?) -> Void) {
+        //
+        T_ParseAlbumHelper.queryAllAlbumsOnParse(range) { (result: [PFObject]?, error: NSError?) -> Void in
+            // 2
+            let posts = result as? [T_Album] ?? []
+            print("coucou")
+            // 3
+            completionBlock(posts)
+        }
     }
     
 }

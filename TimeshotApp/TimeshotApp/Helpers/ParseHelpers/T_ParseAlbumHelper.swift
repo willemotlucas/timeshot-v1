@@ -42,14 +42,19 @@ class T_ParseAlbumHelper {
         }
     }
     
-    static func queryAllAlbumsOnParse(completionBlock: PFQueryArrayResultBlock) {
+    static func queryAllAlbumsOnParse(range: Range<Int>, completionBlock: PFQueryArrayResultBlock) {
         
         let query = PFQuery(className: "Album")
         //let query = T_Album.query()
         
         //query.whereKey("attendees", equalTo: PFUser.currentUser()!)
         query.orderByDescending("createdAt")
-        query.limit = 5
+        
+        print("queryAllAlbumsOnParse")
+        // Range of the album that we want
+        query.skip =  range.startIndex
+        query.limit = range.endIndex -  range.startIndex
+        
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
     
