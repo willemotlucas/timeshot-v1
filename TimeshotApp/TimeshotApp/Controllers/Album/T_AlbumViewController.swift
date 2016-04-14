@@ -48,13 +48,8 @@ class T_AlbumViewController: UIViewController{
         // ========================
         T_ParseAlbumHelper.queryAllAlbumsOnParse { (result : [PFObject]?, error: NSError?) -> Void in
             if error == nil {
-                self.albumsArray = (result as? [T_Album])!
+                self.albumsArray = result as? [T_Album] ?? []
                 
-                // On charge toutes les covers des albums
-                for album in self.albumsArray {
-                    let data = try? album.cover.getData()
-                    album.coverImage = UIImage(data: data!, scale:1.0)
-                }
                 self.tableView.reloadData()
             } else {
                 print("Erreur")
@@ -117,7 +112,10 @@ extension T_AlbumViewController : UITableViewDelegate, UITableViewDataSource {
         
         let album = albumsArray[indexPath.row]
         
-        cell.initCell(album.coverImage!, date: album.createdAt!, title: album.title)
+        album.downloadCoverImage()
+        
+        cell.album = album
+        cell.initCellWithMetaData(album.createdAt!, title: album.title)
         return cell
         
 //        if liveArray[indexPath.row] == true {

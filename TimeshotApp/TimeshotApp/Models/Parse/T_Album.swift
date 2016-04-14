@@ -8,9 +8,10 @@
 
 import Foundation
 import Parse
+import Bond
 
 class T_Album : PFObject, PFSubclassing {
-    
+    // MARK: Properties
     @NSManaged var attendees: [T_User]
     @NSManaged var cover: PFFile
     @NSManaged var createdBy: T_User
@@ -18,10 +19,11 @@ class T_Album : PFObject, PFSubclassing {
     @NSManaged var isDeleted: Bool
     @NSManaged var title: String
     
-    var coverImage : UIImage?
+    var coverImage : Observable<UIImage?> = Observable(nil)
     
     static var albumCreationTask: UIBackgroundTaskIdentifier?
-
+    
+    // MARK: Initialisation
     override init()
     {
         super.init()
@@ -173,5 +175,22 @@ class T_Album : PFObject, PFSubclassing {
     
     static func getRemainingDuration(date:NSDate, duration: Int) -> Int {
         return (duration*3600 - getDelay(date))
+    }
+    
+    //------------------------------------------------------------------------------------------
+    // MARK: Download Cover Image
+    func downloadCoverImage() {
+        // if cover is not downloaded yet, get it
+        if coverImage.value == nil {
+            // In background to not block the main thread
+            cover.getDataInBackgroundWithBlock { (data: NSData?, error:NSError?) -> Void in
+                if let data = data {
+                    let image = UIImage(data:data, scale: 1.0)!
+                    // .value because it's an observable
+                    self.coverImage.value = image
+                }
+                
+            }
+        }
     }
 }
