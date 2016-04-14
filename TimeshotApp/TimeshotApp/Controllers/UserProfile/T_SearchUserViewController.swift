@@ -68,6 +68,18 @@ extension T_SearchUserViewController: UITableViewDataSource {
         cell.usernameLabel.text = user.username
         cell.user = user
         
+        T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
+            if friends.contains(user) {
+                cell.addUserButton.selected = true
+            }
+        })
+        
+        T_ParseUserHelper.getCurrentUser()?.getAllPendingFriends({ (friends) in
+            if friends.contains(user) {
+                cell.addUserButton.selected = true
+            }
+        })
+        
         return cell
     }
 }

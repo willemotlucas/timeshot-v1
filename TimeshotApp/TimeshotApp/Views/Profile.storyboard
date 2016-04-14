@@ -339,13 +339,16 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FwE-gV-5l4">
-                                                    <rect key="frame" x="559" y="19" width="22" height="22"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FwE-gV-5l4">
+                                                    <rect key="frame" x="537" y="7.5" width="44" height="44"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="22" id="GCe-ha-k9V"/>
-                                                        <constraint firstAttribute="height" constant="22" id="oCJ-Jb-rRN"/>
+                                                        <constraint firstAttribute="width" constant="44" id="GCe-ha-k9V"/>
+                                                        <constraint firstAttribute="height" constant="44" id="oCJ-Jb-rRN"/>
                                                     </constraints>
                                                     <color key="tintColor" red="0.90980392160000001" green="0.47450980390000003" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <inset key="contentEdgeInsets" minX="6" minY="6" maxX="6" maxY="6"/>
+                                                    <state key="normal" image="add-friends-button"/>
+                                                    <state key="selected" image="checkbox-checked"/>
                                                     <connections>
                                                         <action selector="addFriendButtonTapped:" destination="4Aa-gG-L61" eventType="touchUpInside" id="ui2-9V-tv9"/>
                                                     </connections>
@@ -1103,6 +1106,7 @@
         <image name="Avatar" width="119" height="119"/>
         <image name="Refuse" width="46" height="46"/>
         <image name="Setting" width="45" height="44"/>
+        <image name="add-friends-button" width="36" height="36"/>
         <image name="check-unchecked" width="36" height="36"/>
         <image name="checkbox-checked" width="34" height="34"/>
     </resources>

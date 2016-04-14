@@ -33,7 +33,10 @@ class T_SearchUserTableViewCell: UITableViewCell {
     }
     
     @IBAction func addFriendButtonTapped(sender: UIButton) {
-        print("button clicked")
-        delegate?.sendUserSelected(self.user)
+        // Call the delegate only if the user is not alreayd a friend
+        if sender.selected == false {
+            sender.selected = true
+            delegate?.sendUserSelected(self.user)
+        }
     }
 }

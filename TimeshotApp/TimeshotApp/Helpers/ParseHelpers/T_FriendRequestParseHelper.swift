@@ -26,10 +26,7 @@ class T_FriendRequestParseHelper {
     static let ParseFriendRequestFromUser = "fromUser"
     static let ParseFriendRequestToUser = "toUser"
     static let ParseFriendRequestStatus = "status"
-    
-    // MARK: Properties
-    static var friends: [T_User] = []
-    
+        
     // MARK: Methods
     
     /*
@@ -49,17 +46,54 @@ class T_FriendRequestParseHelper {
     }
     
     /*
-     * Retrieve all the pending friend request from the current user
+     * Retrieve all the pending friend request from the current user.
+     * This is only the pending request that the current user received, not the requests he sent.
      *
      * Params:
      * - @completionBlock : the methods executed asynchroneously when all the pending requests have been retrieved
     */
-    static func getPendingFriendRequest(completionBlock: PFQueryArrayResultBlock?){
+    static func getPendingFriendRequestToCurrentUser(completionBlock: PFQueryArrayResultBlock?) {
         let pendingFriendRequest = PFQuery(className: ParseFriendRequestClass)
         pendingFriendRequest.whereKey(ParseFriendRequestStatus, equalTo: friendRequestStatus(.Pending))
         pendingFriendRequest.whereKey(ParseFriendRequestToUser, equalTo: PFUser.currentUser()!)
         pendingFriendRequest.includeKey(ParseFriendRequestFromUser)
         pendingFriendRequest.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
+    static func getAllPendingFriendRequest(completionBlock: PFQueryArrayResultBlock?) {
+        let pendingFriendRequestToCurrentUser = PFQuery(className: ParseFriendRequestClass)
+        pendingFriendRequestToCurrentUser.whereKey(ParseFriendRequestStatus, equalTo: friendRequestStatus(.Pending))
+        pendingFriendRequestToCurrentUser.whereKey(ParseFriendRequestToUser, equalTo: PFUser.currentUser()!)
+        
+        let pendingFriendRequestFromCurrentUser = PFQuery(className: ParseFriendRequestClass)
+        pendingFriendRequestFromCurrentUser.whereKey(ParseFriendRequestStatus, equalTo: friendRequestStatus(.Pending))
+        pendingFriendRequestFromCurrentUser.whereKey(ParseFriendRequestFromUser, equalTo: PFUser.currentUser()!)
+
+        let query = PFQuery.orQueryWithSubqueries([pendingFriendRequestToCurrentUser, pendingFriendRequestFromCurrentUser])
+        query.includeKey(ParseFriendRequestFromUser)
+        query.includeKey(ParseFriendRequestToUser)
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
+    static func getFriendsFromPendingRequest(completion: (friends: [T_User]) -> Void) {
+        getAllPendingFriendRequest { (result: [PFObject]?, erorr: NSError?) in
+            let pendingRequest = result as? [T_FriendRequest] ?? []
+
+            print("pending request count: \(pendingRequest.count)")
+            var users: [T_User] = []
+            // We iterate through the array to build the list of users
+            for request in pendingRequest {
+                if request.fromUser?.objectId == PFUser.currentUser()!.objectId {
+                    // If the current user created the friend request, then we keep toUser
+                    users.append(request.toUser as! T_User)
+                } else {
+                    // Otherwise, the current user received the friend request, so we keep fromUser
+                    users.append(request.fromUser as! T_User)
+                }
+            }
+            
+            completion(friends: users)
+        }
     }
     
     /*
@@ -96,23 +130,26 @@ class T_FriendRequestParseHelper {
      *
      * Params:
      * - @acceptedFriendRequests : an array of accepted friend request
-     * Return:
-     * - [T_User] an array of T_User containing the friends of the current user
+     * - @completion: the closure executed after retrieving the friends
      */
-    static func getFriendsFromAcceptedRequests(acceptedFriendRequests: [T_FriendRequest]) -> [T_User] {
-        var friends: [T_User] = []
-        // We iterate through the array to build the list of friends
-        for request in acceptedFriendRequests {
-            if request.fromUser?.objectId == PFUser.currentUser()!.objectId {
-                // If the current user created the friend request, then we keep toUser
-                friends.append(request.toUser as! T_User)
-            } else {
-                // Otherwise, the current user received the friend request, so we keep fromUser
-                friends.append(request.fromUser as! T_User)
+    static func getFriendsFromAcceptedRequests(completion: (friends: [T_User]) -> Void) {
+        getAcceptedFriendRequest { (result: [PFObject]?, error: NSError?) in
+            let acceptedRequests = result as? [T_FriendRequest] ?? []
+            
+            var friends: [T_User] = []
+            // We iterate through the array to build the list of friends
+            for request in acceptedRequests {
+                if request.fromUser?.objectId == PFUser.currentUser()!.objectId {
+                    // If the current user created the friend request, then we keep toUser
+                    friends.append(request.toUser as! T_User)
+                } else {
+                    // Otherwise, the current user received the friend request, so we keep fromUser
+                    friends.append(request.fromUser as! T_User)
+                }
             }
+            
+            completion(friends: friends)
         }
-        
-        return friends
     }
     
     /*
@@ -123,7 +160,11 @@ class T_FriendRequestParseHelper {
      */
     static func sendFriendRequest(toUser: T_User){
         let friendRequest = T_FriendRequest(toUser: toUser)
-        friendRequest.saveInBackgroundWithBlock(nil)
+        friendRequest.saveInBackgroundWithBlock { (result: Bool, error: NSError?) in
+            if result {
+                T_ParseUserHelper.getCurrentUser()?.pendingFriends.append(toUser)
+            }
+        }
     }
     
     /*

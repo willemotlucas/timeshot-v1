@@ -65,14 +65,19 @@ class T_ProfileViewController: UIViewController {
         T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
         
         //Load the friends
-        T_FriendRequestParseHelper.getAcceptedFriendRequest { (result: [PFObject]?, error:NSError?) in
+        /*T_FriendRequestParseHelper.getAcceptedFriendRequest { (result: [PFObject]?, error:NSError?) in
             let acceptedRequests = result as? [T_FriendRequest] ?? []
             self.friends = T_FriendRequestParseHelper.getFriendsFromAcceptedRequests(acceptedRequests)
             self.tableView.reloadData()
-        }
+        }*/
+        
+        T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
+            self.friends = friends
+            self.tableView.reloadData()
+        })
         
         //Load the pending requests
-        T_FriendRequestParseHelper.getPendingFriendRequest { (result: [PFObject]?, error:NSError?) in
+        T_FriendRequestParseHelper.getPendingFriendRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
             self.pendingRequests = result as? [T_FriendRequest] ?? []
             self.tableView.reloadData()
         }

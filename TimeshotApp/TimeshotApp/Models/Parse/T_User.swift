@@ -21,6 +21,8 @@ class T_User : PFUser {
 
     var image: Observable<UIImage?> = Observable(nil)
     var liveAlbum:T_Album?
+    var friends: [T_User] = []
+    var pendingFriends: [T_User] = []
     
     static var selectedFriends:[T_User] = []
 
@@ -127,6 +129,30 @@ class T_User : PFUser {
             }
         }
     }
+    
+    func getAllFriends(completion: (friends: [T_User]) -> Void) {
+        if self.friends.isEmpty {
+            T_FriendRequestParseHelper.getFriendsFromAcceptedRequests({ (friends) in
+                self.friends = friends
+                completion(friends: friends)
+            })
+        }else {
+            completion(friends: self.friends)
+        }
+    }
+    
+    func getAllPendingFriends(completion: (friends: [T_User]) -> Void) {
+        if self.pendingFriends.isEmpty {
+            T_FriendRequestParseHelper.getFriendsFromPendingRequest({ (friends) in
+                self.pendingFriends = friends
+                print("number of items : \(self.pendingFriends.count)")
+                completion(friends: friends)
+            })
+        }else {
+            completion(friends: self.pendingFriends)
+        }
+    }
+
     
     static func getAllUsers(withCompletion: (data: [T_User]) -> ())
     {
