@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         PFUser.enableRevocableSessionInBackground()
         
-        T_ParseUserHelper.login("lucas", password: "password")
+        T_ParseUserHelper.login("pauldupont", password: "test")
         
         return true
     }

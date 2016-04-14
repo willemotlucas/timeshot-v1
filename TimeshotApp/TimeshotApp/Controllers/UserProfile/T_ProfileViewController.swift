@@ -24,6 +24,8 @@ class T_ProfileViewController: UIViewController {
     @IBOutlet weak var profileView: UIView!
     @IBOutlet weak var addFriendsButtonView: UIView!
     
+    @IBOutlet weak var profileImageView: UIImageView!
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var addFriendsButton: UIButton!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -81,6 +83,16 @@ class T_ProfileViewController: UIViewController {
             self.pendingRequests = result as? [T_FriendRequest] ?? []
             self.tableView.reloadData()
         }
+        
+        T_ParseUserHelper.getCurrentUser()?.downloadImage()
+        T_ParseUserHelper.getCurrentUser()?.image.bindTo(self.profileImageView.bnd_image)
+        
+        //Set profile image design
+        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
+        self.profileImageView.layer.masksToBounds = true
+        self.profileImageView.contentMode = .ScaleAspectFill
+        self.profileImageView.layer.borderWidth = 2.0
+        self.profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
     }
     
     // MARK: IBAction

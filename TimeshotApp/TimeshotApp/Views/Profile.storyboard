@@ -281,6 +281,7 @@
                         <outlet property="addFriendsButtonView" destination="M8b-GY-fna" id="Mhn-7p-UBG"/>
                         <outlet property="cameraButton" destination="mL5-gk-GZc" id="NYx-em-hlR"/>
                         <outlet property="headerView" destination="0qr-g3-NJH" id="djx-Eu-lMz"/>
+                        <outlet property="profileImageView" destination="oaw-9X-tq1" id="Z3W-IO-7aN"/>
                         <outlet property="profileView" destination="VWd-q1-MIa" id="Oac-Qj-2jB"/>
                         <outlet property="segmentedControl" destination="6hK-4M-IIa" id="d2k-mD-oWa"/>
                         <outlet property="segmentedView" destination="784-dO-Zi0" id="Rxm-06-bQv"/>

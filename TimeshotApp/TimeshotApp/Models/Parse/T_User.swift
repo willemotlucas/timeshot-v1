@@ -121,6 +121,11 @@ class T_User : PFUser {
     
     func downloadImage() {
         if (image.value == nil) {
+            //Set a default profile picture
+            let image = UIImage(named: "Avatar")
+            self.image.value = image
+            
+            //If there is a profile picture provided by the user, it will be used
             picture?.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
                 if let data = data {
                     let image = UIImage(data: data, scale:1.0)!
