@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 import Bond
 
 class T_AlbumFinishTableViewCell: UITableViewCell {

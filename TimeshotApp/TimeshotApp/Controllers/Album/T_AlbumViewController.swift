@@ -19,17 +19,6 @@ class T_AlbumViewController: UIViewController{
     let defaultRange = 0...4
     let additionalRangeSize = 5
     
-    // ====================================
-    // Test arrays for the size of each cell
-    var imageArray : [String] = ["festival.jpg","mariage.jpg","soiree.jpg","voyage.jpg"]
-    var titleArray : [String] = ["Imaginarium Festival 2016", "Mariage Lulu et Marie", "EVG Lucas", "Voyage SurfUt posey"]
-    var liveArray : [Bool] = [true, false, false,false]
-    var dateArray : [String] = ["13 mai","10 avril","19 mars", "3 janvier"]
-    // ====================================
-    
-    
-    
-    
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +56,6 @@ class T_AlbumViewController: UIViewController{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     
     // MARK:  Navigation
@@ -94,47 +82,33 @@ class T_AlbumViewController: UIViewController{
     }
     
 
-
-
 }
+
 
 // MARK: - UITableViewDelegate
 extension T_AlbumViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(timelineComponent)
         return timelineComponent.content.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("finishAlbum") as! T_AlbumFinishTableViewCell
-        
         let album = timelineComponent.content[indexPath.row]
         
         album.downloadCoverImage()
         
-        cell.album = album
-        cell.initCellWithMetaData(album.createdAt!, title: album.title)
-        return cell
-        
-//        if liveArray[indexPath.row] == true {
-//            let cell = tableView.dequeueReusableCellWithIdentifier("liveAlbum") as! T_AlbumLiveTableViewCell
-//
-//            cell.initCell(UIImage(named: imageArray[indexPath.row])!,
-//                           date: dateArray[indexPath.row],
-//                           title: titleArray[indexPath.row])
-//            
-//            return cell
-//
-//        } else {
-//            let cell = tableView.dequeueReusableCellWithIdentifier("finishAlbum") as! T_AlbumFinishTableViewCell
-//            
-//            cell.initCell(UIImage(named: imageArray[indexPath.row])!,
-//                date: dateArray[indexPath.row],
-//                title: titleArray[indexPath.row])
-//            
-//            return cell
-//
-//        }
+        if T_Album.isLiveAlbumAssociatedToUser(album) {
+            let cell = tableView.dequeueReusableCellWithIdentifier("liveAlbum") as! T_AlbumLiveTableViewCell
+            cell.album = album
+            
+            cell.initCellWithMetaData(album.createdAt!, title: album.title)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("finishAlbum") as! T_AlbumFinishTableViewCell
+            cell.album = album
+            cell.initCellWithMetaData(album.createdAt!, title: album.title)
+            return cell
+            
+        }
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -186,7 +160,6 @@ extension T_AlbumViewController: TimelineComponentTarget {
         T_ParseAlbumHelper.queryAllAlbumsOnParse(range) { (result: [PFObject]?, error: NSError?) -> Void in
             // 2
             let posts = result as? [T_Album] ?? []
-            print("coucou")
             // 3
             completionBlock(posts)
         }
