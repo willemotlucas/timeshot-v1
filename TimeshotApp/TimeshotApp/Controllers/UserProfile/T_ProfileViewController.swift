@@ -88,9 +88,7 @@ class T_ProfileViewController: UIViewController {
         T_ParseUserHelper.getCurrentUser()?.image.bindTo(self.profileImageView.bnd_image)
         
         //Set profile image design
-        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
-        self.profileImageView.layer.masksToBounds = true
-        self.profileImageView.contentMode = .ScaleAspectFill
+        T_DesignHelper.makeRoundedImageView(self.profileImageView)
         self.profileImageView.layer.borderWidth = 2.0
         self.profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
     }
@@ -252,7 +250,8 @@ extension T_ProfileViewController: UITableViewDataSource {
     func createFriendCell(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("T_FriendTableViewCell", forIndexPath: indexPath) as! T_FriendTableViewCell
         let user = self.friends[indexPath.row]
-        cell.friendNameLabel.text = user.firstName! + " " + user.lastName!
+        user.downloadImage()
+        cell.friend = user
         return cell
     }
     
