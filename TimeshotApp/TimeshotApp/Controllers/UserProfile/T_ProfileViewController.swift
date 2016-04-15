@@ -37,6 +37,7 @@ class T_ProfileViewController: UIViewController {
     var contentToDisplay : ContentType = .Friends //Useful for segmented control
     let contacts = T_ContactsHelper.getAllContacts() //All the contacts of the current user
     var currentUser: T_User?
+    var photoTakingHelper: T_PhotoTakingHelper?
 
     // MARK: Overrided functions
     override func didReceiveMemoryWarning() {
@@ -142,6 +143,15 @@ class T_ProfileViewController: UIViewController {
         alertController.addAction(usernameAction)
         
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func changeProfilPictureButtonTapped(sender: UIButton) {
+        photoTakingHelper = T_PhotoTakingHelper(viewController: self){
+            (image: UIImage?) in
+            T_ParseUserHelper.getCurrentUser()?.image.value = image
+            T_ParseUserHelper.getCurrentUser()?.uploadImage()
+            self.profileImageView.image = image
+        }
     }
     
     @IBAction func cameraButtonTapped(sender: UIBarButtonItem) {

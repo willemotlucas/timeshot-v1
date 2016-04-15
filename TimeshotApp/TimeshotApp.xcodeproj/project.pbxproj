@@ -33,6 +33,7 @@
 		5DD10B641CBD8AA300918E3A /* T_Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD10B631CBD8AA300918E3A /* T_Reachability.swift */; };
 		5DE8FFF11CA325B1006BEBAE /* T_ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE8FFF01CA325B1006BEBAE /* T_ContactTableViewCell.swift */; };
 		5DE8FFF31CA4275C006BEBAE /* T_SendMessageUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE8FFF21CA4275C006BEBAE /* T_SendMessageUIButton.swift */; };
+		5DEF6E951CC1005600494C86 /* T_PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF6E941CC1005600494C86 /* T_PhotoTakingHelper.swift */; };
 		7D241FF41CB6D39D00F6548B /* T_SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D241FF31CB6D39D00F6548B /* T_SliderViewController.swift */; };
 		7D241FF91CB6D47500F6548B /* T_HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D241FF51CB6D47500F6548B /* T_HeaderCollectionReusableView.swift */; };
 		7D241FFA1CB6D47500F6548B /* T_HourCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D241FF61CB6D47500F6548B /* T_HourCollectionViewCell.swift */; };
@@ -100,6 +101,7 @@
 		5DD10B631CBD8AA300918E3A /* T_Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Reachability.swift; sourceTree = "<group>"; };
 		5DE8FFF01CA325B1006BEBAE /* T_ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ContactTableViewCell.swift; sourceTree = "<group>"; };
 		5DE8FFF21CA4275C006BEBAE /* T_SendMessageUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SendMessageUIButton.swift; sourceTree = "<group>"; };
+		5DEF6E941CC1005600494C86 /* T_PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PhotoTakingHelper.swift; sourceTree = "<group>"; };
 		78F7AD880E89307F1E906BF3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7D241FF31CB6D39D00F6548B /* T_SliderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SliderViewController.swift; sourceTree = "<group>"; };
 		7D241FF51CB6D47500F6548B /* T_HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				5DC361DC1CBAFBE900B00064 /* T_FormValidationHelper.swift */,
 				5DC361DD1CBAFBE900B00064 /* T_String+Extension.swift */,
 				5DD10B631CBD8AA300918E3A /* T_Reachability.swift */,
+				5DEF6E941CC1005600494C86 /* T_PhotoTakingHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				B43C0E8F1CABF4E900EF51E9 /* T_CameraViewController.swift in Sources */,
 				5DC361E21CBAFBE900B00064 /* T_CameraHelper.swift in Sources */,
 				B431711C1CB912790080AFDD /* T_Post.swift in Sources */,
+				5DEF6E951CC1005600494C86 /* T_PhotoTakingHelper.swift in Sources */,
 				5DC361E61CBAFBE900B00064 /* T_String+Extension.swift in Sources */,
 				5D64CA771CB9806E005C6E43 /* T_LastNameEditionViewController.swift in Sources */,
 				5D1D921A1CBA4D390085B70C /* T_EmailEditionViewController.swift in Sources */,

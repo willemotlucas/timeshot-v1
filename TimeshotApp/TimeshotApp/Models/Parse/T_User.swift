@@ -24,6 +24,8 @@ class T_User : PFUser {
     var friends: [T_User] = []
     var pendingFriends: [T_User] = []
     
+    var photoUploadTask: UIBackgroundTaskIdentifier?
+    
     static var selectedFriends:[T_User] = []
 
     private
@@ -135,6 +137,36 @@ class T_User : PFUser {
         }
     }
     
+    func uploadImage() {
+        if let image = self.image.value {
+            let imageData = UIImageJPEGRepresentation(image, 0.8)!
+            let imageFile = PFFile(data: imageData)
+            
+            // Create a photo upload task to avoid uploading to be cancelled if user quit the app
+            // In other words, we request extra time to finish uploading the image to Parse
+            // It returns a unique ID that we store in photoUploadTask property
+            self.photoUploadTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in
+                // In case the extra time iOS give us is finish, we terminate the photoUploadTask
+                // Otherwise, the app will be canceled!
+                UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
+            }
+            
+            imageFile!.saveInBackgroundWithBlock {
+                (success: Bool, error: NSError?) -> Void in
+                // When photo uploading is finished, we terminate the photo upload task
+                if success {
+                    print("profile image uploaded")
+                } else {
+                    print("an error occured : %@", error)
+                }
+                UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
+            }
+            
+            self.picture = imageFile
+            saveInBackgroundWithBlock(nil)
+        }
+    }
+    
     func getAllFriends(completion: (friends: [T_User]) -> Void) {
         if self.friends.isEmpty {
             T_FriendRequestParseHelper.getFriendsFromAcceptedRequests({ (friends) in
@@ -150,7 +182,6 @@ class T_User : PFUser {
         if self.pendingFriends.isEmpty {
             T_FriendRequestParseHelper.getFriendsFromPendingRequest({ (friends) in
                 self.pendingFriends = friends
-                print("number of items : \(self.pendingFriends.count)")
                 completion(friends: friends)
             })
         }else {

@@ -70,6 +70,16 @@
                                                 </mask>
                                             </variation>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ogn-AO-dsR">
+                                            <rect key="frame" x="240" y="8" width="120" height="120"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="120" id="1OY-eW-aXU"/>
+                                                <constraint firstAttribute="height" constant="120" id="Gbm-PB-Emw"/>
+                                            </constraints>
+                                            <connections>
+                                                <action selector="changeProfilPictureButtonTapped:" destination="tGm-Pl-crw" eventType="touchUpInside" id="IXJ-cm-i7y"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
@@ -77,9 +87,12 @@
                                         <constraint firstItem="oaw-9X-tq1" firstAttribute="centerX" secondItem="VWd-q1-MIa" secondAttribute="centerX" id="HXC-9L-vZ4"/>
                                         <constraint firstAttribute="bottom" secondItem="UxH-ka-nyy" secondAttribute="bottom" constant="45" id="J9w-T6-gjt"/>
                                         <constraint firstItem="EKF-S7-IwP" firstAttribute="centerX" secondItem="DsJ-VR-23i" secondAttribute="centerX" id="MCn-Z5-PRV"/>
+                                        <constraint firstItem="Ogn-AO-dsR" firstAttribute="top" secondItem="VWd-q1-MIa" secondAttribute="top" constant="8" id="PE8-LL-DPq"/>
                                         <constraint firstItem="EKF-S7-IwP" firstAttribute="top" secondItem="DsJ-VR-23i" secondAttribute="bottom" constant="2" id="YJS-N5-yLi"/>
                                         <constraint firstItem="oaw-9X-tq1" firstAttribute="top" secondItem="VWd-q1-MIa" secondAttribute="top" constant="8" id="hRQ-8f-7Ue"/>
                                         <constraint firstItem="EKF-S7-IwP" firstAttribute="centerX" secondItem="VWd-q1-MIa" secondAttribute="centerX" id="i7S-cK-Y2O"/>
+                                        <constraint firstItem="Ogn-AO-dsR" firstAttribute="centerX" secondItem="VWd-q1-MIa" secondAttribute="centerX" id="iue-46-Zmk"/>
+                                        <constraint firstItem="DsJ-VR-23i" firstAttribute="top" secondItem="Ogn-AO-dsR" secondAttribute="bottom" constant="8" id="lsq-wI-gEK"/>
                                         <constraint firstItem="DsJ-VR-23i" firstAttribute="top" secondItem="oaw-9X-tq1" secondAttribute="bottom" constant="8" id="rzi-ag-mAH"/>
                                         <constraint firstAttribute="trailing" secondItem="UxH-ka-nyy" secondAttribute="trailing" constant="4" id="wYV-Cw-LXZ"/>
                                         <constraint firstItem="UxH-ka-nyy" firstAttribute="top" secondItem="VWd-q1-MIa" secondAttribute="top" constant="148" id="zuu-TH-IrD"/>
