@@ -24,4 +24,5 @@ class T_ParsePostHelper {
         
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
+    
 }

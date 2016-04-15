@@ -8,6 +8,7 @@
 
 import Foundation
 import Parse
+import Bond
 
 class T_Post : PFObject, PFSubclassing {
     
@@ -16,7 +17,7 @@ class T_Post : PFObject, PFSubclassing {
     @NSManaged var toAlbum: T_Album
     @NSManaged var isDeleted: Bool
     
-    var image : UIImage?
+    var image : Observable<UIImage?> = Observable(nil)
     
     static var postCreationTask: UIBackgroundTaskIdentifier?
     
@@ -97,6 +98,23 @@ class T_Post : PFObject, PFSubclassing {
                 print("An error occured : %@", error)
             }
             UIApplication.sharedApplication().endBackgroundTask(self.postCreationTask!)
+        }
+    }
+    
+    
+    // 
+    func downloadImage() {
+        // if image is not downloaded yet, get it
+        // 1
+        if (image.value == nil) {
+            // 2
+            photo.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
+                if let data = data {
+                    let image = UIImage(data: data, scale:1.0)!
+                    // 3
+                    self.image.value = image
+                }
+            }
         }
     }
     

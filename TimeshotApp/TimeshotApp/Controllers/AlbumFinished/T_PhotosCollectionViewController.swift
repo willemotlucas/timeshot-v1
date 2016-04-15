@@ -49,8 +49,6 @@ class T_PhotosCollectionViewController: UIViewController {
             }
         }
         
-
-        
         T_ParsePostHelper.postsForCurrentAlbum(albumPhotos!) {(result: [PFObject]?, error: NSError?) -> Void in
             self.posts = result as? [T_Post] ?? []
             
@@ -62,11 +60,6 @@ class T_PhotosCollectionViewController: UIViewController {
             // Pour chaque post on doit alors savoir dans quelle section il est mais aussi 
             // charger son image
             for post in self.posts {
-                // On recupere son PFFile
-                let data = try? post.photo.getData()
-                // On le stocke dans la variable image
-                post.image = UIImage(data: data!, scale:1.0)
-                
                 let date = post.createdAt!
                 
                 // On regarde maintenant la diff entre la date de la photo et la date de la derniere photo du tableau
@@ -99,8 +92,6 @@ class T_PhotosCollectionViewController: UIViewController {
                     print("il y a une erreur ou cas non pris en compte")
                 }
             }
-            
-            print(self.photoNumberInSections)
             
             self.collectionView.reloadData()
         }
@@ -192,7 +183,7 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
             let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("storyCell", forIndexPath: indexPath) as! T_StoryCollectionViewCell
             
             cell.layer.cornerRadius = 15
-            cell.imageView.image = posts[storyIndex].image
+            cell.imageView.image = posts[storyIndex].image.value
             //cell.imageView.image = photosArray[storyIndex].image
             
             return cell
@@ -222,7 +213,9 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
                 let indexCell = getPhotoIndex(indexPath)
                 // -1 -> because we don't have the hourImage in our Array of picture but it's present in the collectionView
                 //cell.imageView.image = photosArray[indexCell - 1].image
-                cell.imageView.image = posts[indexCell - 1].image
+                let post = posts[indexCell - 1]
+                post.downloadImage()
+                cell.post = post
                 return cell
             }
             
