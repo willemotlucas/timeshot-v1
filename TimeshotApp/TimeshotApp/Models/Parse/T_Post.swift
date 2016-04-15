@@ -16,6 +16,8 @@ class T_Post : PFObject, PFSubclassing {
     @NSManaged var toAlbum: T_Album
     @NSManaged var isDeleted: Bool
     
+    var image : UIImage?
+    
     static var postCreationTask: UIBackgroundTaskIdentifier?
     
     override init()
