@@ -16,7 +16,8 @@ class T_SliderViewController: UIViewController {
     @IBOutlet weak var fromUserLabel: UILabel!
     @IBOutlet weak var hourLabel: UILabel!
     
-    var slideImages:[T_PhotosCollectionViewController.Post] = []
+    //var slideImages:[T_PhotosCollectionViewController. ] = []
+    var slideImages: [T_Post] = []
     var slideViews: [UIImageView?] = []
     var currentSlide: Int = 0
     
@@ -75,7 +76,7 @@ class T_SliderViewController: UIViewController {
             frame.origin.y = 0.0
             
             // Design of the view
-            let newPageView = UIImageView(image: slideImages[page].image)
+            let newPageView = UIImageView(image: slideImages[page].image.value)
             newPageView.contentMode = .ScaleAspectFit
             newPageView.frame = frame
             
@@ -111,10 +112,12 @@ class T_SliderViewController: UIViewController {
         let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
         
         // Change the label of the page to be the good one
-        fromUserLabel.text = slideImages[page].fromUser
+        print(slideImages)
+        print(slideImages[page].fromUser)
+        fromUserLabel.text = slideImages[page].fromUser.username
         
         let calendar = NSCalendar.currentCalendar()
-        let comp = calendar.components([.Hour, .Minute], fromDate: slideImages[page].createdAt)
+        let comp = calendar.components([.Hour, .Minute], fromDate: slideImages[page].createdAt!)
         hourLabel.text = "-  \(comp.hour):\(comp.minute)"
         
         
@@ -188,7 +191,7 @@ class T_SliderViewController: UIViewController {
             
             // Avoid freezing the app by doing the download of the image in another queue
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                UIImageWriteToSavedPhotosAlbum(self.slideImages[page].image,self,#selector(T_SliderViewController.image(_:didFinishSavingWithError:contextInfo:)),nil);
+                UIImageWriteToSavedPhotosAlbum(self.slideImages[page].image.value!,self,#selector(T_SliderViewController.image(_:didFinishSavingWithError:contextInfo:)),nil);
             });
         }
         alertController.addAction(downloadAction)

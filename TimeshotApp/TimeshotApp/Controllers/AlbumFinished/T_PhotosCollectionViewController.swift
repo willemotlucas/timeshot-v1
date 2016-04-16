@@ -133,7 +133,7 @@ class T_PhotosCollectionViewController: UIViewController {
                 
                 let indexCell = getPhotoIndex(indexPath!) - 1
                 slideDetailVC.currentSlide = indexCell
-                slideDetailVC.slideImages = []//self.photosArray
+                slideDetailVC.slideImages = self.posts
             }
         } else if segue.identifier == "ShowStory" {
             let slideDetailVC = segue.destinationViewController as! T_StoryViewController
