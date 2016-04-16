@@ -13,14 +13,6 @@ import AFDateHelper
 
 class T_PhotosCollectionViewController: UIViewController {
     
-    struct Post {
-        var fromUser : String!
-        var createdAt : NSDate!
-        var image : UIImage!
-    }
-
-    
-    
     // MARK: Properties
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -139,7 +131,7 @@ class T_PhotosCollectionViewController: UIViewController {
             }
         } else if segue.identifier == "ShowStory" {
             let slideDetailVC = segue.destinationViewController as! T_StoryViewController
-            slideDetailVC.pageImages = []//self.photosArray
+            slideDetailVC.pageImages = self.posts
             slideDetailVC.currentPage = storyIndex
         }
     }

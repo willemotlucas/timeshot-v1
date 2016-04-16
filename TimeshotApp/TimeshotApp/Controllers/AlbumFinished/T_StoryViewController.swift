@@ -17,7 +17,7 @@ class T_StoryViewController: UIViewController {
     @IBOutlet weak var fromUserLabel: UILabel!
     @IBOutlet weak var circleView: UIView!
     
-    var pageImages:[T_PhotosCollectionViewController.Post] = []
+    var pageImages:[T_Post] = []
     var pageViews: [UIImageView?] = []
     var currentPage: Int = 0
     var currentTime: Double = 0.0
@@ -136,7 +136,7 @@ class T_StoryViewController: UIViewController {
             frame.origin.y = 0.0
             
             // Design of the view
-            let newPageView = UIImageView(image: pageImages[page].image)
+            let newPageView = UIImageView(image: pageImages[page].image.value)
             newPageView.contentMode = .ScaleAspectFit
             newPageView.frame = frame
             
@@ -172,10 +172,10 @@ class T_StoryViewController: UIViewController {
         let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
         
         // Change the label of the page to be the good one
-        fromUserLabel.text = pageImages[page].fromUser
+        fromUserLabel.text = pageImages[page].fromUser.username
         
         let calendar = NSCalendar.currentCalendar()
-        let comp = calendar.components([.Hour, .Minute], fromDate: pageImages[page].createdAt)
+        let comp = calendar.components([.Hour, .Minute], fromDate: pageImages[page].createdAt!)
         hourLabel.text = "-  \(comp.hour):\(comp.minute)"
         
         // Work out which pages you want to load
