@@ -80,8 +80,8 @@ class T_PhotosCollectionViewController: UIViewController {
                 } else if let indexPost = self.posts.indexOf(post) where indexPost > 0 {
                     // Si on est ni a la premiere ni a la derniere on regarde si elle correspond a la section actuelle
                     // ou si elle correspond a une autre section car prise à une nouvelle heure
-                    let diff = date.hoursAfterDate(self.posts[indexPost - 1].createdAt!)
-                    if diff > 0 {
+                    let diff = date.hour() - self.posts[indexPost-1].createdAt!.hour()
+                    if diff != 0 {
                         self.photoNumberInSections[section] = numberOfPictInSection
                         numberOfPictInSection = 1
                         section += 1
@@ -92,6 +92,8 @@ class T_PhotosCollectionViewController: UIViewController {
                     print("il y a une erreur ou cas non pris en compte")
                 }
             }
+            
+            print(self.photoNumberInSections)
             
             self.collectionView.reloadData()
         }

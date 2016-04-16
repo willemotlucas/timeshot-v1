@@ -112,8 +112,6 @@ class T_SliderViewController: UIViewController {
         let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
         
         // Change the label of the page to be the good one
-        print(slideImages)
-        print(slideImages[page].fromUser)
         fromUserLabel.text = slideImages[page].fromUser.username
         
         let calendar = NSCalendar.currentCalendar()
