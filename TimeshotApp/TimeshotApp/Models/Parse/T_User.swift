@@ -124,7 +124,7 @@ class T_User : PFUser {
     func downloadImage() {
         if (image.value == nil) {
             //Set a default profile picture
-            let image = UIImage(named: "Avatar")
+            let image = UIImage(named: "default-friend-picture")
             self.image.value = image
             
             //If there is a profile picture provided by the user, it will be used
@@ -154,11 +154,6 @@ class T_User : PFUser {
             imageFile!.saveInBackgroundWithBlock {
                 (success: Bool, error: NSError?) -> Void in
                 // When photo uploading is finished, we terminate the photo upload task
-                if success {
-                    print("profile image uploaded")
-                } else {
-                    print("an error occured : %@", error)
-                }
                 UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
             }
             

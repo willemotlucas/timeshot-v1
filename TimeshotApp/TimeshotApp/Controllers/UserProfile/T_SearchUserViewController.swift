@@ -64,8 +64,7 @@ extension T_SearchUserViewController: UITableViewDataSource {
         
         let user = self.filteredUsers[indexPath.row] as T_User
         cell.delegate = self
-        cell.userFirstAndLastNameLabel.text = user.firstName! + " " + user.lastName!
-        cell.usernameLabel.text = user.username
+        user.downloadImage()
         cell.user = user
         
         T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in

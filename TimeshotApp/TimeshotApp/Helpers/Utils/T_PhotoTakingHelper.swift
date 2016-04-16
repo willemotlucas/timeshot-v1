@@ -32,7 +32,7 @@ class T_PhotoTakingHelper: NSObject {
     // Constructs the UIAlert which will be displayed to the user to select options to choose a photo
     func showPhotoSourceSelection(){
         // Constructs the UIAlert
-        let alertController = UIAlertController(title: nil, message: "Change your profile picture", preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: nil, message: "", preferredStyle: .ActionSheet)
         
         //Add actions to the UIAlert
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)

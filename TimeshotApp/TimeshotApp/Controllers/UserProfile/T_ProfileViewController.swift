@@ -30,6 +30,8 @@ class T_ProfileViewController: UIViewController {
     @IBOutlet weak var addFriendsButton: UIButton!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
+    @IBOutlet weak var usernameLabel: UILabel!
+    
     // MARK : Properties
     var friends: [T_User] = []
     var pendingRequests: [T_FriendRequest] = []
@@ -67,13 +69,10 @@ class T_ProfileViewController: UIViewController {
         T_DesignHelper.colorUIView(addFriendsButtonView)
         T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
         
-        //Load the friends
-        /*T_FriendRequestParseHelper.getAcceptedFriendRequest { (result: [PFObject]?, error:NSError?) in
-            let acceptedRequests = result as? [T_FriendRequest] ?? []
-            self.friends = T_FriendRequestParseHelper.getFriendsFromAcceptedRequests(acceptedRequests)
-            self.tableView.reloadData()
-        }*/
+        //Set username in label
+        self.usernameLabel.text = "@\(T_ParseUserHelper.getCurrentUser()!.username!)"
         
+        //Load the friends
         T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
             self.friends = friends
             self.tableView.reloadData()
@@ -85,10 +84,11 @@ class T_ProfileViewController: UIViewController {
             self.tableView.reloadData()
         }
         
+        //Load profile picture
         T_ParseUserHelper.getCurrentUser()?.downloadImage()
         T_ParseUserHelper.getCurrentUser()?.image.bindTo(self.profileImageView.bnd_image)
         
-        //Set profile image design
+        //Set profile picture design
         T_DesignHelper.makeRoundedImageView(self.profileImageView)
         self.profileImageView.layer.borderWidth = 2.0
         self.profileImageView.layer.borderColor = UIColor.whiteColor().CGColor

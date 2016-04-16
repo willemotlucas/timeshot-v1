@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Bond
 
 protocol AddNewFriends {
     func sendUserSelected(userSelected: T_User)
@@ -19,7 +20,20 @@ class T_SearchUserTableViewCell: UITableViewCell {
     @IBOutlet weak var addUserButton: UIButton!
     
     var delegate: AddNewFriends?
-    var user: T_User!
+    var user: T_User?{
+        didSet{
+            friendDisposable?.dispose()
+            
+            if let user = user {
+                friendDisposable = user.image.bindTo(self.userProfileImageView.bnd_image)
+                T_DesignHelper.makeRoundedImageView(self.userProfileImageView)
+                self.usernameLabel.text = user.username
+                self.userFirstAndLastNameLabel.text = user.firstName! + " " + user.lastName!
+            }
+        }
+    }
+    
+    var friendDisposable: DisposableType?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,7 +50,7 @@ class T_SearchUserTableViewCell: UITableViewCell {
         // Call the delegate only if the user is not alreayd a friend
         if sender.selected == false {
             sender.selected = true
-            delegate?.sendUserSelected(self.user)
+            delegate?.sendUserSelected(self.user!)
         }
     }
 }
