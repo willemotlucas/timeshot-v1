@@ -18,7 +18,7 @@ class T_StoryViewController: UIViewController {
     @IBOutlet weak var circleView: UIView!
     
     var pageImages:[T_Post] = []
-    var pageViews: [UIImageView?] = []
+    var pageViews: [T_PhotoImageView?] = []
     var currentPage: Int = 0
     var currentTime: Double = 0.0
     var timer: NSTimer!
@@ -136,9 +136,16 @@ class T_StoryViewController: UIViewController {
             frame.origin.y = 0.0
             
             // Design of the view
-            let newPageView = UIImageView(image: pageImages[page].image.value)
+            let newPageView = T_PhotoImageView()
+            newPageView.post = pageImages[page]
+            if let image = pageImages[page].image.value {
+                newPageView.image = image
+            } else {
+                pageImages[page].downloadImage()
+            }
             newPageView.contentMode = .ScaleAspectFit
             newPageView.frame = frame
+            
             
             scrollView.addSubview(newPageView)
             

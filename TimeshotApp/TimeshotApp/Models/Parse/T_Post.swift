@@ -108,6 +108,7 @@ class T_Post : PFObject, PFSubclassing {
         // 1
         if (image.value == nil) {
             // 2
+            image.value = UIImage(named: "EmptyView")
             photo.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
                 if let data = data {
                     let image = UIImage(data: data, scale:1.0)!

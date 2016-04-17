@@ -81,7 +81,6 @@ class T_SliderViewController: UIViewController {
             if let image = slideImages[page].image.value {
                 newPageView.image = image
             } else {
-                print("photo pas encore upload")
                 slideImages[page].downloadImage()
             }
             newPageView.contentMode = .ScaleAspectFit
