@@ -56,6 +56,7 @@
 		7DD0F9B51C9EA0FB00A856B9 /* mariage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B11C9EA0FB00A856B9 /* mariage.jpg */; };
 		7DD0F9B61C9EA0FB00A856B9 /* soiree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */; };
 		7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */; };
+		7DE5F8491CC2C20B008DF27D /* T_PhotoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE5F8481CC2C20B008DF27D /* T_PhotoImageView.swift */; };
 		7DFC23951CC0F15900DD9520 /* T_ParsePostHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFC23941CC0F15900DD9520 /* T_ParsePostHelper.swift */; };
 		B431711C1CB912790080AFDD /* T_Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431711B1CB912790080AFDD /* T_Post.swift */; };
 		B43C0E8A1CABF48300EF51E9 /* T_AddFriendToAlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C0E891CABF48300EF51E9 /* T_AddFriendToAlbumTableViewCell.swift */; };
@@ -126,6 +127,7 @@
 		7DD0F9B11C9EA0FB00A856B9 /* mariage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mariage.jpg; sourceTree = "<group>"; };
 		7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = soiree.jpg; sourceTree = "<group>"; };
 		7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = voyage.jpg; sourceTree = "<group>"; };
+		7DE5F8481CC2C20B008DF27D /* T_PhotoImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PhotoImageView.swift; sourceTree = "<group>"; };
 		7DFC23941CC0F15900DD9520 /* T_ParsePostHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ParsePostHelper.swift; sourceTree = "<group>"; };
 		B431711B1CB912790080AFDD /* T_Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Post.swift; sourceTree = "<group>"; };
 		B43C0E891CABF48300EF51E9 /* T_AddFriendToAlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AddFriendToAlbumTableViewCell.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				7D2F539D1CB67D8100AB9995 /* T_AlbumViewController.swift */,
 				7DD0F9AB1C9DC6BE00A856B9 /* T_AlbumLiveTableViewCell.swift */,
 				7DD0F9AD1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift */,
+				7DE5F8481CC2C20B008DF27D /* T_PhotoImageView.swift */,
 			);
 			path = Album;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 				B4EA9DCD1CB52D37003F5A75 /* T_Filter.swift in Sources */,
 				5DC361E81CBAFC0000B00064 /* T_FriendRequest.swift in Sources */,
 				5DB5A0291CA1AD1000AADC9F /* T_ProfileEditionViewController.swift in Sources */,
+				7DE5F8491CC2C20B008DF27D /* T_PhotoImageView.swift in Sources */,
 				B43C0E8F1CABF4E900EF51E9 /* T_CameraViewController.swift in Sources */,
 				5DC361E21CBAFBE900B00064 /* T_CameraHelper.swift in Sources */,
 				B431711C1CB912790080AFDD /* T_Post.swift in Sources */,

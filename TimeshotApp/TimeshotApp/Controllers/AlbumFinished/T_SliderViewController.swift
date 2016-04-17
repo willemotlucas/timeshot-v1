@@ -18,7 +18,7 @@ class T_SliderViewController: UIViewController {
     
     //var slideImages:[T_PhotosCollectionViewController. ] = []
     var slideImages: [T_Post] = []
-    var slideViews: [UIImageView?] = []
+    var slideViews: [T_PhotoImageView?] = []
     var currentSlide: Int = 0
     
     // MARK: Status Bar Properties
@@ -76,7 +76,14 @@ class T_SliderViewController: UIViewController {
             frame.origin.y = 0.0
             
             // Design of the view
-            let newPageView = UIImageView(image: slideImages[page].image.value)
+            let newPageView = T_PhotoImageView()
+            newPageView.post = slideImages[page]
+            if let image = slideImages[page].image.value {
+                newPageView.image = image
+            } else {
+                print("photo pas encore upload")
+                slideImages[page].downloadImage()
+            }
             newPageView.contentMode = .ScaleAspectFit
             newPageView.frame = frame
             
