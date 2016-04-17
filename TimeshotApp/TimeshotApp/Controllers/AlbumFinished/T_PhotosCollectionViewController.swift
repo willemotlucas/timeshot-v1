@@ -114,6 +114,24 @@ class T_PhotosCollectionViewController: UIViewController {
     }
     
     // MARK: Navigation
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if identifier == "ShowSlider" {
+            if let selectedPicture = sender as? T_PhotoCollectionViewCell {
+                let indexPath = collectionView.indexPathForCell(selectedPicture)
+                let indexCell = getPhotoIndex(indexPath!) - 1
+                
+                if let image = posts[indexCell].image.value where image != UIImage(named: "EmptyView"){
+                    return true
+                } else {
+                    print("photos non definie")
+                    return false
+                }
+            }
+        }
+        
+        return true
+    }
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
@@ -126,6 +144,7 @@ class T_PhotosCollectionViewController: UIViewController {
                 let indexPath = collectionView.indexPathForCell(selectedPicture)
                 
                 let indexCell = getPhotoIndex(indexPath!) - 1
+                
                 slideDetailVC.currentSlide = indexCell
                 slideDetailVC.slideImages = self.posts
             }

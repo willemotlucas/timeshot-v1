@@ -204,9 +204,7 @@ class T_StoryViewController: UIViewController {
         for index in (lastPage + 1).stride(to:pageImages.count, by:1)  {
             purgePage(index)
         }
-        
     }
-    
     
     // MARK: Action
     @IBAction func userTapped(recognizer: UITapGestureRecognizer) {
