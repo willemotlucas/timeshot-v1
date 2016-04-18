@@ -9,6 +9,10 @@
 import Foundation
 import Parse
 
+/*
+ * Class T_ParseUserHelper
+ * Provide methods to login, check login, edit user information ...
+ */
 class T_ParseUserHelper {
     // MARK: Parse User properties
     static let UserParseClass = "User"
@@ -85,6 +89,12 @@ class T_ParseUserHelper {
     }
     
     // MARK: Requests
+    
+    /*
+     * Retrieve all the users of Timeshot excluding the current user
+     * Params:
+     * - @completionBlock : the methods executed asynchroneously when all the users have been retrieved
+     */
     static func gettAllUsers(completionBlock: PFQueryArrayResultBlock) {
         let query = PFUser.query()!
         query.whereKey(UsernameParse, notEqualTo: PFUser.currentUser()!.username!)
@@ -92,21 +102,42 @@ class T_ParseUserHelper {
     }
     
     // MARK: Edition functions
+    
+    /*
+     * Save a new first name for the current user
+     * Params:
+     * - @firstName : the new first name to save
+     */
     static func editFirstName(firstName: String) {
         getCurrentUser()!.setObject(firstName, forKey: FirstNameParse)
         getCurrentUser()!.saveInBackgroundWithBlock(nil)
     }
     
+    /*
+     * Save a new last name for the current user
+     * Params:
+     * - @lastName : the new last name to save
+     */
     static func editLastName(lastName: String) {
         getCurrentUser()!.setObject(lastName, forKey: LastNameParse)
         getCurrentUser()!.saveInBackgroundWithBlock(nil)
     }
     
+    /*
+     * Save a new birthday for the current user
+     * Params:
+     * - @firstName : the new birthday to save
+     */
     static func editBirthday(birthdayDate: NSDate) {
         getCurrentUser()!.setObject(birthdayDate, forKey: BirthdayDateParse)
         getCurrentUser()!.saveInBackgroundWithBlock(nil)
     }
     
+    /*
+     * Save a new email for the current user
+     * Params:
+     * - @firstName : the new email to save
+     */
     static func editEmail(email: String) {
         getCurrentUser()!.setObject(email, forKey: EmailAddressParse)
         getCurrentUser()!.saveInBackgroundWithBlock(nil)

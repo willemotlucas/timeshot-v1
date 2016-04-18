@@ -30,14 +30,20 @@ class T_FirstNameEditionViewController: UIViewController {
     }
 
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
-        if self.firstNameTextField.text?.characters.count >= T_FormValidationHelper.FirstNameMinCharacter{
-            if(self.firstNameTextField.text != self.firstName) {
-                T_ParseUserHelper.editFirstName(self.firstNameTextField.text!)
+        if Reachability.isConnectedToNetwork() {
+            if self.firstNameTextField.text?.characters.count >= T_FormValidationHelper.FirstNameMinCharacter{
+                if(self.firstNameTextField.text != self.firstName) {
+                    T_ParseUserHelper.editFirstName(self.firstNameTextField.text!)
+                }
+                navigationController?.popViewControllerAnimated(true)
+            } else {
+                self.helpTextLabel.text = T_FormValidationHelper.FirstNameMinCharacterError
+                self.helpTextLabel.textColor = UIColor.redColor()
             }
-            navigationController?.popViewControllerAnimated(true)
         } else {
-            self.helpTextLabel.text = T_FormValidationHelper.FirstNameMinCharacterError
+            self.helpTextLabel.text = T_FormValidationHelper.NetworkError
             self.helpTextLabel.textColor = UIColor.redColor()
         }
+
     }
 }

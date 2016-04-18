@@ -92,4 +92,10 @@ class T_DesignHelper {
         return UIImage(CGImage: im.CGImage!, scale: im.scale, orientation: newOrient)
     }
     
+    static func makeRoundedImageView(imageView: UIImageView) {
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2;
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .ScaleAspectFill
+    }
+    
 }
