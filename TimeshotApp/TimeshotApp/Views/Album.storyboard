@@ -29,7 +29,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="179.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lxe-cZ-VmM">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lxe-cZ-VmM">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="179.5"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42p-1F-7X8">
@@ -95,7 +95,7 @@
                                             <outlet property="coverAlbum" destination="lxe-cZ-VmM" id="Na1-62-84E"/>
                                             <outlet property="dateLabel" destination="42p-1F-7X8" id="ssY-zv-VvO"/>
                                             <outlet property="titleAlbumLabel" destination="xwE-SG-Gn8" id="5BO-49-Mj1"/>
-                                            <segue destination="lfq-3b-sUf" kind="show" id="7Re-vr-nQf"/>
+                                            <segue destination="lfq-3b-sUf" kind="show" identifier="liveSegue" id="7Re-vr-nQf"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="finishAlbums" selectionStyle="default" indentationWidth="10" reuseIdentifier="finishAlbum" rowHeight="180" id="nSc-5I-DX4" customClass="T_AlbumFinishTableViewCell" customModule="TimeshotApp" customModuleProvider="target">
@@ -105,7 +105,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="179.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P8i-Pp-W7P">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P8i-Pp-W7P">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="179.5"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4G-VO-E0b">
@@ -155,7 +155,7 @@
                                             <outlet property="coverAlbum" destination="P8i-Pp-W7P" id="pJb-Vl-x1w"/>
                                             <outlet property="dateLabel" destination="3eh-Az-GBR" id="0ye-c3-ehq"/>
                                             <outlet property="titleAlbumLabel" destination="X4G-VO-E0b" id="GPw-P6-HRm"/>
-                                            <segue destination="MPp-2O-PLD" kind="show" id="aVw-7W-aAe"/>
+                                            <segue destination="MPp-2O-PLD" kind="show" identifier="finishSegue" id="aVw-7W-aAe"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -170,8 +170,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Albums" id="e0w-ba-saM">
-                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="camera" id="bY7-vS-7Fc">
+                        <barButtonItem key="leftBarButtonItem" image="Camera" style="done" id="bY7-vS-7Fc">
+                            <inset key="imageInsets" minX="-10" minY="8" maxX="25" maxY="9"/>
                             <color key="tintColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="actionButtonCamera:" destination="OWY-Fx-QfT" id="pdf-oc-f6k"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -279,7 +283,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hc9-Og-6RQ">
                                 <rect key="frame" x="0.0" y="40" width="600" height="496"/>
                                 <connections>
-                                    <segue destination="vYW-Q6-7ln" kind="embed" id="W2Z-CJ-lq4"/>
+                                    <segue destination="vYW-Q6-7ln" kind="embed" identifier="attendeesContainer" id="W2Z-CJ-lq4"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w4w-fV-RXl">
@@ -310,7 +314,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6a3-J7-rXL">
                                 <rect key="frame" x="0.0" y="40" width="600" height="496"/>
                                 <connections>
-                                    <segue destination="Emn-oU-lYF" kind="embed" id="uvv-Xg-CGe"/>
+                                    <segue destination="Emn-oU-lYF" kind="embed" identifier="photosContainer" id="uvv-Xg-CGe"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -1033,6 +1037,7 @@
     </scenes>
     <resources>
         <image name="Avatar" width="119" height="119"/>
+        <image name="Camera" width="55" height="44"/>
         <image name="Cancel" width="44" height="44"/>
         <image name="Dislike" width="44" height="44"/>
         <image name="Dots" width="87" height="20"/>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Bond
 
 class T_AlbumFinishTableViewCell: UITableViewCell {
     // MARK: Properties
@@ -14,11 +15,24 @@ class T_AlbumFinishTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var titleAlbumLabel: UILabel!
     
+    var album: T_Album? {
+        didSet {
+            // we check to see if the value is nil
+            if let album = album {
+                // bind the image of the album to the 'coverAlbum' view
+                album.coverImage.bindTo(coverAlbum.bnd_image)
+            }
+        }
+    }
+    
     // MARK: Initialisation
-    func initCell(cover: UIImage, date: String, title :String){
-        coverAlbum.image = cover
-        dateLabel.text = date
+    func initCellWithMetaData(date: NSDate, title :String){
         titleAlbumLabel.text = title
+        
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MMM"
+        dateLabel.text = dateFormatter.stringFromDate(date)
     }
 
     // MARK: View Life Cycle

@@ -33,8 +33,8 @@ class T_Slider: UIView {
     
     //----------------------------------------------------------------------------------------------------
     //MARK: Static methods
-    static let filterNameList = ["No Filter" ,"CIPhotoEffectChrome", "CIPhotoEffectFade", "CIPhotoEffectInstant"]
-    //    static let filterNameList = ["No Filter" ,"CIPhotoEffectChrome", "CIPhotoEffectFade", "CIPhotoEffectInstant", "CIPhotoEffectMono", "CIPhotoEffectNoir", "CIPhotoEffectProcess", "CIPhotoEffectTonal", "CIPhotoEffectTransfer"]
+    static let filterNameList = ["No Filter" ,"CIPhotoEffectProcess", "CIPhotoEffectChrome","CIPhotoEffectInstant",  "CIPhotoEffectNoir"]
+    //static let filterNameList = ["No Filter" ,"CIPhotoEffectChrome", "CIPhotoEffectFade", "CIPhotoEffectInstant", "CIPhotoEffectMono", "CIPhotoEffectNoir", "CIPhotoEffectProcess", "CIPhotoEffectTonal", "CIPhotoEffectTransfer"]
     
     // Render filters from an image
     static func slidesWithFilterFromImage(image: UIImage, isFrontCamera: Bool) -> [T_Filter] {
