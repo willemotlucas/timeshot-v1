@@ -183,6 +183,7 @@ class T_Album : PFObject, PFSubclassing {
         // if cover is not downloaded yet, get it
         if coverImage.value == nil {
             // In background to not block the main thread
+            coverImage.value = UIImage(named: "EmptyAlbum")
             cover.getDataInBackgroundWithBlock { (data: NSData?, error:NSError?) -> Void in
                 if let data = data {
                     let image = UIImage(data:data, scale: 1.0)!

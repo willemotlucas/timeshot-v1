@@ -19,6 +19,7 @@ class T_ParsePostHelper {
         // On les classe de la ordre ascendante ! Du debut a la fin
         let query = PFQuery(className: "Post")
         query.whereKey("toAlbum", equalTo: albumPhotos)
+        query.whereKey("isDeleted", equalTo: false)
         query.includeKey("fromUser")
         query.orderByAscending("createdAt")
         
