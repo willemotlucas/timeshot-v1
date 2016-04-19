@@ -8,6 +8,7 @@
 
 import UIKit
 import Bond
+import AFDateHelper
 
 class T_AlbumLiveTableViewCell: UITableViewCell {
     // MARK : Properties
@@ -28,11 +29,7 @@ class T_AlbumLiveTableViewCell: UITableViewCell {
     // MARK: Initialisation
     func initCellWithMetaData(date: NSDate, title :String){
         titleAlbumLabel.text = title
-        
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd-MMM"
-        dateLabel.text = dateFormatter.stringFromDate(date)
+        dateLabel.text = String(date.day())+"\n"+date.monthToString()
     }
     
     

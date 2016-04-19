@@ -8,6 +8,7 @@
 
 import UIKit
 import Bond
+import AFDateHelper
 
 class T_AlbumFinishTableViewCell: UITableViewCell {
     // MARK: Properties
@@ -30,9 +31,8 @@ class T_AlbumFinishTableViewCell: UITableViewCell {
         titleAlbumLabel.text = title
         
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd-MMM"
-        dateLabel.text = dateFormatter.stringFromDate(date)
+        titleAlbumLabel.text = title
+        dateLabel.text = String(date.day())+"\n"+date.monthToString()
     }
 
     // MARK: View Life Cycle

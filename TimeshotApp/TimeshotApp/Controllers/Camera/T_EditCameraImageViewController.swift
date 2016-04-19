@@ -64,6 +64,7 @@ class T_EditCameraImageViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         UIApplication.sharedApplication().statusBarHidden=true
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
