@@ -15,6 +15,11 @@ class T_AlbumLiveTableViewCell: UITableViewCell {
     @IBOutlet weak var coverAlbum: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var titleAlbumLabel: UILabel!
+    @IBOutlet weak var backgroundTitle: UIView!
+    
+    var timerLive : NSTimer?
+    var timerDuration : Int = 0
+    
     
     var album: T_Album? {
         didSet {
@@ -29,7 +34,42 @@ class T_AlbumLiveTableViewCell: UITableViewCell {
     // MARK: Initialisation
     func initCellWithMetaData(date: NSDate, title :String){
         titleAlbumLabel.text = title
-        dateLabel.text = String(date.day())+"\n"+date.monthToString()
+        T_DesignHelper.colorUIView(backgroundTitle)
+        backgroundTitle.alpha = 0.75
+        
+        timerDuration = Int(T_Album.getRemainingDuration(album!.createdAt!, duration: album!.duration))
+        timerLiveAction()
+        self.timerLive = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(T_AlbumLiveTableViewCell.timerLiveAction), userInfo: nil, repeats: true)
+        
+    }
+    
+    // MARK: Actions
+    func timerLiveAction() {
+        if timerDuration >= 1 {
+            timerDuration -= 1
+            
+            let hour = timerDuration / 3600
+            let min = (timerDuration % 3600) / 60
+            let second = (timerDuration % 3600) % 60
+            
+            var value = ""
+            
+            if hour > 0 {
+                value += String(hour)+":"
+            }
+            
+            if min > 0 {
+                value += String(min)+":"
+            }
+            
+            if second > 0 {
+                value += String(second)
+            }
+            
+            dateLabel.text = value
+        } else {
+            timerLive?.invalidate()
+        }
     }
     
     
