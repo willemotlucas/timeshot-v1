@@ -47,7 +47,7 @@ class T_ParseAlbumHelper {
         let query = PFQuery(className: "Album")
         //let query = T_Album.query()
         
-        //query.whereKey("attendees", equalTo: PFUser.currentUser()!)
+        query.whereKey("attendees", equalTo: PFUser.currentUser()!)
         query.orderByDescending("createdAt")
         
         // Range of the album that we want
