@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFDateHelper
 
 class T_SliderViewController: UIViewController {
     // MARK: Properties
@@ -139,10 +140,26 @@ class T_SliderViewController: UIViewController {
             slideImages[page].fromUser.downloadImage()
         }
         
+        // ===============================================
+        // FAIRE UN DESIGN HELPER POUR L'AFFICHAGE DE DATE
+        // ===============================================
+        let photoHour = slideImages[page].createdAt!
         
-        let calendar = NSCalendar.currentCalendar()
-        let comp = calendar.components([.Hour, .Minute], fromDate: slideImages[page].createdAt!)
-        hourLabel.text = "\(comp.hour):\(comp.minute)"
+        var photoHourString = ""
+        if photoHour.hour() < 9 {
+            photoHourString += "0"
+        }
+        photoHourString += "\(photoHour.hour()):"
+        
+        if photoHour.minute() < 9 {
+            photoHourString += "0"
+        }
+        photoHourString += "\(photoHour.minute())"
+        
+        hourLabel.text = photoHourString
+        
+        // ================================================
+        // ================================================
         
         
         // Work out which slides you want to load

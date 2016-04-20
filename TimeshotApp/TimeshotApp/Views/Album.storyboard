@@ -698,9 +698,9 @@
                                 </connections>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bl0-kq-qTR">
-                                <rect key="frame" x="520" y="10" width="50" height="42"/>
+                                <rect key="frame" x="560" y="10" width="40" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="dny-fL-Yp9"/>
+                                    <constraint firstAttribute="width" constant="40" id="dny-fL-Yp9"/>
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
@@ -712,7 +712,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQr-Bo-Gcr">
-                                <rect key="frame" x="10" y="10" width="44" height="44"/>
+                                <rect key="frame" x="0.0" y="10" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="6Dd-qB-LBV"/>
                                     <constraint firstAttribute="width" constant="44" id="KGo-S7-Fyq"/>
@@ -759,12 +759,12 @@
                             <constraint firstItem="S2c-gO-d8p" firstAttribute="top" secondItem="Zw1-Q8-or0" secondAttribute="bottom" constant="5" id="8Ky-BE-ua2"/>
                             <constraint firstItem="S2c-gO-d8p" firstAttribute="top" secondItem="Fzu-Vi-n2r" secondAttribute="bottom" id="C95-bg-faG"/>
                             <constraint firstItem="cQr-Bo-Gcr" firstAttribute="top" secondItem="Ku9-pZ-LOG" secondAttribute="bottom" constant="10" id="H63-ml-1Lz"/>
-                            <constraint firstItem="cQr-Bo-Gcr" firstAttribute="leading" secondItem="5Kd-Yo-1Gn" secondAttribute="leading" constant="10" id="HWM-Ge-7us"/>
+                            <constraint firstItem="cQr-Bo-Gcr" firstAttribute="leading" secondItem="5Kd-Yo-1Gn" secondAttribute="leading" id="HWM-Ge-7us"/>
                             <constraint firstItem="S2c-gO-d8p" firstAttribute="top" secondItem="qYc-SH-3ln" secondAttribute="bottom" constant="5" id="ObB-zw-kck"/>
                             <constraint firstItem="Fzu-Vi-n2r" firstAttribute="top" secondItem="Ku9-pZ-LOG" secondAttribute="bottom" id="Ph9-uo-yM9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qYc-SH-3ln" secondAttribute="trailing" id="Pvr-zP-bnD"/>
                             <constraint firstAttribute="bottom" secondItem="rj5-6i-4K9" secondAttribute="bottom" constant="1" id="SPD-gQ-8BD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bl0-kq-qTR" secondAttribute="trailing" constant="10" id="XcU-hP-OJF"/>
+                            <constraint firstAttribute="trailing" secondItem="bl0-kq-qTR" secondAttribute="trailing" id="bgW-Oi-cco"/>
                             <constraint firstItem="Wsj-wX-m42" firstAttribute="leading" secondItem="5Kd-Yo-1Gn" secondAttribute="leading" id="ixe-Kg-gc1"/>
                             <constraint firstItem="Zw1-Q8-or0" firstAttribute="leading" secondItem="rj5-6i-4K9" secondAttribute="trailing" constant="20" id="kW5-8g-007"/>
                             <constraint firstAttribute="bottom" secondItem="Wsj-wX-m42" secondAttribute="bottom" id="mma-iF-2vy"/>
