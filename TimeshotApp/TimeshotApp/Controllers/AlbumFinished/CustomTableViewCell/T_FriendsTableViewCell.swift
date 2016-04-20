@@ -26,6 +26,7 @@ class T_FriendsTableViewCell: UITableViewCell {
     // MARK: Init
     func initWithUser(user: T_User) {
         var newName = ""
+        print("coucou")
         if let _ = user.firstName {
             newName += user.firstName! + " "
         }

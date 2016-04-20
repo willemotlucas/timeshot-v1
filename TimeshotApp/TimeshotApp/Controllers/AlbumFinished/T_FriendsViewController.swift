@@ -21,12 +21,12 @@ class T_FriendsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print(attendees)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        tableView.allowsSelection = false
     }
     
 
@@ -51,9 +51,10 @@ extension T_FriendsViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("attendeeCell", forIndexPath: indexPath) as! T_FriendsTableViewCell
         
-        attendees![indexPath.row].downloadImage()
+        // On a un probleme pour le moment sur les attendees mais sinon ca fonctionne bien
+        //attendees![indexPath.row].downloadImage()
         cell.user = attendees![indexPath.row]
-        cell.initWithUser(attendees![indexPath.row])
+        //cell.initWithUser(attendees![indexPath.row])
         
         return cell
     }

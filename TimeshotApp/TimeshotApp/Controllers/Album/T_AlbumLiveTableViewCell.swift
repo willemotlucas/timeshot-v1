@@ -58,10 +58,16 @@ class T_AlbumLiveTableViewCell: UITableViewCell {
             var value = ""
             
             if hour > 0 {
+                if hour < 10 {
+                    value += String(0)
+                }
                 value += String(hour)+":"
             }
             
             if min > 0 {
+                if min < 10 {
+                    value += String(0)
+                }
                 value += String(min)+":"
             }
             
