@@ -39,8 +39,11 @@ class T_AlbumLiveTableViewCell: UITableViewCell {
         
         timerDuration = Int(T_Album.getRemainingDuration(album!.createdAt!, duration: album!.duration))
         timerLiveAction()
-        self.timerLive = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(T_AlbumLiveTableViewCell.timerLiveAction), userInfo: nil, repeats: true)
-        
+        if let _ = timerLive {
+            
+        } else {
+            self.timerLive = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(T_AlbumLiveTableViewCell.timerLiveAction), userInfo: nil, repeats: true)
+        }
     }
     
     // MARK: Actions
@@ -63,6 +66,9 @@ class T_AlbumLiveTableViewCell: UITableViewCell {
             }
             
             if second > 0 {
+                if second < 10 {
+                    value += String(0)
+                }
                 value += String(second)
             }
             
