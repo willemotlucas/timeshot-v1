@@ -33,6 +33,8 @@ class T_AlbumFinishTableViewCell: UITableViewCell {
         
         titleAlbumLabel.text = title
         dateLabel.text = String(date.day())+"\n"+date.monthToString()
+        
+        self.selectionStyle = .None
     }
 
     // MARK: View Life Cycle
@@ -43,7 +45,7 @@ class T_AlbumFinishTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
 
