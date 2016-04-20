@@ -127,7 +127,7 @@ class T_CameraViewController: UIViewController {
         cameraManager.addPreviewLayerToView(self.cameraView)
         cameraManager.cameraDevice = .Back
         cameraManager.cameraOutputMode = .StillImage
-        cameraManager.cameraOutputQuality = .High
+        cameraManager.cameraOutputQuality = .Medium
         cameraManager.flashMode = .Off
         cameraManager.writeFilesToPhoneLibrary = false
         cameraManager.showAccessPermissionPopupAutomatically = true
