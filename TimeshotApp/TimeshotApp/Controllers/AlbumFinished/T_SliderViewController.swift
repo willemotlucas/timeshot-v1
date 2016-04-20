@@ -15,6 +15,8 @@ class T_SliderViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var fromUserLabel: UILabel!
     @IBOutlet weak var hourLabel: UILabel!
+    @IBOutlet weak var descriptionView: UIView!
+    @IBOutlet weak var fromUserImage: T_PhotoImageView!
     
     //var slideImages:[T_PhotosCollectionViewController. ] = []
     var slideImages: [T_Post] = []
@@ -42,6 +44,16 @@ class T_SliderViewController: UIViewController {
         let pagesScrollViewSize = scrollView.frame.size
         scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(slideImages.count), height: pagesScrollViewSize.height)
         
+        // Design the description view
+        T_DesignHelper.colorUIView(descriptionView)
+        descriptionView.alpha = 0.65
+        descriptionView.layer.cornerRadius = 10
+        descriptionView.layer.masksToBounds = true
+        
+        fromUserImage.layer.cornerRadius = 20
+        fromUserImage.layer.masksToBounds = true
+        
+        
         // Loading the first slide
         loadVisibleSlides(currentSlide)
         
@@ -51,7 +63,7 @@ class T_SliderViewController: UIViewController {
         // Do any additional setup after loading the view.
         navigationController?.navigationBarHidden = true
         
-        UIApplication.sharedApplication().statusBarHidden=true
+        UIApplication.sharedApplication().statusBarHidden = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -120,9 +132,17 @@ class T_SliderViewController: UIViewController {
         // Change the label of the page to be the good one
         fromUserLabel.text = slideImages[page].fromUser.username
         
+        // Load the image of the user
+        if let image = slideImages[page].fromUser.image.value {
+            fromUserImage.image = image
+        } else {
+            slideImages[page].fromUser.downloadImage()
+        }
+        
+        
         let calendar = NSCalendar.currentCalendar()
         let comp = calendar.components([.Hour, .Minute], fromDate: slideImages[page].createdAt!)
-        hourLabel.text = "-  \(comp.hour):\(comp.minute)"
+        hourLabel.text = "\(comp.hour):\(comp.minute)"
         
         
         // Work out which slides you want to load
@@ -210,11 +230,15 @@ class T_SliderViewController: UIViewController {
             dotsButton.hidden = false
             fromUserLabel.hidden = false
             hourLabel.hidden = false
+            fromUserImage.hidden = false
+            descriptionView.hidden = false
         } else {
             cancelButton.hidden = true
             dotsButton.hidden = true
             fromUserLabel.hidden = true
             hourLabel.hidden = true
+            fromUserImage.hidden = true
+            descriptionView.hidden = true
         }
     }
     
