@@ -75,11 +75,13 @@ class T_CameraViewController: UIViewController {
         
         if (cameraManager.hasFlash && !isFlashActivated)
         {
+            buttonFlash.setImage(UIImage(named: "CameraFlash"), forState: .Normal)
             cameraManager.changeFlashMode()
             isFlashActivated = true
         }
         else if (self.isFlashActivated == true)
         {
+            buttonFlash.setImage(UIImage(named: "CameraNoFlash"), forState: .Normal)
             cameraManager.changeFlashMode()
             isFlashActivated = false
         }
