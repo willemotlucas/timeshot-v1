@@ -184,22 +184,24 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     }
     
     func initScrollView() {
-        let scrollViewWidth:CGFloat = self.scrollView.frame.width
-        let NewAlbumImage = UIImage(named: "NewAlbum")
-        scrollView.layer.zPosition = 14
-        let imageView1 = UIImageView(frame: CGRect(x: 40, y: 300, width: (NewAlbumImage?.size.width)!, height: (NewAlbumImage?.size.height)!))
-        imageView1.image = NewAlbumImage
-        let imageView2 = UIImageView(frame: CGRect(x: scrollViewWidth + 40, y: 400, width: (NewAlbumImage?.size.width)!, height: (NewAlbumImage?.size.height)!))
-        imageView2.image = NewAlbumImage
-        let imageView3 = UIImageView(frame: CGRect(x: 2*scrollViewWidth + 40, y: 500, width: (NewAlbumImage?.size.width)!, height: (NewAlbumImage?.size.height)!))
-        imageView3.image = NewAlbumImage
-        let imageView4 = UIImageView(frame: CGRect(x: 3*scrollViewWidth + 40, y: 450, width: (NewAlbumImage?.size.width)!, height: (NewAlbumImage?.size.height)!))
-        imageView4.image = NewAlbumImage
+        //scrollView.layer.zPosition = 14
         
-        self.scrollView.addSubview(imageView1)
-        self.scrollView.addSubview(imageView2)
-        self.scrollView.addSubview(imageView3)
-        self.scrollView.addSubview(imageView4)
+        let arraySlider = ["SliderParty","SliderVac","SliderAlbum","SliderPic"]
+        
+        for i in 0..<arraySlider.count {
+            // Need to create the view
+            var frame = scrollView.bounds
+            frame.origin.x = frame.size.width * CGFloat(i)
+            frame.origin.y = 0.0
+            
+            // Design of the view
+            let newPageView = UIImageView()
+            newPageView.image = UIImage(named: arraySlider[i])
+            newPageView.contentMode = .ScaleAspectFit
+            newPageView.frame = frame
+            
+            scrollView.addSubview(newPageView)
+        }
         
         self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.width * 4, self.scrollView.frame.height)
         self.scrollView.delegate = self

@@ -152,7 +152,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Moc-iY-mwf">
-                                <rect key="frame" x="15" y="541" width="44" height="44"/>
+                                <rect key="frame" x="15" y="15" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="Hew-Ri-iRV"/>
                                     <constraint firstAttribute="height" constant="44" id="VMf-Vx-Ec2"/>
@@ -179,24 +179,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Vhl-us-YRJ" firstAttribute="bottom" secondItem="K6V-23-Z5Y" secondAttribute="top" id="9kg-nc-MPR"/>
+                            <constraint firstItem="K6V-23-Z5Y" firstAttribute="top" secondItem="NOy-73-VDf" secondAttribute="bottom" constant="15" id="BTj-EC-7KM"/>
+                            <constraint firstAttribute="trailing" secondItem="NOy-73-VDf" secondAttribute="trailing" constant="15" id="Bfz-AC-zkx"/>
                             <constraint firstAttribute="trailing" secondItem="Vhl-us-YRJ" secondAttribute="trailing" id="Mpn-jW-Hf3"/>
                             <constraint firstItem="Dot-2V-rU6" firstAttribute="bottom" secondItem="K6V-23-Z5Y" secondAttribute="top" id="N8K-7n-E5x"/>
                             <constraint firstItem="Moc-iY-mwf" firstAttribute="leading" secondItem="sgt-jO-OYx" secondAttribute="leading" constant="15" id="PbT-kS-Gyi"/>
                             <constraint firstItem="Dot-2V-rU6" firstAttribute="trailing" secondItem="Vhl-us-YRJ" secondAttribute="trailing" id="SST-7M-Rxp"/>
                             <constraint firstItem="Dot-2V-rU6" firstAttribute="top" secondItem="Vhl-us-YRJ" secondAttribute="top" id="Zb8-Ha-eiH"/>
-                            <constraint firstItem="K6V-23-Z5Y" firstAttribute="top" secondItem="NOy-73-VDf" secondAttribute="bottom" constant="15" id="dPd-uH-ete"/>
-                            <constraint firstAttribute="trailing" secondItem="NOy-73-VDf" secondAttribute="trailing" constant="15" id="dqO-lb-wWo"/>
-                            <constraint firstItem="K6V-23-Z5Y" firstAttribute="top" secondItem="Moc-iY-mwf" secondAttribute="bottom" constant="15" id="fef-DO-N1v"/>
-                            <constraint firstAttribute="trailing" secondItem="Moc-iY-mwf" secondAttribute="trailing" constant="20" id="flg-3z-mkj"/>
+                            <constraint firstItem="Moc-iY-mwf" firstAttribute="top" secondItem="sgt-jO-OYx" secondAttribute="top" constant="15" id="cO9-g9-ou9"/>
                             <constraint firstItem="Dot-2V-rU6" firstAttribute="leading" secondItem="Vhl-us-YRJ" secondAttribute="leading" id="hgx-SG-VKh"/>
                             <constraint firstItem="Vhl-us-YRJ" firstAttribute="leading" secondItem="sgt-jO-OYx" secondAttribute="leading" id="liG-1I-hW9"/>
                             <constraint firstItem="Vhl-us-YRJ" firstAttribute="top" secondItem="O5G-bf-dCg" secondAttribute="bottom" id="u87-rD-iK3"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="flg-3z-mkj"/>
-                            </mask>
-                        </variation>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
