@@ -136,7 +136,7 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     //------------------------------------------------------------------------------------------------
     //MARK: Init methods
     func initTimerPicker() {
-        self.timePickerTextField = UITextField(frame: CGRect(x: T_DesignHelper.screenSize.width/2 - 22, y: T_DesignHelper.screenSize.height - 20 - 44, width: 44, height: 44))
+        self.timePickerTextField = UITextField(frame: CGRect(x: T_DesignHelper.screenSize.width/2 - 22, y: 20, width: 44, height: 44))
         self.timePickerTextField.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         self.timePickerTextField.textColor = UIColor.whiteColor()
         self.timePickerTextField.layer.zPosition = 16
@@ -223,14 +223,14 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
             self.textField.updatePosition(notification)
             
             // If the user change from the TimePickerTextField Keyboard directly to the textField Keyboard, we have to replace the origin position of TimePickerTextField :
-            resetOriginTimePickerTextField()
+            //resetOriginTimePickerTextField()
         }
-        else if (self.timePickerTextField.isFirstResponder() == true)
-        {
-            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-                self.timePickerTextField.frame.origin.y = self.scrollView.frame.size.height - keyboardSize.height - self.timePickerTextField.frame.size.height - 20
-            }
-        }
+//        else if (self.timePickerTextField.isFirstResponder() == true)
+//        {
+//            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+//                self.timePickerTextField.frame.origin.y = self.scrollView.frame.size.height - keyboardSize.height - self.timePickerTextField.frame.size.height - 20
+//            }
+//        }
     }
     
     func keyboardTypeChanged(notification: NSNotification) {
@@ -245,10 +245,11 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
         {
             self.textField.frame.origin.y = self.textField.lastPosition.y
         }
-        else if (self.timePickerTextField.isFirstResponder() == true)
-        {
-            resetOriginTimePickerTextField()
-        }
+        // On ne veut rien changer normalement par rapport a notre durationTextField
+//        else if (self.timePickerTextField.isFirstResponder() == true)
+//        {
+//            resetOriginTimePickerTextField()
+//        }
         
         
         if (self.textField.text?.isEmpty == true) {
@@ -259,8 +260,9 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
         }
     }
     
-    func resetOriginTimePickerTextField() {
-        self.timePickerTextField.frame.origin.y = T_DesignHelper.screenSize.height - 20 - 44
-    }
+    // On veut le laisser en haut notre textField pour la duration
+//    func resetOriginTimePickerTextField() {
+//        self.timePickerTextField.frame.origin.y = T_DesignHelper.screenSize.height - 20 - 44
+//    }
     
 }

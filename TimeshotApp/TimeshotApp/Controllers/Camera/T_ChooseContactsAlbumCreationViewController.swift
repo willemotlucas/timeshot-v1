@@ -68,10 +68,9 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
         self.friendAddedLabel.textAlignment = .Left
         self.friendAddedItem.customView = self.friendAddedLabel
         
-        // Fetch data from parse
-        T_User.getAllUsers({
-            (data) -> Void in
-            self.friendCells = data
+        //Load the friends
+        T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
+            self.friendCells = friends
             self.tableView.reloadData()
         })
     }
@@ -104,7 +103,7 @@ extension T_ChooseContactsAlbumCreationViewController {
             unselectFriendDesign(cell)
         }
         
-        cell.label.text = "\(friendCells[indexPath.row].firstName) \(friendCells[indexPath.row].lastName)"
+        cell.label.text = "\(friendCells[indexPath.row].firstName!) \(friendCells[indexPath.row].lastName!)"
         cell.selectionStyle = .None
         
         self.friendCells[indexPath.row].downloadImage()
@@ -148,14 +147,14 @@ extension T_ChooseContactsAlbumCreationViewController {
     //MARK: Methods for designing cells
     func selectFriendDesign(cell: T_AddFriendToAlbumTableViewCell)
     {
-        cell.checkbox.image = UIImage(named: "checkbox-active")
+        cell.checkbox.image = UIImage(named: "Check")
         cell.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.05)
         cell.label.font = UIFont.boldSystemFontOfSize(15)
     }
     
     func unselectFriendDesign(cell: T_AddFriendToAlbumTableViewCell)
     {
-        cell.checkbox.image = UIImage(named: "checkbox")
+        cell.checkbox.image = UIImage(named: "Uncheck")
         cell.backgroundColor = UIColor.whiteColor()
         cell.label.font = UIFont.systemFontOfSize(15)
     }

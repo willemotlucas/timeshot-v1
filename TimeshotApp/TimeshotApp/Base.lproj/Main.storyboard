@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -70,13 +69,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="ELH-4z-bmx" secondAttribute="trailing" constant="20" id="Z9z-zJ-xW1"/>
                                                 <constraint firstItem="mqY-Sq-bPr" firstAttribute="leading" secondItem="wCz-en-vza" secondAttribute="trailing" constant="10" id="bNN-QY-u39"/>
                                                 <constraint firstItem="wCz-en-vza" firstAttribute="centerY" secondItem="3bo-Gk-s3w" secondAttribute="centerY" id="jWs-64-0xV"/>
-                                                <constraint firstItem="mqY-Sq-bPr" firstAttribute="leading" secondItem="3bo-Gk-s3w" secondAttribute="centerX" constant="20" id="wiT-8a-pyh"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="wiT-8a-pyh"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="checkbox" destination="ELH-4z-bmx" id="nXh-Ou-u8V"/>
@@ -164,7 +157,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOy-73-VDf">
-                                <rect key="frame" x="541" y="541" width="44" height="44"/>
+                                <rect key="frame" x="541" y="15" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="9vn-5W-UeJ"/>
                                     <constraint firstAttribute="width" constant="44" id="nI2-11-hfK"/>
@@ -190,7 +183,13 @@
                             <constraint firstItem="Dot-2V-rU6" firstAttribute="leading" secondItem="Vhl-us-YRJ" secondAttribute="leading" id="hgx-SG-VKh"/>
                             <constraint firstItem="Vhl-us-YRJ" firstAttribute="leading" secondItem="sgt-jO-OYx" secondAttribute="leading" id="liG-1I-hW9"/>
                             <constraint firstItem="Vhl-us-YRJ" firstAttribute="top" secondItem="O5G-bf-dCg" secondAttribute="bottom" id="u87-rD-iK3"/>
+                            <constraint firstItem="NOy-73-VDf" firstAttribute="top" secondItem="O5G-bf-dCg" secondAttribute="bottom" constant="15" id="zek-Mq-NIW"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="BTj-EC-7KM"/>
+                            </mask>
+                        </variation>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
