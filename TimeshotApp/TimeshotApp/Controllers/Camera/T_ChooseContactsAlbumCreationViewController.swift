@@ -35,6 +35,7 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
     
     func actionCreateButton(sender: AnyObject) {
 
+        T_CameraViewController.instance.freezeUI("Creating album ...")
         T_Album.createAlbum(self.cover, duration: self.duration, albumTitle: self.albumTitle)
         self.presentingViewController?.presentingViewController!.dismissViewControllerAnimated(false, completion: nil)
     }
@@ -69,9 +70,11 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
         self.friendAddedItem.customView = self.friendAddedLabel
         
         //Load the friends
+
         T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
             self.friendCells = friends
             self.tableView.reloadData()
+
         })
     }
     

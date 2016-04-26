@@ -9,6 +9,7 @@
 import UIKit
 import CameraManager
 import Parse
+import MBProgressHUD
 
 class T_CameraViewController: UIViewController {
     
@@ -18,6 +19,8 @@ class T_CameraViewController: UIViewController {
     //MARK: Properties
     let cameraManager = CameraManager()
     var image:UIImage?
+    
+    var progressHUD:MBProgressHUD?
     
     var isLiveAlbumExisting:Bool! = nil
     var albumTimer:NSTimer?
@@ -230,4 +233,23 @@ class T_CameraViewController: UIViewController {
         }
     }
     
+    func freezeUI(text: String) {
+        
+        progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        progressHUD?.labelText = text
+        progressHUD?.mode = .Indeterminate
+        
+        buttonTakePicture.hidden = true
+        buttonReturnCamera.hidden = true
+        buttonFlash.hidden = true
+    }
+    
+    func unfreezeUI() {
+        progressHUD?.hide(true)
+        
+        buttonTakePicture.hidden = false
+        buttonReturnCamera.hidden = false
+        buttonFlash.hidden = false
+
+    }
 }

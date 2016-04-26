@@ -121,7 +121,7 @@ class T_FriendRequestParseHelper {
         // Include users to retrieve their data
         acceptedFriendRequest.includeKey(ParseFriendRequestFromUser)
         acceptedFriendRequest.includeKey(ParseFriendRequestToUser)
-
+        
         acceptedFriendRequest.findObjectsInBackgroundWithBlock(completionBlock)
     }
     
@@ -134,21 +134,24 @@ class T_FriendRequestParseHelper {
      */
     static func getFriendsFromAcceptedRequests(completion: (friends: [T_User]) -> Void) {
         getAcceptedFriendRequest { (result: [PFObject]?, error: NSError?) in
-            let acceptedRequests = result as? [T_FriendRequest] ?? []
-            
-            var friends: [T_User] = []
-            // We iterate through the array to build the list of friends
-            for request in acceptedRequests {
-                if request.fromUser?.objectId == PFUser.currentUser()!.objectId {
-                    // If the current user created the friend request, then we keep toUser
-                    friends.append(request.toUser as! T_User)
-                } else {
-                    // Otherwise, the current user received the friend request, so we keep fromUser
-                    friends.append(request.fromUser as! T_User)
+            if (error == nil) {
+                let acceptedRequests = result as? [T_FriendRequest] ?? []
+                var friends: [T_User] = []
+                // We iterate through the array to build the list of friends
+                for request in acceptedRequests {
+                    if request.fromUser?.objectId == PFUser.currentUser()!.objectId {
+                        // If the current user created the friend request, then we keep toUser
+                        friends.append(request.toUser as! T_User)
+                    } else {
+                        // Otherwise, the current user received the friend request, so we keep fromUser
+                        friends.append(request.fromUser as! T_User)
+                    }
                 }
+                completion(friends: friends)
             }
-            
-            completion(friends: friends)
+            else {
+                print(error)
+            }
         }
     }
     

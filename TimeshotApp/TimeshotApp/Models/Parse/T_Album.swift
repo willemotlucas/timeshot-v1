@@ -75,6 +75,7 @@ class T_Album : PFObject, PFSubclassing {
                 } else {
                     print("An error occured : %@", error)
                 }
+                T_CameraViewController.instance.unfreezeUI()
                 UIApplication.sharedApplication().endBackgroundTask(self.albumCreationTask!)
             }
         }
