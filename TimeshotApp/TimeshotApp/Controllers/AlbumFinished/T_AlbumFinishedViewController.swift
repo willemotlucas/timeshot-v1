@@ -23,6 +23,13 @@ class T_AlbumFinishedViewController: UIViewController {
         T_DesignHelper.colorNavBar((self.navigationController?.navigationBar)!)
         T_DesignHelper.colorUIView(segmentedView)
         // Do any additional setup after loading the view.
+        
+        // Disable pour le moment le swipe back ! 
+        // Attendre la V1 pour pouvoir revoir tout ca ;)
+        if self.navigationController!.respondsToSelector(Selector("interactivePopGestureRecognizer")) {
+            self.navigationController!.interactivePopGestureRecognizer!.enabled = false
+        }
+
     }
     
     override func viewWillAppear(animated: Bool) {
