@@ -196,7 +196,9 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
             let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("storyCell", forIndexPath: indexPath) as! T_StoryCollectionViewCell
             
             cell.layer.cornerRadius = 15
-            cell.imageView.image = posts[storyIndex].image.value
+            let post = posts[storyIndex]
+            post.downloadImage()
+            cell.post = post
             //cell.imageView.image = photosArray[storyIndex].image
             
             return cell

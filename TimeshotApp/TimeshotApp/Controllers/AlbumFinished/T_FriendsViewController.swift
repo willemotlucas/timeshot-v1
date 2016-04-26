@@ -61,8 +61,6 @@ extension T_FriendsViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let attendees = attendees {
-            print("\n\n LISTE \n\n")
-            print(attendees)
             return attendees.count
         }
         
