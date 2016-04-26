@@ -20,7 +20,8 @@ class T_FriendsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Permits to not show empty cells
+        tableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,16 +52,17 @@ extension T_FriendsViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("attendeeCell", forIndexPath: indexPath) as! T_FriendsTableViewCell
         
-        // On a un probleme pour le moment sur les attendees mais sinon ca fonctionne bien
-        //attendees![indexPath.row].downloadImage()
+        attendees![indexPath.row].downloadImage()
         cell.user = attendees![indexPath.row]
-        //cell.initWithUser(attendees![indexPath.row])
+        cell.initWithUser(attendees![indexPath.row])
         
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let attendees = attendees {
+            print("\n\n LISTE \n\n")
+            print(attendees)
             return attendees.count
         }
         

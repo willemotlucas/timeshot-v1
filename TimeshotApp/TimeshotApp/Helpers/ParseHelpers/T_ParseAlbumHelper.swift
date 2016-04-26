@@ -49,6 +49,7 @@ class T_ParseAlbumHelper {
         
         query.whereKey("attendees", equalTo: PFUser.currentUser()!)
         query.orderByDescending("createdAt")
+        query.includeKey("attendees")
         
         // Range of the album that we want
         query.skip =  range.startIndex
