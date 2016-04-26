@@ -164,8 +164,6 @@ class T_CameraViewController: UIViewController {
         self.isLiveAlbumExisting = false
         self.hideLabelText()
         
-        print("je suis dans la fonction manage album processing")
-        
         T_Album.manageAlbumProcessing(currentUser) {
             (isLiveAlbum: Bool) -> Void in
             
