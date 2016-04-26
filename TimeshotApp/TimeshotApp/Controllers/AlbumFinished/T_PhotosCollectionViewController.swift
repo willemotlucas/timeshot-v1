@@ -290,35 +290,53 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
 // MARK: - DZNEmptyDataState 
 extension T_PhotosCollectionViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = NSLocalizedString("Welcome", comment: "")
-        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
-        return NSAttributedString(string: str, attributes: attrs)
+        // On est dans le cas ou on a pas encore de photos dans l'album
+        if posts.count  == 0 {
+            let str = NSLocalizedString("Ohhh noo", comment: "")
+            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+            return NSAttributedString(string: str, attributes: attrs)
+        } else {
+            let str = NSLocalizedString("There's a problem Captain", comment: "")
+            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+            return NSAttributedString(string: str, attributes: attrs)
+            
+        }
     }
     
     func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = NSLocalizedString("Tap the button below to add your first dhaodaio", comment: "")
-        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
-        return NSAttributedString(string: str, attributes: attrs)
+        if posts.count  == 0 {
+            let str = NSLocalizedString("This album is totally empty ... ", comment: "")
+            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
+            return NSAttributedString(string: str, attributes: attrs)
+        } else {
+            let str = NSLocalizedString("Network is not available ... ", comment: "")
+            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
+            return NSAttributedString(string: str, attributes: attrs)
+        }
     }
     
-    //    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-    //        let image = UIImage(named: "selfie3")
-    //        image?.accessibilityFrame = CGRect(origin: scrollView.center, size: CGSize(width: 50, height: 50))
-    //
-    //
-    //        return image
-    //    }
-    
-    func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString! {
-        let str = NSLocalizedString("Add fhiodfhiod", comment: "")
-        return NSAttributedString(string: str, attributes: nil)
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        if posts.count  == 0 {
+            let image = UIImage(named: "EmptyAlbumIcon")
+            image?.accessibilityFrame = CGRect(origin: CGPoint(x: scrollView.center.x,y: scrollView.center.y - 20), size: CGSize(width: 200, height: 200))
+            return image
+        } else {
+            let image = UIImage(named: "NoNetwork")
+            image?.accessibilityFrame = CGRect(origin: CGPoint(x: scrollView.center.x,y: scrollView.center.y - 20), size: CGSize(width: 200, height: 200))
+            return image
+        }
     }
     
-    func emptyDataSetDidTapButton(scrollView: UIScrollView!) {
-        let ac = UIAlertController(title: NSLocalizedString("Button tapped", comment: ""), message: nil, preferredStyle: .Alert)
-        ac.addAction(UIAlertAction(title: NSLocalizedString("Hurray", comment: ""), style: .Default, handler: nil))
-        presentViewController(ac, animated: true, completion: nil)
-    }
+//    func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString! {
+//        let str = NSLocalizedString("This is an empty album", comment: "")
+//        return NSAttributedString(string: str, attributes: nil)
+//    }
+    
+//    func emptyDataSetDidTapButton(scrollView: UIScrollView!) {
+//        let ac = UIAlertController(title: NSLocalizedString("Button tapped", comment: ""), message: nil, preferredStyle: .Alert)
+//        ac.addAction(UIAlertAction(title: NSLocalizedString("Hurray", comment: ""), style: .Default, handler: nil))
+//        presentViewController(ac, animated: true, completion: nil)
+//    }
 }
 
 

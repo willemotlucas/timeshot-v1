@@ -194,7 +194,7 @@ class T_CameraViewController: UIViewController {
     func initLabelText() {
         self.albumTitle = UILabel(frame: CGRect(x: T_DesignHelper.screenSize.width/2, y: 16, width: 0, height: 24))
         self.albumImage = UIImageView(frame: CGRect(x: 0, y: 18, width: 24, height: 20))
-        self.albumImage.image = UIImage(named: "AlbumName")
+        self.albumImage.image = UIImage(named: "Group")
         
         self.albumTitle.layer.zPosition = 1
         self.albumTitle.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.7)
