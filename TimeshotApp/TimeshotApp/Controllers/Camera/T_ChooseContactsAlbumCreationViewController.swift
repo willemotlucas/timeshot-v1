@@ -45,6 +45,10 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
         return false
     }
     
+    override func viewDidAppear(animated: Bool) {
+        UIView.setAnimationsEnabled(true)
+    }
+
     override func viewWillAppear(animated: Bool) {
         UIApplication.sharedApplication().statusBarHidden=false
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()

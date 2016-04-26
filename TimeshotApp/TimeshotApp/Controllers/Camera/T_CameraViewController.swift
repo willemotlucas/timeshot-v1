@@ -108,6 +108,10 @@ class T_CameraViewController: UIViewController {
         UIApplication.sharedApplication().statusBarHidden=true
     }
     
+    override func viewDidAppear(animated: Bool) {
+        UIView.setAnimationsEnabled(true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

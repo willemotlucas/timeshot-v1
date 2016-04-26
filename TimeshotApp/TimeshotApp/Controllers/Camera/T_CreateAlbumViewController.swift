@@ -70,6 +70,10 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
         return true
     }
     
+    override func viewDidAppear(animated: Bool) {
+        UIView.setAnimationsEnabled(true)
+    }
+
     override func viewWillAppear(animated: Bool) {
         UIApplication.sharedApplication().statusBarHidden=true
     }

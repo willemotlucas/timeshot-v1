@@ -66,6 +66,10 @@ class T_EditCameraImageViewController: UIViewController {
         UIApplication.sharedApplication().statusBarHidden=true
         
     }
+
+    override func viewDidAppear(animated: Bool) {
+        UIView.setAnimationsEnabled(true)
+    }
     
     override func viewWillDisappear(animated: Bool) {
         NSNotificationCenter.defaultCenter().removeObserver(self.slider)
