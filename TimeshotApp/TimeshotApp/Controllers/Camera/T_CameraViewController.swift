@@ -75,13 +75,13 @@ class T_CameraViewController: UIViewController {
         
         if (cameraManager.hasFlash && !isFlashActivated)
         {
-            buttonFlash.setImage(UIImage(named: "CameraFlash"), forState: .Normal)
+            buttonFlash.setImage(UIImage(named: "CameraNoFlash"), forState: .Normal)
             cameraManager.changeFlashMode()
             isFlashActivated = true
         }
         else if (self.isFlashActivated == true)
         {
-            buttonFlash.setImage(UIImage(named: "CameraNoFlash"), forState: .Normal)
+            buttonFlash.setImage(UIImage(named: "CameraFlash"), forState: .Normal)
             cameraManager.changeFlashMode()
             isFlashActivated = false
         }
@@ -142,15 +142,13 @@ class T_CameraViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if (self.isLiveAlbumExisting == false)
-        {
+        if (self.isLiveAlbumExisting == false) {
             let destinationVC = segue.destinationViewController as! T_CreateAlbumViewController
             destinationVC.image = self.image
             // To perform symetry / rotation if needed when computing the image for filters
             destinationVC.isFrontCamera = !self.isBackCameraActivated
         }
-        else
-        {
+        else {
             let destinationVC = segue.destinationViewController as! T_EditCameraImageViewController
             destinationVC.image = self.image
             // To perform symetry / rotation if needed when computing the image for filters
@@ -165,6 +163,8 @@ class T_CameraViewController: UIViewController {
         
         self.isLiveAlbumExisting = false
         self.hideLabelText()
+        
+        print("je suis dans la fonction manage album processing")
         
         T_Album.manageAlbumProcessing(currentUser) {
             (isLiveAlbum: Bool) -> Void in

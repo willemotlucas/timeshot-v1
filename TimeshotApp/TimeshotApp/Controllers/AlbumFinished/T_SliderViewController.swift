@@ -48,7 +48,6 @@ class T_SliderViewController: UIViewController {
         // Design the description view
         T_DesignHelper.colorUIView(descriptionView)
         descriptionView.alpha = 0.65
-        descriptionView.layer.cornerRadius = 10
         descriptionView.layer.masksToBounds = true
         
         fromUserImage.layer.cornerRadius = 20
