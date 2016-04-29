@@ -196,7 +196,7 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
             let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("storyCell", forIndexPath: indexPath) as! T_StoryCollectionViewCell
             
             let post = posts[storyIndex]
-            cell.imageView.layer.cornerRadius = 15
+            cell.imageView.layer.cornerRadius = 40
             post.downloadImage()
             cell.post = post
             
@@ -266,7 +266,7 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
         if section > 1 {
             return CGSizeZero
         } else {
-            return CGSize(width: collectionView.frame.width, height: 50)
+            return CGSize(width: collectionView.frame.width, height: 40)
         }
     }
     // For dynamic size of the photo cells
