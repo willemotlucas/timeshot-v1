@@ -989,58 +989,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLa-2W-PWH" customClass="KolodaView" customModule="Koloda">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="342"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="372"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amJ-1P-LwY" userLabel="Dislike Button">
-                                <rect key="frame" x="89" y="398" width="44" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="cbn-Qr-3aG"/>
-                                    <constraint firstAttribute="height" constant="44" id="xjU-CO-K3P"/>
-                                </constraints>
-                                <state key="normal" image="Dislike"/>
-                                <connections>
-                                    <action selector="dislikeTapped:" destination="ch9-c2-iTm" eventType="touchUpInside" id="0D6-xK-Nbv"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilS-NK-dIp" userLabel="Like Button">
-                                <rect key="frame" x="496" y="392" width="44" height="44"/>
+                                <rect key="frame" x="470" y="392" width="70" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="dcV-3S-qWY"/>
-                                    <constraint firstAttribute="height" constant="44" id="wdw-vt-ymB"/>
+                                    <constraint firstAttribute="width" constant="70" id="dcV-3S-qWY"/>
+                                    <constraint firstAttribute="height" constant="70" id="wdw-vt-ymB"/>
                                 </constraints>
                                 <state key="normal" image="Like"/>
                                 <connections>
                                     <action selector="likeTapped:" destination="ch9-c2-iTm" eventType="touchUpInside" id="h1D-5p-iDc"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amJ-1P-LwY" userLabel="Dislike Button">
+                                <rect key="frame" x="60" y="392" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="cbn-Qr-3aG"/>
+                                    <constraint firstAttribute="height" constant="70" id="xjU-CO-K3P"/>
+                                </constraints>
+                                <state key="normal" image="Dislike"/>
+                                <connections>
+                                    <action selector="dislikeTapped:" destination="ch9-c2-iTm" eventType="touchUpInside" id="0D6-xK-Nbv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="amJ-1P-LwY" firstAttribute="leading" secondItem="ZvW-1g-FAP" secondAttribute="leading" constant="89" id="4vG-3B-Y1N"/>
+                            <constraint firstItem="amJ-1P-LwY" firstAttribute="leading" secondItem="ZvW-1g-FAP" secondAttribute="leading" constant="60" id="4vG-3B-Y1N"/>
                             <constraint firstItem="PLa-2W-PWH" firstAttribute="top" secondItem="3py-mS-1gg" secondAttribute="bottom" id="6JY-qU-p7H"/>
-                            <constraint firstItem="PLa-2W-PWH" firstAttribute="leading" secondItem="ZvW-1g-FAP" secondAttribute="leadingMargin" id="GLN-mD-UfW"/>
-                            <constraint firstItem="fKu-o6-bNY" firstAttribute="top" secondItem="ilS-NK-dIp" secondAttribute="bottom" constant="56" id="GRx-BR-avf"/>
-                            <constraint firstItem="fKu-o6-bNY" firstAttribute="top" secondItem="PLa-2W-PWH" secondAttribute="bottom" id="MKy-sI-V6l"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="PLa-2W-PWH" secondAttribute="trailing" id="SBP-Ji-Scq"/>
-                            <constraint firstItem="PLa-2W-PWH" firstAttribute="leading" secondItem="ZvW-1g-FAP" secondAttribute="leadingMargin" id="bja-yB-ikD"/>
+                            <constraint firstItem="fKu-o6-bNY" firstAttribute="top" secondItem="ilS-NK-dIp" secondAttribute="bottom" constant="30" id="GRx-BR-avf"/>
+                            <constraint firstItem="fKu-o6-bNY" firstAttribute="top" secondItem="PLa-2W-PWH" secondAttribute="bottom" constant="120" id="Vkn-32-nmF"/>
                             <constraint firstAttribute="trailing" secondItem="PLa-2W-PWH" secondAttribute="trailing" id="gwM-m5-Krw"/>
-                            <constraint firstItem="ilS-NK-dIp" firstAttribute="top" secondItem="PLa-2W-PWH" secondAttribute="bottom" constant="50" id="mXz-Wv-o7V"/>
-                            <constraint firstAttribute="trailing" secondItem="PLa-2W-PWH" secondAttribute="trailing" id="oPD-9x-p2O"/>
                             <constraint firstItem="PLa-2W-PWH" firstAttribute="leading" secondItem="ZvW-1g-FAP" secondAttribute="leading" id="qGU-8o-w7u"/>
-                            <constraint firstItem="fKu-o6-bNY" firstAttribute="top" secondItem="amJ-1P-LwY" secondAttribute="bottom" constant="50" id="ry1-We-HO5"/>
+                            <constraint firstItem="fKu-o6-bNY" firstAttribute="top" secondItem="amJ-1P-LwY" secondAttribute="bottom" constant="30" id="ry1-We-HO5"/>
                             <constraint firstAttribute="trailing" secondItem="ilS-NK-dIp" secondAttribute="trailing" constant="60" id="sZc-7I-4ob"/>
-                            <constraint firstItem="PLa-2W-PWH" firstAttribute="leading" secondItem="ZvW-1g-FAP" secondAttribute="leading" id="zz1-qw-Y1E"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="GLN-mD-UfW"/>
-                                <exclude reference="SBP-Ji-Scq"/>
-                                <exclude reference="bja-yB-ikD"/>
-                                <exclude reference="oPD-9x-p2O"/>
-                                <exclude reference="zz1-qw-Y1E"/>
-                                <exclude reference="MKy-sI-V6l"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="dislikeButton" destination="amJ-1P-LwY" id="xXw-g9-g11"/>
@@ -1168,8 +1152,8 @@
     <resources>
         <image name="Avatar" width="119" height="119"/>
         <image name="Cancel" width="44" height="44"/>
-        <image name="Dislike" width="44" height="44"/>
+        <image name="Dislike" width="70" height="70"/>
         <image name="Dots" width="87" height="20"/>
-        <image name="Like" width="44" height="44"/>
+        <image name="Like" width="70" height="70"/>
     </resources>
 </document>
