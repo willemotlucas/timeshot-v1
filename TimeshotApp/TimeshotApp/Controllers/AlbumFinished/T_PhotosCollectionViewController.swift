@@ -57,6 +57,7 @@ class T_PhotosCollectionViewController: UIViewController {
                 
                 self.posts = result as? [T_Post] ?? []
                 self.load = true
+                self.collectionView.reloadEmptyDataSet()
                 
                 // Initialisation du nombre de photos
                 // et de la section en cours
@@ -239,11 +240,16 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
                 cell.layer.cornerRadius = 5
                 
                 let indexCell = getPhotoIndex(indexPath)
-                // -1 -> because we don't have the hourImage in our Array of picture but it's present in the collectionView
-                //cell.imageView.image = photosArray[indexCell - 1].image
+                
+                 // -1 -> because we don't have the hourImage in our Array of picture but it's present in the collectionView
                 let post = posts[indexCell - 1]
                 post.downloadImage()
                 cell.post = post
+                
+                if cell.imageView.image == nil {
+                    cell.imageView.bnd_image.value = UIImage(named: "EmptyView")
+                }
+                
                 return cell
             }
             
