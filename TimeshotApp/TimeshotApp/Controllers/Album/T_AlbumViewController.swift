@@ -18,6 +18,8 @@ class T_AlbumViewController: UIViewController{
     var timelineComponent: TimelineComponent<T_Album, T_AlbumViewController>!
     let defaultRange = 0...4
     let additionalRangeSize = 5
+    var isLoading = false
+    var errorLoading = false
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -120,34 +122,47 @@ extension T_AlbumViewController : UITableViewDelegate, UITableViewDataSource {
 extension T_AlbumViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = NSLocalizedString("Welcome", comment: "")
+        // On est dans le cas ou on a pas encore de photos dans l'album
         let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+        var str = ""
+        
+        if !isLoading && !errorLoading {
+            str = NSLocalizedString("Wait ...", comment: "")
+        } else if errorLoading {
+            str = NSLocalizedString("There's a problem Captain", comment: "")
+        } else if isLoading {
+            str = NSLocalizedString("Ohhh noo", comment: "")
+        }
+        
         return NSAttributedString(string: str, attributes: attrs)
     }
     
     func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = NSLocalizedString("Tap the button below to add your first dhaodaio", comment: "")
+        var str = ""
         let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
+        
+        if !isLoading && !errorLoading{
+            str = NSLocalizedString("We're retrieving your photos", comment: "")
+        } else if errorLoading{
+            str = NSLocalizedString("Network is not available ... ", comment: "")
+        } else if isLoading {
+            str = NSLocalizedString("This album is totally empty ... ", comment: "")
+        }
+        
         return NSAttributedString(string: str, attributes: attrs)
     }
     
-//    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-//        let image = UIImage(named: "selfie3")
-//        image?.accessibilityFrame = CGRect(origin: scrollView.center, size: CGSize(width: 50, height: 50))
-//        
-//        
-//        return image
-//    }
-    
-    func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString! {
-        let str = NSLocalizedString("Add fhiodfhiod", comment: "")
-        return NSAttributedString(string: str, attributes: nil)
-    }
-    
-    func emptyDataSetDidTapButton(scrollView: UIScrollView!) {
-        let ac = UIAlertController(title: NSLocalizedString("Button tapped", comment: ""), message: nil, preferredStyle: .Alert)
-        ac.addAction(UIAlertAction(title: NSLocalizedString("Hurray", comment: ""), style: .Default, handler: nil))
-        presentViewController(ac, animated: true, completion: nil)
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        var image = UIImage()
+        image.accessibilityFrame = CGRect(origin: CGPoint(x: scrollView.center.x,y: scrollView.center.y - 20), size: CGSize(width: 200, height: 200))
+        if !isLoading && !errorLoading{
+            image = UIImage.gifWithName("LoadingView")!
+        }else if errorLoading{
+            image = UIImage(named: "NoNetwork")!
+        } else if isLoading {
+            image = UIImage(named: "EmptyAlbumIcon")!
+        }
+        return image
     }
     
 }
@@ -156,12 +171,20 @@ extension T_AlbumViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 extension T_AlbumViewController: TimelineComponentTarget {
     
     func loadInRange(range: Range<Int>, completionBlock: ([T_Album]?) -> Void) {
-        //
+        
         T_ParseAlbumHelper.queryAllAlbumsOnParse(range) { (result: [PFObject]?, error: NSError?) -> Void in
-            // 2
-            let posts = result as? [T_Album] ?? []
-            // 3
-            completionBlock(posts)
+            if let _ = error {
+                if self.timelineComponent.content.count == 0 {
+                    self.errorLoading = true
+                    self.tableView.reloadEmptyDataSet()
+                }
+            } else {
+                self.isLoading = true
+                let posts = result as? [T_Album] ?? []
+                // 3
+                completionBlock(posts)
+            }
+            
         }
     }
     
