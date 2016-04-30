@@ -95,7 +95,7 @@ class T_SliderViewController: UIViewController {
             } else {
                 slideImages[page].downloadImage()
             }
-            newPageView.contentMode = .ScaleAspectFit
+            newPageView.contentMode = .ScaleAspectFill
             newPageView.frame = frame
             
             scrollView.addSubview(newPageView)
