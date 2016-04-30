@@ -139,7 +139,7 @@ extension T_SearchContactViewController: UITableViewDataSource {
         let name = values![indexPath.row]
         let phoneNumber = contactsWithNumbers[name]
         
-        let button = cell.checkboxButton as! T_SendMessageUIButton
+        let button = cell.checkboxButton as T_SendMessageUIButton
         button.telNumber = phoneNumber!
         cell.contactNameLabel.text = name
         cell.contactTelephoneLabel.text = phoneNumber

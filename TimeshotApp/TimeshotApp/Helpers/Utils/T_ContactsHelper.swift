@@ -90,7 +90,7 @@ class T_ContactsHelper {
                         }
                         
                         //We get the first name associated with the phone number
-                        if let firstName = ABRecordCopyValue(contactRef, kABPersonFirstNameProperty).takeRetainedValue() as? NSString {
+                        if let firstName = ABRecordCopyValue(contactRef, kABPersonFirstNameProperty)?.takeRetainedValue() as? NSString {
                             //We get the last name associated with the phone number
                             if let lastNameRef = ABRecordCopyValue(contactRef, kABPersonLastNameProperty) {
                                 let lastName = lastNameRef.takeRetainedValue() as! NSString
