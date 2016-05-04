@@ -9,7 +9,7 @@
         <!--Home Page View Controller-->
         <scene sceneID="pEc-8K-U8x">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="S8P-ti-UKe" customClass="T_HomePageViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="HomePageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="S8P-ti-UKe" customClass="T_HomePageViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Chu-Rl-fDC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-582" y="41"/>
