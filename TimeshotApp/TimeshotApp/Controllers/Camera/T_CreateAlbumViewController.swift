@@ -70,6 +70,10 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
         return true
     }
     
+    override func viewDidAppear(animated: Bool) {
+        UIView.setAnimationsEnabled(true)
+    }
+
     override func viewWillAppear(animated: Bool) {
         UIApplication.sharedApplication().statusBarHidden=true
     }
@@ -95,10 +99,14 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
             timePickerTextField.hidden = true
             buttonNext.hidden = true
             buttonBack.hidden = true
+            
+            textField.hidden = true
                         
             destinationVC.cover = T_CameraHelper.screenShot(self.view)
             destinationVC.duration = self.duration
             destinationVC.albumTitle = (self.textField.text)!
+            
+            textField.hidden = false
 
             timePicker.hidden = false
             timePickerTextField.hidden = false
@@ -132,7 +140,7 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     //------------------------------------------------------------------------------------------------
     //MARK: Init methods
     func initTimerPicker() {
-        self.timePickerTextField = UITextField(frame: CGRect(x: T_DesignHelper.screenSize.width/2 - 22, y: T_DesignHelper.screenSize.height - 20 - 44, width: 44, height: 44))
+        self.timePickerTextField = UITextField(frame: CGRect(x: T_DesignHelper.screenSize.width/2 - 22, y: 20, width: 44, height: 44))
         self.timePickerTextField.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         self.timePickerTextField.textColor = UIColor.whiteColor()
         self.timePickerTextField.layer.zPosition = 16
@@ -180,22 +188,24 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     }
     
     func initScrollView() {
-        let scrollViewWidth:CGFloat = self.scrollView.frame.width
-        let NewAlbumImage = UIImage(named: "NewAlbum")
-        scrollView.layer.zPosition = 14
-        let imageView1 = UIImageView(frame: CGRect(x: 40, y: 300, width: (NewAlbumImage?.size.width)!, height: (NewAlbumImage?.size.height)!))
-        imageView1.image = NewAlbumImage
-        let imageView2 = UIImageView(frame: CGRect(x: scrollViewWidth + 40, y: 400, width: (NewAlbumImage?.size.width)!, height: (NewAlbumImage?.size.height)!))
-        imageView2.image = NewAlbumImage
-        let imageView3 = UIImageView(frame: CGRect(x: 2*scrollViewWidth + 40, y: 500, width: (NewAlbumImage?.size.width)!, height: (NewAlbumImage?.size.height)!))
-        imageView3.image = NewAlbumImage
-        let imageView4 = UIImageView(frame: CGRect(x: 3*scrollViewWidth + 40, y: 450, width: (NewAlbumImage?.size.width)!, height: (NewAlbumImage?.size.height)!))
-        imageView4.image = NewAlbumImage
+        //scrollView.layer.zPosition = 14
         
-        self.scrollView.addSubview(imageView1)
-        self.scrollView.addSubview(imageView2)
-        self.scrollView.addSubview(imageView3)
-        self.scrollView.addSubview(imageView4)
+        let arraySlider = ["SliderParty","SliderVac","SliderAlbum","SliderPic"]
+        
+        for i in 0..<arraySlider.count {
+            // Need to create the view
+            var frame = scrollView.bounds
+            frame.origin.x = frame.size.width * CGFloat(i)
+            frame.origin.y = 0.0
+            
+            // Design of the view
+            let newPageView = UIImageView()
+            newPageView.image = UIImage(named: arraySlider[i])
+            newPageView.contentMode = .ScaleAspectFit
+            newPageView.frame = frame
+            
+            scrollView.addSubview(newPageView)
+        }
         
         self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.width * 4, self.scrollView.frame.height)
         self.scrollView.delegate = self
@@ -217,14 +227,14 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
             self.textField.updatePosition(notification)
             
             // If the user change from the TimePickerTextField Keyboard directly to the textField Keyboard, we have to replace the origin position of TimePickerTextField :
-            resetOriginTimePickerTextField()
+            //resetOriginTimePickerTextField()
         }
-        else if (self.timePickerTextField.isFirstResponder() == true)
-        {
-            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-                self.timePickerTextField.frame.origin.y = self.scrollView.frame.size.height - keyboardSize.height - self.timePickerTextField.frame.size.height - 20
-            }
-        }
+//        else if (self.timePickerTextField.isFirstResponder() == true)
+//        {
+//            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+//                self.timePickerTextField.frame.origin.y = self.scrollView.frame.size.height - keyboardSize.height - self.timePickerTextField.frame.size.height - 20
+//            }
+//        }
     }
     
     func keyboardTypeChanged(notification: NSNotification) {
@@ -239,10 +249,11 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
         {
             self.textField.frame.origin.y = self.textField.lastPosition.y
         }
-        else if (self.timePickerTextField.isFirstResponder() == true)
-        {
-            resetOriginTimePickerTextField()
-        }
+        // On ne veut rien changer normalement par rapport a notre durationTextField
+//        else if (self.timePickerTextField.isFirstResponder() == true)
+//        {
+//            resetOriginTimePickerTextField()
+//        }
         
         
         if (self.textField.text?.isEmpty == true) {
@@ -253,8 +264,9 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
         }
     }
     
-    func resetOriginTimePickerTextField() {
-        self.timePickerTextField.frame.origin.y = T_DesignHelper.screenSize.height - 20 - 44
-    }
+    // On veut le laisser en haut notre textField pour la duration
+//    func resetOriginTimePickerTextField() {
+//        self.timePickerTextField.frame.origin.y = T_DesignHelper.screenSize.height - 20 - 44
+//    }
     
 }

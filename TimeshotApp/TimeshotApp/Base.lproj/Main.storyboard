@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S8P-ti-UKe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S8P-ti-UKe">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -49,7 +48,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ELH-4z-bmx">
-                                                    <rect key="frame" x="555" y="12.5" width="25" height="25"/>
+                                                    <rect key="frame" x="555" y="13" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="lSp-cK-u8s"/>
                                                         <constraint firstAttribute="width" constant="25" id="qob-S4-0yf"/>
@@ -70,13 +69,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="ELH-4z-bmx" secondAttribute="trailing" constant="20" id="Z9z-zJ-xW1"/>
                                                 <constraint firstItem="mqY-Sq-bPr" firstAttribute="leading" secondItem="wCz-en-vza" secondAttribute="trailing" constant="10" id="bNN-QY-u39"/>
                                                 <constraint firstItem="wCz-en-vza" firstAttribute="centerY" secondItem="3bo-Gk-s3w" secondAttribute="centerY" id="jWs-64-0xV"/>
-                                                <constraint firstItem="mqY-Sq-bPr" firstAttribute="leading" secondItem="3bo-Gk-s3w" secondAttribute="centerX" constant="20" id="wiT-8a-pyh"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="wiT-8a-pyh"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="checkbox" destination="ELH-4z-bmx" id="nXh-Ou-u8V"/>
@@ -152,7 +145,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Moc-iY-mwf">
-                                <rect key="frame" x="20" y="536" width="44" height="44"/>
+                                <rect key="frame" x="15" y="15" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="Hew-Ri-iRV"/>
                                     <constraint firstAttribute="height" constant="44" id="VMf-Vx-Ec2"/>
@@ -164,12 +157,12 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOy-73-VDf">
-                                <rect key="frame" x="536" y="536" width="44" height="44"/>
+                                <rect key="frame" x="541" y="15" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="9vn-5W-UeJ"/>
                                     <constraint firstAttribute="width" constant="44" id="nI2-11-hfK"/>
                                 </constraints>
-                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="16" maxY="10"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="11" maxY="5"/>
                                 <state key="normal" image="Fleche"/>
                                 <connections>
                                     <action selector="actionNext:" destination="xLi-KZ-wFS" eventType="touchUpInside" id="5yj-Nr-dZA"/>
@@ -179,22 +172,22 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Vhl-us-YRJ" firstAttribute="bottom" secondItem="K6V-23-Z5Y" secondAttribute="top" id="9kg-nc-MPR"/>
+                            <constraint firstItem="K6V-23-Z5Y" firstAttribute="top" secondItem="NOy-73-VDf" secondAttribute="bottom" constant="15" id="BTj-EC-7KM"/>
+                            <constraint firstAttribute="trailing" secondItem="NOy-73-VDf" secondAttribute="trailing" constant="15" id="Bfz-AC-zkx"/>
                             <constraint firstAttribute="trailing" secondItem="Vhl-us-YRJ" secondAttribute="trailing" id="Mpn-jW-Hf3"/>
                             <constraint firstItem="Dot-2V-rU6" firstAttribute="bottom" secondItem="K6V-23-Z5Y" secondAttribute="top" id="N8K-7n-E5x"/>
-                            <constraint firstItem="Moc-iY-mwf" firstAttribute="leading" secondItem="sgt-jO-OYx" secondAttribute="leading" constant="20" id="PbT-kS-Gyi"/>
+                            <constraint firstItem="Moc-iY-mwf" firstAttribute="leading" secondItem="sgt-jO-OYx" secondAttribute="leading" constant="15" id="PbT-kS-Gyi"/>
                             <constraint firstItem="Dot-2V-rU6" firstAttribute="trailing" secondItem="Vhl-us-YRJ" secondAttribute="trailing" id="SST-7M-Rxp"/>
                             <constraint firstItem="Dot-2V-rU6" firstAttribute="top" secondItem="Vhl-us-YRJ" secondAttribute="top" id="Zb8-Ha-eiH"/>
-                            <constraint firstItem="K6V-23-Z5Y" firstAttribute="top" secondItem="NOy-73-VDf" secondAttribute="bottom" constant="20" id="dPd-uH-ete"/>
-                            <constraint firstAttribute="trailing" secondItem="NOy-73-VDf" secondAttribute="trailing" constant="20" id="dqO-lb-wWo"/>
-                            <constraint firstItem="K6V-23-Z5Y" firstAttribute="top" secondItem="Moc-iY-mwf" secondAttribute="bottom" constant="20" id="fef-DO-N1v"/>
-                            <constraint firstAttribute="trailing" secondItem="Moc-iY-mwf" secondAttribute="trailing" constant="20" id="flg-3z-mkj"/>
+                            <constraint firstItem="Moc-iY-mwf" firstAttribute="top" secondItem="sgt-jO-OYx" secondAttribute="top" constant="15" id="cO9-g9-ou9"/>
                             <constraint firstItem="Dot-2V-rU6" firstAttribute="leading" secondItem="Vhl-us-YRJ" secondAttribute="leading" id="hgx-SG-VKh"/>
                             <constraint firstItem="Vhl-us-YRJ" firstAttribute="leading" secondItem="sgt-jO-OYx" secondAttribute="leading" id="liG-1I-hW9"/>
                             <constraint firstItem="Vhl-us-YRJ" firstAttribute="top" secondItem="O5G-bf-dCg" secondAttribute="bottom" id="u87-rD-iK3"/>
+                            <constraint firstItem="NOy-73-VDf" firstAttribute="top" secondItem="O5G-bf-dCg" secondAttribute="bottom" constant="15" id="zek-Mq-NIW"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="flg-3z-mkj"/>
+                                <exclude reference="BTj-EC-7KM"/>
                             </mask>
                         </variation>
                     </view>
@@ -241,21 +234,29 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sC6-0S-8KZ">
-                                        <rect key="frame" x="551" y="274" width="39" height="44"/>
-                                        <state key="normal" image="CameraFlash"/>
+                                        <rect key="frame" x="546" y="258" width="49" height="43"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="49" id="AoO-Ta-YxN"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" image="CameraNoFlash"/>
                                         <connections>
                                             <action selector="switchFlashStatus:" destination="scp-YI-GI3" eventType="touchUpInside" id="N5X-HV-eCk"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eON-zA-s3Z">
-                                        <rect key="frame" x="551" y="318" width="39" height="44"/>
+                                        <rect key="frame" x="546" y="301" width="49" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="49" id="4kV-gN-4mL"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" image="CameraReverse"/>
                                         <connections>
                                             <action selector="switchCamera:" destination="scp-YI-GI3" eventType="touchUpInside" id="crI-Bc-uTr"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGm-4P-8H2">
-                                        <rect key="frame" x="525" y="524" width="55" height="55"/>
+                                        <rect key="frame" x="530" y="533" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="MRl-LR-LQP"/>
                                             <constraint firstAttribute="width" constant="55" id="Stl-zh-RZJ"/>
@@ -267,7 +268,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3H-bo-m5J">
-                                        <rect key="frame" x="20" y="524" width="55" height="55"/>
+                                        <rect key="frame" x="15" y="533" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="pk3-2u-Aqd"/>
                                             <constraint firstAttribute="width" constant="55" id="ppS-fr-qxM"/>
@@ -288,15 +289,15 @@
                                 <constraints>
                                     <constraint firstItem="eON-zA-s3Z" firstAttribute="top" secondItem="aAZ-uj-fBF" secondAttribute="top" constant="30" id="4wu-bl-D2r"/>
                                     <constraint firstAttribute="bottom" secondItem="CJx-zu-Kjj" secondAttribute="bottom" id="5Fk-63-uqr"/>
-                                    <constraint firstAttribute="trailing" secondItem="AGm-4P-8H2" secondAttribute="trailing" constant="20" id="7SZ-ei-zbQ"/>
-                                    <constraint firstItem="AGm-4P-8H2" firstAttribute="centerY" secondItem="CJx-zu-Kjj" secondAttribute="centerY" constant="20" id="7hh-JP-ONJ"/>
-                                    <constraint firstItem="d3H-bo-m5J" firstAttribute="centerY" secondItem="CJx-zu-Kjj" secondAttribute="centerY" constant="20" id="JrG-of-eX0"/>
-                                    <constraint firstItem="d3H-bo-m5J" firstAttribute="leading" secondItem="aAZ-uj-fBF" secondAttribute="leading" constant="20" id="KvD-oh-TL0"/>
-                                    <constraint firstAttribute="trailing" secondItem="eON-zA-s3Z" secondAttribute="trailing" constant="10" id="VCh-WX-h6D"/>
-                                    <constraint firstItem="eON-zA-s3Z" firstAttribute="centerY" secondItem="aAZ-uj-fBF" secondAttribute="centerY" constant="40" id="aca-Zb-mtY"/>
+                                    <constraint firstAttribute="trailing" secondItem="AGm-4P-8H2" secondAttribute="trailing" constant="15" id="7SZ-ei-zbQ"/>
+                                    <constraint firstItem="AGm-4P-8H2" firstAttribute="centerY" secondItem="CJx-zu-Kjj" secondAttribute="centerY" constant="30" id="7hh-JP-ONJ"/>
+                                    <constraint firstItem="d3H-bo-m5J" firstAttribute="centerY" secondItem="CJx-zu-Kjj" secondAttribute="centerY" constant="30" id="JrG-of-eX0"/>
+                                    <constraint firstItem="d3H-bo-m5J" firstAttribute="leading" secondItem="aAZ-uj-fBF" secondAttribute="leading" constant="15" id="KvD-oh-TL0"/>
+                                    <constraint firstAttribute="trailing" secondItem="eON-zA-s3Z" secondAttribute="trailing" constant="5" id="VCh-WX-h6D"/>
+                                    <constraint firstItem="eON-zA-s3Z" firstAttribute="centerY" secondItem="aAZ-uj-fBF" secondAttribute="centerY" constant="23" id="aca-Zb-mtY"/>
                                     <constraint firstItem="CJx-zu-Kjj" firstAttribute="centerX" secondItem="aAZ-uj-fBF" secondAttribute="centerX" id="pVU-DH-5JM"/>
-                                    <constraint firstAttribute="trailing" secondItem="sC6-0S-8KZ" secondAttribute="trailing" constant="10" id="qTh-yC-1Qf"/>
-                                    <constraint firstItem="sC6-0S-8KZ" firstAttribute="centerY" secondItem="aAZ-uj-fBF" secondAttribute="centerY" constant="-4" id="xhD-Cf-vzm"/>
+                                    <constraint firstAttribute="trailing" secondItem="sC6-0S-8KZ" secondAttribute="trailing" constant="5" id="qTh-yC-1Qf"/>
+                                    <constraint firstItem="sC6-0S-8KZ" firstAttribute="centerY" secondItem="aAZ-uj-fBF" secondAttribute="centerY" constant="-20" id="xhD-Cf-vzm"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -344,19 +345,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NP4-wo-Ru8">
-                                <rect key="frame" x="536" y="536" width="44" height="44"/>
+                                <rect key="frame" x="541" y="541" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="Gji-bd-IuX"/>
                                     <constraint firstAttribute="height" constant="44" id="vHX-7T-s9k"/>
                                 </constraints>
-                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="16" maxY="10"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="11" maxY="5"/>
                                 <state key="normal" image="Fleche"/>
                                 <connections>
                                     <action selector="actionNext:" destination="fWL-dc-uT3" eventType="touchUpInside" id="n8T-vi-TTS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eU1-LM-1dd">
-                                <rect key="frame" x="20" y="536" width="44" height="44"/>
+                                <rect key="frame" x="15" y="541" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="8yO-WL-K8F"/>
                                     <constraint firstAttribute="width" constant="44" id="cdw-sv-acW"/>
@@ -370,11 +371,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vPs-rN-LA8" firstAttribute="top" secondItem="eU1-LM-1dd" secondAttribute="bottom" constant="20" id="48T-xP-8RC"/>
-                            <constraint firstItem="eU1-LM-1dd" firstAttribute="leading" secondItem="p01-PA-s3J" secondAttribute="leading" constant="20" id="8Ky-8H-XjC"/>
-                            <constraint firstItem="vPs-rN-LA8" firstAttribute="top" secondItem="NP4-wo-Ru8" secondAttribute="bottom" constant="20" id="9eu-sz-NU0"/>
+                            <constraint firstItem="vPs-rN-LA8" firstAttribute="top" secondItem="eU1-LM-1dd" secondAttribute="bottom" constant="15" id="48T-xP-8RC"/>
+                            <constraint firstItem="eU1-LM-1dd" firstAttribute="leading" secondItem="p01-PA-s3J" secondAttribute="leading" constant="15" id="8Ky-8H-XjC"/>
+                            <constraint firstItem="vPs-rN-LA8" firstAttribute="top" secondItem="NP4-wo-Ru8" secondAttribute="bottom" constant="15" id="9eu-sz-NU0"/>
                             <constraint firstItem="eU1-LM-1dd" firstAttribute="top" secondItem="nJk-Pw-jq2" secondAttribute="bottom" constant="20" id="fqU-Gh-q5E"/>
-                            <constraint firstAttribute="trailing" secondItem="NP4-wo-Ru8" secondAttribute="trailing" constant="20" id="xZI-k4-It7"/>
+                            <constraint firstAttribute="trailing" secondItem="NP4-wo-Ru8" secondAttribute="trailing" constant="15" id="xZI-k4-It7"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -415,7 +416,7 @@
     </scenes>
     <resources>
         <image name="Albums" width="60" height="44"/>
-        <image name="CameraFlash" width="39" height="44"/>
+        <image name="CameraNoFlash" width="39" height="43"/>
         <image name="CameraReverse" width="39" height="44"/>
         <image name="Cancel" width="44" height="44"/>
         <image name="Fleche" width="42" height="49"/>

@@ -9,6 +9,7 @@
 import UIKit
 import CameraManager
 import Parse
+import MBProgressHUD
 
 class T_CameraViewController: UIViewController {
     
@@ -18,6 +19,8 @@ class T_CameraViewController: UIViewController {
     //MARK: Properties
     let cameraManager = CameraManager()
     var image:UIImage?
+    
+    var progressHUD:MBProgressHUD?
     
     var isLiveAlbumExisting:Bool! = nil
     var albumTimer:NSTimer?
@@ -75,11 +78,13 @@ class T_CameraViewController: UIViewController {
         
         if (cameraManager.hasFlash && !isFlashActivated)
         {
+            buttonFlash.setImage(UIImage(named: "CameraNoFlash"), forState: .Normal)
             cameraManager.changeFlashMode()
             isFlashActivated = true
         }
         else if (self.isFlashActivated == true)
         {
+            buttonFlash.setImage(UIImage(named: "CameraFlash"), forState: .Normal)
             cameraManager.changeFlashMode()
             isFlashActivated = false
         }
@@ -101,6 +106,10 @@ class T_CameraViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         UIApplication.sharedApplication().statusBarHidden=true
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        UIView.setAnimationsEnabled(true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -127,7 +136,7 @@ class T_CameraViewController: UIViewController {
         cameraManager.addPreviewLayerToView(self.cameraView)
         cameraManager.cameraDevice = .Back
         cameraManager.cameraOutputMode = .StillImage
-        cameraManager.cameraOutputQuality = .High
+        cameraManager.cameraOutputQuality = .Medium
         cameraManager.flashMode = .Off
         cameraManager.writeFilesToPhoneLibrary = false
         cameraManager.showAccessPermissionPopupAutomatically = true
@@ -140,15 +149,13 @@ class T_CameraViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if (self.isLiveAlbumExisting == false)
-        {
+        if (self.isLiveAlbumExisting == false) {
             let destinationVC = segue.destinationViewController as! T_CreateAlbumViewController
             destinationVC.image = self.image
             // To perform symetry / rotation if needed when computing the image for filters
             destinationVC.isFrontCamera = !self.isBackCameraActivated
         }
-        else
-        {
+        else {
             let destinationVC = segue.destinationViewController as! T_EditCameraImageViewController
             destinationVC.image = self.image
             // To perform symetry / rotation if needed when computing the image for filters
@@ -187,7 +194,7 @@ class T_CameraViewController: UIViewController {
     func initLabelText() {
         self.albumTitle = UILabel(frame: CGRect(x: T_DesignHelper.screenSize.width/2, y: 16, width: 0, height: 24))
         self.albumImage = UIImageView(frame: CGRect(x: 0, y: 18, width: 24, height: 20))
-        self.albumImage.image = UIImage(named: "AlbumName")
+        self.albumImage.image = UIImage(named: "Group")
         
         self.albumTitle.layer.zPosition = 1
         self.albumTitle.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.7)
@@ -230,4 +237,23 @@ class T_CameraViewController: UIViewController {
         }
     }
     
+    func freezeUI(text: String) {
+        
+        progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        progressHUD?.labelText = text
+        progressHUD?.mode = .Indeterminate
+        
+        buttonTakePicture.hidden = true
+        buttonReturnCamera.hidden = true
+        buttonFlash.hidden = true
+    }
+    
+    func unfreezeUI() {
+        progressHUD?.hide(true)
+        
+        buttonTakePicture.hidden = false
+        buttonReturnCamera.hidden = false
+        buttonFlash.hidden = false
+
+    }
 }

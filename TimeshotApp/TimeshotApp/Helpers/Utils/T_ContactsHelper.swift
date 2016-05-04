@@ -14,6 +14,11 @@ import UIKit
 class T_ContactsHelper {
     static let addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
 
+    /*
+     * Display the request to access the address book
+     * Params:
+     * - @viewController : the view controller where will be displayed the request
+     */
     static func promptForAddressBookRequestAccess(viewController: UIViewController) {
         var err: Unmanaged<CFError>? = nil
         
@@ -23,17 +28,26 @@ class T_ContactsHelper {
                 if !granted {
                     self.displayCantAddContactAlert(viewController)
                 } else {
+                    // User has accepted access to his address book
                     viewController.performSegueWithIdentifier("showContactSearch", sender: nil)
                 }
             }
         }
     }
     
+    /*
+     * Open iphone settings to Timeshot page to change right
+     */
     static func openSettings() {
         let url = NSURL(string: UIApplicationOpenSettingsURLString)
         UIApplication.sharedApplication().openURL(url!)
     }
     
+    /*
+     * Display alert box to prevent user that the app doesn't have access to his contact
+     * Params:
+     * - @viewController : the view controller where will be displayed the alert
+     */
     static func displayCantAddContactAlert(viewController: UIViewController) {
         let cantAddContactAlert = UIAlertController(title: "Cannot Add Contact",
             message: "You must give the app permission to add the contact first.",
@@ -47,6 +61,12 @@ class T_ContactsHelper {
         viewController.presentViewController(cantAddContactAlert, animated: true, completion: nil)
     }
     
+    /*
+     * Retrieve all the contacts of the current user. We only keep the french number beginning by +33 or by 0
+     * and we format the string to have format XX XX XX XX XX
+     * Returns:
+     * - [String:String] A map associating a user (full name) with the mobile phone
+     */
     static func getAllContacts() -> [String:String] {
         var contactsWithNumbers = [String:String]()
         let contactsRef: NSArray = ABAddressBookCopyArrayOfAllPeople(T_ContactsHelper.addressBookRef).takeRetainedValue()

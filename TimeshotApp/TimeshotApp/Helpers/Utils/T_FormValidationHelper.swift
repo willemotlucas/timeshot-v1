@@ -28,6 +28,7 @@ class T_FormValidationHelper {
     static let PasswordDontMatchError = "Your confirmation password does not match with your new password"
     static let PasswordMinCharacterError = "Your password must be 8 characters at least"
     static let InvalidCurrentPasswordError = "Your current password is invalid"
+    static let NetworkError = "You are not connected to the internet 😕. Please try again later. "
 
     
     static func isValidEmail(email: String) -> Bool {

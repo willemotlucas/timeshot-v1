@@ -27,17 +27,22 @@ class T_EmailEditionViewController: UIViewController {
     }
     
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
-        if self.emailAddressTextField.text!.isEmpty {
+        if Reachability.isConnectedToNetwork() {
+            if self.emailAddressTextField.text!.isEmpty {
+                self.helpTextLabel.textColor = UIColor.redColor()
+                self.helpTextLabel.text = T_FormValidationHelper.EmptyEmailAddressError
+            }
+            else if !T_FormValidationHelper.isValidEmail(self.emailAddressTextField.text!) {
+                self.helpTextLabel.textColor = UIColor.redColor()
+                self.helpTextLabel.text = T_FormValidationHelper.InvalidEmailAddressError
+            }
+            else {
+                T_ParseUserHelper.editEmail(self.emailAddressTextField.text!)
+                navigationController?.popViewControllerAnimated(true)
+            }
+        } else {
+            self.helpTextLabel.text = T_FormValidationHelper.NetworkError
             self.helpTextLabel.textColor = UIColor.redColor()
-            self.helpTextLabel.text = T_FormValidationHelper.EmptyEmailAddressError
-        }
-        else if !T_FormValidationHelper.isValidEmail(self.emailAddressTextField.text!) {
-            self.helpTextLabel.textColor = UIColor.redColor()
-            self.helpTextLabel.text = T_FormValidationHelper.InvalidEmailAddressError
-        }
-        else {
-            T_ParseUserHelper.editEmail(self.emailAddressTextField.text!)
-            navigationController?.popViewControllerAnimated(true)
         }
     }
 }

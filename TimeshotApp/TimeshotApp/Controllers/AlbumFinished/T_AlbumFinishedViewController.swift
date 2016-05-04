@@ -15,12 +15,25 @@ class T_AlbumFinishedViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var segmentedView: UIView!
     
+    var albumPhotos : T_Album?
+    
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         T_DesignHelper.colorNavBar((self.navigationController?.navigationBar)!)
         T_DesignHelper.colorUIView(segmentedView)
         // Do any additional setup after loading the view.
+        
+        // Disable pour le moment le swipe back ! 
+        // Attendre la V1 pour pouvoir revoir tout ca ;)
+        if self.navigationController!.respondsToSelector(Selector("interactivePopGestureRecognizer")) {
+            self.navigationController!.interactivePopGestureRecognizer!.enabled = false
+        }
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        title = albumPhotos?.title
     }
     
     override func didReceiveMemoryWarning() {
@@ -33,20 +46,30 @@ class T_AlbumFinishedViewController: UIViewController {
         if segmentedControl.selectedSegmentIndex == 0 {
             photosContainerView.hidden = false
             friendsContainerView.hidden = true
+            
         } else {
             photosContainerView.hidden = true
             friendsContainerView.hidden = false
         }
     }
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        if segue.identifier == "attendeesContainer" {
+            // Ici on va devoir mettre les attendees mais pour le moment on a des buggs apparement .. 
+            // Possible que ce soit lors de la creation d'album .. a verifier !
+            let friendsAlbumVC = segue.destinationViewController as! T_FriendsViewController
+            friendsAlbumVC.attendees = albumPhotos?.attendees
+        } else if segue.identifier == "photosContainer" {
+            let finishAlbumVC =  segue.destinationViewController as! T_PhotosCollectionViewController
+            finishAlbumVC.albumPhotos = albumPhotos
+        }
      }
-     */
+ 
 
 }

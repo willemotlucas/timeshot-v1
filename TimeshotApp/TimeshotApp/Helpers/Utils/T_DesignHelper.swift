@@ -92,7 +92,6 @@ class T_DesignHelper {
         }
         return UIImage(CGImage: im.CGImage!, scale: im.scale, orientation: newOrient)
     }
-    
     static func addSubBorder(field : UITextField){
         let border = CALayer()
         border.borderColor = UIColor.whiteColor().CGColor
@@ -120,6 +119,11 @@ class T_DesignHelper {
         button.layer.borderWidth = DEFAULT_BORDER_SIZE_BUTTON
         button.layer.cornerRadius = CGFloat(button.frame.size.height/2)
     }
-
+    
+    static func makeRoundedImageView(imageView: UIImageView) {
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2;
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .ScaleAspectFill
+    }
     
 }

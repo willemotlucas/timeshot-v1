@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import AddressBook
 import AddressBookUI
+import DZNEmptyDataSet
 
 enum ContentType {
     case Friends, Notifications
@@ -23,16 +24,22 @@ class T_ProfileViewController: UIViewController {
     @IBOutlet weak var profileView: UIView!
     @IBOutlet weak var addFriendsButtonView: UIView!
     
+    @IBOutlet weak var profileImageView: UIImageView!
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var addFriendsButton: UIButton!
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
+    
+    @IBOutlet weak var usernameLabel: UILabel!
     
     // MARK : Properties
     var friends: [T_User] = []
     var pendingRequests: [T_FriendRequest] = []
     var sectionTitles = ["Pending requests", "Friends"]
-    var contentToDisplay : ContentType = .Friends
-    let contacts = T_ContactsHelper.getAllContacts()
+    var contentToDisplay : ContentType = .Friends //Useful for segmented control
+    let contacts = T_ContactsHelper.getAllContacts() //All the contacts of the current user
     var currentUser: T_User?
+    var photoTakingHelper: T_PhotoTakingHelper?
 
     // MARK: Overrided functions
     override func didReceiveMemoryWarning() {
@@ -40,39 +47,57 @@ class T_ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let userLogged = PFUser.currentUser() {
+            self.currentUser = userLogged as? T_User
+            self.title = self.currentUser!.firstName! + " " + self.currentUser!.lastName!
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableHeaderView = profileView
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
         
-        if let userLogged = PFUser.currentUser() {
-            self.currentUser = userLogged as? T_User
-            self.title = self.currentUser!.firstName! + " " + self.currentUser!.lastName!
-        }
-        
+        // Set design with colors and gradient
         T_DesignHelper.colorUIView(profileView)
         T_DesignHelper.colorUIView(addFriendsButtonView)
         T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
         
+        //Set username in label
+        self.usernameLabel.text = "@\(T_ParseUserHelper.getCurrentUser()!.username!)"
+        
         //Load the friends
-        T_FriendRequestParseHelper.getAcceptedFriendRequest { (result: [PFObject]?, error:NSError?) in
-            let acceptedRequests = result as? [T_FriendRequest] ?? []
-            self.friends = T_FriendRequestParseHelper.getFriendsFromAcceptedRequests(acceptedRequests)
+        T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
+            self.friends = friends
             self.tableView.reloadData()
-        }
+        })
         
         //Load the pending requests
-        T_FriendRequestParseHelper.getPendingFriendRequest { (result: [PFObject]?, error:NSError?) in
+        T_FriendRequestParseHelper.getPendingFriendRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
             self.pendingRequests = result as? [T_FriendRequest] ?? []
             self.tableView.reloadData()
         }
+        
+        //Load profile picture
+        T_ParseUserHelper.getCurrentUser()?.downloadImage()
+        T_ParseUserHelper.getCurrentUser()?.image.bindTo(self.profileImageView.bnd_image)
+        
+        //Set profile picture design
+        T_DesignHelper.makeRoundedImageView(self.profileImageView)
+        self.profileImageView.layer.borderWidth = 2.0
+        self.profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
     }
     
     // MARK: IBAction
     
     @IBAction func segmentedControlIndexChanged(sender: UISegmentedControl) {
-        
+        // Change the content of table view according to the segmented control
         switch segmentedControl.selectedSegmentIndex {
         case 0: contentToDisplay = .Friends
         case 1: contentToDisplay = .Notifications
@@ -97,13 +122,14 @@ class T_ProfileViewController: UIViewController {
             
             switch authorizationStatus {
             case .Denied, .Restricted:
+                // Display alert to warn user that the app doesn't have access to his contact
                 T_ContactsHelper.displayCantAddContactAlert(self)
             case .Authorized:
-                //let personViewController = ABPeoplePickerNavigationController()
-                //self.presentViewController(personViewController, animated: true, completion: nil)
+                // Show the contact list
                 self.performSegueWithIdentifier("showContactSearch", sender: nil)
                 
             case .NotDetermined:
+                // Show the request access to address book
                 T_ContactsHelper.promptForAddressBookRequestAccess(self)
             }
         }
@@ -111,22 +137,44 @@ class T_ProfileViewController: UIViewController {
         
         let usernameAction = UIAlertAction(title: "Add by Username", style: .Default) {
             (action) in
+            // Show the username search view
             self.performSegueWithIdentifier("showUserSearch", sender: nil)
         }
         alertController.addAction(usernameAction)
         
         self.presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    @IBAction func changeProfilPictureButtonTapped(sender: UIButton) {
+        photoTakingHelper = T_PhotoTakingHelper(viewController: self){
+            (image: UIImage?) in
+            T_ParseUserHelper.getCurrentUser()?.image.value = image
+            T_ParseUserHelper.getCurrentUser()?.uploadImage()
+            self.profileImageView.image = image
+        }
+    }
+    
+    @IBAction func cameraButtonTapped(sender: UIBarButtonItem) {
+        T_HomePageViewController.showCameraViewControllerFromProfile()
+    }
 }
+
+// MARK: extension
 
 extension T_ProfileViewController: UITableViewDelegate {
 
 }
 
 extension T_ProfileViewController: UITableViewDataSource {
+    /*
+    * According to the content to display, the number of section changes.
+    * It can be between 0 & 2 for friends (nothing, pending request or friend, pending request & friend)
+    * There is only one section for notifications
+    */
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         switch contentToDisplay {
         case .Friends:
+            //If there are pending requests & friends to display, then there are 2 sections
             if self.pendingRequests.count > 0 && self.friends.count > 0 {
                 return sectionTitles.count
             } else {
@@ -137,16 +185,25 @@ extension T_ProfileViewController: UITableViewDataSource {
         }
     }
     
+    /*
+    * We get the title from the array sectionTitles. There are 2 possibilities : "Pending requests" or "Friends"
+    * We display these titles according to pending requests and friends
+    * For notifications tabs, we display no title
+    */
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch contentToDisplay {
         case .Friends:
+            // There are pending requests & friends, we display both titles
             if self.pendingRequests.count > 0 && self.friends.count > 0 {
                 return sectionTitles[section]
-            } else if self.pendingRequests.count > 0 && self.friends.count == 0 {
+            } // There is only pending request
+            else if self.pendingRequests.count > 0 && self.friends.count == 0 {
                 return sectionTitles[0]
-            } else if self.pendingRequests.count == 0 && self.friends.count > 0 {
+            } //There is only friends
+            else if self.pendingRequests.count == 0 && self.friends.count > 0 {
                 return sectionTitles[1]
-            } else {
+            } //There is nothing to display
+            else {
                 return ""
             }
         case .Notifications:
@@ -157,7 +214,9 @@ extension T_ProfileViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch contentToDisplay {
         case .Friends:
+            // There are pending request and friends to display
             if self.pendingRequests.count > 0 && self.friends.count > 0 {
+                // The current cell to display is in first section, so it is a pending request
                 if indexPath.section == 0 {
                     //Pending request cell
                     return createFriendRequestCell(indexPath)
@@ -179,6 +238,11 @@ extension T_ProfileViewController: UITableViewDataSource {
         }
     }
     
+    /*
+     * Creates a friend request cell and fill in with the full name of the user who send the request
+     * Params:
+     * - @indexPath : indexPath of the row to retrieve the user
+     */
     func createFriendRequestCell(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("T_FriendRequestTableViewCell", forIndexPath: indexPath) as! T_FriendRequestTableViewCell
         let user = self.pendingRequests[indexPath.row].fromUser! as! T_User
@@ -188,25 +252,35 @@ extension T_ProfileViewController: UITableViewDataSource {
         return cell
     }
     
+    /*
+     * Creates a friend cell and fill in with the full name of the user
+     * Params:
+     * - @indexPath : indexPath of the row to retrieve the user
+     */
     func createFriendCell(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("T_FriendTableViewCell", forIndexPath: indexPath) as! T_FriendTableViewCell
         let user = self.friends[indexPath.row]
-        cell.friendNameLabel.text = user.firstName! + " " + user.lastName!
+        user.downloadImage()
+        cell.friend = user
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch contentToDisplay {
         case .Friends:
+            // There are pending request & friends to display
             if self.pendingRequests.count > 0 && self.friends.count > 0 {
+                // According to the section, we return the number of elements in pending requests or friends
                 if section == 0 {
                     return self.pendingRequests.count
                 } else {
                     return self.friends.count
                 }
-            } else if self.pendingRequests.count > 0 && self.friends.count == 0 {
+            } // There is only pending request to display
+            else if self.pendingRequests.count > 0 && self.friends.count == 0 {
                 return self.pendingRequests.count
-            } else if self.pendingRequests.count == 0 && self.friends.count > 0 {
+            } // There is only friends to display
+            else if self.pendingRequests.count == 0 && self.friends.count > 0 {
                 return self.friends.count
             } else {
                 return 0
@@ -218,6 +292,9 @@ extension T_ProfileViewController: UITableViewDataSource {
 }
 
 extension T_ProfileViewController: UIScrollViewDelegate {
+    /*
+     * Fixes the segmented control to the top of the view when scrolling the profile
+     */
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y + headerView.bounds.height
         
@@ -232,7 +309,46 @@ extension T_ProfileViewController: UIScrollViewDelegate {
     }
 }
 
+extension T_ProfileViewController: DZNEmptyDataSetSource {
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        if contentToDisplay == .Friends {
+            let str = "You have no friends yet 😟"
+            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+            return NSAttributedString(string: str, attributes: attrs)
+        } else {
+            let str = "You have no notifications..."
+            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+            return NSAttributedString(string: str, attributes: attrs)
+        }
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        if contentToDisplay == .Friends {
+            let str = "Invite some friends, it's more fun!"
+            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+            return NSAttributedString(string: str, attributes: attrs)
+        } else {
+            let str = "Create an album and share your photos!"
+            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+            return NSAttributedString(string: str, attributes: attrs)
+        }
+    }
+}
+
+extension T_ProfileViewController: DZNEmptyDataSetDelegate {
+    
+}
+
+/*
+ * Custom protocol defined in T_FriendRequestTableViewCell allowing us to communicate with view controller
+ * when clicking on a button of specific cell
+ */
 extension T_ProfileViewController: TableViewUpdater {
+    /*
+     * Update the pending request section after accepting a pending request
+     * Params:
+     * - @pendingRequest : the pending request to remove of the section and to add in friends section
+     */
     func updatePendingRequestsAfterAccepting(pendingRequest: T_FriendRequest) {
         self.pendingRequests.removeAtIndex(self.pendingRequests.indexOf(pendingRequest)!)
         let friend = pendingRequest.fromUser as! T_User
@@ -240,6 +356,11 @@ extension T_ProfileViewController: TableViewUpdater {
         tableView.reloadData()
     }
     
+    /*
+     * Update the pending request section after rejecting a pending request
+     * Params:
+     * - @pendingRequest : the pending request to remove of the section
+     */
     func updatePendingRequestsAfterRejecting(pendingRequest: T_FriendRequest) {
         self.pendingRequests.removeAtIndex(self.pendingRequests.indexOf(pendingRequest)!)
         tableView.reloadData()
