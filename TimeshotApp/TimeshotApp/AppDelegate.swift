@@ -9,11 +9,13 @@
 
 import UIKit
 import Parse
+import ParseFacebookUtilsV4
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    //var parseLogin : ParseLoginHelper?
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -26,12 +28,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Set up the Parse SDK
         Parse.setApplicationId("uAhZdofpZFzSCMa83PbQwFx2ls3qmWbvr0BADedv", clientKey: "1PPkLR8lj8bqH9ppX6Y1dMXWKewFhiaxs6oEjrr3")
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
         PFUser.enableRevocableSessionInBackground()
         
-        T_ParseUserHelper.login("paul", password: "paul")
+        //T_ParseUserHelper.login("paul", password: "paul")
+        
+        let startViewController: UIViewController;
+        
+        if let _ = PFUser.currentUser() {
+            //TODO Traiter le cas ou l'utilisateur s'est fait kick de la DB : TimeshotApp[5519:438979] [Error]: invalid session token (Code: 209, Version: 1.13.0)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            startViewController = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController")
+        } else {
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            startViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! UINavigationController
+        }
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window?.rootViewController = startViewController;
+        self.window?.makeKeyAndVisible()
         
         return true
+    }
+    
+    func application(application: UIApplication,
+                     openURL url: NSURL,
+                             sourceApplication: String?,
+                             annotation: AnyObject) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application,
+                                                                     openURL: url,
+                                                                     sourceApplication: sourceApplication,
+                                                                     annotation: annotation)
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -49,6 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
+        FBSDKAppEvents.activateApp()
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
     

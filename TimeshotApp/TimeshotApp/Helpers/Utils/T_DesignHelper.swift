@@ -16,6 +16,7 @@ class T_DesignHelper {
     static let screenSize = CGSize(width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
     static let startPoint:CGFloat = 0.2
     static let endPoint:CGFloat = 0.8
+    private static let DEFAULT_BORDER_SIZE_BUTTON = CGFloat(0.5)
 
     // MARK: Methods
     static func colorNavBar(navbar: UINavigationBar){
@@ -91,5 +92,34 @@ class T_DesignHelper {
         }
         return UIImage(CGImage: im.CGImage!, scale: im.scale, orientation: newOrient)
     }
+    
+    static func addSubBorder(field : UITextField){
+        let border = CALayer()
+        border.borderColor = UIColor.whiteColor().CGColor
+        border.frame = CGRect(x: 0, y: field.frame.size.height - DEFAULT_BORDER_SIZE_BUTTON, width:  field.frame.size.width, height: field.frame.size.height)
+        
+        border.borderWidth = DEFAULT_BORDER_SIZE_BUTTON
+        field.layer.addSublayer(border)
+        field.layer.masksToBounds = true
+        
+    }
+    
+    static func colorPlaceHolder(field : UITextField) {
+        if let placeholder = field.placeholder {
+            field.attributedPlaceholder  = NSAttributedString(string: placeholder,
+                                                              attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        }
+        
+    }
+    
+    static func colorBorderButton(button: UIButton){
+        button.layer.borderColor = UIColor.whiteColor().CGColor
+    }
+    
+    static func addRoundBorder(button : UIButton) {
+        button.layer.borderWidth = DEFAULT_BORDER_SIZE_BUTTON
+        button.layer.cornerRadius = CGFloat(button.frame.size.height/2)
+    }
+
     
 }
