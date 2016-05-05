@@ -16,7 +16,7 @@ class T_PhotoCollectionViewCell: UICollectionViewCell {
         didSet {
             if let post = post {
                 post.image.bindTo(imageView.bnd_image)
-            }
+            } 
         }
     }
 }

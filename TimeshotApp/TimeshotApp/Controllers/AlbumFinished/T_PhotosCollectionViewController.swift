@@ -10,6 +10,7 @@ import UIKit
 import DZNEmptyDataSet
 import Parse
 import AFDateHelper
+import SwiftGifOrigin
 
 class T_PhotosCollectionViewController: UIViewController {
     
@@ -19,6 +20,9 @@ class T_PhotosCollectionViewController: UIViewController {
     var albumPhotos : T_Album?
     var posts:[T_Post] = []
     var storyIndex = 0
+    
+    // For the empty view
+    var load = false
 
     // Used for the slider
     // numberSectionsPhoto.count -> number of sections in our gallery
@@ -33,61 +37,73 @@ class T_PhotosCollectionViewController: UIViewController {
         collectionView.emptyDataSetDelegate = self
         collectionView.emptyDataSetSource = self
         
-        // On veut un tableau de la taille du nombre d'heure que l'on a !
-        // Car chaque heure est une section
-        if let album = albumPhotos {
-            for _ in 0..<album.duration {
-                photoNumberInSections.append(0)
-            }
-        }
-        
         T_ParsePostHelper.postsForCurrentAlbum(albumPhotos!) {(result: [PFObject]?, error: NSError?) -> Void in
-            self.posts = result as? [T_Post] ?? []
+            self.load = true
             
-            // Initialisation du nombre de photos
-            // et de la section en cours
-            var numberOfPictInSection = 0
-            var section = 0
-            
-            // Pour chaque post on doit alors savoir dans quelle section il est mais aussi 
-            // charger son image
-            for post in self.posts {
-                let date = post.createdAt!
+            if let error = error {
+                print("\n\n\n")
+                print(error)
+                print("\n\n\n")
+                self.collectionView.reloadEmptyDataSet()
                 
-                // On regarde maintenant la diff entre la date de la photo et la date de la derniere photo du tableau
-                // pour savoir si l'on commence une nouvelle section ou pas
-                if let indexPost = self.posts.indexOf(post) where indexPost == 0 {
-                    // On est a la premiere photo de notre album ! Donc on initialise
-                    numberOfPictInSection += 1
-                    section = 0
-                    
-                    // Si on a qu'une seule photo dans l'album on le stocke direct dans la section
-                    if indexPost ==  self.posts.count - 1 {
-                        self.photoNumberInSections[section] = numberOfPictInSection
+            } else {
+                // On veut un tableau de la taille du nombre d'heure que l'on a !
+                // Car chaque heure est une section
+                if let album = self.albumPhotos {
+                    for _ in 0..<album.duration {
+                        self.photoNumberInSections.append(0)
                     }
-                } else if let indexPost = self.posts.indexOf(post) where indexPost == (self.posts.count-1) {
-                    // On est a la derniere photo de notre album donc on ajoute et on arrete
-                    numberOfPictInSection += 1
-                    self.photoNumberInSections[section] = numberOfPictInSection
-                } else if let indexPost = self.posts.indexOf(post) where indexPost > 0 {
-                    // Si on est ni a la premiere ni a la derniere on regarde si elle correspond a la section actuelle
-                    // ou si elle correspond a une autre section car prise à une nouvelle heure
-                    let diff = date.hour() - self.posts[indexPost-1].createdAt!.hour()
-                    if diff != 0 {
-                        self.photoNumberInSections[section] = numberOfPictInSection
-                        numberOfPictInSection = 1
-                        section += 1
-                    } else {
-                        numberOfPictInSection += 1
-                    }
-                } else  {
-                    print("il y a une erreur ou cas non pris en compte")
                 }
+                
+                self.posts = result as? [T_Post] ?? []
+                self.load = true
+                self.collectionView.reloadEmptyDataSet()
+                
+                // Initialisation du nombre de photos
+                // et de la section en cours
+                var numberOfPictInSection = 0
+                var section = 0
+                
+                // Pour chaque post on doit alors savoir dans quelle section il est mais aussi
+                // charger son image
+                for post in self.posts {
+                    let date = post.createdAt!
+                    
+                    // On regarde maintenant la diff entre la date de la photo et la date de la derniere photo du tableau
+                    // pour savoir si l'on commence une nouvelle section ou pas
+                    if let indexPost = self.posts.indexOf(post) where indexPost == 0 {
+                        // On est a la premiere photo de notre album ! Donc on initialise
+                        numberOfPictInSection += 1
+                        section = 0
+                        
+                        // Si on a qu'une seule photo dans l'album on le stocke direct dans la section
+                        if indexPost ==  self.posts.count - 1 {
+                            self.photoNumberInSections[section] = numberOfPictInSection
+                        }
+                    } else if let indexPost = self.posts.indexOf(post) where indexPost == (self.posts.count-1) {
+                        // On est a la derniere photo de notre album donc on ajoute et on arrete
+                        numberOfPictInSection += 1
+                        self.photoNumberInSections[section] = numberOfPictInSection
+                    } else if let indexPost = self.posts.indexOf(post) where indexPost > 0 {
+                        // Si on est ni a la premiere ni a la derniere on regarde si elle correspond a la section actuelle
+                        // ou si elle correspond a une autre section car prise à une nouvelle heure
+                        let diff = date.hour() - self.posts[indexPost-1].createdAt!.hour()
+                        if diff != 0 {
+                            self.photoNumberInSections[section] = numberOfPictInSection
+                            numberOfPictInSection = 1
+                            section += 1
+                        } else {
+                            numberOfPictInSection += 1
+                        }
+                    } else  {
+                        print("il y a une erreur ou cas non pris en compte")
+                    }
+                }
+                
+                print(self.photoNumberInSections)
+                
+                self.collectionView.reloadData()
             }
-            
-            print(self.photoNumberInSections)
-            
-            self.collectionView.reloadData()
         }
     }
     
@@ -128,7 +144,6 @@ class T_PhotosCollectionViewController: UIViewController {
                 }
             }
         }
-        
         return true
     }
     
@@ -195,11 +210,10 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
     
             let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("storyCell", forIndexPath: indexPath) as! T_StoryCollectionViewCell
             
-            cell.layer.cornerRadius = 15
             let post = posts[storyIndex]
+            cell.imageView.layer.cornerRadius = 40
             post.downloadImage()
             cell.post = post
-            //cell.imageView.image = photosArray[storyIndex].image
             
             return cell
         } else {
@@ -226,11 +240,16 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
                 cell.layer.cornerRadius = 5
                 
                 let indexCell = getPhotoIndex(indexPath)
-                // -1 -> because we don't have the hourImage in our Array of picture but it's present in the collectionView
-                //cell.imageView.image = photosArray[indexCell - 1].image
+                
+                 // -1 -> because we don't have the hourImage in our Array of picture but it's present in the collectionView
                 let post = posts[indexCell - 1]
                 post.downloadImage()
                 cell.post = post
+                
+                if cell.imageView.image == nil {
+                    cell.imageView.bnd_image.value = UIImage(named: "EmptyView")
+                }
+                
                 return cell
             }
             
@@ -267,7 +286,7 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
         if section > 1 {
             return CGSizeZero
         } else {
-            return CGSize(width: collectionView.frame.width, height: 50)
+            return CGSize(width: collectionView.frame.width, height: 40)
         }
     }
     // For dynamic size of the photo cells
@@ -291,52 +310,47 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
 extension T_PhotosCollectionViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         // On est dans le cas ou on a pas encore de photos dans l'album
-        if posts.count  == 0 {
-            let str = NSLocalizedString("Ohhh noo", comment: "")
-            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
-            return NSAttributedString(string: str, attributes: attrs)
-        } else {
-            let str = NSLocalizedString("There's a problem Captain", comment: "")
-            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
-            return NSAttributedString(string: str, attributes: attrs)
-            
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+        var str = ""
+        
+        if !load {
+            str = NSLocalizedString("Wait ...", comment: "")
+        } else if photoNumberInSections.count  == 0 && load{
+            str = NSLocalizedString("There's a problem Captain", comment: "")
+        } else if load {
+            str = NSLocalizedString("Ohhh noo", comment: "")
         }
+        
+        return NSAttributedString(string: str, attributes: attrs)
     }
     
     func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        if posts.count  == 0 {
-            let str = NSLocalizedString("This album is totally empty ... ", comment: "")
-            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
-            return NSAttributedString(string: str, attributes: attrs)
-        } else {
-            let str = NSLocalizedString("Network is not available ... ", comment: "")
-            let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
-            return NSAttributedString(string: str, attributes: attrs)
+        var str = ""
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
+        
+        if !load {
+            str = NSLocalizedString("We're retrieving your photos", comment: "")
+        } else if photoNumberInSections.count  == 0 && load{
+            str = NSLocalizedString("Network is not available ... ", comment: "")
+        } else if load {
+            str = NSLocalizedString("This album is totally empty ... ", comment: "")
         }
+        
+        return NSAttributedString(string: str, attributes: attrs)
     }
     
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-        if posts.count  == 0 {
-            let image = UIImage(named: "EmptyAlbumIcon")
-            image?.accessibilityFrame = CGRect(origin: CGPoint(x: scrollView.center.x,y: scrollView.center.y - 20), size: CGSize(width: 200, height: 200))
-            return image
-        } else {
-            let image = UIImage(named: "NoNetwork")
-            image?.accessibilityFrame = CGRect(origin: CGPoint(x: scrollView.center.x,y: scrollView.center.y - 20), size: CGSize(width: 200, height: 200))
-            return image
+        var image = UIImage()
+        image.accessibilityFrame = CGRect(origin: CGPoint(x: scrollView.center.x,y: scrollView.center.y - 20), size: CGSize(width: 200, height: 200))
+        if !load {
+            image = UIImage.gifWithName("LoadingView")!
+        }else if photoNumberInSections.count  == 0 && load{
+            image = UIImage(named: "NoNetwork")!
+        } else if load {
+            image = UIImage(named: "EmptyAlbumIcon")!
         }
+        return image
     }
-    
-//    func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString! {
-//        let str = NSLocalizedString("This is an empty album", comment: "")
-//        return NSAttributedString(string: str, attributes: nil)
-//    }
-    
-//    func emptyDataSetDidTapButton(scrollView: UIScrollView!) {
-//        let ac = UIAlertController(title: NSLocalizedString("Button tapped", comment: ""), message: nil, preferredStyle: .Alert)
-//        ac.addAction(UIAlertAction(title: NSLocalizedString("Hurray", comment: ""), style: .Default, handler: nil))
-//        presentViewController(ac, animated: true, completion: nil)
-//    }
 }
 
 

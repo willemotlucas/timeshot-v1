@@ -11,6 +11,7 @@ pod 'Bond'
 pod 'ConvenienceKit'
 pod 'AFDateHelper'
 pod 'MBProgressHUD', '~> 0.9.2'
+pod 'SwiftGifOrigin'
 
 post_install do |installer|
     `find Pods -regex 'Pods/pop.*\\.h' -print0 | xargs -0 sed -i '' 's/\\(<\\)pop\\/\\(.*\\)\\(>\\)/\\"\\2\\"/'`
@@ -18,3 +19,9 @@ end
 
 
 
+pod 'SwiftValidate'
+
+pod 'FBSDKCoreKit'
+pod 'FBSDKLoginKit'
+pod 'FBSDKShareKit'
+pod 'ParseFacebookUtilsV4'

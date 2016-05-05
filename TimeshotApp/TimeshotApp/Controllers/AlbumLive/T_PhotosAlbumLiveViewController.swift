@@ -75,13 +75,13 @@ extension T_PhotosAlbumLiveViewController : KolodaViewDataSource {
     }
     
     func koloda(koloda: KolodaView, viewForCardAtIndex index: UInt) -> UIView {
-        let imageName = photos[Int(index) % photos.count]!
-        let image = UIImage(named: imageName)
-        let imageView = UIImageView(image: image!)
-        imageView.contentMode = UIViewContentMode.ScaleAspectFit
-        imageView.clipsToBounds = true
+//        let imageName = photos[Int(index) % photos.count]
+//        let image = UIImage(named: imageName)
+//        let imageView = UIImageView(image: image!)
+//        imageView.contentMode = UIViewContentMode.ScaleAspectFit
+//        imageView.clipsToBounds = true
         //print(imageView)
-        return imageView
+        return UIView()
         
     }
     
