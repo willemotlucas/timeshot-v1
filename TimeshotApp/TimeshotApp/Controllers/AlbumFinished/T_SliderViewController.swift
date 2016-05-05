@@ -21,7 +21,7 @@ class T_SliderViewController: UIViewController {
     
     //var slideImages:[T_PhotosCollectionViewController. ] = []
     var slideImages: [T_Post] = []
-    var slideViews: [T_PhotoImageView?] = []
+    var slideViews: [T_SliderImageView?] = []
     var currentSlide: Int = 0
     
     // MARK: Status Bar Properties
@@ -88,15 +88,26 @@ class T_SliderViewController: UIViewController {
             frame.origin.y = 0.0
             
             // Design of the view
-            let newPageView = T_PhotoImageView()
+            let newPageView = T_SliderImageView.init(frame: frame)
             newPageView.post = slideImages[page]
+            newPageView.contentMode = .ScaleAspectFill
+            newPageView.frame = frame
+            
             if let image = slideImages[page].image.value {
                 newPageView.image = image
             } else {
                 slideImages[page].downloadImage()
             }
-            newPageView.contentMode = .ScaleAspectFill
-            newPageView.frame = frame
+            
+//            let newPageView = T_PhotoImageView()
+//            newPageView.post = slideImages[page]
+//            if let image = slideImages[page].image.value {
+//                newPageView.image = image
+//            } else {
+//                slideImages[page].downloadImage()
+//            }
+//            newPageView.contentMode = .ScaleAspectFill
+//            newPageView.frame = frame
             
             scrollView.addSubview(newPageView)
             

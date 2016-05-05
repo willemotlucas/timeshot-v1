@@ -54,6 +54,7 @@
 		7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */; };
 		7D8699241C8F4A9D003BC1DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699221C8F4A9D003BC1DC /* Main.storyboard */; };
 		7D8699261C8F4A9D003BC1DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699251C8F4A9D003BC1DC /* Assets.xcassets */; };
+		7DC8887E1CDB26CD001E552D /* T_SliderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8887D1CDB26CD001E552D /* T_SliderImageView.swift */; };
 		7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0F9AB1C9DC6BE00A856B9 /* T_AlbumLiveTableViewCell.swift */; };
 		7DD0F9AE1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0F9AD1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift */; };
 		7DD0F9B41C9EA0FB00A856B9 /* festival.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B01C9EA0FB00A856B9 /* festival.jpg */; };
@@ -139,6 +140,7 @@
 		7D8699251C8F4A9D003BC1DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D8699281C8F4A9D003BC1DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D86992A1C8F4A9D003BC1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DC8887D1CDB26CD001E552D /* T_SliderImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SliderImageView.swift; sourceTree = "<group>"; };
 		7DD0F9AB1C9DC6BE00A856B9 /* T_AlbumLiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumLiveTableViewCell.swift; sourceTree = "<group>"; };
 		7DD0F9AD1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumFinishTableViewCell.swift; sourceTree = "<group>"; };
 		7DD0F9B01C9EA0FB00A856B9 /* festival.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = festival.jpg; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 				7DD0F9AB1C9DC6BE00A856B9 /* T_AlbumLiveTableViewCell.swift */,
 				7DD0F9AD1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift */,
 				7DE5F8481CC2C20B008DF27D /* T_PhotoImageView.swift */,
+				7DC8887D1CDB26CD001E552D /* T_SliderImageView.swift */,
 			);
 			path = Album;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				7D241FFB1CB6D47500F6548B /* T_PhotoCollectionViewCell.swift in Sources */,
 				7D2F53AA1CB67D9000AB9995 /* T_FriendsAlbumLiveViewController.swift in Sources */,
 				7D241FFF1CB6D48100F6548B /* T_AlbumFinishedViewController.swift in Sources */,
+				7DC8887E1CDB26CD001E552D /* T_SliderImageView.swift in Sources */,
 				8AFA26791CBF949200C09E17 /* T_LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
