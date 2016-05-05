@@ -34,6 +34,9 @@
 		5DE8FFF11CA325B1006BEBAE /* T_ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE8FFF01CA325B1006BEBAE /* T_ContactTableViewCell.swift */; };
 		5DE8FFF31CA4275C006BEBAE /* T_SendMessageUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE8FFF21CA4275C006BEBAE /* T_SendMessageUIButton.swift */; };
 		5DEF6E951CC1005600494C86 /* T_PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF6E941CC1005600494C86 /* T_PhotoTakingHelper.swift */; };
+		5DF7ADD41CDBB87C00C6C652 /* T_ParseAlbumRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7ADD31CDBB87C00C6C652 /* T_ParseAlbumRequestHelper.swift */; };
+		5DF7ADD61CDBB89100C6C652 /* T_NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7ADD51CDBB89100C6C652 /* T_NotificationsTableViewCell.swift */; };
+		5DF7ADD81CDBB89B00C6C652 /* T_AlbumRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7ADD71CDBB89B00C6C652 /* T_AlbumRequest.swift */; };
 		7D241FF41CB6D39D00F6548B /* T_SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D241FF31CB6D39D00F6548B /* T_SliderViewController.swift */; };
 		7D241FF91CB6D47500F6548B /* T_HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D241FF51CB6D47500F6548B /* T_HeaderCollectionReusableView.swift */; };
 		7D241FFA1CB6D47500F6548B /* T_HourCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D241FF61CB6D47500F6548B /* T_HourCollectionViewCell.swift */; };
@@ -116,6 +119,9 @@
 		5DE8FFF01CA325B1006BEBAE /* T_ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ContactTableViewCell.swift; sourceTree = "<group>"; };
 		5DE8FFF21CA4275C006BEBAE /* T_SendMessageUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SendMessageUIButton.swift; sourceTree = "<group>"; };
 		5DEF6E941CC1005600494C86 /* T_PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PhotoTakingHelper.swift; sourceTree = "<group>"; };
+		5DF7ADD31CDBB87C00C6C652 /* T_ParseAlbumRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ParseAlbumRequestHelper.swift; sourceTree = "<group>"; };
+		5DF7ADD51CDBB89100C6C652 /* T_NotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_NotificationsTableViewCell.swift; sourceTree = "<group>"; };
+		5DF7ADD71CDBB89B00C6C652 /* T_AlbumRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumRequest.swift; sourceTree = "<group>"; };
 		78F7AD880E89307F1E906BF3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7D241FF31CB6D39D00F6548B /* T_SliderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SliderViewController.swift; sourceTree = "<group>"; };
 		7D241FF51CB6D47500F6548B /* T_HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -221,6 +227,7 @@
 		5DB5A0211CA1AD1000AADC9F /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				5DF7ADD51CDBB89100C6C652 /* T_NotificationsTableViewCell.swift */,
 				5DB5A0221CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift */,
 				5DB5A0231CA1AD1000AADC9F /* T_FriendTableViewCell.swift */,
 				5DE8FFF01CA325B1006BEBAE /* T_ContactTableViewCell.swift */,
@@ -233,6 +240,7 @@
 		5DC361D31CBAFBE900B00064 /* ParseHelpers */ = {
 			isa = PBXGroup;
 			children = (
+				5DF7ADD31CDBB87C00C6C652 /* T_ParseAlbumRequestHelper.swift */,
 				5DC361D41CBAFBE900B00064 /* T_FriendRequestParseHelper.swift */,
 				5DC361D51CBAFBE900B00064 /* T_ParseAlbumHelper.swift */,
 				5DC361D61CBAFBE900B00064 /* T_ParseUserHelper.swift */,
@@ -455,6 +463,7 @@
 		B4EA9DD01CB52DE3003F5A75 /* Parse */ = {
 			isa = PBXGroup;
 			children = (
+				5DF7ADD71CDBB89B00C6C652 /* T_AlbumRequest.swift */,
 				5DC361E71CBAFC0000B00064 /* T_FriendRequest.swift */,
 				B4EA9DD11CB52DE3003F5A75 /* T_User.swift */,
 				B4F2E9101CB64A370029F4BF /* T_Album.swift */,
@@ -632,6 +641,7 @@
 				5DEF6E951CC1005600494C86 /* T_PhotoTakingHelper.swift in Sources */,
 				5DC361E61CBAFBE900B00064 /* T_String+Extension.swift in Sources */,
 				5D64CA771CB9806E005C6E43 /* T_LastNameEditionViewController.swift in Sources */,
+				5DF7ADD41CDBB87C00C6C652 /* T_ParseAlbumRequestHelper.swift in Sources */,
 				5D1D921A1CBA4D390085B70C /* T_EmailEditionViewController.swift in Sources */,
 				5DB5A02A1CA1AD1000AADC9F /* T_ProfileViewController.swift in Sources */,
 				8AB0F1C61CBFC7C300605525 /* T_SignUpPasswordViewController.swift in Sources */,
@@ -645,6 +655,7 @@
 				5DB5A02B1CA1AD1000AADC9F /* T_SettingsViewController.swift in Sources */,
 				7D2F53A71CB67D9000AB9995 /* T_AddFriendAlbumLiveTableViewCell.swift in Sources */,
 				8AFA267D1CBF94C900C09E17 /* T_SignUpInvitePeopleViewController.swift in Sources */,
+				5DF7ADD61CDBB89100C6C652 /* T_NotificationsTableViewCell.swift in Sources */,
 				B4EA9DD21CB52DE3003F5A75 /* T_User.swift in Sources */,
 				7D2F53A81CB67D9000AB9995 /* T_AddFriendAlbumLiveViewController.swift in Sources */,
 				7D30378E1CC7CBD900D522E0 /* T_FriendsViewController.swift in Sources */,
@@ -658,6 +669,7 @@
 				B4F2E9111CB64A370029F4BF /* T_Album.swift in Sources */,
 				B4EA9DCC1CB52D37003F5A75 /* T_Slider.swift in Sources */,
 				5DD10B641CBD8AA300918E3A /* T_Reachability.swift in Sources */,
+				5DF7ADD81CDBB89B00C6C652 /* T_AlbumRequest.swift in Sources */,
 				B4EA9DCB1CB52D37003F5A75 /* T_SnapTextField.swift in Sources */,
 				7D2420021CB6E20200F6548B /* T_StoryViewController.swift in Sources */,
 				8A6F88C01CD6732100060C48 /* T_SignUpUsernameViaFacebookViewController.swift in Sources */,

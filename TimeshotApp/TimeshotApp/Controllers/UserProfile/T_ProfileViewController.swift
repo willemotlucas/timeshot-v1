@@ -33,12 +33,18 @@ class T_ProfileViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     
     // MARK : Properties
+    var contentToDisplay : ContentType = .Friends //Useful for segmented control
+
     var friends: [T_User] = []
     var pendingRequests: [T_FriendRequest] = []
     var sectionTitles = ["Pending requests", "Friends"]
-    var contentToDisplay : ContentType = .Friends //Useful for segmented control
+    
+    var albumRequests: [T_AlbumRequest] = []
+    
     let contacts = T_ContactsHelper.getAllContacts() //All the contacts of the current user
+    
     var currentUser: T_User?
+    
     var photoTakingHelper: T_PhotoTakingHelper?
 
     // MARK: Overrided functions
@@ -78,10 +84,17 @@ class T_ProfileViewController: UIViewController {
             self.tableView.reloadData()
         })
         
-        //Load the pending requests
+        //Load the friends pending requests
         T_FriendRequestParseHelper.getPendingFriendRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
             self.pendingRequests = result as? [T_FriendRequest] ?? []
             self.tableView.reloadData()
+        }
+        
+        //Load the album pending requests
+        T_ParseAlbumRequestHelper.getPendingAlbumRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
+            self.albumRequests = result as? [T_AlbumRequest] ?? []
+            self.tableView.reloadData()
+            print(self.albumRequests)
         }
         
         //Load profile picture
@@ -232,9 +245,12 @@ extension T_ProfileViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
         case .Notifications:
-            let cell = UITableViewCell()
-            cell.textLabel?.text = "Valentin a commenté votre photo"
-            return cell
+            if self.albumRequests.count > 0 {
+                return createNotificationCell(indexPath)
+            }
+            else {
+                return UITableViewCell()
+            }
         }
     }
     
@@ -265,6 +281,25 @@ extension T_ProfileViewController: UITableViewDataSource {
         return cell
     }
     
+    
+    /*
+     * Creates a friend cell and fill in with the full name of the user
+     * Params:
+     * - @indexPath : indexPath of the row to retrieve the user
+     */
+    func createNotificationCell(indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("T_NotificationsTableViewCell", forIndexPath: indexPath) as! T_NotificationsTableViewCell
+        let albumRequest = self.albumRequests[indexPath.row]
+        let user = albumRequest.fromUser! as! T_User
+        user.downloadImage()
+        
+        cell.friend = user
+        cell.albumRequest = albumRequest
+        cell.notificationTextLabel.text = "@\(user.username!) invited you to join \(albumRequest.toAlbum!.title!)!"
+        cell.notificationHelpTextLabel.text = "Click to answer to the request"
+        return cell
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch contentToDisplay {
         case .Friends:
@@ -286,7 +321,7 @@ extension T_ProfileViewController: UITableViewDataSource {
                 return 0
             }
         case .Notifications:
-            return 40
+            return self.albumRequests.count
         }
     }
 }

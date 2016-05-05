@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -201,6 +201,54 @@
                                         <connections>
                                             <outlet property="friendNameLabel" destination="W6O-u5-Gnt" id="bxS-RP-39R"/>
                                             <outlet property="friendProfileImage" destination="KpI-1t-Q6t" id="8Od-Ie-Orq"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="T_NotificationsTableViewCell" id="Gc8-tW-XN5" customClass="T_NotificationsTableViewCell" customModule="TimeshotApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="357" width="600" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gc8-tW-XN5" id="WeN-Rl-u5P">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZBH-XV-9hd">
+                                                    <rect key="frame" x="8" y="10" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="FUN-BK-Bud"/>
+                                                        <constraint firstAttribute="height" constant="40" id="xLX-eT-pR0"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdy-vc-HRa">
+                                                    <rect key="frame" x="56" y="29" width="28.5" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="a93-NK-lgA"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVh-hB-xB3">
+                                                    <rect key="frame" x="56" y="10" width="35.5" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Kee-Vl-52u"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cdy-vc-HRa" firstAttribute="leading" secondItem="ZBH-XV-9hd" secondAttribute="trailing" constant="8" id="0gX-ER-reT"/>
+                                                <constraint firstItem="cdy-vc-HRa" firstAttribute="top" secondItem="WeN-Rl-u5P" secondAttribute="top" constant="29" id="EIh-bO-EOH"/>
+                                                <constraint firstItem="ZBH-XV-9hd" firstAttribute="centerY" secondItem="WeN-Rl-u5P" secondAttribute="centerY" id="HwF-kE-36a"/>
+                                                <constraint firstItem="KVh-hB-xB3" firstAttribute="leading" secondItem="ZBH-XV-9hd" secondAttribute="trailing" constant="8" id="Pps-fb-WRe"/>
+                                                <constraint firstItem="KVh-hB-xB3" firstAttribute="top" secondItem="WeN-Rl-u5P" secondAttribute="top" constant="10" id="exh-Is-6WR"/>
+                                                <constraint firstItem="ZBH-XV-9hd" firstAttribute="leading" secondItem="WeN-Rl-u5P" secondAttribute="leading" constant="8" id="y32-n9-aKh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notificationHelpTextLabel" destination="cdy-vc-HRa" id="f3G-JB-ZAG"/>
+                                            <outlet property="notificationTextLabel" destination="KVh-hB-xB3" id="qAz-sc-PpA"/>
+                                            <outlet property="profileImageView" destination="ZBH-XV-9hd" id="GJk-yE-jhS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -17,7 +17,7 @@ class T_Album : PFObject, PFSubclassing {
     @NSManaged var createdBy: T_User
     @NSManaged var duration: Int
     @NSManaged var isDeleted: Bool
-    @NSManaged var title: String
+    @NSManaged var title: String!
     
     var coverImage : Observable<UIImage?> = Observable(nil)
     
