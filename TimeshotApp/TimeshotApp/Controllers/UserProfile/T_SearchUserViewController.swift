@@ -16,6 +16,8 @@ class T_SearchUserViewController: UIViewController {
     
     var filteredUsers: [T_User] = []
     var users: [T_User] = []
+    var friends: [T_User] = []
+    var pendingFriends: [T_User] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +26,15 @@ class T_SearchUserViewController: UIViewController {
         // Retrieve all the users stored in Parse database
         T_ParseUserHelper.gettAllUsers { (result: [PFObject]?, error: NSError?) in
             self.users = result as? [T_User] ?? []
-            self.tableView.reloadData()
         }
+        
+        T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
+            self.friends = friends
+        })
+        
+        T_ParseUserHelper.getCurrentUser()?.getAllPendingFriends({ (friends) in
+            self.pendingFriends = friends
+        })
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -33,6 +42,10 @@ class T_SearchUserViewController: UIViewController {
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         tableView.tableFooterView = UIView()
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        self.searchBar.resignFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,21 +76,24 @@ extension T_SearchUserViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("T_SearchUserTableViewCell") as! T_SearchUserTableViewCell
         
         let user = self.filteredUsers[indexPath.row] as T_User
+        print("index : \(indexPath.row) - username : \(user.username!)")
         cell.delegate = self
         user.downloadImage()
+        
+        if self.friends.contains(user) {
+            print("\(user.username) is a friend")
+            cell.addUserButton.setImage(UIImage(named: "checkbox-checked"), forState: .Disabled)
+            cell.addUserButton.enabled = false
+        } else if self.pendingFriends.contains(user) {
+            print("\(user.username) is a a pending friend")
+            cell.addUserButton.setImage(UIImage(named: "check-pending"), forState: .Disabled)
+            cell.addUserButton.enabled = false
+        } else {
+            cell.addUserButton.setImage(UIImage(named: "add-friends-button"), forState: .Normal)
+            cell.addUserButton.enabled = true
+        }
+        
         cell.user = user
-        
-        T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
-            if friends.contains(user) {
-                cell.addUserButton.selected = true
-            }
-        })
-        
-        T_ParseUserHelper.getCurrentUser()?.getAllPendingFriends({ (friends) in
-            if friends.contains(user) {
-                cell.addUserButton.selected = true
-            }
-        })
         
         return cell
     }

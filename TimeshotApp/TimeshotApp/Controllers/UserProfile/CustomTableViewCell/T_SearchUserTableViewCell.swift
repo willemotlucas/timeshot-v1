@@ -27,7 +27,7 @@ class T_SearchUserTableViewCell: UITableViewCell {
             if let user = user {
                 friendDisposable = user.image.bindTo(self.userProfileImageView.bnd_image)
                 T_DesignHelper.makeRoundedImageView(self.userProfileImageView)
-                self.usernameLabel.text = user.username
+                self.usernameLabel.text = "@" + user.username!
                 self.userFirstAndLastNameLabel.text = user.firstName! + " " + user.lastName!
             }
         }
