@@ -125,6 +125,7 @@ class T_ProfileViewController: UIViewController {
         //Load the friends pending requests
         T_FriendRequestParseHelper.getPendingFriendRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
             self.pendingRequests = result as? [T_FriendRequest] ?? []
+            print(self.pendingRequests.count)
             self.tableView.reloadData()
             self.tableView.endRefreshing()
         }
@@ -211,7 +212,6 @@ class T_ProfileViewController: UIViewController {
 
 extension T_ProfileViewController: ModalViewControllerDelegate {
     func refreshTableView() {
-        print("refresh table view")
         self.loadNotificationsData()
     }
 }
@@ -293,7 +293,6 @@ extension T_ProfileViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if self.contentToDisplay == .Notifications {
-            print("row selected at index \(indexPath.row)")
             self.currentAlbumRequest = self.albumRequests[indexPath.row] as T_AlbumRequest
             self.currentAlbumRequest!.toAlbum!.downloadCoverImage()
             self.performSegueWithIdentifier("showAlbumRequestSegue", sender: self)
@@ -338,9 +337,12 @@ extension T_ProfileViewController: UITableViewDataSource {
     func createFriendRequestCell(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("T_FriendRequestTableViewCell", forIndexPath: indexPath) as! T_FriendRequestTableViewCell
         let user = self.pendingRequests[indexPath.row].fromUser! as! T_User
+        user.downloadImage()
+        
         cell.delegate = self
-        cell.friendNameLabel.text = user.firstName! + " " + user.lastName!
         cell.friendRequest = self.pendingRequests[indexPath.row]
+        cell.friend = user
+        
         return cell
     }
     

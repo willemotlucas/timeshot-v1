@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Bond
 
 protocol TableViewUpdater {
     func updatePendingRequestsAfterAccepting(request: T_FriendRequest)
@@ -22,6 +23,19 @@ class T_FriendRequestTableViewCell: UITableViewCell {
     
     var delegate: TableViewUpdater?
     var friendRequest: T_FriendRequest!
+    var friend: T_User? {
+        didSet{
+            friendDisposable?.dispose()
+            
+            if let user = friend {
+                friendDisposable = user.image.bindTo(friendProfileImage.bnd_image)
+                T_DesignHelper.makeRoundedImageView(self.friendProfileImage)
+                self.friendNameLabel.text = user.firstName! + " " + user.lastName!
+            }
+        }
+    }
+    
+    var friendDisposable: DisposableType?
 
     override func awakeFromNib() {
         super.awakeFromNib()
