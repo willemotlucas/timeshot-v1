@@ -357,7 +357,7 @@
                                             <segment title="Friends"/>
                                             <segment title="Notifications"/>
                                         </segments>
-                                        <color key="tintColor" red="0.90980392156862744" green="0.47450980392156861" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.8901960784313725" green="0.31372549019607843" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="segmentedControlIndexChanged:" destination="tGm-Pl-crw" eventType="valueChanged" id="2rC-MM-s2F"/>
                                         </connections>
@@ -608,7 +608,7 @@
                         <sections>
                             <tableViewSection headerTitle="My account" id="Hu0-eQ-IfC">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="t0j-sm-1zh" detailTextLabel="qI5-eM-uYD" style="IBUITableViewCellStyleValue1" id="EAU-3w-zI1">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="t0j-sm-1zh" detailTextLabel="qI5-eM-uYD" style="IBUITableViewCellStyleValue1" id="EAU-3w-zI1">
                                         <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EAU-3w-zI1" id="4QE-yN-50l">
@@ -739,34 +739,6 @@
                                         <connections>
                                             <segue destination="Hg2-NS-iUU" kind="show" identifier="emailEditionSegue" id="3b7-nc-cCX"/>
                                         </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Section-2" id="35o-8x-lLS">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="izX-Oq-Q4Z">
-                                        <rect key="frame" x="0.0" y="383.5" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="izX-Oq-Q4Z" id="uQh-ao-SLP">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3fI-hw-IkT">
-                                        <rect key="frame" x="0.0" y="427.5" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3fI-hw-IkT" id="UTs-2h-T5O">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="avc-Fk-rB7">
-                                        <rect key="frame" x="0.0" y="471.5" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="avc-Fk-rB7" id="mvh-67-1QW">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>

@@ -76,16 +76,13 @@ extension T_SearchUserViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("T_SearchUserTableViewCell") as! T_SearchUserTableViewCell
         
         let user = self.filteredUsers[indexPath.row] as T_User
-        print("index : \(indexPath.row) - username : \(user.username!)")
         cell.delegate = self
         user.downloadImage()
         
         if self.friends.contains(user) {
-            print("\(user.username) is a friend")
             cell.addUserButton.setImage(UIImage(named: "checkbox-checked"), forState: .Disabled)
             cell.addUserButton.enabled = false
         } else if self.pendingFriends.contains(user) {
-            print("\(user.username) is a a pending friend")
             cell.addUserButton.setImage(UIImage(named: "check-pending"), forState: .Disabled)
             cell.addUserButton.enabled = false
         } else {
@@ -178,10 +175,14 @@ extension T_SearchUserViewController: DZNEmptyDataSetSource {
             let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
             return NSAttributedString(string: str, attributes: attrs)
         } else {
-            let str = "Try another username or invite your friends!"
+            let str = "Try another username or invite contacts from your address book!"
             let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
             return NSAttributedString(string: str, attributes: attrs)
         }
+    }
+    
+    func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return -(self.tableView.frame.height/3)
     }
 }
 

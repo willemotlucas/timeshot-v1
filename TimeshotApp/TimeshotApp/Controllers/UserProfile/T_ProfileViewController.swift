@@ -422,6 +422,10 @@ extension T_ProfileViewController: DZNEmptyDataSetSource {
             return NSAttributedString(string: str, attributes: attrs)
         }
     }
+    
+    func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return self.headerView.frame.size.height/2.0
+    }
 }
 
 extension T_ProfileViewController: DZNEmptyDataSetDelegate {
