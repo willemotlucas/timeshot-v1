@@ -61,6 +61,12 @@ class T_ProfileViewController: UIViewController {
             self.currentUser = userLogged as? T_User
             self.title = self.currentUser!.firstName! + " " + self.currentUser!.lastName!
         }
+        
+        //Load the album pending requests
+        T_ParseAlbumRequestHelper.getPendingAlbumRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
+            self.albumRequests = result as? [T_AlbumRequest] ?? []
+            self.tableView.reloadData()
+        }
     }
     
     override func viewDidLoad() {
@@ -89,12 +95,6 @@ class T_ProfileViewController: UIViewController {
         //Load the friends pending requests
         T_FriendRequestParseHelper.getPendingFriendRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
             self.pendingRequests = result as? [T_FriendRequest] ?? []
-            self.tableView.reloadData()
-        }
-        
-        //Load the album pending requests
-        T_ParseAlbumRequestHelper.getPendingAlbumRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
-            self.albumRequests = result as? [T_AlbumRequest] ?? []
             self.tableView.reloadData()
         }
         

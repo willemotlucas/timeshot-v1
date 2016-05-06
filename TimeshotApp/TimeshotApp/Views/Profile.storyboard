@@ -53,18 +53,23 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tmL-li-190">
                                 <rect key="frame" x="0.0" y="555" width="300" height="45"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REFUSE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdO-dS-IvZ">
-                                        <rect key="frame" x="119" y="12" width="63" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Riy-BS-7nY">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
+                                        <state key="normal" title="REFUSE">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="refuseButtonTapped:" destination="gZp-wi-ZJv" eventType="touchUpInside" id="yo7-hp-k5Z"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.9699919871794872" green="0.036305871569768694" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="rdO-dS-IvZ" firstAttribute="centerY" secondItem="tmL-li-190" secondAttribute="centerY" id="16p-l1-NbE"/>
-                                    <constraint firstItem="rdO-dS-IvZ" firstAttribute="centerX" secondItem="tmL-li-190" secondAttribute="centerX" id="84M-em-P0Z"/>
+                                    <constraint firstItem="Riy-BS-7nY" firstAttribute="leading" secondItem="tmL-li-190" secondAttribute="leading" id="CM8-Al-66K"/>
+                                    <constraint firstAttribute="bottom" secondItem="Riy-BS-7nY" secondAttribute="bottom" id="FOC-9f-uV2"/>
                                     <constraint firstAttribute="height" constant="45" id="Hdq-7P-kNc"/>
+                                    <constraint firstItem="Riy-BS-7nY" firstAttribute="height" secondItem="tmL-li-190" secondAttribute="height" id="UdD-g8-y3I"/>
+                                    <constraint firstItem="Riy-BS-7nY" firstAttribute="width" secondItem="tmL-li-190" secondAttribute="width" id="VsB-aa-RDM"/>
                                 </constraints>
                             </view>
                         </subviews>

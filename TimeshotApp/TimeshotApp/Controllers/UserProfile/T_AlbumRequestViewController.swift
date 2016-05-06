@@ -32,4 +32,11 @@ class T_AlbumRequestViewController: UIViewController {
     @IBAction func cancelButtonTapped(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func refuseButtonTapped(sender: UIButton) {
+        T_ParseAlbumRequestHelper.rejectFriendRequest(self.albumRequest!) { (result: Bool, error: NSError?) in
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 }
