@@ -37,6 +37,7 @@
 		5DF7ADD41CDBB87C00C6C652 /* T_ParseAlbumRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7ADD31CDBB87C00C6C652 /* T_ParseAlbumRequestHelper.swift */; };
 		5DF7ADD61CDBB89100C6C652 /* T_NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7ADD51CDBB89100C6C652 /* T_NotificationsTableViewCell.swift */; };
 		5DF7ADD81CDBB89B00C6C652 /* T_AlbumRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7ADD71CDBB89B00C6C652 /* T_AlbumRequest.swift */; };
+		5DF7ADDA1CDBC40C00C6C652 /* T_AlbumRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7ADD91CDBC40C00C6C652 /* T_AlbumRequestViewController.swift */; };
 		7D241FF41CB6D39D00F6548B /* T_SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D241FF31CB6D39D00F6548B /* T_SliderViewController.swift */; };
 		7D241FF91CB6D47500F6548B /* T_HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D241FF51CB6D47500F6548B /* T_HeaderCollectionReusableView.swift */; };
 		7D241FFA1CB6D47500F6548B /* T_HourCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D241FF61CB6D47500F6548B /* T_HourCollectionViewCell.swift */; };
@@ -122,6 +123,7 @@
 		5DF7ADD31CDBB87C00C6C652 /* T_ParseAlbumRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ParseAlbumRequestHelper.swift; sourceTree = "<group>"; };
 		5DF7ADD51CDBB89100C6C652 /* T_NotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		5DF7ADD71CDBB89B00C6C652 /* T_AlbumRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumRequest.swift; sourceTree = "<group>"; };
+		5DF7ADD91CDBC40C00C6C652 /* T_AlbumRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumRequestViewController.swift; sourceTree = "<group>"; };
 		78F7AD880E89307F1E906BF3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7D241FF31CB6D39D00F6548B /* T_SliderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SliderViewController.swift; sourceTree = "<group>"; };
 		7D241FF51CB6D47500F6548B /* T_HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				5DB5A0261CA1AD1000AADC9F /* T_SettingsViewController.swift */,
 				5DB5A02E1CA1C8D400AADC9F /* T_SearchUserViewController.swift */,
 				5DB5A0341CA2879B00AADC9F /* T_SearchContactViewController.swift */,
+				5DF7ADD91CDBC40C00C6C652 /* T_AlbumRequestViewController.swift */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				5DB5A0271CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift in Sources */,
 				5D8638921CB8EDAA005CBC90 /* T_SearchUserTableViewCell.swift in Sources */,
 				B43C0E911CABF4E900EF51E9 /* T_CreateAlbumViewController.swift in Sources */,
+				5DF7ADDA1CDBC40C00C6C652 /* T_AlbumRequestViewController.swift in Sources */,
 				7D2F53AC1CB67D9000AB9995 /* T_PhotosAlbumLiveViewController.swift in Sources */,
 				B43C0E901CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift in Sources */,
 				5DC361E01CBAFBE900B00064 /* T_ParseUserHelper.swift in Sources */,

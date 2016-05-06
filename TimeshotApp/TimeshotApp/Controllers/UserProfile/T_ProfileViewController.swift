@@ -40,12 +40,14 @@ class T_ProfileViewController: UIViewController {
     var sectionTitles = ["Pending requests", "Friends"]
     
     var albumRequests: [T_AlbumRequest] = []
+    var currentAlbumRequest: T_AlbumRequest?
     
     let contacts = T_ContactsHelper.getAllContacts() //All the contacts of the current user
     
     var currentUser: T_User?
     
     var photoTakingHelper: T_PhotoTakingHelper?
+    
 
     // MARK: Overrided functions
     override func didReceiveMemoryWarning() {
@@ -94,7 +96,6 @@ class T_ProfileViewController: UIViewController {
         T_ParseAlbumRequestHelper.getPendingAlbumRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
             self.albumRequests = result as? [T_AlbumRequest] ?? []
             self.tableView.reloadData()
-            print(self.albumRequests)
         }
         
         //Load profile picture
@@ -107,13 +108,25 @@ class T_ProfileViewController: UIViewController {
         self.profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
     }
     
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showAlbumRequestSegue" {
+            print("prepare segue")
+            let albumRequestVC = segue.destinationViewController as! T_AlbumRequestViewController
+            albumRequestVC.albumRequest = self.currentAlbumRequest!
+        }
+    }
+    
     // MARK: IBAction
     
     @IBAction func segmentedControlIndexChanged(sender: UISegmentedControl) {
         // Change the content of table view according to the segmented control
         switch segmentedControl.selectedSegmentIndex {
         case 0: contentToDisplay = .Friends
-        case 1: contentToDisplay = .Notifications
+            self.tableView.allowsSelection = false
+        case 1:
+            contentToDisplay = .Notifications
+            self.tableView.allowsSelection = true
         default: break
         }
         
@@ -224,6 +237,40 @@ extension T_ProfileViewController: UITableViewDataSource {
         }
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch contentToDisplay {
+        case .Friends:
+            // There are pending request & friends to display
+            if self.pendingRequests.count > 0 && self.friends.count > 0 {
+                // According to the section, we return the number of elements in pending requests or friends
+                if section == 0 {
+                    return self.pendingRequests.count
+                } else {
+                    return self.friends.count
+                }
+            } // There is only pending requests to display
+            else if self.pendingRequests.count > 0 && self.friends.count == 0 {
+                return self.pendingRequests.count
+            } // There is only friends to display
+            else if self.pendingRequests.count == 0 && self.friends.count > 0 {
+                return self.friends.count
+            } else {
+                return 0
+            }
+        case .Notifications:
+            return self.albumRequests.count
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if self.contentToDisplay == .Notifications {
+            print("row selected at index \(indexPath.row)")
+            self.currentAlbumRequest = self.albumRequests[indexPath.row] as T_AlbumRequest
+            self.currentAlbumRequest!.toAlbum!.downloadCoverImage()
+            self.performSegueWithIdentifier("showAlbumRequestSegue", sender: self)
+        }
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch contentToDisplay {
         case .Friends:
@@ -293,36 +340,12 @@ extension T_ProfileViewController: UITableViewDataSource {
         let user = albumRequest.fromUser! as! T_User
         user.downloadImage()
         
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.friend = user
         cell.albumRequest = albumRequest
         cell.notificationTextLabel.text = "@\(user.username!) invited you to join \(albumRequest.toAlbum!.title!)!"
         cell.notificationHelpTextLabel.text = "Click to answer to the request"
         return cell
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch contentToDisplay {
-        case .Friends:
-            // There are pending request & friends to display
-            if self.pendingRequests.count > 0 && self.friends.count > 0 {
-                // According to the section, we return the number of elements in pending requests or friends
-                if section == 0 {
-                    return self.pendingRequests.count
-                } else {
-                    return self.friends.count
-                }
-            } // There is only pending request to display
-            else if self.pendingRequests.count > 0 && self.friends.count == 0 {
-                return self.pendingRequests.count
-            } // There is only friends to display
-            else if self.pendingRequests.count == 0 && self.friends.count > 0 {
-                return self.friends.count
-            } else {
-                return 0
-            }
-        case .Notifications:
-            return self.albumRequests.count
-        }
     }
 }
 
