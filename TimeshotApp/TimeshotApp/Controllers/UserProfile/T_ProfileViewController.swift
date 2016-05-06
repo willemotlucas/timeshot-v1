@@ -11,6 +11,7 @@ import Parse
 import AddressBook
 import AddressBookUI
 import DZNEmptyDataSet
+import PullToRefresh
 
 enum ContentType {
     case Friends, Notifications
@@ -48,6 +49,8 @@ class T_ProfileViewController: UIViewController {
     
     var photoTakingHelper: T_PhotoTakingHelper?
     
+    let refresher = PullToRefresh()
+    
 
     // MARK: Overrided functions
     override func didReceiveMemoryWarning() {
@@ -61,12 +64,6 @@ class T_ProfileViewController: UIViewController {
             self.currentUser = userLogged as? T_User
             self.title = self.currentUser!.firstName! + " " + self.currentUser!.lastName!
         }
-        
-        //Load the album pending requests
-        T_ParseAlbumRequestHelper.getPendingAlbumRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
-            self.albumRequests = result as? [T_AlbumRequest] ?? []
-            self.tableView.reloadData()
-        }
     }
     
     override func viewDidLoad() {
@@ -78,6 +75,20 @@ class T_ProfileViewController: UIViewController {
         tableView.emptyDataSetDelegate = self
         tableView.tableFooterView = UIView()
         
+        //Add pull to refresh
+        self.tableView.addPullToRefresh(refresher, action: {
+            self.loadFriendsData()
+            self.loadNotificationsData()
+        })
+        
+        //Load table view data
+        self.loadFriendsData()
+        self.loadNotificationsData()
+        
+        //Load profile picture
+        T_ParseUserHelper.getCurrentUser()?.downloadImage()
+        T_ParseUserHelper.getCurrentUser()?.image.bindTo(self.profileImageView.bnd_image)
+        
         // Set design with colors and gradient
         T_DesignHelper.colorUIView(profileView)
         T_DesignHelper.colorUIView(addFriendsButtonView)
@@ -85,22 +96,6 @@ class T_ProfileViewController: UIViewController {
         
         //Set username in label
         self.usernameLabel.text = "@\(T_ParseUserHelper.getCurrentUser()!.username!)"
-        
-        //Load the friends
-        T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
-            self.friends = friends
-            self.tableView.reloadData()
-        })
-        
-        //Load the friends pending requests
-        T_FriendRequestParseHelper.getPendingFriendRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
-            self.pendingRequests = result as? [T_FriendRequest] ?? []
-            self.tableView.reloadData()
-        }
-        
-        //Load profile picture
-        T_ParseUserHelper.getCurrentUser()?.downloadImage()
-        T_ParseUserHelper.getCurrentUser()?.image.bindTo(self.profileImageView.bnd_image)
         
         //Set profile picture design
         T_DesignHelper.makeRoundedImageView(self.profileImageView)
@@ -111,9 +106,36 @@ class T_ProfileViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showAlbumRequestSegue" {
-            print("prepare segue")
             let albumRequestVC = segue.destinationViewController as! T_AlbumRequestViewController
+            albumRequestVC.delegate = self
             albumRequestVC.albumRequest = self.currentAlbumRequest!
+        }
+    }
+    
+    // MARK: Methods
+    
+    func loadFriendsData(){
+        //Load the friends
+        T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
+            self.friends = friends
+            self.tableView.reloadData()
+            self.tableView.endRefreshing()
+        })
+        
+        //Load the friends pending requests
+        T_FriendRequestParseHelper.getPendingFriendRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
+            self.pendingRequests = result as? [T_FriendRequest] ?? []
+            self.tableView.reloadData()
+            self.tableView.endRefreshing()
+        }
+    }
+    
+    func loadNotificationsData(){
+        //Load the album pending requests
+        T_ParseAlbumRequestHelper.getPendingAlbumRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
+            self.albumRequests = result as? [T_AlbumRequest] ?? []
+            self.tableView.reloadData()
+            self.tableView.endRefreshing()
         }
     }
     
@@ -186,6 +208,13 @@ class T_ProfileViewController: UIViewController {
 }
 
 // MARK: extension
+
+extension T_ProfileViewController: ModalViewControllerDelegate {
+    func refreshTableView() {
+        print("refresh table view")
+        self.loadNotificationsData()
+    }
+}
 
 extension T_ProfileViewController: UITableViewDelegate {
 

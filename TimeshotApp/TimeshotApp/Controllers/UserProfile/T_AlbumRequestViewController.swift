@@ -9,9 +9,15 @@
 import UIKit
 import Bond
 
+protocol ModalViewControllerDelegate {
+    func refreshTableView()
+}
+
 class T_AlbumRequestViewController: UIViewController {
     @IBOutlet weak var albumCover: UIImageView!
     
+    var delegate: ModalViewControllerDelegate?
+
     var albumRequest: T_AlbumRequest?
     
     override func viewWillAppear(animated: Bool) {
@@ -35,6 +41,7 @@ class T_AlbumRequestViewController: UIViewController {
     
     @IBAction func refuseButtonTapped(sender: UIButton) {
         T_ParseAlbumRequestHelper.rejectFriendRequest(self.albumRequest!) { (result: Bool, error: NSError?) in
+            self.delegate?.refreshTableView()
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }

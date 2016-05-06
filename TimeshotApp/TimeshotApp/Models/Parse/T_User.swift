@@ -163,14 +163,10 @@ class T_User : PFUser {
     }
     
     func getAllFriends(completion: (friends: [T_User]) -> Void) {
-        if self.friends.isEmpty {
-            T_FriendRequestParseHelper.getFriendsFromAcceptedRequests({ (friends) in
-                self.friends = friends
-                completion(friends: friends)
-            })
-        }else {
-            completion(friends: self.friends)
-        }
+        T_FriendRequestParseHelper.getFriendsFromAcceptedRequests({ (friends) in
+            self.friends = friends
+            completion(friends: friends)
+        })
     }
     
     func getAllPendingFriends(completion: (friends: [T_User]) -> Void) {
