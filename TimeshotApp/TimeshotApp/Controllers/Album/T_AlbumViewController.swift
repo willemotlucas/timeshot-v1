@@ -103,19 +103,11 @@ extension T_AlbumViewController : UITableViewDelegate, UITableViewDataSource {
             cell.album = album
             cell.initCellWithMetaData(album.createdAt!, title: album.title)
             
-            if cell.coverAlbum.image == nil {
-                cell.coverAlbum.bnd_image.value = UIImage(named: "EmptyAlbum")
-            }
-            
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("finishAlbum") as! T_AlbumFinishTableViewCell
             cell.album = album
             cell.initCellWithMetaData(album.createdAt!, title: album.title)
-            
-            if cell.coverAlbum.image == nil {
-                cell.coverAlbum.bnd_image.value = UIImage(named: "EmptyAlbum")
-            }
             
             return cell
         }
