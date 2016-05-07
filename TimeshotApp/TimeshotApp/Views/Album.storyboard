@@ -629,12 +629,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4n-lg-zt1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oK9-z5-zcs" customClass="T_PhotoImageView" customModule="TimeshotApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Xnu-7w-UyO" id="cws-1u-cfk"/>
-                                </connections>
-                            </scrollView>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fromUser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sjx-fZ-T3m">
                                 <rect key="frame" x="254" y="8" width="91" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -659,14 +656,14 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="P4n-lg-zt1" firstAttribute="top" secondItem="qMG-O1-H0o" secondAttribute="bottom" id="3vN-9c-0zp"/>
-                            <constraint firstAttribute="trailing" secondItem="P4n-lg-zt1" secondAttribute="trailing" id="74e-KQ-BYr"/>
-                            <constraint firstItem="P4n-lg-zt1" firstAttribute="leading" secondItem="0NT-uN-LL9" secondAttribute="leading" id="Ep4-RK-ufP"/>
-                            <constraint firstItem="awt-cQ-mGW" firstAttribute="top" secondItem="P4n-lg-zt1" secondAttribute="bottom" id="G59-ur-vjr"/>
+                            <constraint firstItem="awt-cQ-mGW" firstAttribute="top" secondItem="oK9-z5-zcs" secondAttribute="bottom" id="7aE-0y-3dA"/>
+                            <constraint firstAttribute="trailing" secondItem="oK9-z5-zcs" secondAttribute="trailing" id="IPF-Xm-Tx9"/>
                             <constraint firstItem="Sjx-fZ-T3m" firstAttribute="top" secondItem="qMG-O1-H0o" secondAttribute="bottom" constant="8" id="Isc-H8-4r9"/>
                             <constraint firstItem="Sjx-fZ-T3m" firstAttribute="centerX" secondItem="0NT-uN-LL9" secondAttribute="centerX" id="L4P-9K-YOK"/>
                             <constraint firstItem="NxJ-gw-agb" firstAttribute="top" secondItem="qMG-O1-H0o" secondAttribute="bottom" constant="8" id="UNz-DX-7pG"/>
                             <constraint firstItem="rdt-tz-w3G" firstAttribute="centerX" secondItem="0NT-uN-LL9" secondAttribute="centerX" id="avj-7j-5xa"/>
+                            <constraint firstItem="oK9-z5-zcs" firstAttribute="leading" secondItem="0NT-uN-LL9" secondAttribute="leading" id="bgD-S6-0SM"/>
+                            <constraint firstItem="oK9-z5-zcs" firstAttribute="top" secondItem="qMG-O1-H0o" secondAttribute="bottom" id="dV3-Ct-Zha"/>
                             <constraint firstAttribute="trailing" secondItem="NxJ-gw-agb" secondAttribute="trailing" constant="8" id="nQS-9x-gJp"/>
                             <constraint firstItem="rdt-tz-w3G" firstAttribute="top" secondItem="Sjx-fZ-T3m" secondAttribute="bottom" constant="8" id="t1l-z9-c62"/>
                         </constraints>
@@ -676,10 +673,10 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="actualImageView" destination="oK9-z5-zcs" id="whH-jk-jbK"/>
                         <outlet property="circleView" destination="NxJ-gw-agb" id="p09-LY-ATz"/>
                         <outlet property="fromUserLabel" destination="Sjx-fZ-T3m" id="pKe-WZ-9gS"/>
                         <outlet property="hourLabel" destination="rdt-tz-w3G" id="fFK-xB-MU5"/>
-                        <outlet property="scrollView" destination="P4n-lg-zt1" id="mTR-Vx-SzD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="21S-u2-qOT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -825,7 +822,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3135" y="2353"/>
+            <point key="canvasLocation" x="3111" y="2353"/>
         </scene>
         <!--Add Friends View Controller-->
         <scene sceneID="9FV-xB-tf7">
