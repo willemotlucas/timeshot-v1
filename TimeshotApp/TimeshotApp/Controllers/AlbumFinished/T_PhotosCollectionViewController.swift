@@ -181,7 +181,7 @@ class T_PhotosCollectionViewController: UIViewController {
     @IBAction func unwindToStoryView(sender: UIStoryboardSegue) {
         // We nedd the update our view and now where the user stopped the story
         if let sourceViewController = sender.sourceViewController as? T_StoryViewController {
-            if sourceViewController.currentPage == posts.count + 1{
+            if sourceViewController.currentPage == posts.count + 1 {
                 storyIndex = 0
             } else if sourceViewController.currentPage > 0 {
                 storyIndex = sourceViewController.currentPage - 1

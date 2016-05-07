@@ -142,11 +142,11 @@ extension T_AlbumViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
         let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
         
         if !isLoading && !errorLoading{
-            str = NSLocalizedString("We're retrieving your photos", comment: "")
+            str = NSLocalizedString("We're retrieving your albums", comment: "")
         } else if errorLoading{
             str = NSLocalizedString("Network is not available ... ", comment: "")
         } else if isLoading {
-            str = NSLocalizedString("This album is totally empty ... ", comment: "")
+            str = NSLocalizedString("Oh noo ... You don't have any albums as for now ... ", comment: "")
         }
         
         return NSAttributedString(string: str, attributes: attrs)
