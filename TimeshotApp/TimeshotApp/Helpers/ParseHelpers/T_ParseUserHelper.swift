@@ -110,7 +110,7 @@ class T_ParseUserHelper {
     static func emailAlreadyExist(email : String) -> Bool {
         let query = T_User.query()!
         //query.whereKey(self.EmailAddressParse, equalTo: email)
-        query.whereKey(self.EmailAddressParse, matchesRegex: String(format:"(?i)%@", email))
+        query.whereKey(self.EmailAddressParse, matchesRegex: String(format:"(?i)\\b%@\\b", email))
         do {
             let result =  try query.findObjects()
             if result.count > 0 {
@@ -133,7 +133,7 @@ class T_ParseUserHelper {
     static func usernameAlreadyExist(username : String) -> Bool {
         let query = T_User.query()!
         //query.whereKey(self.UsernameParse, equalTo: username)
-        query.whereKey(self.UsernameParse, matchesRegex: String(format:"(?i)%@", username))
+        query.whereKey(self.UsernameParse, matchesRegex: String(format:"(?i)\\b%@\\b", username))
         do {
             let result =  try query.findObjects()
             if result.count > 0 {
