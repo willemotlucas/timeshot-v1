@@ -11,4 +11,12 @@ import UIKit
 class T_PhotoCollectionViewCell: UICollectionViewCell {
     // MARK: Properties
     @IBOutlet weak var imageView: UIImageView!
+    
+    var post : T_Post? {
+        didSet {
+            if let post = post {
+                post.image.bindTo(imageView.bnd_image)
+            } 
+        }
+    }
 }

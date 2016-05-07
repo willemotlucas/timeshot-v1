@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFDateHelper
 
 class T_SliderViewController: UIViewController {
     // MARK: Properties
@@ -15,9 +16,12 @@ class T_SliderViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var fromUserLabel: UILabel!
     @IBOutlet weak var hourLabel: UILabel!
+    @IBOutlet weak var descriptionView: UIView!
+    @IBOutlet weak var fromUserImage: T_PhotoImageView!
     
-    var slideImages:[T_PhotosCollectionViewController.Post] = []
-    var slideViews: [UIImageView?] = []
+    //var slideImages:[T_PhotosCollectionViewController. ] = []
+    var slideImages: [T_Post] = []
+    var slideViews: [T_PhotoImageView?] = []
     var currentSlide: Int = 0
     
     // MARK: Status Bar Properties
@@ -41,6 +45,15 @@ class T_SliderViewController: UIViewController {
         let pagesScrollViewSize = scrollView.frame.size
         scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(slideImages.count), height: pagesScrollViewSize.height)
         
+        // Design the description view
+        T_DesignHelper.colorUIView(descriptionView)
+        descriptionView.alpha = 0.65
+        descriptionView.layer.masksToBounds = true
+        
+        fromUserImage.layer.cornerRadius = 20
+        fromUserImage.layer.masksToBounds = true
+        
+        
         // Loading the first slide
         loadVisibleSlides(currentSlide)
         
@@ -50,7 +63,7 @@ class T_SliderViewController: UIViewController {
         // Do any additional setup after loading the view.
         navigationController?.navigationBarHidden = true
         
-        UIApplication.sharedApplication().statusBarHidden=true
+        UIApplication.sharedApplication().statusBarHidden = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -75,8 +88,14 @@ class T_SliderViewController: UIViewController {
             frame.origin.y = 0.0
             
             // Design of the view
-            let newPageView = UIImageView(image: slideImages[page].image)
-            newPageView.contentMode = .ScaleAspectFit
+            let newPageView = T_PhotoImageView()
+            newPageView.post = slideImages[page]
+            if let image = slideImages[page].image.value {
+                newPageView.image = image
+            } else {
+                slideImages[page].downloadImage()
+            }
+            newPageView.contentMode = .ScaleAspectFill
             newPageView.frame = frame
             
             scrollView.addSubview(newPageView)
@@ -111,11 +130,35 @@ class T_SliderViewController: UIViewController {
         let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
         
         // Change the label of the page to be the good one
-        fromUserLabel.text = slideImages[page].fromUser
+        fromUserLabel.text = slideImages[page].fromUser.username
         
-        let calendar = NSCalendar.currentCalendar()
-        let comp = calendar.components([.Hour, .Minute], fromDate: slideImages[page].createdAt)
-        hourLabel.text = "-  \(comp.hour):\(comp.minute)"
+        // Load the image of the user
+        if let image = slideImages[page].fromUser.image.value {
+            fromUserImage.image = image
+        } else {
+            slideImages[page].fromUser.downloadImage()
+        }
+        
+        // ===============================================
+        // FAIRE UN DESIGN HELPER POUR L'AFFICHAGE DE DATE
+        // ===============================================
+        let photoHour = slideImages[page].createdAt!
+        
+        var photoHourString = ""
+        if photoHour.hour() < 9 {
+            photoHourString += "0"
+        }
+        photoHourString += "\(photoHour.hour()):"
+        
+        if photoHour.minute() < 9 {
+            photoHourString += "0"
+        }
+        photoHourString += "\(photoHour.minute())"
+        
+        hourLabel.text = photoHourString
+        
+        // ================================================
+        // ================================================
         
         
         // Work out which slides you want to load
@@ -188,7 +231,7 @@ class T_SliderViewController: UIViewController {
             
             // Avoid freezing the app by doing the download of the image in another queue
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                UIImageWriteToSavedPhotosAlbum(self.slideImages[page].image,self,#selector(T_SliderViewController.image(_:didFinishSavingWithError:contextInfo:)),nil);
+                UIImageWriteToSavedPhotosAlbum(self.slideImages[page].image.value!,self,#selector(T_SliderViewController.image(_:didFinishSavingWithError:contextInfo:)),nil);
             });
         }
         alertController.addAction(downloadAction)
@@ -203,11 +246,15 @@ class T_SliderViewController: UIViewController {
             dotsButton.hidden = false
             fromUserLabel.hidden = false
             hourLabel.hidden = false
+            fromUserImage.hidden = false
+            descriptionView.hidden = false
         } else {
             cancelButton.hidden = true
             dotsButton.hidden = true
             fromUserLabel.hidden = true
             hourLabel.hidden = true
+            fromUserImage.hidden = true
+            descriptionView.hidden = true
         }
     }
     

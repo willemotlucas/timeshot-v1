@@ -11,8 +11,8 @@ import UIKit
 
 class T_DesignHelper {
     // MARK: Properties
-    static let orangeClair = UIColor.init(colorLiteralRed: 243.0/255.0, green: 199.0/255.0, blue: 161.0/255.0, alpha: 1.0).CGColor
-    static let orangeFonce = UIColor.init(colorLiteralRed: 232.0/255.0, green: 121.0/255.0, blue: 117.0/255.0, alpha: 1.0).CGColor
+    static let orangeDegrade = UIColor.init(colorLiteralRed: 239.0/255.0, green: 127.0/255.0, blue: 94.0/255.0, alpha: 1.0).CGColor
+    static let rougeDegrade = UIColor.init(colorLiteralRed: 227.0/255.0, green: 80.0/255.0, blue: 104.0/255.0, alpha: 1.0).CGColor
     static let screenSize = CGSize(width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
     static let startPoint:CGFloat = 0.2
     static let endPoint:CGFloat = 0.8
@@ -24,7 +24,7 @@ class T_DesignHelper {
         layer.frame = navbar.bounds
         layer.frame.size.height += 20
 
-        layer.colors = [orangeFonce,orangeClair]
+        layer.colors = [rougeDegrade,orangeDegrade]
         layer.startPoint = CGPointMake(startPoint, 0.0)
         layer.endPoint = CGPointMake(endPoint, 0.0)
         
@@ -43,7 +43,7 @@ class T_DesignHelper {
         gradient.frame = view.bounds
         let scale = screenSize.width/gradient.frame.width
         
-        gradient.colors = [orangeFonce,orangeClair]
+        gradient.colors = [rougeDegrade,orangeDegrade]
         gradient.startPoint = CGPointMake(startPoint * scale, 0.0)
         gradient.endPoint = CGPointMake(endPoint * scale, 0.0)
         
@@ -58,7 +58,7 @@ class T_DesignHelper {
         let layer = CAGradientLayer()
         layer.frame = segmentedControl.bounds
         
-        layer.colors = [orangeFonce,orangeClair]
+        layer.colors = [rougeDegrade,orangeDegrade]
         layer.startPoint = CGPointMake(0.2, 0.0)
         layer.endPoint = CGPointMake(0.8, 0.0)
         
@@ -92,7 +92,6 @@ class T_DesignHelper {
         }
         return UIImage(CGImage: im.CGImage!, scale: im.scale, orientation: newOrient)
     }
-    
     static func addSubBorder(field : UITextField){
         let border = CALayer()
         border.borderColor = UIColor.whiteColor().CGColor
@@ -120,6 +119,11 @@ class T_DesignHelper {
         button.layer.borderWidth = DEFAULT_BORDER_SIZE_BUTTON
         button.layer.cornerRadius = CGFloat(button.frame.size.height/2)
     }
-
+    
+    static func makeRoundedImageView(imageView: UIImageView) {
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2;
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .ScaleAspectFill
+    }
     
 }

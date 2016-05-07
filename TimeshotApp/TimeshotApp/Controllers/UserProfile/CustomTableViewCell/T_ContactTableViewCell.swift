@@ -11,7 +11,7 @@ import UIKit
 class T_ContactTableViewCell: UITableViewCell {
     @IBOutlet weak var contactNameLabel: UILabel!
     @IBOutlet weak var contactTelephoneLabel: UILabel!
-    @IBOutlet weak var sendSMSButton: UIButton!
+    @IBOutlet weak var checkboxButton: T_SendMessageUIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
