@@ -124,7 +124,7 @@ class T_StoryViewController: UIViewController {
         
             let calendar = NSCalendar.currentCalendar()
             let comp = calendar.components([.Hour, .Minute], fromDate: actualPost!.createdAt!)
-            hourLabel.text = "-  \(comp.hour):\(comp.minute)"
+            hourLabel.text = "\(comp.hour):\(comp.minute)"
         
             // Work out which pages you want to load
             let firstPage = currentPage
@@ -137,6 +137,7 @@ class T_StoryViewController: UIViewController {
             currentPage += 1;
         } else {
             timer?.invalidate()
+            currentPage = 0
             self.dismissViewControllerAnimated(true, completion: nil)
         }
         
