@@ -334,13 +334,28 @@ Do you want to invite people from your address book ?</string>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cF5-mm-YAe">
-                                <rect key="frame" x="60" y="550" width="480" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZY-cW-ajc">
+                                <rect key="frame" x="60" y="472" width="480" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="L01-OU-0An"/>
+                                </constraints>
                                 <state key="normal" title="YES, I WANT!">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="J0J-YM-ICl" kind="show" id="6hx-wa-dPe"/>
+                                    <action selector="inviteFriend:" destination="1Xi-7U-vG8" eventType="touchUpInside" id="Vco-hJ-azG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cF5-mm-YAe">
+                                <rect key="frame" x="60" y="536" width="480" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="v9p-ZU-4k8"/>
+                                </constraints>
+                                <state key="normal" title="FINISH SIGN UP!">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="finishSignUp:" destination="1Xi-7U-vG8" eventType="touchUpInside" id="2KI-QD-pLk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -351,6 +366,7 @@ Do you want to invite people from your address book ?</string>
                             <constraint firstAttribute="trailing" secondItem="dLv-bL-Vr6" secondAttribute="trailing" id="7XW-az-kXH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cF5-mm-YAe" secondAttribute="trailing" constant="40" id="7xl-TA-lzc"/>
                             <constraint firstItem="67H-Pu-fGJ" firstAttribute="top" secondItem="fC1-GN-zWa" secondAttribute="bottom" id="9mP-Yl-oYn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MZY-cW-ajc" secondAttribute="trailing" constant="40" id="Bc4-o5-uby"/>
                             <constraint firstAttribute="trailing" secondItem="XQf-gV-pNm" secondAttribute="trailing" id="Eog-5W-D4E"/>
                             <constraint firstItem="fC1-GN-zWa" firstAttribute="leading" secondItem="A8f-0f-gH3" secondAttribute="leading" id="RMp-xO-OPi"/>
                             <constraint firstItem="dLv-bL-Vr6" firstAttribute="leading" secondItem="A8f-0f-gH3" secondAttribute="leading" id="RgR-BZ-tfp"/>
@@ -358,7 +374,9 @@ Do you want to invite people from your address book ?</string>
                             <constraint firstAttribute="trailingMargin" secondItem="cFQ-ND-rx4" secondAttribute="trailing" constant="40" id="Xkp-de-dC3"/>
                             <constraint firstAttribute="trailing" secondItem="fC1-GN-zWa" secondAttribute="trailing" id="cxn-TS-Jcd"/>
                             <constraint firstItem="67H-Pu-fGJ" firstAttribute="top" secondItem="cFQ-ND-rx4" secondAttribute="bottom" id="e4v-u2-9ex"/>
+                            <constraint firstItem="MZY-cW-ajc" firstAttribute="leading" secondItem="A8f-0f-gH3" secondAttribute="leadingMargin" constant="40" id="fP9-xg-em5"/>
                             <constraint firstItem="cFQ-ND-rx4" firstAttribute="leading" secondItem="A8f-0f-gH3" secondAttribute="leadingMargin" constant="40" id="fPp-mQ-dzW"/>
+                            <constraint firstItem="cF5-mm-YAe" firstAttribute="top" secondItem="MZY-cW-ajc" secondAttribute="bottom" constant="20" id="jfv-6S-ZRg"/>
                             <constraint firstItem="67H-Pu-fGJ" firstAttribute="top" secondItem="cF5-mm-YAe" secondAttribute="bottom" constant="20" id="nLh-3A-EPp"/>
                             <constraint firstItem="XQf-gV-pNm" firstAttribute="leading" secondItem="A8f-0f-gH3" secondAttribute="leading" id="pz7-ar-KCb"/>
                             <constraint firstItem="cF5-mm-YAe" firstAttribute="leading" secondItem="A8f-0f-gH3" secondAttribute="leadingMargin" constant="40" id="s9y-wW-icJ"/>
@@ -372,18 +390,13 @@ Do you want to invite people from your address book ?</string>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Sign up" id="sDc-Yh-379">
-                        <barButtonItem key="rightBarButtonItem" title="Skip" id="vVU-fL-ICU">
-                            <connections>
-                                <action selector="skipTapped:" destination="1Xi-7U-vG8" id="1T2-ct-UCI"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Sign up" id="sDc-Yh-379"/>
                     <connections>
                         <outlet property="cameraView" destination="dLv-bL-Vr6" id="2Oz-Ie-woo"/>
+                        <outlet property="finishUp" destination="cF5-mm-YAe" id="u5d-QB-Udz"/>
                         <outlet property="overlayView" destination="XQf-gV-pNm" id="6L7-hJ-1XQ"/>
-                        <outlet property="skipBarButtonItem" destination="vVU-fL-ICU" id="PNI-6f-Rjl"/>
-                        <outlet property="yesIWantButton" destination="cF5-mm-YAe" id="95d-9P-4fG"/>
+                        <outlet property="yesIWantButton" destination="MZY-cW-ajc" id="CbK-fV-SLv"/>
+                        <segue destination="IfI-pq-FfO" kind="presentation" identifier="showContactSearch" id="8ne-HG-5yo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdH-IC-BlE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -788,7 +801,7 @@ Do you want to invite people from your address book ?</string>
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="nWC-mC-JgI">
                             <color key="tintColor" red="0.99694848000000003" green="1" blue="0.97672368710000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="cancel:" destination="J0J-YM-ICl" id="8ZP-5M-tTo"/>
+                                <action selector="cancelButtonTapped:" destination="J0J-YM-ICl" id="T8i-I1-vTF"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Invite" id="WQ8-iK-WaL">
@@ -830,7 +843,7 @@ Do you want to invite people from your address book ?</string>
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="836" y="1953"/>
+            <point key="canvasLocation" x="1648" y="1953"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OaC-pW-RFy">
@@ -853,6 +866,27 @@ Do you want to invite people from your address book ?</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uzP-D8-WSW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-632" y="1228"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bDK-6u-9X3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IfI-pq-FfO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZD3-H6-vUI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="J0J-YM-ICl" kind="relationship" relationship="rootViewController" id="wRJ-qR-mLo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4vX-Qd-ehn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="836" y="1953"/>
         </scene>
     </scenes>
     <resources>

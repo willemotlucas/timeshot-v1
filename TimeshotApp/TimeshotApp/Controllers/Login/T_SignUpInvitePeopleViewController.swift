@@ -12,7 +12,7 @@ import CameraManager
 class T_SignUpInvitePeopleViewController: UIViewController {
     
     @IBOutlet weak var yesIWantButton: UIButton!
-    @IBOutlet weak var skipBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var finishUp: UIButton!
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var cameraView: UIView!
     let cameraManager = CameraManager()
@@ -34,6 +34,8 @@ class T_SignUpInvitePeopleViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         T_DesignHelper.addRoundBorder(yesIWantButton)
         T_DesignHelper.colorBorderButton(yesIWantButton)
+        T_DesignHelper.addRoundBorder(finishUp)
+        T_DesignHelper.colorBorderButton(finishUp)
         
         T_DesignHelper.colorUIView(overlayView)
         
@@ -46,7 +48,18 @@ class T_SignUpInvitePeopleViewController: UIViewController {
         
     }
     
-    @IBAction func skipTapped(sender: AnyObject) {
+    /*override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if sender === yesIWantButton {
+            T_ContactsHelper.promptForAddressBookRequestAccess(self)
+            return false
+        }
+        return true
+    }*/
+    @IBAction func inviteFriend(sender: AnyObject) {
+        T_ContactsHelper.promptForAddressBookRequestAccess(self)
+    }
+    
+    @IBAction func finishSignUp(sender: AnyObject) {
         if let viaFb = viaFacebook where viaFb == true{
             do {
                 try user?.save()
@@ -67,4 +80,5 @@ class T_SignUpInvitePeopleViewController: UIViewController {
         let vc = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController") as UIViewController
         self.presentViewController(vc, animated: true, completion: nil)
     }
+    
 }

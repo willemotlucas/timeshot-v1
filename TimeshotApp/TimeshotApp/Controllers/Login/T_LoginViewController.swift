@@ -126,8 +126,7 @@ class T_LoginViewController: UIViewController {
                         self.presentViewController(vc, animated: true, completion: nil)
                     }
                     else {
-                        // TODO Login Failed be more specific
-                         T_AlertHelper.alert(NSLocalizedString("Cannot sign in", comment: ""), errors: [NSLocalizedString("Something went wrong during the login", comment: "")], viewController: self)
+                         T_AlertHelper.alert(NSLocalizedString("Cannot sign in", comment: ""), errors: [NSLocalizedString("Username and/or password incorect", comment: "")], viewController: self)
                     }
                 }
        
