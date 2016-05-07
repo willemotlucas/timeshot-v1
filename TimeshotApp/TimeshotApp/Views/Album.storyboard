@@ -629,7 +629,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oK9-z5-zcs" customClass="T_PhotoImageView" customModule="TimeshotApp" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oK9-z5-zcs">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fromUser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sjx-fZ-T3m">
@@ -673,7 +673,7 @@
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="actualImageView" destination="oK9-z5-zcs" id="whH-jk-jbK"/>
+                        <outlet property="actualImageView" destination="oK9-z5-zcs" id="MHS-lD-28E"/>
                         <outlet property="circleView" destination="NxJ-gw-agb" id="p09-LY-ATz"/>
                         <outlet property="fromUserLabel" destination="Sjx-fZ-T3m" id="pKe-WZ-9gS"/>
                         <outlet property="hourLabel" destination="rdt-tz-w3G" id="fFK-xB-MU5"/>
