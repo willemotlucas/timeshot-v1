@@ -45,6 +45,10 @@ class T_AlbumViewController: UIViewController{
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        timelineComponent.loadInitialIfRequired()
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -98,19 +102,19 @@ extension T_AlbumViewController : UITableViewDelegate, UITableViewDataSource {
         
         album.downloadCoverImage()
         
-        if T_Album.isLiveAlbumAssociatedToUser(album) {
-            let cell = tableView.dequeueReusableCellWithIdentifier("liveAlbum") as! T_AlbumLiveTableViewCell
-            cell.album = album
-            cell.initCellWithMetaData(album.createdAt!, title: album.title)
-            
-            return cell
-        } else {
+//        if T_Album.isLiveAlbumAssociatedToUser(album) {
+//            let cell = tableView.dequeueReusableCellWithIdentifier("liveAlbum") as! T_AlbumLiveTableViewCell
+//            cell.album = album
+//            cell.initCellWithMetaData(album.createdAt!, title: album.title)
+//            
+//            return cell
+//        } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("finishAlbum") as! T_AlbumFinishTableViewCell
             cell.album = album
             cell.initCellWithMetaData(album.createdAt!, title: album.title)
             
             return cell
-        }
+        //}
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
