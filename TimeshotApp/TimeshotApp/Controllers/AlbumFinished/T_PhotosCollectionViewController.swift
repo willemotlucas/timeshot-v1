@@ -143,6 +143,14 @@ class T_PhotosCollectionViewController: UIViewController {
                     return false
                 }
             }
+        } else if identifier == "ShowStory" {
+            if let selectedPicture = sender as? T_StoryCollectionViewCell {
+                if selectedPicture.imageView.image.value == UIImage(named: "TakePicture"){
+                    return false
+                } else {
+                    return true
+                }
+            }
         }
         return true
     }
@@ -214,6 +222,10 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
             cell.imageView.layer.cornerRadius = 40
             post.downloadImage()
             cell.post = post
+            
+            if cell.imageView.image == nil {
+                cell.imageView.bnd_image.value = UIImage(named: "TakePicture")
+            }
             
             return cell
         } else {
