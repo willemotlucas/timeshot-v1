@@ -19,6 +19,7 @@ class T_ValidatorHelper {
                 $0.errorMessage = NSLocalizedString("Firstname should not be empty", comment: "")
             } <~~ ValidatorEmpty() {
                 $0.allowNil = false
+                $0.errorMessage = NSLocalizedString("Firstname should not be empty", comment: "")
             } <~~ ValidatorStrLen() {
                 $0.minLength = 2
                 $0.maxLength = 30
@@ -34,6 +35,7 @@ class T_ValidatorHelper {
                 $0.errorMessage = NSLocalizedString("Name should not be empty", comment: "")
             } <~~ ValidatorEmpty() {
                 $0.allowNil = false
+                $0.errorMessage = NSLocalizedString("Name should not be empty", comment: "")
             } <~~ ValidatorStrLen() {
                 $0.minLength = 2
                 $0.maxLength = 30
@@ -49,6 +51,7 @@ class T_ValidatorHelper {
                 $0.errorMessage = NSLocalizedString("Password should not be empty", comment: "")
             } <~~ ValidatorEmpty() {
                 $0.allowNil = false
+                $0.errorMessage = NSLocalizedString("Password should not be empty", comment: "")
             } <~~ ValidatorStrLen() {
                 $0.minLength = 2
                 $0.maxLength = 30
@@ -60,11 +63,15 @@ class T_ValidatorHelper {
         return ValidatorChain() {
             $0.stopOnException = true
             $0.stopOnFirstError = true
-            }
-            <~~ ValidatorRequired() {
+            } <~~ ValidatorRequired() {
                 $0.errorMessage = NSLocalizedString("E-mail is required", comment: "")
-            }
-            <~~ ValidatorEmail() {
+            } <~~ ValidatorEmpty() {
+                $0.allowNil = false
+                $0.errorMessage = NSLocalizedString("E-mail should not be empty", comment: "")
+            } <~~ ValidatorRegex() {
+                $0.pattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+                $0.errorMessageValueIsNotMatching = NSLocalizedString("Your e-mail is not valid", comment: "")
+            } <~~ ValidatorEmail() {
                 $0.errorMessageInvalidAddress = NSLocalizedString("Your e-mail is not valid", comment: "")
         }
 
@@ -78,6 +85,7 @@ class T_ValidatorHelper {
                 $0.errorMessage = NSLocalizedString("Username should not be empty", comment: "")
             } <~~ ValidatorEmpty() {
                 $0.allowNil = false
+                $0.errorMessage = NSLocalizedString("Username should not be empty", comment: "")
             } <~~ ValidatorStrLen() {
                 $0.minLength = 2
                 $0.maxLength = 30

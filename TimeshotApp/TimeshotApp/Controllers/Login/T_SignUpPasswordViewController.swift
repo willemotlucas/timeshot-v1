@@ -60,6 +60,7 @@ class T_SignUpPasswordViewController: UIViewController {
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if confirmPasswordTextField.text != passwordTextField.text {
+            T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: [NSLocalizedString("Passwords are not matching", comment: "")], viewController: self)
             return false
         }
         else {

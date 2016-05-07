@@ -8,15 +8,15 @@
 
 import UIKit
 
-class T_SignUpUsernameViaFacebookViewController: UIViewController {
-    @IBOutlet weak var cameraView: UIView!
+class T_SignUpUsernameViaFacebookViewController: T_SignUpUsernameViewController {
+    /*@IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var continueButton: UIButton!
     var user : T_User?
-    var usernameValidator = T_ValidatorHelper.userNameValidator()
+    var usernameValidator = T_ValidatorHelper.userNameValidator()*/
     
-    override func viewDidLoad() {
+    /*override func viewDidLoad() {
         super.viewDidLoad()
         usernameTextField.delegate = self
         
@@ -38,7 +38,7 @@ class T_SignUpUsernameViaFacebookViewController: UIViewController {
         
         T_DesignHelper.colorUIView(overlayView)
         
-    }
+    }*/
     
     // MARK: - Navigation
     
@@ -64,7 +64,7 @@ class T_SignUpUsernameViaFacebookViewController: UIViewController {
         }
         
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if sender === continueButton {
             if let signupInviteView = segue.destinationViewController as? T_SignUpInvitePeopleViewController {
                 let username : String? = usernameTextField.text
@@ -75,12 +75,12 @@ class T_SignUpUsernameViaFacebookViewController: UIViewController {
             }
             
         }
-    }
+    }*/
     
     
 }
 
-extension T_SignUpUsernameViaFacebookViewController: UITextFieldDelegate {
+/*extension T_SignUpUsernameViaFacebookViewController: UITextFieldDelegate {
     // MARK: - Text Field Delegate
     
     
@@ -93,4 +93,4 @@ extension T_SignUpUsernameViaFacebookViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         
     }
-}
+}*/
