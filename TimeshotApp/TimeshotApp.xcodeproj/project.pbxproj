@@ -507,7 +507,7 @@
 				TargetAttributes = {
 					7D86991A1C8F4A9D003BC1DC = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 4K77L2XZHW;
+						DevelopmentTeam = 6T9PST97YR;
 					};
 				};
 			};
@@ -786,7 +786,7 @@
 				INFOPLIST_FILE = TimeshotApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Valentin.Timeshot;
+				PRODUCT_BUNDLE_IDENTIFIER = me.lamouri.Timeshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -802,7 +802,7 @@
 				INFOPLIST_FILE = TimeshotApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Valentin.Timeshot;
+				PRODUCT_BUNDLE_IDENTIFIER = me.lamouri.Timeshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

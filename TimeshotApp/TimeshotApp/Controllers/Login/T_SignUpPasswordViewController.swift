@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CameraManager
 
 class T_SignUpPasswordViewController: UIViewController {
     @IBOutlet weak var cameraView: UIView!
@@ -14,11 +15,14 @@ class T_SignUpPasswordViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var continueButton: UIButton!
+    let cameraManager = CameraManager()
     var user : T_User?
     let passwordValidator = T_ValidatorHelper.passwordValidator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.cameraManager.cameraDevice = .Front
+        self.cameraManager.addPreviewLayerToView(self.cameraView)
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
         // Do any additional setup after loading the view.

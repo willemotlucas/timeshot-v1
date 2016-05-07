@@ -8,7 +8,6 @@
 
 import UIKit
 import CameraManager
-import Parse
 import SwiftValidate
 
 class T_SignUpEmailViewController: UIViewController {
@@ -84,6 +83,11 @@ class T_SignUpEmailViewController: UIViewController {
         let errors : [String] = T_ValidatorHelper.getAllErrors([firstNameValidator, nameValidator, emailValidator])
         if !errors.isEmpty {
             T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: errors, viewController: self)
+            return false
+        }
+        let emailAlreadyExist = T_ParseUserHelper.emailAlreadyExist(emailTextField.text!)
+        if emailAlreadyExist {
+            T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: [NSLocalizedString("This email is already used", comment: "")], viewController: self)
             return false
         }
         return true

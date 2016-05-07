@@ -18,8 +18,6 @@ class T_SignUpContactViewController: T_SearchContactViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        self.navigationItem.hidesBackButton = true
     }
     
 
@@ -32,10 +30,10 @@ class T_SignUpContactViewController: T_SearchContactViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    @IBAction func finish(sender: AnyObject) {
+    @IBAction func cancel(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController") as UIViewController
         presentViewController(vc, animated: true, completion: nil)
     }
+
 }

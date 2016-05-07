@@ -8,7 +8,6 @@
 
 import UIKit
 import CameraManager
-import Parse
 import SwiftValidate
 import ParseFacebookUtilsV4
 
@@ -96,8 +95,7 @@ class T_LoginViewController: UIViewController {
                             user?.lastName = last_name
                             user?.firstName = first_name
                             let storyboard = UIStoryboard(name: "Login", bundle: nil)
-                            let vc = storyboard.instantiateViewControllerWithIdentifier("usernameFacebook") as! T_SignUpUsernameViaFacebookViewController
-                            vc.user = user
+                            let vc = storyboard.instantiateViewControllerWithIdentifier("T_SignUpUsernameViaFacebookNavigationController") as! UINavigationController
                             self.presentViewController(vc, animated: true, completion: nil)
                             
                         }
@@ -109,8 +107,6 @@ class T_LoginViewController: UIViewController {
                     self.presentViewController(vc, animated: true, completion: nil)
                 }
                 
-            } else {
-                print("Uh oh. The user cancelled the Facebook login.")
             }
         }
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CameraManager
 
 class T_SignUpUsernameViewController: UIViewController {
     @IBOutlet weak var cameraView: UIView!
@@ -15,9 +16,12 @@ class T_SignUpUsernameViewController: UIViewController {
     @IBOutlet weak var continueButton: UIButton!
     var user : T_User?
     let usernameValidator = T_ValidatorHelper.userNameValidator()
+    let cameraManager = CameraManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.cameraManager.cameraDevice = .Front
+        self.cameraManager.addPreviewLayerToView(self.cameraView)
         usernameTextField.delegate = self
         
         // Do any additional setup after loading the view.
@@ -49,17 +53,22 @@ class T_SignUpUsernameViewController: UIViewController {
                 if let user = user {
                     user.username = username
                     signupInviteView.user = user
+                    signupInviteView.viaFacebook = false
                 }
             }
             
         }
     }
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        //TODO Vérifier si le usernam est pas déjà pris
         usernameValidator.validate(usernameTextField.text, context: nil)
         if !usernameValidator.errors.isEmpty {
             let errors = T_ValidatorHelper.getAllErrors([usernameValidator])
             T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: errors, viewController: self)
+            return false
+        }
+        let usernameAlreadyExist = T_ParseUserHelper.usernameAlreadyExist(usernameTextField.text!)
+        if usernameAlreadyExist {
+            T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: [NSLocalizedString("This username is already used", comment: "")], viewController: self)
             return false
         }
         return true

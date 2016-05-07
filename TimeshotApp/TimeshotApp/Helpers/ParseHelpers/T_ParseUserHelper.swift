@@ -101,6 +101,53 @@ class T_ParseUserHelper {
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
     
+    /**
+     * Check if an email already exist
+     * Params:
+     * - @email : the email to check
+     * Return : bool
+     */
+    static func emailAlreadyExist(email : String) -> Bool {
+        let query = T_User.query()!
+        //query.whereKey(self.EmailAddressParse, equalTo: email)
+        query.whereKey(self.EmailAddressParse, matchesRegex: String(format:"(?i)%@", email))
+        do {
+            let result =  try query.findObjects()
+            if result.count > 0 {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+        catch _ {
+            return true
+        }
+    }
+    /**
+     * Check if an username already exist
+     * Params:
+     * - @email : the username to check
+     * Return : bool
+     */
+    static func usernameAlreadyExist(username : String) -> Bool {
+        let query = T_User.query()!
+        //query.whereKey(self.UsernameParse, equalTo: username)
+        query.whereKey(self.UsernameParse, matchesRegex: String(format:"(?i)%@", username))
+        do {
+            let result =  try query.findObjects()
+            if result.count > 0 {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+        catch _ {
+            return true
+        }
+    }
+    
     // MARK: Edition functions
     
     /*

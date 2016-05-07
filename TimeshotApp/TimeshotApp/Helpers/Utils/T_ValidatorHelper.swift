@@ -71,8 +71,8 @@ class T_ValidatorHelper {
             } <~~ ValidatorRegex() {
                 $0.pattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
                 $0.errorMessageValueIsNotMatching = NSLocalizedString("Your e-mail is not valid", comment: "")
-            } <~~ ValidatorEmail() {
-                $0.errorMessageInvalidAddress = NSLocalizedString("Your e-mail is not valid", comment: "")
+            /*} <~~ ValidatorEmail() {
+                $0.errorMessageInvalidAddress = NSLocalizedString("Your e-mail is not valid", comment: "")*/
         }
 
     }

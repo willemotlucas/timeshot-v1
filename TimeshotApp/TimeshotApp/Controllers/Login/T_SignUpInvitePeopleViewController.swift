@@ -7,26 +7,31 @@
 //
 
 import UIKit
+import CameraManager
 
 class T_SignUpInvitePeopleViewController: UIViewController {
-
+    
     @IBOutlet weak var yesIWantButton: UIButton!
     @IBOutlet weak var skipBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var cameraView: UIView!
+    let cameraManager = CameraManager()
     var user : T_User?
+    var viaFacebook : Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.cameraManager.cameraDevice = .Front
+        self.cameraManager.addPreviewLayerToView(self.cameraView)
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidLayoutSubviews() {        
+    override func viewDidLayoutSubviews() {
         T_DesignHelper.addRoundBorder(yesIWantButton)
         T_DesignHelper.colorBorderButton(yesIWantButton)
         
@@ -35,17 +40,31 @@ class T_SignUpInvitePeopleViewController: UIViewController {
     }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        user?.signUpInBackgroundWithBlock{ success , errors -> Void in
-        }
+        
     }
     
     @IBAction func skipTapped(sender: AnyObject) {
+        if let viaFb = viaFacebook where viaFb == true{
+            do {
+                try user?.save()
+            }
+            catch _ {
+                
+            }
+        }
+        else {
+            do {
+                try user?.signUp()
+            }
+            catch _ {
+                
+            }
+        }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController") as UIViewController
-        presentViewController(vc, animated: true, completion: nil)
+        self.presentViewController(vc, animated: true, completion: nil)
     }
-
 }
