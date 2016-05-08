@@ -7,21 +7,43 @@
 //
 
 import UIKit
+import Bond
 import KYCircularProgress
+import MBProgressHUD
 
 
 class T_StoryViewController: UIViewController {
     // MARK: Properties
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var fromUserLabel: UILabel!
     @IBOutlet weak var circleView: UIView!
+    @IBOutlet weak var actualImageView: UIImageView!
     
+    var actualPost : T_Post? {
+        didSet {
+            if let post = actualPost {
+                post.image.bindTo(self.actualImageView.bnd_image)
+                
+                if post.image.value != nil {
+                    self.launchTimer()
+                } else {
+                    self.freezeUI()
+                    self.actualImageView.bnd_image.observeNew { image in
+                        if image != nil {
+                            self.unfreezeUI()
+                            self.launchTimer()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    var progressHUD:MBProgressHUD?
     var pageImages:[T_Post] = []
-    var pageViews: [T_PhotoImageView?] = []
     var currentPage: Int = 0
     var currentTime: Double = 0.0
-    var timer: NSTimer!
+    var timer: NSTimer?
     var timer2: NSTimer!
     var circularProgress1: KYCircularProgress?
     var circularProgress2: KYCircularProgress?
@@ -34,7 +56,6 @@ class T_StoryViewController: UIViewController {
     
     // MARK: Design Circle
     private func configureCircle1() {
-        //let circleFrame = CGRectMake(0, 0, 20, 20)
         circularProgress1 = KYCircularProgress(frame: CGRect(x:6, y: 6, width: circleView.bounds.width-12, height: circleView.bounds.height-12))
         circularProgress1?.lineWidth = 6
         circularProgress1?.startAngle = -M_PI_2
@@ -60,21 +81,8 @@ class T_StoryViewController: UIViewController {
         configureCircle1()
         configureCircle2()
         
-        let pageCount = pageImages.count
-        
-        for _ in 0..<pageCount {
-            pageViews.append(nil)
-        }
-        
-        // Really important ! Need to initialize width of the scrollView
-        // Fix the size of the scrollView
-        scrollView.frame.size = view.frame.size
-        let pagesScrollViewSize = scrollView.frame.size
-        scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(pageImages.count), height: pagesScrollViewSize.height)
-        
         // Need to lauch the first action because with sceduledTimer it will start in 4 sec
-        newImage()
-        timer = NSTimer.scheduledTimerWithTimeInterval(3.8, target: self, selector: #selector(newImage), userInfo: nil, repeats: true)
+        showCurrentImage()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -86,7 +94,7 @@ class T_StoryViewController: UIViewController {
     
     // Need to stop all the timer when we quit this view
     override func viewWillDisappear(animated: Bool) {
-        timer.invalidate()
+        timer?.invalidate()
         timer2.invalidate()
     }
     
@@ -95,18 +103,56 @@ class T_StoryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Methods
+    func freezeUI() {
+        progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        progressHUD?.mode = .Indeterminate
+    }
+    
+    func unfreezeUI() {
+        progressHUD?.hide(true)
+    }
+
     // MARK: Functions
-    func newImage() {
+    func showCurrentImage() {
+        // On change le currentPost
         if currentPage < pageImages.count {
-            loadNextPages(currentPage)
-            currentPage += 1
-            circularProgress1!.progress = 1 - (Double(currentPage)/Double(pageImages.count))
-            
-            timer2 = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(timeImage), userInfo: nil, repeats: true)
+            actualPost = pageImages[currentPage]
+        
+            // Change the label of the page to be the good one
+            fromUserLabel.text = actualPost!.fromUser.username
+        
+            let calendar = NSCalendar.currentCalendar()
+            let comp = calendar.components([.Hour, .Minute], fromDate: actualPost!.createdAt!)
+            hourLabel.text = "\(comp.hour):\(comp.minute)"
+        
+            // Work out which pages you want to load
+            let firstPage = currentPage
+            let lastPage = currentPage + 2
+        
+            // Load pages in our range
+            for index in firstPage...lastPage {
+                loadImage(index)
+            }
+            currentPage += 1;
         } else {
-            timer.invalidate()
+            timer?.invalidate()
+            currentPage = 0
             self.dismissViewControllerAnimated(true, completion: nil)
         }
+        
+    }
+    
+    func launchTimer(){
+        if let myTimer = timer {
+            if !myTimer.valid {
+                timer = NSTimer.scheduledTimerWithTimeInterval(3.8, target: self, selector: #selector(showCurrentImage), userInfo: nil, repeats: true)
+            }
+        } else {
+            timer = NSTimer.scheduledTimerWithTimeInterval(3.8, target: self, selector: #selector(showCurrentImage), userInfo: nil, repeats: true)
+        }
+        circularProgress1!.progress = 1 - (Double(currentPage + 1)/Double(pageImages.count))
+        timer2 = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(timeImage), userInfo: nil, repeats: true)
     }
     
     func timeImage(){
@@ -118,104 +164,45 @@ class T_StoryViewController: UIViewController {
             timer2.invalidate()
         }
     }
-    
-    
-    func loadPage(page:Int) {
-        if page < 0 || page >= pageImages.count {
+
+    func loadImage(page:Int) {
+        if page >= pageImages.count {
             // If it's outside the range of what you have to display, then do nothing
             return
         }
-        
-        // Check if we have already loaded the view
-        if let _ = pageViews[page] {
+        // Check if we have already loaded the image
+        if let _ = pageImages[page].image.value {
             // Do nothing the view is already loaded
         } else {
-            // Need to create the view
-            var frame = scrollView.bounds
-            frame.origin.x = frame.size.width * CGFloat(page)
-            frame.origin.y = 0.0
-            
-            // Design of the view
-            let newPageView = T_PhotoImageView()
-            newPageView.post = pageImages[page]
-            if let image = pageImages[page].image.value {
-                newPageView.image = image
-            } else {
-                pageImages[page].downloadImage()
-            }
-            newPageView.contentMode = .ScaleAspectFit
-            newPageView.frame = frame
-            
-            
-            scrollView.addSubview(newPageView)
-            
-            // Add the view to the slider
-            pageViews[page] = newPageView
-        }
-    }
-    
-    func purgePage(page:Int) {
-        if page < 0 || page >= pageImages.count {
-            // If it's outside the range of what you have to display, then do nothing
-            return
-        }
-        
-        // Remove a page from the scroll view and reset the container array
-        if let pageView = pageViews[page]{
-            pageView.removeFromSuperview()
-            pageViews[page] = nil
-        }
-    }
-    
-    func loadNextPages(pageIndex: Int? ) {
-        // First, determine which page is currently visible
-        let pageWidth = scrollView.frame.size.width
-        
-        // If we have a pageIndex, then we need to display the specific slide
-        if let pageIndex = pageIndex {
-            scrollView.contentOffset.x = pageWidth * CGFloat(pageIndex)
-        }
-        
-        let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
-        
-        // Change the label of the page to be the good one
-        fromUserLabel.text = pageImages[page].fromUser.username
-        
-        let calendar = NSCalendar.currentCalendar()
-        let comp = calendar.components([.Hour, .Minute], fromDate: pageImages[page].createdAt!)
-        hourLabel.text = "-  \(comp.hour):\(comp.minute)"
-        
-        // Work out which pages you want to load
-        let firstPage = page
-        let lastPage = page + 2
-        
-        
-        // Purge anything before the first page
-        for index in 0 ..< firstPage {
-            purgePage(index)
-        }
-        
-        // Load pages in our range
-        for index in firstPage...lastPage {
-            loadPage(index)
-        }
-        
-        // Purge anything after the last page
-        for index in (lastPage + 1).stride(to:pageImages.count, by:1)  {
-            purgePage(index)
+            pageImages[page].downloadImage()
         }
     }
     
     // MARK: Action
     @IBAction func userTapped(recognizer: UITapGestureRecognizer) {
-        // Stop the current timers
-        timer.invalidate()
-        timer2.invalidate()
-        currentTime = 0.0
-        // Launch the new timers
-        // And we launch the first one
-        newImage()
-        timer = NSTimer.scheduledTimerWithTimeInterval(3.8, target: self, selector: #selector(newImage), userInfo: nil, repeats: true)
+        if let progress = progressHUD {
+            if progress.hidden {
+                // Stop the current timers
+                timer?.invalidate()
+                timer2.invalidate()
+                currentTime = 0.0
+                // Launch the new timers
+                // And we launch the first one
+                showCurrentImage()
+            } else {
+                print("Ca charge ca marche attend un peu")
+            }
+            
+        }else {
+            // Stop the current timers
+            timer?.invalidate()
+            timer2.invalidate()
+            currentTime = 0.0
+            // Launch the new timers
+            // And we launch the first one
+            showCurrentImage()
+        }
+        
     }
     
     @IBAction func exitStory(recognizer: UISwipeGestureRecognizer) {
@@ -232,3 +219,4 @@ class T_StoryViewController: UIViewController {
      }
      */
 }
+

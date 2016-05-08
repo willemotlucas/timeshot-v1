@@ -143,6 +143,14 @@ class T_PhotosCollectionViewController: UIViewController {
                     return false
                 }
             }
+        } else if identifier == "ShowStory" {
+            if let selectedPicture = sender as? T_StoryCollectionViewCell {
+                if selectedPicture.imageView.image.value == UIImage(named: "TakePicture"){
+                    return false
+                } else {
+                    return true
+                }
+            }
         }
         return true
     }
@@ -173,12 +181,11 @@ class T_PhotosCollectionViewController: UIViewController {
     @IBAction func unwindToStoryView(sender: UIStoryboardSegue) {
         // We nedd the update our view and now where the user stopped the story
         if let sourceViewController = sender.sourceViewController as? T_StoryViewController {
-            if sourceViewController.currentPage > 0 {
+            if sourceViewController.currentPage == posts.count + 1 {
+                storyIndex = 0
+            } else if sourceViewController.currentPage > 0 {
                 storyIndex = sourceViewController.currentPage - 1
-            } else {
-                storyIndex = sourceViewController.currentPage
             }
-            
         }
     }
 }
@@ -214,6 +221,10 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
             cell.imageView.layer.cornerRadius = 40
             post.downloadImage()
             cell.post = post
+            
+            if cell.imageView.image == nil {
+                cell.imageView.bnd_image.value = UIImage(named: "TakePicture")
+            }
             
             return cell
         } else {

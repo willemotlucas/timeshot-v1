@@ -45,6 +45,8 @@ class T_FriendsTableViewCell: UITableViewCell {
         userImageView.layer.cornerRadius = 20
         userImageView.layer.masksToBounds = true
         
+        self.selectionStyle = .None
+        
         
     }
     
@@ -53,12 +55,6 @@ class T_FriendsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
