@@ -53,15 +53,22 @@ class T_Album : PFObject, PFSubclassing {
         self.title = title
         
     }
+    
+    func appendAttendees(user: T_User){
+        self.attendees.append(user)
+    }
         
     static func createAlbum(cover: UIImage, duration: Int, albumTitle: String) {
         
         if let currentUser = PFUser.currentUser() as? T_User {
            
-            var attendees = T_User.selectedFriends
-            attendees.append(currentUser)
-            
+            let guests = T_User.selectedFriends
+            let attendees = [currentUser]
             let album = T_Album(attendees: attendees, cover: cover, createdBy: currentUser, duration: duration, isDeleted: false, title: albumTitle)
+            
+            for guest in guests {
+                T_ParseAlbumRequestHelper.sendFriendRequest(guest, toAlbum: album)
+            }
             
             T_Album.albumCreationTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in
                 UIApplication.sharedApplication().endBackgroundTask(self.albumCreationTask!)

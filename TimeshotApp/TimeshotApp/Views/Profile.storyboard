@@ -36,18 +36,23 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rn9-VO-H38">
                                 <rect key="frame" x="300" y="555" width="300" height="45"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JOIN THIS ALBUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IqJ-g8-Cx6">
-                                        <rect key="frame" x="79" y="12" width="142" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOu-M7-CG4">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
+                                        <state key="normal" title="JOIN THIS ALBUM">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="acceptButtonTapped:" destination="gZp-wi-ZJv" eventType="touchUpInside" id="fIE-m5-Fqe"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.5832736921616779" green="0.80178285256410253" blue="0.0010410515352272201" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="IqJ-g8-Cx6" firstAttribute="centerY" secondItem="Rn9-VO-H38" secondAttribute="centerY" id="rKa-yr-YW4"/>
+                                    <constraint firstItem="nOu-M7-CG4" firstAttribute="width" secondItem="Rn9-VO-H38" secondAttribute="width" id="ERR-nq-4QO"/>
+                                    <constraint firstAttribute="trailing" secondItem="nOu-M7-CG4" secondAttribute="trailing" id="WM0-hv-6Hr"/>
+                                    <constraint firstItem="nOu-M7-CG4" firstAttribute="height" secondItem="Rn9-VO-H38" secondAttribute="height" id="nz1-hq-5s8"/>
                                     <constraint firstAttribute="height" constant="45" id="thR-zm-eQb"/>
-                                    <constraint firstItem="IqJ-g8-Cx6" firstAttribute="centerX" secondItem="Rn9-VO-H38" secondAttribute="centerX" id="u5T-2R-KHE"/>
+                                    <constraint firstAttribute="bottom" secondItem="nOu-M7-CG4" secondAttribute="bottom" id="zi4-tT-T6F"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tmL-li-190">

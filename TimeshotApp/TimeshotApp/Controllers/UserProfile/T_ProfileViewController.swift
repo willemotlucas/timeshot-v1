@@ -429,7 +429,9 @@ extension T_ProfileViewController: DZNEmptyDataSetSource {
 }
 
 extension T_ProfileViewController: DZNEmptyDataSetDelegate {
-    
+    func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
+        return true
+    }
 }
 
 /*

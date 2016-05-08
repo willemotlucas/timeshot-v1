@@ -26,7 +26,11 @@ class T_AlbumRequestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if T_ParseUserHelper.getCurrentUser()?.liveAlbum != nil {
+            print("live album found, cannot join another album!")
+        } else {
+            print("no album found ...")
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -46,4 +50,15 @@ class T_AlbumRequestViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func acceptButtonTapped(sender: UIButton) {
+        if T_ParseUserHelper.getCurrentUser()?.liveAlbum != nil {
+            T_AlertHelper.alertOK("Oups!", message: "You already have an album in progress...", viewController: self)
+        } else {
+            T_ParseAlbumRequestHelper.acceptAlbumRequest(self.albumRequest!) { (result: Bool, error: NSError?) in
+                print("ready to return in profile view")
+                self.delegate?.refreshTableView()
+            }
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
 }
