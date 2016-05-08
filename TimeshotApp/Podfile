@@ -13,6 +13,7 @@ pod 'AFDateHelper'
 pod 'MBProgressHUD', '~> 0.9.2'
 pod 'SwiftGifOrigin'
 pod 'PullToRefresher'
+pod 'SwiftAddressBook'
 
 post_install do |installer|
     `find Pods -regex 'Pods/pop.*\\.h' -print0 | xargs -0 sed -i '' 's/\\(<\\)pop\\/\\(.*\\)\\(>\\)/\\"\\2\\"/'`

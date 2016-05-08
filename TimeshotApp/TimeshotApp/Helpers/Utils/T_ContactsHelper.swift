@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import SwiftAddressBook
 import AddressBook
 import AddressBookUI
 import UIKit
 
 class T_ContactsHelper {
-    static let addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
+    //static let addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
 
     /*
      * Display the request to access the address book
@@ -20,19 +21,14 @@ class T_ContactsHelper {
      * - @viewController : the view controller where will be displayed the request
      */
     static func promptForAddressBookRequestAccess(viewController: UIViewController) {
-        var err: Unmanaged<CFError>? = nil
-        
-        ABAddressBookRequestAccessWithCompletion(self.addressBookRef) {
-            (granted: Bool, error: CFError!) in
-            dispatch_async(dispatch_get_main_queue()) {
-                if !granted {
-                    self.displayCantAddContactAlert(viewController)
-                } else {
-                    // User has accepted access to his address book
-                    viewController.performSegueWithIdentifier("showContactSearch", sender: nil)
-                }
+        SwiftAddressBook.requestAccessWithCompletion({ (success, error) -> Void in
+            if success {
+                viewController.performSegueWithIdentifier("showContactSearch", sender: nil)
             }
-        }
+            else {
+                self.displayCantAddContactAlert(viewController)
+            }
+        })
     }
     
     /*
@@ -69,44 +65,41 @@ class T_ContactsHelper {
      */
     static func getAllContacts() -> [String:String] {
         var contactsWithNumbers = [String:String]()
-        let contactsRef: NSArray = ABAddressBookCopyArrayOfAllPeople(T_ContactsHelper.addressBookRef).takeRetainedValue()
-        
-        for contactRef:ABRecordRef in contactsRef {
-            //Get all the phone numbers of the current contact
-            if let telNumberRefs:ABMultiValueRef = ABRecordCopyValue(contactRef, kABPersonPhoneProperty).takeRetainedValue() {
-                //We continue only if we find a phone number
-                if(ABMultiValueGetCount(telNumberRefs) > 0) {
-                    //We get the phone number as a string
-                    let value = ABMultiValueCopyValueAtIndex(telNumberRefs,0).takeRetainedValue() as! NSString
-                    var telNumber = String(value)
-                    //We format the string to replace +33 by 0
-                    telNumber = telNumber.stringByReplacingOccurrencesOfString("+33", withString: "0").stringByReplacingOccurrencesOfString(" ", withString: "")
-                    
-                    //We continue only if the phone number has 10 characters, otherwise it is wrong
-                    if telNumber.characters.count == 10 {
-                        //We add a space to format the string to : xx xx xx xx xx
-                        for var i=2; i <= 14; i+=3 {
-                            telNumber.insert(" " as Character, atIndex: telNumber.startIndex.advancedBy(i))
-                        }
-                        
-                        //We get the first name associated with the phone number
-                        if let firstName = ABRecordCopyValue(contactRef, kABPersonFirstNameProperty)?.takeRetainedValue() as? NSString {
-                            //We get the last name associated with the phone number
-                            if let lastNameRef = ABRecordCopyValue(contactRef, kABPersonLastNameProperty) {
-                                let lastName = lastNameRef.takeRetainedValue() as! NSString
-                                //We construct the full name
-                                let fullName = String(firstName) + " " + String(lastName)
-                                contactsWithNumbers[fullName] = telNumber
-                            } else {
-                                //We don't find a last name so we just keep the first name
-                                contactsWithNumbers[String(firstName)] = telNumber
-                            }
-                        }
-                    }
+
+        if let people = swiftAddressBook?.allPeople {
+            for person in people {
+                var contact = ""
+                
+                if let firstName = person.firstName {
+                    contact += firstName
+                }
+                if let lastName = person.lastName {
+                    contact += " " + lastName
+                }
+                
+                let phoneNumbers = person.phoneNumbers?
+                    .map({ $0.value.stringByReplacingOccurrencesOfString("+33", withString: "0").stringByReplacingOccurrencesOfString(" ", withString: "")} )
+                    .filter({ return $0.characters.count == 10 })
+                    .map({ $0.pairs.joinWithSeparator(" ")} )
+                
+                if let number = phoneNumbers?.first {
+                    contactsWithNumbers[contact] = number
+                    print("\(contact): \(phoneNumbers!.first!)")
                 }
             }
         }
         
         return contactsWithNumbers
+    }
+}
+
+extension String {
+    var pairs: [String] {
+        var result: [String] = []
+        let chars = Array(characters)
+        for index in 0.stride(to: chars.count, by: 2) {
+            result.append(String(chars[index..<min(index+2, chars.count)]))
+        }
+        return result
     }
 }
