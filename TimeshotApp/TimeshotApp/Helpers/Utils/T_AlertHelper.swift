@@ -19,4 +19,13 @@ class T_AlertHelper {
         
         viewController.presentViewController(alert, animated: true, completion: nil)
     }
+    
+    static func alertOK(title : String, message : String, viewController : UIViewController) {
+        let buttonMessage = NSLocalizedString("Ok", comment: "")
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: buttonMessage, style: UIAlertActionStyle.Default, handler: nil))
+        
+        viewController.presentViewController(alert, animated: true, completion: nil)
+    }
 }

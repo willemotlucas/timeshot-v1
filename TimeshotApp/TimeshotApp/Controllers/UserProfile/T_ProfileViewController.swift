@@ -11,6 +11,7 @@ import Parse
 import AddressBook
 import AddressBookUI
 import DZNEmptyDataSet
+import PullToRefresh
 
 enum ContentType {
     case Friends, Notifications
@@ -33,13 +34,23 @@ class T_ProfileViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     
     // MARK : Properties
+    var contentToDisplay : ContentType = .Friends //Useful for segmented control
+
     var friends: [T_User] = []
     var pendingRequests: [T_FriendRequest] = []
     var sectionTitles = ["Pending requests", "Friends"]
-    var contentToDisplay : ContentType = .Friends //Useful for segmented control
+    
+    var albumRequests: [T_AlbumRequest] = []
+    var currentAlbumRequest: T_AlbumRequest?
+    
     let contacts = T_ContactsHelper.getAllContacts() //All the contacts of the current user
+    
     var currentUser: T_User?
+    
     var photoTakingHelper: T_PhotoTakingHelper?
+    
+    let refresher = PullToRefresh()
+    
 
     // MARK: Overrided functions
     override func didReceiveMemoryWarning() {
@@ -64,6 +75,20 @@ class T_ProfileViewController: UIViewController {
         tableView.emptyDataSetDelegate = self
         tableView.tableFooterView = UIView()
         
+        //Add pull to refresh
+        self.tableView.addPullToRefresh(refresher, action: {
+            self.loadFriendsData()
+            self.loadNotificationsData()
+        })
+        
+        //Load table view data
+        self.loadFriendsData()
+        self.loadNotificationsData()
+        
+        //Load profile picture
+        T_ParseUserHelper.getCurrentUser()?.downloadImage()
+        T_ParseUserHelper.getCurrentUser()?.image.bindTo(self.profileImageView.bnd_image)
+        
         // Set design with colors and gradient
         T_DesignHelper.colorUIView(profileView)
         T_DesignHelper.colorUIView(addFriendsButtonView)
@@ -72,26 +97,47 @@ class T_ProfileViewController: UIViewController {
         //Set username in label
         self.usernameLabel.text = "@\(T_ParseUserHelper.getCurrentUser()!.username!)"
         
-        //Load the friends
-        T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
-            self.friends = friends
-            self.tableView.reloadData()
-        })
-        
-        //Load the pending requests
-        T_FriendRequestParseHelper.getPendingFriendRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
-            self.pendingRequests = result as? [T_FriendRequest] ?? []
-            self.tableView.reloadData()
-        }
-        
-        //Load profile picture
-        T_ParseUserHelper.getCurrentUser()?.downloadImage()
-        T_ParseUserHelper.getCurrentUser()?.image.bindTo(self.profileImageView.bnd_image)
-        
         //Set profile picture design
         T_DesignHelper.makeRoundedImageView(self.profileImageView)
         self.profileImageView.layer.borderWidth = 2.0
         self.profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
+    }
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showAlbumRequestSegue" {
+            let albumRequestVC = segue.destinationViewController as! T_AlbumRequestViewController
+            albumRequestVC.delegate = self
+            albumRequestVC.albumRequest = self.currentAlbumRequest!
+        }
+    }
+    
+    // MARK: Methods
+    
+    func loadFriendsData(){
+        //Load the friends
+        T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
+            self.friends = friends
+            self.tableView.reloadData()
+            self.tableView.endRefreshing()
+        })
+        
+        //Load the friends pending requests
+        T_FriendRequestParseHelper.getPendingFriendRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
+            self.pendingRequests = result as? [T_FriendRequest] ?? []
+            print(self.pendingRequests.count)
+            self.tableView.reloadData()
+            self.tableView.endRefreshing()
+        }
+    }
+    
+    func loadNotificationsData(){
+        //Load the album pending requests
+        T_ParseAlbumRequestHelper.getPendingAlbumRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
+            self.albumRequests = result as? [T_AlbumRequest] ?? []
+            self.tableView.reloadData()
+            self.tableView.endRefreshing()
+        }
     }
     
     // MARK: IBAction
@@ -100,7 +146,10 @@ class T_ProfileViewController: UIViewController {
         // Change the content of table view according to the segmented control
         switch segmentedControl.selectedSegmentIndex {
         case 0: contentToDisplay = .Friends
-        case 1: contentToDisplay = .Notifications
+            self.tableView.allowsSelection = false
+        case 1:
+            contentToDisplay = .Notifications
+            self.tableView.allowsSelection = true
         default: break
         }
         
@@ -161,6 +210,12 @@ class T_ProfileViewController: UIViewController {
 
 // MARK: extension
 
+extension T_ProfileViewController: ModalViewControllerDelegate {
+    func refreshTableView() {
+        self.loadNotificationsData()
+    }
+}
+
 extension T_ProfileViewController: UITableViewDelegate {
 
 }
@@ -211,6 +266,39 @@ extension T_ProfileViewController: UITableViewDataSource {
         }
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch contentToDisplay {
+        case .Friends:
+            // There are pending request & friends to display
+            if self.pendingRequests.count > 0 && self.friends.count > 0 {
+                // According to the section, we return the number of elements in pending requests or friends
+                if section == 0 {
+                    return self.pendingRequests.count
+                } else {
+                    return self.friends.count
+                }
+            } // There is only pending requests to display
+            else if self.pendingRequests.count > 0 && self.friends.count == 0 {
+                return self.pendingRequests.count
+            } // There is only friends to display
+            else if self.pendingRequests.count == 0 && self.friends.count > 0 {
+                return self.friends.count
+            } else {
+                return 0
+            }
+        case .Notifications:
+            return self.albumRequests.count
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if self.contentToDisplay == .Notifications {
+            self.currentAlbumRequest = self.albumRequests[indexPath.row] as T_AlbumRequest
+            self.currentAlbumRequest!.toAlbum!.downloadCoverImage()
+            self.performSegueWithIdentifier("showAlbumRequestSegue", sender: self)
+        }
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch contentToDisplay {
         case .Friends:
@@ -232,9 +320,12 @@ extension T_ProfileViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
         case .Notifications:
-            let cell = UITableViewCell()
-            cell.textLabel?.text = "Valentin a commenté votre photo"
-            return cell
+            if self.albumRequests.count > 0 {
+                return createNotificationCell(indexPath)
+            }
+            else {
+                return UITableViewCell()
+            }
         }
     }
     
@@ -246,9 +337,12 @@ extension T_ProfileViewController: UITableViewDataSource {
     func createFriendRequestCell(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("T_FriendRequestTableViewCell", forIndexPath: indexPath) as! T_FriendRequestTableViewCell
         let user = self.pendingRequests[indexPath.row].fromUser! as! T_User
+        user.downloadImage()
+        
         cell.delegate = self
-        cell.friendNameLabel.text = user.firstName! + " " + user.lastName!
         cell.friendRequest = self.pendingRequests[indexPath.row]
+        cell.friend = user
+        
         return cell
     }
     
@@ -265,29 +359,24 @@ extension T_ProfileViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch contentToDisplay {
-        case .Friends:
-            // There are pending request & friends to display
-            if self.pendingRequests.count > 0 && self.friends.count > 0 {
-                // According to the section, we return the number of elements in pending requests or friends
-                if section == 0 {
-                    return self.pendingRequests.count
-                } else {
-                    return self.friends.count
-                }
-            } // There is only pending request to display
-            else if self.pendingRequests.count > 0 && self.friends.count == 0 {
-                return self.pendingRequests.count
-            } // There is only friends to display
-            else if self.pendingRequests.count == 0 && self.friends.count > 0 {
-                return self.friends.count
-            } else {
-                return 0
-            }
-        case .Notifications:
-            return 40
-        }
+    
+    /*
+     * Creates a friend cell and fill in with the full name of the user
+     * Params:
+     * - @indexPath : indexPath of the row to retrieve the user
+     */
+    func createNotificationCell(indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("T_NotificationsTableViewCell", forIndexPath: indexPath) as! T_NotificationsTableViewCell
+        let albumRequest = self.albumRequests[indexPath.row]
+        let user = albumRequest.fromUser! as! T_User
+        user.downloadImage()
+        
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.friend = user
+        cell.albumRequest = albumRequest
+        cell.notificationTextLabel.text = "@\(user.username!) invited you to join \(albumRequest.toAlbum!.title!)!"
+        cell.notificationHelpTextLabel.text = "Click to answer to the request"
+        return cell
     }
 }
 
@@ -333,10 +422,16 @@ extension T_ProfileViewController: DZNEmptyDataSetSource {
             return NSAttributedString(string: str, attributes: attrs)
         }
     }
+    
+    func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return self.headerView.frame.size.height/2.0
+    }
 }
 
 extension T_ProfileViewController: DZNEmptyDataSetDelegate {
-    
+    func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
+        return true
+    }
 }
 
 /*

@@ -119,7 +119,7 @@ class T_LoginViewController: UIViewController {
             T_AlertHelper.alert(NSLocalizedString("Cannot sign in", comment: ""), errors: errors, viewController: self)
         }
         else {
-            PFUser.logInWithUsernameInBackground(usernameTextField.text!, password: passwordTextField.text!) { (user : PFUser?, error : NSError? ) -> Void in
+            PFUser.logInWithUsernameInBackground(self.usernameTextField.text!, password: self.passwordTextField.text!) { (user : PFUser?, error : NSError? ) -> Void in
                     if let _ = user {
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let vc = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController") as UIViewController

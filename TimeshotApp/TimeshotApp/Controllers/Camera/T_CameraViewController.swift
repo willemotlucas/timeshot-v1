@@ -22,7 +22,7 @@ class T_CameraViewController: UIViewController {
     
     var progressHUD:MBProgressHUD?
     
-    var isLiveAlbumExisting:Bool! = nil
+    var isLiveAlbumExisting:Bool! = false
     var albumTimer:NSTimer?
     var albumTitle: UILabel!
     var albumImage: UIImageView!
@@ -145,6 +145,7 @@ class T_CameraViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CameraViewController.stopAlbumTimer), name:UIApplicationDidEnterBackgroundNotification, object: nil)
         // If the application is again active, we test once again if the album is existing
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CameraViewController.manageAlbumProcessing), name:UIApplicationDidBecomeActiveNotification, object: nil)
+        self.manageAlbumProcessing()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

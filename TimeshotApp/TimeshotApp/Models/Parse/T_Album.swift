@@ -17,7 +17,7 @@ class T_Album : PFObject, PFSubclassing {
     @NSManaged var createdBy: T_User
     @NSManaged var duration: Int
     @NSManaged var isDeleted: Bool
-    @NSManaged var title: String
+    @NSManaged var title: String!
     
     var coverImage : Observable<UIImage?> = Observable(nil)
     
@@ -58,10 +58,13 @@ class T_Album : PFObject, PFSubclassing {
         
         if let currentUser = PFUser.currentUser() as? T_User {
            
-            var attendees = T_User.selectedFriends
-            attendees.append(currentUser)
-            
+            let guests = T_User.selectedFriends
+            let attendees = [currentUser]
             let album = T_Album(attendees: attendees, cover: cover, createdBy: currentUser, duration: duration, isDeleted: false, title: albumTitle)
+            
+            for guest in guests {
+                T_ParseAlbumRequestHelper.sendFriendRequest(guest, toAlbum: album)
+            }
             
             T_Album.albumCreationTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in
                 UIApplication.sharedApplication().endBackgroundTask(self.albumCreationTask!)
@@ -189,6 +192,7 @@ class T_Album : PFObject, PFSubclassing {
                     let image = UIImage(data:data, scale: 1.0)!
                     // .value because it's an observable
                     self.coverImage.value = image
+                    print("get album cover")
                 }
                 
             }

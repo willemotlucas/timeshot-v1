@@ -129,7 +129,6 @@ class T_FriendRequestParseHelper {
      * Retrieve all the friends from the current user
      *
      * Params:
-     * - @acceptedFriendRequests : an array of accepted friend request
      * - @completion: the closure executed after retrieving the friends
      */
     static func getFriendsFromAcceptedRequests(completion: (friends: [T_User]) -> Void) {
