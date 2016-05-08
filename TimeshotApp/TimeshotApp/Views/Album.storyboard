@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -177,7 +177,7 @@
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
-                                                    <color key="shadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                    <color key="shadowColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
                                                             <exclude reference="yZ0-KX-Td4"/>
@@ -427,7 +427,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PmC-nm-Pvz">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="496"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="451"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="attendeeCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="attendeeCell" rowHeight="60" id="qEE-mX-umL" customClass="T_FriendsTableViewCell" customModule="TimeshotApp" customModuleProvider="target">
@@ -486,16 +486,39 @@
                                     <outlet property="delegate" destination="vYW-Q6-7ln" id="lo4-2W-RKa"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzU-fa-sDe">
+                                <rect key="frame" x="0.0" y="451" width="600" height="45"/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ScX-IW-r7d">
+                                <rect key="frame" x="0.0" y="451" width="600" height="45"/>
+                                <state key="normal" title="INVITE FRIENDS TO THIS ALBUM">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addFriendsToAlbum:" destination="vYW-Q6-7ln" eventType="touchUpInside" id="FBD-i1-RSx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="ScX-IW-r7d" firstAttribute="leading" secondItem="Y5w-PB-Xng" secondAttribute="leading" id="ARs-v9-G0b"/>
+                            <constraint firstItem="vzU-fa-sDe" firstAttribute="leading" secondItem="Y5w-PB-Xng" secondAttribute="leading" id="BHF-81-W0O"/>
+                            <constraint firstItem="ScX-IW-r7d" firstAttribute="top" secondItem="PmC-nm-Pvz" secondAttribute="bottom" id="BmW-TI-Lqd"/>
+                            <constraint firstAttribute="trailing" secondItem="ScX-IW-r7d" secondAttribute="trailing" id="FTi-IW-QbI"/>
                             <constraint firstItem="PmC-nm-Pvz" firstAttribute="top" secondItem="7Og-ZB-g6o" secondAttribute="bottom" id="HgE-Wu-LdO"/>
                             <constraint firstAttribute="trailing" secondItem="PmC-nm-Pvz" secondAttribute="trailing" id="LT6-cF-C2F"/>
-                            <constraint firstItem="ZsZ-kx-sJl" firstAttribute="top" secondItem="PmC-nm-Pvz" secondAttribute="bottom" id="LU4-nd-fdX"/>
+                            <constraint firstItem="ZsZ-kx-sJl" firstAttribute="top" secondItem="PmC-nm-Pvz" secondAttribute="bottom" constant="45" id="LU4-nd-fdX"/>
+                            <constraint firstItem="ZsZ-kx-sJl" firstAttribute="top" secondItem="ScX-IW-r7d" secondAttribute="bottom" id="iZ1-uo-As7"/>
+                            <constraint firstItem="vzU-fa-sDe" firstAttribute="top" secondItem="PmC-nm-Pvz" secondAttribute="bottom" id="sFY-zM-Bhm"/>
+                            <constraint firstAttribute="trailing" secondItem="vzU-fa-sDe" secondAttribute="trailing" id="tlz-ih-3WV"/>
+                            <constraint firstItem="ZsZ-kx-sJl" firstAttribute="top" secondItem="vzU-fa-sDe" secondAttribute="bottom" id="vEL-hC-84y"/>
                             <constraint firstItem="PmC-nm-Pvz" firstAttribute="leading" secondItem="Y5w-PB-Xng" secondAttribute="leading" id="wHP-5n-tyS"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addFriendsButton" destination="ScX-IW-r7d" id="tq9-1h-7Bq"/>
+                        <outlet property="buttonView" destination="vzU-fa-sDe" id="YRr-J7-LX1"/>
                         <outlet property="tableView" destination="PmC-nm-Pvz" id="xyZ-bA-42C"/>
                     </connections>
                 </viewController>
@@ -541,7 +564,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember the best moment of your album !" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSJ-nl-CdV">
                                                     <rect key="frame" x="242" y="8" width="212" height="184"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>

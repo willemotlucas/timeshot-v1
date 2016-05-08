@@ -12,4 +12,6 @@ class T_HeaderCollectionReusableView: UICollectionReusableView {
     // MARK: Properties
     @IBOutlet weak var sectionNameLabel: UILabel!
     @IBOutlet weak var lineView: UIView!
+    
+    
 }

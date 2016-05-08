@@ -65,6 +65,7 @@ class T_AlbumFinishedViewController: UIViewController {
             // Possible que ce soit lors de la creation d'album .. a verifier !
             let friendsAlbumVC = segue.destinationViewController as! T_FriendsViewController
             friendsAlbumVC.attendees = albumPhotos?.attendees
+            friendsAlbumVC.album = albumPhotos
         } else if segue.identifier == "photosContainer" {
             let finishAlbumVC =  segue.destinationViewController as! T_PhotosCollectionViewController
             finishAlbumVC.albumPhotos = albumPhotos
