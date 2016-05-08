@@ -53,10 +53,6 @@ class T_Album : PFObject, PFSubclassing {
         self.title = title
         
     }
-    
-    func appendAttendees(user: T_User){
-        self.attendees.append(user)
-    }
         
     static func createAlbum(cover: UIImage, duration: Int, albumTitle: String) {
         

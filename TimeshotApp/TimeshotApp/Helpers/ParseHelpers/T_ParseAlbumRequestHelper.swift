@@ -82,15 +82,22 @@ class T_ParseAlbumRequestHelper {
      * - @completionBlock : the methods which will be executed after editing the status
      */
     static func acceptAlbumRequest(albumRequest: T_AlbumRequest, completionBlock: PFBooleanResultBlock){
-        print("Parse Helper - acceptAlbumRequest")
         albumRequest.status = albumRequestStatus(.Accepted)
-        let currentUser = T_ParseUserHelper.getCurrentUser()!
-        albumRequest.toAlbum!.appendAttendees(currentUser)
         
-        albumRequest.toAlbum!.saveInBackgroundWithBlock({ (result: Bool, error: NSError?) in
-            print("new attendee added")
-            albumRequest.saveInBackgroundWithBlock(completionBlock)
-        })
+        let currentUser = T_ParseUserHelper.getCurrentUser()!
+        let album = albumRequest.toAlbum
+
+        let query = PFQuery(className: T_ParseAlbumHelper.ParseAlbumClass)
+        query.whereKey("objectId", equalTo: (album?.objectId)!)
+        query.includeKey("attendees")
+        
+        query.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
+            let album = result?.first as! T_Album
+            album.attendees.append(currentUser)
+            album.saveInBackgroundWithBlock({ (result: Bool, error: NSError?) in
+                albumRequest.saveInBackgroundWithBlock(completionBlock)
+            })
+        }
     }
     
     /*

@@ -10,6 +10,8 @@ import Foundation
 import Parse
 
 class T_ParseAlbumHelper {
+    static let ParseAlbumClass = "Album"
+    static let ParseAttendeesClass = "attendees"
     
     static let liveAlbumPinnedLabel = "liveAlbum"
     

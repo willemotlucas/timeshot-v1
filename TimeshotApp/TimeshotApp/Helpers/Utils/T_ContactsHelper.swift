@@ -78,28 +78,19 @@ class T_ContactsHelper {
                 }
                 
                 let phoneNumbers = person.phoneNumbers?
+                    //Replace +33 by 0
                     .map({ $0.value.stringByReplacingOccurrencesOfString("+33", withString: "0").stringByReplacingOccurrencesOfString(" ", withString: "")} )
+                    //Keep only numbers with ten characters, otherwise it is wrong
                     .filter({ return $0.characters.count == 10 })
+                    //Format string to have XX XX XX XX XX
                     .map({ $0.pairs.joinWithSeparator(" ")} )
                 
                 if let number = phoneNumbers?.first {
                     contactsWithNumbers[contact] = number
-                    print("\(contact): \(phoneNumbers!.first!)")
                 }
             }
         }
         
         return contactsWithNumbers
-    }
-}
-
-extension String {
-    var pairs: [String] {
-        var result: [String] = []
-        let chars = Array(characters)
-        for index in 0.stride(to: chars.count, by: 2) {
-            result.append(String(chars[index..<min(index+2, chars.count)]))
-        }
-        return result
     }
 }
