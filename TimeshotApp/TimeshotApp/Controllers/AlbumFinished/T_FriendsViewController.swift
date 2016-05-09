@@ -43,7 +43,6 @@ class T_FriendsViewController: UIViewController {
     
     // MARK: Action
     @IBAction func addFriendsToAlbum(sender: UIButton) {
-        print("coucou")
     }
     
     

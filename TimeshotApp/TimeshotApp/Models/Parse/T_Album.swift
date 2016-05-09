@@ -192,7 +192,6 @@ class T_Album : PFObject, PFSubclassing {
                     let image = UIImage(data:data, scale: 1.0)!
                     // .value because it's an observable
                     self.coverImage.value = image
-                    print("get album cover")
                 }
                 
             }

@@ -101,6 +101,7 @@ class T_ParseUserHelper {
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
     
+    
     /**
      * Check if an email already exist
      * Params:

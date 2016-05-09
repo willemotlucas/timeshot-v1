@@ -56,6 +56,8 @@
 		7D2F53AC1CB67D9000AB9995 /* T_PhotosAlbumLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F53A61CB67D9000AB9995 /* T_PhotosAlbumLiveViewController.swift */; };
 		7D30378C1CC7CB2E00D522E0 /* T_FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D30378B1CC7CB2E00D522E0 /* T_FriendsTableViewCell.swift */; };
 		7D30378E1CC7CBD900D522E0 /* T_FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D30378D1CC7CBD900D522E0 /* T_FriendsViewController.swift */; };
+		7D7FA8471CDFD34D003F70E1 /* T_AddFriendToAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7FA8461CDFD34D003F70E1 /* T_AddFriendToAlbumViewController.swift */; };
+		7D7FA8491CDFD50D003F70E1 /* T_AddToAlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7FA8481CDFD50D003F70E1 /* T_AddToAlbumTableViewCell.swift */; };
 		7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */; };
 		7D8699241C8F4A9D003BC1DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699221C8F4A9D003BC1DC /* Main.storyboard */; };
 		7D8699261C8F4A9D003BC1DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699251C8F4A9D003BC1DC /* Assets.xcassets */; };
@@ -143,6 +145,8 @@
 		7D2F53A61CB67D9000AB9995 /* T_PhotosAlbumLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PhotosAlbumLiveViewController.swift; sourceTree = "<group>"; };
 		7D30378B1CC7CB2E00D522E0 /* T_FriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		7D30378D1CC7CBD900D522E0 /* T_FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendsViewController.swift; sourceTree = "<group>"; };
+		7D7FA8461CDFD34D003F70E1 /* T_AddFriendToAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AddFriendToAlbumViewController.swift; sourceTree = "<group>"; };
+		7D7FA8481CDFD50D003F70E1 /* T_AddToAlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AddToAlbumTableViewCell.swift; sourceTree = "<group>"; };
 		7D86991B1C8F4A9D003BC1DC /* TimeshotApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeshotApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D8699231C8F4A9D003BC1DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -278,6 +282,7 @@
 				7D241FF71CB6D47500F6548B /* T_PhotoCollectionViewCell.swift */,
 				7D241FF81CB6D47500F6548B /* T_StoryCollectionViewCell.swift */,
 				7D30378B1CC7CB2E00D522E0 /* T_FriendsTableViewCell.swift */,
+				7D7FA8481CDFD50D003F70E1 /* T_AddToAlbumTableViewCell.swift */,
 			);
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
@@ -311,6 +316,7 @@
 				7D241FFD1CB6D48100F6548B /* T_AlbumFinishedViewController.swift */,
 				7D2420011CB6E20200F6548B /* T_StoryViewController.swift */,
 				7D30378D1CC7CBD900D522E0 /* T_FriendsViewController.swift */,
+				7D7FA8461CDFD34D003F70E1 /* T_AddFriendToAlbumViewController.swift */,
 			);
 			path = AlbumFinished;
 			sourceTree = "<group>";
@@ -522,7 +528,7 @@
 				TargetAttributes = {
 					7D86991A1C8F4A9D003BC1DC = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = N82MC72NZP;
+						DevelopmentTeam = 4K77L2XZHW;
 					};
 				};
 			};
@@ -624,6 +630,7 @@
 				7D30378C1CC7CB2E00D522E0 /* T_FriendsTableViewCell.swift in Sources */,
 				5DE8FFF11CA325B1006BEBAE /* T_ContactTableViewCell.swift in Sources */,
 				8A6F88C21CD6779300060C48 /* T_AlertHelper.swift in Sources */,
+				7D7FA8471CDFD34D003F70E1 /* T_AddFriendToAlbumViewController.swift in Sources */,
 				5D9FD1C31CBAE69A002204E8 /* T_HomePageViewController.swift in Sources */,
 				7DD0F9AE1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift in Sources */,
 				8AB0F1C41CBFC71300605525 /* T_SignUpUsernameViewController.swift in Sources */,
@@ -675,6 +682,7 @@
 				5D64CA751CB96928005C6E43 /* T_FirstNameEditionViewController.swift in Sources */,
 				B4F2E9111CB64A370029F4BF /* T_Album.swift in Sources */,
 				B4EA9DCC1CB52D37003F5A75 /* T_Slider.swift in Sources */,
+				7D7FA8491CDFD50D003F70E1 /* T_AddToAlbumTableViewCell.swift in Sources */,
 				5DD10B641CBD8AA300918E3A /* T_Reachability.swift in Sources */,
 				5DF7ADD81CDBB89B00C6C652 /* T_AlbumRequest.swift in Sources */,
 				B4EA9DCB1CB52D37003F5A75 /* T_SnapTextField.swift in Sources */,
@@ -806,7 +814,7 @@
 				INFOPLIST_FILE = TimeshotApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.lamouri.Timeshot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Valentin.Timeshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -822,7 +830,7 @@
 				INFOPLIST_FILE = TimeshotApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.lamouri.Timeshot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Valentin.Timeshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

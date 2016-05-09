@@ -46,8 +46,6 @@ class T_SliderViewController: UIViewController {
         scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(slideImages.count), height: pagesScrollViewSize.height)
         
         // Design the description view
-        T_DesignHelper.colorUIView(descriptionView)
-        descriptionView.alpha = 0.65
         descriptionView.layer.masksToBounds = true
         
         fromUserImage.layer.cornerRadius = 20
