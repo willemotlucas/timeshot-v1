@@ -30,7 +30,7 @@ import UIKit
         if (NSFileManager.defaultManager().fileExistsAtPath(imagePath)) {
             do {
                 try NSFileManager.defaultManager().removeItemAtPath(imagePath)
-                print("old image has been removed")
+//                print("old image has been removed")
             } catch {
                 print("an error during a removing")
             }
@@ -56,7 +56,7 @@ import UIKit
             print("missing image at: \(path)")
         }
         else {
-            print("Loading image from path: \(path)")
+//            print("Loading image from path: \(path)")
         }
         return image
     }

@@ -106,6 +106,8 @@ class T_NetworkManager {
             if(self.isUploading == true) { return }
             
             self.isUploading = true
+            T_NetworkStatus.sharedInstance.updateLabelText(T_NetworkStatus.status.Uploading)
+
             self.postCreationTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in
                 UIApplication.sharedApplication().endBackgroundTask(self.postCreationTask!)
             }
@@ -129,7 +131,7 @@ class T_NetworkManager {
                 (success, error) -> Void in
                 if success {
                     
-                    print("Post upload")
+                    print("Post uploaded successfully")
                     // On le supprime de la file
                     let post = self.dequeue()
                     // On le unpin localement
@@ -139,6 +141,7 @@ class T_NetworkManager {
                     T_LocalFileManager.deletePictureAtPath(imagePath)
                     // On donne l'accès aux autres upload
                     self.isUploading = false
+                    
                     // Fin de la tache de fond pour l'upload
                     UIApplication.sharedApplication().endBackgroundTask(self.postCreationTask!)
                     
@@ -147,11 +150,18 @@ class T_NetworkManager {
                     
                 } else {
                     print("Pas de réseau (ou autre erreur), veuillez réessayer") // , error)
+                    
+                    T_NetworkStatus.sharedInstance.updateLabelText(T_NetworkStatus.status.Error)
+
                     self.isUploading = false
                     UIApplication.sharedApplication().endBackgroundTask(self.postCreationTask!)
                 }
             }
         }
+        else {
+            T_NetworkStatus.sharedInstance.updateLabelText(T_NetworkStatus.status.ShowAlbumTitle)
+        }
+        
     }
 }
 

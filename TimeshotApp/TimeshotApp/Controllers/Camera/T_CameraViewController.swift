@@ -24,9 +24,10 @@ class T_CameraViewController: UIViewController {
     
     var isLiveAlbumExisting:Bool! = false
     var albumTimer:NSTimer?
-    var albumTitle: UILabel!
-    var albumImage: UIImageView!
-    
+    var newtorkManager = T_NetworkManager.sharedInstance
+    var networkStatus = T_NetworkStatus.sharedInstance
+    let tapOnNetworkStatus = UITapGestureRecognizer()
+
     private
     var isFlashActivated:Bool = false
     var isBackCameraActivated:Bool = true
@@ -125,14 +126,14 @@ class T_CameraViewController: UIViewController {
         
         self.buttonAlbumVC.layer.zPosition = 10
         self.buttonProfileVC.layer.zPosition = 10
+        
+        self.networkStatus.layer.zPosition = 1
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         T_CameraViewController.instance = self
-        var newtorkManager = T_NetworkManager.sharedInstance
-        
         
         // Camera init
         cameraManager.addPreviewLayerToView(self.cameraView)
@@ -143,6 +144,10 @@ class T_CameraViewController: UIViewController {
         cameraManager.writeFilesToPhoneLibrary = false
         cameraManager.showAccessPermissionPopupAutomatically = true
 
+        tapOnNetworkStatus.addTarget(self.networkStatus, action: #selector(T_NetworkStatus.pressed))
+        self.networkStatus.addGestureRecognizer(tapOnNetworkStatus)
+        self.view.addSubview(self.networkStatus)
+        
         // If the application enter in background, we stop the timer
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CameraViewController.stopAlbumTimer), name:UIApplicationDidEnterBackgroundNotification, object: nil)
         // If the application is again active, we test once again if the album is existing
@@ -172,7 +177,8 @@ class T_CameraViewController: UIViewController {
         guard let currentUser = PFUser.currentUser() as? T_User else { return }
         
         self.isLiveAlbumExisting = false
-        self.hideLabelText()
+        self.networkStatus.hide()
+
         
         T_Album.manageAlbumProcessing(currentUser) {
             (isLiveAlbum: Bool) -> Void in
@@ -183,8 +189,8 @@ class T_CameraViewController: UIViewController {
                 
                 guard let album = currentUser.liveAlbum else { return  }
 
-                self.updateLabelText(album.title)
-                
+                self.networkStatus.updateLabelText(T_NetworkStatus.status.ShowAlbumTitle, withText: album.title)
+
                 self.albumTimer = NSTimer.scheduledTimerWithTimeInterval(Double(T_Album.getRemainingDuration((currentUser.liveAlbum?.createdAt)!, duration: (currentUser.liveAlbum?.duration)!)), target: self, selector: #selector(T_CameraViewController.manageAlbumProcessing), userInfo: nil, repeats: false)
             }
         }
@@ -192,52 +198,6 @@ class T_CameraViewController: UIViewController {
 
     func stopAlbumTimer() {
         self.albumTimer?.invalidate()
-    }
-    
-    func initLabelText() {
-        self.albumTitle = UILabel(frame: CGRect(x: T_DesignHelper.screenSize.width/2, y: 16, width: 0, height: 24))
-        self.albumImage = UIImageView(frame: CGRect(x: 0, y: 18, width: 24, height: 20))
-        self.albumImage.image = UIImage(named: "Group")
-        
-        self.albumTitle.layer.zPosition = 1
-        self.albumTitle.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.7)
-        self.albumTitle.layer.cornerRadius = 12
-        self.albumTitle.font = UIFont.systemFontOfSize(15)
-        self.albumTitle.textColor = UIColor.whiteColor()
-        self.albumTitle.layer.masksToBounds = true
-        self.albumImage.layer.zPosition = 11
-        
-        self.view.addSubview(self.albumTitle)
-        self.view.addSubview(self.albumImage)
-    }
-    
-    func updateLabelText(text: String) {
-        
-        if(self.albumTitle == nil) {
-            self.initLabelText()
-        }
-
-        let finalText = "   \(text.trunc(30))"
-        let textSize = finalText.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(15.0)])
-
-        self.albumTitle.frame.size.width = 40 + textSize.width
-        self.albumTitle.frame.origin = CGPoint(x: T_DesignHelper.screenSize.width/2 - self.albumTitle.frame.size.width/2, y: self.albumTitle.frame.origin.y)
-        
-        self.albumImage.contentMode = .ScaleAspectFit
-        self.albumImage.frame.origin = CGPoint(x: T_DesignHelper.screenSize.width/2 + self.albumTitle.frame.size.width/2 - 33, y: self.albumImage.frame.origin.y)
-        
-        self.albumTitle.hidden = false
-        self.albumImage.hidden = false
-        
-        self.albumTitle.text = finalText
-    }
-    
-    func hideLabelText() {
-        
-        if (self.albumTitle != nil) {
-            self.albumTitle.hidden = true
-            self.albumImage.hidden = true
-        }
     }
     
     func freezeUI(text: String) {
