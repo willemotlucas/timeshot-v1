@@ -11,6 +11,12 @@ import Parse
 
 class T_ParsePostHelper {
     
+    static let ParsePostClass = "Post"
+    static let ParsePostToAlbum = "toAlbum"
+    static let ParsePostObjectId = "ObjectId"
+    static let ParsePostFromUser = "fromUser"
+    static let ParsePostIsDeleted = "isDeleted"
+    
     static func postsForCurrentAlbum(albumPhotos: T_Album, completionBlock: PFQueryArrayResultBlock) {
         
         
@@ -26,4 +32,23 @@ class T_ParsePostHelper {
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
     
+    static func getAllPostNotVoted(user : T_User, _ album : T_Album, _ completionBlock : ([T_Post]? -> Void)?) {
+        let voteQ = T_Vote.query()!
+        voteQ.whereKey(T_ParseVoteHelper.ParseVoteFromUser, notEqualTo: user)
+        voteQ.findObjectsInBackgroundWithBlock{array , error -> Void in
+            if error == nil && !(array?.isEmpty)! {
+                let votes = array!.map{n -> String in (n[T_ParseVoteHelper.ParseVoteToPost])!.objectId!!}
+                let postQuery = T_Post.query()!
+                postQuery.whereKey(ParsePostToAlbum, equalTo: album)
+                postQuery.whereKey(ParsePostObjectId, notContainedIn: votes)
+                postQuery.findObjectsInBackgroundWithBlock{objs , error -> Void in
+                    if error == nil && !(objs?.isEmpty)! {
+                        completionBlock?(objs as! [T_Post]?)
+                    }
+                }
+            }
+            
+        }
+    }
+
 }

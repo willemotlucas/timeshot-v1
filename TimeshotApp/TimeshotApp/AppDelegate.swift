@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         T_User.registerSubclass()
         T_Album.registerSubclass()
         T_Post.registerSubclass()
+        T_Vote.registerSubclass()
         Parse.enableLocalDatastore()
         
         // Set up the Parse SDK

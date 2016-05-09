@@ -67,6 +67,9 @@
 		7DD0F9B61C9EA0FB00A856B9 /* soiree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */; };
 		7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */; };
 		7DFC23951CC0F15900DD9520 /* T_ParsePostHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFC23941CC0F15900DD9520 /* T_ParsePostHelper.swift */; };
+		8A6C38201CE0B80D0044A665 /* T_Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6C381F1CE0B80D0044A665 /* T_Vote.swift */; };
+		8A6C38221CE0BA3F0044A665 /* T_ParseVoteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6C38211CE0BA3F0044A665 /* T_ParseVoteHelper.swift */; };
+		8A6C38241CE0DBE70044A665 /* Koloda.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A6C38231CE0DBE70044A665 /* Koloda.storyboard */; };
 		8A6F88C01CD6732100060C48 /* T_SignUpUsernameViaFacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F88BF1CD6732100060C48 /* T_SignUpUsernameViaFacebookViewController.swift */; };
 		8A6F88C21CD6779300060C48 /* T_AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F88C11CD6779300060C48 /* T_AlertHelper.swift */; };
 		8A6F88C41CD69CB600060C48 /* T_SignUpContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F88C31CD69CB600060C48 /* T_SignUpContactViewController.swift */; };
@@ -157,6 +160,9 @@
 		7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = soiree.jpg; sourceTree = "<group>"; };
 		7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = voyage.jpg; sourceTree = "<group>"; };
 		7DFC23941CC0F15900DD9520 /* T_ParsePostHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ParsePostHelper.swift; sourceTree = "<group>"; };
+		8A6C381F1CE0B80D0044A665 /* T_Vote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Vote.swift; sourceTree = "<group>"; };
+		8A6C38211CE0BA3F0044A665 /* T_ParseVoteHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ParseVoteHelper.swift; sourceTree = "<group>"; };
+		8A6C38231CE0DBE70044A665 /* Koloda.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Koloda.storyboard; sourceTree = "<group>"; };
 		8A6F88BF1CD6732100060C48 /* T_SignUpUsernameViaFacebookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpUsernameViaFacebookViewController.swift; sourceTree = "<group>"; };
 		8A6F88C11CD6779300060C48 /* T_AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlertHelper.swift; sourceTree = "<group>"; };
 		8A6F88C31CD69CB600060C48 /* T_SignUpContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpContactViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +256,7 @@
 				5DC361D51CBAFBE900B00064 /* T_ParseAlbumHelper.swift */,
 				5DC361D61CBAFBE900B00064 /* T_ParseUserHelper.swift */,
 				7DFC23941CC0F15900DD9520 /* T_ParsePostHelper.swift */,
+				8A6C38211CE0BA3F0044A665 /* T_ParseVoteHelper.swift */,
 			);
 			path = ParseHelpers;
 			sourceTree = "<group>";
@@ -438,6 +445,7 @@
 				B46B2B741C9ABAC500135920 /* Profile.storyboard */,
 				B46B2B761C9ABADA00135920 /* Album.storyboard */,
 				7D8699221C8F4A9D003BC1DC /* Main.storyboard */,
+				8A6C38231CE0DBE70044A665 /* Koloda.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -474,6 +482,7 @@
 				B4EA9DD11CB52DE3003F5A75 /* T_User.swift */,
 				B4F2E9101CB64A370029F4BF /* T_Album.swift */,
 				B431711B1CB912790080AFDD /* T_Post.swift */,
+				8A6C381F1CE0B80D0044A665 /* T_Vote.swift */,
 			);
 			path = Parse;
 			sourceTree = "<group>";
@@ -522,7 +531,7 @@
 				TargetAttributes = {
 					7D86991A1C8F4A9D003BC1DC = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = N82MC72NZP;
+						DevelopmentTeam = 6T9PST97YR;
 					};
 				};
 			};
@@ -552,6 +561,7 @@
 				B45977071CAAE7CA00D57BED /* Profile.storyboard in Resources */,
 				7D2F539C1CB65DAB00AB9995 /* LaunchScreen.storyboard in Resources */,
 				7DD0F9B61C9EA0FB00A856B9 /* soiree.jpg in Resources */,
+				8A6C38241CE0DBE70044A665 /* Koloda.storyboard in Resources */,
 				7DD0F9B41C9EA0FB00A856B9 /* festival.jpg in Resources */,
 				7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */,
 				7DD0F9B51C9EA0FB00A856B9 /* mariage.jpg in Resources */,
@@ -633,6 +643,7 @@
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
 				5DC361E31CBAFBE900B00064 /* T_ContactsHelper.swift in Sources */,
 				7D241FFC1CB6D47500F6548B /* T_StoryCollectionViewCell.swift in Sources */,
+				8A6C38221CE0BA3F0044A665 /* T_ParseVoteHelper.swift in Sources */,
 				5DC361E51CBAFBE900B00064 /* T_FormValidationHelper.swift in Sources */,
 				5DB5A02F1CA1C8D400AADC9F /* T_SearchUserViewController.swift in Sources */,
 				B4EA9DCD1CB52D37003F5A75 /* T_Filter.swift in Sources */,
@@ -663,6 +674,7 @@
 				7D2F53A71CB67D9000AB9995 /* T_AddFriendAlbumLiveTableViewCell.swift in Sources */,
 				8AFA267D1CBF94C900C09E17 /* T_SignUpInvitePeopleViewController.swift in Sources */,
 				5DF7ADD61CDBB89100C6C652 /* T_NotificationsTableViewCell.swift in Sources */,
+				8A6C38201CE0B80D0044A665 /* T_Vote.swift in Sources */,
 				B4EA9DD21CB52DE3003F5A75 /* T_User.swift in Sources */,
 				7D2F53A81CB67D9000AB9995 /* T_AddFriendAlbumLiveViewController.swift in Sources */,
 				7D30378E1CC7CBD900D522E0 /* T_FriendsViewController.swift in Sources */,

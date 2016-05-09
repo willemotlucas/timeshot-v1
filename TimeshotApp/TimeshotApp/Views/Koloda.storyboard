@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Photos Album Live View Controller-->
+        <scene sceneID="YDB-aX-HTj">
+            <objects>
+                <viewController id="nom-Sx-3l8" userLabel="Photos Album Live View Controller" customClass="T_PhotosAlbumLiveViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c8b-fD-cT7"/>
+                        <viewControllerLayoutGuide type="bottom" id="sp6-lc-3Ak"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aYf-uX-dbb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Xb-jR-5Eg" customClass="KolodaView" customModule="Koloda">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="372"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfK-ry-GSE" userLabel="Like Button">
+                                <rect key="frame" x="470" y="500" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="0OS-jc-PYe"/>
+                                    <constraint firstAttribute="width" constant="70" id="Kll-29-wc0"/>
+                                </constraints>
+                                <state key="normal" image="Like"/>
+                                <connections>
+                                    <action selector="likeTapped:" destination="nom-Sx-3l8" eventType="touchUpInside" id="Lo3-U6-Hqg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23z-D4-BI0" userLabel="Dislike Button">
+                                <rect key="frame" x="60" y="500" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="Ayq-Ob-rDu"/>
+                                    <constraint firstAttribute="height" constant="70" id="dlC-9e-Zef"/>
+                                </constraints>
+                                <state key="normal" image="Dislike"/>
+                                <connections>
+                                    <action selector="dislikeTapped:" destination="nom-Sx-3l8" eventType="touchUpInside" id="guZ-1a-fgM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="23z-D4-BI0" firstAttribute="leading" secondItem="aYf-uX-dbb" secondAttribute="leading" constant="60" id="8s9-Tb-g9e"/>
+                            <constraint firstItem="4Xb-jR-5Eg" firstAttribute="top" secondItem="c8b-fD-cT7" secondAttribute="bottom" id="HCK-vp-Xe6"/>
+                            <constraint firstItem="sp6-lc-3Ak" firstAttribute="top" secondItem="4Xb-jR-5Eg" secondAttribute="bottom" constant="120" id="LVP-vz-AEU"/>
+                            <constraint firstAttribute="trailing" secondItem="SfK-ry-GSE" secondAttribute="trailing" constant="60" id="gyr-Gg-Sj3"/>
+                            <constraint firstItem="sp6-lc-3Ak" firstAttribute="top" secondItem="SfK-ry-GSE" secondAttribute="bottom" constant="30" id="pJ0-Ys-hCo"/>
+                            <constraint firstItem="sp6-lc-3Ak" firstAttribute="top" secondItem="23z-D4-BI0" secondAttribute="bottom" constant="30" id="tcz-YJ-9Zv"/>
+                            <constraint firstAttribute="trailing" secondItem="4Xb-jR-5Eg" secondAttribute="trailing" id="yXa-TF-ghj"/>
+                            <constraint firstItem="4Xb-jR-5Eg" firstAttribute="leading" secondItem="aYf-uX-dbb" secondAttribute="leading" id="zvf-WV-9PO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dislikeButton" destination="23z-D4-BI0" id="cF4-Np-3jz"/>
+                        <outlet property="kolodaView" destination="4Xb-jR-5Eg" id="fcZ-of-32V"/>
+                        <outlet property="likeButton" destination="SfK-ry-GSE" id="hLz-U9-SbK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Sh-v3-naZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1216" y="1678"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Dislike" width="70" height="70"/>
+        <image name="Like" width="70" height="70"/>
+    </resources>
+</document>
