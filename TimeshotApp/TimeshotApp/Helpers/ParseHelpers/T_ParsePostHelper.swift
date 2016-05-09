@@ -22,8 +22,21 @@ class T_ParsePostHelper {
         query.whereKey("isDeleted", equalTo: false)
         query.includeKey("fromUser")
         query.orderByAscending("createdAt")
-        
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
+    
+    static func postsNotUploaded(completionBlock: PFQueryArrayResultBlock) {
+        
+        // On va cherche tout nos post en fonction du nom de notre album
+        // Et on veut recuperer aussi la personne qui a pris la photo
+        // On les classe de la ordre ascendante ! Du debut a la fin
+        let query = PFQuery(className: "Post")
+        query.fromLocalDatastore()
+        query.whereKey("isDeleted", equalTo: false)
+        query.whereKey("fromUser", equalTo: PFUser.currentUser()!)
+        query.orderByAscending("createdAtDate")
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+
     
 }

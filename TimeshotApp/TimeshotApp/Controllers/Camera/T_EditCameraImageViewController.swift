@@ -27,7 +27,7 @@ class T_EditCameraImageViewController: UIViewController {
         buttonCancel.hidden = true
 
         self.post.addPictureToPost(T_CameraHelper.screenShot(self.view))
-        T_Post.uploadPost(self.post)
+        T_NetworkManager.sharedInstance.uploadPost(self.post, image: T_CameraHelper.screenShot(self.view))
                 
         self.dismissViewControllerAnimated(false, completion: {});
     }

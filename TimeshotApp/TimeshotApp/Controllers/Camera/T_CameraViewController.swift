@@ -131,6 +131,8 @@ class T_CameraViewController: UIViewController {
         super.viewDidLoad()
         
         T_CameraViewController.instance = self
+        var newtorkManager = T_NetworkManager.sharedInstance
+        
         
         // Camera init
         cameraManager.addPreviewLayerToView(self.cameraView)
