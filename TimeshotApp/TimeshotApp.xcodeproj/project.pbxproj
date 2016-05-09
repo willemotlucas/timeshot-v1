@@ -77,6 +77,7 @@
 		8AFA26791CBF949200C09E17 /* T_LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA26781CBF949200C09E17 /* T_LoginViewController.swift */; };
 		8AFA267B1CBF94B000C09E17 /* T_SignUpEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA267A1CBF94B000C09E17 /* T_SignUpEmailViewController.swift */; };
 		8AFA267D1CBF94C900C09E17 /* T_SignUpInvitePeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA267C1CBF94C900C09E17 /* T_SignUpInvitePeopleViewController.swift */; };
+		B40A7D931CE0869800EE7BCC /* T_LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40A7D921CE0869800EE7BCC /* T_LocalFileManager.swift */; };
 		B431711C1CB912790080AFDD /* T_Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431711B1CB912790080AFDD /* T_Post.swift */; };
 		B43C0E8A1CABF48300EF51E9 /* T_AddFriendToAlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C0E891CABF48300EF51E9 /* T_AddFriendToAlbumTableViewCell.swift */; };
 		B43C0E8F1CABF4E900EF51E9 /* T_CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C0E8B1CABF4E900EF51E9 /* T_CameraViewController.swift */; };
@@ -168,6 +169,7 @@
 		8AFA26781CBF949200C09E17 /* T_LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_LoginViewController.swift; sourceTree = "<group>"; };
 		8AFA267A1CBF94B000C09E17 /* T_SignUpEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpEmailViewController.swift; sourceTree = "<group>"; };
 		8AFA267C1CBF94C900C09E17 /* T_SignUpInvitePeopleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpInvitePeopleViewController.swift; sourceTree = "<group>"; };
+		B40A7D921CE0869800EE7BCC /* T_LocalFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_LocalFileManager.swift; sourceTree = "<group>"; };
 		B431711B1CB912790080AFDD /* T_Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Post.swift; sourceTree = "<group>"; };
 		B43C0E891CABF48300EF51E9 /* T_AddFriendToAlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AddFriendToAlbumTableViewCell.swift; sourceTree = "<group>"; };
 		B43C0E8B1CABF4E900EF51E9 /* T_CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_CameraViewController.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				8A6F88C11CD6779300060C48 /* T_AlertHelper.swift */,
 				5DD10B631CBD8AA300918E3A /* T_Reachability.swift */,
 				5DEF6E941CC1005600494C86 /* T_PhotoTakingHelper.swift */,
+				B40A7D921CE0869800EE7BCC /* T_LocalFileManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				5D9FD1C31CBAE69A002204E8 /* T_HomePageViewController.swift in Sources */,
 				7DD0F9AE1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift in Sources */,
 				8AB0F1C41CBFC71300605525 /* T_SignUpUsernameViewController.swift in Sources */,
+				B40A7D931CE0869800EE7BCC /* T_LocalFileManager.swift in Sources */,
 				7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */,
 				5D64CA791CB986C2005C6E43 /* T_BirthdayEditionViewController.swift in Sources */,
 				5DC361DE1CBAFBE900B00064 /* T_FriendRequestParseHelper.swift in Sources */,
