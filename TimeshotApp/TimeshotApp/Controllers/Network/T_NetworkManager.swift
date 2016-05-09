@@ -151,9 +151,9 @@ class T_NetworkManager {
                 } else {
                     print("Pas de réseau (ou autre erreur), veuillez réessayer") // , error)
                     
-                    T_NetworkStatus.sharedInstance.updateLabelText(T_NetworkStatus.status.Error)
-
                     self.isUploading = false
+
+                    T_NetworkStatus.sharedInstance.updateLabelText(T_NetworkStatus.status.Error)
                     UIApplication.sharedApplication().endBackgroundTask(self.postCreationTask!)
                 }
             }

@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import Bond
+import DZNEmptyDataSet
 
 class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -61,6 +62,10 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.emptyDataSetSource = self
+        self.tableView.tableFooterView = UIView()
         
         self.createButton = UIBarButtonItem(title: "Creer   ", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(T_ChooseContactsAlbumCreationViewController.actionCreateButton(_:)))
         
@@ -193,4 +198,24 @@ extension T_ChooseContactsAlbumCreationViewController {
             }
         }
     }
+}
+
+
+extension T_ChooseContactsAlbumCreationViewController : DZNEmptyDataSetSource {
+    
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "EmptyAlbumIcon")
+    }
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: "T'as pas de potes !")
+    }
+
+    func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {
+        return UIColor.whiteColor()
+    }
+}
+
+extension T_ChooseContactsAlbumCreationViewController : DZNEmptyDataSetDelegate {
+    
 }

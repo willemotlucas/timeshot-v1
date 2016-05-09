@@ -54,6 +54,15 @@ class T_DesignHelper {
         view.layer.insertSublayer(gradient, atIndex: 0)
     }
     
+    static func createGradientLayer(frame: CGRect) -> CAGradientLayer {
+        let layer = CAGradientLayer()
+        layer.frame = frame
+        layer.colors = [T_DesignHelper.rougeDegrade ,T_DesignHelper.orangeDegrade]
+        layer.startPoint = CGPointMake(0,0.5)
+        layer.endPoint = CGPointMake(1,0.5)
+        return layer
+    }
+    
     static func colorSegmentedControl(segmentedControl: UISegmentedControl){
         let layer = CAGradientLayer()
         layer.frame = segmentedControl.bounds

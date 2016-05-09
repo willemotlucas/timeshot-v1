@@ -9,10 +9,16 @@
 import UIKit
 import NVActivityIndicatorView
 
+// background du tableview dans l'ajout d'amis
+// les filtres
+// ajouter un action sur le screen quand album créé ou raté
+//
+
 class T_NetworkStatus: UIView {
 
     static let sharedInstance = T_NetworkStatus()
     private var albumTitle: UILabel!
+    private var albumTitleBackground: UIView!
     private var _albumTitle: String = ""
     private var albumImage: UIImageView!
     private var activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 24, height: 20), type: .BallPulse, color: UIColor.whiteColor())
@@ -31,19 +37,26 @@ class T_NetworkStatus: UIView {
         self.userInteractionEnabled = true
         
         self.albumTitle = UILabel(frame: CGRect(x: T_DesignHelper.screenSize.width/2, y: 16, width: 0, height: 24))
+        self.albumTitleBackground = UIView(frame: CGRect(x: T_DesignHelper.screenSize.width/2, y: 16, width: 0, height: 24))
         self.albumImage = UIImageView(frame: CGRect(x: 0, y: 18, width: 24, height: 20))
         self.albumImage.image = UIImage(named: "Group")
         
-        self.albumTitle.layer.zPosition = 1
-        self.albumTitle.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.7)
-        self.albumTitle.layer.cornerRadius = 12
+        self.albumTitle.layer.zPosition = 2
+        self.albumTitleBackground.layer.zPosition = 1
+        self.albumTitle.backgroundColor = UIColor.clearColor()
+        self.albumTitleBackground.backgroundColor = UIColor.clearColor()
+        
+        self.albumTitleBackground.layer.insertSublayer(T_DesignHelper.createGradientLayer(CGRect(x: 0, y: 0, width: T_DesignHelper.screenSize.width, height: 90)), atIndex: 0)
+
+        self.albumTitleBackground.layer.cornerRadius = 12
         self.albumTitle.font = UIFont.systemFontOfSize(15)
         self.albumTitle.textColor = UIColor.whiteColor()
-        self.albumTitle.layer.masksToBounds = true
+        self.albumTitleBackground.layer.masksToBounds = true
         self.albumImage.layer.zPosition = 11
         self.activityIndicatorView.layer.zPosition = 11
         
         self.addSubview(self.albumTitle)
+        self.addSubview(self.albumTitleBackground)
         self.addSubview(self.albumImage)
         self.addSubview(self.activityIndicatorView)
     }
@@ -73,12 +86,11 @@ class T_NetworkStatus: UIView {
             self.activityIndicatorView.hidden = true
             let textSize = finalText.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(15.0)])
             self.albumTitle.frame.size.width = 40 + textSize.width
+            self.albumTitleBackground.frame.size.width = textSize.width + 40
             self.albumTitle.textAlignment = .Left
             self.albumImage.contentMode = .ScaleAspectFit
             self.albumImage.frame.origin = CGPoint(x: T_DesignHelper.screenSize.width/2 + self.albumTitle.frame.size.width/2 - 33, y: self.albumImage.frame.origin.y)
             self.activityIndicatorView.stopAnimation()
-
-
             
         case .Error:
             finalText = "Upload failed (\(T_NetworkManager.sharedInstance.count()))"
@@ -86,26 +98,28 @@ class T_NetworkStatus: UIView {
             self.activityIndicatorView.hidden = true
             let textSize = finalText.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(15.0)])
             self.albumTitle.frame.size.width = textSize.width + 40
+            self.albumTitleBackground.frame.size.width = textSize.width + 40
             self.albumTitle.textAlignment = .Center
             self.activityIndicatorView.stopAnimation()
-
         
         case .Uploading:
             finalText = "   Uploading"
             self.albumImage.hidden = true
             let textSize = finalText.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(15.0)])
             self.albumTitle.frame.size.width = textSize.width + 40
+            self.albumTitleBackground.frame.size.width = textSize.width + 40
             self.albumTitle.textAlignment = .Left
             self.activityIndicatorView.hidden = false
             self.activityIndicatorView.frame.origin = CGPoint(x: T_DesignHelper.screenSize.width/2 + self.albumTitle.frame.size.width/2 - 33, y: self.albumTitle.frame.origin.y + 3)
             self.activityIndicatorView.startAnimation()
-
-
-            
         }
         
         self.albumTitle.frame.origin = CGPoint(x: T_DesignHelper.screenSize.width/2 - self.albumTitle.frame.size.width/2, y: self.albumTitle.frame.origin.y)
+        self.albumTitleBackground.frame.origin = CGPoint(x: T_DesignHelper.screenSize.width/2 - self.albumTitle.frame.size.width/2, y: self.albumTitle.frame.origin.y)
         self.albumTitle.text = finalText
+        
+        // Gradient
+        self.albumTitleBackground.layer.insertSublayer(T_DesignHelper.createGradientLayer(self.albumTitleBackground.frame), atIndex: 0)
         
         self.show()
     }
@@ -123,7 +137,4 @@ class T_NetworkStatus: UIView {
             T_NetworkManager.sharedInstance.upload()
         }
     }
-
-    
-    
 }

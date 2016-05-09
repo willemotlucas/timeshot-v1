@@ -211,7 +211,21 @@ class T_CameraViewController: UIViewController {
         buttonFlash.hidden = true
     }
     
-    func unfreezeUI() {
+    func unfreezeUI(success: Bool = true) {
+        if(success) {
+            let alertController = UIAlertController(title: "Album successfully created !", message:
+                "Let's share your first picture !", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Go !", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        else {
+            let alertController = UIAlertController(title: "Cannot create the album", message:
+                "Please check your network connection and try again !", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
         progressHUD?.hide(true)
         
         buttonTakePicture.hidden = false

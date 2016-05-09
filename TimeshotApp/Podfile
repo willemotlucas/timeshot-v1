@@ -2,6 +2,7 @@ platform :ios, '8.0'
 
 use_frameworks!
 
+pod "SnapSliderFilters"
 pod 'NVActivityIndicatorView'
 pod 'CameraManager', '~> 2.2'
 pod 'Parse'
