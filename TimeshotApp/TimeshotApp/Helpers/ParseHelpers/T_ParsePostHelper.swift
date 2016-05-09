@@ -34,7 +34,7 @@ class T_ParsePostHelper {
     
     static func getAllPostNotVoted(user : T_User, _ album : T_Album, _ completionBlock : ([T_Post]? -> Void)?) {
         let voteQ = T_Vote.query()!
-        voteQ.whereKey(T_ParseVoteHelper.ParseVoteFromUser, notEqualTo: user)
+        voteQ.whereKey(T_ParseVoteHelper.ParseVoteFromUser, equalTo: user)
         voteQ.findObjectsInBackgroundWithBlock{array , error -> Void in
             if error == nil && !(array?.isEmpty)! {
                 let votes = array!.map{n -> String in (n[T_ParseVoteHelper.ParseVoteToPost])!.objectId!!}
