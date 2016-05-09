@@ -97,41 +97,34 @@ class T_NetworkManager {
     }
     
     func upload() {
-        guard let currentUser = PFUser.currentUser() as? T_User where currentUser.liveAlbum != nil else {
-            print("Not connected, cannot create the post")
-            return
-        }
+        guard let currentUser = PFUser.currentUser() as? T_User where currentUser.liveAlbum != nil else { return }
         
         // S'il y a au moins un post à envoyer
         if let post = self.getHead() {
-            print("a post wants to be sent")
             
             // Si un envoi est djéà en cours, on reporte l'envoi
-            if(self.isUploading == true) {
-                print("send delayed");
-                // Post pinned car on devra charger l'image localement et remplacer le PFFile
-                post.pinned = true
-                return
-            }
+            if(self.isUploading == true) { return }
             
             self.isUploading = true
-            print("a post is going to be sent")
             self.postCreationTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in
                 UIApplication.sharedApplication().endBackgroundTask(self.postCreationTask!)
             }
 
             let fileName = T_LocalFileManager.generateNameFromDate(post.createdAtDate)
-            
             let imagePath = T_LocalFileManager.fileInDocumentsDirectory("\(fileName).png")
             let imageFromLocalStorage = T_LocalFileManager.loadImageFromPath(imagePath)
-
-            if(post.pinned == true) {
-                print("-------")
-                print("Loading from disk")
-                post.addPictureToPost(imageFromLocalStorage!)
-                print("-------")
-            }
             
+            // Si le data de l'image est dispo
+            if (post.photo.dataAvailable == true) {
+                var imageSize: Int
+                try! imageSize = post.photo.getData().length
+
+                // Le post est trop léger = l'image n'est plus dans le cache : on load localement la photo
+                if(imageSize < 100) {
+                    post.addPictureToPost(imageFromLocalStorage!)
+                }
+            }
+
             post.saveInBackgroundWithBlock {
                 (success, error) -> Void in
                 if success {
@@ -153,19 +146,11 @@ class T_NetworkManager {
                     self.upload()
                     
                 } else {
-                    print("An error occured : %@", error)
-                    
-                    // On indique que le post est pinned, dans le sens ou
-                    let post = self.getHead()
-                    
-                    // Post pinned car on devra charger l'image localement et remplacer le PFFile
-                    post!.pinned = true
+                    print("Pas de réseau (ou autre erreur), veuillez réessayer") // , error)
                     self.isUploading = false
                     UIApplication.sharedApplication().endBackgroundTask(self.postCreationTask!)
-                    return
                 }
             }
-
         }
     }
 }

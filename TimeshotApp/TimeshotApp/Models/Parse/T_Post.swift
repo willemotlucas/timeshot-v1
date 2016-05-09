@@ -17,7 +17,6 @@ class T_Post : PFObject, PFSubclassing {
     @NSManaged var toAlbum: T_Album
     @NSManaged var isDeleted: Bool
     @NSManaged var createdAtDate: NSDate
-    @NSManaged var pinned:Bool
     
     var image : Observable<UIImage?> = Observable(nil)
     
@@ -50,7 +49,6 @@ class T_Post : PFObject, PFSubclassing {
         self.photo = T_ParseUserHelper.fileFromImage(photo)
         self.toAlbum = toAlbum
         self.isDeleted = false
-        self.pinned = false
         self.createdAtDate = NSDate()
     }
     
@@ -61,7 +59,6 @@ class T_Post : PFObject, PFSubclassing {
         self.fromUser = fromUser
         self.toAlbum = toAlbum
         self.isDeleted = false
-        self.pinned = false
         self.createdAtDate = NSDate()
     }
 
