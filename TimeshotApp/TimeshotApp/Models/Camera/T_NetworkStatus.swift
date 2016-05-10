@@ -44,10 +44,8 @@ class T_NetworkStatus: UIView {
         self.albumTitle.layer.zPosition = 2
         self.albumTitleBackground.layer.zPosition = 1
         self.albumTitle.backgroundColor = UIColor.clearColor()
-        self.albumTitleBackground.backgroundColor = UIColor.clearColor()
+        self.albumTitleBackground.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
         
-        self.albumTitleBackground.layer.insertSublayer(T_DesignHelper.createGradientLayer(CGRect(x: 0, y: 0, width: T_DesignHelper.screenSize.width, height: 90)), atIndex: 0)
-
         self.albumTitleBackground.layer.cornerRadius = 12
         self.albumTitle.font = UIFont.systemFontOfSize(15)
         self.albumTitle.textColor = UIColor.whiteColor()
@@ -119,7 +117,6 @@ class T_NetworkStatus: UIView {
         self.albumTitle.text = finalText
         
         // Gradient
-        self.albumTitleBackground.layer.insertSublayer(T_DesignHelper.createGradientLayer(self.albumTitleBackground.frame), atIndex: 0)
         
         self.show()
     }
