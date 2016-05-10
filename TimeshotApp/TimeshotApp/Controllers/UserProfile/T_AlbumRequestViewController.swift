@@ -46,7 +46,7 @@ class T_AlbumRequestViewController: UIViewController {
     }
     
     @IBAction func acceptButtonTapped(sender: UIButton) {
-        if T_ParseUserHelper.getCurrentUser()?.liveAlbum != nil {
+        if T_CameraViewController.instance.isLiveAlbumExisting == true {
             T_AlertHelper.alertOK("Oups!", message: "You already have an album in progress...", viewController: self)
         } else {
             T_ParseAlbumRequestHelper.acceptAlbumRequest(self.albumRequest!) { (result: Bool, error: NSError?) in
