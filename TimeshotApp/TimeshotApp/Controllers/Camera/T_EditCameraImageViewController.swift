@@ -73,6 +73,13 @@ class T_EditCameraImageViewController: UIViewController {
 
     func createData() {
         self.data = SNFilter.generateFiltersWithScaling(SNFilter.filterNameList2, image: self.image, isFrontCamera: self.isFrontCamera)
+        
+        let sticker:SNSticker = SNSticker(frame: CGRect(x: 0, y: 0, width: T_DesignHelper.screenSize.width, height: T_DesignHelper.screenSize.height), image: UIImage(named: "SliderPic")!)
+        // In case of overlapping, you can provide a zPosition (the default one is 0)
+        let sticker2:SNSticker = SNSticker(frame: CGRect(x: 0, y: 0, width: T_DesignHelper.screenSize.width, height: T_DesignHelper.screenSize.height), image: UIImage(named: "SliderVac")!)
+        
+        self.data[1].addSticker(sticker)
+        self.data[2].addSticker(sticker2)
     }
 
     func initSlider() {
