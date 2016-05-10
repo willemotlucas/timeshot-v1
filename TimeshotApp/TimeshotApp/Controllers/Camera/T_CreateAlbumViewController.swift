@@ -53,6 +53,7 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
         initScrollView()
         initTextField()
         initTimerPicker()
+        initButton()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CreateAlbumViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CreateAlbumViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
@@ -130,12 +131,28 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.timePickerTextField.text = "Duration of the album  \n   \(timeData[row])h"
+        self.timePickerTextField.text = "Duration of the album  \n  \(timeData[row])h"
         self.duration = timeData[row]
     }
     
     //------------------------------------------------------------------------------------------------
     //MARK: Init methods
+    
+    func initButton() {
+        let a = UIButton(frame: CGRect(x: T_DesignHelper.screenSize.width/2 - 100, y: 13, width: 200, height: 50))
+        a.backgroundColor = UIColor.clearColor()
+        
+        a.setTitle("", forState: UIControlState.Normal)
+        a.addTarget(self, action: #selector(T_CreateAlbumViewController.action), forControlEvents: UIControlEvents.TouchUpInside)
+        a.layer.zPosition = 20
+        
+        self.view.addSubview(a)
+    }
+    
+    func action() {
+        self.timePickerTextField.becomeFirstResponder()
+    }
+    
     func initTimerPicker() {
         self.timePickerTextField = UITextView(frame: CGRect(x: T_DesignHelper.screenSize.width/2 - 100, y: 13, width: 200, height: 50))
         self.timePickerTextField.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
@@ -146,10 +163,10 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
         self.timePickerTextField.layer.cornerRadius = 22
         self.timePickerTextField.layer.masksToBounds = true
         self.timePickerTextField.textAlignment = .Center
-        self.timePickerTextField.userInteractionEnabled = true
+//        self.timePickerTextField.userInteractionEnabled = true
 //        self.timePickerTextField.scrollEnabled = false
 //        self.timePickerTextField.editable = false
-        self.timePickerTextField.text = "Duration of the album  \n   \(defaultDuration)h"
+        self.timePickerTextField.text = "Duration of the album  \n  \(defaultDuration)h"
         self.view.addSubview(self.timePickerTextField)
 
         self.timePicker = UIPickerView(frame: CGRect(x: 0, y: T_DesignHelper.screenSize.height - 90, width: T_DesignHelper.screenSize.width, height: 90))

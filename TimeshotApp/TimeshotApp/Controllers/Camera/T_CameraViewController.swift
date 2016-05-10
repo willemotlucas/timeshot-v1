@@ -138,6 +138,7 @@ class T_CameraViewController: UIViewController {
         // Camera init
         cameraManager.addPreviewLayerToView(self.cameraView)
         cameraManager.cameraDevice = .Back
+        cameraManager.shouldRespondToOrientationChanges = false
         cameraManager.cameraOutputMode = .StillImage
         cameraManager.cameraOutputQuality = .Medium
         cameraManager.flashMode = .Off

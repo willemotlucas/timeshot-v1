@@ -28,6 +28,7 @@ class T_SnapTextField: UITextField, UITextFieldDelegate {
         self.placeholder = ""
         self.font = UIFont.systemFontOfSize(16)
         self.textColor = UIColor.whiteColor()
+        self.tintColor = UIColor.whiteColor()
         self.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.3)
         self.borderStyle = UITextBorderStyle.None
         self.autocorrectionType = UITextAutocorrectionType.No
@@ -101,6 +102,11 @@ class T_SnapTextField: UITextField, UITextFieldDelegate {
     
     func setPlaceHolder(text: String) {
         self.attributedPlaceholder = NSAttributedString(string:text, attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+    }
+    
+    func addGradient(alpha:CGFloat = 1) {
+        self.backgroundColor = UIColor.clearColor()
+        self.layer.insertSublayer(T_DesignHelper.createGradientLayer(CGRect(x: 0, y: 0, width: T_DesignHelper.screenSize.width, height: self.frame.size.height), alpha: alpha), atIndex: 0)
     }
     
     //------------------------------------------------------------------------------------------------
