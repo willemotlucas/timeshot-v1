@@ -15,6 +15,7 @@ protocol ModalViewControllerDelegate {
 
 class T_AlbumRequestViewController: UIViewController {
     @IBOutlet weak var albumCover: UIImageView!
+    @IBOutlet weak var controlView: UIView!
     
     var delegate: ModalViewControllerDelegate?
 
@@ -26,7 +27,8 @@ class T_AlbumRequestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        T_DesignHelper.colorUIView(self.controlView)
+        UIColor.clearColor().colorWithAlphaComponent(0.7)
     }
 
     override func didReceiveMemoryWarning() {
