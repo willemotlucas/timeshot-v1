@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class T_AddFriendToAlbumViewController: UIViewController {
     // MARK: Properties
@@ -23,6 +24,7 @@ class T_AddFriendToAlbumViewController: UIViewController {
     var duration:Int!
     var cover:UIImage!
     var albumTitle:String!
+    var album: T_Album?
     
     //MARK: Outlets methods
     @IBAction func actionBackButton(sender: AnyObject) {
@@ -30,7 +32,12 @@ class T_AddFriendToAlbumViewController: UIViewController {
     }
     
     func actionCreateButton(sender: AnyObject) {
-        print("coucou je t'invite toi")
+        let usersSelected = friendCells.filter{$0.isSelected()}
+        
+        for user in usersSelected {
+            T_ParseAlbumRequestHelper.sendFriendRequest(user, toAlbum: album!)
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     //MARK: System Methods
@@ -69,8 +76,37 @@ class T_AddFriendToAlbumViewController: UIViewController {
         
         T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
             self.friendCells = friends
-            self.tableView.reloadData()
             
+            // On delete d'abord tous nos amis qui font deja parti de l'album
+            for user in (self.album?.attendees)! {
+                if self.friendCells.contains(user) {
+                    let index = self.friendCells.indexOf(user)
+                    self.friendCells.removeAtIndex(index!)
+                }
+            }
+            // Si notre tableau d'amis n'est pas vide alors on va faire la requete sur parse pour recuperer
+            // Les requetes d'ajout deja fait
+            
+            if self.friendCells.isEmpty {
+                // Si on a pu d'amis de dispo il faudrait faire une empty view stylé en mode: Ajoute plus d'amis
+                self.tableView.reloadData()
+            } else {
+                T_ParseAlbumRequestHelper.getPendingAlbumRequestToCurrentAlbum(self.album!) { (result: [PFObject]?, error:NSError?) in
+                    let albumRequests = result as? [T_AlbumRequest] ?? []
+                    
+                    // Recuperation de tous les request User
+                    let requestUser = albumRequests.map({$0.toUser as? T_User})
+                    
+                    // Filtre de nos amis avec ceux qui sont deja dans les requests
+                    for user in requestUser {
+                        if self.friendCells.contains(user!) {
+                            let index = self.friendCells.indexOf(user!)
+                            self.friendCells.removeAtIndex(index!)
+                        }
+                    }
+                    self.tableView.reloadData()
+                }
+            }
         })
     }
     

@@ -498,7 +498,7 @@
                                 </state>
                                 <connections>
                                     <action selector="addFriendsToAlbum:" destination="vYW-Q6-7ln" eventType="touchUpInside" id="FBD-i1-RSx"/>
-                                    <segue destination="faC-Yo-3r8" kind="presentation" id="z4f-Aw-nmW"/>
+                                    <segue destination="faC-Yo-3r8" kind="presentation" identifier="addFriends" id="z4f-Aw-nmW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1305,7 +1305,7 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Title" id="gsl-hT-AWb">
+                                    <navigationItem title="Invitation" id="gsl-hT-AWb">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="jMW-xz-nir">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>

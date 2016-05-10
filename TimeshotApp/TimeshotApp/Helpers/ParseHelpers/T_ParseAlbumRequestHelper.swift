@@ -62,6 +62,23 @@ class T_ParseAlbumRequestHelper {
     }
     
     /*
+     * Retrieve all the pending album requests from the current album.
+     *
+     * Params:
+     * - @completionBlock : the methods executed asynchroneously when all the pending requests have been retrieved
+     */
+    static func getPendingAlbumRequestToCurrentAlbum(toAlbum: T_Album, completionBlock: PFQueryArrayResultBlock?) {
+        let pendingAlbumRequest = PFQuery(className: ParseAlbumRequestClass)
+        pendingAlbumRequest.whereKey(ParseAlbumRequestStatus, equalTo: albumRequestStatus(.Pending))
+        pendingAlbumRequest.whereKey(ParseAlbumRequestToAlbum, equalTo: toAlbum)
+        pendingAlbumRequest.includeKey(ParseAlbumRequestFromUser)
+        
+        pendingAlbumRequest.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
+    
+    
+    /*
      * Send an album request to a user
      *
      * Params:
