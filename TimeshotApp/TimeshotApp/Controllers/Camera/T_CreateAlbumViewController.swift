@@ -95,9 +95,10 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
             
             timePicker.hidden = true
             timePickerTextField.hidden = true
+            textFieldTitle.hidden = true
+            textFieldTitleBackground.hidden = true
             buttonNext.hidden = true
             buttonBack.hidden = true
-            
             textField.hidden = true
                         
             destinationVC.cover = T_CameraHelper.screenShot(self.view)
@@ -105,12 +106,12 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
             destinationVC.albumTitle = (self.textField.text)!
             
             textField.hidden = false
-
+            textFieldTitle.hidden = false
+            textFieldTitleBackground.hidden = false
             timePicker.hidden = false
             timePickerTextField.hidden = false
             buttonNext.hidden = false
             buttonBack.hidden = false
-
         }
     }
     
