@@ -11,6 +11,7 @@ import DZNEmptyDataSet
 import Parse
 import AFDateHelper
 import SwiftGifOrigin
+import PullToRefresh
 
 
 class T_PhotosCollectionViewController: UIViewController {
@@ -25,6 +26,8 @@ class T_PhotosCollectionViewController: UIViewController {
     // For the empty view
     var load = false
     
+    let refresher = PullToRefresh()
+    
 
     // Used for the slider
     // numberSectionsPhoto.count -> number of sections in our gallery
@@ -38,6 +41,13 @@ class T_PhotosCollectionViewController: UIViewController {
         // For DZNEmptyState
         collectionView.emptyDataSetDelegate = self
         collectionView.emptyDataSetSource = self
+        
+        //Add pull to refresh
+        self.collectionView.addPullToRefresh(refresher, action: {
+            self.loadPost()
+        })
+        
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -127,6 +137,9 @@ class T_PhotosCollectionViewController: UIViewController {
                         print("il y a une erreur ou cas non pris en compte")
                     }
                 }
+                
+                // On ne garde que les sections ou il y a au moins une photo de prise !
+                self.photoNumberInSections = self.photoNumberInSections.filter{$0 != 0}
                 
                 self.collectionView.endRefreshing()
                 self.collectionView.reloadData()
