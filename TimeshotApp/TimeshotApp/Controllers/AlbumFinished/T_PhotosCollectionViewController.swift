@@ -11,7 +11,6 @@ import DZNEmptyDataSet
 import Parse
 import AFDateHelper
 import SwiftGifOrigin
-import PullToRefresh
 
 class T_PhotosCollectionViewController: UIViewController {
     
@@ -25,7 +24,6 @@ class T_PhotosCollectionViewController: UIViewController {
     // For the empty view
     var load = false
     
-    let refresher = PullToRefresh()
 
     // Used for the slider
     // numberSectionsPhoto.count -> number of sections in our gallery
@@ -35,11 +33,6 @@ class T_PhotosCollectionViewController: UIViewController {
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Add pull to refresh
-        collectionView.addPullToRefresh(refresher, action: {
-            self.loadPost()
-        })
         
         // For DZNEmptyState
         collectionView.emptyDataSetDelegate = self
