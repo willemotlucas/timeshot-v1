@@ -10,6 +10,7 @@ import UIKit
 import DZNEmptyDataSet
 import Parse
 import ConvenienceKit
+import PullToRefresh
 
 class T_AlbumViewController: UIViewController{
     // MARK: Properties
@@ -20,6 +21,8 @@ class T_AlbumViewController: UIViewController{
     let additionalRangeSize = 5
     var isLoading = false
     var errorLoading = false
+    
+    let refresher = PullToRefresh()
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -33,6 +36,11 @@ class T_AlbumViewController: UIViewController{
         tableView.emptyDataSetDelegate = self
         tableView.tableFooterView = UIView()
         
+        //Add pull to refresh
+        tableView.addPullToRefresh(refresher, action: {
+            self.timelineComponent.loadInitialIfRequired()
+        })
+        
         // For tableView
         tableView.delegate = self
         tableView.dataSource = self
@@ -43,10 +51,6 @@ class T_AlbumViewController: UIViewController{
         
         // Do any additional setup after loading the view.
         
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        timelineComponent.loadInitialIfRequired()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -124,6 +128,10 @@ extension T_AlbumViewController : UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - DZNEmptyState
 extension T_AlbumViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    
+    func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
+        return true
+    }
     
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         // On est dans le cas ou on a pas encore de photos dans l'album
