@@ -11,6 +11,8 @@ import DZNEmptyDataSet
 import Parse
 import AFDateHelper
 import SwiftGifOrigin
+import PullToRefresh
+
 
 class T_PhotosCollectionViewController: UIViewController {
     
@@ -23,6 +25,9 @@ class T_PhotosCollectionViewController: UIViewController {
     
     // For the empty view
     var load = false
+    
+    let refresher = PullToRefresh()
+    
 
     // Used for the slider
     // numberSectionsPhoto.count -> number of sections in our gallery
@@ -37,6 +42,37 @@ class T_PhotosCollectionViewController: UIViewController {
         collectionView.emptyDataSetDelegate = self
         collectionView.emptyDataSetSource = self
         
+        //Add pull to refresh
+        self.collectionView.addPullToRefresh(refresher, action: {
+            self.loadPost()
+        })
+        
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        // Do any additional setup after loading the view.
+        loadPost()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: Function
+    func getPhotoIndex(indexPath : NSIndexPath) -> Int {
+        var indexCell = 0
+        for i in 0 ..< (indexPath.section-1){
+            indexCell = indexCell + photoNumberInSections[i]
+        }
+        
+        indexCell += indexPath.row
+        
+        return indexCell
+    }
+    
+    func loadPost() {
         T_ParsePostHelper.postsForCurrentAlbum(albumPhotos!) {(result: [PFObject]?, error: NSError?) -> Void in
             self.load = true
             
@@ -49,6 +85,8 @@ class T_PhotosCollectionViewController: UIViewController {
             } else {
                 // On veut un tableau de la taille du nombre d'heure que l'on a !
                 // Car chaque heure est une section
+                self.photoNumberInSections.removeAll()
+                
                 if let album = self.albumPhotos {
                     for _ in 0..<album.duration {
                         self.photoNumberInSections.append(0)
@@ -100,33 +138,13 @@ class T_PhotosCollectionViewController: UIViewController {
                     }
                 }
                 
-                print(self.photoNumberInSections)
+                // On ne garde que les sections ou il y a au moins une photo de prise !
+                self.photoNumberInSections = self.photoNumberInSections.filter{$0 != 0}
                 
+                self.collectionView.endRefreshing()
                 self.collectionView.reloadData()
             }
         }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        // Do any additional setup after loading the view.
-        collectionView.reloadData()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: Function
-    func getPhotoIndex(indexPath : NSIndexPath) -> Int {
-        var indexCell = 0
-        for i in 0 ..< (indexPath.section-1){
-            indexCell = indexCell + photoNumberInSections[i]
-        }
-        
-        indexCell += indexPath.row
-        
-        return indexCell
     }
     
     // MARK: Navigation
@@ -319,6 +337,10 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
 
 // MARK: - DZNEmptyDataState 
 extension T_PhotosCollectionViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         // On est dans le cas ou on a pas encore de photos dans l'album
         let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]

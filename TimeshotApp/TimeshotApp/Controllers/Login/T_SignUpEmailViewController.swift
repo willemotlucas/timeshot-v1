@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import CameraManager
 import SwiftValidate
+import MBProgressHUD
 
 class T_SignUpEmailViewController: UIViewController {
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -17,7 +17,8 @@ class T_SignUpEmailViewController: UIViewController {
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var overlayView: UIView!
-    let cameraManager = CameraManager()
+    
+    var progressHUD:MBProgressHUD?
     
     var firstNameValidator = T_ValidatorHelper.firstNameValidator()
     private var nameValidator = T_ValidatorHelper.nameValidator()
@@ -25,8 +26,6 @@ class T_SignUpEmailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.cameraManager.cameraDevice = .Front
-        self.cameraManager.addPreviewLayerToView(self.cameraView)
         // Do any additional setup after loading the view.
         firstNameTextField.delegate = self
         nameTextField.delegate = self
@@ -59,6 +58,16 @@ class T_SignUpEmailViewController: UIViewController {
         
     }
     
+    // MARK: Methods
+    func freezeUI() {
+        progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        progressHUD?.mode = .Indeterminate
+    }
+    
+    func unfreezeUI() {
+        progressHUD?.hide(true)
+    }
+    
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if sender === continueButton {
@@ -75,17 +84,20 @@ class T_SignUpEmailViewController: UIViewController {
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         //Enregistrement et gestion des erreurs ici, si pb envoie d'un alert et un return false pour annuler le segue
         // TODO Vérifier si l'adresse e-mail est pas déjà enregistré
-        
+        freezeUI()
         firstNameValidator.validate(firstNameTextField.text, context: nil)
         nameValidator.validate(nameTextField.text, context: nil)
         emailValidator.validate(emailTextField.text, context: nil)
         
         let errors : [String] = T_ValidatorHelper.getAllErrors([firstNameValidator, nameValidator, emailValidator])
         if !errors.isEmpty {
+            unfreezeUI()
             T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: errors, viewController: self)
             return false
         }
+        
         let emailAlreadyExist = T_ParseUserHelper.emailAlreadyExist(emailTextField.text!)
+        unfreezeUI()
         if emailAlreadyExist {
             T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: [NSLocalizedString("This email is already used", comment: "")], viewController: self)
             return false

@@ -163,6 +163,16 @@ class T_User : PFUser {
     }
     
     func getAllFriends(completion: (friends: [T_User]) -> Void) {
+        if let currentUser = T_ParseUserHelper.getCurrentUser() {
+            if currentUser.friends.isEmpty {
+                getAllFriendsFromParse(completion)
+            }else {
+                completion(friends: currentUser.friends)
+            }
+        }
+    }
+    
+    func getAllFriendsFromParse(completion: (friends: [T_User]) -> Void) {
         T_FriendRequestParseHelper.getFriendsFromAcceptedRequests({ (friends) in
             self.friends = friends
             completion(friends: friends)

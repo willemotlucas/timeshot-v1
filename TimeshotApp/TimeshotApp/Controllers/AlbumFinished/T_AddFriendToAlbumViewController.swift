@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import DZNEmptyDataSet
 
 class T_AddFriendToAlbumViewController: UIViewController {
     // MARK: Properties
@@ -23,6 +25,10 @@ class T_AddFriendToAlbumViewController: UIViewController {
     var duration:Int!
     var cover:UIImage!
     var albumTitle:String!
+    var album: T_Album?
+    
+    var isLoading = false
+    var errorLoading = false
     
     //MARK: Outlets methods
     @IBAction func actionBackButton(sender: AnyObject) {
@@ -30,7 +36,12 @@ class T_AddFriendToAlbumViewController: UIViewController {
     }
     
     func actionCreateButton(sender: AnyObject) {
-        print("coucou je t'invite toi")
+        let usersSelected = friendCells.filter{$0.isSelected()}
+        
+        for user in usersSelected {
+            T_ParseAlbumRequestHelper.sendFriendRequest(user, toAlbum: album!)
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     //MARK: System Methods
@@ -65,12 +76,56 @@ class T_AddFriendToAlbumViewController: UIViewController {
         self.friendAddedLabel.textAlignment = .Left
         self.friendAddedItem.customView = self.friendAddedLabel
         
-        //Load the friends
+        // For DZNEmptyState
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
         
+        // Load the friends
         T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
             self.friendCells = friends
-            self.tableView.reloadData()
             
+            // On delete d'abord tous nos amis qui font deja parti de l'album
+            for user in (self.album?.attendees)! {
+                if self.friendCells.contains(user) {
+                    let index = self.friendCells.indexOf(user)
+                    self.friendCells.removeAtIndex(index!)
+                }
+            }
+            
+            // Si notre tableau d'amis n'est pas vide alors on va faire la requete sur parse pour recuperer
+            // Les requetes d'ajout deja fait
+            
+            if self.friendCells.isEmpty {
+                // Si on a pu d'amis de dispo il faudrait faire une empty view stylé en mode: Ajoute plus d'amis
+                self.isLoading = true
+                self.tableView.reloadData()
+            } else {
+                T_ParseAlbumRequestHelper.getPendingAlbumRequestToCurrentAlbum(self.album!) { (result: [PFObject]?, error:NSError?) in
+                    
+                    if let _ = error {
+                        self.errorLoading = true
+                    }else {
+                        let albumRequests = result as? [T_AlbumRequest] ?? []
+                        
+                        // Recuperation de tous les request User
+                        let requestUser = albumRequests.map({$0.toUser as? T_User})
+                        
+                        // Filtre de nos amis avec ceux qui sont deja dans les requests
+                        for user in requestUser {
+                            if self.friendCells.contains(user!) {
+                                let index = self.friendCells.indexOf(user!)
+                                self.friendCells.removeAtIndex(index!)
+                            }
+                        }
+                        
+                        self.isLoading = true
+                    }
+                    
+                    
+                    self.tableView.reloadData()
+                }
+            }
         })
     }
     
@@ -188,4 +243,56 @@ extension T_AddFriendToAlbumViewController : UITableViewDataSource, UITableViewD
         }
     }
 }
+
+
+
+// MARK: - DZNEmptyState
+extension T_AddFriendToAlbumViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        // On est dans le cas ou on a pas encore de photos dans l'album
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+        var str = ""
+        
+        if !isLoading && !errorLoading {
+            str = NSLocalizedString("Wait ...", comment: "")
+        } else if errorLoading {
+            str = NSLocalizedString("There's a problem Captain", comment: "")
+        } else if isLoading {
+            str = NSLocalizedString("Ohhh noo", comment: "")
+        }
+        
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        var str = ""
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
+        
+        if !isLoading && !errorLoading{
+            str = NSLocalizedString("We're retrieving your friends", comment: "")
+        } else if errorLoading{
+            str = NSLocalizedString("Network is not available ... ", comment: "")
+        } else if isLoading {
+            str = NSLocalizedString("All your friends have already been invited   in this album ", comment: "")
+        }
+        
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        var image = UIImage()
+        image.accessibilityFrame = CGRect(origin: CGPoint(x: scrollView.center.x,y: scrollView.center.y - 20), size: CGSize(width: 200, height: 200))
+        if !isLoading && !errorLoading{
+            image = UIImage.gifWithName("LoadingView")!
+        }else if errorLoading{
+            image = UIImage(named: "NoNetwork")!
+        } else if isLoading {
+            image = UIImage(named: "EmptyAddFriends")!
+        }
+        return image
+    }
+    
+}
+
 

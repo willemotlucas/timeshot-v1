@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import CameraManager
 import SwiftValidate
 import ParseFacebookUtilsV4
+import MBProgressHUD
 
 class T_LoginViewController: UIViewController {
     
@@ -22,9 +22,10 @@ class T_LoginViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var overlayView: UIView!
-    let cameraManager = CameraManager()
     let usernameValidator : ValidatorChain
     let passwordValidator : ValidatorChain
+    
+    var progressHUD:MBProgressHUD?
     
     required init?(coder aDecoder: NSCoder) {
         usernameValidator = T_ValidatorHelper.firstNameValidator()
@@ -33,8 +34,6 @@ class T_LoginViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.cameraManager.cameraDevice = .Front
-        self.cameraManager.addPreviewLayerToView(self.cameraView)
         if let navbar = self.navigationController?.navigationBar {
             T_DesignHelper.colorNavBar(navbar)
         }
@@ -73,14 +72,27 @@ class T_LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Methods
+    func freezeUI() {
+        progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        progressHUD?.mode = .Indeterminate
+    }
+    
+    func unfreezeUI() {
+        progressHUD?.hide(true)
+    }
+    
     // MARK : Actions
     @IBAction func loginFacebook(sender: AnyObject) {
         let permissions : [String]? = ["email"]
+        
+        self.freezeUI()
         PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) { (user: PFUser?, error: NSError?) -> Void in
             if let user = user {
                 if user.isNew {
                     let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me?fields=id,name,email,first_name,last_name", parameters: nil)
                     graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+                        self.unfreezeUI()
                         if error != nil {
                             // Process error
                             print("Error: \(error)")
@@ -100,13 +112,16 @@ class T_LoginViewController: UIViewController {
                             
                         }
                     })
-                }
-                else {
+                } else {
+                    self.unfreezeUI()
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController") as UIViewController
                     self.presentViewController(vc, animated: true, completion: nil)
                 }
                 
+            } else {
+                self.unfreezeUI()
+                T_AlertHelper.alert(NSLocalizedString("Oups", comment: ""), errors: [NSLocalizedString("Your connection with Facebook failed", comment: "")], viewController: self)
             }
         }
     }
@@ -119,19 +134,35 @@ class T_LoginViewController: UIViewController {
             T_AlertHelper.alert(NSLocalizedString("Cannot sign in", comment: ""), errors: errors, viewController: self)
         }
         else {
+            self.freezeUI()
             PFUser.logInWithUsernameInBackground(self.usernameTextField.text!, password: self.passwordTextField.text!) { (user : PFUser?, error : NSError? ) -> Void in
-                    if let _ = user {
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let vc = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController") as UIViewController
-                        self.presentViewController(vc, animated: true, completion: nil)
-                    }
-                    else {
-                         T_AlertHelper.alert(NSLocalizedString("Cannot sign in", comment: ""), errors: [NSLocalizedString("Username and/or password incorect", comment: "")], viewController: self)
-                    }
+                self.unfreezeUI()
+                if let _ = user {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController") as UIViewController
+                    self.presentViewController(vc, animated: true, completion: nil)
+                } else {
+                    T_AlertHelper.alert(NSLocalizedString("Cannot sign in", comment: ""), errors: [NSLocalizedString("Username and/or password incorect", comment: "")], viewController: self)
                 }
+            }
        
         }
     }
+    
+    @IBAction func CGUButtonTapped(sender: AnyObject) {
+        if let url = NSURL(string: "http://timeshot.co/terms.html"){
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+    
+    
+    @IBAction func PolicyPrivacyButtonTapped(sender: AnyObject) {
+        if let url = NSURL(string: "http://timeshot.co/policy.html"){
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+    
+    
     /*
      // MARK: - Navigation
      

@@ -498,7 +498,7 @@
                                 </state>
                                 <connections>
                                     <action selector="addFriendsToAlbum:" destination="vYW-Q6-7ln" eventType="touchUpInside" id="FBD-i1-RSx"/>
-                                    <segue destination="faC-Yo-3r8" kind="presentation" id="z4f-Aw-nmW"/>
+                                    <segue destination="faC-Yo-3r8" kind="presentation" identifier="addFriends" id="z4f-Aw-nmW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -540,9 +540,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="496"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Yqq-7B-dA8">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Yqq-7B-dA8">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="496"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="7" minimumInteritemSpacing="7" id="ecc-eJ-rnp">
                                     <size key="itemSize" width="200" height="200"/>
                                     <size key="headerReferenceSize" width="50" height="40"/>
@@ -1305,7 +1305,7 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Title" id="gsl-hT-AWb">
+                                    <navigationItem title="Invitation" id="gsl-hT-AWb">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="jMW-xz-nir">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>

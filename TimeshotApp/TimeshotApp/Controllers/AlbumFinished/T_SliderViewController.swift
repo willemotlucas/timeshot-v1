@@ -230,6 +230,9 @@ class T_SliderViewController: UIViewController {
         let reportAction = UIAlertAction(title: NSLocalizedString("Report", comment: ""), style: .Default){
             (action) in
             // Add the action to report the picture
+            let ac = UIAlertController(title:"Thanks", message: "We've reported this picture", preferredStyle: .Alert)
+            ac.addAction(UIAlertAction(title: "ok", style: .Default, handler: nil))
+            self.presentViewController(ac, animated: true, completion: nil)
         }
         alertController.addAction(reportAction)
         

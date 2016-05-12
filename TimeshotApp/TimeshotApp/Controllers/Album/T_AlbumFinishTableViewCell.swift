@@ -88,6 +88,7 @@ class T_AlbumFinishTableViewCell: UITableViewCell {
             }else {
                 value += String(0)
                 value += String(0)
+                value += ":"
             }
             
             if min > 0 {
@@ -98,6 +99,7 @@ class T_AlbumFinishTableViewCell: UITableViewCell {
             }else {
                 value += String(0)
                 value += String(0)
+                value += ":"
             }
             
             if second > 0 {

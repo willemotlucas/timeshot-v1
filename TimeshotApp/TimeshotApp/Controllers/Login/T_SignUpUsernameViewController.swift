@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CameraManager
+import MBProgressHUD
 
 class T_SignUpUsernameViewController: UIViewController {
     @IBOutlet weak var cameraView: UIView!
@@ -16,12 +16,11 @@ class T_SignUpUsernameViewController: UIViewController {
     @IBOutlet weak var continueButton: UIButton!
     var user : T_User?
     let usernameValidator = T_ValidatorHelper.userNameValidator()
-    let cameraManager = CameraManager()
+    
+    var progressHUD:MBProgressHUD?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.cameraManager.cameraDevice = .Front
-        self.cameraManager.addPreviewLayerToView(self.cameraView)
         usernameTextField.delegate = self
         
         // Do any additional setup after loading the view.
@@ -42,6 +41,16 @@ class T_SignUpUsernameViewController: UIViewController {
         
         T_DesignHelper.colorUIView(overlayView)
         
+    }
+    
+    // MARK: Methods
+    func freezeUI() {
+        progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        progressHUD?.mode = .Indeterminate
+    }
+    
+    func unfreezeUI() {
+        progressHUD?.hide(true)
     }
     
     // MARK: - Navigation
@@ -66,7 +75,9 @@ class T_SignUpUsernameViewController: UIViewController {
             T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: errors, viewController: self)
             return false
         }
+        freezeUI()
         let usernameAlreadyExist = T_ParseUserHelper.usernameAlreadyExist(usernameTextField.text!)
+        unfreezeUI()
         if usernameAlreadyExist {
             T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: [NSLocalizedString("This username is already used", comment: "")], viewController: self)
             return false
