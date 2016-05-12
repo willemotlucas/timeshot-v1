@@ -126,11 +126,19 @@ class T_ProfileViewController: UIViewController {
     
     func loadFriendsData(){
         //Load the friends
-        T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
-            self.friends = friends
-            self.tableView.reloadData()
-            self.tableView.endRefreshing()
-        })
+        if self.friends.isEmpty {
+            T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
+                self.friends = friends
+                self.tableView.reloadData()
+                self.tableView.endRefreshing()
+            })
+        } else {
+            T_ParseUserHelper.getCurrentUser()?.getAllFriendsFromParse({ (friends) in
+                self.friends = friends
+                self.tableView.reloadData()
+                self.tableView.endRefreshing()
+            })
+        }
         
         //Load the friends pending requests
         T_FriendRequestParseHelper.getPendingFriendRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
