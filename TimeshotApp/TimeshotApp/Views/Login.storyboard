@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8Uh-12-4dB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8Uh-12-4dB">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -56,7 +56,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exz-Bi-VVv" userLabel="Login with Facebook Button">
-                                <rect key="frame" x="20" y="472" width="560" height="44"/>
+                                <rect key="frame" x="20" y="462" width="560" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="S9x-z1-z46"/>
                                 </constraints>
@@ -77,7 +77,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDG-xP-gOG" userLabel="Sign up with Email Button">
-                                <rect key="frame" x="20" y="536" width="560" height="44"/>
+                                <rect key="frame" x="20" y="526" width="560" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="f9E-sb-n2R"/>
                                 </constraints>
@@ -94,18 +94,41 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scJ-Lt-BDH">
+                                <rect key="frame" x="0.0" y="570" width="300" height="30"/>
+                                <state key="normal" title="CGU">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="CGUButtonTapped:" destination="tUJ-bk-wX8" eventType="touchUpInside" id="11x-J7-Lh5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xrb-Ev-Mkd">
+                                <rect key="frame" x="300" y="570" width="300" height="30"/>
+                                <state key="normal" title="Policy Privacy">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="PolicyPrivacyButtonTapped:" destination="tUJ-bk-wX8" eventType="touchUpInside" id="XWw-C7-EdR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qqY-8k-TNd" firstAttribute="leading" secondItem="NG9-w0-cQV" secondAttribute="leadingMargin" id="2ao-0o-kDx"/>
+                            <constraint firstItem="Xrb-Ev-Mkd" firstAttribute="leading" secondItem="scJ-Lt-BDH" secondAttribute="trailing" id="5ew-Lf-6vw"/>
+                            <constraint firstItem="mRU-dA-1oh" firstAttribute="top" secondItem="scJ-Lt-BDH" secondAttribute="bottom" id="7on-6N-aKm"/>
                             <constraint firstItem="qqY-8k-TNd" firstAttribute="top" secondItem="vNW-hf-JvI" secondAttribute="bottom" constant="35" id="8Zf-Ng-DH2"/>
+                            <constraint firstItem="mRU-dA-1oh" firstAttribute="top" secondItem="Xrb-Ev-Mkd" secondAttribute="bottom" id="Agf-Ju-bqY"/>
                             <constraint firstItem="mRU-dA-1oh" firstAttribute="top" secondItem="eJV-4d-8Ej" secondAttribute="bottom" id="Axp-if-SSZ"/>
+                            <constraint firstItem="scJ-Lt-BDH" firstAttribute="width" secondItem="Xrb-Ev-Mkd" secondAttribute="width" id="Beg-D2-XHZ"/>
                             <constraint firstAttribute="trailing" secondItem="hif-KL-1b1" secondAttribute="trailing" constant="40" id="C2p-za-PDK"/>
-                            <constraint firstItem="mRU-dA-1oh" firstAttribute="top" secondItem="xDG-xP-gOG" secondAttribute="bottom" constant="20" id="DeQ-eX-ujQ"/>
+                            <constraint firstItem="mRU-dA-1oh" firstAttribute="top" secondItem="xDG-xP-gOG" secondAttribute="bottom" constant="30" id="DeQ-eX-ujQ"/>
                             <constraint firstAttribute="trailing" secondItem="eJV-4d-8Ej" secondAttribute="trailing" id="Ew4-rU-vod"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aWe-1X-RkL" secondAttribute="trailing" constant="20" id="FC2-ZB-mxm"/>
                             <constraint firstAttribute="trailing" secondItem="KM2-e1-FDZ" secondAttribute="trailing" constant="40" id="Inh-zv-Yc8"/>
                             <constraint firstItem="aWe-1X-RkL" firstAttribute="centerY" secondItem="NG9-w0-cQV" secondAttribute="centerY" constant="-50" id="KBl-Xy-hI9"/>
+                            <constraint firstItem="scJ-Lt-BDH" firstAttribute="leading" secondItem="NG9-w0-cQV" secondAttribute="leading" id="Kqj-jM-AhE"/>
                             <constraint firstItem="eJV-4d-8Ej" firstAttribute="leading" secondItem="NG9-w0-cQV" secondAttribute="leading" id="OzO-tw-mNR"/>
                             <constraint firstItem="KM2-e1-FDZ" firstAttribute="top" secondItem="aWe-1X-RkL" secondAttribute="bottom" constant="15" id="RNL-wl-pBd"/>
                             <constraint firstItem="hif-KL-1b1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="578-WS-BHV" secondAttribute="bottom" constant="15" id="RRe-we-hg5"/>
@@ -120,6 +143,7 @@
                             <constraint firstItem="exz-Bi-VVv" firstAttribute="leading" secondItem="NG9-w0-cQV" secondAttribute="leadingMargin" id="fLm-iZ-PNn"/>
                             <constraint firstItem="rKr-GV-G48" firstAttribute="top" secondItem="NG9-w0-cQV" secondAttribute="top" id="h14-xz-rjA"/>
                             <constraint firstAttribute="trailing" secondItem="rKr-GV-G48" secondAttribute="trailing" id="hId-de-434"/>
+                            <constraint firstAttribute="trailing" secondItem="Xrb-Ev-Mkd" secondAttribute="trailing" id="nLV-WM-7k2"/>
                             <constraint firstItem="aWe-1X-RkL" firstAttribute="leading" secondItem="NG9-w0-cQV" secondAttribute="leadingMargin" constant="20" id="ny9-Vd-NZk"/>
                             <constraint firstItem="vNW-hf-JvI" firstAttribute="top" secondItem="KM2-e1-FDZ" secondAttribute="bottom" constant="15" id="rZp-RS-T98"/>
                             <constraint firstItem="vNW-hf-JvI" firstAttribute="leading" secondItem="aWe-1X-RkL" secondAttribute="leading" id="s2X-6z-82I"/>
@@ -721,7 +745,7 @@ Do you want to invite people from your address book ?</string>
                                         <rect key="frame" x="0.0" y="92" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3xg-fl-XIJ" id="er6-6Y-WFQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LdX-QM-Wu0">
@@ -894,6 +918,6 @@ Do you want to invite people from your address book ?</string>
         <image name="checkbox-checked" width="34" height="34"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pyg-op-Ve7"/>
+        <segue reference="JMg-et-G4p"/>
     </inferredMetricsTieBreakers>
 </document>

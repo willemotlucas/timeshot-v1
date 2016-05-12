@@ -132,6 +132,21 @@ class T_LoginViewController: UIViewController {
        
         }
     }
+    
+    @IBAction func CGUButtonTapped(sender: AnyObject) {
+        if let url = NSURL(string: "http://timeshot.co/terms.html"){
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+    
+    
+    @IBAction func PolicyPrivacyButtonTapped(sender: AnyObject) {
+        if let url = NSURL(string: "http://timeshot.co/policy.html"){
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+    
+    
     /*
      // MARK: - Navigation
      
