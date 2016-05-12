@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -794,11 +794,11 @@
                                 </connections>
                             </scrollView>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bl0-kq-qTR">
-                                <rect key="frame" x="560" y="10" width="40" height="50"/>
+                                <rect key="frame" x="550" y="0.0" width="40" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="dny-fL-Yp9"/>
                                 </constraints>
-                                <inset key="contentEdgeInsets" minX="10" minY="14" maxX="10" maxY="14"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                 <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
                                 <state key="normal" image="Dots">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -866,12 +866,12 @@
                             <constraint firstItem="cQr-Bo-Gcr" firstAttribute="top" secondItem="Ku9-pZ-LOG" secondAttribute="bottom" constant="10" id="H63-ml-1Lz"/>
                             <constraint firstItem="cQr-Bo-Gcr" firstAttribute="leading" secondItem="5Kd-Yo-1Gn" secondAttribute="leading" id="HWM-Ge-7us"/>
                             <constraint firstItem="Fzu-Vi-n2r" firstAttribute="top" secondItem="Ku9-pZ-LOG" secondAttribute="bottom" id="Ph9-uo-yM9"/>
-                            <constraint firstAttribute="trailing" secondItem="bl0-kq-qTR" secondAttribute="trailing" id="bgW-Oi-cco"/>
+                            <constraint firstAttribute="trailing" secondItem="bl0-kq-qTR" secondAttribute="trailing" constant="10" id="bgW-Oi-cco"/>
                             <constraint firstItem="Wsj-wX-m42" firstAttribute="leading" secondItem="5Kd-Yo-1Gn" secondAttribute="leading" id="ixe-Kg-gc1"/>
                             <constraint firstAttribute="bottom" secondItem="Wsj-wX-m42" secondAttribute="bottom" id="mma-iF-2vy"/>
                             <constraint firstAttribute="trailing" secondItem="Fzu-Vi-n2r" secondAttribute="trailing" id="oik-mg-9Ob"/>
                             <constraint firstItem="Fzu-Vi-n2r" firstAttribute="leading" secondItem="5Kd-Yo-1Gn" secondAttribute="leading" id="seb-aI-sfz"/>
-                            <constraint firstItem="bl0-kq-qTR" firstAttribute="top" secondItem="Ku9-pZ-LOG" secondAttribute="bottom" constant="10" id="uJl-Xe-zaN"/>
+                            <constraint firstItem="bl0-kq-qTR" firstAttribute="top" secondItem="Ku9-pZ-LOG" secondAttribute="bottom" id="uJl-Xe-zaN"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="aa1-Ke-58M" appends="YES" id="ZTv-ZP-Fbu"/>
@@ -1355,9 +1355,9 @@
     </scenes>
     <resources>
         <image name="Avatar" width="119" height="119"/>
-        <image name="Cancel" width="44" height="44"/>
+        <image name="Cancel" width="51" height="51"/>
         <image name="Dislike" width="70" height="70"/>
-        <image name="Dots" width="87" height="20"/>
+        <image name="Dots" width="58" height="50"/>
         <image name="Like" width="70" height="70"/>
     </resources>
 </document>

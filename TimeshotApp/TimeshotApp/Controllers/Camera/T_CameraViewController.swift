@@ -135,6 +135,9 @@ class T_CameraViewController: UIViewController {
         
         T_CameraViewController.instance = self
         
+        // Initilisation du background
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "Splashscreen")!)
+        
         // Camera init
         cameraManager.addPreviewLayerToView(self.cameraView)
         cameraManager.cameraDevice = .Back
