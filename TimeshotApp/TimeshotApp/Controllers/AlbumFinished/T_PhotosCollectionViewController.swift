@@ -120,7 +120,16 @@ class T_PhotosCollectionViewController: UIViewController {
                         }
                     } else if let indexPost = self.posts.indexOf(post) where indexPost == (self.posts.count-1) {
                         // On est a la derniere photo de notre album donc on ajoute et on arrete
-                        numberOfPictInSection += 1
+                        let diff = date.hour() - self.posts[indexPost-1].createdAt!.hour()
+                        
+                        // On verifie que la derniere photo n'a pas été prise a une heure différente
+                        if diff != 0 {
+                            self.photoNumberInSections[section] = numberOfPictInSection
+                            section += 1
+                            numberOfPictInSection = 1
+                        } else {
+                            numberOfPictInSection += 1
+                        }
                         self.photoNumberInSections[section] = numberOfPictInSection
                     } else if let indexPost = self.posts.indexOf(post) where indexPost > 0 {
                         // Si on est ni a la premiere ni a la derniere on regarde si elle correspond a la section actuelle
