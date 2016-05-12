@@ -97,8 +97,9 @@ class T_Slider: UIView {
         super.init(frame: frame)
 
         self.frame = frame
-        self.textField = T_SnapTextField(frame: CGRectMake(0, 100, self.frame.width, 40), target: self.target.view, parentFrameSize: self.frame)
+        self.textField.layer.insertSublayer(T_DesignHelper.createGradientLayer(CGRect(x: 0, y: 0, width: T_DesignHelper.screenSize.width, height: self.textField.frame.size.height)), atIndex: 0)
         self.textField.hidden = true
+        self.textField.addGradient(0.7)
     }
 
     // Init the slider from an image, creating the slides itself
@@ -111,6 +112,7 @@ class T_Slider: UIView {
         self.frame = frame
         self.textField = T_SnapTextField(frame: CGRectMake(0, 100, self.frame.width, 40), target: self.target.view, parentFrameSize: self.frame)
         self.textField.hidden = true
+        self.textField.addGradient(0.7)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -376,7 +378,7 @@ class T_Slider: UIView {
                 self.textField.touched = false
             }
                 // Move the textfield to the finger's position
-            else
+            else if (self.textField.isFirstResponder() == false)
             {
                 self.textField.touched = true
                 self.textField.setLocation(self.currentTouchLocation)

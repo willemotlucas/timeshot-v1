@@ -19,8 +19,10 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     var image:UIImage!
     var isFrontCamera:Bool = true
     var textField:T_SnapTextField!
+    var textFieldTitle: UILabel!
+    var textFieldTitleBackground: UIView!
     var timePicker:UIPickerView!
-    var timePickerTextField:UITextField!
+    var timePickerTextField:UITextView!
     var duration:Int!
     
     private
@@ -51,6 +53,7 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
         initScrollView()
         initTextField()
         initTimerPicker()
+        initButton()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CreateAlbumViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CreateAlbumViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
@@ -59,11 +62,6 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
         let tap = UITapGestureRecognizer(target: self, action: #selector(T_CreateAlbumViewController.handleTap(_:)))
         tap.delegate = self
         self.view.addGestureRecognizer(tap)
-    }
-    
-    deinit
-    {
-
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -97,9 +95,10 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
             
             timePicker.hidden = true
             timePickerTextField.hidden = true
+            textFieldTitle.hidden = true
+            textFieldTitleBackground.hidden = true
             buttonNext.hidden = true
             buttonBack.hidden = true
-            
             textField.hidden = true
                         
             destinationVC.cover = T_CameraHelper.screenShot(self.view)
@@ -107,12 +106,12 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
             destinationVC.albumTitle = (self.textField.text)!
             
             textField.hidden = false
-
+            textFieldTitle.hidden = false
+            textFieldTitleBackground.hidden = false
             timePicker.hidden = false
             timePickerTextField.hidden = false
             buttonNext.hidden = false
             buttonBack.hidden = false
-
         }
     }
     
@@ -133,21 +132,42 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.timePickerTextField.text = "\(timeData[row])h"
+        self.timePickerTextField.text = "Duration of the album  \n  \(timeData[row])h"
         self.duration = timeData[row]
     }
     
     //------------------------------------------------------------------------------------------------
     //MARK: Init methods
+    
+    func initButton() {
+        let a = UIButton(frame: CGRect(x: T_DesignHelper.screenSize.width/2 - 100, y: 13, width: 200, height: 50))
+        a.backgroundColor = UIColor.clearColor()
+        
+        a.setTitle("", forState: UIControlState.Normal)
+        a.addTarget(self, action: #selector(T_CreateAlbumViewController.action), forControlEvents: UIControlEvents.TouchUpInside)
+        a.layer.zPosition = 20
+        
+        self.view.addSubview(a)
+    }
+    
+    func action() {
+        self.timePickerTextField.becomeFirstResponder()
+    }
+    
     func initTimerPicker() {
-        self.timePickerTextField = UITextField(frame: CGRect(x: T_DesignHelper.screenSize.width/2 - 22, y: 20, width: 44, height: 44))
+        self.timePickerTextField = UITextView(frame: CGRect(x: T_DesignHelper.screenSize.width/2 - 100, y: 13, width: 200, height: 50))
         self.timePickerTextField.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         self.timePickerTextField.textColor = UIColor.whiteColor()
+        self.timePickerTextField.font = UIFont.systemFontOfSize(16.0)
         self.timePickerTextField.layer.zPosition = 16
+        self.timePickerTextField.tintColor = UIColor.clearColor()
         self.timePickerTextField.layer.cornerRadius = 22
         self.timePickerTextField.layer.masksToBounds = true
         self.timePickerTextField.textAlignment = .Center
-        self.timePickerTextField.text = "\(defaultDuration)h"
+//        self.timePickerTextField.userInteractionEnabled = true
+//        self.timePickerTextField.scrollEnabled = false
+//        self.timePickerTextField.editable = false
+        self.timePickerTextField.text = "Duration of the album  \n  \(defaultDuration)h"
         self.view.addSubview(self.timePickerTextField)
 
         self.timePicker = UIPickerView(frame: CGRect(x: 0, y: T_DesignHelper.screenSize.height - 90, width: T_DesignHelper.screenSize.width, height: 90))
@@ -212,19 +232,51 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     }
     
     func initTextField() {
-        self.textField = T_SnapTextField(frame: CGRectMake(0, T_DesignHelper.screenSize.height/2, T_DesignHelper.screenSize.width, 40), target: self.view,  parentFrameSize: self.view.frame)
+        self.textField = T_SnapTextField(frame: CGRectMake(0, 3*T_DesignHelper.screenSize.height/5, T_DesignHelper.screenSize.width, 40), target: self.view,  parentFrameSize: self.view.frame)
         self.textField.hidden = false
         self.textField.shouldHide = false
-        self.textField.setPlaceHolder("Title of your album")
+        self.textField.setPlaceHolder("")
+        
+        
+        self.textFieldTitle = UILabel(frame: CGRectMake(0, 3*T_DesignHelper.screenSize.height/5-self.textField.frame.size.height, T_DesignHelper.screenSize.width, 40))
+        self.textFieldTitle.text = "Title of your album"
+        self.textFieldTitle.textColor = UIColor.whiteColor()
+        self.textFieldTitle.textAlignment = .Center
+        self.textFieldTitle.layer.zPosition = 15
+        
+        self.textFieldTitleBackground = UIView(frame: CGRectMake(0, 3*T_DesignHelper.screenSize.height/5-self.textField.frame.size.height, T_DesignHelper.screenSize.width, 40))
+        self.textFieldTitleBackground.layer.zPosition = 14
+        self.textFieldTitleBackground.alpha = 0.7
+        self.textFieldTitleBackground.backgroundColor = UIColor.clearColor()
+        self.textFieldTitleBackground.layer.insertSublayer(T_DesignHelper.createGradientLayer(CGRect(x: 0, y: 0, width: T_DesignHelper.screenSize.width, height: self.textFieldTitleBackground.frame.size.height)), atIndex: 0)
+    
+        self.view.addSubview(textFieldTitle)
+        self.view.addSubview(textFieldTitleBackground)
+
     }
     
     //------------------------------------------------------------------------------------------------
     //MARK: Keyboard Behaviour
     
     func keyboardWillShow(notification: NSNotification) {
+        
+        if(self.timePickerTextField.isFirstResponder()) {
+            let alertController = UIAlertController(title: "Choose the duration of the album !", message:
+                "This duration will allow participant to put pictures in it ! Don’t worry this album won’t be delete after this time !", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "OK !", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        
+        
+        
         if (self.textField.isFirstResponder() == true)
         {
-            self.textField.updatePosition(notification)
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
+                self.textField.frame.origin.y = T_DesignHelper.screenSize.height - keyboardSize.height - self.textField.frame.size.height
+                self.textFieldTitle.frame.origin.y = self.textField.frame.origin.y - self.textField.frame.size.height
+                self.textFieldTitleBackground.frame.origin.y = self.textFieldTitle.frame.origin.y
+            }
             
             // If the user change from the TimePickerTextField Keyboard directly to the textField Keyboard, we have to replace the origin position of TimePickerTextField :
             //resetOriginTimePickerTextField()
@@ -240,7 +292,9 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     func keyboardTypeChanged(notification: NSNotification) {
         if (self.textField.isFirstResponder() == true)
         {
-            self.textField.updatePosition(notification)
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
+                self.textField.frame.origin.y = T_DesignHelper.screenSize.height - keyboardSize.height - self.textField.frame.size.height
+            }
         }
     }
     
@@ -248,6 +302,8 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
         if (self.textField.isFirstResponder() == true)
         {
             self.textField.frame.origin.y = self.textField.lastPosition.y
+            self.textFieldTitle.frame.origin.y = self.textField.lastPosition.y - self.textField.frame.size.height
+            self.textFieldTitleBackground.frame.origin.y = self.textField.lastPosition.y  - self.textField.frame.size.height
         }
         // On ne veut rien changer normalement par rapport a notre durationTextField
 //        else if (self.timePickerTextField.isFirstResponder() == true)

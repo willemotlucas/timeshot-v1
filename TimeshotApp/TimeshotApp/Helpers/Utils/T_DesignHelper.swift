@@ -11,8 +11,10 @@ import UIKit
 
 class T_DesignHelper {
     // MARK: Properties
-    static let orangeDegrade = UIColor.init(colorLiteralRed: 239.0/255.0, green: 127.0/255.0, blue: 94.0/255.0, alpha: 1.0).CGColor
-    static let rougeDegrade = UIColor.init(colorLiteralRed: 227.0/255.0, green: 80.0/255.0, blue: 104.0/255.0, alpha: 1.0).CGColor
+    static let orangeDegradeUI = UIColor(colorLiteralRed: 239.0/255.0, green: 127.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+    static let rougeDegradeUI = UIColor(colorLiteralRed: 227.0/255.0, green: 80.0/255.0, blue: 104.0/255.0, alpha: 1.0)
+    static let orangeDegrade = orangeDegradeUI.CGColor
+    static let rougeDegrade = rougeDegradeUI.CGColor
     static let screenSize = CGSize(width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
     static let startPoint:CGFloat = 0.2
     static let endPoint:CGFloat = 0.8
@@ -52,6 +54,15 @@ class T_DesignHelper {
         UIGraphicsEndImageContext()
         
         view.layer.insertSublayer(gradient, atIndex: 0)
+    }
+    
+    static func createGradientLayer(frame: CGRect, alpha:CGFloat = 1) -> CAGradientLayer {
+        let layer = CAGradientLayer()
+        layer.frame = frame
+        layer.colors = [T_DesignHelper.rougeDegradeUI.colorWithAlphaComponent(alpha).CGColor ,T_DesignHelper.orangeDegradeUI.colorWithAlphaComponent(alpha).CGColor]
+        layer.startPoint = CGPointMake(T_DesignHelper.startPoint,0.5)
+        layer.endPoint = CGPointMake(T_DesignHelper.endPoint,0.5)
+        return layer
     }
     
     static func colorSegmentedControl(segmentedControl: UISegmentedControl){

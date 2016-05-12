@@ -75,10 +75,11 @@ class T_Album : PFObject, PFSubclassing {
                 if success {
                     print("Album created")
                     T_CameraViewController.instance.manageAlbumProcessing()
+                    T_CameraViewController.instance.unfreezeUI(true)
                 } else {
+                    T_CameraViewController.instance.unfreezeUI(false)
                     print("An error occured : %@", error)
                 }
-                T_CameraViewController.instance.unfreezeUI()
                 UIApplication.sharedApplication().endBackgroundTask(self.albumCreationTask!)
             }
         }
