@@ -74,12 +74,16 @@ class T_EditCameraImageViewController: UIViewController {
     func createData() {
         self.data = SNFilter.generateFiltersWithScaling(SNFilter.filterNameList2, image: self.image, isFrontCamera: self.isFrontCamera)
         
-        let sticker:SNSticker = SNSticker(frame: CGRect(x: 0, y: 0, width: T_DesignHelper.screenSize.width, height: T_DesignHelper.screenSize.height), image: UIImage(named: "SliderPic")!)
+        let sticker:SNSticker = SNSticker(frame: CGRect(x: 0, y: 0, width: T_DesignHelper.screenSize.width, height: T_DesignHelper.screenSize.height), image: UIImage(named: "SliderIF2")!)
         // In case of overlapping, you can provide a zPosition (the default one is 0)
-        let sticker2:SNSticker = SNSticker(frame: CGRect(x: 0, y: 0, width: T_DesignHelper.screenSize.width, height: T_DesignHelper.screenSize.height), image: UIImage(named: "SliderVac")!)
+        let sticker2:SNSticker = SNSticker(frame: CGRect(x: 0, y: 0, width: T_DesignHelper.screenSize.width, height: T_DesignHelper.screenSize.height), image: UIImage(named: "SliderIF")!)
+        let sticker5:SNSticker = SNSticker(frame: CGRect(x: 0, y: 0, width: T_DesignHelper.screenSize.width, height: T_DesignHelper.screenSize.height), image: UIImage(named: "SliderParty")!)
+        let sticker6:SNSticker = SNSticker(frame: CGRect(x: 0, y: 0, width: T_DesignHelper.screenSize.width, height: T_DesignHelper.screenSize.height), image: UIImage(named: "SliderBeerTime")!)
         
         self.data[1].addSticker(sticker)
         self.data[2].addSticker(sticker2)
+        self.data[5].addSticker(sticker5)
+        self.data[6].addSticker(sticker6)
     }
 
     func initSlider() {
