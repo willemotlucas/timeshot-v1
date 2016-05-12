@@ -19,7 +19,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FNv-pX-Y8Z">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lck-FH-ZN6">
                                 <rect key="frame" x="5" y="5" width="44" height="44"/>
@@ -72,21 +73,27 @@
                                     <constraint firstAttribute="bottom" secondItem="Riy-BS-7nY" secondAttribute="bottom" constant="2" id="cri-zg-MCA"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="99P-u3-C2M">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="FNv-pX-Y8Z" secondAttribute="trailing" id="021-6A-tLR"/>
                             <constraint firstAttribute="trailing" secondItem="nNV-P7-m0h" secondAttribute="trailing" id="3s4-af-DcI"/>
+                            <constraint firstItem="99P-u3-C2M" firstAttribute="centerX" secondItem="oOT-Ia-9Mx" secondAttribute="centerX" id="5jp-fH-g0X"/>
                             <constraint firstItem="Lck-FH-ZN6" firstAttribute="top" secondItem="oOT-Ia-9Mx" secondAttribute="top" constant="5" id="EMl-8P-mNL"/>
                             <constraint firstItem="Lck-FH-ZN6" firstAttribute="leading" secondItem="oOT-Ia-9Mx" secondAttribute="leading" constant="5" id="Khm-Gx-ttr"/>
                             <constraint firstItem="FNv-pX-Y8Z" firstAttribute="top" secondItem="oOT-Ia-9Mx" secondAttribute="top" id="aeE-Xh-eig"/>
-                            <constraint firstItem="XOW-fr-AIQ" firstAttribute="top" secondItem="FNv-pX-Y8Z" secondAttribute="bottom" id="gPB-C6-rrg"/>
+                            <constraint firstItem="XOW-fr-AIQ" firstAttribute="top" secondItem="FNv-pX-Y8Z" secondAttribute="bottom" constant="50" id="gPB-C6-rrg"/>
                             <constraint firstItem="nNV-P7-m0h" firstAttribute="leading" secondItem="oOT-Ia-9Mx" secondAttribute="leading" id="gQK-GY-z9O"/>
+                            <constraint firstItem="99P-u3-C2M" firstAttribute="centerY" secondItem="oOT-Ia-9Mx" secondAttribute="centerY" id="j1E-LO-URY"/>
                             <constraint firstItem="XOW-fr-AIQ" firstAttribute="top" secondItem="nNV-P7-m0h" secondAttribute="bottom" id="lUH-WS-LfW"/>
                             <constraint firstItem="FNv-pX-Y8Z" firstAttribute="leading" secondItem="oOT-Ia-9Mx" secondAttribute="leading" id="pzV-gu-BYa"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="99P-u3-C2M" id="ljR-pv-N7c"/>
                         <outlet property="albumCover" destination="FNv-pX-Y8Z" id="fOk-8T-Lq7"/>
                         <outlet property="controlView" destination="nNV-P7-m0h" id="tYj-GI-YgO"/>
                     </connections>
@@ -338,6 +345,7 @@
                                             <outlet property="notificationHelpTextLabel" destination="cdy-vc-HRa" id="f3G-JB-ZAG"/>
                                             <outlet property="notificationTextLabel" destination="KVh-hB-xB3" id="qAz-sc-PpA"/>
                                             <outlet property="profileImageView" destination="ZBH-XV-9hd" id="GJk-yE-jhS"/>
+                                            <segue destination="gZp-wi-ZJv" kind="presentation" identifier="showAlbumRequestSegue" id="tAM-Ja-s7K"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -431,7 +439,6 @@
                         <outlet property="usernameLabel" destination="DsJ-VR-23i" id="vkc-Lr-loj"/>
                         <segue destination="4Eo-Tb-7cS" kind="presentation" identifier="showUserSearch" id="uD6-Wk-zkB"/>
                         <segue destination="1Xf-ec-09x" kind="presentation" identifier="showContactSearch" id="POi-tO-0d9"/>
-                        <segue destination="gZp-wi-ZJv" kind="presentation" identifier="showAlbumRequestSegue" id="t3O-qB-Q5e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgq-JR-jjC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -603,6 +610,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="sLA-q0-ASc">
+                            <rect key="frame" x="0.0" y="351.5" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ce4-eN-hHe">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <state key="normal" title="LOG OUT">
+                                        <color key="titleColor" red="0.96999198720000002" green="0.96999198720000002" blue="0.96999198720000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="logoutButtonTapped:" destination="Tf5-n4-2Bf" eventType="touchUpInside" id="7be-ag-Xzp"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.90980392160000001" green="0.47450980390000003" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="ce4-eN-hHe" firstAttribute="top" secondItem="sLA-q0-ASc" secondAttribute="top" id="0i6-Rb-CFP"/>
+                                <constraint firstItem="ce4-eN-hHe" firstAttribute="leading" secondItem="sLA-q0-ASc" secondAttribute="leading" id="3R9-Ra-FTv"/>
+                                <constraint firstAttribute="trailing" secondItem="ce4-eN-hHe" secondAttribute="trailing" id="CKP-cH-NaD"/>
+                                <constraint firstAttribute="bottom" secondItem="ce4-eN-hHe" secondAttribute="bottom" id="tr4-89-X7l"/>
+                            </constraints>
+                        </view>
                         <sections>
                             <tableViewSection headerTitle="My account" id="Hu0-eQ-IfC">
                                 <cells>
@@ -759,6 +788,7 @@
                         <outlet property="emailLabel" destination="aQR-MM-Hym" id="cLH-dr-BA6"/>
                         <outlet property="firstNameLabel" destination="yks-uO-aPK" id="3j3-6Y-XkF"/>
                         <outlet property="lastNameLabel" destination="ULD-D3-l0G" id="ZfR-Bb-4LL"/>
+                        <outlet property="logoutView" destination="sLA-q0-ASc" id="KDf-gp-dHw"/>
                         <outlet property="usernameLabel" destination="qI5-eM-uYD" id="Zmy-Ql-LeO"/>
                     </connections>
                 </tableViewController>

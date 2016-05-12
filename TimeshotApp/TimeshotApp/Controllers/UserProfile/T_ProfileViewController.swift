@@ -107,8 +107,18 @@ class T_ProfileViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showAlbumRequestSegue" {
             let albumRequestVC = segue.destinationViewController as! T_AlbumRequestViewController
-            albumRequestVC.delegate = self
-            albumRequestVC.albumRequest = self.currentAlbumRequest!
+            
+            // Get the cell that generated this segue
+            if let selectedAbumRequest = sender as? T_NotificationsTableViewCell {
+                let indexPath = self.tableView.indexPathForCell(selectedAbumRequest)
+                let albumRequest = self.albumRequests[(indexPath?.row)!]
+                
+                let album = albumRequest.toAlbum
+                
+                albumRequestVC.albumRequest = albumRequest
+                albumRequestVC.album = album
+                albumRequestVC.delegate = self
+            }
         }
     }
     
@@ -288,14 +298,6 @@ extension T_ProfileViewController: UITableViewDataSource {
             }
         case .Notifications:
             return self.albumRequests.count
-        }
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if self.contentToDisplay == .Notifications {
-            self.currentAlbumRequest = self.albumRequests[indexPath.row] as T_AlbumRequest
-            self.currentAlbumRequest!.toAlbum!.downloadCoverImage()
-            self.performSegueWithIdentifier("showAlbumRequestSegue", sender: self)
         }
     }
     

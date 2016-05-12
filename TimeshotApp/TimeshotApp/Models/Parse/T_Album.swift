@@ -197,4 +197,14 @@ class T_Album : PFObject, PFSubclassing {
             }
         }
     }
+    
+    func downloadCoverImageWithBlock(completionBlock: (cover: UIImage) -> Void) {
+        // In background to not block the main thread
+        cover.getDataInBackgroundWithBlock { (data: NSData?, error:NSError?) -> Void in
+            if let data = data {
+                let image = UIImage(data:data, scale: 1.0)!
+                completionBlock(cover: image)
+            }
+        }
+    }
 }

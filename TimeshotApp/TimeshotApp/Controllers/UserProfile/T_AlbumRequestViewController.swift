@@ -16,19 +16,34 @@ protocol ModalViewControllerDelegate {
 class T_AlbumRequestViewController: UIViewController {
     @IBOutlet weak var albumCover: UIImageView!
     @IBOutlet weak var controlView: UIView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     var delegate: ModalViewControllerDelegate?
-
+    
     var albumRequest: T_AlbumRequest?
     
+    var album: T_Album? {
+        didSet {
+            if let album = album {
+                album.downloadCoverImageWithBlock({ (cover) in
+                    self.activityIndicatorView.stopAnimating()
+                    self.albumCover.image = cover
+                })
+            }
+        }
+    }
+    
+    //var albumRequestDisposable: DisposableType?
+    
     override func viewWillAppear(animated: Bool) {
-        albumCover.image = albumRequest?.toAlbum!.coverImage.value
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         T_DesignHelper.colorUIView(self.controlView)
         UIColor.clearColor().colorWithAlphaComponent(0.7)
+        activityIndicatorView.startAnimating()
     }
 
     override func didReceiveMemoryWarning() {
