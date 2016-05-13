@@ -39,6 +39,7 @@ class T_AlbumViewController: UIViewController{
         //Add pull to refresh
         tableView.addPullToRefresh(refresher, action: {
             self.timelineComponent.loadInitialIfRequired()
+            self.tableView.endRefreshing()
         })
         
         // For tableView
