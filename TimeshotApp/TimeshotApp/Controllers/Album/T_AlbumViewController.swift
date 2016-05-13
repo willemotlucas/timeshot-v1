@@ -39,6 +39,7 @@ class T_AlbumViewController: UIViewController{
         //Add pull to refresh
         tableView.addPullToRefresh(refresher, action: {
             self.timelineComponent.loadInitialIfRequired()
+            self.tableView.endRefreshing()
         })
         
         // For tableView
@@ -66,6 +67,7 @@ class T_AlbumViewController: UIViewController{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
     
     // MARK:  Navigation
