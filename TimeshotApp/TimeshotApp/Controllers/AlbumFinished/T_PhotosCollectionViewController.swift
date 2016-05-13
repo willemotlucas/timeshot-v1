@@ -25,6 +25,7 @@ class T_PhotosCollectionViewController: UIViewController {
     
     // For the empty view
     var load = false
+    var hasLoaded = false
     
     let refresher = PullToRefresh()
     
@@ -75,14 +76,16 @@ class T_PhotosCollectionViewController: UIViewController {
     func loadPost() {
         T_ParsePostHelper.postsForCurrentAlbum(albumPhotos!) {(result: [PFObject]?, error: NSError?) -> Void in
             self.load = true
-            
             if let error = error {
+                self.hasLoaded = false
                 print("\n\n\n")
                 print(error)
                 print("\n\n\n")
                 self.collectionView.reloadEmptyDataSet()
                 
             } else {
+                self.hasLoaded = true
+                print(self.hasLoaded)
                 // On veut un tableau de la taille du nombre d'heure que l'on a !
                 // Car chaque heure est une section
                 self.photoNumberInSections.removeAll()
@@ -94,7 +97,6 @@ class T_PhotosCollectionViewController: UIViewController {
                 }
                 
                 self.posts = result as? [T_Post] ?? []
-                self.load = true
                 self.collectionView.reloadEmptyDataSet()
                 
                 // Initialisation du nombre de photos
@@ -357,9 +359,9 @@ extension T_PhotosCollectionViewController : DZNEmptyDataSetSource, DZNEmptyData
         
         if !load {
             str = NSLocalizedString("Wait ...", comment: "")
-        } else if photoNumberInSections.count  == 0 && load{
+        } else if !hasLoaded{
             str = NSLocalizedString("There's a problem Captain", comment: "")
-        } else if load {
+        } else if hasLoaded {
             str = NSLocalizedString("Ohhh noo", comment: "")
         }
         
@@ -372,9 +374,9 @@ extension T_PhotosCollectionViewController : DZNEmptyDataSetSource, DZNEmptyData
         
         if !load {
             str = NSLocalizedString("We're retrieving your photos", comment: "")
-        } else if photoNumberInSections.count  == 0 && load{
+        } else if !hasLoaded {
             str = NSLocalizedString("Network is not available ... ", comment: "")
-        } else if load {
+        } else if hasLoaded {
             str = NSLocalizedString("This album is totally empty ... ", comment: "")
         }
         
@@ -386,9 +388,9 @@ extension T_PhotosCollectionViewController : DZNEmptyDataSetSource, DZNEmptyData
         image.accessibilityFrame = CGRect(origin: CGPoint(x: scrollView.center.x,y: scrollView.center.y - 20), size: CGSize(width: 200, height: 200))
         if !load {
             image = UIImage.gifWithName("LoadingView")!
-        }else if photoNumberInSections.count  == 0 && load{
+        }else if !hasLoaded {
             image = UIImage(named: "NoNetwork")!
-        } else if load {
+        } else if hasLoaded{
             image = UIImage(named: "EmptyAlbumIcon")!
         }
         return image
