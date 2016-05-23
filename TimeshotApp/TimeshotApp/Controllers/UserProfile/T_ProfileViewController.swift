@@ -82,7 +82,11 @@ class T_ProfileViewController: UIViewController {
         })
         
         //Load table view data
-        self.loadFriendsData()
+        T_ParseUserHelper.getCurrentUser()?.getAllFriendsFromParse({ (friends) in
+            self.friends = friends
+            self.tableView.reloadData()
+            self.tableView.endRefreshing()
+        })
         self.loadNotificationsData()
         
         //Load profile picture
