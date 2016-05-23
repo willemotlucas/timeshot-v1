@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.enableLocalDatastore()
         
         // Set up the Parse SDK
-        Parse.setApplicationId("uAhZdofpZFzSCMa83PbQwFx2ls3qmWbvr0BADedv", clientKey: "1PPkLR8lj8bqH9ppX6Y1dMXWKewFhiaxs6oEjrr3")
+        Parse.setApplicationId("fP3x2FxPpWTcBDWatmfSQxWO7di4Nh2jFjNafRrp", clientKey: "ec9Ga66SvWi4zdqK5rw69Oyghacv5zFXuCZHPsx6")
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
         PFUser.enableRevocableSessionInBackground()
