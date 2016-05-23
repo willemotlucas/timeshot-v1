@@ -11,7 +11,7 @@ import UIKit
 public class SNFilter: UIImageView {
     
     public static let filterNameList = ["No Filter" , "CIPhotoEffectFade", "CIPhotoEffectChrome", "CIPhotoEffectTransfer", "CIPhotoEffectInstant", "CIPhotoEffectMono", "CIPhotoEffectNoir", "CIPhotoEffectProcess", "CIPhotoEffectTonal", ]
-    static let filterNameList2 = ["No Filter" ,"CIPhotoEffectProcess", "CIPhotoEffectChrome","CIPhotoEffectInstant",  "CIPhotoEffectNoir"]
+    static let filterNameList2 = ["No Filter" ,"CIPhotoEffectProcess", "CIPhotoEffectChrome","CIPhotoEffectInstant",  "CIPhotoEffectNoir", "No Filter", "No Filter"]
 
     public var name:String?
     var stickers:[SNSticker] = []

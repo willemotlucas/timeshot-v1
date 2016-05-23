@@ -210,7 +210,7 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     func initScrollView() {
         //scrollView.layer.zPosition = 14
         
-        let arraySlider = ["SliderParty","SliderVac","SliderAlbum","SliderPic"]
+        let arraySlider = ["SliderIF","SliderParty","SliderBeerTime","SliderIF2"]
         
         for i in 0..<arraySlider.count {
             // Need to create the view

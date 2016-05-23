@@ -35,7 +35,6 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
     }
     
     func actionCreateButton(sender: AnyObject) {
-
         T_CameraViewController.instance.freezeUI("Creating album ...")
         T_Album.createAlbum(self.cover, duration: self.duration, albumTitle: self.albumTitle)
         self.presentingViewController?.presentingViewController!.dismissViewControllerAnimated(false, completion: nil)

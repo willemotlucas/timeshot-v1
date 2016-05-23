@@ -81,6 +81,7 @@ class T_PhotosCollectionViewController: UIViewController {
                 print("\n\n\n")
                 print(error)
                 print("\n\n\n")
+                self.hasLoaded = false
                 self.collectionView.reloadEmptyDataSet()
                 
             } else {
@@ -89,6 +90,7 @@ class T_PhotosCollectionViewController: UIViewController {
                 // On veut un tableau de la taille du nombre d'heure que l'on a !
                 // Car chaque heure est une section
                 self.photoNumberInSections.removeAll()
+                self.hasLoaded = true
                 
                 if let album = self.albumPhotos {
                     for _ in 0..<album.duration {
@@ -388,9 +390,9 @@ extension T_PhotosCollectionViewController : DZNEmptyDataSetSource, DZNEmptyData
         image.accessibilityFrame = CGRect(origin: CGPoint(x: scrollView.center.x,y: scrollView.center.y - 20), size: CGSize(width: 200, height: 200))
         if !load {
             image = UIImage.gifWithName("LoadingView")!
-        }else if !hasLoaded {
+        }else if !hasLoaded{
             image = UIImage(named: "NoNetwork")!
-        } else if hasLoaded{
+        } else if hasLoaded {
             image = UIImage(named: "EmptyAlbumIcon")!
         }
         return image
