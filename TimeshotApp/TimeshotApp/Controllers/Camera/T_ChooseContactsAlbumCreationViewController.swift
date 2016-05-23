@@ -207,7 +207,7 @@ extension T_ChooseContactsAlbumCreationViewController : DZNEmptyDataSetSource {
     }
     
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: "T'as pas de potes !")
+        return NSAttributedString(string: "You don't have any friends ... Please invite some friends and share your albums with them!")
     }
 
     func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {
