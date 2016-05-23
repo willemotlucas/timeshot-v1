@@ -151,7 +151,7 @@ class T_SliderViewController: UIViewController {
         // ===============================================
         // FAIRE UN DESIGN HELPER POUR L'AFFICHAGE DE DATE
         // ===============================================
-        let photoHour = slideImages[page].createdAt!
+        let photoHour = slideImages[page].createdAtDate
         
         var photoHourString = ""
         if photoHour.hour() < 9 {

@@ -109,7 +109,7 @@ class T_PhotosCollectionViewController: UIViewController {
                 // Pour chaque post on doit alors savoir dans quelle section il est mais aussi
                 // charger son image
                 for post in self.posts {
-                    let date = post.createdAt!
+                    let date = post.createdAtDate
                     
                     // On regarde maintenant la diff entre la date de la photo et la date de la derniere photo du tableau
                     // pour savoir si l'on commence une nouvelle section ou pas
@@ -124,7 +124,7 @@ class T_PhotosCollectionViewController: UIViewController {
                         }
                     } else if let indexPost = self.posts.indexOf(post) where indexPost == (self.posts.count-1) {
                         // On est a la derniere photo de notre album donc on ajoute et on arrete
-                        let diff = date.hour() - self.posts[indexPost-1].createdAt!.hour()
+                        let diff = date.hour() - self.posts[indexPost-1].createdAtDate.hour()
                         
                         // On verifie que la derniere photo n'a pas été prise a une heure différente
                         if diff != 0 {
@@ -138,7 +138,7 @@ class T_PhotosCollectionViewController: UIViewController {
                     } else if let indexPost = self.posts.indexOf(post) where indexPost > 0 {
                         // Si on est ni a la premiere ni a la derniere on regarde si elle correspond a la section actuelle
                         // ou si elle correspond a une autre section car prise à une nouvelle heure
-                        let diff = date.hour() - self.posts[indexPost-1].createdAt!.hour()
+                        let diff = date.hour() - self.posts[indexPost-1].createdAtDate.hour()
                         if diff != 0 {
                             self.photoNumberInSections[section] = numberOfPictInSection
                             numberOfPictInSection = 1
@@ -270,7 +270,7 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
                 let indexCell = getPhotoIndex(indexPath)
                 
                 //let date = photosArray[indexCell].createdAt
-                let date = posts[indexCell].createdAt!
+                let date = posts[indexCell].createdAtDate
                 cell.initHourLabel(date)
                 
                 return cell
