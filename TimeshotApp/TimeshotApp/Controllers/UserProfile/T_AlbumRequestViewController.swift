@@ -8,12 +8,14 @@
 
 import UIKit
 import Bond
+import MBProgressHUD
 
 protocol ModalViewControllerDelegate {
     func refreshTableView()
 }
 
 class T_AlbumRequestViewController: UIViewController {
+    // MARK: Properties
     @IBOutlet weak var albumCover: UIImageView!
     @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
@@ -33,8 +35,11 @@ class T_AlbumRequestViewController: UIViewController {
         }
     }
     
+    var progressHUD : MBProgressHUD?
+    
     //var albumRequestDisposable: DisposableType?
     
+    // MARK: View Life Cycle
     override func viewWillAppear(animated: Bool) {
         
     }
@@ -50,7 +55,19 @@ class T_AlbumRequestViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    // MARK: Methods
+    func freezeUI() {
+        progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        progressHUD?.labelText = NSLocalizedString("Connection to the album", comment: "")
+        progressHUD?.mode = .Indeterminate
+    }
+    
+    func unfreezeUI() {
+        progressHUD?.hide(true)
+    }
+    
+    // MARK: Actions
     @IBAction func cancelButtonTapped(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -65,12 +82,21 @@ class T_AlbumRequestViewController: UIViewController {
     @IBAction func acceptButtonTapped(sender: UIButton) {
         if T_CameraViewController.instance.isLiveAlbumExisting == true {
             T_AlertHelper.alertOK("Oups!", message: "You already have an album in progress...", viewController: self)
-        } else {
-            T_ParseAlbumRequestHelper.acceptAlbumRequest(self.albumRequest!) { (result: Bool, error: NSError?) in
-                T_CameraViewController.instance.manageAlbumProcessing()
-                self.delegate?.refreshTableView()
-            }
             self.dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            if Reachability.isConnectedToNetwork() {
+                freezeUI()
+                T_ParseAlbumRequestHelper.acceptAlbumRequest(self.albumRequest!) { (result: Bool, error: NSError?) in
+                    T_CameraViewController.instance.manageAlbumProcessing()
+                    self.unfreezeUI()
+                    self.delegate?.refreshTableView()
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+            } else {
+                T_AlertHelper.alertOK("Oups!", message: "Network Connection lost...", viewController: self)
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            
         }
     }
 }
