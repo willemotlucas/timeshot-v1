@@ -39,12 +39,6 @@ class T_SearchUserTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     @IBAction func addFriendButtonTapped(sender: UIButton) {
         // Call the delegate only if the user is not alreayd a friend

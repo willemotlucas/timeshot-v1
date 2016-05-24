@@ -79,7 +79,6 @@ class T_FriendRequestParseHelper {
         getAllPendingFriendRequest { (result: [PFObject]?, erorr: NSError?) in
             let pendingRequest = result as? [T_FriendRequest] ?? []
 
-            print("pending request count: \(pendingRequest.count)")
             var users: [T_User] = []
             // We iterate through the array to build the list of users
             for request in pendingRequest {

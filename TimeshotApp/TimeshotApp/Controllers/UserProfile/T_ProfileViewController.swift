@@ -50,6 +50,7 @@ class T_ProfileViewController: UIViewController {
     var photoTakingHelper: T_PhotoTakingHelper?
     
     let refresher = PullToRefresh()
+    var refresherState = false
     
 
     // MARK: Overrided functions
@@ -77,16 +78,13 @@ class T_ProfileViewController: UIViewController {
         
         //Add pull to refresh
         self.tableView.addPullToRefresh(refresher, action: {
+            self.refresherState = true
             self.loadFriendsData()
             self.loadNotificationsData()
         })
         
         //Load table view data
-        T_ParseUserHelper.getCurrentUser()?.getAllFriendsFromParse({ (friends) in
-            self.friends = friends
-            self.tableView.reloadData()
-            self.tableView.endRefreshing()
-        })
+        self.loadFriendsData()
         self.loadNotificationsData()
         
         //Load profile picture
@@ -130,24 +128,27 @@ class T_ProfileViewController: UIViewController {
     
     func loadFriendsData(){
         //Load the friends
-        if self.friends.isEmpty {
-            T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
-                self.friends = friends
-                self.tableView.reloadData()
-                self.tableView.endRefreshing()
-            })
-        } else {
+        if refresherState {
             T_ParseUserHelper.getCurrentUser()?.getAllFriendsFromParse({ (friends) in
                 self.friends = friends
                 self.tableView.reloadData()
                 self.tableView.endRefreshing()
+                self.refresherState = false
             })
+        } else {
+            T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
+                self.friends = friends
+                self.tableView.reloadData()
+                self.tableView.endRefreshing()
+                self.refresherState = false
+            })
+            
         }
+        
         
         //Load the friends pending requests
         T_FriendRequestParseHelper.getPendingFriendRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
             self.pendingRequests = result as? [T_FriendRequest] ?? []
-            print(self.pendingRequests.count)
             self.tableView.reloadData()
             self.tableView.endRefreshing()
         }
