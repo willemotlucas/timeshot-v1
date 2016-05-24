@@ -9,6 +9,7 @@
 import Foundation
 import Parse
 import Bond
+import ConvenienceKit
 
 class T_Album : PFObject, PFSubclassing {
     // MARK: Properties
@@ -23,6 +24,9 @@ class T_Album : PFObject, PFSubclassing {
     
     static var albumCreationTask: UIBackgroundTaskIdentifier?
     
+    // On est interessé pour garder en cache la cover de l'album
+    static var coverImageCache: NSCacheSwift<String, UIImage>!
+    
     // MARK: Initialisation
     override init()
     {
@@ -35,6 +39,7 @@ class T_Album : PFObject, PFSubclassing {
         }
         dispatch_once(&Static.onceToken) {
             self.registerSubclass()
+            T_Album.coverImageCache = NSCacheSwift<String, UIImage>()
         }
     }
     
@@ -186,13 +191,17 @@ class T_Album : PFObject, PFSubclassing {
     // MARK: Download Cover Image
     func downloadCoverImage() {
         // if cover is not downloaded yet, get it
-        if coverImage.value == nil {
+        coverImage.value = T_Album.coverImageCache[self.cover.name]
+        
+        // if image is not downloaded yet, get it
+        if (coverImage.value == nil) {
             // In background to not block the main thread
             cover.getDataInBackgroundWithBlock { (data: NSData?, error:NSError?) -> Void in
                 if let data = data {
                     let image = UIImage(data:data, scale: 1.0)!
                     // .value because it's an observable
                     self.coverImage.value = image
+                    T_Album.coverImageCache[self.cover.name] = image
                 }
                 
             }
