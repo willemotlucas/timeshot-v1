@@ -17,12 +17,6 @@ class T_ContactTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     /*@IBAction func addContactButtonTapped(sender: UIButton) {
         print(self.contactTelephoneLabel.text!)

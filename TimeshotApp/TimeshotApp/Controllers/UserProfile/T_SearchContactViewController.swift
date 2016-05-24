@@ -137,12 +137,23 @@ extension T_SearchContactViewController: UITableViewDataSource {
         let key = sectionHeaderTitles[indexPath.section]
         let values = contactsWithSection[key]
         let name = values![indexPath.row]
-        let phoneNumber = contactsWithNumbers[name]
+        var phoneNumber = contactsWithNumbers[name]
         
         let button = cell.checkboxButton as T_SendMessageUIButton
         button.telNumber = phoneNumber!
         cell.contactNameLabel.text = name
         cell.contactTelephoneLabel.text = phoneNumber
+        
+        // Need to initialize the state of the button ... 
+        // If not, it will use the last state which not the good option for us
+        // Je renleve les espaces pour faire une comparaison avec les valeurs du tableau
+        phoneNumber = phoneNumber!.stringByReplacingOccurrencesOfString(" ", withString: "")
+        if contactsToInvite.contains(phoneNumber!) {
+            button.selected = true
+        } else {
+            button.selected = false
+        }
+        
         
         return cell
     }
