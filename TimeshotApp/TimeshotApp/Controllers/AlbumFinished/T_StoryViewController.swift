@@ -21,6 +21,11 @@ class T_StoryViewController: UIViewController {
     
     var actualPost : T_Post? {
         didSet {
+            // free memory of image stored with post that is no longer displayed
+            if let oldValue = oldValue where oldValue != actualPost {
+                oldValue.image.value = nil
+            }
+            
             if let post = actualPost {
                 post.image.bindTo(self.actualImageView.bnd_image)
                 
