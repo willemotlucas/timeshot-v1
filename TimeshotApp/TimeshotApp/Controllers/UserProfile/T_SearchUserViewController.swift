@@ -154,6 +154,10 @@ extension T_SearchUserViewController: UISearchBarDelegate {
         searchBar.text = ""
         searchBar.resignFirstResponder()
     }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }
 
 extension T_SearchUserViewController: DZNEmptyDataSetSource {
