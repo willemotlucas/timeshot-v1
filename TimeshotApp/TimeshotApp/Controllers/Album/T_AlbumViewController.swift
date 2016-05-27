@@ -60,6 +60,7 @@ class T_AlbumViewController: UIViewController{
         //If the component has already queried the server and stored a user's posts, this method call does nothing at all.
         //After the initial load, posts will only be reloaded if the user manually chooses to do so (by using the pull-to
         //refresh mechanism).
+        print("Je veux checker notre vue")
         timelineComponent.loadInitialIfRequired()
     }
 
@@ -185,8 +186,8 @@ extension T_AlbumViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 extension T_AlbumViewController: TimelineComponentTarget {
     
     func loadInRange(range: Range<Int>, completionBlock: ([T_Album]?) -> Void) {
-        
-        T_ParseAlbumHelper.queryAllAlbumsOnParse(range) { (result: [PFObject]?, error: NSError?) -> Void in
+        T_AlbumCacheHelper.queryAllAlbums(range) { (result: [PFObject]?, error: NSError?) -> Void in
+            print(T_User.albumListCache[(T_ParseUserHelper.getCurrentUser()?.username)!]?.count)
             if let _ = error {
                 if self.timelineComponent.content.count == 0 {
                     self.errorLoading = true
@@ -195,8 +196,9 @@ extension T_AlbumViewController: TimelineComponentTarget {
             } else {
                 self.isLoading = true
                 let posts = result as? [T_Album] ?? []
-                // 3
+                // Completion block utilisé pour timelineComponent
                 completionBlock(posts)
+                
             }
             
         }

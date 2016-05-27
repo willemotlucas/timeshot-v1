@@ -111,7 +111,6 @@ class T_Post : PFObject, PFSubclassing {
 
     func downloadImage() {
         image.value = T_Post.imageCache[self.photo.name]
-        
         // if image is not downloaded yet, get it
         if (image.value == nil) {
             photo.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in

@@ -97,16 +97,6 @@ class T_SliderViewController: UIViewController {
                 slideImages[page].downloadImage()
             }
             
-//            let newPageView = T_PhotoImageView()
-//            newPageView.post = slideImages[page]
-//            if let image = slideImages[page].image.value {
-//                newPageView.image = image
-//            } else {
-//                slideImages[page].downloadImage()
-//            }
-//            newPageView.contentMode = .ScaleAspectFill
-//            newPageView.frame = frame
-            
             scrollView.addSubview(newPageView)
             
             // Add the view to the slider
@@ -149,7 +139,7 @@ class T_SliderViewController: UIViewController {
         }
         
         // ===============================================
-        // FAIRE UN DESIGN HELPER POUR L'AFFICHAGE DE DATE
+        // FAIRE UN DATE HELPER POUR L'AFFICHAGE DE DATE
         // ===============================================
         let photoHour = slideImages[page].createdAtDate
         

@@ -48,11 +48,6 @@ class T_PhotosCollectionViewController: UIViewController {
             self.loadPost()
         })
         
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        // Do any additional setup after loading the view.
         loadPost()
     }
     
@@ -86,7 +81,6 @@ class T_PhotosCollectionViewController: UIViewController {
                 
             } else {
                 self.hasLoaded = true
-                print(self.hasLoaded)
                 // On veut un tableau de la taille du nombre d'heure que l'on a !
                 // Car chaque heure est une section
                 self.photoNumberInSections.removeAll()
@@ -282,9 +276,11 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
                 cell.layer.cornerRadius = 5
                 
                 let indexCell = getPhotoIndex(indexPath)
+                print(indexCell)
                 
                  // -1 -> because we don't have the hourImage in our Array of picture but it's present in the collectionView
                 let post = posts[indexCell - 1]
+                print(post.objectId)
                 post.downloadImage()
                 cell.post = post
                 

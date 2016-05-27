@@ -14,14 +14,23 @@ class T_PhotoCollectionViewCell: UICollectionViewCell {
     
     var post : T_Post? {
         didSet {
-            // free memory of image stored with post that is no longer displayed
+            //free memory of image stored with post that is no longer displayed
             if let oldValue = oldValue where oldValue != post {
+                print("==============")
+                print(oldValue.objectId)
+                print(post?.objectId)
+                print("==============")
                 oldValue.image.value = nil
             }
             
             if let post = post {
+                imageView.image = nil
                 post.image.bindTo(imageView.bnd_image)
             } 
         }
+    }
+    
+    override func prepareForReuse() {
+        imageView.image = nil
     }
 }

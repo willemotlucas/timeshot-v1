@@ -11,7 +11,7 @@ import Parse
 import Bond
 import ConvenienceKit
 
-class T_Album : PFObject, PFSubclassing {
+class T_Album : PFObject, PFSubclassing{
     // MARK: Properties
     @NSManaged var attendees: [T_User]
     @NSManaged var cover: PFFile
