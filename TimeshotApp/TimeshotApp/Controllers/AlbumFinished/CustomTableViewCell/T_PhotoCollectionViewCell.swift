@@ -17,16 +17,17 @@ class T_PhotoCollectionViewCell: UICollectionViewCell {
             //free memory of image stored with post that is no longer displayed
             if let oldValue = oldValue where oldValue != post {
                 print("==============")
-                print(oldValue.objectId)
-                print(post?.objectId)
-                print("==============")
-                oldValue.image.value = nil
+                print(oldValue.image.value)
+                print(post?.image.value)
+                
+                oldValue.image.bindTo(imageView.bnd_image).dispose()
             }
             
             if let post = post {
-                imageView.image = nil
+                print(imageView.bnd_image.value)
                 post.image.bindTo(imageView.bnd_image)
-            } 
+            }
+            print("==============")
         }
     }
     
