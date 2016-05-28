@@ -69,7 +69,7 @@ class T_PhotosCollectionViewController: UIViewController {
     }
     
     func loadPost() {
-        T_ParsePostHelper.postsForCurrentAlbum(albumPhotos!) {(result: [PFObject]?, error: NSError?) -> Void in
+        T_AlbumCacheHelper.postsForCurrentAlbum(albumPhotos!) {(result: [PFObject]?, error: NSError?) -> Void in
             self.load = true
             if let error = error {
                 self.hasLoaded = false

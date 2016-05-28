@@ -26,6 +26,7 @@ class T_Album : PFObject, PFSubclassing{
     
     // On est interessé pour garder en cache la cover de l'album
     static var coverImageCache: NSCacheSwift<String, UIImage>!
+    static var detailAlbumCache: NSCacheSwift<String,[T_Post]>!
     
     // MARK: Initialisation
     override init()
@@ -40,6 +41,7 @@ class T_Album : PFObject, PFSubclassing{
         dispatch_once(&Static.onceToken) {
             self.registerSubclass()
             T_Album.coverImageCache = NSCacheSwift<String, UIImage>()
+            T_Album.detailAlbumCache = NSCacheSwift<String, [T_Post]>()
         }
     }
     

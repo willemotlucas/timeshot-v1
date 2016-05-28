@@ -61,6 +61,29 @@ class T_AlbumCacheHelper {
             }
         }
     }
+    
+    static func postsForCurrentAlbum(albumPhotos: T_Album, completionBlock: PFQueryArrayResultBlock) {
+        
+        var albumDetail : [T_Post]? = T_Album.detailAlbumCache[albumPhotos.objectId!]
+        
+        if let album = albumDetail {
+            // On recupere directement du cache 
+            print("cacheDetail")
+            completionBlock(album, nil)
+        } else {
+            T_ParsePostHelper.postsForCurrentAlbumOnParse(albumPhotos){ (result: [PFObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    print("parse")
+                    let posts = result as? [T_Post] ?? []
+                    albumDetail = posts
+                    // Attention toujours l'utiliser directement
+                    T_Album.detailAlbumCache[albumPhotos.objectId!] =  albumDetail
+                }
+                completionBlock(albumDetail, error)
+            }
+        }
+
+    }
 
     
 }
