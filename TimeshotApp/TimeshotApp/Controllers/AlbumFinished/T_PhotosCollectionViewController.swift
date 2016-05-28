@@ -51,6 +51,13 @@ class T_PhotosCollectionViewController: UIViewController {
         loadPost()
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        // Quand la vue disparait on enleve les images
+        for i in posts {
+            i.image.value = nil
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -280,7 +287,6 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
                 
                  // -1 -> because we don't have the hourImage in our Array of picture but it's present in the collectionView
                 let post = posts[indexCell - 1]
-                print(post.objectId)
                 post.downloadImage()
                 cell.post = post
                 

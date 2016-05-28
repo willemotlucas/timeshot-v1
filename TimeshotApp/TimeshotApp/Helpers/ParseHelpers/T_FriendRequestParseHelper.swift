@@ -57,6 +57,9 @@ class T_FriendRequestParseHelper {
         pendingFriendRequest.whereKey(ParseFriendRequestStatus, equalTo: friendRequestStatus(.Pending))
         pendingFriendRequest.whereKey(ParseFriendRequestToUser, equalTo: PFUser.currentUser()!)
         pendingFriendRequest.includeKey(ParseFriendRequestFromUser)
+        
+        //pendingFriendRequest.cachePolicy = .CacheElseNetwork
+        
         pendingFriendRequest.findObjectsInBackgroundWithBlock(completionBlock)
     }
     
@@ -120,6 +123,8 @@ class T_FriendRequestParseHelper {
         // Include users to retrieve their data
         acceptedFriendRequest.includeKey(ParseFriendRequestFromUser)
         acceptedFriendRequest.includeKey(ParseFriendRequestToUser)
+        
+        //acceptedFriendRequest.cachePolicy = .CacheElseNetwork
         
         acceptedFriendRequest.findObjectsInBackgroundWithBlock(completionBlock)
     }
