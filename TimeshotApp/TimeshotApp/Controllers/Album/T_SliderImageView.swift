@@ -15,7 +15,7 @@ class T_SliderImageView: UIImageView {
         didSet {
             // free memory of image stored with post that is no longer displayed
             if let oldValue = oldValue where oldValue != post {
-                oldValue.image.value = nil
+                oldValue.image.bindTo(self.bnd_image).dispose()
             }
             
             if let post = post {

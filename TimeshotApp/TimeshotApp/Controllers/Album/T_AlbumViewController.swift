@@ -60,7 +60,6 @@ class T_AlbumViewController: UIViewController{
         //If the component has already queried the server and stored a user's posts, this method call does nothing at all.
         //After the initial load, posts will only be reloaded if the user manually chooses to do so (by using the pull-to
         //refresh mechanism).
-        print("Je veux checker notre vue")
         timelineComponent.loadInitialIfRequired()
     }
 
