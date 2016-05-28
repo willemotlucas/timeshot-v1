@@ -20,6 +20,7 @@ class T_AlbumViewController: UIViewController{
     let defaultRange = 0...4
     let additionalRangeSize = 5
     var isLoading = false
+    var isRefreshing = false
     var errorLoading = false
     
     let refresher = PullToRefresh()
@@ -38,8 +39,8 @@ class T_AlbumViewController: UIViewController{
         
         //Add pull to refresh
         tableView.addPullToRefresh(refresher, action: {
-            self.timelineComponent.loadInitialIfRequired()
-            self.tableView.endRefreshing()
+            self.isRefreshing = true
+            self.timelineComponent.refresh(self)
         })
         
         // For tableView
@@ -185,21 +186,39 @@ extension T_AlbumViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 extension T_AlbumViewController: TimelineComponentTarget {
     
     func loadInRange(range: Range<Int>, completionBlock: ([T_Album]?) -> Void) {
-        T_AlbumCacheHelper.queryAllAlbums(range) { (result: [PFObject]?, error: NSError?) -> Void in
-            print(T_User.albumListCache[(T_ParseUserHelper.getCurrentUser()?.username)!]?.count)
-            if let _ = error {
-                if self.timelineComponent.content.count == 0 {
-                    self.errorLoading = true
-                    self.tableView.reloadEmptyDataSet()
+        if isRefreshing {
+            T_ParseAlbumHelper.queryAllAlbumsOnParse(range) { (result: [PFObject]?, error: NSError?) -> Void in
+                if let _ = error {
+                    if self.timelineComponent.content.count == 0 {
+                        self.errorLoading = true
+                        self.tableView.reloadEmptyDataSet()
+                    }
+                } else {
+                    self.isLoading = true
+                    let user = T_ParseUserHelper.getCurrentUser()
+                    let posts = result as? [T_Album] ?? []
+                    T_User.albumListCache[(user?.username)!]?.removeAll()
+                    T_User.albumListCache[(user?.username)!]? = posts
+                    self.isRefreshing = false
+                    self.tableView.endRefreshing()
+                    // Completion block utilisé pour timelineComponent
+                    completionBlock(posts)
                 }
-            } else {
-                self.isLoading = true
-                let posts = result as? [T_Album] ?? []
-                // Completion block utilisé pour timelineComponent
-                completionBlock(posts)
-                
             }
-            
+        } else {
+            T_AlbumCacheHelper.queryAllAlbums(range) { (result: [PFObject]?, error: NSError?) -> Void in
+                if let _ = error {
+                    if self.timelineComponent.content.count == 0 {
+                        self.errorLoading = true
+                        self.tableView.reloadEmptyDataSet()
+                    }
+                } else {
+                    self.isLoading = true
+                    let posts = result as? [T_Album] ?? []
+                    // Completion block utilisé pour timelineComponent
+                    completionBlock(posts)
+                }
+            }
         }
     }
     

@@ -45,7 +45,7 @@ class T_PhotosCollectionViewController: UIViewController {
         
         //Add pull to refresh
         self.collectionView.addPullToRefresh(refresher, action: {
-            self.loadPost()
+            self.loadPostFromParse()
         })
         
         loadPost()
@@ -154,6 +154,97 @@ class T_PhotosCollectionViewController: UIViewController {
         }
     }
     
+    func loadPostFromParse() {
+        T_ParsePostHelper.postsForCurrentAlbumOnParse(albumPhotos!) { (result: [PFObject]?, error: NSError?) -> Void in
+            self.load = true
+            if let error = error {
+                self.hasLoaded = false
+                print("\n\n\n")
+                print(error)
+                print("\n\n\n")
+                self.hasLoaded = false
+                self.collectionView.reloadEmptyDataSet()
+                
+            } else {
+                self.hasLoaded = true
+                // On veut un tableau de la taille du nombre d'heure que l'on a !
+                // Car chaque heure est une section
+                self.photoNumberInSections.removeAll()
+                self.hasLoaded = true
+                
+                if let album = self.albumPhotos {
+                    for _ in 0..<album.duration {
+                        self.photoNumberInSections.append(0)
+                    }
+                }
+                // On clean d'abord le tableau puis on le re remplit
+                //self.posts.removeAll()
+                self.posts = result as? [T_Post] ?? []
+                // Attention toujours l'utiliser directement
+                // On reinitialise notre cache avec les dernieres datas de parse
+                T_Album.detailAlbumCache[self.albumPhotos!.objectId!] =  self.posts
+                self.collectionView.reloadEmptyDataSet()
+                
+                // Initialisation du nombre de photos
+                // et de la section en cours
+                var numberOfPictInSection = 0
+                var section = 0
+                
+                // Pour chaque post on doit alors savoir dans quelle section il est mais aussi
+                // charger son image
+                for post in self.posts {
+                    let date = post.createdAtDate
+                    
+                    // On regarde maintenant la diff entre la date de la photo et la date de la derniere photo du tableau
+                    // pour savoir si l'on commence une nouvelle section ou pas
+                    if let indexPost = self.posts.indexOf(post) where indexPost == 0 {
+                        // On est a la premiere photo de notre album ! Donc on initialise
+                        numberOfPictInSection += 1
+                        section = 0
+                        
+                        // Si on a qu'une seule photo dans l'album on le stocke direct dans la section
+                        if indexPost ==  self.posts.count - 1 {
+                            self.photoNumberInSections[section] = numberOfPictInSection
+                        }
+                    } else if let indexPost = self.posts.indexOf(post) where indexPost == (self.posts.count-1) {
+                        // On est a la derniere photo de notre album donc on ajoute et on arrete
+                        let diff = date.hour() - self.posts[indexPost-1].createdAtDate.hour()
+                        
+                        // On verifie que la derniere photo n'a pas été prise a une heure différente
+                        if diff != 0 {
+                            self.photoNumberInSections[section] = numberOfPictInSection
+                            section += 1
+                            numberOfPictInSection = 1
+                        } else {
+                            numberOfPictInSection += 1
+                        }
+                        self.photoNumberInSections[section] = numberOfPictInSection
+                    } else if let indexPost = self.posts.indexOf(post) where indexPost > 0 {
+                        // Si on est ni a la premiere ni a la derniere on regarde si elle correspond a la section actuelle
+                        // ou si elle correspond a une autre section car prise à une nouvelle heure
+                        let diff = date.hour() - self.posts[indexPost-1].createdAtDate.hour()
+                        if diff != 0 {
+                            self.photoNumberInSections[section] = numberOfPictInSection
+                            numberOfPictInSection = 1
+                            section += 1
+                        } else {
+                            numberOfPictInSection += 1
+                        }
+                    } else  {
+                        print("il y a une erreur ou cas non pris en compte")
+                    }
+                }
+                
+                // On ne garde que les sections ou il y a au moins une photo de prise !
+                self.photoNumberInSections = self.photoNumberInSections.filter{$0 != 0}
+                
+                self.collectionView.endRefreshing()
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+        
     // MARK: Navigation
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "ShowSlider" {
@@ -279,7 +370,6 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
                 
                  // -1 -> because we don't have the hourImage in our Array of picture but it's present in the collectionView
                 let post = posts[indexCell - 1]
-                print("===")
                 post.downloadImage()
                 cell.post = post
                 

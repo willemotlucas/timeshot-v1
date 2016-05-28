@@ -15,8 +15,6 @@ class T_AlbumCacheHelper {
         let user = T_ParseUserHelper.getCurrentUser()
         var albumList : [T_Album]? = T_User.albumListCache[(user?.username)!]
         print("queryAllAlbums")
-        print(albumList?.count)
-        print(range)
         // Si on a deja tout alors on est tranquille, sinon on va faire la requete pour juste le range qu'il faut
         if albumList?.count > range.endIndex {
             print("cas 1 : On a deja tout localement")
@@ -67,13 +65,11 @@ class T_AlbumCacheHelper {
         var albumDetail : [T_Post]? = T_Album.detailAlbumCache[albumPhotos.objectId!]
         
         if let album = albumDetail {
-            // On recupere directement du cache 
-            print("cacheDetail")
+            // On recupere directement du cache
             completionBlock(album, nil)
         } else {
             T_ParsePostHelper.postsForCurrentAlbumOnParse(albumPhotos){ (result: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
-                    print("parse")
                     let posts = result as? [T_Post] ?? []
                     albumDetail = posts
                     // Attention toujours l'utiliser directement
