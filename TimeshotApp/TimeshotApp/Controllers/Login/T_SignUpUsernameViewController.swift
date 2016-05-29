@@ -10,7 +10,6 @@ import UIKit
 import MBProgressHUD
 
 class T_SignUpUsernameViewController: UIViewController {
-    @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var continueButton: UIButton!
@@ -43,6 +42,11 @@ class T_SignUpUsernameViewController: UIViewController {
         
     }
     
+    @IBAction func tap(sender: AnyObject) {
+        if usernameTextField.editing{
+            usernameTextField.resignFirstResponder()
+        }
+    }
     // MARK: Methods
     func freezeUI() {
         progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)

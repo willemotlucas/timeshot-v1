@@ -32,20 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         PFUser.enableRevocableSessionInBackground()
         
-        //T_ParseUserHelper.login("paul", password: "paul")
-        
         let startViewController: UIViewController;
         
-        if let user = PFUser.currentUser() {
-            if user.username == nil {
-                let storyboard = UIStoryboard(name: "Login", bundle: nil)
-                startViewController = storyboard.instantiateViewControllerWithIdentifier("T_SignUpUsernameViaFacebookNavigationController")
-            }
-            else {
+        if let _ = PFUser.currentUser() {
                 //TODO Traiter le cas ou l'utilisateur s'est fait kick de la DB : TimeshotApp[5519:438979] [Error]: invalid session token (Code: 209, Version: 1.13.0)
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 startViewController = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController")
-            }
             
         } else {
             let storyboard = UIStoryboard(name: "Login", bundle: nil)

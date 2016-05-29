@@ -17,8 +17,6 @@ class T_LoginViewController: UIViewController {
     // MARK : Properties
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var facebookLoginButton: UIButton!
-    @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var overlayView: UIView!
@@ -49,12 +47,6 @@ class T_LoginViewController: UIViewController {
         T_DesignHelper.colorPlaceHolder(usernameTextField)
         T_DesignHelper.colorPlaceHolder(passwordTextField)
         
-        T_DesignHelper.addRoundBorder(facebookLoginButton)
-        T_DesignHelper.colorBorderButton(facebookLoginButton)
-        
-        T_DesignHelper.addRoundBorder(signUpButton)
-        T_DesignHelper.colorBorderButton(signUpButton)
-        
         T_DesignHelper.addRoundBorder(signInButton)
         T_DesignHelper.colorBorderButton(signInButton)
         
@@ -63,7 +55,7 @@ class T_LoginViewController: UIViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController!.setNavigationBarHidden(true, animated: animated)
+        self.navigationController!.setNavigationBarHidden(false, animated: animated)
         
     }
     
@@ -149,19 +141,15 @@ class T_LoginViewController: UIViewController {
         }
     }
     
-    @IBAction func CGUButtonTapped(sender: AnyObject) {
-        if let url = NSURL(string: "http://timeshot.co/terms.html"){
-            UIApplication.sharedApplication().openURL(url)
+    @IBAction func tap(sender: AnyObject) {
+        if usernameTextField.editing{
+            usernameTextField.resignFirstResponder()
+        }
+        if passwordTextField.editing{
+            passwordTextField.resignFirstResponder()
         }
     }
-    
-    
-    @IBAction func PolicyPrivacyButtonTapped(sender: AnyObject) {
-        if let url = NSURL(string: "http://timeshot.co/policy.html"){
-            UIApplication.sharedApplication().openURL(url)
-        }
-    }
-    
+
     
     /*
      // MARK: - Navigation

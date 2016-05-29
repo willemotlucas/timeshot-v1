@@ -9,7 +9,6 @@
 import UIKit
 
 class T_SignUpPasswordViewController: UIViewController {
-    @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
@@ -72,6 +71,14 @@ class T_SignUpPasswordViewController: UIViewController {
             }
         }
         return true
+    }
+    @IBAction func tap(sender: AnyObject) {
+        if passwordTextField.editing{
+            passwordTextField.resignFirstResponder()
+        }
+        if confirmPasswordTextField.editing{
+            confirmPasswordTextField.resignFirstResponder()
+        }
     }
 }
 

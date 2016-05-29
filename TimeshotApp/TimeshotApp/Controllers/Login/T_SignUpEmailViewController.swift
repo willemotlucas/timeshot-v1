@@ -15,7 +15,6 @@ class T_SignUpEmailViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var continueButton: UIButton!
-    @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var overlayView: UIView!
     
     var progressHUD:MBProgressHUD?
@@ -113,6 +112,17 @@ class T_SignUpEmailViewController: UIViewController {
 extension T_SignUpEmailViewController: UITextFieldDelegate {
     // MARK: - Text Field Delegate
     
+    @IBAction func tapTap(sender: AnyObject) {
+        if firstNameTextField.editing{
+            firstNameTextField.resignFirstResponder()
+        }
+        if nameTextField.editing{
+            nameTextField.resignFirstResponder()
+        }
+        if emailTextField.editing {
+            emailTextField.resignFirstResponder()
+        }
+    }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Hide the keyboard.

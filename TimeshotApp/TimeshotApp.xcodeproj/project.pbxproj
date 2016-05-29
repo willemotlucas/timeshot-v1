@@ -69,7 +69,7 @@
 		7DD0F9B61C9EA0FB00A856B9 /* soiree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */; };
 		7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */; };
 		7DFC23951CC0F15900DD9520 /* T_ParsePostHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFC23941CC0F15900DD9520 /* T_ParsePostHelper.swift */; };
-		8A6F88C01CD6732100060C48 /* T_SignUpUsernameViaFacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F88BF1CD6732100060C48 /* T_SignUpUsernameViaFacebookViewController.swift */; };
+		8A6D85491CF9B24300DA9EEE /* T_LoginHomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6D85481CF9B24300DA9EEE /* T_LoginHomePageViewController.swift */; };
 		8A6F88C21CD6779300060C48 /* T_AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F88C11CD6779300060C48 /* T_AlertHelper.swift */; };
 		8A6F88C41CD69CB600060C48 /* T_SignUpContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F88C31CD69CB600060C48 /* T_SignUpContactViewController.swift */; };
 		8A76149E1CBEA8BA009CE926 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A76149D1CBEA8BA009CE926 /* Login.storyboard */; };
@@ -169,7 +169,7 @@
 		7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = soiree.jpg; sourceTree = "<group>"; };
 		7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = voyage.jpg; sourceTree = "<group>"; };
 		7DFC23941CC0F15900DD9520 /* T_ParsePostHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ParsePostHelper.swift; sourceTree = "<group>"; };
-		8A6F88BF1CD6732100060C48 /* T_SignUpUsernameViaFacebookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpUsernameViaFacebookViewController.swift; sourceTree = "<group>"; };
+		8A6D85481CF9B24300DA9EEE /* T_LoginHomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_LoginHomePageViewController.swift; sourceTree = "<group>"; };
 		8A6F88C11CD6779300060C48 /* T_AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlertHelper.swift; sourceTree = "<group>"; };
 		8A6F88C31CD69CB600060C48 /* T_SignUpContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpContactViewController.swift; sourceTree = "<group>"; };
 		8A76149D1CBEA8BA009CE926 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -406,7 +406,7 @@
 		8AFA26771CBF948100C09E17 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				8A6F88BF1CD6732100060C48 /* T_SignUpUsernameViaFacebookViewController.swift */,
+				8A6D85481CF9B24300DA9EEE /* T_LoginHomePageViewController.swift */,
 				8AFA26781CBF949200C09E17 /* T_LoginViewController.swift */,
 				8AFA267A1CBF94B000C09E17 /* T_SignUpEmailViewController.swift */,
 				8AB0F1C51CBFC7C300605525 /* T_SignUpPasswordViewController.swift */,
@@ -702,6 +702,7 @@
 				5D64CA771CB9806E005C6E43 /* T_LastNameEditionViewController.swift in Sources */,
 				5DF7ADD41CDBB87C00C6C652 /* T_ParseAlbumRequestHelper.swift in Sources */,
 				5D1D921A1CBA4D390085B70C /* T_EmailEditionViewController.swift in Sources */,
+				8A6D85491CF9B24300DA9EEE /* T_LoginHomePageViewController.swift in Sources */,
 				5DB5A02A1CA1AD1000AADC9F /* T_ProfileViewController.swift in Sources */,
 				8AB0F1C61CBFC7C300605525 /* T_SignUpPasswordViewController.swift in Sources */,
 				5DB5A0271CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift in Sources */,
@@ -734,7 +735,6 @@
 				5DF7ADD81CDBB89B00C6C652 /* T_AlbumRequest.swift in Sources */,
 				B4EA9DCB1CB52D37003F5A75 /* T_SnapTextField.swift in Sources */,
 				7D2420021CB6E20200F6548B /* T_StoryViewController.swift in Sources */,
-				8A6F88C01CD6732100060C48 /* T_SignUpUsernameViaFacebookViewController.swift in Sources */,
 				B41796831CE28E6B00DC35A8 /* SNTextField.swift in Sources */,
 				7D2420001CB6D48100F6548B /* T_PhotosCollectionViewController.swift in Sources */,
 				7D241FFA1CB6D47500F6548B /* T_HourCollectionViewCell.swift in Sources */,

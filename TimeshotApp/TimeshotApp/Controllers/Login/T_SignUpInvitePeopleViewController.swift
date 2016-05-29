@@ -14,7 +14,6 @@ class T_SignUpInvitePeopleViewController: UIViewController {
     @IBOutlet weak var yesIWantButton: UIButton!
     @IBOutlet weak var finishUp: UIButton!
     @IBOutlet weak var overlayView: UIView!
-    @IBOutlet weak var cameraView: UIView!
     var user : T_User?
     var viaFacebook : Bool?
     
