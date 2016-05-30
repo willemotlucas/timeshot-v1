@@ -18,6 +18,23 @@ class T_SignUpUsernameViewController: UIViewController {
     
     var progressHUD:MBProgressHUD?
     
+    
+    lazy var inputToolbar: UIToolbar = {
+        var toolbar = UIToolbar()
+        toolbar.barStyle = .Default
+        toolbar.translucent = false
+        toolbar.sizeToFit()
+        
+        var doneButton = UIBarButtonItem(title: "OK", style: .Done, target: self, action: #selector(keyboardDone))
+        var flexibleSpaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        var fixedSpaceButton = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil)
+        
+        toolbar.setItems([flexibleSpaceButton, doneButton], animated: false)
+        toolbar.userInteractionEnabled = true
+        
+        return toolbar
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameTextField.delegate = self
@@ -66,7 +83,6 @@ class T_SignUpUsernameViewController: UIViewController {
                 if let user = user {
                     user.username = username
                     signupInviteView.user = user
-                    signupInviteView.viaFacebook = false
                 }
             }
             
@@ -88,13 +104,20 @@ class T_SignUpUsernameViewController: UIViewController {
         }
         return true
     }
+    func keyboardDone() -> Void {
+        usernameTextField.resignFirstResponder()
+    }
     
 }
 
 extension T_SignUpUsernameViewController: UITextFieldDelegate {
     // MARK: - Text Field Delegate
     
-    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        textField.inputAccessoryView = inputToolbar
+        
+        return true
+    }
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Hide the keyboard.
         textField.resignFirstResponder()

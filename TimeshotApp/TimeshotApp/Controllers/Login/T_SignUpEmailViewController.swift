@@ -23,6 +23,28 @@ class T_SignUpEmailViewController: UIViewController {
     private var nameValidator = T_ValidatorHelper.nameValidator()
     private var emailValidator = T_ValidatorHelper.emailValidator()
     
+    var nextButton  : UIBarButtonItem?
+    var previousButton  : UIBarButtonItem?
+    
+    lazy var inputToolbar: UIToolbar = {
+        var toolbar = UIToolbar()
+        toolbar.barStyle = .Default
+        toolbar.translucent = false
+        toolbar.sizeToFit()
+        
+        var doneButton = UIBarButtonItem(title: "OK", style: .Done, target: self, action: #selector(keyboardDone))
+        var flexibleSpaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        var fixedSpaceButton = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil)
+        
+        self.nextButton  = UIBarButtonItem(title: ">", style: .Plain, target: self, action: #selector(keyboardNext))
+        self.previousButton  = UIBarButtonItem(title: "<", style: .Plain, target: self, action: #selector(keyboardPrevious))
+        
+        toolbar.setItems([fixedSpaceButton, self.previousButton!, fixedSpaceButton, self.nextButton!, flexibleSpaceButton, doneButton], animated: false)
+        toolbar.userInteractionEnabled = true
+        
+        return toolbar
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -83,7 +105,7 @@ class T_SignUpEmailViewController: UIViewController {
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         //Enregistrement et gestion des erreurs ici, si pb envoie d'un alert et un return false pour annuler le segue
         // TODO Vérifier si l'adresse e-mail est pas déjà enregistré
-        freezeUI()
+        
         firstNameValidator.validate(firstNameTextField.text, context: nil)
         nameValidator.validate(nameTextField.text, context: nil)
         emailValidator.validate(emailTextField.text, context: nil)
@@ -94,7 +116,7 @@ class T_SignUpEmailViewController: UIViewController {
             T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: errors, viewController: self)
             return false
         }
-        
+        freezeUI()
         let emailAlreadyExist = T_ParseUserHelper.emailAlreadyExist(emailTextField.text!)
         unfreezeUI()
         if emailAlreadyExist {
@@ -102,6 +124,38 @@ class T_SignUpEmailViewController: UIViewController {
             return false
         }
         return true
+    }
+    
+    func keyboardDone() -> Void {
+        if firstNameTextField.editing{
+            firstNameTextField.resignFirstResponder()
+        }
+        else if nameTextField.editing {
+            nameTextField.resignFirstResponder()
+        }
+        else if emailTextField.editing {
+            emailTextField.resignFirstResponder()
+        }
+    }
+    func keyboardNext() -> Void {
+        if firstNameTextField.editing{
+            firstNameTextField.resignFirstResponder()
+            nameTextField.becomeFirstResponder()
+        }
+        else if nameTextField.editing {
+            nameTextField.resignFirstResponder()
+            emailTextField.becomeFirstResponder()
+        }
+    }
+    func keyboardPrevious() -> Void {
+        if emailTextField.editing{
+            emailTextField.resignFirstResponder()
+            nameTextField.becomeFirstResponder()
+        }
+        else if nameTextField.editing {
+            nameTextField.resignFirstResponder()
+            firstNameTextField.becomeFirstResponder()
+        }
     }
     
     
@@ -127,6 +181,30 @@ extension T_SignUpEmailViewController: UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Hide the keyboard.
         textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        textField.inputAccessoryView = inputToolbar
+        if textField === firstNameTextField{
+            if let previous = self.previousButton, next = self.nextButton {
+                next.enabled = true
+                previous.enabled = false
+            }
+        }
+        else if textField === nameTextField {
+            if let previous = self.previousButton, next = self.nextButton {
+                next.enabled = true
+                previous.enabled = true
+            }
+        }
+        else {
+            if let previous = self.previousButton, next = self.nextButton {
+                next.enabled = false
+                previous.enabled = true
+            }
+        }
+        
         return true
     }
     
