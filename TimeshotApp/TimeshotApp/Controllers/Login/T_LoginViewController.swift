@@ -8,7 +8,7 @@
 
 import UIKit
 import SwiftValidate
-import ParseFacebookUtilsV4
+import Parse
 import MBProgressHUD
 
 class T_LoginViewController: UIViewController {
@@ -17,19 +17,39 @@ class T_LoginViewController: UIViewController {
     // MARK : Properties
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var facebookLoginButton: UIButton!
-    @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var overlayView: UIView!
     let usernameValidator : ValidatorChain
     let passwordValidator : ValidatorChain
+    var nextButton  : UIBarButtonItem?
+    var previousButton  : UIBarButtonItem?
+    
+    lazy var inputToolbar: UIToolbar = {
+        var toolbar = UIToolbar()
+        toolbar.barStyle = .Default
+        toolbar.translucent = false
+        toolbar.sizeToFit()
+        
+        var doneButton = UIBarButtonItem(title: "OK", style: .Done, target: self, action: #selector(keyboardDone))
+        var flexibleSpaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        var fixedSpaceButton = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil)
+        
+        self.nextButton  = UIBarButtonItem(title: ">", style: .Plain, target: self, action: #selector(keyboardNext))
+        self.previousButton  = UIBarButtonItem(title: "<", style: .Plain, target: self, action: #selector(keyboardPrevious))
+        
+        toolbar.setItems([fixedSpaceButton, self.previousButton!, fixedSpaceButton, self.nextButton!, flexibleSpaceButton, doneButton], animated: false)
+        toolbar.userInteractionEnabled = true
+        
+        return toolbar
+    }()
     
     var progressHUD:MBProgressHUD?
     
     required init?(coder aDecoder: NSCoder) {
         usernameValidator = T_ValidatorHelper.firstNameValidator()
         passwordValidator = T_ValidatorHelper.passwordValidator()
+        
         super.init(coder: aDecoder)
     }
     override func viewDidLoad() {
@@ -49,12 +69,6 @@ class T_LoginViewController: UIViewController {
         T_DesignHelper.colorPlaceHolder(usernameTextField)
         T_DesignHelper.colorPlaceHolder(passwordTextField)
         
-        T_DesignHelper.addRoundBorder(facebookLoginButton)
-        T_DesignHelper.colorBorderButton(facebookLoginButton)
-        
-        T_DesignHelper.addRoundBorder(signUpButton)
-        T_DesignHelper.colorBorderButton(signUpButton)
-        
         T_DesignHelper.addRoundBorder(signInButton)
         T_DesignHelper.colorBorderButton(signInButton)
         
@@ -63,7 +77,7 @@ class T_LoginViewController: UIViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController!.setNavigationBarHidden(true, animated: animated)
+        self.navigationController!.setNavigationBarHidden(false, animated: animated)
         
     }
     
@@ -83,48 +97,6 @@ class T_LoginViewController: UIViewController {
     }
     
     // MARK : Actions
-    @IBAction func loginFacebook(sender: AnyObject) {
-        let permissions : [String]? = ["email"]
-        
-        self.freezeUI()
-        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) { (user: PFUser?, error: NSError?) -> Void in
-            if let user = user {
-                if user.isNew {
-                    let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me?fields=id,name,email,first_name,last_name", parameters: nil)
-                    graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-                        self.unfreezeUI()
-                        if error != nil {
-                            // Process error
-                            print("Error: \(error)")
-                        }
-                        else {
-                            let email = result.valueForKey("email") as! String
-                            let last_name = result.valueForKey("last_name") as! String
-                            let first_name = result.valueForKey("first_name") as! String
-                            user.username = email as String
-                            let user = PFUser.currentUser() as! T_User?
-                            user?.email = email
-                            user?.lastName = last_name
-                            user?.firstName = first_name
-                            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-                            let vc = storyboard.instantiateViewControllerWithIdentifier("T_SignUpUsernameViaFacebookNavigationController") as! UINavigationController
-                            self.presentViewController(vc, animated: true, completion: nil)
-                            
-                        }
-                    })
-                } else {
-                    self.unfreezeUI()
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let vc = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController") as UIViewController
-                    self.presentViewController(vc, animated: true, completion: nil)
-                }
-                
-            } else {
-                self.unfreezeUI()
-                T_AlertHelper.alert(NSLocalizedString("Oups", comment: ""), errors: [NSLocalizedString("Your connection with Facebook failed", comment: "")], viewController: self)
-            }
-        }
-    }
     
     @IBAction func signInTapped(sender: AnyObject) {
         usernameValidator.validate(usernameTextField.text, context: nil)
@@ -149,19 +121,37 @@ class T_LoginViewController: UIViewController {
         }
     }
     
-    @IBAction func CGUButtonTapped(sender: AnyObject) {
-        if let url = NSURL(string: "http://timeshot.co/terms.html"){
-            UIApplication.sharedApplication().openURL(url)
+    @IBAction func tap(sender: AnyObject) {
+        if usernameTextField.editing{
+            usernameTextField.resignFirstResponder()
+        }
+        if passwordTextField.editing{
+            passwordTextField.resignFirstResponder()
         }
     }
     
-    
-    @IBAction func PolicyPrivacyButtonTapped(sender: AnyObject) {
-        if let url = NSURL(string: "http://timeshot.co/policy.html"){
-            UIApplication.sharedApplication().openURL(url)
+    func keyboardDone() -> Void {
+        if usernameTextField.editing{
+            usernameTextField.resignFirstResponder()
+        }
+        else{
+            passwordTextField.resignFirstResponder()
         }
     }
-    
+    func keyboardNext() -> Void {
+        if usernameTextField.editing{
+            usernameTextField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        }
+
+    }
+    func keyboardPrevious() -> Void {
+        if passwordTextField.editing{
+            passwordTextField.resignFirstResponder()
+            usernameTextField.becomeFirstResponder()
+        }
+    }
+
     
     /*
      // MARK: - Navigation
@@ -176,8 +166,27 @@ class T_LoginViewController: UIViewController {
 }
 
 extension T_LoginViewController : UITextFieldDelegate {
+    
+    
     // MARK: - Text Field Delegate
     
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        textField.inputAccessoryView = inputToolbar
+        if textField === usernameTextField{
+            if let previous = self.previousButton, next = self.nextButton {
+                next.enabled = true
+                previous.enabled = false
+            }
+        }
+        else {
+            if let previous = self.previousButton, next = self.nextButton {
+                next.enabled = false
+                previous.enabled = true
+            }
+        }
+        
+        return true
+    }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Hide the keyboard.

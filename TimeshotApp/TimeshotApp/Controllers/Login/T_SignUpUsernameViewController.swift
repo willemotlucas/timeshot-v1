@@ -10,7 +10,6 @@ import UIKit
 import MBProgressHUD
 
 class T_SignUpUsernameViewController: UIViewController {
-    @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var continueButton: UIButton!
@@ -18,6 +17,23 @@ class T_SignUpUsernameViewController: UIViewController {
     let usernameValidator = T_ValidatorHelper.userNameValidator()
     
     var progressHUD:MBProgressHUD?
+    
+    
+    lazy var inputToolbar: UIToolbar = {
+        var toolbar = UIToolbar()
+        toolbar.barStyle = .Default
+        toolbar.translucent = false
+        toolbar.sizeToFit()
+        
+        var doneButton = UIBarButtonItem(title: "OK", style: .Done, target: self, action: #selector(keyboardDone))
+        var flexibleSpaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        var fixedSpaceButton = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil)
+        
+        toolbar.setItems([flexibleSpaceButton, doneButton], animated: false)
+        toolbar.userInteractionEnabled = true
+        
+        return toolbar
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +59,11 @@ class T_SignUpUsernameViewController: UIViewController {
         
     }
     
+    @IBAction func tap(sender: AnyObject) {
+        if usernameTextField.editing{
+            usernameTextField.resignFirstResponder()
+        }
+    }
     // MARK: Methods
     func freezeUI() {
         progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -62,7 +83,6 @@ class T_SignUpUsernameViewController: UIViewController {
                 if let user = user {
                     user.username = username
                     signupInviteView.user = user
-                    signupInviteView.viaFacebook = false
                 }
             }
             
@@ -84,13 +104,20 @@ class T_SignUpUsernameViewController: UIViewController {
         }
         return true
     }
+    func keyboardDone() -> Void {
+        usernameTextField.resignFirstResponder()
+    }
     
 }
 
 extension T_SignUpUsernameViewController: UITextFieldDelegate {
     // MARK: - Text Field Delegate
     
-    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        textField.inputAccessoryView = inputToolbar
+        
+        return true
+    }
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Hide the keyboard.
         textField.resignFirstResponder()

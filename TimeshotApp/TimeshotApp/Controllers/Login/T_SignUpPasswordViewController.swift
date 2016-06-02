@@ -9,13 +9,34 @@
 import UIKit
 
 class T_SignUpPasswordViewController: UIViewController {
-    @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var continueButton: UIButton!
     var user : T_User?
     let passwordValidator = T_ValidatorHelper.passwordValidator()
+    
+    var nextButton  : UIBarButtonItem?
+    var previousButton  : UIBarButtonItem?
+    
+    lazy var inputToolbar: UIToolbar = {
+        var toolbar = UIToolbar()
+        toolbar.barStyle = .Default
+        toolbar.translucent = false
+        toolbar.sizeToFit()
+        
+        var doneButton = UIBarButtonItem(title: "OK", style: .Done, target: self, action: #selector(keyboardDone))
+        var flexibleSpaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        var fixedSpaceButton = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil)
+        
+        self.nextButton  = UIBarButtonItem(title: ">", style: .Plain, target: self, action: #selector(keyboardNext))
+        self.previousButton  = UIBarButtonItem(title: "<", style: .Plain, target: self, action: #selector(keyboardPrevious))
+        
+        toolbar.setItems([fixedSpaceButton, self.previousButton!, fixedSpaceButton, self.nextButton!, flexibleSpaceButton, doneButton], animated: false)
+        toolbar.userInteractionEnabled = true
+        
+        return toolbar
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,12 +94,61 @@ class T_SignUpPasswordViewController: UIViewController {
         }
         return true
     }
+    @IBAction func tap(sender: AnyObject) {
+        if passwordTextField.editing{
+            passwordTextField.resignFirstResponder()
+        }
+        if confirmPasswordTextField.editing{
+            confirmPasswordTextField.resignFirstResponder()
+        }
+    }
+    func keyboardDone() -> Void {
+        if passwordTextField.editing{
+            passwordTextField.resignFirstResponder()
+        }
+        else{
+            confirmPasswordTextField.resignFirstResponder()
+        }
+    }
+    func keyboardNext() -> Void {
+        if passwordTextField.editing{
+            passwordTextField.resignFirstResponder()
+            confirmPasswordTextField.becomeFirstResponder()
+        }
+        
+    }
+    func keyboardPrevious() -> Void {
+        if confirmPasswordTextField.editing{
+            passwordTextField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        }
+    }
+    
+
 }
 
 extension T_SignUpPasswordViewController: UITextFieldDelegate {
     // MARK: - Text Field Delegate
     
     
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        textField.inputAccessoryView = inputToolbar
+        if textField === passwordTextField{
+            if let previous = self.previousButton, next = self.nextButton {
+                next.enabled = true
+                previous.enabled = false
+            }
+        }
+        else {
+            if let previous = self.previousButton, next = self.nextButton {
+                next.enabled = false
+                previous.enabled = true
+            }
+        }
+        
+        return true
+    }
+
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Hide the keyboard.
         textField.resignFirstResponder()

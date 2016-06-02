@@ -14,9 +14,7 @@ class T_SignUpInvitePeopleViewController: UIViewController {
     @IBOutlet weak var yesIWantButton: UIButton!
     @IBOutlet weak var finishUp: UIButton!
     @IBOutlet weak var overlayView: UIView!
-    @IBOutlet weak var cameraView: UIView!
     var user : T_User?
-    var viaFacebook : Bool?
     
     var progressHUD:MBProgressHUD?
     
@@ -70,23 +68,12 @@ class T_SignUpInvitePeopleViewController: UIViewController {
     
     @IBAction func finishSignUp(sender: AnyObject) {
         freezeUI()
-        if let viaFb = viaFacebook where viaFb == true{
-            do {
-                try user?.save()
-                unfreezeUI()
-            }
-            catch _ {
-                unfreezeUI()
-            }
+        do {
+            try user?.signUp()
+            unfreezeUI()
         }
-        else {
-            do {
-                try user?.signUp()
-                unfreezeUI()
-            }
-            catch _ {
-                unfreezeUI()
-            }
+        catch _ {
+            unfreezeUI()
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController") as UIViewController
