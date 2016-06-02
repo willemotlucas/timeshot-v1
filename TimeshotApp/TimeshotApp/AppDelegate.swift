@@ -30,6 +30,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("fP3x2FxPpWTcBDWatmfSQxWO7di4Nh2jFjNafRrp", clientKey: "ec9Ga66SvWi4zdqK5rw69Oyghacv5zFXuCZHPsx6")
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
+        //Check if the app is launched from a push notification
+        if let launchOptions = launchOptions as? [String : AnyObject] {
+            if let notificationDictionary = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject : AnyObject] {
+                //If yes, we call didReceiveRemoteNotification
+                self.application(application, didReceiveRemoteNotification: notificationDictionary)
+            }
+        }
+                
         PFUser.enableRevocableSessionInBackground()
         
         let startViewController: UIViewController;
@@ -61,6 +69,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                                      annotation: annotation)
     }
     
+    //Register the current installation and user for notification
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let installation = PFInstallation.currentInstallation()
+        installation["user"] = PFUser.currentUser()
+        installation.setDeviceTokenFromData(deviceToken)
+        installation.saveInBackground()
+    }
+    
+    
+    //Notify the app that a notification is received
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        //Simply show an alert to the user
+        PFPush.handlePush(userInfo)
+    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -77,6 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         FBSDKAppEvents.activateApp()
+        clearBadges()
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
     
@@ -84,6 +108,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    func clearBadges() {
+        let installation = PFInstallation.currentInstallation()
+        installation.badge = 0
+        installation.saveInBackgroundWithBlock { (success, error) -> Void in
+            if success {
+                UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+            }
+        }
+    }
     
 }
 

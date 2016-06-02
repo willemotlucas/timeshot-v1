@@ -173,6 +173,9 @@ class T_ProfileViewController: UIViewController {
         case 1:
             contentToDisplay = .Notifications
             self.tableView.allowsSelection = true
+            let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: nil)
+            UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+            UIApplication.sharedApplication().registerForRemoteNotifications()
         default: break
         }
         

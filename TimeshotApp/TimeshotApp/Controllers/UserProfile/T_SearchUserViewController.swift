@@ -198,6 +198,7 @@ extension T_SearchUserViewController: AddNewFriends {
     func sendUserSelected(userSelected: T_User) {
         // Il faut ajouter le user aux pendings, sinon l'image ne va pas rester a pending
         pendingFriends.append(userSelected)
+        T_FriendRequestParseHelper.sendFriendRequestNotification(userSelected)
         T_FriendRequestParseHelper.sendFriendRequest(userSelected)
     }
 }
