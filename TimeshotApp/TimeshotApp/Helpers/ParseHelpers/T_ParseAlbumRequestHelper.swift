@@ -128,4 +128,15 @@ class T_ParseAlbumRequestHelper {
         albumRequest.status = albumRequestStatus(.Rejected)
         albumRequest.saveInBackgroundWithBlock(completionBlock)
     }
+    
+    static func sendAlbumRequestNotification(userInvited: T_User){
+        let pushQuery = PFInstallation.query()!
+        pushQuery.whereKey("user", equalTo: userInvited) //friend is a PFUser object
+        
+        let data = ["alert" : "\(T_ParseUserHelper.getCurrentUser()?.username!) invited you to join his album", "badge" : "Increment"]
+        let push = PFPush()
+        push.setQuery(pushQuery)
+        push.setData(data)
+        push.sendPushInBackground()
+    }
 }
