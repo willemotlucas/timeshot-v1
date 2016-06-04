@@ -39,6 +39,7 @@ class T_AddFriendToAlbumViewController: UIViewController {
         let usersSelected = friendCells.filter{$0.isSelected()}
         
         for user in usersSelected {
+            T_ParseAlbumRequestHelper.sendAlbumRequestNotification(user)
             T_ParseAlbumRequestHelper.sendFriendRequest(user, toAlbum: album!)
         }
         self.dismissViewControllerAnimated(true, completion: nil)

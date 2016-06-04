@@ -70,6 +70,7 @@ class T_Album : PFObject, PFSubclassing{
             let album = T_Album(attendees: attendees, cover: cover, createdBy: currentUser, duration: duration, isDeleted: false, title: albumTitle)
             
             for guest in guests {
+                T_ParseAlbumRequestHelper.sendAlbumRequestNotification(guest)
                 T_ParseAlbumRequestHelper.sendFriendRequest(guest, toAlbum: album)
             }
             

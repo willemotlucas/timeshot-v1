@@ -201,7 +201,7 @@ class T_FriendRequestParseHelper {
         let pushQuery = PFInstallation.query()!
         pushQuery.whereKey("user", equalTo: userSelected) //friend is a PFUser object
         
-        let data = ["alert" : "\(T_ParseUserHelper.getCurrentUser()?.username!) sent you a friend request", "badge" : "Increment"]
+        let data = ["alert" : "\(T_ParseUserHelper.getCurrentUser()!.username!) sent you a friend request", "badge" : "Increment"]
         let push = PFPush()
         push.setQuery(pushQuery)
         push.setData(data)
