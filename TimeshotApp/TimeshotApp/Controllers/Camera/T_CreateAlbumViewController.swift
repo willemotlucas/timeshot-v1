@@ -44,24 +44,24 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     
     override func viewDidLoad() {
         
-        self.scrollView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
+        //self.scrollView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
         
         self.defaultDuration = timeData[0]
         self.duration = defaultDuration
         
         initBackgroundImage()
-        initScrollView()
-        initTextField()
+        //initScrollView()
+        //initTextField()
         initTimerPicker()
         initButton()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CreateAlbumViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        /*NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CreateAlbumViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CreateAlbumViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CreateAlbumViewController.keyboardTypeChanged(_:)), name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CreateAlbumViewController.keyboardTypeChanged(_:)), name: UIKeyboardDidShowNotification, object: nil)*/
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(T_CreateAlbumViewController.handleTap(_:)))
+        /*let tap = UITapGestureRecognizer(target: self, action: #selector(T_CreateAlbumViewController.handleTap(_:)))
         tap.delegate = self
-        self.view.addGestureRecognizer(tap)
+        self.view.addGestureRecognizer(tap)*/
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -232,7 +232,7 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
     }
     
     func initTextField() {
-        self.textField = T_SnapTextField(frame: CGRectMake(0, 3*T_DesignHelper.screenSize.height/5, T_DesignHelper.screenSize.width, 40), target: self.view,  parentFrameSize: self.view.frame)
+        /*self.textField = T_SnapTextField(frame: CGRectMake(0, 3*T_DesignHelper.screenSize.height/5, T_DesignHelper.screenSize.width, 40), target: self.view,  parentFrameSize: self.view.frame)
         self.textField.hidden = false
         self.textField.shouldHide = false
         self.textField.setPlaceHolder("")
@@ -251,7 +251,7 @@ class T_CreateAlbumViewController: UIViewController, UIScrollViewDelegate, UITex
         self.textFieldTitleBackground.layer.insertSublayer(T_DesignHelper.createGradientLayer(CGRect(x: 0, y: 0, width: T_DesignHelper.screenSize.width, height: self.textFieldTitleBackground.frame.size.height)), atIndex: 0)
     
         self.view.addSubview(textFieldTitle)
-        self.view.addSubview(textFieldTitleBackground)
+        self.view.addSubview(textFieldTitleBackground)*/
 
     }
     

@@ -40,6 +40,11 @@ class T_CameraViewController: UIViewController {
     @IBOutlet weak var buttonAlbumVC: UIButton!
     @IBOutlet weak var buttonProfileVC: UIButton!
     
+    @IBOutlet weak var overlayView: UIView!
+    @IBOutlet weak var overlayColoredView: UIView!
+    @IBOutlet weak var createAlbumLabel: UILabel!
+    @IBOutlet weak var albumTitleTextField: UITextField!
+    @IBOutlet weak var createAlbumButton: UIButton!
     
     //MARK: - Outlets Methods
     @IBAction func actionTakePicture(sender: AnyObject) {
@@ -119,15 +124,27 @@ class T_CameraViewController: UIViewController {
     }
 
     override func viewWillLayoutSubviews() {
-        self.cameraView.layer.zPosition = 0
-        self.buttonTakePicture.layer.zPosition = 1
-        self.buttonFlash.layer.zPosition = 1
-        self.buttonReturnCamera.layer.zPosition = 1
-        
-        self.buttonAlbumVC.layer.zPosition = 10
-        self.buttonProfileVC.layer.zPosition = 10
-        
-        self.networkStatus.layer.zPosition = 1
+        if !isLiveAlbumExisting {
+            self.overlayView.layer.zPosition = 1
+            self.cameraView.layer.zPosition = 0
+            self.createAlbumLabel.layer.zPosition = 2
+            self.albumTitleTextField.layer.zPosition = 2
+            self.createAlbumButton.layer.zPosition = 2
+            
+            self.buttonAlbumVC.layer.zPosition = 10
+            self.buttonProfileVC.layer.zPosition = 10
+        }
+        else {
+            self.cameraView.layer.zPosition = 0
+            self.buttonTakePicture.layer.zPosition = 1
+            self.buttonFlash.layer.zPosition = 1
+            self.buttonReturnCamera.layer.zPosition = 1
+            
+            self.buttonAlbumVC.layer.zPosition = 10
+            self.buttonProfileVC.layer.zPosition = 10
+            
+            self.networkStatus.layer.zPosition = 1
+        }
     }
     
     override func viewDidLoad() {
@@ -136,11 +153,44 @@ class T_CameraViewController: UIViewController {
         T_CameraViewController.instance = self
         
         // Initilisation du background
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "Splashscreen")!)
+        //view.backgroundColor = UIColor(patternImage: UIImage(named: "Splashscreen")!)
         
-        // Camera init
-        cameraManager.addPreviewLayerToView(self.cameraView)
-        cameraManager.cameraDevice = .Back
+        // Camera init if no live album
+        if !self.isLiveAlbumExisting {
+            //Need to hide right buttons and take picture buttons
+            self.buttonTakePicture.hidden = true
+            self.buttonReturnCamera.hidden = true
+            self.buttonFlash.hidden = true
+            
+            self.albumTitleTextField.delegate = self
+            
+            //Mettre la camera en front pour la prise du selfie
+            cameraManager.cameraDevice = .Front
+            
+            //Need to add an overlay on the overlay view
+            T_DesignHelper.colorUIView(self.overlayColoredView)
+            self.overlayColoredView.alpha = 0.8
+            self.createAlbumLabel.alpha = 1
+            self.albumTitleTextField.alpha = 1
+            self.createAlbumButton.alpha = 1
+            cameraManager.addPreviewLayerToView(self.cameraView)
+            
+            //Mettre au premier plan les icones du bas
+            self.buttonAlbumVC.hidden = false
+            self.buttonProfileVC.hidden = false
+            
+        }
+        // Camera init if live album
+        else {
+            //Hide overlay, label, text field and album creation buttons
+            self.overlayView.hidden = true
+            self.buttonTakePicture.hidden = false
+            self.buttonReturnCamera.hidden = false
+            self.buttonFlash.hidden = false
+            
+            cameraManager.addPreviewLayerToView(self.cameraView)
+            cameraManager.cameraDevice = .Back
+        }
         cameraManager.shouldRespondToOrientationChanges = false
         cameraManager.cameraOutputMode = .StillImage
         cameraManager.cameraOutputQuality = .Medium
@@ -156,7 +206,6 @@ class T_CameraViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CameraViewController.stopAlbumTimer), name:UIApplicationDidEnterBackgroundNotification, object: nil)
         // If the application is again active, we test once again if the album is existing
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CameraViewController.manageAlbumProcessing), name:UIApplicationDidBecomeActiveNotification, object: nil)
-        //self.manageAlbumProcessing()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -236,5 +285,12 @@ class T_CameraViewController: UIViewController {
         buttonReturnCamera.hidden = false
         buttonFlash.hidden = false
 
+    }
+}
+
+extension T_CameraViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }
