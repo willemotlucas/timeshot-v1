@@ -145,6 +145,8 @@ class T_NetworkManager {
                     // Fin de la tache de fond pour l'upload
                     UIApplication.sharedApplication().endBackgroundTask(self.postCreationTask!)
                     
+                    T_ParsePostHelper.sendNewPostNotification(currentUser.liveAlbum!)
+                    
                     // On rappelle upload pour passer à l'élément suivant
                     self.upload()
                     
