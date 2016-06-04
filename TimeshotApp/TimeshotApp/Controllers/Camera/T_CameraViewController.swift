@@ -100,11 +100,20 @@ class T_CameraViewController: UIViewController {
         
         T_HomePageViewController.showAlbumViewController()
     }
+    
     @IBAction func actionButtonProfile(sender: AnyObject) {
         
         T_HomePageViewController.showProfileViewController()
 
     }
+    
+    @IBAction func createAlbumButtonTapped(sender: UIButton) {
+        self.overlayView.hidden = true
+        self.buttonTakePicture.hidden = false
+        self.buttonReturnCamera.hidden = false
+        self.buttonFlash.hidden = false
+    }
+    
     //MARK: - Systems methods
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -130,6 +139,9 @@ class T_CameraViewController: UIViewController {
             self.createAlbumLabel.layer.zPosition = 2
             self.albumTitleTextField.layer.zPosition = 2
             self.createAlbumButton.layer.zPosition = 2
+            self.buttonTakePicture.layer.zPosition = 2
+            self.buttonFlash.layer.zPosition = 2
+            self.buttonReturnCamera.layer.zPosition = 2
             
             self.buttonAlbumVC.layer.zPosition = 10
             self.buttonProfileVC.layer.zPosition = 10
@@ -155,6 +167,14 @@ class T_CameraViewController: UIViewController {
         // Initilisation du background
         //view.backgroundColor = UIColor(patternImage: UIImage(named: "Splashscreen")!)
         
+        // Common camera manager settings
+        cameraManager.shouldRespondToOrientationChanges = false
+        cameraManager.cameraOutputMode = .StillImage
+        cameraManager.cameraOutputQuality = .Medium
+        cameraManager.flashMode = .Off
+        cameraManager.writeFilesToPhoneLibrary = false
+        cameraManager.showAccessPermissionPopupAutomatically = true
+        
         // Camera init if no live album
         if !self.isLiveAlbumExisting {
             //Need to hide right buttons and take picture buttons
@@ -170,15 +190,7 @@ class T_CameraViewController: UIViewController {
             //Need to add an overlay on the overlay view
             T_DesignHelper.colorUIView(self.overlayColoredView)
             self.overlayColoredView.alpha = 0.8
-            self.createAlbumLabel.alpha = 1
-            self.albumTitleTextField.alpha = 1
-            self.createAlbumButton.alpha = 1
             cameraManager.addPreviewLayerToView(self.cameraView)
-            
-            //Mettre au premier plan les icones du bas
-            self.buttonAlbumVC.hidden = false
-            self.buttonProfileVC.hidden = false
-            
         }
         // Camera init if live album
         else {
@@ -191,12 +203,6 @@ class T_CameraViewController: UIViewController {
             cameraManager.addPreviewLayerToView(self.cameraView)
             cameraManager.cameraDevice = .Back
         }
-        cameraManager.shouldRespondToOrientationChanges = false
-        cameraManager.cameraOutputMode = .StillImage
-        cameraManager.cameraOutputQuality = .Medium
-        cameraManager.flashMode = .Off
-        cameraManager.writeFilesToPhoneLibrary = false
-        cameraManager.showAccessPermissionPopupAutomatically = true
 
         tapOnNetworkStatus.addTarget(self.networkStatus, action: #selector(T_NetworkStatus.pressed))
         self.networkStatus.addGestureRecognizer(tapOnNetworkStatus)
