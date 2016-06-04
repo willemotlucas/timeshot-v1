@@ -41,13 +41,15 @@ class T_ParsePostHelper {
         let data = ["alert" : "\(T_ParseUserHelper.getCurrentUser()!.username!) added a photo in \(album.title!)", "badge" : "Increment"]
 
         for attendee in album.attendees {
-            let pushQuery = PFInstallation.query()!
-            pushQuery.whereKey("user", equalTo: attendee)
-            
-            let push = PFPush()
-            push.setQuery(pushQuery)
-            push.setData(data)
-            push.sendPushInBackground()
+            if attendee.objectId != T_ParseUserHelper.getCurrentUser()!.objectId {
+                let pushQuery = PFInstallation.query()!
+                pushQuery.whereKey("user", equalTo: attendee)
+                
+                let push = PFPush()
+                push.setQuery(pushQuery)
+                push.setData(data)
+                push.sendPushInBackground()
+            }
         }
     }
 }
