@@ -14,7 +14,7 @@
             </objects>
             <point key="canvasLocation" x="-582" y="41"/>
         </scene>
-        <!--Add friends-->
+        <!--Invite friends-->
         <scene sceneID="Rgg-xM-exX">
             <objects>
                 <viewController id="vZc-g9-3Ta" customClass="T_ChooseContactsAlbumCreationViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d7b-O7-sec">
-                                <rect key="frame" x="0.0" y="44" width="600" height="468"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addFriendToAlbumCell" rowHeight="50" id="15n-39-nvE" customClass="T_AddFriendToAlbumTableViewCell" customModule="TimeshotApp" customModuleProvider="target">
@@ -83,30 +83,42 @@
                                     <outlet property="delegate" destination="vZc-g9-3Ta" id="Xbh-33-qv5"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yM6-j7-PcU">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lip-Zq-LvQ">
                                 <rect key="frame" x="0.0" y="512" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem width="15" style="plain" systemItem="fixedSpace" id="hSL-4K-qR6"/>
-                                    <barButtonItem enabled="NO" title="dfdfdf" style="plain" id="Jq2-5w-Jn6">
-                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kGc-cq-gne"/>
-                                </items>
-                            </toolbar>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldH-fI-IaR">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <state key="normal" title="CREATE MY ALBUM">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="createAlbumButtonTapped:" destination="vZc-g9-3Ta" eventType="touchUpInside" id="yMu-FT-dzn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="9Rg-aL-skV"/>
+                                    <constraint firstAttribute="trailing" secondItem="ldH-fI-IaR" secondAttribute="trailing" id="VCS-VH-3IT"/>
+                                    <constraint firstItem="ldH-fI-IaR" firstAttribute="leading" secondItem="lip-Zq-LvQ" secondAttribute="leading" id="dkg-Lf-njo"/>
+                                    <constraint firstAttribute="bottom" secondItem="ldH-fI-IaR" secondAttribute="bottom" id="eNw-2x-OBA"/>
+                                    <constraint firstItem="ldH-fI-IaR" firstAttribute="top" secondItem="lip-Zq-LvQ" secondAttribute="top" id="ugi-CF-V0h"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="yM6-j7-PcU" firstAttribute="top" secondItem="d7b-O7-sec" secondAttribute="bottom" id="Fvp-fB-asv"/>
-                            <constraint firstItem="zbU-Nb-0bo" firstAttribute="top" secondItem="yM6-j7-PcU" secondAttribute="bottom" id="L5e-0Z-Vts"/>
-                            <constraint firstItem="d7b-O7-sec" firstAttribute="leading" secondItem="sWx-dD-HUE" secondAttribute="leadingMargin" constant="-20" id="Lyd-qC-THQ"/>
+                            <constraint firstAttribute="trailing" secondItem="lip-Zq-LvQ" secondAttribute="trailing" id="3EA-oP-efc"/>
+                            <constraint firstAttribute="trailing" secondItem="d7b-O7-sec" secondAttribute="trailing" id="4Z3-Ze-WW7"/>
+                            <constraint firstItem="zbU-Nb-0bo" firstAttribute="top" secondItem="lip-Zq-LvQ" secondAttribute="bottom" id="F2X-45-3xe"/>
                             <constraint firstItem="d7b-O7-sec" firstAttribute="top" secondItem="NAh-Ki-E5j" secondAttribute="bottom" id="VFd-4P-Fwp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="d7b-O7-sec" secondAttribute="trailing" constant="-20" id="XBM-wk-XF2"/>
-                            <constraint firstItem="yM6-j7-PcU" firstAttribute="leading" secondItem="sWx-dD-HUE" secondAttribute="leading" id="aE6-Pi-8Di"/>
-                            <constraint firstAttribute="trailing" secondItem="yM6-j7-PcU" secondAttribute="trailing" id="jDf-x3-SsD"/>
+                            <constraint firstAttribute="bottom" secondItem="d7b-O7-sec" secondAttribute="bottom" id="ZEk-PY-ZK3"/>
+                            <constraint firstItem="d7b-O7-sec" firstAttribute="leading" secondItem="sWx-dD-HUE" secondAttribute="leading" id="r92-HU-x3j"/>
+                            <constraint firstItem="lip-Zq-LvQ" firstAttribute="leading" secondItem="sWx-dD-HUE" secondAttribute="leading" id="tET-I3-nNG"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Add friends" id="LSD-2Q-hGZ">
+                    <navigationItem key="navigationItem" title="Invite friends" id="LSD-2Q-hGZ">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="T6O-Gk-IHd">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -117,94 +129,14 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backButton" destination="T6O-Gk-IHd" id="c3M-Mu-vt5"/>
-                        <outlet property="bottomBar" destination="yM6-j7-PcU" id="V4i-Gy-Zgp"/>
-                        <outlet property="friendAddedItem" destination="Jq2-5w-Jn6" id="ZYg-rW-qOB"/>
+                        <outlet property="createButton" destination="ldH-fI-IaR" id="RSU-bO-tcq"/>
+                        <outlet property="createButtonView" destination="lip-Zq-LvQ" id="Pyh-Pt-VaQ"/>
                         <outlet property="tableView" destination="d7b-O7-sec" id="BLP-ca-DUN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CaV-jx-MH9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1003" y="1582"/>
-        </scene>
-        <!--Create Album View Controller-->
-        <scene sceneID="5ly-RS-PeA">
-            <objects>
-                <viewController id="xLi-KZ-wFS" customClass="T_CreateAlbumViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="O5G-bf-dCg"/>
-                        <viewControllerLayoutGuide type="bottom" id="K6V-23-Z5Y"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="sgt-jO-OYx">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dot-2V-rU6">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vhl-us-YRJ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Moc-iY-mwf">
-                                <rect key="frame" x="15" y="15" width="44" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="Hew-Ri-iRV"/>
-                                    <constraint firstAttribute="height" constant="44" id="VMf-Vx-Ec2"/>
-                                </constraints>
-                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" image="Cancel"/>
-                                <connections>
-                                    <action selector="actionCancel:" destination="xLi-KZ-wFS" eventType="touchUpInside" id="5aG-Pp-Hdt"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOy-73-VDf">
-                                <rect key="frame" x="541" y="15" width="44" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="9vn-5W-UeJ"/>
-                                    <constraint firstAttribute="width" constant="44" id="nI2-11-hfK"/>
-                                </constraints>
-                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="11" maxY="5"/>
-                                <state key="normal" image="Fleche"/>
-                                <connections>
-                                    <action selector="actionNext:" destination="xLi-KZ-wFS" eventType="touchUpInside" id="5yj-Nr-dZA"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Vhl-us-YRJ" firstAttribute="bottom" secondItem="K6V-23-Z5Y" secondAttribute="top" id="9kg-nc-MPR"/>
-                            <constraint firstItem="K6V-23-Z5Y" firstAttribute="top" secondItem="NOy-73-VDf" secondAttribute="bottom" constant="15" id="BTj-EC-7KM"/>
-                            <constraint firstAttribute="trailing" secondItem="NOy-73-VDf" secondAttribute="trailing" constant="15" id="Bfz-AC-zkx"/>
-                            <constraint firstAttribute="trailing" secondItem="Vhl-us-YRJ" secondAttribute="trailing" id="Mpn-jW-Hf3"/>
-                            <constraint firstItem="Dot-2V-rU6" firstAttribute="bottom" secondItem="K6V-23-Z5Y" secondAttribute="top" id="N8K-7n-E5x"/>
-                            <constraint firstItem="Moc-iY-mwf" firstAttribute="leading" secondItem="sgt-jO-OYx" secondAttribute="leading" constant="15" id="PbT-kS-Gyi"/>
-                            <constraint firstItem="Dot-2V-rU6" firstAttribute="trailing" secondItem="Vhl-us-YRJ" secondAttribute="trailing" id="SST-7M-Rxp"/>
-                            <constraint firstItem="Dot-2V-rU6" firstAttribute="top" secondItem="Vhl-us-YRJ" secondAttribute="top" id="Zb8-Ha-eiH"/>
-                            <constraint firstItem="Moc-iY-mwf" firstAttribute="top" secondItem="sgt-jO-OYx" secondAttribute="top" constant="15" id="cO9-g9-ou9"/>
-                            <constraint firstItem="Dot-2V-rU6" firstAttribute="leading" secondItem="Vhl-us-YRJ" secondAttribute="leading" id="hgx-SG-VKh"/>
-                            <constraint firstItem="Vhl-us-YRJ" firstAttribute="leading" secondItem="sgt-jO-OYx" secondAttribute="leading" id="liG-1I-hW9"/>
-                            <constraint firstItem="Vhl-us-YRJ" firstAttribute="top" secondItem="O5G-bf-dCg" secondAttribute="bottom" id="u87-rD-iK3"/>
-                            <constraint firstItem="NOy-73-VDf" firstAttribute="top" secondItem="O5G-bf-dCg" secondAttribute="bottom" constant="15" id="zek-Mq-NIW"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="BTj-EC-7KM"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <connections>
-                        <outlet property="buttonBack" destination="Moc-iY-mwf" id="SCC-Ul-pDy"/>
-                        <outlet property="buttonNext" destination="NOy-73-VDf" id="HhM-hz-k8Y"/>
-                        <outlet property="imageView" destination="Dot-2V-rU6" id="BKd-9R-2az"/>
-                        <outlet property="scrollView" destination="Vhl-us-YRJ" id="2Ts-0S-9El"/>
-                        <segue destination="IEI-ZY-VQB" kind="show" identifier="segueChooseContactsAlbumCreation" id="MYb-f2-hxE"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Wb1-em-2et" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-552" y="1607"/>
+            <point key="canvasLocation" x="199" y="1594"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="5Iw-R3-TSJ">
@@ -388,7 +320,7 @@
                         <outlet property="overlayColoredView" destination="970-wW-zZe" id="7y2-gh-9Vr"/>
                         <outlet property="overlayView" destination="h3G-K2-eMn" id="yAm-F0-KQe"/>
                         <segue destination="fWL-dc-uT3" kind="show" identifier="segueEditCameraImage" id="itZ-bj-KsU"/>
-                        <segue destination="xLi-KZ-wFS" kind="show" identifier="segueCreateAlbum" id="BCQ-Fc-svL"/>
+                        <segue destination="IEI-ZY-VQB" kind="show" identifier="segueChooseContactsAlbumCreation" id="NfZ-kg-Uhv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7XL-W2-H71" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -474,7 +406,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iIH-vx-E7S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="230" y="1582"/>
+            <point key="canvasLocation" x="-552" y="1594"/>
         </scene>
     </scenes>
     <resources>
