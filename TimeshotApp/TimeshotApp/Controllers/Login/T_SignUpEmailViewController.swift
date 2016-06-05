@@ -103,27 +103,31 @@ class T_SignUpEmailViewController: UIViewController {
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        //Enregistrement et gestion des erreurs ici, si pb envoie d'un alert et un return false pour annuler le segue
-        // TODO Vérifier si l'adresse e-mail est pas déjà enregistré
-        
         firstNameValidator.validate(firstNameTextField.text, context: nil)
         nameValidator.validate(nameTextField.text, context: nil)
         emailValidator.validate(emailTextField.text, context: nil)
         
         let errors : [String] = T_ValidatorHelper.getAllErrors([firstNameValidator, nameValidator, emailValidator])
         if !errors.isEmpty {
-            unfreezeUI()
             T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: errors, viewController: self)
             return false
         }
         freezeUI()
-        let emailAlreadyExist = T_ParseUserHelper.emailAlreadyExist(emailTextField.text!)
-        unfreezeUI()
-        if emailAlreadyExist {
-            T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: [NSLocalizedString("This email is already used", comment: "")], viewController: self)
-            return false
+        T_ParseUserHelper.emailAlreadyExist(emailTextField.text!){ o -> Void in
+            self.unfreezeUI()
+            if o.1 == nil {
+                if o.0?.count > 0 {
+                    T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: [NSLocalizedString("This email is already used", comment: "")], viewController: self)
+                }
+                else {
+                    self.performSegueWithIdentifier("toPasswordView", sender: sender)
+                }
+            }
+            else {
+                T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: [NSLocalizedString("Error while testing your email", comment: "")], viewController: self)
+            }
         }
-        return true
+        return false
     }
     
     func keyboardDone() -> Void {

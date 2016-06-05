@@ -108,22 +108,11 @@ class T_ParseUserHelper {
      * - @email : the email to check
      * Return : bool
      */
-    static func emailAlreadyExist(email : String) -> Bool {
+    static func emailAlreadyExist(email : String, _ completeBlock :PFQueryArrayResultBlock?) {
         let query = T_User.query()!
         //query.whereKey(self.EmailAddressParse, equalTo: email)
         query.whereKey(self.EmailAddressParse, matchesRegex: String(format:"(?i)\\b%@\\b", email))
-        do {
-            let result =  try query.findObjects()
-            if result.count > 0 {
-                return true
-            }
-            else {
-                return false
-            }
-        }
-        catch _ {
-            return true
-        }
+        query.findObjectsInBackgroundWithBlock(completeBlock)
     }
     /**
      * Check if an username already exist
@@ -131,22 +120,11 @@ class T_ParseUserHelper {
      * - @email : the username to check
      * Return : bool
      */
-    static func usernameAlreadyExist(username : String) -> Bool {
+    static func usernameAlreadyExist(username : String, _ completeBlock :PFQueryArrayResultBlock?) {
         let query = T_User.query()!
         //query.whereKey(self.UsernameParse, equalTo: username)
         query.whereKey(self.UsernameParse, matchesRegex: String(format:"(?i)\\b%@\\b", username))
-        do {
-            let result =  try query.findObjects()
-            if result.count > 0 {
-                return true
-            }
-            else {
-                return false
-            }
-        }
-        catch _ {
-            return true
-        }
+        query.findObjectsInBackgroundWithBlock(completeBlock)
     }
     
     // MARK: Edition functions

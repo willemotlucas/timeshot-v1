@@ -96,13 +96,21 @@ class T_SignUpUsernameViewController: UIViewController {
             return false
         }
         freezeUI()
-        let usernameAlreadyExist = T_ParseUserHelper.usernameAlreadyExist(usernameTextField.text!)
-        unfreezeUI()
-        if usernameAlreadyExist {
-            T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: [NSLocalizedString("This username is already used", comment: "")], viewController: self)
-            return false
+        T_ParseUserHelper.usernameAlreadyExist(usernameTextField.text!){ o -> Void in
+            self.unfreezeUI()
+            if o.1 == nil {
+                if o.0?.count > 0 {
+                    T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: [NSLocalizedString("This username is already used", comment: "")], viewController: self)
+                }
+                else {
+                    self.performSegueWithIdentifier("toInviteView", sender: sender)
+                }
+            }
+            else {
+                T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: [NSLocalizedString("Error while testing your username", comment: "")], viewController: self)
+            }
         }
-        return true
+        return false
     }
     func keyboardDone() -> Void {
         usernameTextField.resignFirstResponder()
