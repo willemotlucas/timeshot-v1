@@ -299,7 +299,7 @@
                                             <outlet property="friendProfileImage" destination="KpI-1t-Q6t" id="8Od-Ie-Orq"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="T_NotificationsTableViewCell" id="Gc8-tW-XN5" customClass="T_NotificationsTableViewCell" customModule="TimeshotApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="T_AlbumRequestNotificationsTableViewCell" id="Gc8-tW-XN5" customClass="T_AlbumRequestNotificationsTableViewCell" customModule="TimeshotApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="357" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gc8-tW-XN5" id="WeN-Rl-u5P">
@@ -313,39 +313,63 @@
                                                         <constraint firstAttribute="height" constant="40" id="xLX-eT-pR0"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdy-vc-HRa">
-                                                    <rect key="frame" x="56" y="29" width="28.5" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="a93-NK-lgA"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVh-hB-xB3">
-                                                    <rect key="frame" x="56" y="10" width="35.5" height="21"/>
+                                                    <rect key="frame" x="56" y="19" width="406" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Kee-Vl-52u"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGr-6g-23m">
+                                                    <rect key="frame" x="546" y="8" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="kvE-W4-wQu"/>
+                                                        <constraint firstAttribute="height" constant="44" id="tgZ-1N-0z7"/>
+                                                    </constraints>
+                                                    <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                    <state key="normal" image="Accept"/>
+                                                    <connections>
+                                                        <action selector="acceptAlbumRequestButtonTapped:" destination="Gc8-tW-XN5" eventType="touchUpInside" id="4nV-1a-7cb"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6v-gA-FF9">
+                                                    <rect key="frame" x="482" y="8" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="dH9-lu-Tuh"/>
+                                                        <constraint firstAttribute="width" constant="44" id="zX1-bW-9Ui"/>
+                                                    </constraints>
+                                                    <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                    <state key="normal" image="Refuse"/>
+                                                    <connections>
+                                                        <action selector="refuseAlbumRequestButtonTapped:" destination="Gc8-tW-XN5" eventType="touchUpInside" id="mYO-1Q-SEn"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="cdy-vc-HRa" firstAttribute="leading" secondItem="ZBH-XV-9hd" secondAttribute="trailing" constant="8" id="0gX-ER-reT"/>
-                                                <constraint firstItem="cdy-vc-HRa" firstAttribute="top" secondItem="WeN-Rl-u5P" secondAttribute="top" constant="29" id="EIh-bO-EOH"/>
+                                                <constraint firstItem="dGr-6g-23m" firstAttribute="leading" secondItem="R6v-gA-FF9" secondAttribute="trailing" constant="20" id="9pC-Uj-htX"/>
+                                                <constraint firstItem="R6v-gA-FF9" firstAttribute="centerY" secondItem="WeN-Rl-u5P" secondAttribute="centerY" id="9z8-42-SFF"/>
+                                                <constraint firstItem="dGr-6g-23m" firstAttribute="leading" secondItem="R6v-gA-FF9" secondAttribute="trailing" constant="20" id="HI0-p0-Gl1"/>
                                                 <constraint firstItem="ZBH-XV-9hd" firstAttribute="centerY" secondItem="WeN-Rl-u5P" secondAttribute="centerY" id="HwF-kE-36a"/>
+                                                <constraint firstAttribute="trailing" secondItem="dGr-6g-23m" secondAttribute="trailing" constant="10" id="PT3-cp-8nb"/>
                                                 <constraint firstItem="KVh-hB-xB3" firstAttribute="leading" secondItem="ZBH-XV-9hd" secondAttribute="trailing" constant="8" id="Pps-fb-WRe"/>
-                                                <constraint firstItem="KVh-hB-xB3" firstAttribute="top" secondItem="WeN-Rl-u5P" secondAttribute="top" constant="10" id="exh-Is-6WR"/>
+                                                <constraint firstItem="dGr-6g-23m" firstAttribute="centerY" secondItem="WeN-Rl-u5P" secondAttribute="centerY" id="gMQ-cz-3bI"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="dGr-6g-23m" secondAttribute="trailing" id="ozR-da-Fte"/>
+                                                <constraint firstItem="R6v-gA-FF9" firstAttribute="leading" secondItem="KVh-hB-xB3" secondAttribute="trailing" constant="20" id="xDO-uC-wK2"/>
+                                                <constraint firstItem="KVh-hB-xB3" firstAttribute="centerY" secondItem="WeN-Rl-u5P" secondAttribute="centerY" id="xy0-EK-RcH"/>
                                                 <constraint firstItem="ZBH-XV-9hd" firstAttribute="leading" secondItem="WeN-Rl-u5P" secondAttribute="leading" constant="8" id="y32-n9-aKh"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="9pC-Uj-htX"/>
+                                                    <exclude reference="ozR-da-Fte"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="notificationHelpTextLabel" destination="cdy-vc-HRa" id="f3G-JB-ZAG"/>
                                             <outlet property="notificationTextLabel" destination="KVh-hB-xB3" id="qAz-sc-PpA"/>
                                             <outlet property="profileImageView" destination="ZBH-XV-9hd" id="GJk-yE-jhS"/>
-                                            <segue destination="gZp-wi-ZJv" kind="presentation" identifier="showAlbumRequestSegue" id="tAM-Ja-s7K"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
