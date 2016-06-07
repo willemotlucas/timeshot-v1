@@ -223,12 +223,6 @@ class T_ProfileViewController: UIViewController {
 
 // MARK: extension
 
-extension T_ProfileViewController: ModalViewControllerDelegate {
-    func refreshTableView() {
-        self.loadNotificationsData()
-    }
-}
-
 extension T_ProfileViewController: UITableViewDelegate {
 
 }
