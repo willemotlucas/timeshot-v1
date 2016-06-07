@@ -27,6 +27,9 @@ class T_CameraViewController: UIViewController {
     var newtorkManager = T_NetworkManager.sharedInstance
     var networkStatus = T_NetworkStatus.sharedInstance
     let tapOnNetworkStatus = UITapGestureRecognizer()
+    
+    //Key words for auto generate album title
+    let autoTitles = ["Amazing", "Sunny", "Lucky", "Lovely", "Crazy"]
 
     private
     var isFlashActivated:Bool = false
@@ -42,7 +45,6 @@ class T_CameraViewController: UIViewController {
     
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var overlayColoredView: UIView!
-    @IBOutlet weak var createAlbumLabel: UILabel!
     @IBOutlet weak var albumTitleTextField: UITextField!
     @IBOutlet weak var createAlbumButton: UIButton!
     
@@ -126,7 +128,6 @@ class T_CameraViewController: UIViewController {
         if !isLiveAlbumExisting {
             self.overlayView.layer.zPosition = 1
             self.cameraView.layer.zPosition = 0
-            self.createAlbumLabel.layer.zPosition = 2
             self.albumTitleTextField.layer.zPosition = 2
             self.createAlbumButton.layer.zPosition = 2
             self.buttonTakePicture.layer.zPosition = 2
@@ -157,6 +158,10 @@ class T_CameraViewController: UIViewController {
         // Initilisation du background
         //view.backgroundColor = UIColor(patternImage: UIImage(named: "Splashscreen")!)
         
+        //Text field init with random title
+        let randomIndex = Int(arc4random_uniform(UInt32(autoTitles.count)))
+        self.albumTitleTextField.attributedPlaceholder = NSAttributedString(string:"\(autoTitles[randomIndex]) \(T_DateHelper.getDayOfWeekInLetter())",attributes:[NSForegroundColorAttributeName: UIColor(colorLiteralRed: 255, green: 255, blue: 255, alpha: 0.5)])
+        
         // Common camera manager settings
         cameraManager.shouldRespondToOrientationChanges = false
         cameraManager.cameraOutputMode = .StillImage
@@ -167,6 +172,12 @@ class T_CameraViewController: UIViewController {
         
         // Camera init if no live album
         if !self.isLiveAlbumExisting {
+            //Style of text field
+            T_DesignHelper.addSubBorder(self.albumTitleTextField)
+            T_DesignHelper.colorPlaceHolder(self.albumTitleTextField)
+            T_DesignHelper.addRoundBorder(self.createAlbumButton)
+            T_DesignHelper.colorBorderButton(self.createAlbumButton)
+            
             //Hide camera view and show overlay
             self.showOverlayView()
             
@@ -175,9 +186,11 @@ class T_CameraViewController: UIViewController {
             //Mettre la camera en front pour la prise du selfie
             cameraManager.cameraDevice = .Front
             
-            //Need to add an overlay on the overlay view
+            //Need to add color the overlay view
             T_DesignHelper.colorUIView(self.overlayColoredView)
             self.overlayColoredView.alpha = 0.8
+            
+            //Add the camera preview
             cameraManager.addPreviewLayerToView(self.cameraView)
         }
         // Camera init if live album
@@ -185,8 +198,8 @@ class T_CameraViewController: UIViewController {
             //Show camera view and hide overlay
             self.showCameraView()
             
-            cameraManager.addPreviewLayerToView(self.cameraView)
             cameraManager.cameraDevice = .Back
+            cameraManager.addPreviewLayerToView(self.cameraView)
         }
 
         tapOnNetworkStatus.addTarget(self.networkStatus, action: #selector(T_NetworkStatus.pressed))
@@ -227,7 +240,12 @@ class T_CameraViewController: UIViewController {
             
             destinationVC.cover = UIImage(named: "default-cover")
             destinationVC.duration = 3
-            destinationVC.albumTitle = albumTitleTextField.text!
+            if let title = self.albumTitleTextField.text where !title.isEmpty{
+                destinationVC.albumTitle = title
+            }
+            else {
+                destinationVC.albumTitle = albumTitleTextField.placeholder!
+            }
         }
     }
     

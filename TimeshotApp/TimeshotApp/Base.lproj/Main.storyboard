@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -88,7 +89,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldH-fI-IaR">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <state key="normal" title="CREATE MY ALBUM">
+                                        <state key="normal" title="INVITE FRIENDS">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -208,31 +209,32 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="970-wW-zZe">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.89019607840000003" green="0.31372549020000001" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create your new album" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ek1-c9-8FW">
-                                        <rect key="frame" x="188" y="154" width="225" height="25.5"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new-album" translatesAutoresizingMaskIntoConstraints="NO" id="Gnw-z8-PGL">
+                                        <rect key="frame" x="245" y="37" width="109" height="123"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="225" id="WFc-AU-ifb"/>
-                                            <constraint firstAttribute="width" constant="225" id="f4K-v7-qd9"/>
+                                            <constraint firstAttribute="width" secondItem="Gnw-z8-PGL" secondAttribute="height" multiplier="109:123" id="TVc-o9-bZt"/>
+                                            <constraint firstAttribute="height" constant="123" id="U5M-Zf-Rw4"/>
+                                            <constraint firstAttribute="width" constant="109" id="fvI-uV-rsy"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <color key="textColor" red="0.99038461538461542" green="1" blue="0.98076923076923073" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="f4K-v7-qd9"/>
-                                            </mask>
-                                        </variation>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Awesome birthday!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ReD-cP-anD">
-                                        <rect key="frame" x="228" y="200" width="144.5" height="30"/>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ReD-cP-anD">
+                                        <rect key="frame" x="185" y="220" width="230" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="230" id="Zv8-nX-50U"/>
+                                        </constraints>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dgl-wx-G6S">
-                                        <rect key="frame" x="272" y="250" width="56" height="30"/>
-                                        <state key="normal" title="CREATE">
+                                        <rect key="frame" x="185" y="292" width="230" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="230" id="29L-lR-Xs9"/>
+                                            <constraint firstAttribute="height" constant="44" id="Q90-Me-pjO"/>
+                                        </constraints>
+                                        <state key="normal" title="CREATE ALBUM">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -241,15 +243,16 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Dgl-wx-G6S" firstAttribute="top" secondItem="ReD-cP-anD" secondAttribute="bottom" constant="20" id="L7T-6i-ZIP"/>
+                                    <constraint firstItem="ReD-cP-anD" firstAttribute="centerX" secondItem="h3G-K2-eMn" secondAttribute="centerX" id="Efh-hH-H0E"/>
+                                    <constraint firstItem="Dgl-wx-G6S" firstAttribute="top" secondItem="ReD-cP-anD" secondAttribute="bottom" constant="55" id="L7T-6i-ZIP"/>
                                     <constraint firstItem="970-wW-zZe" firstAttribute="top" secondItem="h3G-K2-eMn" secondAttribute="top" id="Q3T-gx-WlW"/>
                                     <constraint firstAttribute="trailing" secondItem="970-wW-zZe" secondAttribute="trailing" id="SOT-tZ-hAt"/>
-                                    <constraint firstItem="ek1-c9-8FW" firstAttribute="centerX" secondItem="h3G-K2-eMn" secondAttribute="centerX" id="U6u-ra-Rvh"/>
                                     <constraint firstItem="ReD-cP-anD" firstAttribute="centerX" secondItem="h3G-K2-eMn" secondAttribute="centerX" id="eN0-no-z3i"/>
                                     <constraint firstItem="Dgl-wx-G6S" firstAttribute="centerX" secondItem="h3G-K2-eMn" secondAttribute="centerX" id="exM-Uf-lqc"/>
-                                    <constraint firstItem="ReD-cP-anD" firstAttribute="top" secondItem="h3G-K2-eMn" secondAttribute="top" constant="200" id="iNs-El-GQb"/>
+                                    <constraint firstItem="ReD-cP-anD" firstAttribute="top" secondItem="h3G-K2-eMn" secondAttribute="top" constant="220" id="iNs-El-GQb"/>
+                                    <constraint firstItem="Gnw-z8-PGL" firstAttribute="centerX" secondItem="h3G-K2-eMn" secondAttribute="centerX" id="ikL-RA-Dea"/>
                                     <constraint firstItem="970-wW-zZe" firstAttribute="leading" secondItem="h3G-K2-eMn" secondAttribute="leading" id="ls2-mq-mtL"/>
-                                    <constraint firstItem="ReD-cP-anD" firstAttribute="top" secondItem="ek1-c9-8FW" secondAttribute="bottom" constant="20" id="u8r-pM-crf"/>
+                                    <constraint firstItem="ReD-cP-anD" firstAttribute="top" secondItem="Gnw-z8-PGL" secondAttribute="bottom" constant="60" id="nlg-Zf-pjA"/>
                                     <constraint firstAttribute="bottom" secondItem="970-wW-zZe" secondAttribute="bottom" id="zie-lS-p1u"/>
                                 </constraints>
                             </view>
@@ -316,7 +319,6 @@
                         <outlet property="buttonTakePicture" destination="CJx-zu-Kjj" id="Qu7-82-6gk"/>
                         <outlet property="cameraView" destination="aAZ-uj-fBF" id="wRt-RV-pIm"/>
                         <outlet property="createAlbumButton" destination="Dgl-wx-G6S" id="CtO-dm-T0j"/>
-                        <outlet property="createAlbumLabel" destination="ek1-c9-8FW" id="7UQ-5b-RNk"/>
                         <outlet property="overlayColoredView" destination="970-wW-zZe" id="7y2-gh-9Vr"/>
                         <outlet property="overlayView" destination="h3G-K2-eMn" id="yAm-F0-KQe"/>
                         <segue destination="fWL-dc-uT3" kind="show" identifier="segueEditCameraImage" id="itZ-bj-KsU"/>
@@ -417,5 +419,6 @@
         <image name="Fleche" width="42" height="49"/>
         <image name="TakePicture" width="78" height="78"/>
         <image name="UserProfile" width="48" height="45"/>
+        <image name="new-album" width="97" height="111"/>
     </resources>
 </document>
