@@ -19,7 +19,7 @@ class T_PhotosAlbumLiveViewController: UIViewController {
     private let frameAnimationSpringSpeed:CGFloat = 10
     private let kolodaCountOfVisibleCards = 3
     private let kolodaAlphaValueSemiTransparent:CGFloat = 0.2
-    private var photos : [String?] = ["selfie1.jpg", "selfie2.jpg", "selfie3.jpg"]
+    private var posts : [T_Post]?
 
     @IBOutlet weak var kolodaView: KolodaView!
     override func viewDidLoad() {
@@ -29,6 +29,20 @@ class T_PhotosAlbumLiveViewController: UIViewController {
         
         kolodaView.dataSource = self
         kolodaView.delegate = self
+        
+        T_ParseAlbumHelper.queryAlbumPinned{albumLive -> Void in
+            T_ParsePostHelper.getAllPostNotVoted(T_User.currentUser()!, albumLive!, { posts -> Void in
+                self.posts = posts
+                self.kolodaView.resetCurrentCardIndex()
+                if let posts = self.posts {
+                    for post in posts {
+                        post.downloadImage()
+                        post.image.observe{_ in self.kolodaView.reloadData()}
+                    }
+                }
+            })
+        }
+        T_ParseVoteHelper.getLiveAlbum()
 
         // Do any additional setup after loading the view.
     }
@@ -36,7 +50,7 @@ class T_PhotosAlbumLiveViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         print(kolodaView.currentCardIndex)
-        for i in 0..<kolodaView.currentCardIndex {
+        /*for i in 0..<kolodaView.currentCardIndex {
             photos[i] = nil
         }
         photos.append("selfie4.jpg")
@@ -44,11 +58,12 @@ class T_PhotosAlbumLiveViewController: UIViewController {
         photos.append("selfie6.jpg")
         photos.append("selfie7.jpg")
         photos.append("selfie8.jpg")
-        kolodaView.resetCurrentCardIndex()
+        kolodaView.resetCurrentCardIndex()*/
         // Dispose of any resources that can be recreated.
     }
     
     @IBAction func dislikeTapped(sender: AnyObject) {
+        //kolodaView.reloadData()
         kolodaView.swipe(.Left)
     }
     
@@ -71,62 +86,57 @@ class T_PhotosAlbumLiveViewController: UIViewController {
 extension T_PhotosAlbumLiveViewController : KolodaViewDataSource {
 
     func kolodaNumberOfCards(koloda: KolodaView) -> UInt {
-        return UInt(photos.count)
+        return UInt(posts?.count ?? 0)
     }
     
     func koloda(koloda: KolodaView, viewForCardAtIndex index: UInt) -> UIView {
 //        let imageName = photos[Int(index) % photos.count]
 //        let image = UIImage(named: imageName)
-//        let imageView = UIImageView(image: image!)
-//        imageView.contentMode = UIViewContentMode.ScaleAspectFit
-//        imageView.clipsToBounds = true
+        if let posts = self.posts{
+            let place = UIImage(named: "default-friend-picture")
+            let img = posts[Int(index)].image.value
+            let imageView = UIImageView(image: img ?? place)
+            imageView.contentMode = UIViewContentMode.ScaleAspectFill
+            imageView.clipsToBounds = true
+            return imageView
+        }
+       
         //print(imageView)
         return UIView()
         
     }
     
     func koloda(koloda: KolodaView, viewForCardOverlayAtIndex index: UInt) -> OverlayView? {
-        return OverlayView()
+        //return OverlayView()
         //return CustomKolodaView() as? OverlayView
-        //return NSBundle.mainBundle().loadNibNamed("CustomOverlayView",
-        //                                          owner: self, options: nil)[0] as? OverlayView
+        return NSBundle.mainBundle().loadNibNamed("KolodaBanner",
+                                                  owner: self, options: nil)[0] as? OverlayView
     }
     
 }
 
 // MARK: - KolodaViewDelegate
 extension T_PhotosAlbumLiveViewController : KolodaViewDelegate {
-    func koloda(koloda: KolodaView, didSwipedCardAtIndex index: UInt, inDirection direction: SwipeResultDirection){
+    func koloda(koloda: KolodaView, didSwipeCardAtIndex index: UInt, inDirection direction: SwipeResultDirection) {
         if direction == SwipeResultDirection.Left {
             print("Swipe Left")
+            //T_ParseVoteHelper.disliked(posts![Int(index)], user: T_User.currentUser()!)
         }
         else if direction == SwipeResultDirection.Right {
             print("Swipe Right")
-        }
-        else if direction == SwipeResultDirection.None {
-            print("WOW - A None direction")
+            //T_ParseVoteHelper.liked(posts![Int(index)], user: T_User.currentUser()!)
         }
     }
     
-    func koloda(kolodaDidRunOutOfCards koloda: KolodaView){
+    func kolodaDidRunOutOfCards(koloda: KolodaView){
         print("kolodaDidRunOutOfCards")
     }
     func koloda(koloda: KolodaView, didSelectCardAtIndex index: UInt){
         //print("didSelectCardAtIndex, index=\(index)")
     }
     
-    func koloda(kolodaShouldMoveBackgroundCard koloda: KolodaView) -> Bool {
-        return true
-    }
-    func koloda(kolodaShouldTransparentizeNextCard koloda: KolodaView) -> Bool {
-        return true
-    }
-    func koloda(kolodaShouldApplyAppearAnimation koloda: KolodaView) -> Bool {
-        return true
-    }
-    
     func koloda(kolodaDidResetCard koloda: KolodaView){
-        //print("kolodaDidResetCard")
+        print("kolodaDidResetCard")
         
     }
     func koloda(koloda: KolodaView, didShowCardAtIndex index: UInt){

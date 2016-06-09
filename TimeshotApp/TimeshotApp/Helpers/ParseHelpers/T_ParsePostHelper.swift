@@ -13,7 +13,7 @@ class T_ParsePostHelper {
     
     static let ParsePostClass = "Post"
     static let ParsePostToAlbum = "toAlbum"
-    static let ParsePostObjectId = "ObjectId"
+    static let ParsePostObjectId = "objectId"
     static let ParsePostFromUser = "fromUser"
     static let ParsePostIsDeleted = "isDeleted"
     
