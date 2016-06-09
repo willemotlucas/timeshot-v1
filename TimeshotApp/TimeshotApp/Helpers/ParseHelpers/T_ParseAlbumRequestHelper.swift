@@ -62,6 +62,23 @@ class T_ParseAlbumRequestHelper {
     }
     
     /*
+     * Retrieve all the pending album requests from the current album.
+     *
+     * Params:
+     * - @completionBlock : the methods executed asynchroneously when all the pending requests have been retrieved
+     */
+    static func getPendingAlbumRequestToCurrentAlbum(toAlbum: T_Album, completionBlock: PFQueryArrayResultBlock?) {
+        let pendingAlbumRequest = PFQuery(className: ParseAlbumRequestClass)
+        pendingAlbumRequest.whereKey(ParseAlbumRequestStatus, equalTo: albumRequestStatus(.Pending))
+        pendingAlbumRequest.whereKey(ParseAlbumRequestToAlbum, equalTo: toAlbum)
+        pendingAlbumRequest.includeKey(ParseAlbumRequestFromUser)
+        
+        pendingAlbumRequest.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
+    
+    
+    /*
      * Send an album request to a user
      *
      * Params:
@@ -110,5 +127,16 @@ class T_ParseAlbumRequestHelper {
     static func rejectFriendRequest(albumRequest: T_AlbumRequest, completionBlock: PFBooleanResultBlock){
         albumRequest.status = albumRequestStatus(.Rejected)
         albumRequest.saveInBackgroundWithBlock(completionBlock)
+    }
+    
+    static func sendAlbumRequestNotification(userInvited: T_User){
+        let pushQuery = PFInstallation.query()!
+        pushQuery.whereKey("user", equalTo: userInvited) //friend is a PFUser object
+        
+        let data = ["alert" : "\(T_ParseUserHelper.getCurrentUser()!.username!) invited you to join his album", "badge" : "Increment"]
+        let push = PFPush()
+        push.setQuery(pushQuery)
+        push.setData(data)
+        push.sendPushInBackground()
     }
 }

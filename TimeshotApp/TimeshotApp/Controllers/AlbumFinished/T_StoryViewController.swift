@@ -21,6 +21,11 @@ class T_StoryViewController: UIViewController {
     
     var actualPost : T_Post? {
         didSet {
+            // free memory of image stored with post that is no longer displayed
+            if let oldValue = oldValue where oldValue != actualPost {
+                oldValue.image.value = nil
+            }
+            
             if let post = actualPost {
                 post.image.bindTo(self.actualImageView.bnd_image)
                 
@@ -123,7 +128,7 @@ class T_StoryViewController: UIViewController {
             fromUserLabel.text = actualPost!.fromUser.username
         
             let calendar = NSCalendar.currentCalendar()
-            let comp = calendar.components([.Hour, .Minute], fromDate: actualPost!.createdAt!)
+            let comp = calendar.components([.Hour, .Minute], fromDate: actualPost!.createdAtDate)
             hourLabel.text = "\(comp.hour):\(comp.minute)"
         
             // Work out which pages you want to load

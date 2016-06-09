@@ -9,6 +9,7 @@
 import Foundation
 import Parse
 import Bond
+import ConvenienceKit
 
 class T_Post : PFObject, PFSubclassing {
     
@@ -16,13 +17,15 @@ class T_Post : PFObject, PFSubclassing {
     @NSManaged var photo: PFFile
     @NSManaged var toAlbum: T_Album
     @NSManaged var isDeleted: Bool
+    @NSManaged var createdAtDate: NSDate
     
     var image : Observable<UIImage?> = Observable(nil)
     
-    static var postCreationTask: UIBackgroundTaskIdentifier?
     
-    override init()
-    {
+    static var postCreationTask: UIBackgroundTaskIdentifier?
+    static var imageCache: NSCacheSwift<String, UIImage>!
+    
+    override init(){
         super.init()
     }
     
@@ -32,6 +35,7 @@ class T_Post : PFObject, PFSubclassing {
         }
         dispatch_once(&Static.onceToken) {
             self.registerSubclass()
+            T_Post.imageCache = NSCacheSwift<String, UIImage>()
         }
     }
     
@@ -47,6 +51,7 @@ class T_Post : PFObject, PFSubclassing {
         self.photo = T_ParseUserHelper.fileFromImage(photo)
         self.toAlbum = toAlbum
         self.isDeleted = false
+        self.createdAtDate = NSDate()
     }
     
     init(fromUser: T_User, toAlbum:T_Album)
@@ -56,6 +61,7 @@ class T_Post : PFObject, PFSubclassing {
         self.fromUser = fromUser
         self.toAlbum = toAlbum
         self.isDeleted = false
+        self.createdAtDate = NSDate()
     }
 
     
@@ -102,20 +108,27 @@ class T_Post : PFObject, PFSubclassing {
     }
     
     
-    // 
+
     func downloadImage() {
         // if image is not downloaded yet, get it
-        // 1
         if (image.value == nil) {
-            // 2
-            photo.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
-                if let data = data {
-                    let image = UIImage(data: data, scale:1.0)!
-                    // 3
-                    self.image.value = image
+            // We check if we have the image in the cache
+            image.value = T_Post.imageCache[self.photo.name]
+            
+            // if not, we dowload it from Parse
+            if(image.value == nil) {
+                //print("imageValue:\(image.value)")
+                photo.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
+                    if let data = data {
+                        let image = UIImage(data: data, scale:1.0)!
+                        // 3
+                        self.image.value = image
+                        T_Post.imageCache[self.photo.name] = image
+                    }
                 }
             }
         }
     }
+    
     
 }

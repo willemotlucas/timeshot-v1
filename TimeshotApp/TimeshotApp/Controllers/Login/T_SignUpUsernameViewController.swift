@@ -7,21 +7,36 @@
 //
 
 import UIKit
-import CameraManager
+import MBProgressHUD
 
 class T_SignUpUsernameViewController: UIViewController {
-    @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var continueButton: UIButton!
     var user : T_User?
     let usernameValidator = T_ValidatorHelper.userNameValidator()
-    let cameraManager = CameraManager()
+    
+    var progressHUD:MBProgressHUD?
+    
+    
+    lazy var inputToolbar: UIToolbar = {
+        var toolbar = UIToolbar()
+        toolbar.barStyle = .Default
+        toolbar.translucent = false
+        toolbar.sizeToFit()
+        
+        var doneButton = UIBarButtonItem(title: "OK", style: .Done, target: self, action: #selector(keyboardDone))
+        var flexibleSpaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        var fixedSpaceButton = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil)
+        
+        toolbar.setItems([flexibleSpaceButton, doneButton], animated: false)
+        toolbar.userInteractionEnabled = true
+        
+        return toolbar
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.cameraManager.cameraDevice = .Front
-        self.cameraManager.addPreviewLayerToView(self.cameraView)
         usernameTextField.delegate = self
         
         // Do any additional setup after loading the view.
@@ -44,6 +59,21 @@ class T_SignUpUsernameViewController: UIViewController {
         
     }
     
+    @IBAction func tap(sender: AnyObject) {
+        if usernameTextField.editing{
+            usernameTextField.resignFirstResponder()
+        }
+    }
+    // MARK: Methods
+    func freezeUI() {
+        progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        progressHUD?.mode = .Indeterminate
+    }
+    
+    func unfreezeUI() {
+        progressHUD?.hide(true)
+    }
+    
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -53,7 +83,6 @@ class T_SignUpUsernameViewController: UIViewController {
                 if let user = user {
                     user.username = username
                     signupInviteView.user = user
-                    signupInviteView.viaFacebook = false
                 }
             }
             
@@ -66,12 +95,17 @@ class T_SignUpUsernameViewController: UIViewController {
             T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: errors, viewController: self)
             return false
         }
+        freezeUI()
         let usernameAlreadyExist = T_ParseUserHelper.usernameAlreadyExist(usernameTextField.text!)
+        unfreezeUI()
         if usernameAlreadyExist {
             T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: [NSLocalizedString("This username is already used", comment: "")], viewController: self)
             return false
         }
         return true
+    }
+    func keyboardDone() -> Void {
+        usernameTextField.resignFirstResponder()
     }
     
 }
@@ -79,7 +113,11 @@ class T_SignUpUsernameViewController: UIViewController {
 extension T_SignUpUsernameViewController: UITextFieldDelegate {
     // MARK: - Text Field Delegate
     
-    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        textField.inputAccessoryView = inputToolbar
+        
+        return true
+    }
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Hide the keyboard.
         textField.resignFirstResponder()

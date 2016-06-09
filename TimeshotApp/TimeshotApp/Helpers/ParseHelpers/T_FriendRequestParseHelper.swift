@@ -57,6 +57,9 @@ class T_FriendRequestParseHelper {
         pendingFriendRequest.whereKey(ParseFriendRequestStatus, equalTo: friendRequestStatus(.Pending))
         pendingFriendRequest.whereKey(ParseFriendRequestToUser, equalTo: PFUser.currentUser()!)
         pendingFriendRequest.includeKey(ParseFriendRequestFromUser)
+        
+        //pendingFriendRequest.cachePolicy = .CacheElseNetwork
+        
         pendingFriendRequest.findObjectsInBackgroundWithBlock(completionBlock)
     }
     
@@ -79,7 +82,6 @@ class T_FriendRequestParseHelper {
         getAllPendingFriendRequest { (result: [PFObject]?, erorr: NSError?) in
             let pendingRequest = result as? [T_FriendRequest] ?? []
 
-            print("pending request count: \(pendingRequest.count)")
             var users: [T_User] = []
             // We iterate through the array to build the list of users
             for request in pendingRequest {
@@ -121,6 +123,8 @@ class T_FriendRequestParseHelper {
         // Include users to retrieve their data
         acceptedFriendRequest.includeKey(ParseFriendRequestFromUser)
         acceptedFriendRequest.includeKey(ParseFriendRequestToUser)
+        
+        //acceptedFriendRequest.cachePolicy = .CacheElseNetwork
         
         acceptedFriendRequest.findObjectsInBackgroundWithBlock(completionBlock)
     }
@@ -191,6 +195,17 @@ class T_FriendRequestParseHelper {
     static func rejectFriendRequest(friendRequest: T_FriendRequest, completionBlock: PFBooleanResultBlock){
         friendRequest.status = friendRequestStatus(.Rejected)
         friendRequest.saveInBackgroundWithBlock(completionBlock)
+    }
+    
+    static func sendFriendRequestNotification(userSelected: T_User){
+        let pushQuery = PFInstallation.query()!
+        pushQuery.whereKey("user", equalTo: userSelected) //friend is a PFUser object
+        
+        let data = ["alert" : "\(T_ParseUserHelper.getCurrentUser()!.username!) sent you a friend request", "badge" : "Increment"]
+        let push = PFPush()
+        push.setQuery(pushQuery)
+        push.setData(data)
+        push.sendPushInBackground()
     }
     
 }

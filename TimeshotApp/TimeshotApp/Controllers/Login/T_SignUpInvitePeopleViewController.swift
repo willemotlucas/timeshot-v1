@@ -7,22 +7,19 @@
 //
 
 import UIKit
-import CameraManager
+import MBProgressHUD
 
 class T_SignUpInvitePeopleViewController: UIViewController {
     
     @IBOutlet weak var yesIWantButton: UIButton!
     @IBOutlet weak var finishUp: UIButton!
     @IBOutlet weak var overlayView: UIView!
-    @IBOutlet weak var cameraView: UIView!
-    let cameraManager = CameraManager()
     var user : T_User?
-    var viaFacebook : Bool?
+    
+    var progressHUD:MBProgressHUD?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.cameraManager.cameraDevice = .Front
-        self.cameraManager.addPreviewLayerToView(self.cameraView)
         // Do any additional setup after loading the view.
     }
     
@@ -39,6 +36,16 @@ class T_SignUpInvitePeopleViewController: UIViewController {
         
         T_DesignHelper.colorUIView(overlayView)
         
+    }
+    
+    // MARK: Methods
+    func freezeUI() {
+        progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        progressHUD?.mode = .Indeterminate
+    }
+    
+    func unfreezeUI() {
+        progressHUD?.hide(true)
     }
     
     // MARK: - Navigation
@@ -60,21 +67,13 @@ class T_SignUpInvitePeopleViewController: UIViewController {
     }
     
     @IBAction func finishSignUp(sender: AnyObject) {
-        if let viaFb = viaFacebook where viaFb == true{
-            do {
-                try user?.save()
-            }
-            catch _ {
-                
-            }
+        freezeUI()
+        do {
+            try user?.signUp()
+            unfreezeUI()
         }
-        else {
-            do {
-                try user?.signUp()
-            }
-            catch _ {
-                
-            }
+        catch _ {
+            unfreezeUI()
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController") as UIViewController

@@ -12,6 +12,7 @@ import AddressBook
 import AddressBookUI
 import DZNEmptyDataSet
 import PullToRefresh
+import MBProgressHUD
 
 enum ContentType {
     case Friends, Notifications
@@ -50,7 +51,8 @@ class T_ProfileViewController: UIViewController {
     var photoTakingHelper: T_PhotoTakingHelper?
     
     let refresher = PullToRefresh()
-    
+    var refresherState = false
+    var progressHUD : MBProgressHUD?
 
     // MARK: Overrided functions
     override func didReceiveMemoryWarning() {
@@ -77,6 +79,7 @@ class T_ProfileViewController: UIViewController {
         
         //Add pull to refresh
         self.tableView.addPullToRefresh(refresher, action: {
+            self.refresherState = true
             self.loadFriendsData()
             self.loadNotificationsData()
         })
@@ -105,27 +108,34 @@ class T_ProfileViewController: UIViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showAlbumRequestSegue" {
-            let albumRequestVC = segue.destinationViewController as! T_AlbumRequestViewController
-            albumRequestVC.delegate = self
-            albumRequestVC.albumRequest = self.currentAlbumRequest!
-        }
+
     }
     
     // MARK: Methods
     
     func loadFriendsData(){
         //Load the friends
-        T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
-            self.friends = friends
-            self.tableView.reloadData()
-            self.tableView.endRefreshing()
-        })
+        if refresherState {
+            T_ParseUserHelper.getCurrentUser()?.getAllFriendsFromParse({ (friends) in
+                self.friends = friends
+                self.tableView.reloadData()
+                self.tableView.endRefreshing()
+                self.refresherState = false
+            })
+        } else {
+            T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
+                self.friends = friends
+                self.tableView.reloadData()
+                self.tableView.endRefreshing()
+                self.refresherState = false
+            })
+            
+        }
+        
         
         //Load the friends pending requests
         T_FriendRequestParseHelper.getPendingFriendRequestToCurrentUser { (result: [PFObject]?, error:NSError?) in
             self.pendingRequests = result as? [T_FriendRequest] ?? []
-            print(self.pendingRequests.count)
             self.tableView.reloadData()
             self.tableView.endRefreshing()
         }
@@ -150,6 +160,9 @@ class T_ProfileViewController: UIViewController {
         case 1:
             contentToDisplay = .Notifications
             self.tableView.allowsSelection = true
+            let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: nil)
+            UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+            UIApplication.sharedApplication().registerForRemoteNotifications()
         default: break
         }
         
@@ -209,12 +222,6 @@ class T_ProfileViewController: UIViewController {
 }
 
 // MARK: extension
-
-extension T_ProfileViewController: ModalViewControllerDelegate {
-    func refreshTableView() {
-        self.loadNotificationsData()
-    }
-}
 
 extension T_ProfileViewController: UITableViewDelegate {
 
@@ -291,14 +298,6 @@ extension T_ProfileViewController: UITableViewDataSource {
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if self.contentToDisplay == .Notifications {
-            self.currentAlbumRequest = self.albumRequests[indexPath.row] as T_AlbumRequest
-            self.currentAlbumRequest!.toAlbum!.downloadCoverImage()
-            self.performSegueWithIdentifier("showAlbumRequestSegue", sender: self)
-        }
-    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch contentToDisplay {
         case .Friends:
@@ -366,16 +365,16 @@ extension T_ProfileViewController: UITableViewDataSource {
      * - @indexPath : indexPath of the row to retrieve the user
      */
     func createNotificationCell(indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("T_NotificationsTableViewCell", forIndexPath: indexPath) as! T_NotificationsTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("T_AlbumRequestNotificationsTableViewCell", forIndexPath: indexPath) as! T_AlbumRequestNotificationsTableViewCell
         let albumRequest = self.albumRequests[indexPath.row]
         let user = albumRequest.fromUser! as! T_User
         user.downloadImage()
         
         cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.delegate = self
         cell.friend = user
         cell.albumRequest = albumRequest
         cell.notificationTextLabel.text = "@\(user.username!) invited you to join \(albumRequest.toAlbum!.title!)!"
-        cell.notificationHelpTextLabel.text = "Click to answer to the request"
         return cell
     }
 }
@@ -459,6 +458,36 @@ extension T_ProfileViewController: TableViewUpdater {
     func updatePendingRequestsAfterRejecting(pendingRequest: T_FriendRequest) {
         self.pendingRequests.removeAtIndex(self.pendingRequests.indexOf(pendingRequest)!)
         tableView.reloadData()
+    }
+}
+
+/*
+ * Custom protocol defined in T_AlbumRequestTableViewCell allowing us to communicate with view controller
+ * when clicking on a button of specific cell
+ */
+extension T_ProfileViewController: AlbumRequestsUpdater {
+    /*
+     * Update the pending request section after accepting a pending request
+     * Params:
+     * - @pendingRequest : the pending request to remove of the section and to add in friends section
+     */
+    func updateAlbumRequestsTableView(albumRequest: T_AlbumRequest) {
+        self.albumRequests.removeAtIndex(self.albumRequests.indexOf(albumRequest)!)
+        tableView.reloadData()
+    }
+    
+    func showHUD() {
+        progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        progressHUD?.labelText = NSLocalizedString("Joining album", comment: "")
+        progressHUD?.mode = .Indeterminate
+    }
+    
+    func hideHUD() {
+        progressHUD?.hide(true)
+    }
+    
+    func displayAlert(message: String) {
+        T_AlertHelper.alertOK("Oups!", message: message, viewController: self)
     }
 }
 

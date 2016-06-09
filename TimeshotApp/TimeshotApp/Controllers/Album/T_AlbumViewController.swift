@@ -10,6 +10,7 @@ import UIKit
 import DZNEmptyDataSet
 import Parse
 import ConvenienceKit
+import PullToRefresh
 
 class T_AlbumViewController: UIViewController{
     // MARK: Properties
@@ -19,7 +20,10 @@ class T_AlbumViewController: UIViewController{
     let defaultRange = 0...4
     let additionalRangeSize = 5
     var isLoading = false
+    var isRefreshing = false
     var errorLoading = false
+    
+    let refresher = PullToRefresh()
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -33,6 +37,12 @@ class T_AlbumViewController: UIViewController{
         tableView.emptyDataSetDelegate = self
         tableView.tableFooterView = UIView()
         
+        //Add pull to refresh
+        tableView.addPullToRefresh(refresher, action: {
+            self.isRefreshing = true
+            self.timelineComponent.refresh(self)
+        })
+        
         // For tableView
         tableView.delegate = self
         tableView.dataSource = self
@@ -43,10 +53,6 @@ class T_AlbumViewController: UIViewController{
         
         // Do any additional setup after loading the view.
         
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        timelineComponent.loadInitialIfRequired()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -62,6 +68,7 @@ class T_AlbumViewController: UIViewController{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
     
     // MARK:  Navigation
@@ -125,6 +132,10 @@ extension T_AlbumViewController : UITableViewDelegate, UITableViewDataSource {
 // MARK: - DZNEmptyState
 extension T_AlbumViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
+    func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         // On est dans le cas ou on a pas encore de photos dans l'album
         let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
@@ -175,20 +186,39 @@ extension T_AlbumViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 extension T_AlbumViewController: TimelineComponentTarget {
     
     func loadInRange(range: Range<Int>, completionBlock: ([T_Album]?) -> Void) {
-        
-        T_ParseAlbumHelper.queryAllAlbumsOnParse(range) { (result: [PFObject]?, error: NSError?) -> Void in
-            if let _ = error {
-                if self.timelineComponent.content.count == 0 {
-                    self.errorLoading = true
-                    self.tableView.reloadEmptyDataSet()
+        if isRefreshing {
+            T_ParseAlbumHelper.queryAllAlbumsOnParse(range) { (result: [PFObject]?, error: NSError?) -> Void in
+                if let _ = error {
+                    if self.timelineComponent.content.count == 0 {
+                        self.errorLoading = true
+                        self.tableView.reloadEmptyDataSet()
+                    }
+                } else {
+                    self.isLoading = true
+                    let user = T_ParseUserHelper.getCurrentUser()
+                    let posts = result as? [T_Album] ?? []
+                    T_User.albumListCache[(user?.username)!]?.removeAll()
+                    T_User.albumListCache[(user?.username)!]? = posts
+                    self.isRefreshing = false
+                    self.tableView.endRefreshing()
+                    // Completion block utilisé pour timelineComponent
+                    completionBlock(posts)
                 }
-            } else {
-                self.isLoading = true
-                let posts = result as? [T_Album] ?? []
-                // 3
-                completionBlock(posts)
             }
-            
+        } else {
+            T_AlbumCacheHelper.queryAllAlbums(range) { (result: [PFObject]?, error: NSError?) -> Void in
+                if let _ = error {
+                    if self.timelineComponent.content.count == 0 {
+                        self.errorLoading = true
+                        self.tableView.reloadEmptyDataSet()
+                    }
+                } else {
+                    self.isLoading = true
+                    let posts = result as? [T_Album] ?? []
+                    // Completion block utilisé pour timelineComponent
+                    completionBlock(posts)
+                }
+            }
         }
     }
     

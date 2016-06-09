@@ -154,6 +154,10 @@ extension T_SearchUserViewController: UISearchBarDelegate {
         searchBar.text = ""
         searchBar.resignFirstResponder()
     }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }
 
 extension T_SearchUserViewController: DZNEmptyDataSetSource {
@@ -192,6 +196,9 @@ extension T_SearchUserViewController: DZNEmptyDataSetDelegate {
 
 extension T_SearchUserViewController: AddNewFriends {
     func sendUserSelected(userSelected: T_User) {
+        // Il faut ajouter le user aux pendings, sinon l'image ne va pas rester a pending
+        pendingFriends.append(userSelected)
+        T_FriendRequestParseHelper.sendFriendRequestNotification(userSelected)
         T_FriendRequestParseHelper.sendFriendRequest(userSelected)
     }
 }

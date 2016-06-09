@@ -22,14 +22,7 @@ class T_FriendsViewController: UIViewController {
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if(T_Album.isLiveAlbumAssociatedToUser(album)) {
-            T_DesignHelper.colorUIView(buttonView)
-            addFriendsButton.hidden = false;
-        } else {
-            addFriendsButton.hidden = true
-            buttonView.backgroundColor = UIColor.clearColor()
-        }
+        T_DesignHelper.colorUIView(buttonView)
 
         // Permits to not show empty cells
         tableView.tableFooterView = UIView()
@@ -40,23 +33,16 @@ class T_FriendsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
         tableView.allowsSelection = false
     }
-    
-    // MARK: Action
-    @IBAction func addFriendsToAlbum(sender: UIButton) {
-        print("coucou")
-    }
-    
-    
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "addFriends" {
+            let addFriendsVC = segue.destinationViewController as! T_AddFriendToAlbumViewController
+            addFriendsVC.album = album!
+        }
     }
-    */
 
 }
 

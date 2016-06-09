@@ -9,6 +9,7 @@
 import Foundation
 import Parse
 import Bond
+import ConvenienceKit
 
 class T_User : PFUser {
     
@@ -23,6 +24,8 @@ class T_User : PFUser {
     var liveAlbum:T_Album?
     var friends: [T_User] = []
     var pendingFriends: [T_User] = []
+    
+    static var albumListCache: NSCacheSwift<String, [T_Album]>!
     
     var photoUploadTask: UIBackgroundTaskIdentifier?
     
@@ -41,7 +44,6 @@ class T_User : PFUser {
     init(username: String, password:String, birthDate:NSDate, email:String, firstName:String, lastName:String, picture:PFFile)
     {
         self.selected = false
-
         super.init()
         
         self.username = username
@@ -90,6 +92,8 @@ class T_User : PFUser {
             // inform Parse about this subclass
             self.registerSubclass()
         }
+        T_User.albumListCache = NSCacheSwift<String, [T_Album]>()
+    
     }
     
     func changeStateFriendSelected()
@@ -163,6 +167,16 @@ class T_User : PFUser {
     }
     
     func getAllFriends(completion: (friends: [T_User]) -> Void) {
+        if let currentUser = T_ParseUserHelper.getCurrentUser() {
+            if currentUser.friends.isEmpty {
+                getAllFriendsFromParse(completion)
+            }else {
+                completion(friends: currentUser.friends)
+            }
+        }
+    }
+    
+    func getAllFriendsFromParse(completion: (friends: [T_User]) -> Void) {
         T_FriendRequestParseHelper.getFriendsFromAcceptedRequests({ (friends) in
             self.friends = friends
             completion(friends: friends)
@@ -199,3 +213,4 @@ class T_User : PFUser {
     
     
 }
+

@@ -7,26 +7,46 @@
 //
 
 import UIKit
-import CameraManager
 import SwiftValidate
+import MBProgressHUD
 
 class T_SignUpEmailViewController: UIViewController {
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var continueButton: UIButton!
-    @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var overlayView: UIView!
-    let cameraManager = CameraManager()
+    
+    var progressHUD:MBProgressHUD?
     
     var firstNameValidator = T_ValidatorHelper.firstNameValidator()
     private var nameValidator = T_ValidatorHelper.nameValidator()
     private var emailValidator = T_ValidatorHelper.emailValidator()
     
+    var nextButton  : UIBarButtonItem?
+    var previousButton  : UIBarButtonItem?
+    
+    lazy var inputToolbar: UIToolbar = {
+        var toolbar = UIToolbar()
+        toolbar.barStyle = .Default
+        toolbar.translucent = false
+        toolbar.sizeToFit()
+        
+        var doneButton = UIBarButtonItem(title: "OK", style: .Done, target: self, action: #selector(keyboardDone))
+        var flexibleSpaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        var fixedSpaceButton = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil)
+        
+        self.nextButton  = UIBarButtonItem(title: ">", style: .Plain, target: self, action: #selector(keyboardNext))
+        self.previousButton  = UIBarButtonItem(title: "<", style: .Plain, target: self, action: #selector(keyboardPrevious))
+        
+        toolbar.setItems([fixedSpaceButton, self.previousButton!, fixedSpaceButton, self.nextButton!, flexibleSpaceButton, doneButton], animated: false)
+        toolbar.userInteractionEnabled = true
+        
+        return toolbar
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.cameraManager.cameraDevice = .Front
-        self.cameraManager.addPreviewLayerToView(self.cameraView)
         // Do any additional setup after loading the view.
         firstNameTextField.delegate = self
         nameTextField.delegate = self
@@ -59,6 +79,16 @@ class T_SignUpEmailViewController: UIViewController {
         
     }
     
+    // MARK: Methods
+    func freezeUI() {
+        progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        progressHUD?.mode = .Indeterminate
+    }
+    
+    func unfreezeUI() {
+        progressHUD?.hide(true)
+    }
+    
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if sender === continueButton {
@@ -82,15 +112,50 @@ class T_SignUpEmailViewController: UIViewController {
         
         let errors : [String] = T_ValidatorHelper.getAllErrors([firstNameValidator, nameValidator, emailValidator])
         if !errors.isEmpty {
+            unfreezeUI()
             T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: errors, viewController: self)
             return false
         }
+        freezeUI()
         let emailAlreadyExist = T_ParseUserHelper.emailAlreadyExist(emailTextField.text!)
+        unfreezeUI()
         if emailAlreadyExist {
             T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: [NSLocalizedString("This email is already used", comment: "")], viewController: self)
             return false
         }
         return true
+    }
+    
+    func keyboardDone() -> Void {
+        if firstNameTextField.editing{
+            firstNameTextField.resignFirstResponder()
+        }
+        else if nameTextField.editing {
+            nameTextField.resignFirstResponder()
+        }
+        else if emailTextField.editing {
+            emailTextField.resignFirstResponder()
+        }
+    }
+    func keyboardNext() -> Void {
+        if firstNameTextField.editing{
+            firstNameTextField.resignFirstResponder()
+            nameTextField.becomeFirstResponder()
+        }
+        else if nameTextField.editing {
+            nameTextField.resignFirstResponder()
+            emailTextField.becomeFirstResponder()
+        }
+    }
+    func keyboardPrevious() -> Void {
+        if emailTextField.editing{
+            emailTextField.resignFirstResponder()
+            nameTextField.becomeFirstResponder()
+        }
+        else if nameTextField.editing {
+            nameTextField.resignFirstResponder()
+            firstNameTextField.becomeFirstResponder()
+        }
     }
     
     
@@ -101,10 +166,45 @@ class T_SignUpEmailViewController: UIViewController {
 extension T_SignUpEmailViewController: UITextFieldDelegate {
     // MARK: - Text Field Delegate
     
+    @IBAction func tapTap(sender: AnyObject) {
+        if firstNameTextField.editing{
+            firstNameTextField.resignFirstResponder()
+        }
+        if nameTextField.editing{
+            nameTextField.resignFirstResponder()
+        }
+        if emailTextField.editing {
+            emailTextField.resignFirstResponder()
+        }
+    }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Hide the keyboard.
         textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        textField.inputAccessoryView = inputToolbar
+        if textField === firstNameTextField{
+            if let previous = self.previousButton, next = self.nextButton {
+                next.enabled = true
+                previous.enabled = false
+            }
+        }
+        else if textField === nameTextField {
+            if let previous = self.previousButton, next = self.nextButton {
+                next.enabled = true
+                previous.enabled = true
+            }
+        }
+        else {
+            if let previous = self.previousButton, next = self.nextButton {
+                next.enabled = false
+                previous.enabled = true
+            }
+        }
+        
         return true
     }
     

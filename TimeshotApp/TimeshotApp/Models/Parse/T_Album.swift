@@ -9,8 +9,9 @@
 import Foundation
 import Parse
 import Bond
+import ConvenienceKit
 
-class T_Album : PFObject, PFSubclassing {
+class T_Album : PFObject, PFSubclassing{
     // MARK: Properties
     @NSManaged var attendees: [T_User]
     @NSManaged var cover: PFFile
@@ -22,6 +23,10 @@ class T_Album : PFObject, PFSubclassing {
     var coverImage : Observable<UIImage?> = Observable(nil)
     
     static var albumCreationTask: UIBackgroundTaskIdentifier?
+    
+    // On est interessé pour garder en cache la cover de l'album
+    static var coverImageCache: NSCacheSwift<String, UIImage>!
+    static var detailAlbumCache: NSCacheSwift<String,[T_Post]>!
     
     // MARK: Initialisation
     override init()
@@ -35,6 +40,8 @@ class T_Album : PFObject, PFSubclassing {
         }
         dispatch_once(&Static.onceToken) {
             self.registerSubclass()
+            T_Album.coverImageCache = NSCacheSwift<String, UIImage>()
+            T_Album.detailAlbumCache = NSCacheSwift<String, [T_Post]>()
         }
     }
     
@@ -63,6 +70,7 @@ class T_Album : PFObject, PFSubclassing {
             let album = T_Album(attendees: attendees, cover: cover, createdBy: currentUser, duration: duration, isDeleted: false, title: albumTitle)
             
             for guest in guests {
+                T_ParseAlbumRequestHelper.sendAlbumRequestNotification(guest)
                 T_ParseAlbumRequestHelper.sendFriendRequest(guest, toAlbum: album)
             }
             
@@ -75,10 +83,11 @@ class T_Album : PFObject, PFSubclassing {
                 if success {
                     print("Album created")
                     T_CameraViewController.instance.manageAlbumProcessing()
+                    T_CameraViewController.instance.unfreezeUI(true)
                 } else {
+                    T_CameraViewController.instance.unfreezeUI(false)
                     print("An error occured : %@", error)
                 }
-                T_CameraViewController.instance.unfreezeUI()
                 UIApplication.sharedApplication().endBackgroundTask(self.albumCreationTask!)
             }
         }
@@ -185,16 +194,29 @@ class T_Album : PFObject, PFSubclassing {
     // MARK: Download Cover Image
     func downloadCoverImage() {
         // if cover is not downloaded yet, get it
-        if coverImage.value == nil {
+        coverImage.value = T_Album.coverImageCache[self.cover.name]
+        
+        // if image is not downloaded yet, get it
+        if (coverImage.value == nil) {
             // In background to not block the main thread
             cover.getDataInBackgroundWithBlock { (data: NSData?, error:NSError?) -> Void in
                 if let data = data {
                     let image = UIImage(data:data, scale: 1.0)!
                     // .value because it's an observable
                     self.coverImage.value = image
-                    print("get album cover")
+                    T_Album.coverImageCache[self.cover.name] = image
                 }
                 
+            }
+        }
+    }
+    
+    func downloadCoverImageWithBlock(completionBlock: (cover: UIImage) -> Void) {
+        // In background to not block the main thread
+        cover.getDataInBackgroundWithBlock { (data: NSData?, error:NSError?) -> Void in
+            if let data = data {
+                let image = UIImage(data:data, scale: 1.0)!
+                completionBlock(cover: image)
             }
         }
     }

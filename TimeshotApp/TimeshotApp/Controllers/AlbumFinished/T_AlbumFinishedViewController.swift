@@ -36,6 +36,21 @@ class T_AlbumFinishedViewController: UIViewController {
         title = albumPhotos?.title
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        // Je dois clean toutes les uiimages de cet album
+        if isMovingFromParentViewController() {
+            for i in self.childViewControllers {
+                if let controller = i as? T_PhotosCollectionViewController {
+                    for post in controller.posts {
+                        post.image.value = nil
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -69,6 +84,8 @@ class T_AlbumFinishedViewController: UIViewController {
         } else if segue.identifier == "photosContainer" {
             let finishAlbumVC =  segue.destinationViewController as! T_PhotosCollectionViewController
             finishAlbumVC.albumPhotos = albumPhotos
+        } else {
+            print("coucou c'ets moi !!!")
         }
      }
  

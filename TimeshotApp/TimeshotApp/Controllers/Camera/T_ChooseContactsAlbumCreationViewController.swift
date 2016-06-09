@@ -9,18 +9,19 @@
 import UIKit
 import Parse
 import Bond
+import DZNEmptyDataSet
 
 class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var createButtonView: UIView!
+    @IBOutlet weak var createButton: UIButton!
     
     @IBOutlet weak var friendAddedItem: UIBarButtonItem!
     var friendAddedLabel:UILabel!
     
-    @IBOutlet weak var bottomBar: UIToolbar!
     
-    var createButton:UIBarButtonItem!
     var friendCells:[T_User]! = []
     
     var duration:Int!
@@ -33,11 +34,11 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
         self.dismissViewControllerAnimated(false, completion: {});
     }
     
-    func actionCreateButton(sender: AnyObject) {
-
+    @IBAction func createAlbumButtonTapped(sender: AnyObject) {
+        T_CameraViewController.instance.showCameraView()
         T_CameraViewController.instance.freezeUI("Creating album ...")
         T_Album.createAlbum(self.cover, duration: self.duration, albumTitle: self.albumTitle)
-        self.presentingViewController?.presentingViewController!.dismissViewControllerAnimated(false, completion: nil)
+        self.presentingViewController?.dismissViewControllerAnimated(false, completion: nil)
     }
     
     //MARK: System Methods
@@ -62,16 +63,11 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.createButton = UIBarButtonItem(title: "Creer   ", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(T_ChooseContactsAlbumCreationViewController.actionCreateButton(_:)))
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.emptyDataSetSource = self
+        self.tableView.tableFooterView = UIView()
         
-        self.createButton.tintColor = UIColor.blackColor()
-        
-        self.friendAddedLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
-        self.friendAddedLabel.text = "Select some friends to start !"
-        self.friendAddedLabel.sizeToFit()
-        self.friendAddedLabel.backgroundColor = UIColor.clearColor()
-        self.friendAddedLabel.textAlignment = .Left
-        self.friendAddedItem.customView = self.friendAddedLabel
+        T_DesignHelper.colorUIView(self.createButtonView)
         
         //Load the friends
 
@@ -143,8 +139,6 @@ extension T_ChooseContactsAlbumCreationViewController {
         else {
             unselectFriendDesign(cell)
         }
-        
-        updateLabel()
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -165,32 +159,24 @@ extension T_ChooseContactsAlbumCreationViewController {
         cell.backgroundColor = UIColor.whiteColor()
         cell.label.font = UIFont.systemFontOfSize(15)
     }
+}
 
-    func updateLabel()
-    {
-        if (T_User.selectedFriends.count == 0) {
-            self.friendAddedLabel.text = "Select some friends to start !"
-            self.friendAddedLabel.sizeToFit()
-            if (self.bottomBar.items?.indexOf(self.createButton) != nil)
-            {
-                self.bottomBar.items?.removeLast()
-            }
-        }
-        else {
-            if (T_User.selectedFriends.count == 1)
-            {
-                self.friendAddedLabel.text = "\(T_User.selectedFriends.count) friend selected"
-            }
-            else
-            {
-                self.friendAddedLabel.text = "\(T_User.selectedFriends.count) friends selected"
-            }
-            self.friendAddedLabel.sizeToFit()
-            
-            if (self.bottomBar.items?.indexOf(self.createButton) == nil)
-            {
-                self.bottomBar.items?.append(self.createButton)
-            }
-        }
+
+extension T_ChooseContactsAlbumCreationViewController : DZNEmptyDataSetSource {
+    
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "EmptyAlbumIcon")
     }
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: "You don't have any friends ... Please invite some friends and share your albums with them!")
+    }
+
+    func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {
+        return UIColor.whiteColor()
+    }
+}
+
+extension T_ChooseContactsAlbumCreationViewController : DZNEmptyDataSetDelegate {
+    
 }

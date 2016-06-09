@@ -16,10 +16,13 @@ class T_SettingsViewController: UITableViewController {
     @IBOutlet weak var birthdayLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
+    @IBOutlet weak var logoutView: UIView!
+    
     var currentUser: T_User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        T_DesignHelper.colorUIView(self.logoutView)
         T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
     }
     
@@ -66,4 +69,11 @@ class T_SettingsViewController: UITableViewController {
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func logoutButtonTapped(sender: UIButton) {
+        PFUser.logOut()
+        let loginVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController")
+        self.presentViewController(loginVC, animated: true, completion: nil)
+    }
+    
 }

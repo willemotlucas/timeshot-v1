@@ -28,30 +28,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.enableLocalDatastore()
         
         // Set up the Parse SDK
-        Parse.setApplicationId("uAhZdofpZFzSCMa83PbQwFx2ls3qmWbvr0BADedv", clientKey: "1PPkLR8lj8bqH9ppX6Y1dMXWKewFhiaxs6oEjrr3")
+        Parse.setApplicationId("fP3x2FxPpWTcBDWatmfSQxWO7di4Nh2jFjNafRrp", clientKey: "ec9Ga66SvWi4zdqK5rw69Oyghacv5zFXuCZHPsx6")
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
+        //Check if the app is launched from a push notification
+        if let launchOptions = launchOptions as? [String : AnyObject] {
+            if let notificationDictionary = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject : AnyObject] {
+                //If yes, we call didReceiveRemoteNotification
+                self.application(application, didReceiveRemoteNotification: notificationDictionary)
+            }
+        }
+                
         PFUser.enableRevocableSessionInBackground()
-        
-        T_ParseUserHelper.login("Karim", password: "karim")
         
         let startViewController: UIViewController;
         
-        if let user = PFUser.currentUser() {
+        if let _ = PFUser.currentUser() {
+                //TODO Traiter le cas ou l'utilisateur s'est fait kick de la DB : TimeshotApp[5519:438979] [Error]: invalid session token (Code: 209, Version: 1.13.0)
             if false {
                 let storyboard = UIStoryboard(name: "Koloda", bundle: nil)
                 startViewController = storyboard.instantiateViewControllerWithIdentifier("Start")
             }
             else {
-                if user.username == nil {
-                    let storyboard = UIStoryboard(name: "Login", bundle: nil)
-                    startViewController = storyboard.instantiateViewControllerWithIdentifier("T_SignUpUsernameViaFacebookNavigationController")
-                }
-                else {
-                    //TODO Traiter le cas ou l'utilisateur s'est fait kick de la DB : TimeshotApp[5519:438979] [Error]: invalid session token (Code: 209, Version: 1.13.0)
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    startViewController = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController")
-                }
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                startViewController = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController")
             }
             
         } else {
@@ -76,6 +76,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                                      annotation: annotation)
     }
     
+    //Register the current installation and user for notification
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let installation = PFInstallation.currentInstallation()
+        installation["user"] = PFUser.currentUser()
+        installation.setDeviceTokenFromData(deviceToken)
+        installation.saveInBackground()
+    }
+    
+    
+    //Notify the app that a notification is received
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        //Simply show an alert to the user
+        PFPush.handlePush(userInfo)
+    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -92,6 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         FBSDKAppEvents.activateApp()
+        clearBadges()
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
     
@@ -99,6 +115,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    func clearBadges() {
+        let installation = PFInstallation.currentInstallation()
+        installation.badge = 0
+        installation.saveInBackgroundWithBlock { (success, error) -> Void in
+            if success {
+                UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+            }
+        }
+    }
     
 }
 
