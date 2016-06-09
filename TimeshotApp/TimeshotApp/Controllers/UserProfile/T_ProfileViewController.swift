@@ -25,6 +25,7 @@ class T_ProfileViewController: UIViewController {
     @IBOutlet weak var segmentedView: UIView!
     @IBOutlet weak var profileView: UIView!
     @IBOutlet weak var addFriendsButtonView: UIView!
+    @IBOutlet weak var bottomActionButton: UIButton!
     
     @IBOutlet weak var profileImageView: UIImageView!
     
@@ -76,6 +77,9 @@ class T_ProfileViewController: UIViewController {
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         tableView.tableFooterView = UIView()
+        
+        //Add observer for didBecomeActiveNotification of AppDelegate
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(notificationsState), name: "UIApplicationDidBecomeActiveNotification", object: nil)
         
         //Add pull to refresh
         self.tableView.addPullToRefresh(refresher, action: {
@@ -155,14 +159,14 @@ class T_ProfileViewController: UIViewController {
     @IBAction func segmentedControlIndexChanged(sender: UISegmentedControl) {
         // Change the content of table view according to the segmented control
         switch segmentedControl.selectedSegmentIndex {
-        case 0: contentToDisplay = .Friends
-            self.tableView.allowsSelection = false
+        case 0:
+            contentToDisplay = .Friends
+            self.bottomActionButton.setTitle("ADD NEW FRIENDS", forState: .Normal)
         case 1:
             contentToDisplay = .Notifications
-            self.tableView.allowsSelection = true
-            let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: nil)
-            UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-            UIApplication.sharedApplication().registerForRemoteNotifications()
+            if !UIApplication.sharedApplication().isRegisteredForRemoteNotifications() {
+                self.bottomActionButton.setTitle("ALLOW NOTIFICATIONS", forState: .Normal)
+            }
         default: break
         }
         
@@ -170,6 +174,43 @@ class T_ProfileViewController: UIViewController {
     }
     
     @IBAction func addFriendsButtonTapped(sender: UIButton) {
+        switch(contentToDisplay){
+            case .Friends:
+                self.showAddFriendsActionSheet()
+            
+            case .Notifications:
+                if !UIApplication.sharedApplication().isRegisteredForRemoteNotifications(){
+                    if !NSUserDefaults.standardUserDefaults().boolForKey("PushNotificationsRequestAlreadySeen") {
+                        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: nil)
+                        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+                        UIApplication.sharedApplication().registerForRemoteNotifications()
+                        
+                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "PushNotificationsRequestAlreadySeen")
+                    } else {
+                        T_AlertHelper.alert2Actions("Allow notifications", message: "You have disallowed notifications. Please go in your settings and allow notifications.", button1message: "Cancel", button2message: "Settings", viewController: self, completion: { (action: UIAlertAction) in
+                            if action.title == "Settings" {
+                                if let appSettings = NSURL(string: UIApplicationOpenSettingsURLString) {
+                                    UIApplication.sharedApplication().openURL(appSettings)
+                                }
+                            }
+                        })
+                    }
+                } else {
+                    self.showAddFriendsActionSheet()
+                }
+        }
+    }
+    
+    func notificationsState() {
+        print("answer to notification popup")
+        if UIApplication.sharedApplication().isRegisteredForRemoteNotifications() {
+            self.bottomActionButton.setTitle("ADD FRIENDS", forState: .Normal)
+        } else {
+            self.bottomActionButton.setTitle("ALLOW NOTIFICATIONS", forState: .Normal)
+        }
+    }
+    
+    func showAddFriendsActionSheet() {
         // Constructs the UIAlert
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         

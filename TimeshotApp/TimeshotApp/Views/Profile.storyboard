@@ -453,6 +453,7 @@
                     <connections>
                         <outlet property="addFriendsButton" destination="JZA-M0-C4r" id="jEI-rb-SKD"/>
                         <outlet property="addFriendsButtonView" destination="M8b-GY-fna" id="Mhn-7p-UBG"/>
+                        <outlet property="bottomActionButton" destination="JZA-M0-C4r" id="y1U-Ie-g2o"/>
                         <outlet property="cameraButton" destination="mL5-gk-GZc" id="NYx-em-hlR"/>
                         <outlet property="headerView" destination="0qr-g3-NJH" id="djx-Eu-lMz"/>
                         <outlet property="profileImageView" destination="oaw-9X-tq1" id="Z3W-IO-7aN"/>
