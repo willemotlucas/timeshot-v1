@@ -17,7 +17,7 @@ class T_ParsePostHelper {
     static let ParsePostFromUser = "fromUser"
     static let ParsePostIsDeleted = "isDeleted"
     
-    static func postsForCurrentAlbum(albumPhotos: T_Album, completionBlock: PFQueryArrayResultBlock) {
+    static func postsForCurrentAlbumOnParse(albumPhotos: T_Album, completionBlock: PFQueryArrayResultBlock) {
     
         // On va cherche tout nos post en fonction du nom de notre album
         // Et on veut recuperer aussi la personne qui a pris la photo

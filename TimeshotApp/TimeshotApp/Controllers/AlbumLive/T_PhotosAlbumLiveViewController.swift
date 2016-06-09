@@ -86,6 +86,7 @@ class T_PhotosAlbumLiveViewController: UIViewController {
 extension T_PhotosAlbumLiveViewController : KolodaViewDataSource {
 
     func kolodaNumberOfCards(koloda: KolodaView) -> UInt {
+        print(posts?.count ?? 0)
         return UInt(posts?.count ?? 0)
     }
     
