@@ -12,6 +12,7 @@ import AddressBook
 import AddressBookUI
 import DZNEmptyDataSet
 import PullToRefresh
+import MBProgressHUD
 
 enum ContentType {
     case Friends, Notifications
@@ -51,7 +52,7 @@ class T_ProfileViewController: UIViewController {
     
     let refresher = PullToRefresh()
     var refresherState = false
-    
+    var progressHUD : MBProgressHUD?
 
     // MARK: Overrided functions
     override func didReceiveMemoryWarning() {
@@ -107,21 +108,7 @@ class T_ProfileViewController: UIViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showAlbumRequestSegue" {
-            let albumRequestVC = segue.destinationViewController as! T_AlbumRequestViewController
-            
-            // Get the cell that generated this segue
-            if let selectedAbumRequest = sender as? T_NotificationsTableViewCell {
-                let indexPath = self.tableView.indexPathForCell(selectedAbumRequest)
-                let albumRequest = self.albumRequests[(indexPath?.row)!]
-                
-                let album = albumRequest.toAlbum
-                
-                albumRequestVC.albumRequest = albumRequest
-                albumRequestVC.album = album
-                albumRequestVC.delegate = self
-            }
-        }
+
     }
     
     // MARK: Methods
@@ -235,12 +222,6 @@ class T_ProfileViewController: UIViewController {
 }
 
 // MARK: extension
-
-extension T_ProfileViewController: ModalViewControllerDelegate {
-    func refreshTableView() {
-        self.loadNotificationsData()
-    }
-}
 
 extension T_ProfileViewController: UITableViewDelegate {
 
@@ -384,16 +365,16 @@ extension T_ProfileViewController: UITableViewDataSource {
      * - @indexPath : indexPath of the row to retrieve the user
      */
     func createNotificationCell(indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("T_NotificationsTableViewCell", forIndexPath: indexPath) as! T_NotificationsTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("T_AlbumRequestNotificationsTableViewCell", forIndexPath: indexPath) as! T_AlbumRequestNotificationsTableViewCell
         let albumRequest = self.albumRequests[indexPath.row]
         let user = albumRequest.fromUser! as! T_User
         user.downloadImage()
         
         cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.delegate = self
         cell.friend = user
         cell.albumRequest = albumRequest
         cell.notificationTextLabel.text = "@\(user.username!) invited you to join \(albumRequest.toAlbum!.title!)!"
-        cell.notificationHelpTextLabel.text = "Click to answer to the request"
         return cell
     }
 }
@@ -477,6 +458,36 @@ extension T_ProfileViewController: TableViewUpdater {
     func updatePendingRequestsAfterRejecting(pendingRequest: T_FriendRequest) {
         self.pendingRequests.removeAtIndex(self.pendingRequests.indexOf(pendingRequest)!)
         tableView.reloadData()
+    }
+}
+
+/*
+ * Custom protocol defined in T_AlbumRequestTableViewCell allowing us to communicate with view controller
+ * when clicking on a button of specific cell
+ */
+extension T_ProfileViewController: AlbumRequestsUpdater {
+    /*
+     * Update the pending request section after accepting a pending request
+     * Params:
+     * - @pendingRequest : the pending request to remove of the section and to add in friends section
+     */
+    func updateAlbumRequestsTableView(albumRequest: T_AlbumRequest) {
+        self.albumRequests.removeAtIndex(self.albumRequests.indexOf(albumRequest)!)
+        tableView.reloadData()
+    }
+    
+    func showHUD() {
+        progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        progressHUD?.labelText = NSLocalizedString("Joining album", comment: "")
+        progressHUD?.mode = .Indeterminate
+    }
+    
+    func hideHUD() {
+        progressHUD?.hide(true)
+    }
+    
+    func displayAlert(message: String) {
+        T_AlertHelper.alertOK("Oups!", message: message, viewController: self)
     }
 }
 

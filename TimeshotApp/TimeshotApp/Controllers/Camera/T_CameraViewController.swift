@@ -27,6 +27,9 @@ class T_CameraViewController: UIViewController {
     var newtorkManager = T_NetworkManager.sharedInstance
     var networkStatus = T_NetworkStatus.sharedInstance
     let tapOnNetworkStatus = UITapGestureRecognizer()
+    
+    //Key words for auto generate album title
+    let autoTitles = ["Amazing", "Sunny", "Lucky", "Lovely", "Crazy"]
 
     private
     var isFlashActivated:Bool = false
@@ -40,6 +43,10 @@ class T_CameraViewController: UIViewController {
     @IBOutlet weak var buttonAlbumVC: UIButton!
     @IBOutlet weak var buttonProfileVC: UIButton!
     
+    @IBOutlet weak var overlayView: UIView!
+    @IBOutlet weak var overlayColoredView: UIView!
+    @IBOutlet weak var albumTitleTextField: UITextField!
+    @IBOutlet weak var createAlbumButton: UIButton!
     
     //MARK: - Outlets Methods
     @IBAction func actionTakePicture(sender: AnyObject) {
@@ -49,14 +56,7 @@ class T_CameraViewController: UIViewController {
             self.image = img
             
             UIView.setAnimationsEnabled(false)
-            if (self.isLiveAlbumExisting == false)
-            {
-                self.performSegueWithIdentifier("segueCreateAlbum", sender: nil)
-            }
-            else
-            {
-                self.performSegueWithIdentifier("segueEditCameraImage", sender: nil)
-            }
+            self.performSegueWithIdentifier("segueEditCameraImage", sender: nil)
         })
     }
     
@@ -95,11 +95,17 @@ class T_CameraViewController: UIViewController {
         
         T_HomePageViewController.showAlbumViewController()
     }
+    
     @IBAction func actionButtonProfile(sender: AnyObject) {
         
         T_HomePageViewController.showProfileViewController()
 
     }
+    
+    @IBAction func createAlbumButtonTapped(sender: UIButton) {
+        self.performSegueWithIdentifier("segueChooseContactsAlbumCreation", sender: nil)
+    }
+    
     //MARK: - Systems methods
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -119,15 +125,29 @@ class T_CameraViewController: UIViewController {
     }
 
     override func viewWillLayoutSubviews() {
-        self.cameraView.layer.zPosition = 0
-        self.buttonTakePicture.layer.zPosition = 1
-        self.buttonFlash.layer.zPosition = 1
-        self.buttonReturnCamera.layer.zPosition = 1
-        
-        self.buttonAlbumVC.layer.zPosition = 10
-        self.buttonProfileVC.layer.zPosition = 10
-        
-        self.networkStatus.layer.zPosition = 1
+        if !isLiveAlbumExisting {
+            self.overlayView.layer.zPosition = 1
+            self.cameraView.layer.zPosition = 0
+            self.albumTitleTextField.layer.zPosition = 2
+            self.createAlbumButton.layer.zPosition = 2
+            self.buttonTakePicture.layer.zPosition = 2
+            self.buttonFlash.layer.zPosition = 2
+            self.buttonReturnCamera.layer.zPosition = 2
+            
+            self.buttonAlbumVC.layer.zPosition = 10
+            self.buttonProfileVC.layer.zPosition = 10
+        }
+        else {
+            self.cameraView.layer.zPosition = 0
+            self.buttonTakePicture.layer.zPosition = 1
+            self.buttonFlash.layer.zPosition = 1
+            self.buttonReturnCamera.layer.zPosition = 1
+            
+            self.buttonAlbumVC.layer.zPosition = 10
+            self.buttonProfileVC.layer.zPosition = 10
+            
+            self.networkStatus.layer.zPosition = 1
+        }
     }
     
     override func viewDidLoad() {
@@ -136,17 +156,51 @@ class T_CameraViewController: UIViewController {
         T_CameraViewController.instance = self
         
         // Initilisation du background
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "Splashscreen")!)
+        //view.backgroundColor = UIColor(patternImage: UIImage(named: "Splashscreen")!)
         
-        // Camera init
-        cameraManager.addPreviewLayerToView(self.cameraView)
-        cameraManager.cameraDevice = .Back
+        //Text field init with random title
+        let randomIndex = Int(arc4random_uniform(UInt32(autoTitles.count)))
+        self.albumTitleTextField.attributedPlaceholder = NSAttributedString(string:"\(autoTitles[randomIndex]) \(T_DateHelper.getDayOfWeekInLetter())",attributes:[NSForegroundColorAttributeName: UIColor(colorLiteralRed: 255, green: 255, blue: 255, alpha: 0.5)])
+        
+        // Common camera manager settings
         cameraManager.shouldRespondToOrientationChanges = false
         cameraManager.cameraOutputMode = .StillImage
         cameraManager.cameraOutputQuality = .Medium
         cameraManager.flashMode = .Off
         cameraManager.writeFilesToPhoneLibrary = false
         cameraManager.showAccessPermissionPopupAutomatically = true
+        
+        // Camera init if no live album
+        if !self.isLiveAlbumExisting {
+            //Style of text field
+            T_DesignHelper.addSubBorder(self.albumTitleTextField)
+            T_DesignHelper.colorPlaceHolder(self.albumTitleTextField)
+            T_DesignHelper.addRoundBorder(self.createAlbumButton)
+            T_DesignHelper.colorBorderButton(self.createAlbumButton)
+            
+            //Hide camera view and show overlay
+            self.showOverlayView()
+            
+            self.albumTitleTextField.delegate = self
+            
+            //Mettre la camera en front pour la prise du selfie
+            cameraManager.cameraDevice = .Front
+            
+            //Need to add color the overlay view
+            T_DesignHelper.colorUIView(self.overlayColoredView)
+            self.overlayColoredView.alpha = 0.8
+            
+            //Add the camera preview
+            cameraManager.addPreviewLayerToView(self.cameraView)
+        }
+        // Camera init if live album
+        else {
+            //Show camera view and hide overlay
+            self.showCameraView()
+            
+            cameraManager.cameraDevice = .Back
+            cameraManager.addPreviewLayerToView(self.cameraView)
+        }
 
         tapOnNetworkStatus.addTarget(self.networkStatus, action: #selector(T_NetworkStatus.pressed))
         self.networkStatus.addGestureRecognizer(tapOnNetworkStatus)
@@ -156,23 +210,42 @@ class T_CameraViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CameraViewController.stopAlbumTimer), name:UIApplicationDidEnterBackgroundNotification, object: nil)
         // If the application is again active, we test once again if the album is existing
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CameraViewController.manageAlbumProcessing), name:UIApplicationDidBecomeActiveNotification, object: nil)
-        //self.manageAlbumProcessing()
+    }
+    
+    func showOverlayView() {
+        self.overlayView.hidden = false
+        self.buttonTakePicture.hidden = true
+        self.buttonReturnCamera.hidden = true
+        self.buttonFlash.hidden = true
+    }
+    
+    func showCameraView() {
+        self.overlayView.hidden = true
+        self.buttonTakePicture.hidden = false
+        self.buttonReturnCamera.hidden = false
+        self.buttonFlash.hidden = false
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if (self.isLiveAlbumExisting == false) {
-            let destinationVC = segue.destinationViewController as! T_CreateAlbumViewController
-            destinationVC.image = self.image
-            // To perform symetry / rotation if needed when computing the image for filters
-            destinationVC.isFrontCamera = !self.isBackCameraActivated
-        }
-        else {
+        if segue.identifier == "segueEditCameraImage" {
             let destinationVC = segue.destinationViewController as! T_EditCameraImageViewController
             destinationVC.image = self.image
             // To perform symetry / rotation if needed when computing the image for filters
             destinationVC.isFrontCamera = !self.isBackCameraActivated
             destinationVC.post = T_Post.createPost()
+        }
+        else if segue.identifier == "segueChooseContactsAlbumCreation" {
+            let nav = segue.destinationViewController as! UINavigationController
+            let destinationVC = nav.topViewController as! T_ChooseContactsAlbumCreationViewController
+            
+            destinationVC.cover = UIImage(named: "default-cover")
+            destinationVC.duration = 3
+            if let title = self.albumTitleTextField.text where !title.isEmpty{
+                destinationVC.albumTitle = title
+            }
+            else {
+                destinationVC.albumTitle = albumTitleTextField.placeholder!
+            }
         }
     }
     
@@ -192,10 +265,12 @@ class T_CameraViewController: UIViewController {
             if (isLiveAlbum) {
                 
                 guard let album = currentUser.liveAlbum else { return  }
-
+                self.showCameraView()
                 self.networkStatus.updateLabelText(T_NetworkStatus.status.ShowAlbumTitle, withText: album.title)
 
                 self.albumTimer = NSTimer.scheduledTimerWithTimeInterval(Double(T_Album.getRemainingDuration((currentUser.liveAlbum?.createdAt)!, duration: (currentUser.liveAlbum?.duration)!)), target: self, selector: #selector(T_CameraViewController.manageAlbumProcessing), userInfo: nil, repeats: false)
+            } else {
+                self.showOverlayView()
             }
         }
     }
@@ -224,6 +299,7 @@ class T_CameraViewController: UIViewController {
             self.presentViewController(alertController, animated: true, completion: nil)
         }
         else {
+            self.showOverlayView()
             let alertController = UIAlertController(title: "Cannot create the album", message:
                 "Please check your network connection and try again !", preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
@@ -231,10 +307,12 @@ class T_CameraViewController: UIViewController {
             self.presentViewController(alertController, animated: true, completion: nil)
         }
         progressHUD?.hide(true)
-        
-        buttonTakePicture.hidden = false
-        buttonReturnCamera.hidden = false
-        buttonFlash.hidden = false
+    }
+}
 
+extension T_CameraViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }
