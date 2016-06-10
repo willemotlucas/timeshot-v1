@@ -45,12 +45,12 @@
                             </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="sp6-lc-3Ak" firstAttribute="top" secondItem="SfK-ry-GSE" secondAttribute="bottom" constant="30" id="857-uN-DaQ"/>
                             <constraint firstItem="23z-D4-BI0" firstAttribute="leading" secondItem="aYf-uX-dbb" secondAttribute="leading" constant="60" id="8s9-Tb-g9e"/>
-                            <constraint firstItem="4Xb-jR-5Eg" firstAttribute="top" secondItem="c8b-fD-cT7" secondAttribute="bottom" constant="20" id="HCK-vp-Xe6"/>
-                            <constraint firstItem="sp6-lc-3Ak" firstAttribute="top" secondItem="4Xb-jR-5Eg" secondAttribute="bottom" constant="120" id="LVP-vz-AEU"/>
+                            <constraint firstItem="4Xb-jR-5Eg" firstAttribute="top" secondItem="c8b-fD-cT7" secondAttribute="bottom" constant="20" id="E5d-zw-GEn"/>
+                            <constraint firstItem="sp6-lc-3Ak" firstAttribute="top" secondItem="23z-D4-BI0" secondAttribute="bottom" constant="30" id="SQU-vt-yE8"/>
                             <constraint firstAttribute="trailing" secondItem="SfK-ry-GSE" secondAttribute="trailing" constant="60" id="gyr-Gg-Sj3"/>
-                            <constraint firstItem="sp6-lc-3Ak" firstAttribute="top" secondItem="SfK-ry-GSE" secondAttribute="bottom" constant="30" id="pJ0-Ys-hCo"/>
-                            <constraint firstItem="sp6-lc-3Ak" firstAttribute="top" secondItem="23z-D4-BI0" secondAttribute="bottom" constant="30" id="tcz-YJ-9Zv"/>
+                            <constraint firstItem="sp6-lc-3Ak" firstAttribute="top" secondItem="4Xb-jR-5Eg" secondAttribute="bottom" constant="120" id="tBr-We-zqa"/>
                             <constraint firstAttribute="trailing" secondItem="4Xb-jR-5Eg" secondAttribute="trailing" constant="20" id="yXa-TF-ghj"/>
                             <constraint firstItem="4Xb-jR-5Eg" firstAttribute="leading" secondItem="aYf-uX-dbb" secondAttribute="leading" constant="20" id="zvf-WV-9PO"/>
                         </constraints>

@@ -15,6 +15,7 @@ import PullToRefresh
 
 protocol ContainerDelegateProtocol {
     func hidePhotoCollectionView()
+    func hideTinderVoteView()
 }
 
 
@@ -34,6 +35,8 @@ class T_PhotosCollectionViewController: UIViewController {
     
     let refresher = PullToRefresh()
     
+    // For the votes
+    var hasVoted = false
 
     // Used for the slider
     // numberSectionsPhoto.count -> number of sections in our gallery
@@ -144,7 +147,7 @@ class T_PhotosCollectionViewController: UIViewController {
     // MARK: Loading Data Functions
     func loadPost() {
         T_AlbumCacheHelper.postsForCurrentAlbum(albumPhotos!) {(result: [PFObject]?, error: NSError?) -> Void in
-            print("coucou je suis dans le loadPost")
+            print("loadPost")
             //self.containerDelegate?.hidePhotoCollectionView()
             
             self.load = true
@@ -167,7 +170,13 @@ class T_PhotosCollectionViewController: UIViewController {
                         print("a voté")
                     } else {
                         print("a pas voté")
+                        self.hasVoted = false
+                        break
                     }
+                }
+                
+                if !self.hasVoted {
+                    self.containerDelegate?.hidePhotoCollectionView()
                 }
                 
                 self.collectionView.reloadEmptyDataSet()

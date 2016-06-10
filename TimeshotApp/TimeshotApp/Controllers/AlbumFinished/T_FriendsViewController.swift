@@ -23,7 +23,6 @@ class T_FriendsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         T_DesignHelper.colorUIView(buttonView)
-        print("je suis la")
         // Permits to not show empty cells
         tableView.tableFooterView = UIView()
     }
@@ -38,9 +37,7 @@ class T_FriendsViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("MERDE")
         if segue.identifier == "addFriends" {
-            print("je m'en vais")
             let addFriendsVC = segue.destinationViewController as! T_AddFriendToAlbumViewController
             addFriendsVC.album = album!
         }

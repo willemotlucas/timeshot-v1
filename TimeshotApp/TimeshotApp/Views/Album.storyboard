@@ -552,7 +552,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hDj-9b-VO4" firstAttribute="leading" secondItem="j53-Fa-Qev" secondAttribute="leading" id="2kj-F5-yjU"/>
                             <constraint firstItem="O7J-A3-aOF" firstAttribute="top" secondItem="pMi-gT-iKZ" secondAttribute="bottom" id="Hbk-td-B12"/>
@@ -1401,11 +1401,61 @@
         <scene sceneID="ooK-IO-AbW">
             <objects>
                 <viewController id="bmD-Qh-VM3" customClass="T_TinderPhotosViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vo2-bu-ifm"/>
+                        <viewControllerLayoutGuide type="bottom" id="j38-9H-idE"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4nY-3T-KhZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="496"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7R2-zq-Ekj" customClass="KolodaView" customModule="Koloda">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="496"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7kx-UF-X7h" userLabel="Like Button">
+                                <rect key="frame" x="470" y="396" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="3QG-6g-iT9"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="Cde-aP-1V3"/>
+                                    <constraint firstAttribute="width" constant="70" id="ZAr-vd-D9q"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="tJI-rU-xQs"/>
+                                </constraints>
+                                <state key="normal" image="Like"/>
+                                <connections>
+                                    <action selector="likeTapped:" destination="bmD-Qh-VM3" eventType="touchUpInside" id="cbC-jU-AOd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86S-fM-c1c" userLabel="Dislike Button">
+                                <rect key="frame" x="60" y="396" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="2ai-vd-9nm"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="fyt-vH-dWq"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="ptt-MU-8O9"/>
+                                    <constraint firstAttribute="width" constant="70" id="rdR-LN-0WU"/>
+                                </constraints>
+                                <state key="normal" image="Dislike"/>
+                                <connections>
+                                    <action selector="dislikeTapped:" destination="bmD-Qh-VM3" eventType="touchUpInside" id="YXt-QG-YTE"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="86S-fM-c1c" firstAttribute="leading" secondItem="4nY-3T-KhZ" secondAttribute="leading" constant="60" id="Azo-Z2-NkU"/>
+                            <constraint firstItem="j38-9H-idE" firstAttribute="top" secondItem="7R2-zq-Ekj" secondAttribute="bottom" id="YLE-ee-ypU"/>
+                            <constraint firstItem="7R2-zq-Ekj" firstAttribute="top" secondItem="vo2-bu-ifm" secondAttribute="bottom" id="dIw-B0-FfJ"/>
+                            <constraint firstItem="j38-9H-idE" firstAttribute="top" secondItem="86S-fM-c1c" secondAttribute="bottom" constant="30" id="dZO-ef-m0S"/>
+                            <constraint firstAttribute="trailing" secondItem="7kx-UF-X7h" secondAttribute="trailing" constant="60" id="ghb-pH-4YQ"/>
+                            <constraint firstAttribute="trailing" secondItem="7R2-zq-Ekj" secondAttribute="trailing" id="hmO-xn-Goa"/>
+                            <constraint firstItem="j38-9H-idE" firstAttribute="top" secondItem="7kx-UF-X7h" secondAttribute="bottom" constant="30" id="usZ-X7-SHY"/>
+                            <constraint firstItem="7R2-zq-Ekj" firstAttribute="leading" secondItem="4nY-3T-KhZ" secondAttribute="leading" id="xom-Lk-nM5"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dislikeButton" destination="86S-fM-c1c" id="QnJ-dD-KQb"/>
+                        <outlet property="kolodaView" destination="7R2-zq-Ekj" id="t8L-rE-HyT"/>
+                        <outlet property="likeButton" destination="7kx-UF-X7h" id="RbF-Qt-BOX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GKW-qE-MIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

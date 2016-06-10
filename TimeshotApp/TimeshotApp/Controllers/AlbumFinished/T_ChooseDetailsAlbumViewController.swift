@@ -24,6 +24,8 @@ class T_ChooseDetailsAlbumViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         title = albumPhotos?.title
         print("on va devoir checker les posts ici ! ")
+        print(tinderContainerView.hidden)
+        
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -44,12 +46,9 @@ class T_ChooseDetailsAlbumViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "tinderContainer" {
-            // Ici on va devoir mettre les attendees mais pour le moment on a des buggs apparement ..
-            // Possible que ce soit lors de la creation d'album .. a verifier !
-            //let friendsAlbumVC = segue.destinationViewController
-            //as! T_FriendsViewController
-            //friendsAlbumVC.attendees = albumPhotos?.attendees
-            //friendsAlbumVC.album = albumPhotos
+            let tinderAlbumVC = segue.destinationViewController as! T_TinderPhotosViewController
+            tinderAlbumVC.containerDelegate = self
+            tinderAlbumVC.albumPhotos = albumPhotos
         } else if segue.identifier == "photosContainer" {
             let finishAlbumVC =  segue.destinationViewController as! T_PhotosCollectionViewController
             finishAlbumVC.containerDelegate = self
@@ -63,6 +62,12 @@ class T_ChooseDetailsAlbumViewController: UIViewController {
 
 extension T_ChooseDetailsAlbumViewController : ContainerDelegateProtocol {
     func hidePhotoCollectionView() {
-        photosContainerView.hidden = true;
+        photosContainerView.hidden = true
+        tinderContainerView.hidden = false
+    }
+    
+    func hideTinderVoteView() {
+        tinderContainerView.hidden = true
+        photosContainerView.hidden = false
     }
 }
