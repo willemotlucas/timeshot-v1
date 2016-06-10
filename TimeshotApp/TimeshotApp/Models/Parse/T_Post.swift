@@ -18,6 +18,7 @@ class T_Post : PFObject, PFSubclassing {
     @NSManaged var toAlbum: T_Album
     @NSManaged var isDeleted: Bool
     @NSManaged var createdAtDate: NSDate
+    @NSManaged var hasVoted: [T_User]
     
     var image : Observable<UIImage?> = Observable(nil)
     
@@ -43,7 +44,7 @@ class T_Post : PFObject, PFSubclassing {
         return "Post"
     }
     
-    init(fromUser: T_User, photo:UIImage, toAlbum:T_Album)
+    init(fromUser: T_User, photo:UIImage, toAlbum:T_Album, hasVoted:[T_User])
     {
         super.init()
         
@@ -52,9 +53,10 @@ class T_Post : PFObject, PFSubclassing {
         self.toAlbum = toAlbum
         self.isDeleted = false
         self.createdAtDate = NSDate()
+        self.hasVoted = hasVoted
     }
     
-    init(fromUser: T_User, toAlbum:T_Album)
+    init(fromUser: T_User, toAlbum:T_Album, hasVoted:[T_User])
     {
         super.init()
         
@@ -62,6 +64,7 @@ class T_Post : PFObject, PFSubclassing {
         self.toAlbum = toAlbum
         self.isDeleted = false
         self.createdAtDate = NSDate()
+        self.hasVoted = hasVoted
     }
 
     
@@ -72,13 +75,13 @@ class T_Post : PFObject, PFSubclassing {
             return
         }
 
-        let post = T_Post(fromUser: currentUser, photo: picture, toAlbum: currentUser.liveAlbum!)
+        let post = T_Post(fromUser: currentUser, photo: picture, toAlbum: currentUser.liveAlbum!, hasVoted: [currentUser])
         uploadPost(post)
     }
     
     static func createPost() -> T_Post {
         
-        return T_Post(fromUser: T_ParseUserHelper.getCurrentUser()!, toAlbum: T_ParseUserHelper.getCurrentUser()!.liveAlbum!)
+        return T_Post(fromUser: T_ParseUserHelper.getCurrentUser()!, toAlbum: T_ParseUserHelper.getCurrentUser()!.liveAlbum!,hasVoted: [T_ParseUserHelper.getCurrentUser()!])
     }
     
     func addPictureToPost(picture: UIImage) {

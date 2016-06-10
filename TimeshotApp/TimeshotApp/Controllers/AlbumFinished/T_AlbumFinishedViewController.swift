@@ -79,8 +79,7 @@ class T_AlbumFinishedViewController: UIViewController {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
         if segue.identifier == "attendeesContainer" {
-            // Ici on va devoir mettre les attendees mais pour le moment on a des buggs apparement .. 
-            // Possible que ce soit lors de la creation d'album .. a verifier !
+            print("coucou")
             let friendsAlbumVC = segue.destinationViewController as! T_FriendsViewController
             friendsAlbumVC.attendees = albumPhotos?.attendees
             friendsAlbumVC.album = albumPhotos

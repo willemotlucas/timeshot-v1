@@ -159,6 +159,17 @@ class T_PhotosCollectionViewController: UIViewController {
             } else {
                 self.hasLoaded = true
                 self.posts = result as? [T_Post] ?? []
+                let currentUser = T_ParseUserHelper.getCurrentUser()!
+                for i in self.posts {
+                    
+                    let verifVote = i.hasVoted.filter{$0 == currentUser}
+                    if verifVote.count > 0 {
+                        print("a voté")
+                    } else {
+                        print("a pas voté")
+                    }
+                }
+                
                 self.collectionView.reloadEmptyDataSet()
                 
                 self.initializeCollectionView(self.posts)
@@ -185,6 +196,7 @@ class T_PhotosCollectionViewController: UIViewController {
                 self.hasLoaded = true
                 
                 self.posts = result as? [T_Post] ?? []
+                
                 // Attention toujours l'utiliser directement
                 // On reinitialise notre cache avec les dernieres datas de parse
                 T_Album.detailAlbumCache[self.albumPhotos!.objectId!] =  self.posts

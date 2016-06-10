@@ -497,7 +497,6 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="addFriendsToAlbum:" destination="vYW-Q6-7ln" eventType="touchUpInside" id="FBD-i1-RSx"/>
                                     <segue destination="faC-Yo-3r8" kind="presentation" identifier="addFriends" id="z4f-Aw-nmW"/>
                                 </connections>
                             </button>
