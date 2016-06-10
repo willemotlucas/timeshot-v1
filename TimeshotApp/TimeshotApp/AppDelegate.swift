@@ -10,6 +10,7 @@
 import UIKit
 import Parse
 import ParseFacebookUtilsV4
+import BWWalkthrough
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -41,16 +42,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFUser.enableRevocableSessionInBackground()
         
         let startViewController: UIViewController;
-        
         if let _ = PFUser.currentUser() {
-                //TODO Traiter le cas ou l'utilisateur s'est fait kick de la DB : TimeshotApp[5519:438979] [Error]: invalid session token (Code: 209, Version: 1.13.0)
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                startViewController = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController")
-            
-        } else {
-            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            startViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! UINavigationController
+            //TODO Traiter le cas ou l'utilisateur s'est fait kick de la DB : TimeshotApp[5519:438979] [Error]: invalid session token (Code: 209, Version: 1.13.0)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            startViewController = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController")
         }
+        else {
+            //TODO Traiter le cas ou l'utilisateur s'est fait kick de la DB : TimeshotApp[5519:438979] [Error]: invalid session token (Code: 209, Version: 1.13.0)
+            let storyboard = UIStoryboard(name: "OnBoard", bundle: nil)
+            let walkthrough = storyboard.instantiateViewControllerWithIdentifier("container") as! T_OnboardContenairViewController
+            let page_one = storyboard.instantiateViewControllerWithIdentifier("page1") as UIViewController
+            let page_two = storyboard.instantiateViewControllerWithIdentifier("page2") as UIViewController
+            let page_three = storyboard.instantiateViewControllerWithIdentifier("page3") as UIViewController
+            
+            walkthrough.delegate = walkthrough
+            walkthrough.addViewController(page_one)
+            walkthrough.addViewController(page_two)
+            walkthrough.addViewController(page_three)
+            startViewController = walkthrough
+        }
+
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = startViewController;

@@ -70,13 +70,18 @@
 		7DD0F9B61C9EA0FB00A856B9 /* soiree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */; };
 		7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */; };
 		7DFC23951CC0F15900DD9520 /* T_ParsePostHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFC23941CC0F15900DD9520 /* T_ParsePostHelper.swift */; };
+		8A0526661D05D07D0065E217 /* T_PageOneOnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0526651D05D07D0065E217 /* T_PageOneOnboardViewController.swift */; };
+		8A0526691D05D0A70065E217 /* T_OnboardContenairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0526671D05D0A70065E217 /* T_OnboardContenairViewController.swift */; };
 		8A6D85491CF9B24300DA9EEE /* T_LoginHomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6D85481CF9B24300DA9EEE /* T_LoginHomePageViewController.swift */; };
 		8A6F88C21CD6779300060C48 /* T_AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F88C11CD6779300060C48 /* T_AlertHelper.swift */; };
 		8A6F88C41CD69CB600060C48 /* T_SignUpContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F88C31CD69CB600060C48 /* T_SignUpContactViewController.swift */; };
 		8A76149E1CBEA8BA009CE926 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A76149D1CBEA8BA009CE926 /* Login.storyboard */; };
+		8A9AB6D91D0454DB006AA6EF /* OnBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A9AB6D81D0454DB006AA6EF /* OnBoard.storyboard */; };
 		8A9BE2071CD0FD8F0078924B /* T_ValidatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9BE2061CD0FD8F0078924B /* T_ValidatorHelper.swift */; };
 		8AB0F1C41CBFC71300605525 /* T_SignUpUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB0F1C31CBFC71300605525 /* T_SignUpUsernameViewController.swift */; };
 		8AB0F1C61CBFC7C300605525 /* T_SignUpPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB0F1C51CBFC7C300605525 /* T_SignUpPasswordViewController.swift */; };
+		8AE6C1571D05DF5600A6E26B /* T_PageTwoOnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE6C1561D05DF5600A6E26B /* T_PageTwoOnboardViewController.swift */; };
+		8AE6C1591D05DF6900A6E26B /* T_PageThreeOnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE6C1581D05DF6900A6E26B /* T_PageThreeOnboardViewController.swift */; };
 		8AFA26791CBF949200C09E17 /* T_LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA26781CBF949200C09E17 /* T_LoginViewController.swift */; };
 		8AFA267B1CBF94B000C09E17 /* T_SignUpEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA267A1CBF94B000C09E17 /* T_SignUpEmailViewController.swift */; };
 		8AFA267D1CBF94C900C09E17 /* T_SignUpInvitePeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA267C1CBF94C900C09E17 /* T_SignUpInvitePeopleViewController.swift */; };
@@ -171,13 +176,18 @@
 		7DD0F9B21C9EA0FB00A856B9 /* soiree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = soiree.jpg; sourceTree = "<group>"; };
 		7DD0F9B31C9EA0FB00A856B9 /* voyage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = voyage.jpg; sourceTree = "<group>"; };
 		7DFC23941CC0F15900DD9520 /* T_ParsePostHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ParsePostHelper.swift; sourceTree = "<group>"; };
+		8A0526651D05D07D0065E217 /* T_PageOneOnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PageOneOnboardViewController.swift; sourceTree = "<group>"; };
+		8A0526671D05D0A70065E217 /* T_OnboardContenairViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_OnboardContenairViewController.swift; sourceTree = "<group>"; };
 		8A6D85481CF9B24300DA9EEE /* T_LoginHomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_LoginHomePageViewController.swift; sourceTree = "<group>"; };
 		8A6F88C11CD6779300060C48 /* T_AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlertHelper.swift; sourceTree = "<group>"; };
 		8A6F88C31CD69CB600060C48 /* T_SignUpContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpContactViewController.swift; sourceTree = "<group>"; };
 		8A76149D1CBEA8BA009CE926 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		8A9AB6D81D0454DB006AA6EF /* OnBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoard.storyboard; sourceTree = "<group>"; };
 		8A9BE2061CD0FD8F0078924B /* T_ValidatorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ValidatorHelper.swift; sourceTree = "<group>"; };
 		8AB0F1C31CBFC71300605525 /* T_SignUpUsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpUsernameViewController.swift; sourceTree = "<group>"; };
 		8AB0F1C51CBFC7C300605525 /* T_SignUpPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpPasswordViewController.swift; sourceTree = "<group>"; };
+		8AE6C1561D05DF5600A6E26B /* T_PageTwoOnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PageTwoOnboardViewController.swift; sourceTree = "<group>"; };
+		8AE6C1581D05DF6900A6E26B /* T_PageThreeOnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PageThreeOnboardViewController.swift; sourceTree = "<group>"; };
 		8AFA26781CBF949200C09E17 /* T_LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_LoginViewController.swift; sourceTree = "<group>"; };
 		8AFA267A1CBF94B000C09E17 /* T_SignUpEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpEmailViewController.swift; sourceTree = "<group>"; };
 		8AFA267C1CBF94C900C09E17 /* T_SignUpInvitePeopleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpInvitePeopleViewController.swift; sourceTree = "<group>"; };
@@ -414,9 +424,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8A0526641D05D0620065E217 /* Onboard */ = {
+			isa = PBXGroup;
+			children = (
+				8A0526671D05D0A70065E217 /* T_OnboardContenairViewController.swift */,
+				8A0526651D05D07D0065E217 /* T_PageOneOnboardViewController.swift */,
+				8AE6C1561D05DF5600A6E26B /* T_PageTwoOnboardViewController.swift */,
+				8AE6C1581D05DF6900A6E26B /* T_PageThreeOnboardViewController.swift */,
+			);
+			path = Onboard;
+			sourceTree = "<group>";
+		};
+		8A9AB6D11D045470006AA6EF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				8A9AB6D81D0454DB006AA6EF /* OnBoard.storyboard */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		8AFA26771CBF948100C09E17 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				8A0526641D05D0620065E217 /* Onboard */,
 				8A6D85481CF9B24300DA9EEE /* T_LoginHomePageViewController.swift */,
 				8AFA26781CBF949200C09E17 /* T_LoginViewController.swift */,
 				8AFA267A1CBF94B000C09E17 /* T_SignUpEmailViewController.swift */,
@@ -481,6 +511,7 @@
 		B46B2B731C9ABA8300135920 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8A9AB6D11D045470006AA6EF /* Login */,
 				8A76149D1CBEA8BA009CE926 /* Login.storyboard */,
 				B46B2B741C9ABAC500135920 /* Profile.storyboard */,
 				B46B2B761C9ABADA00135920 /* Album.storyboard */,
@@ -579,7 +610,7 @@
 				TargetAttributes = {
 					7D86991A1C8F4A9D003BC1DC = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = N82MC72NZP;
+						DevelopmentTeam = 6T9PST97YR;
 					};
 				};
 			};
@@ -612,6 +643,7 @@
 				7DD0F9B41C9EA0FB00A856B9 /* festival.jpg in Resources */,
 				7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */,
 				7DD0F9B51C9EA0FB00A856B9 /* mariage.jpg in Resources */,
+				8A9AB6D91D0454DB006AA6EF /* OnBoard.storyboard in Resources */,
 				7D8699261C8F4A9D003BC1DC /* Assets.xcassets in Resources */,
 				7D8699241C8F4A9D003BC1DC /* Main.storyboard in Resources */,
 				8A76149E1CBEA8BA009CE926 /* Login.storyboard in Resources */,
@@ -677,6 +709,7 @@
 				5DE8FFF31CA4275C006BEBAE /* T_SendMessageUIButton.swift in Sources */,
 				7D241FF91CB6D47500F6548B /* T_HeaderCollectionReusableView.swift in Sources */,
 				5DC361DF1CBAFBE900B00064 /* T_ParseAlbumHelper.swift in Sources */,
+				8AE6C1571D05DF5600A6E26B /* T_PageTwoOnboardViewController.swift in Sources */,
 				7D2F539E1CB67D8100AB9995 /* T_AlbumViewController.swift in Sources */,
 				7D30378C1CC7CB2E00D522E0 /* T_FriendsTableViewCell.swift in Sources */,
 				5DE8FFF11CA325B1006BEBAE /* T_ContactTableViewCell.swift in Sources */,
@@ -716,9 +749,11 @@
 				5D1D921A1CBA4D390085B70C /* T_EmailEditionViewController.swift in Sources */,
 				8A6D85491CF9B24300DA9EEE /* T_LoginHomePageViewController.swift in Sources */,
 				5DB5A02A1CA1AD1000AADC9F /* T_ProfileViewController.swift in Sources */,
+				8A0526661D05D07D0065E217 /* T_PageOneOnboardViewController.swift in Sources */,
 				8AB0F1C61CBFC7C300605525 /* T_SignUpPasswordViewController.swift in Sources */,
 				5DB5A0271CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift in Sources */,
 				B41796821CE28E6B00DC35A8 /* SNSticker.swift in Sources */,
+				8AE6C1591D05DF6900A6E26B /* T_PageThreeOnboardViewController.swift in Sources */,
 				5D8638921CB8EDAA005CBC90 /* T_SearchUserTableViewCell.swift in Sources */,
 				B43C0E911CABF4E900EF51E9 /* T_CreateAlbumViewController.swift in Sources */,
 				5DF7ADDA1CDBC40C00C6C652 /* T_AlbumRequestViewController.swift in Sources */,
@@ -751,6 +786,7 @@
 				7D2420001CB6D48100F6548B /* T_PhotosCollectionViewController.swift in Sources */,
 				7D241FFA1CB6D47500F6548B /* T_HourCollectionViewCell.swift in Sources */,
 				7DFC23951CC0F15900DD9520 /* T_ParsePostHelper.swift in Sources */,
+				8A0526691D05D0A70065E217 /* T_OnboardContenairViewController.swift in Sources */,
 				7D241FF41CB6D39D00F6548B /* T_SliderViewController.swift in Sources */,
 				7D241FFB1CB6D47500F6548B /* T_PhotoCollectionViewCell.swift in Sources */,
 				7D2F53AA1CB67D9000AB9995 /* T_FriendsAlbumLiveViewController.swift in Sources */,
@@ -878,9 +914,9 @@
 				INFOPLIST_FILE = TimeshotApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.timeshot.app;
+				PRODUCT_BUNDLE_IDENTIFIER = me.lamouri.timeshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9f9c7c95-5673-44ad-8c0f-d43816673a2c";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -894,9 +930,9 @@
 				INFOPLIST_FILE = TimeshotApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.timeshot.app;
+				PRODUCT_BUNDLE_IDENTIFIER = me.lamouri.timeshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9f9c7c95-5673-44ad-8c0f-d43816673a2c";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

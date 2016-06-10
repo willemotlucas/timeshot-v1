@@ -23,21 +23,13 @@ class T_ParseUserHelper {
     static let EmailAddressParse = "email"
     
     // MARK: Login
-    static func login(login: String, password: String) {
-        do {
-            try PFUser.logInWithUsername(login, password: password)
+    static func login(login: String, password: String, completionBlock : PFUserResultBlock?) {
+            PFUser.logInWithUsernameInBackground(login, password: password, block: completionBlock)
             
-            if (isLogged()) {
+        if (isLogged()) {
                 print("Logged in successfully (from server) !")
                 return
             }
-        }
-        catch {
-            if (isLogged()) {
-                print("Logged in successfully (from cache) !")
-                return
-            }
-        }
         
         print("Not logged : should not go further in the app !")
     }

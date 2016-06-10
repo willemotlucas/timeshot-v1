@@ -107,7 +107,7 @@ class T_LoginViewController: UIViewController {
         }
         else {
             self.freezeUI()
-            PFUser.logInWithUsernameInBackground(self.usernameTextField.text!, password: self.passwordTextField.text!) { (user : PFUser?, error : NSError? ) -> Void in
+            T_ParseUserHelper.login(self.usernameTextField.text!, password: self.passwordTextField.text!){(user : PFUser?, error : NSError? ) -> Void in
                 self.unfreezeUI()
                 if let _ = user {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -116,8 +116,7 @@ class T_LoginViewController: UIViewController {
                 } else {
                     T_AlertHelper.alert(NSLocalizedString("Cannot sign in", comment: ""), errors: [NSLocalizedString("Username and/or password incorect", comment: "")], viewController: self)
                 }
-            }
-       
+            }            
         }
     }
     
