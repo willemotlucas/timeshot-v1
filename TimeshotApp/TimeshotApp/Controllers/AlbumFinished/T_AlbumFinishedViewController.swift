@@ -40,13 +40,16 @@ class T_AlbumFinishedViewController: UIViewController {
         // Je dois clean toutes les uiimages de cet album
         if isMovingFromParentViewController() {
             for i in self.childViewControllers {
-                if let controller = i as? T_PhotosCollectionViewController {
-                    for post in controller.posts {
-                        post.image.value = nil
+                if let controller = i as? T_ChooseDetailsAlbumViewController {
+                    for j in controller.childViewControllers {
+                        if let view = j as? T_PhotosCollectionViewController {
+                            for post in view.posts {
+                                post.image.value = nil
+                            }
+                        }
                     }
                 }
             }
-            
         }
     }
     
@@ -81,8 +84,8 @@ class T_AlbumFinishedViewController: UIViewController {
             let friendsAlbumVC = segue.destinationViewController as! T_FriendsViewController
             friendsAlbumVC.attendees = albumPhotos?.attendees
             friendsAlbumVC.album = albumPhotos
-        } else if segue.identifier == "photosContainer" {
-            let finishAlbumVC =  segue.destinationViewController as! T_PhotosCollectionViewController
+        } else if segue.identifier == "chooseContainer" {
+            let finishAlbumVC =  segue.destinationViewController as! T_ChooseDetailsAlbumViewController
             finishAlbumVC.albumPhotos = albumPhotos
         } else {
             print("coucou c'ets moi !!!")

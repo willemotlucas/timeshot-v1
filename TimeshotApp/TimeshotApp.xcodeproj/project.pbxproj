@@ -60,6 +60,8 @@
 		7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */; };
 		7D8699241C8F4A9D003BC1DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699221C8F4A9D003BC1DC /* Main.storyboard */; };
 		7D8699261C8F4A9D003BC1DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699251C8F4A9D003BC1DC /* Assets.xcassets */; };
+		7DB873801D0AA13F0075A4EF /* T_ChooseDetailsAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB8737F1D0AA13F0075A4EF /* T_ChooseDetailsAlbumViewController.swift */; };
+		7DB873821D0AAF2B0075A4EF /* T_TinderPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB873811D0AAF2B0075A4EF /* T_TinderPhotosViewController.swift */; };
 		7DC6AFBD1CF496B100461FE1 /* T_AlbumCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC6AFBC1CF496B100461FE1 /* T_AlbumCacheHelper.swift */; };
 		7DC8887E1CDB26CD001E552D /* T_SliderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8887D1CDB26CD001E552D /* T_SliderImageView.swift */; };
 		7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0F9AB1C9DC6BE00A856B9 /* T_AlbumLiveTableViewCell.swift */; };
@@ -166,6 +168,8 @@
 		7D8699251C8F4A9D003BC1DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D8699281C8F4A9D003BC1DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D86992A1C8F4A9D003BC1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DB8737F1D0AA13F0075A4EF /* T_ChooseDetailsAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ChooseDetailsAlbumViewController.swift; sourceTree = "<group>"; };
+		7DB873811D0AAF2B0075A4EF /* T_TinderPhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_TinderPhotosViewController.swift; sourceTree = "<group>"; };
 		7DC6AFBC1CF496B100461FE1 /* T_AlbumCacheHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumCacheHelper.swift; sourceTree = "<group>"; };
 		7DC8887D1CDB26CD001E552D /* T_SliderImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SliderImageView.swift; sourceTree = "<group>"; };
 		7DD0F9AB1C9DC6BE00A856B9 /* T_AlbumLiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumLiveTableViewCell.swift; sourceTree = "<group>"; };
@@ -347,6 +351,8 @@
 				7D2420011CB6E20200F6548B /* T_StoryViewController.swift */,
 				7D30378D1CC7CBD900D522E0 /* T_FriendsViewController.swift */,
 				7D7FA8461CDFD34D003F70E1 /* T_AddFriendToAlbumViewController.swift */,
+				7DB8737F1D0AA13F0075A4EF /* T_ChooseDetailsAlbumViewController.swift */,
+				7DB873811D0AAF2B0075A4EF /* T_TinderPhotosViewController.swift */,
 			);
 			path = AlbumFinished;
 			sourceTree = "<group>";
@@ -704,6 +710,7 @@
 				B417967F1CE28E6B00DC35A8 /* SNFilter.swift in Sources */,
 				B41796801CE28E6B00DC35A8 /* SNSlider.swift in Sources */,
 				5D64CA791CB986C2005C6E43 /* T_BirthdayEditionViewController.swift in Sources */,
+				7DB873821D0AAF2B0075A4EF /* T_TinderPhotosViewController.swift in Sources */,
 				5DC361DE1CBAFBE900B00064 /* T_FriendRequestParseHelper.swift in Sources */,
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
 				5DC361E31CBAFBE900B00064 /* T_ContactsHelper.swift in Sources */,
@@ -725,6 +732,7 @@
 				B431711C1CB912790080AFDD /* T_Post.swift in Sources */,
 				5DEF6E951CC1005600494C86 /* T_PhotoTakingHelper.swift in Sources */,
 				5DC361E61CBAFBE900B00064 /* T_String+Extension.swift in Sources */,
+				7DB873801D0AA13F0075A4EF /* T_ChooseDetailsAlbumViewController.swift in Sources */,
 				B43678651CE0F6A70096B8F4 /* T_NetworkStatus.swift in Sources */,
 				5D64CA771CB9806E005C6E43 /* T_LastNameEditionViewController.swift in Sources */,
 				5DF7ADD41CDBB87C00C6C652 /* T_ParseAlbumRequestHelper.swift in Sources */,

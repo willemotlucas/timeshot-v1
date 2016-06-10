@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -385,7 +385,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6a3-J7-rXL">
                                 <rect key="frame" x="0.0" y="40" width="600" height="496"/>
                                 <connections>
-                                    <segue destination="Emn-oU-lYF" kind="embed" identifier="photosContainer" id="uvv-Xg-CGe"/>
+                                    <segue destination="4ws-9v-qdO" kind="embed" identifier="chooseContainer" id="36t-aM-SSt"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -527,6 +527,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOQ-gf-feN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3147" y="1374"/>
+        </scene>
+        <!--Choose Details Album View Controller-->
+        <scene sceneID="g9C-4I-6t9">
+            <objects>
+                <viewController id="4ws-9v-qdO" customClass="T_ChooseDetailsAlbumViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aqN-no-s4D"/>
+                        <viewControllerLayoutGuide type="bottom" id="O7J-A3-aOF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j53-Fa-Qev">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="496"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMi-gT-iKZ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="496"/>
+                                <connections>
+                                    <segue destination="bmD-Qh-VM3" kind="embed" identifier="tinderContainer" id="baO-36-ML6"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDj-9b-VO4">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="496"/>
+                                <connections>
+                                    <segue destination="Emn-oU-lYF" kind="embed" identifier="photosContainer" id="59p-CS-q5q"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hDj-9b-VO4" firstAttribute="leading" secondItem="j53-Fa-Qev" secondAttribute="leading" id="2kj-F5-yjU"/>
+                            <constraint firstItem="O7J-A3-aOF" firstAttribute="top" secondItem="pMi-gT-iKZ" secondAttribute="bottom" id="Hbk-td-B12"/>
+                            <constraint firstAttribute="trailing" secondItem="pMi-gT-iKZ" secondAttribute="trailing" id="J2o-G9-33S"/>
+                            <constraint firstAttribute="bottom" secondItem="hDj-9b-VO4" secondAttribute="bottom" id="LXz-vU-jFs"/>
+                            <constraint firstItem="pMi-gT-iKZ" firstAttribute="leading" secondItem="j53-Fa-Qev" secondAttribute="leading" id="W4i-Xf-qNT"/>
+                            <constraint firstItem="hDj-9b-VO4" firstAttribute="top" secondItem="aqN-no-s4D" secondAttribute="bottom" id="XOc-pP-3r4"/>
+                            <constraint firstItem="pMi-gT-iKZ" firstAttribute="top" secondItem="aqN-no-s4D" secondAttribute="bottom" id="Zbq-3Z-tJz"/>
+                            <constraint firstAttribute="trailing" secondItem="hDj-9b-VO4" secondAttribute="trailing" id="itm-Of-bHl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="photosContainerView" destination="hDj-9b-VO4" id="Ueq-Sj-Kss"/>
+                        <outlet property="tinderContainerView" destination="pMi-gT-iKZ" id="1Ed-N1-lkY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dxt-l0-cQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2321" y="2533"/>
         </scene>
         <!--Photos Collection View Controller-->
         <scene sceneID="fxW-b3-yBb">
@@ -694,7 +740,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1K-Xy-sPS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2321" y="2353"/>
+            <point key="canvasLocation" x="3147" y="2533"/>
         </scene>
         <!--Story View Controller-->
         <scene sceneID="GSw-Vs-2Na">
@@ -771,7 +817,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2321" y="3065"/>
+            <point key="canvasLocation" x="3147" y="3337"/>
         </scene>
         <!--Slider View Controller-->
         <scene sceneID="0q3-fT-l9G">
@@ -899,7 +945,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3111" y="2353"/>
+            <point key="canvasLocation" x="4045" y="2533"/>
         </scene>
         <!--Add Friends View Controller-->
         <scene sceneID="9FV-xB-tf7">
@@ -1351,6 +1397,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kOP-X9-BBR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4045" y="1374"/>
+        </scene>
+        <!--Tinder Photos View Controller-->
+        <scene sceneID="ooK-IO-AbW">
+            <objects>
+                <viewController id="bmD-Qh-VM3" customClass="T_TinderPhotosViewController" customModule="TimeshotApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4nY-3T-KhZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="496"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GKW-qE-MIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2321" y="3285"/>
         </scene>
     </scenes>
     <resources>

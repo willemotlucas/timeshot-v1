@@ -45,15 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let _ = PFUser.currentUser() {
                 //TODO Traiter le cas ou l'utilisateur s'est fait kick de la DB : TimeshotApp[5519:438979] [Error]: invalid session token (Code: 209, Version: 1.13.0)
-            if true {
-                let storyboard = UIStoryboard(name: "Koloda", bundle: nil)
-                startViewController = storyboard.instantiateViewControllerWithIdentifier("Start")
-            }
-            else {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                startViewController = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController")
-            }
-            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            startViewController = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController")
         } else {
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
             startViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! UINavigationController
