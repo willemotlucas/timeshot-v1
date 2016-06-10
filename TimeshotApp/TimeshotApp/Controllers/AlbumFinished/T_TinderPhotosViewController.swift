@@ -51,7 +51,6 @@ class T_TinderPhotosViewController: UIViewController {
     // MARK: Loading Data Functions
     func loadPost() {
         T_AlbumCacheHelper.postsForCurrentAlbum(albumPhotos!) {(result: [PFObject]?, error: NSError?) -> Void in
-            print("loadPost")
             //self.containerDelegate?.hidePhotoCollectionView()
             if let error = error {
                 print("\n\n\n")
@@ -69,7 +68,6 @@ class T_TinderPhotosViewController: UIViewController {
                         self.posts?.append(i)
                     }
                 }
-                
                 self.kolodaView.reloadData()
             }
         }
@@ -101,19 +99,27 @@ class T_TinderPhotosViewController: UIViewController {
 extension T_TinderPhotosViewController : KolodaViewDataSource {
         
     func kolodaNumberOfCards(koloda: KolodaView) -> UInt {
-        print("nombre de votes a faire")
-        print(posts?.count ?? 0)
         return UInt(posts?.count ?? 0)
     }
         
     func koloda(koloda: KolodaView, viewForCardAtIndex index: UInt) -> UIView {
         if let posts = self.posts{
-            let place = UIImage(named: "default-friend-picture")
-            let img = posts[Int(index)].image.value
-            let imageView = UIImageView(image: img ?? place)
-            imageView.contentMode = UIViewContentMode.ScaleAspectFit
-            imageView.clipsToBounds = true
-            return imageView
+            // Need to create the view
+            let frame = kolodaView.frame
+            
+            // Design of the view
+            let newPageView = T_SliderImageView.init(frame: frame)
+            newPageView.post = posts[Int(index)]
+            newPageView.contentMode = .ScaleAspectFit
+            newPageView.frame = frame
+            
+            if let image = posts[Int(index)].image.value {
+                newPageView.image = image
+            }else {
+                posts[Int(index)].downloadImage()
+            }
+            
+            return newPageView
         }
         return UIView()
     }

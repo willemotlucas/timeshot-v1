@@ -176,7 +176,6 @@ class T_PhotosCollectionViewController: UIViewController {
                 if !self.hasVoted {
                     self.containerDelegate?.hidePhotoCollectionView()
                 }else {
-                    print("coucou")
                     self.containerDelegate?.hideTinderVoteView()
                 }
                 
