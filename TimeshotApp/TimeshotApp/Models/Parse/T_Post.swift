@@ -19,6 +19,7 @@ class T_Post : PFObject, PFSubclassing {
     @NSManaged var isDeleted: Bool
     @NSManaged var createdAtDate: NSDate
     @NSManaged var hasVoted: [T_User]
+    @NSManaged var voteNumber: Int
     
     var image : Observable<UIImage?> = Observable(nil)
     
@@ -44,7 +45,7 @@ class T_Post : PFObject, PFSubclassing {
         return "Post"
     }
     
-    init(fromUser: T_User, photo:UIImage, toAlbum:T_Album, hasVoted:[T_User])
+    init(fromUser: T_User, photo:UIImage, toAlbum:T_Album, hasVoted:[T_User], voteNumber :Int)
     {
         super.init()
         
@@ -54,9 +55,10 @@ class T_Post : PFObject, PFSubclassing {
         self.isDeleted = false
         self.createdAtDate = NSDate()
         self.hasVoted = hasVoted
+        self.voteNumber = voteNumber
     }
     
-    init(fromUser: T_User, toAlbum:T_Album, hasVoted:[T_User])
+    init(fromUser: T_User, toAlbum:T_Album, hasVoted:[T_User], voteNumber:Int)
     {
         super.init()
         
@@ -65,6 +67,7 @@ class T_Post : PFObject, PFSubclassing {
         self.isDeleted = false
         self.createdAtDate = NSDate()
         self.hasVoted = hasVoted
+        self.voteNumber = voteNumber
     }
 
     
@@ -75,13 +78,13 @@ class T_Post : PFObject, PFSubclassing {
             return
         }
 
-        let post = T_Post(fromUser: currentUser, photo: picture, toAlbum: currentUser.liveAlbum!, hasVoted: [currentUser])
+        let post = T_Post(fromUser: currentUser, photo: picture, toAlbum: currentUser.liveAlbum!, hasVoted: [currentUser], voteNumber: 0)
         uploadPost(post)
     }
     
     static func createPost() -> T_Post {
         
-        return T_Post(fromUser: T_ParseUserHelper.getCurrentUser()!, toAlbum: T_ParseUserHelper.getCurrentUser()!.liveAlbum!,hasVoted: [T_ParseUserHelper.getCurrentUser()!])
+        return T_Post(fromUser: T_ParseUserHelper.getCurrentUser()!, toAlbum: T_ParseUserHelper.getCurrentUser()!.liveAlbum!,hasVoted: [T_ParseUserHelper.getCurrentUser()!], voteNumber: 0)
     }
     
     func addPictureToPost(picture: UIImage) {

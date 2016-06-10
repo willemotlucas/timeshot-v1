@@ -36,19 +36,14 @@ class T_ParseVoteHelper {
     }
     
     static func liked(post : T_Post, user : T_User) {
-        let vote = T_Vote()
-        vote.fromUser = user
-        vote.toPost = post
-        vote.isLiked = true
-        vote.saveInBackground()
+        post.hasVoted.append(user)
+        post.voteNumber += 1
+        post.saveInBackgroundWithBlock(nil)
     }
     
     static func disliked(post : T_Post, user : T_User) {
-        let vote = T_Vote()
-        vote.fromUser = user
-        vote.toPost = post
-        vote.isLiked = false
-        vote.saveInBackground()
+        post.hasVoted.append(user)
+        post.saveInBackgroundWithBlock(nil)
     }
     
     

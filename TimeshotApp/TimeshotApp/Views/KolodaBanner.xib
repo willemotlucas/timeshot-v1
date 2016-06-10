@@ -12,50 +12,26 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vB1-1G-hBX">
-                    <rect key="frame" x="8" y="54" width="240" height="128"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="128" id="aZ1-Py-tHZ"/>
                     </constraints>
-                </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Stz-pS-vL5">
-                    <rect key="frame" x="0.0" y="331" width="600" height="128"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GROS TCHOUIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTF-Bu-WPC">
-                            <rect key="frame" x="0.0" y="97" width="363" height="44"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="44" id="rrC-Ex-PL8"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="KTF-Bu-WPC" firstAttribute="top" secondItem="Stz-pS-vL5" secondAttribute="top" constant="97" id="0pY-jI-exy"/>
-                        <constraint firstAttribute="width" constant="240" id="EtM-xW-ACG"/>
-                        <constraint firstItem="KTF-Bu-WPC" firstAttribute="leading" secondItem="Stz-pS-vL5" secondAttribute="leading" id="Xsv-L4-1hO"/>
-                        <constraint firstAttribute="height" constant="128" id="YeQ-lt-2Ke"/>
-                        <constraint firstAttribute="trailing" secondItem="KTF-Bu-WPC" secondAttribute="trailing" constant="237" id="hUl-8e-wW6"/>
-                    </constraints>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="EtM-xW-ACG"/>
+                            <exclude reference="aZ1-Py-tHZ"/>
                         </mask>
                     </variation>
-                </view>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Stz-pS-vL5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="331" id="9bM-qr-h8I"/>
-                <constraint firstItem="vB1-1G-hBX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Ehh-wN-uTt"/>
-                <constraint firstAttribute="trailing" secondItem="vB1-1G-hBX" secondAttribute="trailing" constant="352" id="Ngi-be-hFI"/>
-                <constraint firstItem="Stz-pS-vL5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="b3h-ZH-7oR"/>
-                <constraint firstItem="vB1-1G-hBX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="54" id="oS7-9S-Hjj"/>
-                <constraint firstAttribute="trailing" secondItem="Stz-pS-vL5" secondAttribute="trailing" id="p1e-hW-6Sf"/>
+                <constraint firstAttribute="trailing" secondItem="vB1-1G-hBX" secondAttribute="trailing" id="Sfj-m6-ceY"/>
+                <constraint firstItem="vB1-1G-hBX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Xw1-Ik-QUb"/>
+                <constraint firstItem="vB1-1G-hBX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YOP-qg-pbj"/>
+                <constraint firstAttribute="bottom" secondItem="vB1-1G-hBX" secondAttribute="bottom" id="ft4-5z-6DE"/>
             </constraints>
             <connections>
                 <outlet property="overlayImageView" destination="vB1-1G-hBX" id="JmQ-nu-LwD"/>
-                <outlet property="overlayView" destination="Stz-pS-vL5" id="pgg-GT-djo"/>
             </connections>
         </view>
     </objects>

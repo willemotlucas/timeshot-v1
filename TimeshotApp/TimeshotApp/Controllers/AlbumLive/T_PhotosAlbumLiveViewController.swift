@@ -97,7 +97,7 @@ extension T_PhotosAlbumLiveViewController : KolodaViewDataSource {
             let place = UIImage(named: "default-friend-picture")
             let img = posts[Int(index)].image.value
             let imageView = UIImageView(image: img ?? place)
-            imageView.contentMode = UIViewContentMode.ScaleAspectFill
+            imageView.contentMode = UIViewContentMode.ScaleToFill
             imageView.clipsToBounds = true
             return imageView
         }

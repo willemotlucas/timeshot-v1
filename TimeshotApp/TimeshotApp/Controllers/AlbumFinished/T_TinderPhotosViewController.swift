@@ -111,7 +111,7 @@ extension T_TinderPhotosViewController : KolodaViewDataSource {
             let place = UIImage(named: "default-friend-picture")
             let img = posts[Int(index)].image.value
             let imageView = UIImageView(image: img ?? place)
-            imageView.contentMode = UIViewContentMode.ScaleAspectFill
+            imageView.contentMode = UIViewContentMode.ScaleAspectFit
             imageView.clipsToBounds = true
             return imageView
         }
@@ -130,11 +130,11 @@ extension T_TinderPhotosViewController : KolodaViewDelegate {
     func koloda(koloda: KolodaView, didSwipeCardAtIndex index: UInt, inDirection direction: SwipeResultDirection) {
         if direction == SwipeResultDirection.Left {
             print("Swipe Left")
-            //T_ParseVoteHelper.disliked(posts![Int(index)], user: T_User.currentUser()!)
+            T_ParseVoteHelper.disliked(posts![Int(index)], user: T_User.currentUser()!)
         }
         else if direction == SwipeResultDirection.Right {
             print("Swipe Right")
-            //T_ParseVoteHelper.liked(posts![Int(index)], user: T_User.currentUser()!)
+            T_ParseVoteHelper.liked(posts![Int(index)], user: T_User.currentUser()!)
         }
     }
     
@@ -144,13 +144,6 @@ extension T_TinderPhotosViewController : KolodaViewDelegate {
         
     }
     
-    func koloda(koloda: KolodaView, didSelectCardAtIndex index: UInt){
-        //print("didSelectCardAtIndex, index=\(index)")
-    }
-
-    func koloda(kolodaDidResetCard koloda: KolodaView){
-        print("kolodaDidResetCard")
-    }
     
     func koloda(koloda: KolodaView, didShowCardAtIndex index: UInt){
         let _ = koloda.viewForCardAtIndex(Int(index))

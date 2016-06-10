@@ -36,7 +36,7 @@ class T_PhotosCollectionViewController: UIViewController {
     let refresher = PullToRefresh()
     
     // For the votes
-    var hasVoted = false
+    var hasVoted = true
 
     // Used for the slider
     // numberSectionsPhoto.count -> number of sections in our gallery
@@ -166,9 +166,7 @@ class T_PhotosCollectionViewController: UIViewController {
                 for i in self.posts {
                     
                     let verifVote = i.hasVoted.filter{$0 == currentUser}
-                    if verifVote.count > 0 {
-                        print("a voté")
-                    } else {
+                    if verifVote.count == 0 {
                         print("a pas voté")
                         self.hasVoted = false
                         break
@@ -177,6 +175,9 @@ class T_PhotosCollectionViewController: UIViewController {
                 
                 if !self.hasVoted {
                     self.containerDelegate?.hidePhotoCollectionView()
+                }else {
+                    print("coucou")
+                    self.containerDelegate?.hideTinderVoteView()
                 }
                 
                 self.collectionView.reloadEmptyDataSet()
