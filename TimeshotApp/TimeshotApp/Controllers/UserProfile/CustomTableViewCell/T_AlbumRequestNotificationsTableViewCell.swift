@@ -19,8 +19,8 @@ protocol AlbumRequestsUpdater {
 class T_AlbumRequestNotificationsTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var notificationTextLabel: UILabel!
+    @IBOutlet weak var notificationHelpTextLabel: UILabel!
     
-    var delegate: AlbumRequestsUpdater?
     var albumRequest: T_AlbumRequest?
 
     var friend: T_User? {
@@ -47,7 +47,7 @@ class T_AlbumRequestNotificationsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    @IBAction func acceptAlbumRequestButtonTapped(sender: UIButton) {
+    /*@IBAction func acceptAlbumRequestButtonTapped(sender: UIButton) {
         if T_CameraViewController.instance.isLiveAlbumExisting == true {
             self.delegate?.displayAlert("You already have an album in progress...")
         } else {
@@ -68,5 +68,5 @@ class T_AlbumRequestNotificationsTableViewCell: UITableViewCell {
         T_ParseAlbumRequestHelper.rejectFriendRequest(self.albumRequest!) { (result: Bool, error: NSError?) in
             self.delegate?.updateAlbumRequestsTableView(self.albumRequest!)
         }
-    }
+    }*/
 }

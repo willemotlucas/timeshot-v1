@@ -10,8 +10,8 @@ import Foundation
 import Parse
 
 class T_AlbumRequest: PFObject, PFSubclassing {
-    @NSManaged var fromUser: PFUser?
-    @NSManaged var toUser: PFUser?
+    @NSManaged var fromUser: T_User?
+    @NSManaged var toUser: T_User?
     @NSManaged var status: String?
     @NSManaged var toAlbum: T_Album?
     
@@ -33,7 +33,7 @@ class T_AlbumRequest: PFObject, PFSubclassing {
     
     init(toUser: T_User, toAlbum: T_Album){
         super.init()
-        self.fromUser = PFUser.currentUser()!
+        self.fromUser = T_ParseUserHelper.getCurrentUser()!
         self.toUser = toUser
         self.toAlbum = toAlbum
         self.status = "Pending"

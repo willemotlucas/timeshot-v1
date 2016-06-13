@@ -13,6 +13,8 @@ import AddressBookUI
 import DZNEmptyDataSet
 import PullToRefresh
 import MBProgressHUD
+import SCLAlertView
+import SwiftyDrop
 
 enum ContentType {
     case Friends, Notifications
@@ -369,6 +371,48 @@ extension T_ProfileViewController: UITableViewDataSource {
         }
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch contentToDisplay {
+            case .Notifications:
+                let albumRequest = self.albumRequests[indexPath.row]
+                
+                let appearance = SCLAlertView.SCLAppearance(
+                    showCloseButton: false
+                )
+                
+                let alertView = SCLAlertView(appearance: appearance)
+                alertView.addButton("Accept", action: {
+                    if T_CameraViewController.instance.isLiveAlbumExisting == true {
+                        Drop.down("You already have an album in progress", state: .Error)
+                    } else {
+                        if Reachability.isConnectedToNetwork() {
+                            T_ParseAlbumRequestHelper.acceptAlbumRequest(albumRequest) { (result: Bool, error: NSError?) in
+                                T_CameraViewController.instance.manageAlbumProcessing()
+                                self.updateAlbumRequestsTableView(albumRequest)
+                            }
+                        } else {
+                            Drop.down("No internet connection... Try again later", state: .Error)
+                        }
+                    }
+                })
+                
+                alertView.addButton("Decline", action: {
+                    if Reachability.isConnectedToNetwork() {
+                        T_ParseAlbumRequestHelper.rejectAlbumRequest(albumRequest) { (result: Bool, error: NSError?) in
+                            self.updateAlbumRequestsTableView(albumRequest)
+                        }
+                    } else {
+                        Drop.down("No internet connection... Try again later", state: .Error)
+                    }
+                })
+                
+                alertView.showSuccess("Invitation", subTitle: "\n \(albumRequest.fromUser!.username!) invited you to join his album \(albumRequest.toAlbum!.title!).\n \nDo you want to have fun? 🎉", circleIconImage: UIImage(named: "invitation"))
+
+            case .Friends:
+                return
+        }
+    }
+    
     /*
      * Creates a friend request cell and fill in with the full name of the user who send the request
      * Params:
@@ -408,14 +452,14 @@ extension T_ProfileViewController: UITableViewDataSource {
     func createNotificationCell(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("T_AlbumRequestNotificationsTableViewCell", forIndexPath: indexPath) as! T_AlbumRequestNotificationsTableViewCell
         let albumRequest = self.albumRequests[indexPath.row]
-        let user = albumRequest.fromUser! as! T_User
+        let user = albumRequest.fromUser! 
         user.downloadImage()
         
         cell.selectionStyle = UITableViewCellSelectionStyle.None
-        cell.delegate = self
         cell.friend = user
         cell.albumRequest = albumRequest
         cell.notificationTextLabel.text = "@\(user.username!) invited you to join \(albumRequest.toAlbum!.title!)!"
+        cell.notificationHelpTextLabel.text = "Click to answer"
         return cell
     }
 }

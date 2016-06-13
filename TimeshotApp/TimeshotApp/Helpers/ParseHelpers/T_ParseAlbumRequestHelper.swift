@@ -124,7 +124,7 @@ class T_ParseAlbumRequestHelper {
      * - @friendRequest : the album request to change in Rejected status
      * - @completionBlock : the methods which will be executed after editing the status
      */
-    static func rejectFriendRequest(albumRequest: T_AlbumRequest, completionBlock: PFBooleanResultBlock){
+    static func rejectAlbumRequest(albumRequest: T_AlbumRequest, completionBlock: PFBooleanResultBlock){
         albumRequest.status = albumRequestStatus(.Rejected)
         albumRequest.saveInBackgroundWithBlock(completionBlock)
     }

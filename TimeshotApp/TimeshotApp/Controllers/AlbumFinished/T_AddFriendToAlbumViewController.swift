@@ -110,7 +110,7 @@ class T_AddFriendToAlbumViewController: UIViewController {
                         let albumRequests = result as? [T_AlbumRequest] ?? []
                         
                         // Recuperation de tous les request User
-                        let requestUser = albumRequests.map({$0.toUser as? T_User})
+                        let requestUser = albumRequests.map({$0.toUser})
                         
                         // Filtre de nos amis avec ceux qui sont deja dans les requests
                         for user in requestUser {
