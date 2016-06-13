@@ -27,6 +27,7 @@ class T_PhotosCollectionViewController: UIViewController {
     var albumPhotos : T_Album?
     var posts:[T_Post] = []
     var storyIndex = 0
+    let numberPhotosStory = 2
     var containerDelegate: ContainerDelegateProtocol?
     
     // For the empty view
@@ -145,6 +146,22 @@ class T_PhotosCollectionViewController: UIViewController {
     }
     
     // MARK: Loading Data Functions
+    func getStory() -> [T_Post] {
+        // Recupération que des 20 photos les plus likes
+        let orderedPosts = self.posts.sort({$0.voteNumber > $1.voteNumber})
+        
+        var storyPosts = [T_Post]()
+
+        for i in 1...numberPhotosStory {
+            storyPosts.append(orderedPosts[i])
+        }
+        
+        storyPosts = storyPosts.sort({$0.createdAtDate.isEarlierThanDate($1.createdAtDate)})
+        
+        return storyPosts
+    }
+    
+    
     func loadPost() {
         T_AlbumCacheHelper.postsForCurrentAlbum(albumPhotos!) {(result: [PFObject]?, error: NSError?) -> Void in
             print("loadPost")
@@ -261,7 +278,13 @@ class T_PhotosCollectionViewController: UIViewController {
             }
         } else if segue.identifier == "ShowStory" {
             let slideDetailVC = segue.destinationViewController as! T_StoryViewController
-            slideDetailVC.pageImages = self.posts
+            
+            if(posts.count > numberPhotosStory) {
+                slideDetailVC.pageImages = getStory()
+            }else {
+                slideDetailVC.pageImages = self.posts
+            }
+            
             slideDetailVC.currentPage = storyIndex
         }
     }
