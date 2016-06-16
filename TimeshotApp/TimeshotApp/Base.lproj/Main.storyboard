@@ -212,7 +212,7 @@
                                         <color key="backgroundColor" red="0.89019607840000003" green="0.31372549020000001" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new-album" translatesAutoresizingMaskIntoConstraints="NO" id="Gnw-z8-PGL">
-                                        <rect key="frame" x="245" y="37" width="109" height="123"/>
+                                        <rect key="frame" x="245" y="87" width="109" height="123"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Gnw-z8-PGL" secondAttribute="height" multiplier="109:123" id="TVc-o9-bZt"/>
                                             <constraint firstAttribute="height" constant="123" id="U5M-Zf-Rw4"/>
@@ -220,7 +220,7 @@
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ReD-cP-anD">
-                                        <rect key="frame" x="185" y="220" width="230" height="17"/>
+                                        <rect key="frame" x="185" y="250" width="230" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="230" id="Zv8-nX-50U"/>
                                         </constraints>
@@ -234,7 +234,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dgl-wx-G6S">
-                                        <rect key="frame" x="185" y="292" width="230" height="44"/>
+                                        <rect key="frame" x="185" y="436" width="230" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="230" id="29L-lR-Xs9"/>
                                             <constraint firstAttribute="height" constant="44" id="Q90-Me-pjO"/>
@@ -248,16 +248,16 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Dgl-wx-G6S" secondAttribute="bottom" constant="120" id="3zd-oI-CDW"/>
                                     <constraint firstItem="ReD-cP-anD" firstAttribute="centerX" secondItem="h3G-K2-eMn" secondAttribute="centerX" id="Efh-hH-H0E"/>
-                                    <constraint firstItem="Dgl-wx-G6S" firstAttribute="top" secondItem="ReD-cP-anD" secondAttribute="bottom" constant="55" id="L7T-6i-ZIP"/>
                                     <constraint firstItem="970-wW-zZe" firstAttribute="top" secondItem="h3G-K2-eMn" secondAttribute="top" id="Q3T-gx-WlW"/>
                                     <constraint firstAttribute="trailing" secondItem="970-wW-zZe" secondAttribute="trailing" id="SOT-tZ-hAt"/>
                                     <constraint firstItem="ReD-cP-anD" firstAttribute="centerX" secondItem="h3G-K2-eMn" secondAttribute="centerX" id="eN0-no-z3i"/>
                                     <constraint firstItem="Dgl-wx-G6S" firstAttribute="centerX" secondItem="h3G-K2-eMn" secondAttribute="centerX" id="exM-Uf-lqc"/>
-                                    <constraint firstItem="ReD-cP-anD" firstAttribute="top" secondItem="h3G-K2-eMn" secondAttribute="top" constant="220" id="iNs-El-GQb"/>
+                                    <constraint firstItem="ReD-cP-anD" firstAttribute="top" secondItem="h3G-K2-eMn" secondAttribute="top" constant="250" id="iNs-El-GQb"/>
                                     <constraint firstItem="Gnw-z8-PGL" firstAttribute="centerX" secondItem="h3G-K2-eMn" secondAttribute="centerX" id="ikL-RA-Dea"/>
                                     <constraint firstItem="970-wW-zZe" firstAttribute="leading" secondItem="h3G-K2-eMn" secondAttribute="leading" id="ls2-mq-mtL"/>
-                                    <constraint firstItem="ReD-cP-anD" firstAttribute="top" secondItem="Gnw-z8-PGL" secondAttribute="bottom" constant="60" id="nlg-Zf-pjA"/>
+                                    <constraint firstItem="ReD-cP-anD" firstAttribute="top" secondItem="Gnw-z8-PGL" secondAttribute="bottom" constant="40" id="nlg-Zf-pjA"/>
                                     <constraint firstAttribute="bottom" secondItem="970-wW-zZe" secondAttribute="bottom" id="zie-lS-p1u"/>
                                 </constraints>
                             </view>
