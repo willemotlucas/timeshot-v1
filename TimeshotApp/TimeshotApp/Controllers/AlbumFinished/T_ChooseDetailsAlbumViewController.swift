@@ -23,16 +23,7 @@ class T_ChooseDetailsAlbumViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         title = albumPhotos?.title
-        print("on va devoir checker les posts ici ! ")
-        print(tinderContainerView.hidden)
-        
     }
-    
-    override func viewDidDisappear(animated: Bool) {
-        // Je dois clean toutes les uiimages de cet album
-        print("Je disparait : ChooseDetailsVC")
-    }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

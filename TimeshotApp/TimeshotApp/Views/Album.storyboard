@@ -804,7 +804,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="21S-u2-qOT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="lRd-KM-7KN" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="CIB-bN-rsy">
                     <connections>
                         <action selector="userTapped:" destination="Xnu-7w-UyO" id="Prg-Su-Sa8"/>
@@ -812,7 +811,7 @@
                 </tapGestureRecognizer>
                 <swipeGestureRecognizer direction="down" id="eFz-a5-H1l">
                     <connections>
-                        <segue destination="lRd-KM-7KN" kind="unwind" unwindAction="unwindToStoryView:" id="g4z-Dt-CeJ"/>
+                        <action selector="exitStory:" destination="Xnu-7w-UyO" id="IOF-BJ-cO8"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>

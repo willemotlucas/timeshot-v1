@@ -13,6 +13,9 @@ import AFDateHelper
 import SwiftGifOrigin
 import PullToRefresh
 
+// Protocol between the containerView and the PhotoCollectionView
+// ParentVC = containerView
+// ChildVC = PhotosCollectionView
 protocol ContainerDelegateProtocol {
     func hidePhotoCollectionView()
     func hideTinderVoteView()
@@ -27,7 +30,7 @@ class T_PhotosCollectionViewController: UIViewController {
     var albumPhotos : T_Album?
     var posts:[T_Post] = []
     var storyIndex = 0
-    let numberPhotosStory = 2
+    let numberPhotosStory = 3
     var containerDelegate: ContainerDelegateProtocol?
     
     // For the empty view
@@ -58,6 +61,12 @@ class T_PhotosCollectionViewController: UIViewController {
         })
         
         loadPost()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        print("Dans le viewWillAppear")
+        print(storyIndex)
+        collectionView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -278,6 +287,7 @@ class T_PhotosCollectionViewController: UIViewController {
             }
         } else if segue.identifier == "ShowStory" {
             let slideDetailVC = segue.destinationViewController as! T_StoryViewController
+            slideDetailVC.storyDelegate = self
             
             if(posts.count > numberPhotosStory) {
                 slideDetailVC.pageImages = getStory()
@@ -286,17 +296,6 @@ class T_PhotosCollectionViewController: UIViewController {
             }
             
             slideDetailVC.currentPage = storyIndex
-        }
-    }
-    
-    @IBAction func unwindToStoryView(sender: UIStoryboardSegue) {
-        // We nedd the update our view and now where the user stopped the story
-        if let sourceViewController = sender.sourceViewController as? T_StoryViewController {
-            if sourceViewController.currentPage == posts.count + 1 {
-                storyIndex = 0
-            } else if sourceViewController.currentPage > 0 {
-                storyIndex = sourceViewController.currentPage - 1
-            }
         }
     }
 }
@@ -327,7 +326,6 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
         if indexPath.section == 0 {
     
             let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("storyCell", forIndexPath: indexPath) as! T_StoryCollectionViewCell
-            
             let post = posts[storyIndex]
             cell.imageView.layer.cornerRadius = 40
             post.downloadImage()
@@ -479,4 +477,15 @@ extension T_PhotosCollectionViewController : DZNEmptyDataSetSource, DZNEmptyData
     }
 }
 
+extension T_PhotosCollectionViewController : StoryDelegateProtocol {
+    func updateStory(indexStory: Int) {
+        if indexStory >= 0 {
+            self.storyIndex = indexStory
+            
+        }else {
+            self.storyIndex = 0
+        }
+        self.collectionView.reloadData()
+    }
+}
 
