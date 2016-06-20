@@ -9,8 +9,8 @@
 import UIKit
 import Koloda
 
-private let overlayRightImageName = "Like"
-private let overlayLeftImageName = "Refuse"
+private let overlayRightImageName = "Like_photo"
+private let overlayLeftImageName = "Dislike_photo"
 
 class T_KolodaBanner: OverlayView {
     @IBOutlet lazy var overlayImageView: UIImageView! = {
