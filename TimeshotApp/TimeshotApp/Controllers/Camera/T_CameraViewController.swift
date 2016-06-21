@@ -160,7 +160,7 @@ class T_CameraViewController: UIViewController {
         
         //Text field init with random title
         let randomIndex = Int(arc4random_uniform(UInt32(autoTitles.count)))
-        self.albumTitleTextField.attributedPlaceholder = NSAttributedString(string:"\(autoTitles[randomIndex]) \(T_DateHelper.getDayOfWeekInLetter())",attributes:[NSForegroundColorAttributeName: UIColor(colorLiteralRed: 255, green: 255, blue: 255, alpha: 0.5)])
+        self.albumTitleTextField.attributedPlaceholder = NSAttributedString(string:"\(autoTitles[randomIndex]) \(T_DateHelper.getDayOfWeekInLetter())")
         
         // Common camera manager settings
         cameraManager.shouldRespondToOrientationChanges = false

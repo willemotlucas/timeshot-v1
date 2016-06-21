@@ -13,6 +13,8 @@ import AddressBookUI
 import DZNEmptyDataSet
 import PullToRefresh
 import MBProgressHUD
+import SCLAlertView
+import SwiftyDrop
 
 enum ContentType {
     case Friends, Notifications
@@ -25,6 +27,7 @@ class T_ProfileViewController: UIViewController {
     @IBOutlet weak var segmentedView: UIView!
     @IBOutlet weak var profileView: UIView!
     @IBOutlet weak var addFriendsButtonView: UIView!
+    @IBOutlet weak var bottomActionButton: UIButton!
     
     @IBOutlet weak var profileImageView: UIImageView!
     
@@ -76,6 +79,9 @@ class T_ProfileViewController: UIViewController {
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         tableView.tableFooterView = UIView()
+        
+        //Add observer for didBecomeActiveNotification of AppDelegate
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(notificationsState), name: "UIApplicationDidBecomeActiveNotification", object: nil)
         
         //Add pull to refresh
         self.tableView.addPullToRefresh(refresher, action: {
@@ -155,14 +161,14 @@ class T_ProfileViewController: UIViewController {
     @IBAction func segmentedControlIndexChanged(sender: UISegmentedControl) {
         // Change the content of table view according to the segmented control
         switch segmentedControl.selectedSegmentIndex {
-        case 0: contentToDisplay = .Friends
-            self.tableView.allowsSelection = false
+        case 0:
+            contentToDisplay = .Friends
+            self.bottomActionButton.setTitle("ADD NEW FRIENDS", forState: .Normal)
         case 1:
             contentToDisplay = .Notifications
-            self.tableView.allowsSelection = true
-            let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: nil)
-            UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-            UIApplication.sharedApplication().registerForRemoteNotifications()
+            if !UIApplication.sharedApplication().isRegisteredForRemoteNotifications() {
+                self.bottomActionButton.setTitle("ALLOW NOTIFICATIONS", forState: .Normal)
+            }
         default: break
         }
         
@@ -170,6 +176,43 @@ class T_ProfileViewController: UIViewController {
     }
     
     @IBAction func addFriendsButtonTapped(sender: UIButton) {
+        switch(contentToDisplay){
+            case .Friends:
+                self.showAddFriendsActionSheet()
+            
+            case .Notifications:
+                if !UIApplication.sharedApplication().isRegisteredForRemoteNotifications(){
+                    if !NSUserDefaults.standardUserDefaults().boolForKey("PushNotificationsRequestAlreadySeen") {
+                        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: nil)
+                        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+                        UIApplication.sharedApplication().registerForRemoteNotifications()
+                        
+                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "PushNotificationsRequestAlreadySeen")
+                    } else {
+                        T_AlertHelper.alert2Actions("Allow notifications", message: "You have disallowed notifications. Please go in your settings and allow notifications.", button1message: "Cancel", button2message: "Settings", viewController: self, completion: { (action: UIAlertAction) in
+                            if action.title == "Settings" {
+                                if let appSettings = NSURL(string: UIApplicationOpenSettingsURLString) {
+                                    UIApplication.sharedApplication().openURL(appSettings)
+                                }
+                            }
+                        })
+                    }
+                } else {
+                    self.showAddFriendsActionSheet()
+                }
+        }
+    }
+    
+    func notificationsState() {
+        print("answer to notification popup")
+        if UIApplication.sharedApplication().isRegisteredForRemoteNotifications() {
+            self.bottomActionButton.setTitle("ADD FRIENDS", forState: .Normal)
+        } else {
+            self.bottomActionButton.setTitle("ALLOW NOTIFICATIONS", forState: .Normal)
+        }
+    }
+    
+    func showAddFriendsActionSheet() {
         // Constructs the UIAlert
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
@@ -328,6 +371,48 @@ extension T_ProfileViewController: UITableViewDataSource {
         }
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch contentToDisplay {
+            case .Notifications:
+                let albumRequest = self.albumRequests[indexPath.row]
+                
+                let appearance = SCLAlertView.SCLAppearance(
+                    showCloseButton: false
+                )
+                
+                let alertView = SCLAlertView(appearance: appearance)
+                alertView.addButton("Accept", action: {
+                    if T_CameraViewController.instance.isLiveAlbumExisting == true {
+                        Drop.down("You already have an album in progress", state: .Error)
+                    } else {
+                        if Reachability.isConnectedToNetwork() {
+                            T_ParseAlbumRequestHelper.acceptAlbumRequest(albumRequest) { (result: Bool, error: NSError?) in
+                                T_CameraViewController.instance.manageAlbumProcessing()
+                                self.updateAlbumRequestsTableView(albumRequest)
+                            }
+                        } else {
+                            Drop.down("No internet connection... Try again later", state: .Error)
+                        }
+                    }
+                })
+                
+                alertView.addButton("Decline", action: {
+                    if Reachability.isConnectedToNetwork() {
+                        T_ParseAlbumRequestHelper.rejectAlbumRequest(albumRequest) { (result: Bool, error: NSError?) in
+                            self.updateAlbumRequestsTableView(albumRequest)
+                        }
+                    } else {
+                        Drop.down("No internet connection... Try again later", state: .Error)
+                    }
+                })
+                
+                alertView.showSuccess("Invitation", subTitle: "\n \(albumRequest.fromUser!.username!) invited you to join his album \(albumRequest.toAlbum!.title!).\n \nDo you want to have fun? 🎉", circleIconImage: UIImage(named: "invitation"))
+
+            case .Friends:
+                return
+        }
+    }
+    
     /*
      * Creates a friend request cell and fill in with the full name of the user who send the request
      * Params:
@@ -367,14 +452,14 @@ extension T_ProfileViewController: UITableViewDataSource {
     func createNotificationCell(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("T_AlbumRequestNotificationsTableViewCell", forIndexPath: indexPath) as! T_AlbumRequestNotificationsTableViewCell
         let albumRequest = self.albumRequests[indexPath.row]
-        let user = albumRequest.fromUser! as! T_User
+        let user = albumRequest.fromUser! 
         user.downloadImage()
         
         cell.selectionStyle = UITableViewCellSelectionStyle.None
-        cell.delegate = self
         cell.friend = user
         cell.albumRequest = albumRequest
         cell.notificationTextLabel.text = "@\(user.username!) invited you to join \(albumRequest.toAlbum!.title!)!"
+        cell.notificationHelpTextLabel.text = "Click to answer"
         return cell
     }
 }

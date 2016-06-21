@@ -120,7 +120,7 @@
                                     <constraint firstAttribute="height" constant="165" id="7i4-r4-6CR"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lEp-Ii-GgI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lEp-Ii-GgI">
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="VWd-q1-MIa">
@@ -299,75 +299,52 @@
                                             <outlet property="friendProfileImage" destination="KpI-1t-Q6t" id="8Od-Ie-Orq"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="T_AlbumRequestNotificationsTableViewCell" id="Gc8-tW-XN5" customClass="T_AlbumRequestNotificationsTableViewCell" customModule="TimeshotApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="357" width="600" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="T_AlbumRequestNotificationsTableViewCell" rowHeight="70" id="Gc8-tW-XN5" customClass="T_AlbumRequestNotificationsTableViewCell" customModule="TimeshotApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="357" width="600" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gc8-tW-XN5" id="WeN-Rl-u5P">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZBH-XV-9hd">
-                                                    <rect key="frame" x="8" y="10" width="40" height="40"/>
+                                                    <rect key="frame" x="8" y="15" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="FUN-BK-Bud"/>
                                                         <constraint firstAttribute="height" constant="40" id="xLX-eT-pR0"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVh-hB-xB3">
-                                                    <rect key="frame" x="56" y="19" width="406" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVh-hB-xB3">
+                                                    <rect key="frame" x="56" y="9" width="524" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Kee-Vl-52u"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGr-6g-23m">
-                                                    <rect key="frame" x="546" y="8" width="44" height="44"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click to answer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82G-qG-ty4">
+                                                    <rect key="frame" x="56" y="34" width="524" height="15"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="44" id="kvE-W4-wQu"/>
-                                                        <constraint firstAttribute="height" constant="44" id="tgZ-1N-0z7"/>
+                                                        <constraint firstAttribute="height" constant="15" id="I3K-Rb-FbL"/>
                                                     </constraints>
-                                                    <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                                    <state key="normal" image="Accept"/>
-                                                    <connections>
-                                                        <action selector="acceptAlbumRequestButtonTapped:" destination="Gc8-tW-XN5" eventType="touchUpInside" id="4nV-1a-7cb"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6v-gA-FF9">
-                                                    <rect key="frame" x="482" y="8" width="44" height="44"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="dH9-lu-Tuh"/>
-                                                        <constraint firstAttribute="width" constant="44" id="zX1-bW-9Ui"/>
-                                                    </constraints>
-                                                    <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                                    <state key="normal" image="Refuse"/>
-                                                    <connections>
-                                                        <action selector="refuseAlbumRequestButtonTapped:" destination="Gc8-tW-XN5" eventType="touchUpInside" id="mYO-1Q-SEn"/>
-                                                    </connections>
-                                                </button>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="dGr-6g-23m" firstAttribute="leading" secondItem="R6v-gA-FF9" secondAttribute="trailing" constant="20" id="9pC-Uj-htX"/>
-                                                <constraint firstItem="R6v-gA-FF9" firstAttribute="centerY" secondItem="WeN-Rl-u5P" secondAttribute="centerY" id="9z8-42-SFF"/>
-                                                <constraint firstItem="dGr-6g-23m" firstAttribute="leading" secondItem="R6v-gA-FF9" secondAttribute="trailing" constant="20" id="HI0-p0-Gl1"/>
+                                                <constraint firstItem="82G-qG-ty4" firstAttribute="top" secondItem="KVh-hB-xB3" secondAttribute="bottom" constant="4" id="8XU-4l-oOw"/>
                                                 <constraint firstItem="ZBH-XV-9hd" firstAttribute="centerY" secondItem="WeN-Rl-u5P" secondAttribute="centerY" id="HwF-kE-36a"/>
-                                                <constraint firstAttribute="trailing" secondItem="dGr-6g-23m" secondAttribute="trailing" constant="10" id="PT3-cp-8nb"/>
                                                 <constraint firstItem="KVh-hB-xB3" firstAttribute="leading" secondItem="ZBH-XV-9hd" secondAttribute="trailing" constant="8" id="Pps-fb-WRe"/>
-                                                <constraint firstItem="dGr-6g-23m" firstAttribute="centerY" secondItem="WeN-Rl-u5P" secondAttribute="centerY" id="gMQ-cz-3bI"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="dGr-6g-23m" secondAttribute="trailing" id="ozR-da-Fte"/>
-                                                <constraint firstItem="R6v-gA-FF9" firstAttribute="leading" secondItem="KVh-hB-xB3" secondAttribute="trailing" constant="20" id="xDO-uC-wK2"/>
-                                                <constraint firstItem="KVh-hB-xB3" firstAttribute="centerY" secondItem="WeN-Rl-u5P" secondAttribute="centerY" id="xy0-EK-RcH"/>
+                                                <constraint firstAttribute="trailing" secondItem="82G-qG-ty4" secondAttribute="trailing" constant="20" id="Zqe-sc-u7C"/>
+                                                <constraint firstItem="KVh-hB-xB3" firstAttribute="top" secondItem="WeN-Rl-u5P" secondAttribute="top" constant="9" id="eJB-Ud-YMd"/>
+                                                <constraint firstAttribute="trailing" secondItem="KVh-hB-xB3" secondAttribute="trailing" constant="20" id="lzB-a9-iSm"/>
                                                 <constraint firstItem="ZBH-XV-9hd" firstAttribute="leading" secondItem="WeN-Rl-u5P" secondAttribute="leading" constant="8" id="y32-n9-aKh"/>
+                                                <constraint firstItem="82G-qG-ty4" firstAttribute="leading" secondItem="ZBH-XV-9hd" secondAttribute="trailing" constant="8" id="zXN-dx-mJ3"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="9pC-Uj-htX"/>
-                                                    <exclude reference="ozR-da-Fte"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="notificationHelpTextLabel" destination="82G-qG-ty4" id="id4-nI-LKv"/>
                                             <outlet property="notificationTextLabel" destination="KVh-hB-xB3" id="qAz-sc-PpA"/>
                                             <outlet property="profileImageView" destination="ZBH-XV-9hd" id="GJk-yE-jhS"/>
                                         </connections>
@@ -453,6 +430,7 @@
                     <connections>
                         <outlet property="addFriendsButton" destination="JZA-M0-C4r" id="jEI-rb-SKD"/>
                         <outlet property="addFriendsButtonView" destination="M8b-GY-fna" id="Mhn-7p-UBG"/>
+                        <outlet property="bottomActionButton" destination="JZA-M0-C4r" id="y1U-Ie-g2o"/>
                         <outlet property="cameraButton" destination="mL5-gk-GZc" id="NYx-em-hlR"/>
                         <outlet property="headerView" destination="0qr-g3-NJH" id="djx-Eu-lMz"/>
                         <outlet property="profileImageView" destination="oaw-9X-tq1" id="Z3W-IO-7aN"/>
