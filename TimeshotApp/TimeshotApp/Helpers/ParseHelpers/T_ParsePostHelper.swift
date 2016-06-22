@@ -11,8 +11,14 @@ import Parse
 
 class T_ParsePostHelper {
     
+    static let ParsePostClass = "Post"
+    static let ParsePostToAlbum = "toAlbum"
+    static let ParsePostObjectId = "objectId"
+    static let ParsePostFromUser = "fromUser"
+    static let ParsePostIsDeleted = "isDeleted"
+    
     static func postsForCurrentAlbumOnParse(albumPhotos: T_Album, completionBlock: PFQueryArrayResultBlock) {
-        
+    
         // On va cherche tout nos post en fonction du nom de notre album
         // Et on veut recuperer aussi la personne qui a pris la photo
         // On les classe de la ordre ascendante ! Du debut a la fin
@@ -24,6 +30,25 @@ class T_ParsePostHelper {
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
     
+    static func getAllPostNotVoted(user : T_User, _ album : T_Album, _ completionBlock : ([T_Post]? -> Void)?) {
+        let voteQ = T_Vote.query()!
+        voteQ.whereKey(T_ParseVoteHelper.ParseVoteFromUser, equalTo: user)
+        voteQ.findObjectsInBackgroundWithBlock{array , error -> Void in
+            if error == nil && !(array?.isEmpty)! {
+                let votes = array!.map{n -> String in (n[T_ParseVoteHelper.ParseVoteToPost])!.objectId!!}
+                let postQuery = T_Post.query()!
+                postQuery.whereKey(ParsePostToAlbum, equalTo: album)
+                postQuery.whereKey(ParsePostObjectId, notContainedIn: votes)
+                postQuery.findObjectsInBackgroundWithBlock{objs , error -> Void in
+                    if error == nil && !(objs?.isEmpty)! {
+                        completionBlock?(objs as! [T_Post]?)
+                    }
+                }
+            }
+            
+        }
+    }
+
     static func postsNotUploaded(completionBlock: PFQueryArrayResultBlock) {
         
         // On va cherche tout nos post en fonction du nom de notre album

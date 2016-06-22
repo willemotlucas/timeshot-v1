@@ -35,7 +35,6 @@
 		5DE8FFF31CA4275C006BEBAE /* T_SendMessageUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE8FFF21CA4275C006BEBAE /* T_SendMessageUIButton.swift */; };
 		5DEF6E951CC1005600494C86 /* T_PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF6E941CC1005600494C86 /* T_PhotoTakingHelper.swift */; };
 		5DF7ADD41CDBB87C00C6C652 /* T_ParseAlbumRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7ADD31CDBB87C00C6C652 /* T_ParseAlbumRequestHelper.swift */; };
-		5DF7ADD61CDBB89100C6C652 /* T_AlbumRequestNotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7ADD51CDBB89100C6C652 /* T_AlbumRequestNotificationsTableViewCell.swift */; };
 		5DF7ADD81CDBB89B00C6C652 /* T_AlbumRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7ADD71CDBB89B00C6C652 /* T_AlbumRequest.swift */; };
 		5DFE00411D07432B00B2E892 /* T_DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE00401D07432B00B2E892 /* T_DateHelper.swift */; };
 		7D1035251CDE74F6007F8646 /* T_PhotoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1035241CDE74F6007F8646 /* T_PhotoImageView.swift */; };
@@ -61,6 +60,8 @@
 		7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D86991E1C8F4A9D003BC1DC /* AppDelegate.swift */; };
 		7D8699241C8F4A9D003BC1DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699221C8F4A9D003BC1DC /* Main.storyboard */; };
 		7D8699261C8F4A9D003BC1DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699251C8F4A9D003BC1DC /* Assets.xcassets */; };
+		7DB873801D0AA13F0075A4EF /* T_ChooseDetailsAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB8737F1D0AA13F0075A4EF /* T_ChooseDetailsAlbumViewController.swift */; };
+		7DB873821D0AAF2B0075A4EF /* T_TinderPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB873811D0AAF2B0075A4EF /* T_TinderPhotosViewController.swift */; };
 		7DC6AFBD1CF496B100461FE1 /* T_AlbumCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC6AFBC1CF496B100461FE1 /* T_AlbumCacheHelper.swift */; };
 		7DC8887E1CDB26CD001E552D /* T_SliderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8887D1CDB26CD001E552D /* T_SliderImageView.swift */; };
 		7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0F9AB1C9DC6BE00A856B9 /* T_AlbumLiveTableViewCell.swift */; };
@@ -72,6 +73,9 @@
 		7DFC23951CC0F15900DD9520 /* T_ParsePostHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFC23941CC0F15900DD9520 /* T_ParsePostHelper.swift */; };
 		8A0526661D05D07D0065E217 /* T_PageOneOnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0526651D05D07D0065E217 /* T_PageOneOnboardViewController.swift */; };
 		8A0526691D05D0A70065E217 /* T_OnboardContenairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0526671D05D0A70065E217 /* T_OnboardContenairViewController.swift */; };
+		8A6C38201CE0B80D0044A665 /* T_Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6C381F1CE0B80D0044A665 /* T_Vote.swift */; };
+		8A6C38221CE0BA3F0044A665 /* T_ParseVoteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6C38211CE0BA3F0044A665 /* T_ParseVoteHelper.swift */; };
+		8A6C38241CE0DBE70044A665 /* Koloda.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A6C38231CE0DBE70044A665 /* Koloda.storyboard */; };
 		8A6D85491CF9B24300DA9EEE /* T_LoginHomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6D85481CF9B24300DA9EEE /* T_LoginHomePageViewController.swift */; };
 		8A6F88C21CD6779300060C48 /* T_AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F88C11CD6779300060C48 /* T_AlertHelper.swift */; };
 		8A6F88C41CD69CB600060C48 /* T_SignUpContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F88C31CD69CB600060C48 /* T_SignUpContactViewController.swift */; };
@@ -80,8 +84,11 @@
 		8A9BE2071CD0FD8F0078924B /* T_ValidatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9BE2061CD0FD8F0078924B /* T_ValidatorHelper.swift */; };
 		8AB0F1C41CBFC71300605525 /* T_SignUpUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB0F1C31CBFC71300605525 /* T_SignUpUsernameViewController.swift */; };
 		8AB0F1C61CBFC7C300605525 /* T_SignUpPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB0F1C51CBFC7C300605525 /* T_SignUpPasswordViewController.swift */; };
+		8AE3B3341CE3709400734F7F /* T_KolodaBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE3B3331CE3709400734F7F /* T_KolodaBanner.swift */; };
+		8AE3B3381CE482A500734F7F /* KolodaBanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3B3371CE482A500734F7F /* KolodaBanner.xib */; };
 		8AE6C1571D05DF5600A6E26B /* T_PageTwoOnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE6C1561D05DF5600A6E26B /* T_PageTwoOnboardViewController.swift */; };
 		8AE6C1591D05DF6900A6E26B /* T_PageThreeOnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE6C1581D05DF6900A6E26B /* T_PageThreeOnboardViewController.swift */; };
+		8AF8FDEC1D0A161B00094462 /* T_AlbumRequestNotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7ADD51CDBB89100C6C652 /* T_AlbumRequestNotificationsTableViewCell.swift */; };
 		8AFA26791CBF949200C09E17 /* T_LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA26781CBF949200C09E17 /* T_LoginViewController.swift */; };
 		8AFA267B1CBF94B000C09E17 /* T_SignUpEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA267A1CBF94B000C09E17 /* T_SignUpEmailViewController.swift */; };
 		8AFA267D1CBF94C900C09E17 /* T_SignUpInvitePeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA267C1CBF94C900C09E17 /* T_SignUpInvitePeopleViewController.swift */; };
@@ -166,6 +173,8 @@
 		7D8699251C8F4A9D003BC1DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D8699281C8F4A9D003BC1DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D86992A1C8F4A9D003BC1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DB8737F1D0AA13F0075A4EF /* T_ChooseDetailsAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ChooseDetailsAlbumViewController.swift; sourceTree = "<group>"; };
+		7DB873811D0AAF2B0075A4EF /* T_TinderPhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_TinderPhotosViewController.swift; sourceTree = "<group>"; };
 		7DC6AFBC1CF496B100461FE1 /* T_AlbumCacheHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumCacheHelper.swift; sourceTree = "<group>"; };
 		7DC8887D1CDB26CD001E552D /* T_SliderImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SliderImageView.swift; sourceTree = "<group>"; };
 		7DD0F9AB1C9DC6BE00A856B9 /* T_AlbumLiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumLiveTableViewCell.swift; sourceTree = "<group>"; };
@@ -177,6 +186,9 @@
 		7DFC23941CC0F15900DD9520 /* T_ParsePostHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ParsePostHelper.swift; sourceTree = "<group>"; };
 		8A0526651D05D07D0065E217 /* T_PageOneOnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PageOneOnboardViewController.swift; sourceTree = "<group>"; };
 		8A0526671D05D0A70065E217 /* T_OnboardContenairViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_OnboardContenairViewController.swift; sourceTree = "<group>"; };
+		8A6C381F1CE0B80D0044A665 /* T_Vote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Vote.swift; sourceTree = "<group>"; };
+		8A6C38211CE0BA3F0044A665 /* T_ParseVoteHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ParseVoteHelper.swift; sourceTree = "<group>"; };
+		8A6C38231CE0DBE70044A665 /* Koloda.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Koloda.storyboard; sourceTree = "<group>"; };
 		8A6D85481CF9B24300DA9EEE /* T_LoginHomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_LoginHomePageViewController.swift; sourceTree = "<group>"; };
 		8A6F88C11CD6779300060C48 /* T_AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlertHelper.swift; sourceTree = "<group>"; };
 		8A6F88C31CD69CB600060C48 /* T_SignUpContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpContactViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +197,8 @@
 		8A9BE2061CD0FD8F0078924B /* T_ValidatorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ValidatorHelper.swift; sourceTree = "<group>"; };
 		8AB0F1C31CBFC71300605525 /* T_SignUpUsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpUsernameViewController.swift; sourceTree = "<group>"; };
 		8AB0F1C51CBFC7C300605525 /* T_SignUpPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpPasswordViewController.swift; sourceTree = "<group>"; };
+		8AE3B3331CE3709400734F7F /* T_KolodaBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_KolodaBanner.swift; sourceTree = "<group>"; };
+		8AE3B3371CE482A500734F7F /* KolodaBanner.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KolodaBanner.xib; sourceTree = "<group>"; };
 		8AE6C1561D05DF5600A6E26B /* T_PageTwoOnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PageTwoOnboardViewController.swift; sourceTree = "<group>"; };
 		8AE6C1581D05DF6900A6E26B /* T_PageThreeOnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PageThreeOnboardViewController.swift; sourceTree = "<group>"; };
 		8AFA26781CBF949200C09E17 /* T_LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_LoginViewController.swift; sourceTree = "<group>"; };
@@ -280,6 +294,7 @@
 				5DC361D51CBAFBE900B00064 /* T_ParseAlbumHelper.swift */,
 				5DC361D61CBAFBE900B00064 /* T_ParseUserHelper.swift */,
 				7DFC23941CC0F15900DD9520 /* T_ParsePostHelper.swift */,
+				8A6C38211CE0BA3F0044A665 /* T_ParseVoteHelper.swift */,
 			);
 			path = ParseHelpers;
 			sourceTree = "<group>";
@@ -323,6 +338,7 @@
 				7D2F53A31CB67D9000AB9995 /* T_AlbumLiveViewController.swift */,
 				7D2F53A41CB67D9000AB9995 /* T_FriendsAlbumLiveViewController.swift */,
 				7D2F53A61CB67D9000AB9995 /* T_PhotosAlbumLiveViewController.swift */,
+				8AE3B3331CE3709400734F7F /* T_KolodaBanner.swift */,
 			);
 			path = AlbumLive;
 			sourceTree = "<group>";
@@ -345,6 +361,8 @@
 				7D2420011CB6E20200F6548B /* T_StoryViewController.swift */,
 				7D30378D1CC7CBD900D522E0 /* T_FriendsViewController.swift */,
 				7D7FA8461CDFD34D003F70E1 /* T_AddFriendToAlbumViewController.swift */,
+				7DB8737F1D0AA13F0075A4EF /* T_ChooseDetailsAlbumViewController.swift */,
+				7DB873811D0AAF2B0075A4EF /* T_TinderPhotosViewController.swift */,
 			);
 			path = AlbumFinished;
 			sourceTree = "<group>";
@@ -513,6 +531,8 @@
 				B46B2B741C9ABAC500135920 /* Profile.storyboard */,
 				B46B2B761C9ABADA00135920 /* Album.storyboard */,
 				7D8699221C8F4A9D003BC1DC /* Main.storyboard */,
+				8A6C38231CE0DBE70044A665 /* Koloda.storyboard */,
+				8AE3B3371CE482A500734F7F /* KolodaBanner.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -559,6 +579,7 @@
 				B4EA9DD11CB52DE3003F5A75 /* T_User.swift */,
 				B4F2E9101CB64A370029F4BF /* T_Album.swift */,
 				B431711B1CB912790080AFDD /* T_Post.swift */,
+				8A6C381F1CE0B80D0044A665 /* T_Vote.swift */,
 			);
 			path = Parse;
 			sourceTree = "<group>";
@@ -607,7 +628,7 @@
 				TargetAttributes = {
 					7D86991A1C8F4A9D003BC1DC = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 6T9PST97YR;
+						DevelopmentTeam = N82MC72NZP;
 					};
 				};
 			};
@@ -635,8 +656,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B45977071CAAE7CA00D57BED /* Profile.storyboard in Resources */,
+				8AE3B3381CE482A500734F7F /* KolodaBanner.xib in Resources */,
 				7D2F539C1CB65DAB00AB9995 /* LaunchScreen.storyboard in Resources */,
 				7DD0F9B61C9EA0FB00A856B9 /* soiree.jpg in Resources */,
+				8A6C38241CE0DBE70044A665 /* Koloda.storyboard in Resources */,
 				7DD0F9B41C9EA0FB00A856B9 /* festival.jpg in Resources */,
 				7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */,
 				7DD0F9B51C9EA0FB00A856B9 /* mariage.jpg in Resources */,
@@ -720,10 +743,12 @@
 				B417967F1CE28E6B00DC35A8 /* SNFilter.swift in Sources */,
 				B41796801CE28E6B00DC35A8 /* SNSlider.swift in Sources */,
 				5D64CA791CB986C2005C6E43 /* T_BirthdayEditionViewController.swift in Sources */,
+				7DB873821D0AAF2B0075A4EF /* T_TinderPhotosViewController.swift in Sources */,
 				5DC361DE1CBAFBE900B00064 /* T_FriendRequestParseHelper.swift in Sources */,
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
 				5DC361E31CBAFBE900B00064 /* T_ContactsHelper.swift in Sources */,
 				7D241FFC1CB6D47500F6548B /* T_StoryCollectionViewCell.swift in Sources */,
+				8A6C38221CE0BA3F0044A665 /* T_ParseVoteHelper.swift in Sources */,
 				5DC361E51CBAFBE900B00064 /* T_FormValidationHelper.swift in Sources */,
 				5DB5A02F1CA1C8D400AADC9F /* T_SearchUserViewController.swift in Sources */,
 				B4EA9DCD1CB52D37003F5A75 /* T_Filter.swift in Sources */,
@@ -740,6 +765,7 @@
 				B431711C1CB912790080AFDD /* T_Post.swift in Sources */,
 				5DEF6E951CC1005600494C86 /* T_PhotoTakingHelper.swift in Sources */,
 				5DC361E61CBAFBE900B00064 /* T_String+Extension.swift in Sources */,
+				7DB873801D0AA13F0075A4EF /* T_ChooseDetailsAlbumViewController.swift in Sources */,
 				B43678651CE0F6A70096B8F4 /* T_NetworkStatus.swift in Sources */,
 				5D64CA771CB9806E005C6E43 /* T_LastNameEditionViewController.swift in Sources */,
 				5DF7ADD41CDBB87C00C6C652 /* T_ParseAlbumRequestHelper.swift in Sources */,
@@ -759,10 +785,12 @@
 				5DB5A02B1CA1AD1000AADC9F /* T_SettingsViewController.swift in Sources */,
 				7D2F53A71CB67D9000AB9995 /* T_AddFriendAlbumLiveTableViewCell.swift in Sources */,
 				8AFA267D1CBF94C900C09E17 /* T_SignUpInvitePeopleViewController.swift in Sources */,
-				5DF7ADD61CDBB89100C6C652 /* T_AlbumRequestNotificationsTableViewCell.swift in Sources */,
+				8AF8FDEC1D0A161B00094462 /* T_AlbumRequestNotificationsTableViewCell.swift in Sources */,
+				8A6C38201CE0B80D0044A665 /* T_Vote.swift in Sources */,
 				B4EA9DD21CB52DE3003F5A75 /* T_User.swift in Sources */,
 				7D2F53A81CB67D9000AB9995 /* T_AddFriendAlbumLiveViewController.swift in Sources */,
 				7D30378E1CC7CBD900D522E0 /* T_FriendsViewController.swift in Sources */,
+				8AE3B3341CE3709400734F7F /* T_KolodaBanner.swift in Sources */,
 				B43C0E921CABF4E900EF51E9 /* T_EditCameraImageViewController.swift in Sources */,
 				5DB5A0351CA2879B00AADC9F /* T_SearchContactViewController.swift in Sources */,
 				5DC361E41CBAFBE900B00064 /* T_DesignHelper.swift in Sources */,
@@ -910,7 +938,7 @@
 				INFOPLIST_FILE = TimeshotApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.lamouri.timeshot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.timeshot.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -926,7 +954,7 @@
 				INFOPLIST_FILE = TimeshotApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.lamouri.timeshot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.timeshot.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

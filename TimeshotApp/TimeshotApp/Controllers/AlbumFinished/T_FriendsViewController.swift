@@ -23,7 +23,6 @@ class T_FriendsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         T_DesignHelper.colorUIView(buttonView)
-
         // Permits to not show empty cells
         tableView.tableFooterView = UIView()
     }

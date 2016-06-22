@@ -1,16 +1,18 @@
 //
-//  T_PhotosAlbumLiveViewController.swift
+//  T_TinderPhotosViewController.swift
 //  TimeshotApp
 //
-//  Created by Karim Lamouri on 31/03/2016.
+//  Created by Valentin PAUL on 10/06/16.
 //  Copyright © 2016 Timeshot. All rights reserved.
 //
 
 import UIKit
+import UIKit
 import Koloda
 import pop
+import Parse
 
-class T_PhotosAlbumLiveViewController: UIViewController {
+class T_TinderPhotosViewController: UIViewController {
     @IBOutlet weak var dislikeButton: UIButton!
     
     @IBOutlet weak var likeButton: UIButton!
@@ -20,8 +22,11 @@ class T_PhotosAlbumLiveViewController: UIViewController {
     private let kolodaCountOfVisibleCards = 3
     private let kolodaAlphaValueSemiTransparent:CGFloat = 0.2
     private var posts : [T_Post]?
-
+    var albumPhotos : T_Album?
+        
     @IBOutlet weak var kolodaView: KolodaView!
+    var containerDelegate: ContainerDelegateProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         kolodaView.alphaValueSemiTransparent = kolodaAlphaValueSemiTransparent
@@ -30,116 +35,122 @@ class T_PhotosAlbumLiveViewController: UIViewController {
         kolodaView.dataSource = self
         kolodaView.delegate = self
         
-        T_ParseAlbumHelper.queryAlbumPinned{albumLive -> Void in
-            T_ParsePostHelper.getAllPostNotVoted(T_User.currentUser()!, albumLive!, { posts -> Void in
-                self.posts = posts
-                self.kolodaView.resetCurrentCardIndex()
-                if let posts = self.posts {
-                    for post in posts {
-                        post.downloadImage()
-                        post.image.observe{_ in self.kolodaView.reloadData()}
-                    }
-                }
-            })
-        }
-        T_ParseVoteHelper.getLiveAlbum()
-
+        posts = []
+        
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        print(kolodaView.currentCardIndex)
-        /*for i in 0..<kolodaView.currentCardIndex {
-            photos[i] = nil
-        }
-        photos.append("selfie4.jpg")
-        photos.append("selfie5.jpg")
-        photos.append("selfie6.jpg")
-        photos.append("selfie7.jpg")
-        photos.append("selfie8.jpg")
-        kolodaView.resetCurrentCardIndex()*/
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidAppear(animated: Bool) {
+        loadPost()
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: Loading Data Functions
+    func loadPost() {
+        T_AlbumCacheHelper.postsForCurrentAlbum(albumPhotos!) {(result: [PFObject]?, error: NSError?) -> Void in
+            //self.containerDelegate?.hidePhotoCollectionView()
+            if let error = error {
+                print("\n\n\n")
+                print(error)
+                print("\n\n\n")
+                
+            } else {
+                let allPosts = result as? [T_Post] ?? []
+                let currentUser = T_ParseUserHelper.getCurrentUser()!
+                for i in allPosts {
+                    
+                    let verifVote = i.hasVoted.filter{$0 == currentUser}
+                    if verifVote.count == 0 {
+                        // Post non voté
+                        self.posts?.append(i)
+                    }
+                }
+                self.kolodaView.reloadData()
+            }
+        }
+    }
+
+    
+    // MARK: Actions
     @IBAction func dislikeTapped(sender: AnyObject) {
-        //kolodaView.reloadData()
         kolodaView.swipe(.Left)
     }
     
     @IBAction func likeTapped(sender: AnyObject) {
-         kolodaView.swipe(.Right)
+        kolodaView.swipe(.Right)
     }
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // MARK: - Navigation
+     
+        // In a storyboard-based application, you will often want to do a little preparation before navigation
+        override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-    }
+        }
     */
-
 }
 
+    
 // MARK: - KolodaViewDataSource
-extension T_PhotosAlbumLiveViewController : KolodaViewDataSource {
-
+extension T_TinderPhotosViewController : KolodaViewDataSource {
+        
     func kolodaNumberOfCards(koloda: KolodaView) -> UInt {
-        print(posts?.count ?? 0)
         return UInt(posts?.count ?? 0)
     }
-    
-    func koloda(koloda: KolodaView, viewForCardAtIndex index: UInt) -> UIView {
-//        let imageName = photos[Int(index) % photos.count]
-//        let image = UIImage(named: imageName)
-        if let posts = self.posts{
-            let place = UIImage(named: "default-friend-picture")
-            let img = posts[Int(index)].image.value
-            let imageView = UIImageView(image: img ?? place)
-            imageView.contentMode = UIViewContentMode.ScaleToFill
-            imageView.clipsToBounds = true
-            return imageView
-        }
-       
-        //print(imageView)
-        return UIView()
         
+    func koloda(koloda: KolodaView, viewForCardAtIndex index: UInt) -> UIView {
+        if let posts = self.posts{
+            // Need to create the view
+            let frame = kolodaView.frame
+            
+            // Design of the view
+            let newPageView = T_SliderImageView.init(frame: frame)
+            newPageView.post = posts[Int(index)]
+            newPageView.contentMode = .ScaleAspectFit
+            newPageView.frame = frame
+            
+            if let image = posts[Int(index)].image.value {
+                newPageView.image = image
+            }else {
+                posts[Int(index)].downloadImage()
+            }
+            
+            return newPageView
+        }
+        return UIView()
     }
-    
+        
     func koloda(koloda: KolodaView, viewForCardOverlayAtIndex index: UInt) -> OverlayView? {
-        //return OverlayView()
-        //return CustomKolodaView() as? OverlayView
         return NSBundle.mainBundle().loadNibNamed("KolodaBanner",
-                                                  owner: self, options: nil)[0] as? OverlayView
+                                                    owner: self, options: nil)[0] as? OverlayView
     }
     
 }
-
+    
 // MARK: - KolodaViewDelegate
-extension T_PhotosAlbumLiveViewController : KolodaViewDelegate {
+extension T_TinderPhotosViewController : KolodaViewDelegate {
     func koloda(koloda: KolodaView, didSwipeCardAtIndex index: UInt, inDirection direction: SwipeResultDirection) {
         if direction == SwipeResultDirection.Left {
             print("Swipe Left")
-            //T_ParseVoteHelper.disliked(posts![Int(index)], user: T_User.currentUser()!)
+            T_ParseVoteHelper.disliked(posts![Int(index)], user: T_User.currentUser()!)
         }
         else if direction == SwipeResultDirection.Right {
             print("Swipe Right")
-            //T_ParseVoteHelper.liked(posts![Int(index)], user: T_User.currentUser()!)
+            T_ParseVoteHelper.liked(posts![Int(index)], user: T_User.currentUser()!)
         }
     }
     
     func kolodaDidRunOutOfCards(koloda: KolodaView){
         print("kolodaDidRunOutOfCards")
-    }
-    func koloda(koloda: KolodaView, didSelectCardAtIndex index: UInt){
-        //print("didSelectCardAtIndex, index=\(index)")
-    }
-    
-    func koloda(kolodaDidResetCard koloda: KolodaView){
-        print("kolodaDidResetCard")
+        containerDelegate?.hideTinderVoteView()
         
     }
+    
+    
     func koloda(koloda: KolodaView, didShowCardAtIndex index: UInt){
         let _ = koloda.viewForCardAtIndex(Int(index))
     }
@@ -151,5 +162,4 @@ extension T_PhotosAlbumLiveViewController : KolodaViewDelegate {
         return animation
     }
 }
-
 

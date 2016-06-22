@@ -18,7 +18,7 @@ class T_AlbumLiveViewController: UIViewController {
         T_DesignHelper.colorUIView(segmentedView)
         photosContainerView.hidden = false
         friendsContainerView.hidden = true
-        
+        T_DesignHelper.colorNavBar(self.navigationController!.navigationBar)
 
         // Do any additional setup after loading the view.
     }

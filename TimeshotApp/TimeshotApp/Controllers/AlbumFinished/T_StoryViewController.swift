@@ -11,6 +11,10 @@ import Bond
 import KYCircularProgress
 import MBProgressHUD
 
+protocol StoryDelegateProtocol {
+    func updateStory(indexStory : Int)
+}
+
 
 class T_StoryViewController: UIViewController {
     // MARK: Properties
@@ -43,7 +47,7 @@ class T_StoryViewController: UIViewController {
             }
         }
     }
-    
+    var storyDelegate: StoryDelegateProtocol?
     var progressHUD:MBProgressHUD?
     var pageImages:[T_Post] = []
     var currentPage: Int = 0
@@ -99,6 +103,7 @@ class T_StoryViewController: UIViewController {
     
     // Need to stop all the timer when we quit this view
     override func viewWillDisappear(animated: Bool) {
+        storyDelegate?.updateStory(currentPage)
         timer?.invalidate()
         timer2.invalidate()
     }
@@ -210,7 +215,8 @@ class T_StoryViewController: UIViewController {
         
     }
     
-    @IBAction func exitStory(recognizer: UISwipeGestureRecognizer) {
+    @IBAction func exitStory(sender: AnyObject) {
+        currentPage = currentPage - 1
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -222,6 +228,7 @@ class T_StoryViewController: UIViewController {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
      }
-     */
+    */
+    
 }
 
