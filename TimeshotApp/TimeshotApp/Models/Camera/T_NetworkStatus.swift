@@ -15,7 +15,7 @@ import NVActivityIndicatorView
 //
 
 class T_NetworkStatus: UIView {
-
+    
     static let sharedInstance = T_NetworkStatus()
     private var albumTitle: UILabel!
     private var albumTitleBackground: UIView!
@@ -64,7 +64,7 @@ class T_NetworkStatus: UIView {
     }
     
     func updateLabelText(mode: status, withText text:String = "") {
-
+        
         var finalMode = mode
         
         if (text != "" && mode == .ShowAlbumTitle) { self._albumTitle = text }
@@ -99,7 +99,7 @@ class T_NetworkStatus: UIView {
             self.albumTitleBackground.frame.size.width = textSize.width + 40
             self.albumTitle.textAlignment = .Center
             self.activityIndicatorView.stopAnimation()
-        
+            
         case .Uploading:
             finalText = "   Uploading"
             self.albumImage.hidden = true
@@ -120,7 +120,7 @@ class T_NetworkStatus: UIView {
         
         self.show()
     }
-
+    
     func hide() {
         self.hidden = true
     }

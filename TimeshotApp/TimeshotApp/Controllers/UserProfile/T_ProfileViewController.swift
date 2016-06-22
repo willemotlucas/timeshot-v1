@@ -39,7 +39,7 @@ class T_ProfileViewController: UIViewController {
     
     // MARK : Properties
     var contentToDisplay : ContentType = .Friends //Useful for segmented control
-
+    
     var friends: [T_User] = []
     var pendingRequests: [T_FriendRequest] = []
     var sectionTitles = ["Pending requests", "Friends"]
@@ -56,7 +56,7 @@ class T_ProfileViewController: UIViewController {
     let refresher = PullToRefresh()
     var refresherState = false
     var progressHUD : MBProgressHUD?
-
+    
     // MARK: Overrided functions
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -114,7 +114,7 @@ class T_ProfileViewController: UIViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
+        
     }
     
     // MARK: Methods
@@ -177,29 +177,29 @@ class T_ProfileViewController: UIViewController {
     
     @IBAction func addFriendsButtonTapped(sender: UIButton) {
         switch(contentToDisplay){
-            case .Friends:
-                self.showAddFriendsActionSheet()
+        case .Friends:
+            self.showAddFriendsActionSheet()
             
-            case .Notifications:
-                if !UIApplication.sharedApplication().isRegisteredForRemoteNotifications(){
-                    if !NSUserDefaults.standardUserDefaults().boolForKey("PushNotificationsRequestAlreadySeen") {
-                        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: nil)
-                        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-                        UIApplication.sharedApplication().registerForRemoteNotifications()
-                        
-                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "PushNotificationsRequestAlreadySeen")
-                    } else {
-                        T_AlertHelper.alert2Actions("Allow notifications", message: "You have disallowed notifications. Please go in your settings and allow notifications.", button1message: "Cancel", button2message: "Settings", viewController: self, completion: { (action: UIAlertAction) in
-                            if action.title == "Settings" {
-                                if let appSettings = NSURL(string: UIApplicationOpenSettingsURLString) {
-                                    UIApplication.sharedApplication().openURL(appSettings)
-                                }
-                            }
-                        })
-                    }
+        case .Notifications:
+            if !UIApplication.sharedApplication().isRegisteredForRemoteNotifications(){
+                if !NSUserDefaults.standardUserDefaults().boolForKey("PushNotificationsRequestAlreadySeen") {
+                    let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: nil)
+                    UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+                    UIApplication.sharedApplication().registerForRemoteNotifications()
+                    
+                    NSUserDefaults.standardUserDefaults().setBool(true, forKey: "PushNotificationsRequestAlreadySeen")
                 } else {
-                    self.showAddFriendsActionSheet()
+                    T_AlertHelper.alert2Actions("Allow notifications", message: "You have disallowed notifications. Please go in your settings and allow notifications.", button1message: "Cancel", button2message: "Settings", viewController: self, completion: { (action: UIAlertAction) in
+                        if action.title == "Settings" {
+                            if let appSettings = NSURL(string: UIApplicationOpenSettingsURLString) {
+                                UIApplication.sharedApplication().openURL(appSettings)
+                            }
+                        }
+                    })
                 }
+            } else {
+                self.showAddFriendsActionSheet()
+            }
         }
     }
     
@@ -267,15 +267,15 @@ class T_ProfileViewController: UIViewController {
 // MARK: extension
 
 extension T_ProfileViewController: UITableViewDelegate {
-
+    
 }
 
 extension T_ProfileViewController: UITableViewDataSource {
     /*
-    * According to the content to display, the number of section changes.
-    * It can be between 0 & 2 for friends (nothing, pending request or friend, pending request & friend)
-    * There is only one section for notifications
-    */
+     * According to the content to display, the number of section changes.
+     * It can be between 0 & 2 for friends (nothing, pending request or friend, pending request & friend)
+     * There is only one section for notifications
+     */
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         switch contentToDisplay {
         case .Friends:
@@ -291,10 +291,10 @@ extension T_ProfileViewController: UITableViewDataSource {
     }
     
     /*
-    * We get the title from the array sectionTitles. There are 2 possibilities : "Pending requests" or "Friends"
-    * We display these titles according to pending requests and friends
-    * For notifications tabs, we display no title
-    */
+     * We get the title from the array sectionTitles. There are 2 possibilities : "Pending requests" or "Friends"
+     * We display these titles according to pending requests and friends
+     * For notifications tabs, we display no title
+     */
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch contentToDisplay {
         case .Friends:
@@ -373,43 +373,43 @@ extension T_ProfileViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch contentToDisplay {
-            case .Notifications:
-                let albumRequest = self.albumRequests[indexPath.row]
-                
-                let appearance = SCLAlertView.SCLAppearance(
-                    showCloseButton: false
-                )
-                
-                let alertView = SCLAlertView(appearance: appearance)
-                alertView.addButton("Accept", action: {
-                    if T_CameraViewController.instance.isLiveAlbumExisting == true {
-                        Drop.down("You already have an album in progress", state: .Error)
-                    } else {
-                        if Reachability.isConnectedToNetwork() {
-                            T_ParseAlbumRequestHelper.acceptAlbumRequest(albumRequest) { (result: Bool, error: NSError?) in
-                                T_CameraViewController.instance.manageAlbumProcessing()
-                                self.updateAlbumRequestsTableView(albumRequest)
-                            }
-                        } else {
-                            Drop.down("No internet connection... Try again later", state: .Error)
-                        }
-                    }
-                })
-                
-                alertView.addButton("Decline", action: {
+        case .Notifications:
+            let albumRequest = self.albumRequests[indexPath.row]
+            
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false
+            )
+            
+            let alertView = SCLAlertView(appearance: appearance)
+            alertView.addButton("Accept", action: {
+                if T_CameraViewController.instance.isLiveAlbumExisting == true {
+                    Drop.down("You already have an album in progress", state: .Error)
+                } else {
                     if Reachability.isConnectedToNetwork() {
-                        T_ParseAlbumRequestHelper.rejectAlbumRequest(albumRequest) { (result: Bool, error: NSError?) in
+                        T_ParseAlbumRequestHelper.acceptAlbumRequest(albumRequest) { (result: Bool, error: NSError?) in
+                            T_CameraViewController.instance.manageAlbumProcessing()
                             self.updateAlbumRequestsTableView(albumRequest)
                         }
                     } else {
                         Drop.down("No internet connection... Try again later", state: .Error)
                     }
-                })
-                
-                alertView.showSuccess("Invitation", subTitle: "\n \(albumRequest.fromUser!.username!) invited you to join his album \(albumRequest.toAlbum!.title!).\n \nDo you want to have fun? 🎉", circleIconImage: UIImage(named: "invitation"))
-
-            case .Friends:
-                return
+                }
+            })
+            
+            alertView.addButton("Decline", action: {
+                if Reachability.isConnectedToNetwork() {
+                    T_ParseAlbumRequestHelper.rejectAlbumRequest(albumRequest) { (result: Bool, error: NSError?) in
+                        self.updateAlbumRequestsTableView(albumRequest)
+                    }
+                } else {
+                    Drop.down("No internet connection... Try again later", state: .Error)
+                }
+            })
+            
+            alertView.showSuccess("Invitation", subTitle: "\n \(albumRequest.fromUser!.username!) invited you to join his album \(albumRequest.toAlbum!.title!).\n \nDo you want to have fun? 🎉", circleIconImage: UIImage(named: "invitation"))
+            
+        case .Friends:
+            return
         }
     }
     

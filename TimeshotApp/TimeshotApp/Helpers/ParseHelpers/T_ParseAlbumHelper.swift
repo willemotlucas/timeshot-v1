@@ -23,9 +23,22 @@ class T_ParseAlbumHelper {
             return nil
         }
     }
-
+    
+    static func getAlbumsFromObjects(objects: [PFObject]?) -> [T_Album] {
+        var album:[T_Album] = []
+        if (objects?.count > 0) {
+            for o in objects! {
+                album.append(o as! T_Album)
+            }
+            return album
+        }
+        else {
+            return []
+        }
+    }
+    
     static func queryAlbumPinned(withCompletion completion: (liveAlbum: T_Album?) -> ()) {
-     
+        
         let query2 = T_Album.query()
         query2!.fromLocalDatastore()
         query2!.fromPinWithName(liveAlbumPinnedLabel)
@@ -43,6 +56,37 @@ class T_ParseAlbumHelper {
             }
         }
     }
+    
+    // MultiAlbum
+    static func queryAlbumsPinned(withCompletion completion: (liveAlbum: [T_Album]) -> ()) {
+        
+        let query2 = T_Album.query()
+        query2!.fromLocalDatastore()
+        query2!.fromPinWithName(liveAlbumPinnedLabel)
+        query2!.findObjectsInBackgroundWithBlock {
+            (objects, error) -> Void in
+            if (error == nil)
+            {
+                let albums = getAlbumsFromObjects(objects)
+                var finalAlbums:[T_Album] = []
+                
+                for a in albums {
+                    if (T_Album.isAlbumInLive(a)) {
+                        finalAlbums.append(a)
+                    }
+                }
+                
+                completion(liveAlbum: finalAlbums)
+                return
+            }
+            else {
+                print("error to find Album locally in background")
+                completion(liveAlbum: [])
+                return
+            }
+        }
+    }
+    
     
     static func queryAllAlbumsOnParse(range: Range<Int>, completionBlock: PFQueryArrayResultBlock) {
         
@@ -82,9 +126,40 @@ class T_ParseAlbumHelper {
         completion(liveAlbum: nil)
     }
     
+    
+    static func queryAlbumsOnParse(currentUser: T_User, withCompetion completion: (albums: [T_Album]) -> ()) {
+        
+        let query = PFQuery(className: "Album")
+        query.whereKey("attendees", equalTo: currentUser)
+        query.orderByDescending("createdAt")
+        query.findObjectsInBackgroundWithBlock {
+            (objects, error) -> Void in
+            
+            if (error == nil) {
+                completion(albums: getAlbumsFromObjects(objects))
+                return
+            }
+            else {
+                completion(albums: [])
+                return
+            }
+        }
+        
+        completion(albums: [])
+    }
+    
+    
     static func pinLocallyAlbum(album: T_Album) {
         
         T_Album.unpinAllObjectsInBackgroundWithName(liveAlbumPinnedLabel)
+        album.pinInBackgroundWithName(liveAlbumPinnedLabel)
+    }
+    
+    static func unpinLocalAlbum() {
+        T_Album.unpinAllObjectsInBackgroundWithName(liveAlbumPinnedLabel)
+    }
+    
+    static func pinLocalAlbum(album: T_Album) {
         album.pinInBackgroundWithName(liveAlbumPinnedLabel)
     }
     
