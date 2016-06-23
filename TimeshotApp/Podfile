@@ -7,7 +7,7 @@ target "TimeshotApp" do
 pod 'NVActivityIndicatorView'
 pod 'CameraManager', '~> 2.2'
 pod 'Parse'
-pod 'Koloda', '~> 3.0.0'
+pod 'Koloda', '~> 3.1.1'
 pod 'KYCircularProgress'
 pod 'DZNEmptyDataSet'
 pod 'Bond'

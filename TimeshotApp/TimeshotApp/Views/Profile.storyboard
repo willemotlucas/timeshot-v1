@@ -38,7 +38,7 @@
                                 <rect key="frame" x="0.0" y="550" width="600" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Riy-BS-7nY">
-                                        <rect key="frame" x="2" y="2" width="295.5" height="46"/>
+                                        <rect key="frame" x="2" y="2" width="296" height="46"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="46" id="YTI-wj-tGX"/>
                                         </constraints>
@@ -50,7 +50,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOu-M7-CG4">
-                                        <rect key="frame" x="302.5" y="2" width="295.5" height="46"/>
+                                        <rect key="frame" x="303" y="2" width="295" height="46"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="46" id="N5q-Pj-GfC"/>
                                         </constraints>
