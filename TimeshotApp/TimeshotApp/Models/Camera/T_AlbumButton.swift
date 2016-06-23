@@ -13,7 +13,7 @@ class T_AlbumButton: UIButton {
     var gradiantLayer:CALayer? = nil
     
     init(text: String) {
-        super.init(frame: CGRect(x: 0, y: 0, width: T_DesignHelper.screenSize.width/1.5, height: 45))
+        super.init(frame: CGRect(x: 0, y: 0, width: 6*T_DesignHelper.screenSize.width/8, height: 45))
         
         self.setTitle(text, forState: .Normal)
         self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.2)

@@ -12,8 +12,10 @@ import Parse
 class T_ModalView: UIView {
     
     var title = UILabel(frame: CGRect(x: 0, y: 5, width: T_DesignHelper.screenSize.width, height: 40))
+    var errorButton = UIButton(frame: CGRect(x: T_DesignHelper.screenSize.width/5, y: 52, width: 3/5*T_DesignHelper.screenSize.width, height: 40))
+    
     var quitButton = UIButton(frame: CGRect(x: 10, y: 10, width: 34, height: 34))
-    var scrollView = UIScrollView(frame: CGRect(x: T_DesignHelper.screenSize.width/8, y: 100, width: 7*T_DesignHelper.screenSize.width/8, height: 0))
+    var scrollView = UIScrollView(frame: CGRect(x: T_DesignHelper.screenSize.width/8, y: 100, width: 6*T_DesignHelper.screenSize.width/8, height: 0))
     var albumButtons:[T_AlbumButton] = []
     var label = UILabel(frame: CGRect(origin: CGPoint(x: T_DesignHelper.screenSize.width/5, y: T_DesignHelper.screenSize.height - 140), size: CGSize(width: 3*T_DesignHelper.screenSize.width/5, height: 60)))
     var createAlbumButton = UIButton(frame: CGRect(x: T_DesignHelper.screenSize.width/5, y: T_DesignHelper.screenSize.height - 65, width: 3/5*T_DesignHelper.screenSize.width, height: 40))
@@ -25,7 +27,7 @@ class T_ModalView: UIView {
         self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.7)
         
         self.addSubview(self.scrollView)
-        scrollView.frame.size.height = 240.0
+        scrollView.frame.size.height = 320.0
         
         title.text = "Live albums"
         title.textAlignment = .Center
@@ -34,6 +36,7 @@ class T_ModalView: UIView {
         
         quitButton.setImage(UIImage(named: "Cancel"), forState: .Normal)
         quitButton.addTarget(self, action: #selector(T_ModalView.quitButtonPressed), forControlEvents: UIControlEvents.TouchUpInside)
+        
         
         
         guard let currentUser = PFUser.currentUser() as? T_User else { return }
@@ -67,6 +70,14 @@ class T_ModalView: UIView {
         self.createAlbumButton.setTitleColor(UIColor.orangeColor(), forState: .Normal)
         self.createAlbumButton.addTarget(self, action: #selector(T_ModalView.createAlbum), forControlEvents: UIControlEvents.TouchUpInside)
         
+        self.errorButton.setTitle("Upload failed. Try again!", forState: .Normal)
+        self.errorButton.layer.cornerRadius = self.createAlbumButton.frame.size.height/2
+        self.errorButton.backgroundColor = UIColor.redColor()
+        self.errorButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        self.errorButton.addTarget(self, action: #selector(T_ModalView.errorButtonPressed), forControlEvents: UIControlEvents.TouchUpInside)
+        self.errorButton.hidden = true
+        
+        self.addSubview(errorButton)
         self.addSubview(createAlbumButton)
         self.addSubview(label)
         self.addSubview(title)
@@ -113,6 +124,11 @@ class T_ModalView: UIView {
         }
     }
     
+    func errorButtonPressed() {
+        T_NetworkManager.sharedInstance.upload()
+        self.quitButtonPressed()
+    }
+    
     func createAlbum() {
         let controller = T_CameraViewController.instance
         controller.createAlbumInit()
@@ -133,6 +149,15 @@ class T_ModalView: UIView {
                 album.resetStyle()
             }
         }
+    }
+    
+    func showErrors(numberError:Int) {
+        errorButton.hidden = false
+        errorButton.setTitle("Upload failed ! (\(numberError))", forState: .Normal)
+    }
+    
+    func cleanErrors() {
+        errorButton.hidden = true
     }
     
 }

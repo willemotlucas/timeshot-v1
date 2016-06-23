@@ -28,7 +28,7 @@ class T_CameraViewController: UIViewController {
     var networkStatus = T_NetworkStatus.sharedInstance
     let tapOnNetworkStatus = UITapGestureRecognizer()
     
-    let multiAlbumStatus = T_MultiAlbumStatus.sharedInstance
+    //let multiAlbumStatus = T_MultiAlbumStatus.sharedInstance
     var modalView = T_ModalView(frame: CGRect(origin: CGPoint(x: 0, y: -T_DesignHelper.screenSize.height), size: T_DesignHelper.screenSize))
     var quitButton = UIButton(frame: CGRect(x: 10, y: 10, width: 34, height: 34))
     
@@ -176,7 +176,8 @@ class T_CameraViewController: UIViewController {
         //Add the camera preview
         cameraManager.addPreviewLayerToView(self.cameraView)
         
-        self.multiAlbumStatus.hidden = true
+        //self.multiAlbumStatus.hidden = true
+        self.networkStatus.hidden = true
     }
     
     
@@ -212,13 +213,13 @@ class T_CameraViewController: UIViewController {
             cameraManager.addPreviewLayerToView(self.cameraView)
         }
         
-        //tapOnNetworkStatus.addTarget(self.networkStatus, action: #selector(T_NetworkStatus.pressed))
-        //self.networkStatus.addGestureRecognizer(tapOnNetworkStatus)
-        //self.view.addSubview(self.networkStatus)
+        tapOnNetworkStatus.addTarget(self.networkStatus, action: #selector(T_NetworkStatus.pressed))
+        self.networkStatus.addGestureRecognizer(tapOnNetworkStatus)
+        self.view.addSubview(self.networkStatus)
         
-        tapOnNetworkStatus.addTarget(self.multiAlbumStatus, action: #selector(T_MultiAlbumStatus.pressed))
-        self.multiAlbumStatus.addGestureRecognizer(tapOnNetworkStatus)
-        self.view.addSubview(self.multiAlbumStatus)
+        //        tapOnNetworkStatus.addTarget(self.multiAlbumStatus, action: #selector(T_MultiAlbumStatus.pressed))
+        //        self.multiAlbumStatus.addGestureRecognizer(tapOnNetworkStatus)
+        //        self.view.addSubview(self.multiAlbumStatus)
         self.view.addSubview(self.modalView)
         
         // Button to quit the creation of a new album
@@ -257,7 +258,8 @@ class T_CameraViewController: UIViewController {
         self.buttonTakePicture.hidden = false
         self.buttonReturnCamera.hidden = false
         self.buttonFlash.hidden = false
-        self.multiAlbumStatus.hidden = false
+        //        self.multiAlbumStatus.hidden = false
+        self.networkStatus.hidden = false
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -325,7 +327,8 @@ class T_CameraViewController: UIViewController {
                 
                 guard let album = currentUser.liveAlbum else { return  }
                 self.showCameraView()
-                self.multiAlbumStatus.updateLabelText(album.title)
+                self.networkStatus.updateLabelText(T_NetworkStatus.status.ShowAlbumTitle, withText: album.title)
+                //self.multiAlbumStatus.updateLabelText(album.title)
             }
             else {
                 self.showOverlayView()
@@ -335,7 +338,8 @@ class T_CameraViewController: UIViewController {
     
     func updateAlbumStatus() {
         guard let currentUser = PFUser.currentUser() as? T_User else { return }
-        self.multiAlbumStatus.updateLabelText(currentUser.liveAlbum!.title)
+        self.networkStatus.updateLabelText(T_NetworkStatus.status.ShowAlbumTitle, withText: currentUser.liveAlbum!.title)
+        //        self.multiAlbumStatus.updateLabelText(currentUser.liveAlbum!.title)
     }
     
     func stopAlbumTimer() {

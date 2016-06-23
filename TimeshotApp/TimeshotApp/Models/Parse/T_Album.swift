@@ -122,7 +122,6 @@ class T_Album : PFObject, PFSubclassing{
                     T_ParseAlbumHelper.pinLocalAlbum(album)
                 }
                 
-                currentUser.liveAlbum = finalAlbums.first
                 currentUser.albums.removeAll()
                 currentUser.albums.appendContentsOf(finalAlbums)
                 print("Albums found in T_User")
