@@ -226,7 +226,8 @@ class T_CameraViewController: UIViewController {
         quitButton.setImage(UIImage(named: "Cancel"), forState: .Normal)
         quitButton.addTarget(self, action: #selector(T_CameraViewController.quitButtonPressed), forControlEvents: UIControlEvents.TouchUpInside)
         self.quitButton.hidden = true
-        
+        self.view.addSubview(quitButton)
+        quitButton.layer.zPosition = 10000
         
         
         // If the application enter in background, we stop the timer
@@ -237,7 +238,8 @@ class T_CameraViewController: UIViewController {
         manageAlbumProcessing()
     }
     
-    func showQuiButton() {
+    func showQuitButton() {
+        print("ok")
         self.quitButton.hidden = false
     }
     

@@ -132,7 +132,7 @@ class T_ModalView: UIView {
     func createAlbum() {
         let controller = T_CameraViewController.instance
         controller.createAlbumInit()
-        controller.showQuiButton()
+        controller.showQuitButton()
         self.quitButtonPressed()
     }
     
