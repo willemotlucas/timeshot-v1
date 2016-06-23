@@ -15,7 +15,7 @@ import NVActivityIndicatorView
 //
 
 class T_NetworkStatus: UIView {
-
+    
     static let sharedInstance = T_NetworkStatus()
     private var albumTitle: UILabel!
     private var albumTitleBackground: UIView!
@@ -64,7 +64,7 @@ class T_NetworkStatus: UIView {
     }
     
     func updateLabelText(mode: status, withText text:String = "") {
-
+        
         var finalMode = mode
         
         if (text != "" && mode == .ShowAlbumTitle) { self._albumTitle = text }
@@ -89,6 +89,7 @@ class T_NetworkStatus: UIView {
             self.albumImage.contentMode = .ScaleAspectFit
             self.albumImage.frame.origin = CGPoint(x: T_DesignHelper.screenSize.width/2 + self.albumTitle.frame.size.width/2 - 33, y: self.albumImage.frame.origin.y)
             self.activityIndicatorView.stopAnimation()
+            T_CameraViewController.instance.modalView.cleanErrors()
             
         case .Error:
             finalText = "Upload failed (\(T_NetworkManager.sharedInstance.count()))"
@@ -99,7 +100,8 @@ class T_NetworkStatus: UIView {
             self.albumTitleBackground.frame.size.width = textSize.width + 40
             self.albumTitle.textAlignment = .Center
             self.activityIndicatorView.stopAnimation()
-        
+            T_CameraViewController.instance.modalView.showErrors(T_NetworkManager.sharedInstance.count())
+            
         case .Uploading:
             finalText = "   Uploading"
             self.albumImage.hidden = true
@@ -120,7 +122,7 @@ class T_NetworkStatus: UIView {
         
         self.show()
     }
-
+    
     func hide() {
         self.hidden = true
     }
@@ -130,8 +132,14 @@ class T_NetworkStatus: UIView {
     }
     
     func pressed() {
-        if(T_NetworkManager.sharedInstance.count() > 0 && T_NetworkManager.sharedInstance.isUploading == false) {
-            T_NetworkManager.sharedInstance.upload()
-        }
+        T_CameraViewController.instance.modalView.updateContent()
+        
+        UIView.animateWithDuration(0.15, animations: {
+            T_CameraViewController.instance.modalView.frame.origin.y = 0
+        })
+        
+        //        if(T_NetworkManager.sharedInstance.count() > 0 && T_NetworkManager.sharedInstance.isUploading == false) {
+        //            T_NetworkManager.sharedInstance.upload()
+        //        }
     }
 }

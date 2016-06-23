@@ -19,9 +19,10 @@ class T_User : PFUser {
     @NSManaged var lastName:String?
     @NSManaged var isDeleted:Bool
     @NSManaged var picture:PFFile?
-
+    
     var image: Observable<UIImage?> = Observable(nil)
     var liveAlbum:T_Album?
+    var albums:[T_Album] = []
     var friends: [T_User] = []
     var pendingFriends: [T_User] = []
     
@@ -30,10 +31,10 @@ class T_User : PFUser {
     var photoUploadTask: UIBackgroundTaskIdentifier?
     
     static var selectedFriends:[T_User] = []
-
+    
     private
     var selected:Bool
-
+    
     //MARK: PFSubclassing Protocol
     override init () {
         self.selected = false
@@ -93,7 +94,7 @@ class T_User : PFUser {
             self.registerSubclass()
         }
         T_User.albumListCache = NSCacheSwift<String, [T_Album]>()
-    
+        
     }
     
     func changeStateFriendSelected()
@@ -120,7 +121,7 @@ class T_User : PFUser {
     {
         return selected
     }
-
+    
     static func reset() {
         selectedFriends.removeAll()
     }
@@ -193,7 +194,7 @@ class T_User : PFUser {
             completion(friends: self.pendingFriends)
         }
     }
-
+    
     
     static func getAllUsers(withCompletion: (data: [T_User]) -> ())
     {
@@ -208,9 +209,21 @@ class T_User : PFUser {
                 print("Error: \(error!) \(error!.userInfo)")
             }
         }
-
     }
     
-    
+    static func getAllAlbums(withCompletion: (data: [T_User]) -> ())
+    {
+        let query = T_User.query()
+        query!.selectKeys(["firstName", "lastName", "picture"])
+        query!.findObjectsInBackgroundWithBlock {
+            (objects, error) -> Void in
+            if error == nil {
+                withCompletion(data: objects as! [T_User])
+            }
+            else {
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
+    }
 }
 

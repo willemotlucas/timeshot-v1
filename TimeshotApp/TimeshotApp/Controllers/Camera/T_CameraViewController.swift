@@ -28,9 +28,13 @@ class T_CameraViewController: UIViewController {
     var networkStatus = T_NetworkStatus.sharedInstance
     let tapOnNetworkStatus = UITapGestureRecognizer()
     
+    //let multiAlbumStatus = T_MultiAlbumStatus.sharedInstance
+    var modalView = T_ModalView(frame: CGRect(origin: CGPoint(x: 0, y: -T_DesignHelper.screenSize.height), size: T_DesignHelper.screenSize))
+    var quitButton = UIButton(frame: CGRect(x: 10, y: 10, width: 34, height: 34))
+    
     //Key words for auto generate album title
     let autoTitles = ["Amazing", "Sunny", "Lucky", "Lovely", "Crazy"]
-
+    
     private
     var isFlashActivated:Bool = false
     var isBackCameraActivated:Bool = true
@@ -99,7 +103,7 @@ class T_CameraViewController: UIViewController {
     @IBAction func actionButtonProfile(sender: AnyObject) {
         
         T_HomePageViewController.showProfileViewController()
-
+        
     }
     
     @IBAction func createAlbumButtonTapped(sender: UIButton) {
@@ -123,7 +127,7 @@ class T_CameraViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     override func viewWillLayoutSubviews() {
         if !isLiveAlbumExisting {
             self.overlayView.layer.zPosition = 1
@@ -146,9 +150,36 @@ class T_CameraViewController: UIViewController {
             self.buttonAlbumVC.layer.zPosition = 10
             self.buttonProfileVC.layer.zPosition = 10
             
-            self.networkStatus.layer.zPosition = 1
+            //self.networkStatus.layer.zPosition = 1
         }
     }
+    
+    func createAlbumInit() {
+        //Style of text field
+        T_DesignHelper.addSubBorder(self.albumTitleTextField)
+        T_DesignHelper.colorPlaceHolder(self.albumTitleTextField)
+        T_DesignHelper.addRoundBorder(self.createAlbumButton)
+        T_DesignHelper.colorBorderButton(self.createAlbumButton)
+        
+        //Hide camera view and show overlay
+        self.showOverlayView()
+        
+        self.albumTitleTextField.delegate = self
+        
+        //Mettre la camera en front pour la prise du selfie
+        cameraManager.cameraDevice = .Front
+        
+        //Need to add color the overlay view
+        T_DesignHelper.colorUIView(self.overlayColoredView)
+        self.overlayColoredView.alpha = 0.8
+        
+        //Add the camera preview
+        cameraManager.addPreviewLayerToView(self.cameraView)
+        
+        //self.multiAlbumStatus.hidden = true
+        self.networkStatus.hidden = true
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -172,44 +203,49 @@ class T_CameraViewController: UIViewController {
         
         // Camera init if no live album
         if !self.isLiveAlbumExisting {
-            //Style of text field
-            T_DesignHelper.addSubBorder(self.albumTitleTextField)
-            T_DesignHelper.colorPlaceHolder(self.albumTitleTextField)
-            T_DesignHelper.addRoundBorder(self.createAlbumButton)
-            T_DesignHelper.colorBorderButton(self.createAlbumButton)
-            
-            //Hide camera view and show overlay
-            self.showOverlayView()
-            
-            self.albumTitleTextField.delegate = self
-            
-            //Mettre la camera en front pour la prise du selfie
-            cameraManager.cameraDevice = .Front
-            
-            //Need to add color the overlay view
-            T_DesignHelper.colorUIView(self.overlayColoredView)
-            self.overlayColoredView.alpha = 0.8
-            
-            //Add the camera preview
-            cameraManager.addPreviewLayerToView(self.cameraView)
+            createAlbumInit()
         }
-        // Camera init if live album
+            // Camera init if live album
         else {
             //Show camera view and hide overlay
             self.showCameraView()
-            
             cameraManager.cameraDevice = .Back
             cameraManager.addPreviewLayerToView(self.cameraView)
         }
-
+        
         tapOnNetworkStatus.addTarget(self.networkStatus, action: #selector(T_NetworkStatus.pressed))
         self.networkStatus.addGestureRecognizer(tapOnNetworkStatus)
         self.view.addSubview(self.networkStatus)
+        
+        //        tapOnNetworkStatus.addTarget(self.multiAlbumStatus, action: #selector(T_MultiAlbumStatus.pressed))
+        //        self.multiAlbumStatus.addGestureRecognizer(tapOnNetworkStatus)
+        //        self.view.addSubview(self.multiAlbumStatus)
+        self.view.addSubview(self.modalView)
+        
+        // Button to quit the creation of a new album
+        quitButton.setImage(UIImage(named: "Cancel"), forState: .Normal)
+        quitButton.addTarget(self, action: #selector(T_CameraViewController.quitButtonPressed), forControlEvents: UIControlEvents.TouchUpInside)
+        self.quitButton.hidden = true
+        self.view.addSubview(quitButton)
+        quitButton.layer.zPosition = 10000
+        
         
         // If the application enter in background, we stop the timer
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CameraViewController.stopAlbumTimer), name:UIApplicationDidEnterBackgroundNotification, object: nil)
         // If the application is again active, we test once again if the album is existing
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(T_CameraViewController.manageAlbumProcessing), name:UIApplicationDidBecomeActiveNotification, object: nil)
+        
+        manageAlbumProcessing()
+    }
+    
+    func showQuitButton() {
+        print("ok")
+        self.quitButton.hidden = false
+    }
+    
+    func quitButtonPressed() {
+        showCameraView()
+        self.quitButton.hidden = true
     }
     
     func showOverlayView() {
@@ -224,6 +260,8 @@ class T_CameraViewController: UIViewController {
         self.buttonTakePicture.hidden = false
         self.buttonReturnCamera.hidden = false
         self.buttonFlash.hidden = false
+        //        self.multiAlbumStatus.hidden = false
+        self.networkStatus.hidden = false
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -250,31 +288,62 @@ class T_CameraViewController: UIViewController {
     }
     
     //MARK: - Methods
+    //    func manageAlbumProcessing() {
+    //        guard let currentUser = PFUser.currentUser() as? T_User else { return }
+    //        
+    //        self.isLiveAlbumExisting = false
+    //        //self.networkStatus.hide()
+    //        
+    //        
+    //        T_Album.manageAlbumProcessing(currentUser) {
+    //            (isLiveAlbum: Bool) -> Void in
+    //            
+    //            self.isLiveAlbumExisting = isLiveAlbum
+    //            
+    //            if (isLiveAlbum) {
+    //                
+    //                guard let album = currentUser.liveAlbum else { return  }
+    //                self.showCameraView()
+    //                //self.networkStatus.updateLabelText(T_NetworkStatus.status.ShowAlbumTitle, withText: album.title)
+    //                self.multiAlbumStatus.updateLabelText(album.title)
+    //                
+    //                self.albumTimer = NSTimer.scheduledTimerWithTimeInterval(Double(T_Album.getRemainingDuration((currentUser.liveAlbum?.createdAt)!, duration: (currentUser.liveAlbum?.duration)!)), target: self, selector: #selector(T_CameraViewController.manageAlbumProcessing), userInfo: nil, repeats: false)
+    //            } else {
+    //                self.showOverlayView()
+    //            }
+    //        }
+    //    }
+    
     func manageAlbumProcessing() {
         guard let currentUser = PFUser.currentUser() as? T_User else { return }
         
         self.isLiveAlbumExisting = false
-        self.networkStatus.hide()
-
-        
-        T_Album.manageAlbumProcessing(currentUser) {
+        T_Album.manageAlbumsProcessing(currentUser) {
             (isLiveAlbum: Bool) -> Void in
             
-            self.isLiveAlbumExisting = isLiveAlbum
-            
             if (isLiveAlbum) {
+                
+                self.isLiveAlbumExisting = isLiveAlbum
+                
+                self.albumTimer = NSTimer.scheduledTimerWithTimeInterval(Double(T_Album.getRemainingDuration((currentUser.liveAlbum?.createdAt)!, duration: (currentUser.liveAlbum?.duration)!)), target: self, selector: #selector(T_CameraViewController.manageAlbumProcessing), userInfo: nil, repeats: false)
                 
                 guard let album = currentUser.liveAlbum else { return  }
                 self.showCameraView()
                 self.networkStatus.updateLabelText(T_NetworkStatus.status.ShowAlbumTitle, withText: album.title)
-
-                self.albumTimer = NSTimer.scheduledTimerWithTimeInterval(Double(T_Album.getRemainingDuration((currentUser.liveAlbum?.createdAt)!, duration: (currentUser.liveAlbum?.duration)!)), target: self, selector: #selector(T_CameraViewController.manageAlbumProcessing), userInfo: nil, repeats: false)
-            } else {
+                //self.multiAlbumStatus.updateLabelText(album.title)
+            }
+            else {
                 self.showOverlayView()
             }
         }
     }
-
+    
+    func updateAlbumStatus() {
+        guard let currentUser = PFUser.currentUser() as? T_User else { return }
+        self.networkStatus.updateLabelText(T_NetworkStatus.status.ShowAlbumTitle, withText: currentUser.liveAlbum!.title)
+        //        self.multiAlbumStatus.updateLabelText(currentUser.liveAlbum!.title)
+    }
+    
     func stopAlbumTimer() {
         self.albumTimer?.invalidate()
     }

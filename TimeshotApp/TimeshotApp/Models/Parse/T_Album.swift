@@ -60,11 +60,11 @@ class T_Album : PFObject, PFSubclassing{
         self.title = title
         
     }
-        
+    
     static func createAlbum(cover: UIImage, duration: Int, albumTitle: String) {
         
         if let currentUser = PFUser.currentUser() as? T_User {
-           
+            
             let guests = T_User.selectedFriends
             let attendees = [currentUser]
             let album = T_Album(attendees: attendees, cover: cover, createdBy: currentUser, duration: duration, isDeleted: false, title: albumTitle)
@@ -77,11 +77,15 @@ class T_Album : PFObject, PFSubclassing{
             T_Album.albumCreationTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in
                 UIApplication.sharedApplication().endBackgroundTask(self.albumCreationTask!)
             }
-
+            
             album.saveInBackgroundWithBlock {
                 (success, error) -> Void in
                 if success {
                     print("Album created")
+                    
+                    currentUser.liveAlbum = album
+                    currentUser.albums.insert(album, atIndex: 0)
+                    
                     T_CameraViewController.instance.manageAlbumProcessing()
                     T_CameraViewController.instance.unfreezeUI(true)
                 } else {
@@ -93,6 +97,46 @@ class T_Album : PFObject, PFSubclassing{
         }
         else {
             print("Not connected, cannot create the album")
+        }
+    }
+    
+    //MARK: Multi Album
+    
+    static func manageAlbumsProcessing(currentUser: T_User, withCompletion completion: (isLiveAlbum: Bool) -> Void) {
+        
+        print("\n\n\nProcessing\n-----")
+        
+        if (currentUser.liveAlbum != nil) {
+            
+            var finalAlbums:[T_Album] = []
+            
+            for album in currentUser.albums {
+                if (isAlbumInLive(album)) {
+                    finalAlbums.append(album)
+                }
+            }
+            
+            if (finalAlbums.count > 0) {
+                T_ParseAlbumHelper.unpinLocalAlbum()
+                for album in finalAlbums {
+                    T_ParseAlbumHelper.pinLocalAlbum(album)
+                }
+                
+                currentUser.albums.removeAll()
+                currentUser.albums.appendContentsOf(finalAlbums)
+                print("Albums found in T_User")
+                completion(isLiveAlbum: true)
+            }
+            else {
+                currentUser.liveAlbum = nil
+                currentUser.albums.removeAll()
+                isLiveAlbumsFetchInBackground(currentUser, withCompletion: completion)
+            }
+        }
+        else {
+            currentUser.liveAlbum = nil
+            currentUser.albums.removeAll()
+            isLiveAlbumsFetchInBackground(currentUser, withCompletion: completion)
         }
     }
     
@@ -132,16 +176,47 @@ class T_Album : PFObject, PFSubclassing{
         }
     }
     
+    static func isLiveAlbumsFetchInBackground(currentUser: T_User, withCompletion completion: (isLiveAlbum: Bool) -> Void) {
+        
+        isLiveAlbumsPinned(currentUser, withEndCompletion: completion) {
+            (currentUser: T_User) -> Void in
+            
+            isLiveAlbumsOnParse(currentUser, withEndCompletion: completion)
+        }
+    }
+    
     //----------------
     static func isLiveAlbumPinned(currentUser: T_User, withEndCompletion endCompletion: (isLiveAlbum: Bool) -> Void, withDeeperCompletion completion: (currentUser: T_User) -> Void) {
         
         T_ParseAlbumHelper.queryAlbumPinned {
             (liveAlbum: T_Album?) -> () in
-        
+            
             currentUser.liveAlbum = liveAlbum
             
             if (isLiveAlbumAssociatedToUser(currentUser.liveAlbum)) {
                 print("Found pinned in local data")
+                endCompletion(isLiveAlbum: true)
+                return
+            }
+            
+            completion(currentUser: currentUser)
+        }
+        
+    }
+    
+    // MultiAlbum
+    static func isLiveAlbumsPinned(currentUser: T_User, withEndCompletion endCompletion: (isLiveAlbum: Bool) -> Void, withDeeperCompletion completion: (currentUser: T_User) -> Void) {
+        
+        T_ParseAlbumHelper.queryAlbumsPinned {
+            (liveAlbum: [T_Album]) -> () in
+            
+            if (liveAlbum.count > 0) {
+                currentUser.liveAlbum = liveAlbum.first
+                currentUser.albums.removeAll()
+                currentUser.albums.appendContentsOf(liveAlbum)
+                
+                print("Albums found pinned in local data")
+                print(liveAlbum.count)
                 endCompletion(isLiveAlbum: true)
                 return
             }
@@ -160,6 +235,37 @@ class T_Album : PFObject, PFSubclassing{
             
             if (isLiveAlbumAssociatedToUser(currentUser.liveAlbum)) {
                 print("Found on parse online")
+                endCompletion(isLiveAlbum: true)
+                return
+            }
+        }
+    }
+    
+    // MultiAlbum
+    static func isLiveAlbumsOnParse(currentUser: T_User, withEndCompletion endCompletion: (isLiveAlbum: Bool) -> Void) -> () {
+        
+        T_ParseAlbumHelper.queryAlbumsOnParse(currentUser) {
+            (albums:[T_Album]) -> Void in
+            
+            var finalAlbums:[T_Album] = []
+            
+            currentUser.liveAlbum = nil
+            currentUser.albums.removeAll()
+            
+            print("----------\n\n")
+            print("Number : \(albums.count) ")
+            
+            for album in albums {
+                if (isAlbumInLive(album)) {
+                    T_ParseAlbumHelper.pinLocalAlbum(album)
+                    finalAlbums.append(album)
+                }
+            }
+            
+            if (finalAlbums.count > 0) {
+                currentUser.liveAlbum = finalAlbums.first
+                currentUser.albums.removeAll()
+                currentUser.albums.appendContentsOf(finalAlbums)
                 endCompletion(isLiveAlbum: true)
                 return
             }

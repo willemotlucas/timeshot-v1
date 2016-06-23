@@ -29,7 +29,7 @@ class T_NetworkManager {
         }
         
     }
-
+    
     private var queue:[T_Post] = []
     private let dispatchQueue = dispatch_queue_create("networkUploadQueue", DISPATCH_QUEUE_CONCURRENT)
     static let sharedInstance = T_NetworkManager()
@@ -65,7 +65,7 @@ class T_NetworkManager {
         // Pin the post
         post.pinInBackgroundWithName(fileName)
     }
-        
+    
     func count() -> Int {
         return queue.count
     }
@@ -107,11 +107,11 @@ class T_NetworkManager {
             
             self.isUploading = true
             T_NetworkStatus.sharedInstance.updateLabelText(T_NetworkStatus.status.Uploading)
-
+            
             self.postCreationTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in
                 UIApplication.sharedApplication().endBackgroundTask(self.postCreationTask!)
             }
-
+            
             let fileName = T_LocalFileManager.generateNameFromDate(post.createdAtDate)
             let imagePath = T_LocalFileManager.fileInDocumentsDirectory("\(fileName).png")
             let imageFromLocalStorage = T_LocalFileManager.loadImageFromPath(imagePath)
@@ -120,13 +120,13 @@ class T_NetworkManager {
             if (post.photo.dataAvailable == true) {
                 var imageSize: Int
                 try! imageSize = post.photo.getData().length
-
+                
                 // Le post est trop léger = l'image n'est plus dans le cache : on load localement la photo
                 if(imageSize < 100) {
                     post.addPictureToPost(imageFromLocalStorage!)
                 }
             }
-
+            
             post.saveInBackgroundWithBlock {
                 (success, error) -> Void in
                 if success {
@@ -145,7 +145,7 @@ class T_NetworkManager {
                     // Fin de la tache de fond pour l'upload
                     UIApplication.sharedApplication().endBackgroundTask(self.postCreationTask!)
                     
-                    T_ParsePostHelper.sendNewPostNotification(currentUser.liveAlbum!)
+                    T_ParsePostHelper.sendNewPostNotification(post!.toAlbum)
                     
                     // On rappelle upload pour passer à l'élément suivant
                     self.upload()
@@ -154,7 +154,7 @@ class T_NetworkManager {
                     print("Pas de réseau (ou autre erreur), veuillez réessayer") // , error)
                     
                     self.isUploading = false
-
+                    
                     T_NetworkStatus.sharedInstance.updateLabelText(T_NetworkStatus.status.Error)
                     UIApplication.sharedApplication().endBackgroundTask(self.postCreationTask!)
                 }

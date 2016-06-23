@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.application(application, didReceiveRemoteNotification: notificationDictionary)
             }
         }
-                
+        
         PFUser.enableRevocableSessionInBackground()
         
         let startViewController: UIViewController;
@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             walkthrough.addViewController(page_three)
             startViewController = walkthrough
         }
-
+        
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = startViewController;

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		40BF472DC51952247A14DBC9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9E238D3F9C0AE128133098 /* Pods.framework */; };
 		5D1D921A1CBA4D390085B70C /* T_EmailEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1D92191CBA4D390085B70C /* T_EmailEditionViewController.swift */; };
 		5D64CA751CB96928005C6E43 /* T_FirstNameEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64CA741CB96928005C6E43 /* T_FirstNameEditionViewController.swift */; };
 		5D64CA771CB9806E005C6E43 /* T_LastNameEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64CA761CB9806E005C6E43 /* T_LastNameEditionViewController.swift */; };
@@ -107,14 +106,20 @@
 		B45977071CAAE7CA00D57BED /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B741C9ABAC500135920 /* Profile.storyboard */; };
 		B46B2B771C9ABADA00135920 /* Album.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B761C9ABADA00135920 /* Album.storyboard */; };
 		B49D06421CDFD68E00D3F118 /* T_NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49D06411CDFD68E00D3F118 /* T_NetworkManager.swift */; };
+		B4CCCC2E1D1AE06500D01086 /* T_MultiAlbumStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CCCC2D1D1AE06500D01086 /* T_MultiAlbumStatus.swift */; };
+		B4CCCC301D1AE55C00D01086 /* T_AlbumButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CCCC2F1D1AE55C00D01086 /* T_AlbumButton.swift */; };
+		B4CCCC321D1AE5E300D01086 /* T_ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CCCC311D1AE5E300D01086 /* T_ModalView.swift */; };
 		B4EA9DCB1CB52D37003F5A75 /* T_SnapTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EA9DC71CB52D37003F5A75 /* T_SnapTextField.swift */; };
 		B4EA9DCC1CB52D37003F5A75 /* T_Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EA9DC81CB52D37003F5A75 /* T_Slider.swift */; };
 		B4EA9DCD1CB52D37003F5A75 /* T_Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EA9DC91CB52D37003F5A75 /* T_Filter.swift */; };
 		B4EA9DD21CB52DE3003F5A75 /* T_User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EA9DD11CB52DE3003F5A75 /* T_User.swift */; };
 		B4F2E9111CB64A370029F4BF /* T_Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F2E9101CB64A370029F4BF /* T_Album.swift */; };
+		D3C599C2B755F5A4EAD8497C /* Pods_TimeshotApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1CBE7369C3DF14AA1608B3 /* Pods_TimeshotApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13DE1A93EB5111F313A38C42 /* Pods-TimeshotApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeshotApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimeshotApp/Pods-TimeshotApp.release.xcconfig"; sourceTree = "<group>"; };
+		36042247AA6BF715C9A4EC81 /* Pods-TimeshotApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeshotApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimeshotApp/Pods-TimeshotApp.debug.xcconfig"; sourceTree = "<group>"; };
 		4770CD7F4BA867BF6C3AA239 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F9E238D3F9C0AE128133098 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D1D92191CBA4D390085B70C /* T_EmailEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_EmailEditionViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +152,7 @@
 		5DF7ADD51CDBB89100C6C652 /* T_AlbumRequestNotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumRequestNotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		5DF7ADD71CDBB89B00C6C652 /* T_AlbumRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumRequest.swift; sourceTree = "<group>"; };
 		5DFE00401D07432B00B2E892 /* T_DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_DateHelper.swift; sourceTree = "<group>"; };
+		6A1CBE7369C3DF14AA1608B3 /* Pods_TimeshotApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimeshotApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F7AD880E89307F1E906BF3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7D1035241CDE74F6007F8646 /* T_PhotoImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PhotoImageView.swift; sourceTree = "<group>"; };
 		7D241FF31CB6D39D00F6548B /* T_SliderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SliderViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +225,9 @@
 		B46B2B741C9ABAC500135920 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		B46B2B761C9ABADA00135920 /* Album.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Album.storyboard; sourceTree = "<group>"; };
 		B49D06411CDFD68E00D3F118 /* T_NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_NetworkManager.swift; sourceTree = "<group>"; };
+		B4CCCC2D1D1AE06500D01086 /* T_MultiAlbumStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_MultiAlbumStatus.swift; sourceTree = "<group>"; };
+		B4CCCC2F1D1AE55C00D01086 /* T_AlbumButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumButton.swift; sourceTree = "<group>"; };
+		B4CCCC311D1AE5E300D01086 /* T_ModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ModalView.swift; sourceTree = "<group>"; };
 		B4EA9DC71CB52D37003F5A75 /* T_SnapTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SnapTextField.swift; sourceTree = "<group>"; };
 		B4EA9DC81CB52D37003F5A75 /* T_Slider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Slider.swift; sourceTree = "<group>"; };
 		B4EA9DC91CB52D37003F5A75 /* T_Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Filter.swift; sourceTree = "<group>"; };
@@ -231,7 +240,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40BF472DC51952247A14DBC9 /* Pods.framework in Frameworks */,
+				D3C599C2B755F5A4EAD8497C /* Pods_TimeshotApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +445,7 @@
 			isa = PBXGroup;
 			children = (
 				4F9E238D3F9C0AE128133098 /* Pods.framework */,
+				6A1CBE7369C3DF14AA1608B3 /* Pods_TimeshotApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -553,6 +563,9 @@
 				B4EA9DC81CB52D37003F5A75 /* T_Slider.swift */,
 				B4EA9DC91CB52D37003F5A75 /* T_Filter.swift */,
 				B43678641CE0F6A70096B8F4 /* T_NetworkStatus.swift */,
+				B4CCCC2D1D1AE06500D01086 /* T_MultiAlbumStatus.swift */,
+				B4CCCC2F1D1AE55C00D01086 /* T_AlbumButton.swift */,
+				B4CCCC311D1AE5E300D01086 /* T_ModalView.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -589,6 +602,8 @@
 			children = (
 				78F7AD880E89307F1E906BF3 /* Pods.debug.xcconfig */,
 				4770CD7F4BA867BF6C3AA239 /* Pods.release.xcconfig */,
+				36042247AA6BF715C9A4EC81 /* Pods-TimeshotApp.debug.xcconfig */,
+				13DE1A93EB5111F313A38C42 /* Pods-TimeshotApp.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -600,12 +615,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7D86992D1C8F4A9D003BC1DC /* Build configuration list for PBXNativeTarget "Timeshot" */;
 			buildPhases = (
-				9B2D3C5B00C383FB1925FF68 /* Check Pods Manifest.lock */,
+				9B2D3C5B00C383FB1925FF68 /* [CP] Check Pods Manifest.lock */,
 				7D8699171C8F4A9D003BC1DC /* Sources */,
 				7D8699181C8F4A9D003BC1DC /* Frameworks */,
 				7D8699191C8F4A9D003BC1DC /* Resources */,
-				EBC51092A4833A9C9E6E4BA9 /* Embed Pods Frameworks */,
-				1DC61F65C4C01C1E2FF6E7B4 /* Copy Pods Resources */,
+				EBC51092A4833A9C9E6E4BA9 /* [CP] Embed Pods Frameworks */,
+				1DC61F65C4C01C1E2FF6E7B4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -679,29 +694,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1DC61F65C4C01C1E2FF6E7B4 /* Copy Pods Resources */ = {
+		1DC61F65C4C01C1E2FF6E7B4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TimeshotApp/Pods-TimeshotApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9B2D3C5B00C383FB1925FF68 /* Check Pods Manifest.lock */ = {
+		9B2D3C5B00C383FB1925FF68 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -709,19 +724,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		EBC51092A4833A9C9E6E4BA9 /* Embed Pods Frameworks */ = {
+		EBC51092A4833A9C9E6E4BA9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TimeshotApp/Pods-TimeshotApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -751,6 +766,7 @@
 				7DB873821D0AAF2B0075A4EF /* T_TinderPhotosViewController.swift in Sources */,
 				5DC361DE1CBAFBE900B00064 /* T_FriendRequestParseHelper.swift in Sources */,
 				7D86991F1C8F4A9D003BC1DC /* AppDelegate.swift in Sources */,
+				B4CCCC2E1D1AE06500D01086 /* T_MultiAlbumStatus.swift in Sources */,
 				5DC361E31CBAFBE900B00064 /* T_ContactsHelper.swift in Sources */,
 				7D241FFC1CB6D47500F6548B /* T_StoryCollectionViewCell.swift in Sources */,
 				8A6C38221CE0BA3F0044A665 /* T_ParseVoteHelper.swift in Sources */,
@@ -765,6 +781,7 @@
 				7DC6AFBD1CF496B100461FE1 /* T_AlbumCacheHelper.swift in Sources */,
 				5DB5A0291CA1AD1000AADC9F /* T_ProfileEditionViewController.swift in Sources */,
 				B43C0E8F1CABF4E900EF51E9 /* T_CameraViewController.swift in Sources */,
+				B4CCCC301D1AE55C00D01086 /* T_AlbumButton.swift in Sources */,
 				B49D06421CDFD68E00D3F118 /* T_NetworkManager.swift in Sources */,
 				5DC361E21CBAFBE900B00064 /* T_CameraHelper.swift in Sources */,
 				B431711C1CB912790080AFDD /* T_Post.swift in Sources */,
@@ -785,6 +802,7 @@
 				5D8638921CB8EDAA005CBC90 /* T_SearchUserTableViewCell.swift in Sources */,
 				7D2F53AC1CB67D9000AB9995 /* T_PhotosAlbumLiveViewController.swift in Sources */,
 				B43C0E901CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift in Sources */,
+				B4CCCC321D1AE5E300D01086 /* T_ModalView.swift in Sources */,
 				5DC361E01CBAFBE900B00064 /* T_ParseUserHelper.swift in Sources */,
 				7D2F53A91CB67D9000AB9995 /* T_AlbumLiveViewController.swift in Sources */,
 				5DB5A02B1CA1AD1000AADC9F /* T_SettingsViewController.swift in Sources */,
@@ -938,7 +956,7 @@
 		};
 		7D86992E1C8F4A9D003BC1DC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 78F7AD880E89307F1E906BF3 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 36042247AA6BF715C9A4EC81 /* Pods-TimeshotApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
@@ -955,7 +973,7 @@
 		};
 		7D86992F1C8F4A9D003BC1DC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4770CD7F4BA867BF6C3AA239 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 13DE1A93EB5111F313A38C42 /* Pods-TimeshotApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
