@@ -72,8 +72,8 @@ class T_ModalView: UIView {
         
         self.errorButton.setTitle("Upload failed. Try again!", forState: .Normal)
         self.errorButton.layer.cornerRadius = self.createAlbumButton.frame.size.height/2
-        self.errorButton.backgroundColor = UIColor.redColor()
-        self.errorButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        self.errorButton.backgroundColor = UIColor.whiteColor()
+        self.errorButton.setTitleColor(UIColor.redColor(), forState: .Normal)
         self.errorButton.addTarget(self, action: #selector(T_ModalView.errorButtonPressed), forControlEvents: UIControlEvents.TouchUpInside)
         self.errorButton.hidden = true
         
