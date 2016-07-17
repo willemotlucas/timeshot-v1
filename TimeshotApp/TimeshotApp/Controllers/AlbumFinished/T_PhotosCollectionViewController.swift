@@ -29,6 +29,7 @@ class T_PhotosCollectionViewController: UIViewController {
     
     var albumPhotos : T_Album?
     var posts:[T_Post] = []
+    var storyPosts : [T_Post] = []
     var storyIndex = 0
     let numberPhotosStory = 3
     var containerDelegate: ContainerDelegateProtocol?
@@ -61,12 +62,6 @@ class T_PhotosCollectionViewController: UIViewController {
         })
         
         loadPost()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        print("Dans le viewWillAppear")
-        print(storyIndex)
-        collectionView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -106,6 +101,9 @@ class T_PhotosCollectionViewController: UIViewController {
         // Pour chaque post on doit alors savoir dans quelle section il est mais aussi
         // charger son image
         for post in self.posts {
+            // On initialise aussi la story vu qu'il y a des posts
+            storyPosts = getStory()
+            
             let date = post.createdAtDate
             
             // On regarde maintenant la diff entre la date de la photo et la date de la derniere photo du tableau
@@ -148,6 +146,7 @@ class T_PhotosCollectionViewController: UIViewController {
             }
         }
         
+        
         // On ne garde que les sections ou il y a au moins une photo de prise !
         self.photoNumberInSections = self.photoNumberInSections.filter{$0 != 0}
         self.collectionView.endRefreshing()
@@ -156,26 +155,30 @@ class T_PhotosCollectionViewController: UIViewController {
     
     // MARK: Loading Data Functions
     func getStory() -> [T_Post] {
-        // Recupération que des 20 photos les plus likes
-        let orderedPosts = self.posts.sort({$0.voteNumber > $1.voteNumber})
         
-        var storyPosts = [T_Post]()
-
-        for i in 1...numberPhotosStory {
-            storyPosts.append(orderedPosts[i])
+        if(numberPhotosStory >= self.posts.count){
+            return self.posts
+        } else {
+            // Recupération que des 20 photos les plus likes
+            let orderedPosts = self.posts.sort({$0.voteNumber > $1.voteNumber})
+            
+            var storyPosts = [T_Post]()
+            
+            for i in 0..<numberPhotosStory {
+                storyPosts.append(orderedPosts[i])
+            }
+            
+            storyPosts = storyPosts.sort({$0.createdAtDate.isEarlierThanDate($1.createdAtDate)})
+            
+            return storyPosts
         }
         
-        storyPosts = storyPosts.sort({$0.createdAtDate.isEarlierThanDate($1.createdAtDate)})
-        
-        return storyPosts
     }
     
     
     func loadPost() {
         T_AlbumCacheHelper.postsForCurrentAlbum(albumPhotos!) {(result: [PFObject]?, error: NSError?) -> Void in
-            print("loadPost")
             //self.containerDelegate?.hidePhotoCollectionView()
-            
             self.load = true
             if let error = error {
                 self.hasLoaded = false
@@ -187,6 +190,7 @@ class T_PhotosCollectionViewController: UIViewController {
                 
             } else {
                 self.hasLoaded = true
+                self.posts.removeAll()
                 self.posts = result as? [T_Post] ?? []
                 let currentUser = T_ParseUserHelper.getCurrentUser()!
                 for i in self.posts {
@@ -286,16 +290,11 @@ class T_PhotosCollectionViewController: UIViewController {
                 slideDetailVC.slideImages = self.posts
             }
         } else if segue.identifier == "ShowStory" {
-            let slideDetailVC = segue.destinationViewController as! T_StoryViewController
-            slideDetailVC.storyDelegate = self
+            let storyVC = segue.destinationViewController as! T_StoryViewController
+            storyVC.storyDelegate = self
             
-            if(posts.count > numberPhotosStory) {
-                slideDetailVC.pageImages = getStory()
-            }else {
-                slideDetailVC.pageImages = self.posts
-            }
-            
-            slideDetailVC.currentPage = storyIndex
+            storyVC.pageImages = getStory()
+            storyVC.currentPage = storyIndex
         }
     }
 }
@@ -324,18 +323,18 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         // Story section
         if indexPath.section == 0 {
-    
             let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("storyCell", forIndexPath: indexPath) as! T_StoryCollectionViewCell
-            let post = posts[storyIndex]
+            let post = storyPosts[storyIndex]
             cell.imageView.layer.cornerRadius = 40
             post.downloadImage()
             cell.post = post
             
             if cell.imageView.image == nil {
-                cell.imageView.bnd_image.value = UIImage(named: "TakePicture")
+                cell.imageView.bnd_image.value = UIImage(named: "EmptyView")
             }
             
             return cell
+            
         } else {
         // Photos sections
             // Row O = Hour Cell
@@ -478,14 +477,22 @@ extension T_PhotosCollectionViewController : DZNEmptyDataSetSource, DZNEmptyData
 }
 
 extension T_PhotosCollectionViewController : StoryDelegateProtocol {
-    func updateStory(indexStory: Int) {
-        if indexStory >= 0 {
-            self.storyIndex = indexStory
-            
-        }else {
+    func updateStory(pictureStory: T_Post?) {
+        if let picture = pictureStory {
+            let index = storyPosts.indexOf(picture)
+            if index >= 0 {
+                self.storyIndex = index!
+            }else {
+                self.storyIndex = 0
+            }
+        } else {
             self.storyIndex = 0
         }
-        self.collectionView.reloadData()
+        
+        
+        
+        //var indexSet = NSIndexSet(index: 0)
+        self.collectionView.reloadData();
     }
 }
 

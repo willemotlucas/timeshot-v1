@@ -85,9 +85,7 @@ class T_AlbumFinishedViewController: UIViewController {
         } else if segue.identifier == "chooseContainer" {
             let finishAlbumVC =  segue.destinationViewController as! T_ChooseDetailsAlbumViewController
             finishAlbumVC.albumPhotos = albumPhotos
-        } else {
-            print("coucou c'ets moi !!!")
-        }
+        } 
      }
  
 

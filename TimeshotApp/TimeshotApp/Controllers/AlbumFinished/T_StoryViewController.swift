@@ -12,7 +12,7 @@ import KYCircularProgress
 import MBProgressHUD
 
 protocol StoryDelegateProtocol {
-    func updateStory(indexStory : Int)
+    func updateStory(actualPost : T_Post?)
 }
 
 
@@ -27,7 +27,8 @@ class T_StoryViewController: UIViewController {
         didSet {
             // free memory of image stored with post that is no longer displayed
             if let oldValue = oldValue where oldValue != actualPost {
-                oldValue.image.value = nil
+                //oldValue.image.value = nil
+                oldValue.image.bindTo(actualImageView.bnd_image).dispose()
             }
             
             if let post = actualPost {
@@ -103,7 +104,12 @@ class T_StoryViewController: UIViewController {
     
     // Need to stop all the timer when we quit this view
     override func viewWillDisappear(animated: Bool) {
-        storyDelegate?.updateStory(currentPage)
+        if currentPage >= pageImages.count {
+            storyDelegate?.updateStory(nil)
+        } else {
+            storyDelegate?.updateStory(actualPost)
+        }
+        
         timer?.invalidate()
         timer2.invalidate()
     }
@@ -147,7 +153,6 @@ class T_StoryViewController: UIViewController {
             currentPage += 1;
         } else {
             timer?.invalidate()
-            currentPage = 0
             self.dismissViewControllerAnimated(true, completion: nil)
         }
         

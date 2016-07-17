@@ -44,9 +44,7 @@ class T_ChooseDetailsAlbumViewController: UIViewController {
             let finishAlbumVC =  segue.destinationViewController as! T_PhotosCollectionViewController
             finishAlbumVC.containerDelegate = self
             finishAlbumVC.albumPhotos = albumPhotos
-        } else {
-            print("coucou c'est moi !!!")
-        }
+        } 
     }
 
 }

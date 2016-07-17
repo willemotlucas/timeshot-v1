@@ -19,7 +19,12 @@ class T_HourCollectionViewCell: UICollectionViewCell {
         
         // On veut d'abord avoir l'heure actuelle que l'on recupere en Int
         let hour = calendar.component(unit, fromDate: date)
-        hourLabel.text = "\(hour)h"
+        if hour < 10 {
+            hourLabel.text = "0\(hour)h"
+        }else {
+            hourLabel.text = "\(hour)h"
+        }
+        
     }
     
 }
