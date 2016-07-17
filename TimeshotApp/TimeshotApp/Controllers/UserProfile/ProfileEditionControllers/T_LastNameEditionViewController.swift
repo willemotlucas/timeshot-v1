@@ -21,7 +21,7 @@ class T_LastNameEditionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.lastNameTextField.text = lastName
-        self.helpTextLabel.text = "Your last name helps your friends to find you 😊"
+        self.helpTextLabel.text = NSLocalizedString("Your last name helps your friends to find you 😊", comment: "")
         self.helpTextLabel.numberOfLines = 2
     }
 

@@ -22,7 +22,7 @@ class T_BirthdayEditionViewController: UIViewController {
         
         self.birthdayTextField.enabled = false
         
-        self.helpTextLabel.text = "You must be 13 years old at least 🎂"
+        self.helpTextLabel.text = NSLocalizedString("You must be 13 years old at least 🎂", comment: "")
         self.helpTextLabel.numberOfLines = 2
         self.birthdayDatePicker.maximumDate = NSCalendar.currentCalendar().dateByAddingUnit(.Year, value: -13, toDate: NSDate(), options: [])
         

@@ -45,7 +45,6 @@ class T_ProfileViewController: UIViewController {
     var sectionTitles = ["Pending requests", "Friends"]
     
     var albumRequests: [T_AlbumRequest] = []
-    var currentAlbumRequest: T_AlbumRequest?
     
     let contacts = T_ContactsHelper.getAllContacts() //All the contacts of the current user
     
@@ -163,11 +162,11 @@ class T_ProfileViewController: UIViewController {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             contentToDisplay = .Friends
-            self.bottomActionButton.setTitle("ADD NEW FRIENDS", forState: .Normal)
+            self.bottomActionButton.setTitle(NSLocalizedString("ADD NEW FRIENDS", comment: ""), forState: .Normal)
         case 1:
             contentToDisplay = .Notifications
             if !UIApplication.sharedApplication().isRegisteredForRemoteNotifications() {
-                self.bottomActionButton.setTitle("ALLOW NOTIFICATIONS", forState: .Normal)
+                self.bottomActionButton.setTitle(NSLocalizedString("ALLOW NOTIFICATIONS", comment: ""), forState: .Normal)
             }
         default: break
         }
@@ -189,7 +188,7 @@ class T_ProfileViewController: UIViewController {
                     
                     NSUserDefaults.standardUserDefaults().setBool(true, forKey: "PushNotificationsRequestAlreadySeen")
                 } else {
-                    T_AlertHelper.alert2Actions("Allow notifications", message: "You have disallowed notifications. Please go in your settings and allow notifications.", button1message: "Cancel", button2message: "Settings", viewController: self, completion: { (action: UIAlertAction) in
+                    T_AlertHelper.alert2Actions(NSLocalizedString("Allow notifications", comment: ""), message: NSLocalizedString("You have disallowed notifications. Please go in your settings and allow notifications.", comment: ""), button1message: NSLocalizedString("Cancel", comment: ""), button2message: NSLocalizedString("Settings", comment: ""), viewController: self, completion: { (action: UIAlertAction) in
                         if action.title == "Settings" {
                             if let appSettings = NSURL(string: UIApplicationOpenSettingsURLString) {
                                 UIApplication.sharedApplication().openURL(appSettings)
@@ -206,9 +205,9 @@ class T_ProfileViewController: UIViewController {
     func notificationsState() {
         print("answer to notification popup")
         if UIApplication.sharedApplication().isRegisteredForRemoteNotifications() {
-            self.bottomActionButton.setTitle("ADD FRIENDS", forState: .Normal)
+            self.bottomActionButton.setTitle(NSLocalizedString("ADD FRIENDS", comment: ""), forState: .Normal)
         } else {
-            self.bottomActionButton.setTitle("ALLOW NOTIFICATIONS", forState: .Normal)
+            self.bottomActionButton.setTitle(NSLocalizedString("ALLOW NOTIFICATIONS", comment: ""), forState: .Normal)
         }
     }
     
@@ -217,10 +216,10 @@ class T_ProfileViewController: UIViewController {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
         //Add actions to the UIAlert
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .Cancel, handler: nil)
         alertController.addAction(cancelAction)
         
-        let addressBookAction = UIAlertAction(title: "Add from Address Book", style: .Default){
+        let addressBookAction = UIAlertAction(title: NSLocalizedString("Add from Address Book", comment: ""), style: .Default){
             (action) in
             // Callback function (closure) called when user selects address book
             let authorizationStatus = ABAddressBookGetAuthorizationStatus()
@@ -240,7 +239,7 @@ class T_ProfileViewController: UIViewController {
         }
         alertController.addAction(addressBookAction)
         
-        let usernameAction = UIAlertAction(title: "Add by Username", style: .Default) {
+        let usernameAction = UIAlertAction(title: NSLocalizedString("Add by Username", comment: ""), style: .Default) {
             (action) in
             // Show the username search view
             self.performSegueWithIdentifier("showUserSearch", sender: nil)
@@ -379,34 +378,31 @@ extension T_ProfileViewController: UITableViewDataSource {
             let appearance = SCLAlertView.SCLAppearance(
                 showCloseButton: false
             )
+
             
             let alertView = SCLAlertView(appearance: appearance)
-            alertView.addButton("Accept", action: {
-                if T_CameraViewController.instance.isLiveAlbumExisting == true {
-                    Drop.down("You already have an album in progress", state: .Error)
-                } else {
-                    if Reachability.isConnectedToNetwork() {
-                        T_ParseAlbumRequestHelper.acceptAlbumRequest(albumRequest) { (result: Bool, error: NSError?) in
-                            T_CameraViewController.instance.manageAlbumProcessing()
-                            self.updateAlbumRequestsTableView(albumRequest)
-                        }
-                    } else {
-                        Drop.down("No internet connection... Try again later", state: .Error)
+            alertView.addButton(NSLocalizedString("Accept", comment: ""), action: {
+                if Reachability.isConnectedToNetwork() {
+                    T_ParseAlbumRequestHelper.acceptAlbumRequest(albumRequest) { (result: Bool, error: NSError?) in
+                        T_CameraViewController.instance.manageAlbumProcessing()
+                        self.updateAlbumRequestsTableView(albumRequest)
                     }
+                } else {
+                    Drop.down(NSLocalizedString("No internet connection... Try again later", comment: ""), state: .Error)
                 }
             })
             
-            alertView.addButton("Decline", action: {
+            alertView.addButton(NSLocalizedString("Decline", comment: ""), action: {
                 if Reachability.isConnectedToNetwork() {
                     T_ParseAlbumRequestHelper.rejectAlbumRequest(albumRequest) { (result: Bool, error: NSError?) in
                         self.updateAlbumRequestsTableView(albumRequest)
                     }
                 } else {
-                    Drop.down("No internet connection... Try again later", state: .Error)
+                    Drop.down(NSLocalizedString("No internet connection... Try again later", comment: ""), state: .Error)
                 }
             })
             
-            alertView.showSuccess("Invitation", subTitle: "\n \(albumRequest.fromUser!.username!) invited you to join his album \(albumRequest.toAlbum!.title!).\n \nDo you want to have fun? 🎉", circleIconImage: UIImage(named: "invitation"))
+            alertView.showSuccess(NSLocalizedString("Invitation", comment: ""), subTitle: NSLocalizedString("\n \(albumRequest.fromUser!.username!) invited you to join his album \(albumRequest.toAlbum!.title!).\n \nDo you want to have fun? 🎉", comment :""), circleIconImage: UIImage(named: "invitation"))
             
         case .Friends:
             return
@@ -458,8 +454,8 @@ extension T_ProfileViewController: UITableViewDataSource {
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.friend = user
         cell.albumRequest = albumRequest
-        cell.notificationTextLabel.text = "@\(user.username!) invited you to join \(albumRequest.toAlbum!.title!)!"
-        cell.notificationHelpTextLabel.text = "Click to answer"
+        cell.notificationTextLabel.text = NSLocalizedString("@\(user.username!) invited you to join \(albumRequest.toAlbum!.title!)!", comment: "")
+        cell.notificationHelpTextLabel.text = NSLocalizedString("Click to answer", comment: "")
         return cell
     }
 }
@@ -485,11 +481,11 @@ extension T_ProfileViewController: UIScrollViewDelegate {
 extension T_ProfileViewController: DZNEmptyDataSetSource {
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         if contentToDisplay == .Friends {
-            let str = "You have no friends yet 😟"
+            let str = NSLocalizedString("You have no friends yet 😟", comment: "")
             let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
             return NSAttributedString(string: str, attributes: attrs)
         } else {
-            let str = "You have no notifications..."
+            let str = NSLocalizedString("You have no notifications...", comment: "")
             let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
             return NSAttributedString(string: str, attributes: attrs)
         }
@@ -497,11 +493,11 @@ extension T_ProfileViewController: DZNEmptyDataSetSource {
     
     func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         if contentToDisplay == .Friends {
-            let str = "Invite some friends, it's more fun!"
+            let str = NSLocalizedString("Invite some friends, it's more fun!", comment: "")
             let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
             return NSAttributedString(string: str, attributes: attrs)
         } else {
-            let str = "Create an album and share your photos!"
+            let str = NSLocalizedString("Create an album and share your photos!", comment: "")
             let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
             return NSAttributedString(string: str, attributes: attrs)
         }
@@ -572,7 +568,7 @@ extension T_ProfileViewController: AlbumRequestsUpdater {
     }
     
     func displayAlert(message: String) {
-        T_AlertHelper.alertOK("Oups!", message: message, viewController: self)
+        T_AlertHelper.alertOK(NSLocalizedString("Oups!", comment: ""), message: message, viewController: self)
     }
 }
 

@@ -45,10 +45,10 @@ class T_ContactsHelper {
      * - @viewController : the view controller where will be displayed the alert
      */
     static func displayCantAddContactAlert(viewController: UIViewController) {
-        let cantAddContactAlert = UIAlertController(title: "Cannot Add Contact",
-            message: "You must give the app permission to add the contact first.",
+        let cantAddContactAlert = UIAlertController(title: NSLocalizedString("Cannot Add Contact", comment: ""),
+                                                    message: NSLocalizedString("You must give the app permission to add the contact first.", comment: ""),
             preferredStyle: .Alert)
-        cantAddContactAlert.addAction(UIAlertAction(title: "Change Settings",
+        cantAddContactAlert.addAction(UIAlertAction(title: NSLocalizedString("Change Settings", comment: ""),
             style: .Default,
             handler: { action in
                 self.openSettings()
