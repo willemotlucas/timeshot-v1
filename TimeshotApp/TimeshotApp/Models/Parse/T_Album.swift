@@ -21,6 +21,7 @@ class T_Album : PFObject, PFSubclassing{
     @NSManaged var title: String!
     
     var coverImage : Observable<UIImage?> = Observable(nil)
+    var isLive: Bool = false
     
     static var albumCreationTask: UIBackgroundTaskIdentifier?
     

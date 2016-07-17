@@ -11,6 +11,7 @@ import UIKit
 class T_StoryCollectionViewCell: UICollectionViewCell {
     // MARK: Properties
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var storyLabel: UILabel!
     
     var post : T_Post? {
         didSet {
@@ -26,4 +27,22 @@ class T_StoryCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    // MARK: Initialisation
+    func initCellWithMetaData(post: T_Post?, isLiveAlbum: Bool){
+        if(isLiveAlbum) {
+            // On ne met que notre photo par defaut
+            imageView.image = UIImage(named: "endAlbum")
+            
+            storyLabel.text = NSLocalizedString("Ready to discover your story !", comment: "")
+        } else {
+            // on met la story dans l'ordre
+            self.post = post
+            storyLabel.text = NSLocalizedString("Remember the best moment of your album !", comment: "")
+            
+            if  imageView.image == nil {
+                imageView.bnd_image.value = UIImage(named: "EmptyView")
+            }
+        }
+        
+    }
 }

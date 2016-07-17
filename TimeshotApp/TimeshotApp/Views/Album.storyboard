@@ -444,6 +444,7 @@
                                         </variation>
                                         <connections>
                                             <outlet property="imageView" destination="phc-5e-Bcu" id="hpK-kc-Ekl"/>
+                                            <outlet property="storyLabel" destination="sSJ-nl-CdV" id="soN-yN-dfI"/>
                                             <segue destination="Xnu-7w-UyO" kind="showDetail" identifier="ShowStory" id="8X9-LQ-LUx"/>
                                         </connections>
                                     </collectionViewCell>

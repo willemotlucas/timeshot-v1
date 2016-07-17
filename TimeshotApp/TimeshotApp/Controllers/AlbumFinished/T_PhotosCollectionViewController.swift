@@ -262,13 +262,16 @@ class T_PhotosCollectionViewController: UIViewController {
                 }
             }
         } else if identifier == "ShowStory" {
-            if let selectedPicture = sender as? T_StoryCollectionViewCell {
-                if selectedPicture.imageView.image.value == UIImage(named: "TakePicture"){
-                    return false
-                } else {
-                    return true
+            if(!(albumPhotos?.isLive)!){
+                if let selectedPicture = sender as? T_StoryCollectionViewCell {
+                    if selectedPicture.imageView.image.value == UIImage(named: "TakePicture"){
+                        return false
+                    } else {
+                        return true
+                    }
                 }
             }
+            return false
         }
         return true
     }
@@ -327,11 +330,7 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
             let post = storyPosts[storyIndex]
             cell.imageView.layer.cornerRadius = 40
             post.downloadImage()
-            cell.post = post
-            
-            if cell.imageView.image == nil {
-                cell.imageView.bnd_image.value = UIImage(named: "EmptyView")
-            }
+            cell.initCellWithMetaData(post, isLiveAlbum: self.albumPhotos!.isLive)
             
             return cell
             
@@ -374,6 +373,30 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
             
         }
         
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if(albumPhotos!.isLive) {
+            // Constructs the UIAlert
+            let alertController = UIAlertController(title: NSLocalizedString("Discover your story !", comment: ""),
+                                                    message: NSLocalizedString("You won't be able to post pictures again on that album", comment: ""),
+                                                    preferredStyle:.Alert )
+            
+            //Add actions to the UIAlert
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            
+            let photoLibraryAction = UIAlertAction(title: "OK", style: .Default){
+                (action) in
+                // Callback function (closure) called when user selects photo from library
+                print("fonction pour passer en mode finito")
+            }
+            alertController.addAction(photoLibraryAction)
+            
+            // We use the reference to the viewController to display the UIAlert because only view controllers
+            // can display other controllers
+            presentViewController(alertController, animated: true, completion: nil)
+        }
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

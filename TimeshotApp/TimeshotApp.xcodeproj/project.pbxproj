@@ -60,7 +60,6 @@
 		7DB873821D0AAF2B0075A4EF /* T_TinderPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB873811D0AAF2B0075A4EF /* T_TinderPhotosViewController.swift */; };
 		7DC6AFBD1CF496B100461FE1 /* T_AlbumCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC6AFBC1CF496B100461FE1 /* T_AlbumCacheHelper.swift */; };
 		7DC8887E1CDB26CD001E552D /* T_SliderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8887D1CDB26CD001E552D /* T_SliderImageView.swift */; };
-		7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0F9AB1C9DC6BE00A856B9 /* T_AlbumLiveTableViewCell.swift */; };
 		7DD0F9AE1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0F9AD1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift */; };
 		7DD0F9B41C9EA0FB00A856B9 /* festival.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B01C9EA0FB00A856B9 /* festival.jpg */; };
 		7DD0F9B51C9EA0FB00A856B9 /* mariage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0F9B11C9EA0FB00A856B9 /* mariage.jpg */; };
@@ -176,7 +175,6 @@
 		7DB873811D0AAF2B0075A4EF /* T_TinderPhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_TinderPhotosViewController.swift; sourceTree = "<group>"; };
 		7DC6AFBC1CF496B100461FE1 /* T_AlbumCacheHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumCacheHelper.swift; sourceTree = "<group>"; };
 		7DC8887D1CDB26CD001E552D /* T_SliderImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SliderImageView.swift; sourceTree = "<group>"; };
-		7DD0F9AB1C9DC6BE00A856B9 /* T_AlbumLiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumLiveTableViewCell.swift; sourceTree = "<group>"; };
 		7DD0F9AD1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumFinishTableViewCell.swift; sourceTree = "<group>"; };
 		7DD0F9B01C9EA0FB00A856B9 /* festival.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = festival.jpg; sourceTree = "<group>"; };
 		7DD0F9B11C9EA0FB00A856B9 /* mariage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mariage.jpg; sourceTree = "<group>"; };
@@ -394,7 +392,6 @@
 			children = (
 				7D1035241CDE74F6007F8646 /* T_PhotoImageView.swift */,
 				7D2F539D1CB67D8100AB9995 /* T_AlbumViewController.swift */,
-				7DD0F9AB1C9DC6BE00A856B9 /* T_AlbumLiveTableViewCell.swift */,
 				7DD0F9AD1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift */,
 				7DC8887D1CDB26CD001E552D /* T_SliderImageView.swift */,
 			);
@@ -738,7 +735,6 @@
 				7DD0F9AE1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift in Sources */,
 				8AB0F1C41CBFC71300605525 /* T_SignUpUsernameViewController.swift in Sources */,
 				B40A7D931CE0869800EE7BCC /* T_LocalFileManager.swift in Sources */,
-				7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */,
 				B417967F1CE28E6B00DC35A8 /* SNFilter.swift in Sources */,
 				B41796801CE28E6B00DC35A8 /* SNSlider.swift in Sources */,
 				5D64CA791CB986C2005C6E43 /* T_BirthdayEditionViewController.swift in Sources */,
