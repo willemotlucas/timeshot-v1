@@ -47,11 +47,6 @@
 		7D2420021CB6E20200F6548B /* T_StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2420011CB6E20200F6548B /* T_StoryViewController.swift */; };
 		7D2F539C1CB65DAB00AB9995 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699271C8F4A9D003BC1DC /* LaunchScreen.storyboard */; };
 		7D2F539E1CB67D8100AB9995 /* T_AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F539D1CB67D8100AB9995 /* T_AlbumViewController.swift */; };
-		7D2F53A71CB67D9000AB9995 /* T_AddFriendAlbumLiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F53A11CB67D9000AB9995 /* T_AddFriendAlbumLiveTableViewCell.swift */; };
-		7D2F53A81CB67D9000AB9995 /* T_AddFriendAlbumLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F53A21CB67D9000AB9995 /* T_AddFriendAlbumLiveViewController.swift */; };
-		7D2F53A91CB67D9000AB9995 /* T_AlbumLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F53A31CB67D9000AB9995 /* T_AlbumLiveViewController.swift */; };
-		7D2F53AA1CB67D9000AB9995 /* T_FriendsAlbumLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F53A41CB67D9000AB9995 /* T_FriendsAlbumLiveViewController.swift */; };
-		7D2F53AC1CB67D9000AB9995 /* T_PhotosAlbumLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F53A61CB67D9000AB9995 /* T_PhotosAlbumLiveViewController.swift */; };
 		7D30378C1CC7CB2E00D522E0 /* T_FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D30378B1CC7CB2E00D522E0 /* T_FriendsTableViewCell.swift */; };
 		7D30378E1CC7CBD900D522E0 /* T_FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D30378D1CC7CBD900D522E0 /* T_FriendsViewController.swift */; };
 		7D6F65101D3BED5B00E40FC1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7D6F65121D3BED5B00E40FC1 /* InfoPlist.strings */; };
@@ -85,7 +80,6 @@
 		8A9BE2071CD0FD8F0078924B /* T_ValidatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9BE2061CD0FD8F0078924B /* T_ValidatorHelper.swift */; };
 		8AB0F1C41CBFC71300605525 /* T_SignUpUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB0F1C31CBFC71300605525 /* T_SignUpUsernameViewController.swift */; };
 		8AB0F1C61CBFC7C300605525 /* T_SignUpPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB0F1C51CBFC7C300605525 /* T_SignUpPasswordViewController.swift */; };
-		8AE3B3341CE3709400734F7F /* T_KolodaBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE3B3331CE3709400734F7F /* T_KolodaBanner.swift */; };
 		8AE3B3381CE482A500734F7F /* KolodaBanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3B3371CE482A500734F7F /* KolodaBanner.xib */; };
 		8AE6C1571D05DF5600A6E26B /* T_PageTwoOnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE6C1561D05DF5600A6E26B /* T_PageTwoOnboardViewController.swift */; };
 		8AE6C1591D05DF6900A6E26B /* T_PageThreeOnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE6C1581D05DF6900A6E26B /* T_PageThreeOnboardViewController.swift */; };
@@ -166,11 +160,6 @@
 		7D241FFE1CB6D48100F6548B /* T_PhotosCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PhotosCollectionViewController.swift; sourceTree = "<group>"; };
 		7D2420011CB6E20200F6548B /* T_StoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_StoryViewController.swift; sourceTree = "<group>"; };
 		7D2F539D1CB67D8100AB9995 /* T_AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumViewController.swift; sourceTree = "<group>"; };
-		7D2F53A11CB67D9000AB9995 /* T_AddFriendAlbumLiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AddFriendAlbumLiveTableViewCell.swift; sourceTree = "<group>"; };
-		7D2F53A21CB67D9000AB9995 /* T_AddFriendAlbumLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AddFriendAlbumLiveViewController.swift; sourceTree = "<group>"; };
-		7D2F53A31CB67D9000AB9995 /* T_AlbumLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumLiveViewController.swift; sourceTree = "<group>"; };
-		7D2F53A41CB67D9000AB9995 /* T_FriendsAlbumLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendsAlbumLiveViewController.swift; sourceTree = "<group>"; };
-		7D2F53A61CB67D9000AB9995 /* T_PhotosAlbumLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PhotosAlbumLiveViewController.swift; sourceTree = "<group>"; };
 		7D30378B1CC7CB2E00D522E0 /* T_FriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		7D30378D1CC7CBD900D522E0 /* T_FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendsViewController.swift; sourceTree = "<group>"; };
 		7D6F65111D3BED5B00E40FC1 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -209,7 +198,6 @@
 		8A9BE2061CD0FD8F0078924B /* T_ValidatorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ValidatorHelper.swift; sourceTree = "<group>"; };
 		8AB0F1C31CBFC71300605525 /* T_SignUpUsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpUsernameViewController.swift; sourceTree = "<group>"; };
 		8AB0F1C51CBFC7C300605525 /* T_SignUpPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpPasswordViewController.swift; sourceTree = "<group>"; };
-		8AE3B3331CE3709400734F7F /* T_KolodaBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_KolodaBanner.swift; sourceTree = "<group>"; };
 		8AE3B3371CE482A500734F7F /* KolodaBanner.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KolodaBanner.xib; sourceTree = "<group>"; };
 		8AE6C1561D05DF5600A6E26B /* T_PageTwoOnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PageTwoOnboardViewController.swift; sourceTree = "<group>"; };
 		8AE6C1581D05DF6900A6E26B /* T_PageThreeOnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PageThreeOnboardViewController.swift; sourceTree = "<group>"; };
@@ -341,27 +329,6 @@
 				7D241FF81CB6D47500F6548B /* T_StoryCollectionViewCell.swift */,
 				7D30378B1CC7CB2E00D522E0 /* T_FriendsTableViewCell.swift */,
 				7D7FA8481CDFD50D003F70E1 /* T_AddToAlbumTableViewCell.swift */,
-			);
-			path = CustomTableViewCell;
-			sourceTree = "<group>";
-		};
-		7D2F539F1CB67D9000AB9995 /* AlbumLive */ = {
-			isa = PBXGroup;
-			children = (
-				7D2F53A01CB67D9000AB9995 /* CustomTableViewCell */,
-				7D2F53A21CB67D9000AB9995 /* T_AddFriendAlbumLiveViewController.swift */,
-				7D2F53A31CB67D9000AB9995 /* T_AlbumLiveViewController.swift */,
-				7D2F53A41CB67D9000AB9995 /* T_FriendsAlbumLiveViewController.swift */,
-				7D2F53A61CB67D9000AB9995 /* T_PhotosAlbumLiveViewController.swift */,
-				8AE3B3331CE3709400734F7F /* T_KolodaBanner.swift */,
-			);
-			path = AlbumLive;
-			sourceTree = "<group>";
-		};
-		7D2F53A01CB67D9000AB9995 /* CustomTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				7D2F53A11CB67D9000AB9995 /* T_AddFriendAlbumLiveTableViewCell.swift */,
 			);
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
@@ -522,7 +489,6 @@
 				8AFA26771CBF948100C09E17 /* Login */,
 				5D9FD1C21CBAE69A002204E8 /* T_HomePageViewController.swift */,
 				7D2F53AD1CB67D9D00AB9995 /* AlbumFinished */,
-				7D2F539F1CB67D9000AB9995 /* AlbumLive */,
 				B43C0E881CABF43D00EF51E9 /* Camera */,
 				5DB5A0201CA1AD1000AADC9F /* UserProfile */,
 				7DD0F9AA1C9DC68D00A856B9 /* Album */,
@@ -821,20 +787,15 @@
 				B41796821CE28E6B00DC35A8 /* SNSticker.swift in Sources */,
 				8AE6C1591D05DF6900A6E26B /* T_PageThreeOnboardViewController.swift in Sources */,
 				5D8638921CB8EDAA005CBC90 /* T_SearchUserTableViewCell.swift in Sources */,
-				7D2F53AC1CB67D9000AB9995 /* T_PhotosAlbumLiveViewController.swift in Sources */,
 				B43C0E901CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift in Sources */,
 				B4CCCC321D1AE5E300D01086 /* T_ModalView.swift in Sources */,
 				5DC361E01CBAFBE900B00064 /* T_ParseUserHelper.swift in Sources */,
-				7D2F53A91CB67D9000AB9995 /* T_AlbumLiveViewController.swift in Sources */,
 				5DB5A02B1CA1AD1000AADC9F /* T_SettingsViewController.swift in Sources */,
-				7D2F53A71CB67D9000AB9995 /* T_AddFriendAlbumLiveTableViewCell.swift in Sources */,
 				8AFA267D1CBF94C900C09E17 /* T_SignUpInvitePeopleViewController.swift in Sources */,
 				8AF8FDEC1D0A161B00094462 /* T_AlbumRequestNotificationsTableViewCell.swift in Sources */,
 				8A6C38201CE0B80D0044A665 /* T_Vote.swift in Sources */,
 				B4EA9DD21CB52DE3003F5A75 /* T_User.swift in Sources */,
-				7D2F53A81CB67D9000AB9995 /* T_AddFriendAlbumLiveViewController.swift in Sources */,
 				7D30378E1CC7CBD900D522E0 /* T_FriendsViewController.swift in Sources */,
-				8AE3B3341CE3709400734F7F /* T_KolodaBanner.swift in Sources */,
 				B43C0E921CABF4E900EF51E9 /* T_EditCameraImageViewController.swift in Sources */,
 				5DB5A0351CA2879B00AADC9F /* T_SearchContactViewController.swift in Sources */,
 				5DC361E41CBAFBE900B00064 /* T_DesignHelper.swift in Sources */,
@@ -857,7 +818,6 @@
 				8A0526691D05D0A70065E217 /* T_OnboardContenairViewController.swift in Sources */,
 				7D241FF41CB6D39D00F6548B /* T_SliderViewController.swift in Sources */,
 				7D241FFB1CB6D47500F6548B /* T_PhotoCollectionViewCell.swift in Sources */,
-				7D2F53AA1CB67D9000AB9995 /* T_FriendsAlbumLiveViewController.swift in Sources */,
 				7D241FFF1CB6D48100F6548B /* T_AlbumFinishedViewController.swift in Sources */,
 				7DC8887E1CDB26CD001E552D /* T_SliderImageView.swift in Sources */,
 				8AFA26791CBF949200C09E17 /* T_LoginViewController.swift in Sources */,

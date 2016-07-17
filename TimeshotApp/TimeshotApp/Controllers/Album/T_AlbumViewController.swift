@@ -75,9 +75,7 @@ class T_AlbumViewController: UIViewController{
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "liveSegue" {
-            _ =  segue.destinationViewController as! T_AlbumLiveViewController
-        } else if segue.identifier == "finishSegue" {
+        if segue.identifier == "finishSegue" {
             let finishAlbumVC =  segue.destinationViewController as! T_AlbumFinishedViewController
             
             // Get the album of the cell clicked
