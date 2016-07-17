@@ -1,0 +1,129 @@
+/* No comment provided by engineer. */
+"  Photos  " = "  Photos  ";
+
+/* No comment provided by engineer. */
+"  Story  " = "  Story  ";
+
+/* No comment provided by engineer. */
+"Cancel" = "Annuler";
+
+/* No comment provided by engineer. */
+"Cannot sign in" = "Connexion impossible";
+
+/* No comment provided by engineer. */
+"Download" = "Télécharger";
+
+/* No comment provided by engineer. */
+"E-mail is required" = "L'email est obligatoire'";
+
+/* No comment provided by engineer. */
+"E-mail should not be empty" = "L'email ne doit pas être vide'";
+
+/* No comment provided by engineer. */
+"Error" = "Erreur";
+
+/* No comment provided by engineer. */
+"Error while testing your email" = "Erreur lors du test de votre email";
+
+/* No comment provided by engineer. */
+"Error while testing your username" = "Erreur lors du test de votre nom d'utilisateur";
+
+/* No comment provided by engineer. */
+"Firstname not long enough" = "Le prénom est trop court";
+
+/* No comment provided by engineer. */
+"Firstname should not be empty" = "Le prénom ne peut pas être vide";
+
+/* No comment provided by engineer. */
+"Firstname too long" = "Le prénom est trop long";
+
+/* No comment provided by engineer. */
+"Joining album" = "Adhésion à l'album";
+
+/* No comment provided by engineer. */
+"Name not long enough" = "Le nom est trop court";
+
+/* No comment provided by engineer. */
+"Name should not be empty" = "Le nom ne doit pas être vide";
+
+/* No comment provided by engineer. */
+"Name too long" = "Le nom est trop long";
+
+/* No comment provided by engineer. */
+"Network is not available ... " = "Aucun réseau disponible...";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Oh noo ... You don't have any albums as for now ... " = "Oh noo ... Vous n'avez aucun album pour le moment ...";
+
+/* No comment provided by engineer. */
+"Ohhh noo" = "Ohhh noo";
+
+/* No comment provided by engineer. */
+"Ok" = "Ok";
+
+/* No comment provided by engineer. */
+"Password not long enough" = "Le mot de passe est trop court";
+
+/* No comment provided by engineer. */
+"Password should not be empty" = "Le mot de passe ne doit pas être vide";
+
+/* No comment provided by engineer. */
+"Password too long" = "Le mot de passe est trop long";
+
+/* No comment provided by engineer. */
+"Passwords are not matching" = "Les mots de passe ne correspondent pas";
+
+/* No comment provided by engineer. */
+"Report" = "Signaler";
+
+/* No comment provided by engineer. */
+"Save error" = "Erreur lors de la sauvegarde";
+
+/* No comment provided by engineer. */
+"Saved !" = "Sauvegardé !";
+
+/* No comment provided by engineer. */
+"The picture has been saved to your photos." = "La photo a été sauvegardée dans vos photos.";
+
+/* No comment provided by engineer. */
+"There's a problem Captain" = "Il y a un problème Captain !";
+
+/* No comment provided by engineer. */
+"This album is totally empty ... " = "Cet album est complètement vide ...";
+
+/* No comment provided by engineer. */
+"This email is already used" = "Cet email est déjà utilisé";
+
+/* No comment provided by engineer. */
+"This username is already used" = "Ce nom d'utilisateur est déjà utilisé";
+
+/* No comment provided by engineer. */
+"Username and/or password incorect" = "Nom d'utilisateur ou mot de passe incorrect";
+
+/* No comment provided by engineer. */
+"Username not long enough" = "Nom d'utilisateur trop court";
+
+/* No comment provided by engineer. */
+"Username should not be empty" = "Le nom d'utilisateur ne devrait pas être vide";
+
+/* No comment provided by engineer. */
+"Username too long" = "Le nom d'utilisateur est trop long'";
+
+/* No comment provided by engineer. */
+"Wait ..." = "Patientez ...";
+
+/* No comment provided by engineer. */
+"We're retrieving your albums" = "L'application charge vos albums";
+
+/* No comment provided by engineer. */
+"We're retrieving your friends" = "L'application charge vos amis";
+
+/* No comment provided by engineer. */
+"We're retrieving your photos" = "L'application charge vos photos";
+
+/* No comment provided by engineer. */
+"Your e-mail is not valid" = "Votre adresse e-mail est invalide";
+

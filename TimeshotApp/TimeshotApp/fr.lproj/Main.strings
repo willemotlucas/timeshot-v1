@@ -1,0 +1,15 @@
+/* Class = "UIButton"; normalTitle = "CREATE ALBUM"; ObjectID = "Dgl-wx-G6S"; */
+"Dgl-wx-G6S.normalTitle" = "CREER UN ALBUM";
+
+/* Class = "UINavigationItem"; title = "Invite friends"; ObjectID = "LSD-2Q-hGZ"; */
+"LSD-2Q-hGZ.title" = "Inviter des amis";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "T6O-Gk-IHd"; */
+"T6O-Gk-IHd.title" = "Retour";
+
+/* Class = "UIButton"; normalTitle = "INVITE FRIENDS"; ObjectID = "ldH-fI-IaR"; */
+"ldH-fI-IaR.normalTitle" = "INVITER DES AMIS";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "mqY-Sq-bPr"; */
+"mqY-Sq-bPr.text" = "Label";
+

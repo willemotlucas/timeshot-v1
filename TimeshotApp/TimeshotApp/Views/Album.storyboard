@@ -169,22 +169,6 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qf8-WP-tuc">
-                                                    <rect key="frame" x="264" y="75" width="73" height="60"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="9th-yF-jKY"/>
-                                                        <constraint firstAttribute="width" constant="60" id="yZ0-KX-Td4"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <color key="shadowColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="yZ0-KX-Td4"/>
-                                                        </mask>
-                                                    </variation>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ELf-bJ-5Vx" firstAttribute="leading" secondItem="xDa-EA-ytO" secondAttribute="leading" id="85R-hi-n7p"/>
@@ -193,9 +177,7 @@
                                                 <constraint firstItem="X4G-VO-E0b" firstAttribute="leading" secondItem="xDa-EA-ytO" secondAttribute="leadingMargin" id="WL8-xX-wTR"/>
                                                 <constraint firstItem="P8i-Pp-W7P" firstAttribute="top" secondItem="xDa-EA-ytO" secondAttribute="top" id="X99-Jd-2Ep"/>
                                                 <constraint firstAttribute="bottom" secondItem="BSc-VT-xRH" secondAttribute="bottom" id="Z9m-Fh-S2f"/>
-                                                <constraint firstItem="Qf8-WP-tuc" firstAttribute="centerY" secondItem="P8i-Pp-W7P" secondAttribute="centerY" id="bxj-dt-M7S"/>
                                                 <constraint firstItem="6rd-zX-bdW" firstAttribute="leading" secondItem="xDa-EA-ytO" secondAttribute="leading" id="cEi-L2-3do"/>
-                                                <constraint firstItem="Qf8-WP-tuc" firstAttribute="centerX" secondItem="P8i-Pp-W7P" secondAttribute="centerX" id="exi-36-f7A"/>
                                                 <constraint firstItem="X4G-VO-E0b" firstAttribute="trailing" secondItem="xDa-EA-ytO" secondAttribute="trailingMargin" id="goe-7w-mjF"/>
                                                 <constraint firstAttribute="trailing" secondItem="P8i-Pp-W7P" secondAttribute="trailing" id="hYg-nN-BDg"/>
                                                 <constraint firstAttribute="bottom" secondItem="6rd-zX-bdW" secondAttribute="bottom" id="jmr-Xn-Ok6"/>
@@ -221,7 +203,6 @@
                                         <connections>
                                             <outlet property="backgroundTitle" destination="ELf-bJ-5Vx" id="yhU-Tl-cdX"/>
                                             <outlet property="backgroundTitleFinished" destination="6rd-zX-bdW" id="uWI-D3-RxH"/>
-                                            <outlet property="countdownLabel" destination="Qf8-WP-tuc" id="5Vm-tb-nJr"/>
                                             <outlet property="coverAlbum" destination="P8i-Pp-W7P" id="pJb-Vl-x1w"/>
                                             <outlet property="dateLabel" destination="3eh-Az-GBR" id="0ye-c3-ehq"/>
                                             <outlet property="liveLabel" destination="BSc-VT-xRH" id="L4t-lE-a9C"/>
