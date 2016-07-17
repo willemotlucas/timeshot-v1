@@ -110,6 +110,8 @@ class T_StoryViewController: UIViewController {
             storyDelegate?.updateStory(actualPost)
         }
         
+
+        
         timer?.invalidate()
         timer2.invalidate()
     }

@@ -29,6 +29,8 @@ class T_AlbumFinishedViewController: UIViewController {
         if self.navigationController!.respondsToSelector(Selector("interactivePopGestureRecognizer")) {
             self.navigationController!.interactivePopGestureRecognizer!.enabled = false
         }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: #selector(removeUserFromAlbum))
 
     }
     
@@ -69,6 +71,23 @@ class T_AlbumFinishedViewController: UIViewController {
             photosContainerView.hidden = true
             friendsContainerView.hidden = false
         }
+    }
+    
+    func removeUserFromAlbum() {
+        // Constructs the UIAlert
+        let alertController = UIAlertController(title: "Delete", message: "this album from your albums list", preferredStyle: .ActionSheet)
+        
+        //Add actions to the UIAlert
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let deleteAlbumAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .Default){
+            (action) in
+            
+        }
+        alertController.addAction(deleteAlbumAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     

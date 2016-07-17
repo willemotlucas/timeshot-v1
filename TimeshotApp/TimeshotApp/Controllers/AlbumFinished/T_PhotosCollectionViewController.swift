@@ -27,6 +27,7 @@ class T_PhotosCollectionViewController: UIViewController {
     // MARK: Properties
     @IBOutlet weak var collectionView: UICollectionView!
     
+    
     var albumPhotos : T_Album?
     var posts:[T_Post] = []
     var storyPosts : [T_Post] = []
@@ -70,6 +71,8 @@ class T_PhotosCollectionViewController: UIViewController {
     }
     
     // MARK: Function
+
+    
     func getPhotoIndex(indexPath : NSIndexPath) -> Int {
         var indexCell = 0
         for i in 0 ..< (indexPath.section-1){
