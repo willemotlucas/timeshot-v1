@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class T_AlbumFinishedViewController: UIViewController {
     // MARK: Properties
@@ -16,6 +17,7 @@ class T_AlbumFinishedViewController: UIViewController {
     @IBOutlet weak var segmentedView: UIView!
     
     var albumPhotos : T_Album?
+    var progressHUD:MBProgressHUD?
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -83,11 +85,32 @@ class T_AlbumFinishedViewController: UIViewController {
         
         let deleteAlbumAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .Default){
             (action) in
-            
+            self.freezeUI()
+            T_ParseAlbumHelper.removeUserFromAlbum(self.albumPhotos!){ status in
+                self.unfreezeUI()
+                if status {
+                    // On l'enleve du cache maintenant ! 
+                    T_AlbumCacheHelper.removeAlbumFromCache(self.albumPhotos!)
+                    self.navigationController?.popToRootViewControllerAnimated(true)
+                } else {
+                    print("Error")
+                }
+                
+            }
         }
         alertController.addAction(deleteAlbumAction)
         
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: Methods
+    func freezeUI() {
+        progressHUD = MBProgressHUD.showHUDAddedTo(view, animated: true)
+        progressHUD?.mode = .Indeterminate
+    }
+    
+    func unfreezeUI() {
+        progressHUD?.hide(true)
     }
     
     

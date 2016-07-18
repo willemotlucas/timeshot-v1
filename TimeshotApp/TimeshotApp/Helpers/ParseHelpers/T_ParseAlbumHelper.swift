@@ -148,6 +148,22 @@ class T_ParseAlbumHelper {
         completion(albums: [])
     }
     
+    static func removeUserFromAlbum(album: T_Album, withCompletion completion: (status : Bool) -> ()) {
+        let currentUser = T_ParseUserHelper.getCurrentUser()
+        let index = album.attendees.indexOf(currentUser!)
+        album.attendees.removeAtIndex(index!)
+        album.saveInBackgroundWithBlock({ (result: Bool, error: NSError?) in
+            if let error = error {
+                print(error)
+                completion(status: false)
+            } else {
+                print(result)
+                completion(status: true)
+            }
+            
+        })
+    }
+    
     
     static func pinLocallyAlbum(album: T_Album) {
         

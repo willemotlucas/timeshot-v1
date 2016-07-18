@@ -56,6 +56,17 @@ class T_AlbumCacheHelper {
         }
     }
     
+    static func removeAlbumFromCache(albumPhotos: T_Album){
+        let user = T_ParseUserHelper.getCurrentUser()
+        var albumList : [T_Album]? = T_User.albumListCache[(user?.username)!]
+        
+        let index = albumList?.indexOf(albumPhotos)
+        albumList?.removeAtIndex(index!)
+        
+        // Attention toujours l'utiliser directement
+        T_User.albumListCache[(user?.username)!] =  albumList
+    }
+    
     static func postsForCurrentAlbum(albumPhotos: T_Album, completionBlock: PFQueryArrayResultBlock) {
         
         var albumDetail : [T_Post]? = T_Album.detailAlbumCache[albumPhotos.objectId!]
