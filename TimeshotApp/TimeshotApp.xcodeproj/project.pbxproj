@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5D1D921A1CBA4D390085B70C /* T_EmailEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1D92191CBA4D390085B70C /* T_EmailEditionViewController.swift */; };
+		5D2C10A01D3E917E00203F63 /* T_CustomWalkthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2C109F1D3E917E00203F63 /* T_CustomWalkthroughView.swift */; };
 		5D64CA751CB96928005C6E43 /* T_FirstNameEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64CA741CB96928005C6E43 /* T_FirstNameEditionViewController.swift */; };
 		5D64CA771CB9806E005C6E43 /* T_LastNameEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64CA761CB9806E005C6E43 /* T_LastNameEditionViewController.swift */; };
 		5D64CA791CB986C2005C6E43 /* T_BirthdayEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64CA781CB986C2005C6E43 /* T_BirthdayEditionViewController.swift */; };
@@ -116,6 +117,7 @@
 		4770CD7F4BA867BF6C3AA239 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F9E238D3F9C0AE128133098 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D1D92191CBA4D390085B70C /* T_EmailEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_EmailEditionViewController.swift; sourceTree = "<group>"; };
+		5D2C109F1D3E917E00203F63 /* T_CustomWalkthroughView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_CustomWalkthroughView.swift; sourceTree = "<group>"; };
 		5D64CA741CB96928005C6E43 /* T_FirstNameEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FirstNameEditionViewController.swift; sourceTree = "<group>"; };
 		5D64CA761CB9806E005C6E43 /* T_LastNameEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_LastNameEditionViewController.swift; sourceTree = "<group>"; };
 		5D64CA781CB986C2005C6E43 /* T_BirthdayEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_BirthdayEditionViewController.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				5DEF6E941CC1005600494C86 /* T_PhotoTakingHelper.swift */,
 				B40A7D921CE0869800EE7BCC /* T_LocalFileManager.swift */,
 				5DFE00401D07432B00B2E892 /* T_DateHelper.swift */,
+				5D2C109F1D3E917E00203F63 /* T_CustomWalkthroughView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -803,6 +806,7 @@
 				7D2420001CB6D48100F6548B /* T_PhotosCollectionViewController.swift in Sources */,
 				7D241FFA1CB6D47500F6548B /* T_HourCollectionViewCell.swift in Sources */,
 				7DFC23951CC0F15900DD9520 /* T_ParsePostHelper.swift in Sources */,
+				5D2C10A01D3E917E00203F63 /* T_CustomWalkthroughView.swift in Sources */,
 				8A0526691D05D0A70065E217 /* T_OnboardContenairViewController.swift in Sources */,
 				7D241FF41CB6D39D00F6548B /* T_SliderViewController.swift in Sources */,
 				7D241FFB1CB6D47500F6548B /* T_PhotoCollectionViewCell.swift in Sources */,

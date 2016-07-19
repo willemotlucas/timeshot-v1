@@ -11,6 +11,7 @@ import UIKit
 import Koloda
 import pop
 import Parse
+import SwiftyWalkthrough
 
 class T_TinderPhotosViewController: UIViewController {
     @IBOutlet weak var dislikeButton: UIButton!
@@ -23,7 +24,10 @@ class T_TinderPhotosViewController: UIViewController {
     private let kolodaAlphaValueSemiTransparent:CGFloat = 0.2
     private var posts : [T_Post]?
     var albumPhotos : T_Album?
-        
+    
+    var customWalkthroughView: T_CustomWalkthroughView? { return walkthroughView as? T_CustomWalkthroughView }
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
     @IBOutlet weak var kolodaView: KolodaView!
     var containerDelegate: ContainerDelegateProtocol?
     
@@ -41,6 +45,23 @@ class T_TinderPhotosViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        /*if !defaults.boolForKey("tinderWalkthroughComplete") {
+            print("tinder tutorial")
+            let descriptors = [
+                ViewDescriptor(view: dislikeButton, extraPaddingX: 20, extraPaddingY: 10, cornerRadius: 10),
+                ViewDescriptor(view: likeButton, extraPaddingX: 3, extraPaddingY: 3, cornerRadius: 10)
+            ]
+            
+            walkthroughView?.cutHolesForViewDescriptors(descriptors)
+            customWalkthroughView?.firstHelpLabel.hidden = false
+            customWalkthroughView?.secondHelpLabel.hidden = false
+            customWalkthroughView?.thirdHelpLabel.hidden = true
+            customWalkthroughView?.firstHelpLabel.text = "You can vote for the whole photos of an album!"
+            customWalkthroughView?.secondHelpLabel.text = "Most voted photos will appear in the album story"
+            customWalkthroughView?.firstHelpLabel.frame = CGRect(x: self.customWalkthroughView!.center.x, y: 15, width: 300, height: 100)
+            customWalkthroughView?.secondHelpLabel.frame = CGRect(x: self.customWalkthroughView!.center.x, y: 130, width: 300, height: 100)
+        }*/
+        
         loadPost()
     }
     
