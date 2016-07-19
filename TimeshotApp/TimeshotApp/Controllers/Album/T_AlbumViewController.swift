@@ -176,7 +176,7 @@ extension T_AlbumViewController: TimelineComponentTarget {
     
     func loadInRange(range: Range<Int>, completionBlock: ([T_Album]?) -> Void) {
         if isRefreshing {
-            T_ParseAlbumHelper.queryAllAlbumsOnParse(range) { (result: [PFObject]?, error: NSError?) -> Void in
+            T_AlbumCacheHelper.refreshCacheAlbums(range) { (result: [PFObject]?, error: NSError?) -> Void in
                 if let _ = error {
                     if self.timelineComponent.content.count == 0 {
                         self.errorLoading = true
@@ -184,10 +184,7 @@ extension T_AlbumViewController: TimelineComponentTarget {
                     }
                 } else {
                     self.isLoading = true
-                    let user = T_ParseUserHelper.getCurrentUser()
                     let posts = result as? [T_Album] ?? []
-                    T_User.albumListCache[(user?.username)!]?.removeAll()
-                    T_User.albumListCache[(user?.username)!]? = posts
                     self.isRefreshing = false
                     self.tableView.endRefreshing()
                     // Completion block utilisé pour timelineComponent

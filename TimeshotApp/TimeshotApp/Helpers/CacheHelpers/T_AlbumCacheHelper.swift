@@ -56,6 +56,26 @@ class T_AlbumCacheHelper {
         }
     }
     
+    static func refreshCacheAlbums(range: Range<Int>, completionBlock: PFQueryArrayResultBlock) {
+        let myRange : Range<Int> = range
+        let user = T_ParseUserHelper.getCurrentUser()
+        var posts : [T_Album] = [T_Album]()
+        
+        // On libere le cache
+        T_User.albumListCache[(user?.username)!]?.removeAll()
+
+        T_ParseAlbumHelper.queryAllAlbumsOnParse(myRange) { (result: [PFObject]?, error: NSError?) -> Void in
+            posts = result as? [T_Album] ?? []
+
+            // Attention toujours l'utiliser directement
+            T_User.albumListCache[(user?.username)!] =  posts
+            
+            // Completion block utilisé pour timelineComponent
+            completionBlock(posts,error)
+        }
+        
+    }
+    
     static func removeAlbumFromCache(albumPhotos: T_Album){
         let user = T_ParseUserHelper.getCurrentUser()
         var albumList : [T_Album]? = T_User.albumListCache[(user?.username)!]
