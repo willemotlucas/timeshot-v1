@@ -127,6 +127,7 @@
 		5D64CA761CB9806E005C6E43 /* T_LastNameEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_LastNameEditionViewController.swift; sourceTree = "<group>"; };
 		5D64CA781CB986C2005C6E43 /* T_BirthdayEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_BirthdayEditionViewController.swift; sourceTree = "<group>"; };
 		5D8638911CB8EDAA005CBC90 /* T_SearchUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SearchUserTableViewCell.swift; sourceTree = "<group>"; };
+		5D99DF411D3BDC9E00F91E80 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5D9FD1C21CBAE69A002204E8 /* T_HomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_HomePageViewController.swift; sourceTree = "<group>"; };
 		5DB5A0221CA1AD1000AADC9F /* T_FriendRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendRequestTableViewCell.swift; sourceTree = "<group>"; };
 		5DB5A0231CA1AD1000AADC9F /* T_FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendTableViewCell.swift; sourceTree = "<group>"; };
@@ -854,6 +855,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7D8699281C8F4A9D003BC1DC /* Base */,
+				5D99DF411D3BDC9E00F91E80 /* fr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
