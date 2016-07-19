@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5D1D921A1CBA4D390085B70C /* T_EmailEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1D92191CBA4D390085B70C /* T_EmailEditionViewController.swift */; };
 		5D2C10A01D3E917E00203F63 /* T_CustomWalkthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2C109F1D3E917E00203F63 /* T_CustomWalkthroughView.swift */; };
+		5D2C10A21D3E98AD00203F63 /* T_KolodaBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2C10A11D3E98AD00203F63 /* T_KolodaBanner.swift */; };
 		5D64CA751CB96928005C6E43 /* T_FirstNameEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64CA741CB96928005C6E43 /* T_FirstNameEditionViewController.swift */; };
 		5D64CA771CB9806E005C6E43 /* T_LastNameEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64CA761CB9806E005C6E43 /* T_LastNameEditionViewController.swift */; };
 		5D64CA791CB986C2005C6E43 /* T_BirthdayEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64CA781CB986C2005C6E43 /* T_BirthdayEditionViewController.swift */; };
@@ -120,6 +121,7 @@
 		4F9E238D3F9C0AE128133098 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D1D92191CBA4D390085B70C /* T_EmailEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_EmailEditionViewController.swift; sourceTree = "<group>"; };
 		5D2C109F1D3E917E00203F63 /* T_CustomWalkthroughView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_CustomWalkthroughView.swift; sourceTree = "<group>"; };
+		5D2C10A11D3E98AD00203F63 /* T_KolodaBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_KolodaBanner.swift; sourceTree = "<group>"; };
 		5D64CA741CB96928005C6E43 /* T_FirstNameEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FirstNameEditionViewController.swift; sourceTree = "<group>"; };
 		5D64CA761CB9806E005C6E43 /* T_LastNameEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_LastNameEditionViewController.swift; sourceTree = "<group>"; };
 		5D64CA781CB986C2005C6E43 /* T_BirthdayEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_BirthdayEditionViewController.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 				7D7FA8461CDFD34D003F70E1 /* T_AddFriendToAlbumViewController.swift */,
 				7DB8737F1D0AA13F0075A4EF /* T_ChooseDetailsAlbumViewController.swift */,
 				7DB873811D0AAF2B0075A4EF /* T_TinderPhotosViewController.swift */,
+				5D2C10A11D3E98AD00203F63 /* T_KolodaBanner.swift */,
 			);
 			path = AlbumFinished;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D2C10A21D3E98AD00203F63 /* T_KolodaBanner.swift in Sources */,
 				5DE8FFF31CA4275C006BEBAE /* T_SendMessageUIButton.swift in Sources */,
 				7D241FF91CB6D47500F6548B /* T_HeaderCollectionReusableView.swift in Sources */,
 				5DC361DF1CBAFBE900B00064 /* T_ParseAlbumHelper.swift in Sources */,

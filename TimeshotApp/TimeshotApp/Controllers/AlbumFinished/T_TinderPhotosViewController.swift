@@ -45,11 +45,15 @@ class T_TinderPhotosViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        /*if !defaults.boolForKey("tinderWalkthroughComplete") {
-            print("tinder tutorial")
+        loadPost()
+
+        print(defaults.boolForKey("tinderWalkthroughComplete"))
+        if !defaults.boolForKey("tinderWalkthroughComplete") && posts?.count > 0 {
+            startWalkthrough(T_CustomWalkthroughView())
+
             let descriptors = [
-                ViewDescriptor(view: dislikeButton, extraPaddingX: 20, extraPaddingY: 10, cornerRadius: 10),
-                ViewDescriptor(view: likeButton, extraPaddingX: 3, extraPaddingY: 3, cornerRadius: 10)
+                ViewDescriptor(view: dislikeButton, extraPaddingX: 3, extraPaddingY: 3, cornerRadius: 25),
+                ViewDescriptor(view: likeButton, extraPaddingX: 3, extraPaddingY: 3, cornerRadius: 25)
             ]
             
             walkthroughView?.cutHolesForViewDescriptors(descriptors)
@@ -58,11 +62,9 @@ class T_TinderPhotosViewController: UIViewController {
             customWalkthroughView?.thirdHelpLabel.hidden = true
             customWalkthroughView?.firstHelpLabel.text = "You can vote for the whole photos of an album!"
             customWalkthroughView?.secondHelpLabel.text = "Most voted photos will appear in the album story"
-            customWalkthroughView?.firstHelpLabel.frame = CGRect(x: self.customWalkthroughView!.center.x, y: 15, width: 300, height: 100)
-            customWalkthroughView?.secondHelpLabel.frame = CGRect(x: self.customWalkthroughView!.center.x, y: 130, width: 300, height: 100)
-        }*/
-        
-        loadPost()
+            customWalkthroughView?.firstHelpLabel.frame = CGRect(x: UIScreen.mainScreen().bounds.width/2 - 150, y: 50, width: 300, height: 100)
+            customWalkthroughView?.secondHelpLabel.frame = CGRect(x: UIScreen.mainScreen().bounds.width/2 - 150, y: 115, width: 300, height: 100)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -97,11 +99,24 @@ class T_TinderPhotosViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func dislikeTapped(sender: AnyObject) {
+        self.terminateWalkthrough()
         kolodaView.swipe(.Left)
     }
     
     @IBAction func likeTapped(sender: AnyObject) {
+        self.terminateWalkthrough()
         kolodaView.swipe(.Right)
+    }
+    
+    func terminateWalkthrough() {
+        if !defaults.boolForKey("tinderWalkthroughComplete") && posts?.count > 0 {
+            customWalkthroughView?.removeAllHoles()
+            customWalkthroughView?.firstHelpLabel.hidden = true
+            customWalkthroughView?.secondHelpLabel.hidden = true
+            customWalkthroughView?.thirdHelpLabel.hidden = true
+            finishWalkthrough()
+            defaults.setBool(true, forKey: "tinderWalkthroughComplete")
+        }
     }
     
     /*
