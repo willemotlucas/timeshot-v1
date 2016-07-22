@@ -12,6 +12,7 @@ import Parse
 import AFDateHelper
 import SwiftGifOrigin
 import PullToRefresh
+import Armchair
 
 // Protocol between the containerView and the PhotoCollectionView
 // ParentVC = containerView

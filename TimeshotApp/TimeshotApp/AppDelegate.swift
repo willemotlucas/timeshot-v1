@@ -1,3 +1,4 @@
+
 //
 //  AppDelegate.swift
 //  TimeshotApp
@@ -11,6 +12,7 @@ import UIKit
 import Parse
 import ParseFacebookUtilsV4
 import BWWalkthrough
+import Armchair
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,6 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set up the Parse SDK
         Parse.setApplicationId("fP3x2FxPpWTcBDWatmfSQxWO7di4Nh2jFjNafRrp", clientKey: "ec9Ga66SvWi4zdqK5rw69Oyghacv5zFXuCZHPsx6")
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+        
+        //Initialize app store rating
+        Armchair.appID("1065466536")
+        Armchair.significantEventsUntilPrompt(10)
+        Armchair.daysUntilPrompt(0)
+        Armchair.usesUntilPrompt(0)
         
         //Check if the app is launched from a push notification
         if let launchOptions = launchOptions as? [String : AnyObject] {

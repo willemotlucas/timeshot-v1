@@ -10,6 +10,7 @@ import UIKit
 import Bond
 import KYCircularProgress
 import MBProgressHUD
+import Armchair
 
 protocol StoryDelegateProtocol {
     func updateStory(actualPost : T_Post?)
@@ -105,6 +106,7 @@ class T_StoryViewController: UIViewController {
     // Need to stop all the timer when we quit this view
     override func viewWillDisappear(animated: Bool) {
         if currentPage >= pageImages.count {
+            Armchair.userDidSignificantEvent(true)
             storyDelegate?.updateStory(nil)
         } else {
             storyDelegate?.updateStory(actualPost)
@@ -223,6 +225,12 @@ class T_StoryViewController: UIViewController {
     }
     
     @IBAction func exitStory(sender: AnyObject) {
+        let window = UIApplication.sharedApplication().keyWindow
+        let controller = window?.rootViewController;
+        
+        print(controller)
+        
+        Armchair.userDidSignificantEvent(true)
         currentPage = currentPage - 1
         self.dismissViewControllerAnimated(true, completion: nil)
     }
