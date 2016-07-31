@@ -86,11 +86,13 @@ class T_AlbumFinishedViewController: UIViewController {
         let deleteAlbumAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .Default){
             (action) in
             self.freezeUI()
+            self.performSegueWithIdentifier("unwindFromDetails", sender: self)
+            self.unfreezeUI()
+            self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
             T_ParseAlbumHelper.removeUserFromAlbum(self.albumPhotos!){ status in
                 self.unfreezeUI()
                 if status {
-                    // On l'enleve du cache maintenant ! 
-                    T_AlbumCacheHelper.removeAlbumFromCache(self.albumPhotos!)
+                    // On l'enleve du cache maintenant !
                     self.navigationController?.popToRootViewControllerAnimated(true)
                 } else {
                     print("Error")
@@ -102,6 +104,7 @@ class T_AlbumFinishedViewController: UIViewController {
         
         self.presentViewController(alertController, animated: true, completion: nil)
     }
+
     
     // MARK: Methods
     func freezeUI() {

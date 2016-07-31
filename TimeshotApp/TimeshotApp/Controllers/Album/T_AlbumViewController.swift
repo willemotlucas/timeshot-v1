@@ -92,6 +92,24 @@ class T_AlbumViewController: UIViewController{
         T_HomePageViewController.showCameraViewControllerFromAlbum()
     }
     
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) {
+        if segue.identifier == "unwindFromDetails" {
+            let albumsDetailsVC = segue.sourceViewController as! T_AlbumFinishedViewController
+            let index = timelineComponent.content.indexOf(albumsDetailsVC.albumPhotos!)
+            timelineComponent.content.removeAtIndex(index!)
+            
+            // Il faut aussi le remove du Cache
+            let user = T_ParseUserHelper.getCurrentUser()
+            var cache = T_User.albumListCache[(user?.username)!]
+            cache?.removeAtIndex(index!)
+            T_User.albumListCache[(user?.username)!] = cache
+            
+            tableView.reloadData()
+        }
+        
+    }
+
+    
 
 }
 
