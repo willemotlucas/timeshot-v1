@@ -157,7 +157,6 @@ class T_ParseAlbumHelper {
                 print(error)
                 completion(status: false)
             } else {
-                print(result)
                 completion(status: true)
             }
             

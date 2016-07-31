@@ -26,8 +26,12 @@ class T_AlbumFinishTableViewCell: UITableViewCell {
         didSet {
             // we check to see if the value is nil
             if let album = album {
-                // bind the image of the album to the 'coverAlbum' view
-                album.coverImage.bindTo(coverAlbum.bnd_image)
+                if(T_Album.isLiveAlbumAssociatedToUser(album)){
+                    coverAlbum.bnd_image.value = UIImage(named: "default-cover")
+                } else {
+                    // bind the image of the album to the 'coverAlbum' view
+                    album.coverImage.bindTo(coverAlbum.bnd_image)
+                }
             }
         }
     }

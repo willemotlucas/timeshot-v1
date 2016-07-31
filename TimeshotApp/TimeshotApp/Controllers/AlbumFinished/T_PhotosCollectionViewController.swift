@@ -91,7 +91,7 @@ class T_PhotosCollectionViewController: UIViewController {
         self.photoNumberInSections.removeAll()
         self.hasLoaded = true
         
-        if let album = self.albumPhotos {
+        if let _ = self.albumPhotos {
             if(posts.count == 1){
                 self.photoNumberInSections.append(0)
             } else if(posts.count > 1) {
