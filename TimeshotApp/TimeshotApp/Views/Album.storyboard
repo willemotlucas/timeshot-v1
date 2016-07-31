@@ -218,7 +218,7 @@
                         <outlet property="photosContainerView" destination="6a3-J7-rXL" id="OgM-ip-Ygv"/>
                         <outlet property="segmentedControl" destination="qTP-s4-aW1" id="OY0-OY-mFI"/>
                         <outlet property="segmentedView" destination="w4w-fV-RXl" id="JoV-Ty-cib"/>
-                        <segue destination="6t8-We-Tjf" kind="unwind" unwindAction="unwindSegue:" id="8GW-Sm-glg"/>
+                        <segue destination="6t8-We-Tjf" kind="unwind" identifier="unwindFromDetails" unwindAction="unwindSegue:" id="8GW-Sm-glg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AnX-lj-8nP" userLabel="First Responder" sceneMemberID="firstResponder"/>
