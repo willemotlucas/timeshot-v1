@@ -31,7 +31,7 @@ class T_StoryCollectionViewCell: UICollectionViewCell {
     func initCellWithMetaData(post: T_Post?, isLiveAlbum: Bool){
         if(isLiveAlbum) {
             // On ne met que notre photo par defaut
-            imageView.image = UIImage(named: "endAlbum")
+            imageView.bnd_image.value = UIImage(named: "endAlbum")
             
             storyLabel.text = NSLocalizedString("Ready to discover your story !", comment: "")
         } else {

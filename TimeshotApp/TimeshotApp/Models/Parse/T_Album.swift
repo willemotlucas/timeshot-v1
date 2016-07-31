@@ -278,9 +278,10 @@ class T_Album : PFObject, PFSubclassing{
     static func isAlbumInLive(album: T_Album) -> Bool {
         
         if(album.isLiveUsers.contains(T_ParseUserHelper.getCurrentUser()!)){
-            return false
-        } else {
+            album.isLive = true
             return true
+        } else {
+            return false
         }
     }
     

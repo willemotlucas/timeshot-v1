@@ -13,6 +13,7 @@ import AFDateHelper
 import SwiftGifOrigin
 import PullToRefresh
 import Armchair
+import MBProgressHUD
 
 // Protocol between the containerView and the PhotoCollectionView
 // ParentVC = containerView
@@ -35,6 +36,7 @@ class T_PhotosCollectionViewController: UIViewController {
     var storyIndex = 0
     let numberPhotosStory = 3
     var containerDelegate: ContainerDelegateProtocol?
+    var progressHUD:MBProgressHUD?
     
     // For the empty view
     var load = false
@@ -71,9 +73,20 @@ class T_PhotosCollectionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: Function
-
+    // MARK: Methods
+    func freezeUI() {
+        progressHUD = MBProgressHUD.showHUDAddedTo(view, animated: true)
+        progressHUD?.labelText = NSLocalizedString("Creating", comment: "")
+        progressHUD?.detailsLabelText = NSLocalizedString("your story ...", comment: "")
+        progressHUD?.mode = .Indeterminate
+    }
     
+    func unfreezeUI() {
+        progressHUD?.hide(true)
+    }
+    
+    
+    // MARK: Functions
     func getPhotoIndex(indexPath : NSIndexPath) -> Int {
         var indexCell = 0
         for i in 0 ..< (indexPath.section-1){
@@ -338,8 +351,13 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
             let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("storyCell", forIndexPath: indexPath) as! T_StoryCollectionViewCell
             let post = storyPosts[storyIndex]
             cell.imageView.layer.cornerRadius = 40
-            post.downloadImage()
+
+            if(!(self.albumPhotos!.isLive)){
+                post.downloadImage()
+            }
             cell.initCellWithMetaData(post, isLiveAlbum: self.albumPhotos!.isLive)
+
+            
             
             return cell
             
@@ -395,12 +413,21 @@ extension T_PhotosCollectionViewController : UICollectionViewDataSource , UIColl
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
             alertController.addAction(cancelAction)
             
+            
+            
             let photoLibraryAction = UIAlertAction(title: "OK", style: .Default){
                 (action) in
                 // Callback function (closure) called when user selects photo from library
-                print("fonction pour passer en mode finito")
+                self.freezeUI()
+                let sortPosts = self.posts.sort({ $0.voteNumber > $1.voteNumber })
+                let newCover = sortPosts.first
+                T_ParseAlbumHelper.removeUserFromLiveUsers(self.albumPhotos!, newCover: newCover!) { status in
+                    self.unfreezeUI()
+                    self.collectionView.reloadData()
+                }
             }
             alertController.addAction(photoLibraryAction)
+            
             
             // We use the reference to the viewController to display the UIAlert because only view controllers
             // can display other controllers

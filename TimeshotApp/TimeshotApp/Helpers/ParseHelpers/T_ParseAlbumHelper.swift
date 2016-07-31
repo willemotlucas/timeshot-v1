@@ -163,6 +163,38 @@ class T_ParseAlbumHelper {
         })
     }
     
+    static func removeUserFromLiveUsers(album: T_Album, newCover: T_Post, withCompletion completion: (status : Bool) -> ()) {
+        let currentUser = T_ParseUserHelper.getCurrentUser()
+        let index = album.isLiveUsers.indexOf(currentUser!)
+        album.isLiveUsers.removeAtIndex(index!)
+        album.coverImage.value = newCover.image.value
+        album.cover = PFFile(data: UIImageJPEGRepresentation(album.coverImage.value!, 1.0)!)!
+        album.saveInBackgroundWithBlock({ (result: Bool, error: NSError?) in
+            if let error = error {
+                print(error)
+                completion(status: false)
+            } else {
+                album.isLive = false
+                completion(status: true)
+            }
+            
+        })
+    }
+    
+    static func addUserToLiveUsers(album: T_Album, withCompletion completion: (status : Bool) -> ()) {
+        let currentUser = T_ParseUserHelper.getCurrentUser()
+        album.isLiveUsers.append(currentUser!)
+        album.saveInBackgroundWithBlock({ (result: Bool, error: NSError?) in
+            if let _ = error {
+                completion(status: false)
+            } else {
+                album.isLive = true
+                completion(status: true)
+            }
+            
+        })
+    }
+    
     
     static func pinLocallyAlbum(album: T_Album) {
         
