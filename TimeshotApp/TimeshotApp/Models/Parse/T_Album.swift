@@ -16,7 +16,7 @@ class T_Album : PFObject, PFSubclassing{
     @NSManaged var attendees: [T_User]
     @NSManaged var cover: PFFile
     @NSManaged var createdBy: T_User
-    @NSManaged var duration: Int
+    @NSManaged var isLiveUsers : [T_User]
     @NSManaged var isDeleted: Bool
     @NSManaged var title: String!
     
@@ -50,13 +50,13 @@ class T_Album : PFObject, PFSubclassing{
         return "Album"
     }
     
-    init(attendees: [T_User], cover:UIImage, createdBy:T_User, duration:Int, isDeleted:Bool, title:String) {
+    init(attendees: [T_User], cover:UIImage, createdBy:T_User, isDeleted:Bool, title:String, isLiveUsers: [T_User]) {
         super.init()
         
         self.attendees = attendees
         self.cover = T_ParseUserHelper.fileFromImage(cover)
         self.createdBy = createdBy
-        self.duration = duration
+        self.isLiveUsers = isLiveUsers
         self.isDeleted = isDeleted
         self.title = title
         
@@ -68,7 +68,7 @@ class T_Album : PFObject, PFSubclassing{
             
             let guests = T_User.selectedFriends
             let attendees = [currentUser]
-            let album = T_Album(attendees: attendees, cover: cover, createdBy: currentUser, duration: duration, isDeleted: false, title: albumTitle)
+            let album = T_Album(attendees: attendees, cover: cover, createdBy: currentUser, isDeleted: false, title: albumTitle, isLiveUsers: [currentUser])
             
             for guest in guests {
                 T_ParseAlbumRequestHelper.sendAlbumRequestNotification(guest)
@@ -277,24 +277,11 @@ class T_Album : PFObject, PFSubclassing{
     //MARK: - Tools
     static func isAlbumInLive(album: T_Album) -> Bool {
         
-        return !isDurationExpired(album.createdAt!, duration: album.duration)
-    }
-    
-    static func isDurationExpired(date:NSDate, duration: Int) -> Bool {
-        if (getRemainingDuration(date, duration: duration) > 0) {
+        if(album.isLiveUsers.contains(T_ParseUserHelper.getCurrentUser()!)){
             return false
-        }
-        else {
+        } else {
             return true
         }
-    }
-    
-    static func getDelay(date:NSDate) -> Int {
-        return Int(-(date.timeIntervalSinceNow))
-    }
-    
-    static func getRemainingDuration(date:NSDate, duration: Int) -> Int {
-        return (duration*3600 - getDelay(date))
     }
     
     //------------------------------------------------------------------------------------------

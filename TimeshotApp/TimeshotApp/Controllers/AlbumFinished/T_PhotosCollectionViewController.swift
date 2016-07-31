@@ -92,8 +92,13 @@ class T_PhotosCollectionViewController: UIViewController {
         self.hasLoaded = true
         
         if let album = self.albumPhotos {
-            for _ in 0..<album.duration {
+            if(posts.count == 1){
                 self.photoNumberInSections.append(0)
+            } else if(posts.count > 1) {
+                let duration = (self.posts.last?.createdAtDate.hour())! - (self.posts.first?.createdAtDate.hour())! + 1
+                for _ in 0..<duration {
+                    self.photoNumberInSections.append(0)
+                }
             }
         }
         

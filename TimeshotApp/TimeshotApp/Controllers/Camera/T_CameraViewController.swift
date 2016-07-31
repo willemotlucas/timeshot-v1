@@ -325,8 +325,6 @@ class T_CameraViewController: UIViewController {
                 
                 self.isLiveAlbumExisting = isLiveAlbum
                 
-                self.albumTimer = NSTimer.scheduledTimerWithTimeInterval(Double(T_Album.getRemainingDuration((currentUser.liveAlbum?.createdAt)!, duration: (currentUser.liveAlbum?.duration)!)), target: self, selector: #selector(T_CameraViewController.manageAlbumProcessing), userInfo: nil, repeats: false)
-                
                 guard let album = currentUser.liveAlbum else { return  }
                 self.showCameraView()
                 self.networkStatus.updateLabelText(T_NetworkStatus.status.ShowAlbumTitle, withText: album.title)
