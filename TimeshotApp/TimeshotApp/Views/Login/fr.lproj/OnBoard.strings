@@ -1,0 +1,27 @@
+/* Class = "UIButton"; normalTitle = "Previous"; ObjectID = "0xm-WM-CQi"; */
+"0xm-WM-CQi.normalTitle" = "Précédent";
+
+/* Class = "UILabel"; text = "Save your time"; ObjectID = "2W5-2v-vos"; */
+"2W5-2v-vos.text" = "Gagnez du temps";
+
+/* Class = "UILabel"; text = "Build your story"; ObjectID = "4dG-4B-jdL"; */
+"4dG-4B-jdL.text" = "Consruisez votre story";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "AXZ-Jb-3AQ"; */
+"AXZ-Jb-3AQ.normalTitle" = "Suivant";
+
+/* Class = "UILabel"; text = "All your photos albums are permanently stored on Timeshot"; ObjectID = "DeA-Mw-eey"; */
+"DeA-Mw-eey.text" = "Toutes vos photos sont sauvegardées dans l'application";
+
+/* Class = "UILabel"; text = "Most liked photos make up the story to give you a best of your event"; ObjectID = "Dpy-n0-A5Z"; */
+"Dpy-n0-A5Z.text" = "Les photos les plus votées composent la story pour vous donner un best-of de votre événement";
+
+/* Class = "UILabel"; text = "Timeshot automatically gather all your friend's photos during you event"; ObjectID = "Itm-Ag-sJs"; */
+"Itm-Ag-sJs.text" = "Timeshot regroupe automatiquement les photos de vos amis pendant un événement";
+
+/* Class = "UILabel"; text = "Relive your events"; ObjectID = "Joy-Dj-Z1C"; */
+"Joy-Dj-Z1C.text" = "Revivez vos événements";
+
+/* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "jvO-Sa-WGe"; */
+"jvO-Sa-WGe.normalTitle" = "Passer";
+

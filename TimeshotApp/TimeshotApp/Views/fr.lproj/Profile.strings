@@ -1,0 +1,135 @@
+/* Class = "UINavigationController"; title = "Search Contact Navigation"; ObjectID = "1Xf-ec-09x"; */
+"1Xf-ec-09x.title" = "Search Contact Navigation";
+
+/* Class = "UILabel"; text = "First name"; ObjectID = "1wM-CD-8J6"; */
+"1wM-CD-8J6.text" = "Prénom";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "3tc-iw-Qsw"; */
+"3tc-iw-Qsw.text" = "Label";
+
+/* Class = "UINavigationController"; title = "Search User Navigation"; ObjectID = "4Eo-Tb-7cS"; */
+"4Eo-Tb-7cS.title" = "Search User Navigation";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "5Fm-u5-d7O"; */
+"5Fm-u5-d7O.text" = "Label";
+
+/* Class = "UISegmentedControl"; 6hK-4M-IIa.segmentTitles[0] = "Friends"; ObjectID = "6hK-4M-IIa"; */
+"6hK-4M-IIa.segmentTitles[0]" = "Amis";
+
+/* Class = "UISegmentedControl"; 6hK-4M-IIa.segmentTitles[1] = "Notifications"; ObjectID = "6hK-4M-IIa"; */
+"6hK-4M-IIa.segmentTitles[1]" = "Notifications";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "9f7-7H-mi3"; */
+"9f7-7H-mi3.text" = "Label";
+
+/* Class = "UILabel"; text = "Last name"; ObjectID = "48g-M3-62V"; */
+"48g-M3-62V.text" = "Nom";
+
+/* Class = "UILabel"; text = "Click to answer"; ObjectID = "82G-qG-ty4"; */
+"82G-qG-ty4.text" = "Cliquez pour répondre";
+
+/* Class = "UIBarButtonItem"; title = "Invite"; ObjectID = "De6-3K-WSC"; */
+"De6-3K-WSC.title" = "Inviter";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "DsJ-VR-23i"; */
+"DsJ-VR-23i.text" = "Label";
+
+/* Class = "UITableViewSection"; headerTitle = "My account"; ObjectID = "Hu0-eQ-IfC"; */
+"Hu0-eQ-IfC.headerTitle" = "Mon compte";
+
+/* Class = "UIViewController"; title = "Search Contact Controller"; ObjectID = "Iqk-LG-TUb"; */
+"Iqk-LG-TUb.title" = "Search Contact Controller";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "JAv-6p-YKF"; */
+"JAv-6p-YKF.title" = "Réglages";
+
+/* Class = "UIButton"; normalTitle = "ADD NEW FRIENDS"; ObjectID = "JZA-M0-C4r"; */
+"JZA-M0-C4r.normalTitle" = "AJOUTER DE NOUVEAUX AMIS";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "KVh-hB-xB3"; */
+"KVh-hB-xB3.text" = "Label";
+
+/* Class = "UILabel"; text = "Birthday"; ObjectID = "Nrz-rF-aLh"; */
+"Nrz-rF-aLh.text" = "Anniversaire";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "S0g-ya-een"; */
+"S0g-ya-een.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Email"; ObjectID = "Tj4-OJ-uZl"; */
+"Tj4-OJ-uZl.title" = "Email";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "TxE-hJ-CNh"; */
+"TxE-hJ-CNh.text" = "Détail";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "ULD-D3-l0G"; */
+"ULD-D3-l0G.text" = "Détail";
+
+/* Class = "UITextField"; placeholder = "Your last name"; ObjectID = "UfA-Dm-kea"; */
+"UfA-Dm-kea.placeholder" = "Votre nom";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "W6O-u5-Gnt"; */
+"W6O-u5-Gnt.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Wd3-ev-mEg"; */
+"Wd3-ev-mEg.text" = "Label";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "XfD-Ui-7C0"; */
+"XfD-Ui-7C0.text" = "Email";
+
+/* Class = "UINavigationItem"; title = "Birthday"; ObjectID = "Ydv-jr-hdb"; */
+"Ydv-jr-hdb.title" = "Anniversaire";
+
+/* Class = "UINavigationItem"; title = "First name"; ObjectID = "YoR-3T-WUr"; */
+"YoR-3T-WUr.title" = "Prénom";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "aQR-MM-Hym"; */
+"aQR-MM-Hym.text" = "Détail";
+
+/* Class = "UITextField"; placeholder = "Your birthday"; ObjectID = "aym-dN-sme"; */
+"aym-dN-sme.placeholder" = "Votre anniversaire";
+
+/* Class = "UIButton"; normalTitle = "LOG OUT"; ObjectID = "ce4-eN-hHe"; */
+"ce4-eN-hHe.normalTitle" = "DECONNEXION";
+
+/* Class = "UINavigationItem"; title = "Last name"; ObjectID = "czy-Jb-kC2"; */
+"czy-Jb-kC2.title" = "Nom";
+
+/* Class = "UIViewController"; title = "Search User Controller"; ObjectID = "g12-0N-Rsy"; */
+"g12-0N-Rsy.title" = "Search User Controller";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "jhf-1I-4X8"; */
+"jhf-1I-4X8.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Search a contact"; ObjectID = "kK1-mQ-cSp"; */
+"kK1-mQ-cSp.title" = "Search a contact";
+
+/* Class = "UINavigationItem"; title = "Search a user"; ObjectID = "nVC-5b-BT3"; */
+"nVC-5b-BT3.title" = "Search a user";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "oDv-vE-h6X"; */
+"oDv-vE-h6X.text" = "Label";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "qI5-eM-uYD"; */
+"qI5-eM-uYD.text" = "Détai";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "snE-qg-euw"; */
+"snE-qg-euw.text" = "Label";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "t0j-sm-1zh"; */
+"t0j-sm-1zh.text" = "Nom d'utilisateur";
+
+/* Class = "UIViewController"; title = "Profile Controller"; ObjectID = "tGm-Pl-crw"; */
+"tGm-Pl-crw.title" = "Profile Controller";
+
+/* Class = "UITextField"; placeholder = "Your first name"; ObjectID = "tkM-Ac-oh1"; */
+"tkM-Ac-oh1.placeholder" = "Votre prénom";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "wbC-gN-yDB"; */
+"wbC-gN-yDB.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Your email address"; ObjectID = "xw2-Kj-zRs"; */
+"xw2-Kj-zRs.placeholder" = "Votre adresse email";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "yks-uO-aPK"; */
+"yks-uO-aPK.text" = "Détail";
+

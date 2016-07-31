@@ -62,6 +62,8 @@
 		7D8699261C8F4A9D003BC1DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699251C8F4A9D003BC1DC /* Assets.xcassets */; };
 		7DB873801D0AA13F0075A4EF /* T_ChooseDetailsAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB8737F1D0AA13F0075A4EF /* T_ChooseDetailsAlbumViewController.swift */; };
 		7DB873821D0AAF2B0075A4EF /* T_TinderPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB873811D0AAF2B0075A4EF /* T_TinderPhotosViewController.swift */; };
+		7DB8856D1D4E3C81002C87F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7DB8856F1D4E3C81002C87F5 /* InfoPlist.strings */; };
+		7DB885771D4E3C84002C87F5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7DB885791D4E3C84002C87F5 /* Localizable.strings */; };
 		7DC6AFBD1CF496B100461FE1 /* T_AlbumCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC6AFBC1CF496B100461FE1 /* T_AlbumCacheHelper.swift */; };
 		7DC8887E1CDB26CD001E552D /* T_SliderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8887D1CDB26CD001E552D /* T_SliderImageView.swift */; };
 		7DD0F9AC1C9DC6BF00A856B9 /* T_AlbumLiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0F9AB1C9DC6BE00A856B9 /* T_AlbumLiveTableViewCell.swift */; };
@@ -178,6 +180,14 @@
 		7D86992A1C8F4A9D003BC1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DB8737F1D0AA13F0075A4EF /* T_ChooseDetailsAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ChooseDetailsAlbumViewController.swift; sourceTree = "<group>"; };
 		7DB873811D0AAF2B0075A4EF /* T_TinderPhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_TinderPhotosViewController.swift; sourceTree = "<group>"; };
+		7DB8856E1D4E3C81002C87F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7DB885701D4E3C82002C87F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		7DB885711D4E3C82002C87F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Login.strings; sourceTree = "<group>"; };
+		7DB885721D4E3C82002C87F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Koloda.strings; sourceTree = "<group>"; };
+		7DB885731D4E3C83002C87F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Album.strings; sourceTree = "<group>"; };
+		7DB885741D4E3C83002C87F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Profile.strings; sourceTree = "<group>"; };
+		7DB885781D4E3C84002C87F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7DB8857A1D4E3C84002C87F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/OnBoard.strings; sourceTree = "<group>"; };
 		7DC6AFBC1CF496B100461FE1 /* T_AlbumCacheHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumCacheHelper.swift; sourceTree = "<group>"; };
 		7DC8887D1CDB26CD001E552D /* T_SliderImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SliderImageView.swift; sourceTree = "<group>"; };
 		7DD0F9AB1C9DC6BE00A856B9 /* T_AlbumLiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumLiveTableViewCell.swift; sourceTree = "<group>"; };
@@ -368,6 +378,8 @@
 		7D86991D1C8F4A9D003BC1DC /* TimeshotApp */ = {
 			isa = PBXGroup;
 			children = (
+				7DB885791D4E3C84002C87F5 /* Localizable.strings */,
+				7DB8856F1D4E3C81002C87F5 /* InfoPlist.strings */,
 				5DB5A00B1CA1902500AADC9F /* Helpers */,
 				B46B2B721C9ABA7E00135920 /* Models */,
 				B46B2B731C9ABA8300135920 /* Views */,
@@ -641,6 +653,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D5CB5361D4E3137002322C1 /* Profile.storyboard in Resources */,
+				7DB8856D1D4E3C81002C87F5 /* InfoPlist.strings in Resources */,
 				8AE3B3381CE482A500734F7F /* KolodaBanner.xib in Resources */,
 				7D2F539C1CB65DAB00AB9995 /* LaunchScreen.storyboard in Resources */,
 				7DD0F9B61C9EA0FB00A856B9 /* soiree.jpg in Resources */,
@@ -649,6 +662,7 @@
 				7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */,
 				7DD0F9B51C9EA0FB00A856B9 /* mariage.jpg in Resources */,
 				5D5CB53F1D4E3149002322C1 /* OnBoard.storyboard in Resources */,
+				7DB885771D4E3C84002C87F5 /* Localizable.strings in Resources */,
 				7D8699261C8F4A9D003BC1DC /* Assets.xcassets in Resources */,
 				7D8699241C8F4A9D003BC1DC /* Main.storyboard in Resources */,
 				5D5CB5331D4E3132002322C1 /* Login.storyboard in Resources */,
@@ -810,6 +824,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5D5CB5341D4E3132002322C1 /* Base */,
+				7DB885711D4E3C82002C87F5 /* fr */,
 			);
 			name = Login.storyboard;
 			sourceTree = "<group>";
@@ -818,6 +833,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5D5CB5371D4E3137002322C1 /* Base */,
+				7DB885741D4E3C83002C87F5 /* fr */,
 			);
 			name = Profile.storyboard;
 			sourceTree = "<group>";
@@ -826,6 +842,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5D5CB53A1D4E313D002322C1 /* Base */,
+				7DB885731D4E3C83002C87F5 /* fr */,
 			);
 			name = Album.storyboard;
 			sourceTree = "<group>";
@@ -834,6 +851,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5D5CB53D1D4E3143002322C1 /* Base */,
+				7DB885721D4E3C82002C87F5 /* fr */,
 			);
 			name = Koloda.storyboard;
 			sourceTree = "<group>";
@@ -842,6 +860,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5D5CB5401D4E3149002322C1 /* Base */,
+				7DB8857A1D4E3C84002C87F5 /* fr */,
 			);
 			name = OnBoard.storyboard;
 			sourceTree = "<group>";
@@ -850,6 +869,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7D8699231C8F4A9D003BC1DC /* Base */,
+				7DB885701D4E3C82002C87F5 /* fr */,
 			);
 			name = Main.storyboard;
 			path = ..;
@@ -862,6 +882,22 @@
 				5D99DF411D3BDC9E00F91E80 /* fr */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		7DB8856F1D4E3C81002C87F5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7DB8856E1D4E3C81002C87F5 /* fr */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7DB885791D4E3C84002C87F5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7DB885781D4E3C84002C87F5 /* fr */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

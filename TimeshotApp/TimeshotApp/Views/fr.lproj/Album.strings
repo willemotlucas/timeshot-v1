@@ -1,0 +1,66 @@
+/* Class = "UILabel"; text = "Story"; ObjectID = "2yH-dR-kVJ"; */
+"2yH-dR-kVJ.text" = "Story";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "3eh-Az-GBR"; */
+"3eh-Az-GBR.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ATc-MW-hEb"; */
+"ATc-MW-hEb.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "dfdfdf"; ObjectID = "BOm-DQ-rOA"; */
+"BOm-DQ-rOA.title" = "dfdfdf";
+
+/* Class = "UILabel"; text = "LIVE"; ObjectID = "BSc-VT-xRH"; */
+"BSc-VT-xRH.text" = "LIVE";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "ErR-T4-DLi"; */
+"ErR-T4-DLi.title" = "Titre";
+
+/* Class = "UILabel"; text = "19h"; ObjectID = "INL-ej-3yU"; */
+"INL-ej-3yU.text" = "19h";
+
+/* Class = "UIButton"; normalTitle = "INVITE FRIENDS TO THIS ALBUM"; ObjectID = "ScX-IW-r7d"; */
+"ScX-IW-r7d.normalTitle" = "INVITER DES AMIS DANS CET ALBUM";
+
+/* Class = "UILabel"; text = "fromUser"; ObjectID = "Sjx-fZ-T3m"; */
+"Sjx-fZ-T3m.text" = "fromUser";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "V49-ha-JG2"; */
+"V49-ha-JG2.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "X4G-VO-E0b"; */
+"X4G-VO-E0b.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ZCC-2Q-9Y8"; */
+"ZCC-2Q-9Y8.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Zw1-Q8-or0"; */
+"Zw1-Q8-or0.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "cKl-h6-V0s"; */
+"cKl-h6-V0s.title" = " ";
+
+/* Class = "UINavigationItem"; title = "Albums"; ObjectID = "e0w-ba-saM"; */
+"e0w-ba-saM.title" = "Albums";
+
+/* Class = "UINavigationItem"; title = "Invitation"; ObjectID = "gsl-hT-AWb"; */
+"gsl-hT-AWb.title" = "Invitation";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "jMW-xz-nir"; */
+"jMW-xz-nir.title" = "Annuler";
+
+/* Class = "UISegmentedControl"; qTP-s4-aW1.segmentTitles[0] = "Photos"; ObjectID = "qTP-s4-aW1"; */
+"qTP-s4-aW1.segmentTitles[0]" = "Photos";
+
+/* Class = "UISegmentedControl"; qTP-s4-aW1.segmentTitles[1] = "Friends"; ObjectID = "qTP-s4-aW1"; */
+"qTP-s4-aW1.segmentTitles[1]" = "Participants";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "qYc-SH-3ln"; */
+"qYc-SH-3ln.text" = "Label";
+
+/* Class = "UILabel"; text = "Hour"; ObjectID = "rdt-tz-w3G"; */
+"rdt-tz-w3G.text" = "Heure";
+
+/* Class = "UILabel"; text = "Remember the best moment of your album !"; ObjectID = "sSJ-nl-CdV"; */
+"sSJ-nl-CdV.text" = "Revis les meilleurs moments de ton album !";
+

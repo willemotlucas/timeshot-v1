@@ -1,0 +1,100 @@
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "2Jg-X8-dcw"; */
+"2Jg-X8-dcw.placeholder" = "Nom d'utilisateur";
+
+/* Class = "UITextField"; placeholder = "Confirm password"; ObjectID = "2h1-kF-BXl"; */
+"2h1-kF-BXl.placeholder" = "Confirmez le mot de passe";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Bzf-aw-um8"; */
+"Bzf-aw-um8.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "CONTINUE"; ObjectID = "Chz-WZ-hYU"; */
+"Chz-WZ-hYU.normalTitle" = "CONTINUER";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "Dfv-5C-o1o"; */
+"Dfv-5C-o1o.placeholder" = "Nom d'utilisateur";
+
+/* Class = "UIButton"; normalTitle = "CONTINUE"; ObjectID = "FQW-Ei-j4t"; */
+"FQW-Ei-j4t.normalTitle" = "CONTINUER";
+
+/* Class = "UIViewController"; title = "Search Contact Controller"; ObjectID = "J0J-YM-ICl"; */
+"J0J-YM-ICl.title" = "Search Contact Controller";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "LdX-QM-Wu0"; */
+"LdX-QM-Wu0.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Sign up"; ObjectID = "LgV-om-01x"; */
+"LgV-om-01x.title" = "Inscription";
+
+/* Class = "UIButton"; normalTitle = "YES, I WANT!"; ObjectID = "MZY-cW-ajc"; */
+"MZY-cW-ajc.normalTitle" = "Oui, je le veux !";
+
+/* Class = "UILabel"; text = "Your name is used by your friends to easily find you. Your email address will be used to identify you."; ObjectID = "P3m-Zq-XfW"; */
+"P3m-Zq-XfW.text" = "Votre nom sera utilisé par vos amis pour vous trouver facilement. Votre adresse e-mail pour vous identifier.";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "QFj-8f-udE"; */
+"QFj-8f-udE.placeholder" = "Email";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "Rd3-BA-9Dk"; */
+"Rd3-BA-9Dk.normalTitle" = "CONNEXION";
+
+/* Class = "UIBarButtonItem"; title = "Invite"; ObjectID = "WQ8-iK-WaL"; */
+"WQ8-iK-WaL.title" = "Inviter";
+
+/* Class = "UINavigationItem"; title = "Sign up"; ObjectID = "X0j-WT-VxT"; */
+"X0j-WT-VxT.title" = "Inscription";
+
+/* Class = "UINavigationItem"; title = "Sign up"; ObjectID = "Xpj-Ts-5Td"; */
+"Xpj-Ts-5Td.title" = "Inscription";
+
+/* Class = "UIButton"; normalTitle = "Policy Privacy"; ObjectID = "Xrb-Ev-Mkd"; */
+"Xrb-Ev-Mkd.normalTitle" = "Politique de confidentialité";
+
+/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "Zoi-t6-Yri"; */
+"Zoi-t6-Yri.placeholder" = "Prénom";
+
+/* Class = "UIButton"; normalTitle = "FINISH SIGN UP!"; ObjectID = "cF5-mm-YAe"; */
+"cF5-mm-YAe.normalTitle" = "Terminer l'inscription";
+
+/* Class = "UILabel"; text = "Timeshot is funnier if you have some friends, to share with them.\n\nDo you want to invite people from your address book ?"; ObjectID = "cFQ-ND-rx4"; */
+"cFQ-ND-rx4.text" = "Timeshot est plus drôle avec des amis.
+            Voulez-vous inviter des contacts de votre carnet d'adressse à rejoindre Timeshot ?";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "iKL-Ei-mew"; */
+"iKL-Ei-mew.placeholder" = "Mot de passe";
+
+/* Class = "UINavigationItem"; title = "Sign up"; ObjectID = "jXh-Wv-KWl"; */
+"jXh-Wv-KWl.title" = "Inscription";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "mJB-q0-hjB"; */
+"mJB-q0-hjB.placeholder" = "Nom";
+
+/* Class = "UILabel"; text = "Your username is your unique idendity on Timeshot. You can't change it afterward!"; ObjectID = "o4i-0C-NWm"; */
+"o4i-0C-NWm.text" = "Votre nom d'utilisateur est votre unique identité sur Timeshot, vous ne pourrez pas le changer !";
+
+/* Class = "UINavigationItem"; title = "Sign up"; ObjectID = "qFE-dH-Hwy"; */
+"qFE-dH-Hwy.title" = "Inscription";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "qqY-8k-TNd"; */
+"qqY-8k-TNd.normalTitle" = "INSCRIPTION";
+
+/* Class = "UILabel"; text = "You will use this password to log on to Timeshot"; ObjectID = "r7i-Kz-Djs"; */
+"r7i-Kz-Djs.text" = "Vous utiliserez le mot de passe pour vous connecter";
+
+/* Class = "UINavigationItem"; title = "Sign up"; ObjectID = "sDc-Yh-379"; */
+"sDc-Yh-379.title" = "Inscription";
+
+/* Class = "UIButton"; normalTitle = "CGU"; ObjectID = "scJ-Lt-BDH"; */
+"scJ-Lt-BDH.normalTitle" = "CGU";
+
+/* Class = "UIButton"; normalTitle = "CONTINUE"; ObjectID = "smR-cO-3lU"; */
+"smR-cO-3lU.normalTitle" = "CONTINUER";
+
+/* Class = "UINavigationItem"; title = "Search a contact"; ObjectID = "wPp-Ya-1R4"; */
+"wPp-Ya-1R4.title" = "Rechercher un contact";
+
+/* Class = "UIButton"; normalTitle = "SIGN UP WITH EMAIL"; ObjectID = "xDG-xP-gOG"; */
+"xDG-xP-gOG.normalTitle" = "INSCRIPTION PAR EMAIL";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "xei-eT-JSL"; */
+"xei-eT-JSL.placeholder" = "Mot de passe";
+

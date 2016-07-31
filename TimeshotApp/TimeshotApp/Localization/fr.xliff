@@ -2,625 +2,628 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="TimeshotApp/Base.lproj/LaunchScreen.storyboard" source-language="en" datatype="plaintext" target-language="fr">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
     </header>
     <body/>
   </file>
   <file original="TimeshotApp/Base.lproj/Main.storyboard" source-language="en" datatype="plaintext" target-language="fr">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
     </header>
     <body>
       <trans-unit id="Dgl-wx-G6S.normalTitle">
         <source>CREATE ALBUM</source>
+        <target>CREER UN ALBUM</target>
         <note>Class = "UIButton"; normalTitle = "CREATE ALBUM"; ObjectID = "Dgl-wx-G6S";</note>
       </trans-unit>
       <trans-unit id="LSD-2Q-hGZ.title">
         <source>Invite friends</source>
+        <target>Inviter des amis</target>
         <note>Class = "UINavigationItem"; title = "Invite friends"; ObjectID = "LSD-2Q-hGZ";</note>
       </trans-unit>
       <trans-unit id="T6O-Gk-IHd.title">
         <source>Back</source>
+        <target>Retour</target>
         <note>Class = "UIBarButtonItem"; title = "Back"; ObjectID = "T6O-Gk-IHd";</note>
       </trans-unit>
       <trans-unit id="ldH-fI-IaR.normalTitle">
         <source>INVITE FRIENDS</source>
+        <target>INVITER DES AMIS</target>
         <note>Class = "UIButton"; normalTitle = "INVITE FRIENDS"; ObjectID = "ldH-fI-IaR";</note>
       </trans-unit>
       <trans-unit id="mqY-Sq-bPr.text">
         <source>Label</source>
+        <target>Label</target>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "mqY-Sq-bPr";</note>
       </trans-unit>
     </body>
   </file>
-  <file original="TimeshotApp/Base.lproj/Main.storyboard" source-language="en" datatype="plaintext" target-language="fr">
-      <header>
-          <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
-      </header>
-      <body>
-          <trans-unit id="Dgl-wx-G6S.normalTitle">
-              <source>CREATE ALBUM</source>
-              <target>CREER UN ALBUM</target>
-              <note>Class = "UIButton"; normalTitle = "CREATE ALBUM"; ObjectID = "Dgl-wx-G6S";</note>
-          </trans-unit>
-          <trans-unit id="LSD-2Q-hGZ.title">
-              <source>Invite friends</source>
-              <target>Inviter des amis</target>
-              <note>Class = "UINavigationItem"; title = "Invite friends"; ObjectID = "LSD-2Q-hGZ";</note>
-          </trans-unit>
-          <trans-unit id="T6O-Gk-IHd.title">
-              <source>Back</source>
-              <target>Retour</target>
-              <note>Class = "UIBarButtonItem"; title = "Back"; ObjectID = "T6O-Gk-IHd";</note>
-          </trans-unit>
-          <trans-unit id="ldH-fI-IaR.normalTitle">
-              <source>INVITE FRIENDS</source>
-              <target>INVITER DES AMIS</target>
-              <note>Class = "UIButton"; normalTitle = "INVITE FRIENDS"; ObjectID = "ldH-fI-IaR";</note>
-          </trans-unit>
-          <trans-unit id="mqY-Sq-bPr.text">
-              <source>Label</source>
-              <target>Label</target>
-              <note>Class = "UILabel"; text = "Label"; ObjectID = "mqY-Sq-bPr";</note>
-          </trans-unit>
-      </body>
-  </file>
   <file original="TimeshotApp/Info.plist" source-language="en" datatype="plaintext" target-language="fr">
-      <header>
-          <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
-      </header>
-      <body>
-          <trans-unit id="CFBundleName">
-              <source>$(PRODUCT_NAME)</source>
-              <target>$(PRODUCT_NAME)</target>
-          </trans-unit>
-          <trans-unit id="CFBundleShortVersionString">
-              <source>1.0</source>
-              <target>1.0</target>
-          </trans-unit>
-      </body>
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+        <target>$(PRODUCT_NAME)</target>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>1.0</source>
+        <target>1.0</target>
+      </trans-unit>
+    </body>
   </file>
   <file original="TimeshotApp/Localizable.strings" source-language="en" datatype="plaintext" target-language="fr">
-      <header>
-          <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
-      </header>
-      <body>
-          <trans-unit id="  Photos  ">
-              <source>  Photos  </source>
-              <target>  Photos  </target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="  Story  ">
-              <source>  Story  </source>
-              <target>  Story  </target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="(T_ParseUserHelper.getCurrentUser()!.username!) invited you to join his album">
-              <source>(T_ParseUserHelper.getCurrentUser()!.username!) invited you to join his album</source>
-              <target>(T_ParseUserHelper.getCurrentUser()!.username!) vous invite à rejoindre son album</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="(T_ParseUserHelper.getCurrentUser()!.username!) sent you a friend request">
-              <source>(T_ParseUserHelper.getCurrentUser()!.username!) sent you a friend request</source>
-              <target>(T_ParseUserHelper.getCurrentUser()!.username!) vous a envoyé une requête d'amis</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="(T_User.selectedFriends.count) friend selected">
-              <source>(T_User.selectedFriends.count) friend selected</source>
-              <target>(T_User.selectedFriends.count) ami sélectionné</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="(T_User.selectedFriends.count) friends selected">
-              <source>(T_User.selectedFriends.count) friends selected</source>
-              <target>(T_User.selectedFriends.count) amis sélectionnés</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="@(user.username!) invited you to join (albumRequest.toAlbum!.title!)!">
-              <source>@(user.username!) invited you to join (albumRequest.toAlbum!.title!)!</source>
-              <target>@(user.username!) vous invite à rejoindre (albumRequest.toAlbum!.title!)!</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="ADD FRIENDS">
-              <source>ADD FRIENDS</source>
-              <target>AJOUTER DES AMIS</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="ADD NEW FRIENDS">
-              <source>ADD NEW FRIENDS</source>
-              <target>AJOUTER DE NOUVEAUX AMIS</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="ALLOW NOTIFICATIONS">
-              <source>ALLOW NOTIFICATIONS</source>
-              <target>AUTORISER LES NOTIFICATIONS</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Accept">
-              <source>Accept</source>
-              <target>Accepter</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Add by Username">
-              <source>Add by Username</source>
-              <target>Ajouter par nom d'utilisateur</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Add from Address Book">
-              <source>Add from Address Book</source>
-              <target>Ajouter par le carnet d'adresse</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Album successfully created !">
-              <source>Album successfully created!</source>
-              <target>L'album a été créé !'</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="All your friends have already been invited in this album ">
-              <source>All your friends have already been invited in this album</source>
-              <target>Tous vos amis ont déjà été invité à cet album</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Allow notifications">
-              <source>Allow notifications</source>
-              <target>AUTORISER LES NOTIFICATIONS</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Cancel">
-              <source>Cancel</source>
-              <target>Annuler</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Cannot Add Contact">
-              <source>Cannot Add Contact</source>
-              <target>Impossible d'ajouter le contact'</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Cannot create the album">
-              <source>Cannot create the album</source>
-              <target>Impossible de créer l'album'</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Cannot sign in">
-              <source>Cannot sign in</source>
-              <target>Connexion impossible</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Change Settings">
-              <source>Change Settings</source>
-              <target>Changer les réglages</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Click to answer">
-              <source>Click to answer</source>
-              <target>Cliquez pour répondre</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Create an album and share your photos!">
-              <source>Create an album and share your photos!</source>
-              <target>Créez un album et partagez vos photos !</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Creating album ...">
-              <source>Creating album ...</source>
-              <target>Création de l'album...'</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Decline">
-              <source>Decline</source>
-              <target>Refuser</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Don't be ridiculous, this first name is too short 😉">
-              <source>Don't be ridiculous, this first name is too short 😉</source>
-              <target>Le prénom est trop court</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Don't be ridiculous, this last name is too short 😉">
-              <source>Don't be ridiculous, this last name is too short 😉</source>
-              <target>Le nom est trop court</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Download">
-              <source>Download</source>
-              <target>Télécharger</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="E-mail is required">
-              <source>E-mail is required</source>
-              <target>L'email est obligatoire'</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="E-mail should not be empty">
-              <source>E-mail should not be empty</source>
-              <target>L'email ne doit pas être vide'</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Error">
-              <source>Error</source>
-              <target>Erreur</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Error while testing your email">
-              <source>Error while testing your email</source>
-              <target>Erreur lors du test de votre email</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Error while testing your username">
-              <source>Error while testing your username</source>
-              <target>Erreur lors du test de votre nom d'utilisateur</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Firstname not long enough">
-              <source>Firstname not long enough</source>
-              <target>Le prénom est trop court</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Firstname should not be empty">
-              <source>Firstname should not be empty</source>
-              <target>Le prénom ne peut pas être vide</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Firstname too long">
-              <source>Firstname too long</source>
-              <target>Le prénom est trop long</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="I discovered a new awesome app! Download it on http://timeshot.co :)">
-              <source>I discovered a new awesome app! Download it on http://timeshot.co :)</source>
-              <target>J'ai découvert une nouvelle app de folie ! Télécharge là sur http://timeshot.co :)</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Invitation">
-              <source>Invitation</source>
-              <target>Invitation</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Invite some friends, it's more fun!">
-              <source>Invite some friends, it's more fun!</source>
-              <target>Invite quelques amis, c'est beaucoup plus drôle !</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Joining album">
-              <source>Joining album</source>
-              <target>Adhésion à l'album</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Let's share your first picture !">
-              <source>Let's share your first picture !</source>
-              <target>Partage ta première photo !</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Name not long enough">
-              <source>Name not long enough</source>
-              <target>Le nom est trop court</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Name should not be empty">
-              <source>Name should not be empty</source>
-              <target>Le nom ne doit pas être vide</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Name too long">
-              <source>Name too long</source>
-              <target>Le nom est trop long</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Network is not available ... ">
-              <source>Network is not available ... </source>
-              <target>Aucun réseau disponible...</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="No contacts selected">
-              <source>No contacts selected</source>
-              <target>Aucun contact sélectionné</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="No internet connection... Try again later">
-              <source>No internet connection... Try again later</source>
-              <target>Aucune connexion internet... Réessayez plus tard</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Nobody has been found ...">
-              <source>Nobody has been found ...</source>
-              <target>Personne n'a été trouvé'</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Nobody have been found ...">
-              <source>Nobody has been found ...</source>
-              <target>Personne n'a été trouvé'</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="OK">
-              <source>OK</source>
-              <target>OK</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Oh noo ... You don't have any albums as for now ... ">
-              <source>Oh noo ... You don't have any albums as for now ... </source>
-              <target>Oh noo ... Vous n'avez aucun album pour le moment ...</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Ohhh noo">
-              <source>Ohhh noo</source>
-              <target>Ohhh noo</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Ok">
-              <source>Ok</source>
-              <target>Ok</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Oups!">
-              <source>Oups!</source>
-              <target>Oups!</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Password not long enough">
-              <source>Password not long enough</source>
-              <target>Le mot de passe est trop court</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Password should not be empty">
-              <source>Password should not be empty</source>
-              <target>Le mot de passe ne doit pas être vide</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Password too long">
-              <source>Password too long</source>
-              <target>Le mot de passe est trop long</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Passwords are not matching">
-              <source>Passwords are not matching</source>
-              <target>Les mots de passe ne correspondent pas</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Pick a photo from library">
-              <source>Pick a photo from library</source>
-              <target>Choisir une photo depuis la librairie</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Please check your network connection and try again !">
-              <source>Please check your network connection and try again !</source>
-              <target>Veuillez vérifier votre connexion internet et réessayer !</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Please confirm your new password">
-              <source>Please confirm your new password</source>
-              <target>Veuillez confirmer votre nouveau mot de passe</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Please enter your current password">
-              <source>Please enter your current password</source>
-              <target>Veuillez entrer votre mot de passe</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Please enter your new password">
-              <source>Please enter your new password</source>
-              <target>Veuillez entrer votre nouveau mot de passe</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Report">
-              <source>Report</source>
-              <target>Signaler</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Save error">
-              <source>Save error</source>
-              <target>Erreur lors de la sauvegarde</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Saved !">
-              <source>Saved !</source>
-              <target>Sauvegardé !</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Search a user!">
-              <source>Search a user!</source>
-              <target>Rechercher un utilisateur</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Search one of your contact!">
-              <source>Search one of your contact!</source>
-              <target>Rechercher un de vos contact</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Select some contacts to invite them!">
-              <source>Select some contacts to invite them!</source>
-              <target>Sélectionnez quelques contacts pour les inviter !</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Select some friends to invite them !">
-              <source>Select some friends to invite them !</source>
-              <target>Sélectionnez quelqus amis pour les inviter !</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Select some friends to start !">
-              <source>Select some friends to start !</source>
-              <target>Sélectionnez quelques amis pour commencer !</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Settings">
-              <source>Settings</source>
-              <target>Réglages</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Take a photo with camera">
-              <source>Take a photo with camera</source>
-              <target>Prendre une photo avec la caméra</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="The picture has been saved to your photos.">
-              <source>The picture has been saved to your photos.</source>
-              <target>La photo a été sauvegardée dans vos photos.</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="There's a problem Captain">
-              <source>There's a problem Captain</source>
-              <target>Il y a un problème Captain !</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="This album is totally empty ... ">
-              <source>This album is totally empty ... </source>
-              <target>Cet album est complètement vide ...</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="This email is already used">
-              <source>This email is already used</source>
-              <target>Cet email est déjà utilisé</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="This username is already used">
-              <source>This username is already used</source>
-              <target>Ce nom d'utilisateur est déjà utilisé</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Try another username or invite contacts from your address book!">
-              <source>Try another username or invite contacts from your address book!</source>
-              <target>Essayez un autre nom d'utilisateur ou invitez des contacts depuis votre carnet d'adresse !</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Username and/or password incorect">
-              <source>Username and/or password incorect</source>
-              <target>Nom d'utilisateur ou mot de passe incorrect</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Username not long enough">
-              <source>Username not long enough</source>
-              <target>Nom d'utilisateur trop court</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Username should not be empty">
-              <source>Username should not be empty</source>
-              <target>Le nom d'utilisateur ne devrait pas être vide</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Username too long">
-              <source>Username too long</source>
-              <target>Le nom d'utilisateur est trop long'</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Wait ...">
-              <source>Wait ...</source>
-              <target>Patientez ...</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="We're retrieving your albums">
-              <source>We're retrieving your albums</source>
-              <target>L'application charge vos albums</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="We're retrieving your friends">
-              <source>We're retrieving your friends</source>
-              <target>L'application charge vos amis</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="We're retrieving your photos">
-              <source>We're retrieving your photos</source>
-              <target>L'application charge vos photos</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="You are not connected to the internet 😕. Please try again later. ">
-              <source>You are not connected to the internet 😕. Please try again later. </source>
-              <target>Vous n'êtes pas connecté à internet. Réessayez plus tard.</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="You can search by his full name or username.">
-              <source>You can search by his full name or username.</source>
-              <target>Vous pouvez chercher par son nom ou nom d'utilisateur</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="You don't have any friends ... Please invite some friends and share your albums with them!">
-              <source>You don't have any friends ... Please invite some friends and share your albums with them!</source>
-              <target>Vous n'avez aucun amis ... Invitez-en quelques-uns et créez un album avec eux !</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="You have disallowed notifications. Please go in your settings and allow notifications.">
-              <source>You have disallowed notifications. Please go in your settings and allow notifications.</source>
-              <target>Vous avez désactivé les notifications. Allez dans les réglages pour autoriser les notifications.</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="You have no friends yet 😟">
-              <source>You have no friends yet 😟</source>
-              <target>Vous n'avez encore aucun amis</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="You have no notifications...">
-              <source>You have no notifications...</source>
-              <target>Vous n'avez aucune notification...</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="You must be 13 years old at least 🎂">
-              <source>You must be 13 years old at least 🎂</source>
-              <target>Vous devez avoir au moins 13 ans</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="You must give the app permission to add the contact first.">
-              <source>You must give the app permission to add the contact first.</source>
-              <target>Vous devez d'abord autoriser l'application à ajouter un contact</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Your confirmation password does not match with your new password">
-              <source>Your confirmation password does not match with your new password</source>
-              <target>La confirmation du mot de passe ne correspond pas</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Your current password is invalid">
-              <source>Your current password is invalid</source>
-              <target>Votre mot de passe est invalide</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Your e-mail is not valid">
-              <source>Your e-mail is not valid</source>
-              <target>Votre adresse e-mail est invalide</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Your email address is mandatory ✉️">
-              <source>Your email address is mandatory ✉️</source>
-              <target>L'email est obligatoire</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Your email address is not valid ✉️">
-              <source>Your email address is not valid ✉️</source>
-              <target>Votre adresse email n'est pas valide</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Your email address is used to identify you. No spam, we promise ❤️">
-              <source>Your email address is used to identify you. No spam, we promise ❤️</source>
-              <target>Votre adresse email est utilisé pour vous identifier. Pas de spam, c'est promis !</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Your first name helps your friends to find you 😊">
-              <source>Your first name helps your friends to find you 😊</source>
-              <target>Votre prénom aide vos amis à vous retrouver</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Your last name helps your friends to find you 😊">
-              <source>Your last name helps your friends to find you 😊</source>
-              <target>Votre nom aide vos amis à vous retrouver</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="Your password must be 8 characters at least">
-              <source>Your password must be 8 characters at least</source>
-              <target>Votre mot de passe doit contenir au moins 8 caractères</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-          <trans-unit id="\n (albumRequest.fromUser!.username!) invited you to join his album (albumRequest.toAlbum!.title!).\n \nDo you want to have fun? 🎉">
-              <source>
-                  (albumRequest.fromUser!.username!) invited you to join his album (albumRequest.toAlbum!.title!).
-                  
-                  Do you want to have fun? 🎉</source>
-              <target>
-                  (albumRequest.fromUser!.username!) vous invite à rejoindre (albumRequest.toAlbum!.title!).
-                  
-                  Voulez-vous le rejoindre ? 🎉</target>
-              <note>No comment provided by engineer.</note>
-          </trans-unit>
-      </body>
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
+    </header>
+    <body>
+      <trans-unit id="  Photos  ">
+        <source>  Photos  </source>
+        <target>  Photos  </target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="  Story  ">
+        <source>  Story  </source>
+        <target>  Story  </target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="(T_ParseUserHelper.getCurrentUser()!.username!) invited you to join his album">
+        <source>(T_ParseUserHelper.getCurrentUser()!.username!) invited you to join his album</source>
+        <target>(T_ParseUserHelper.getCurrentUser()!.username!) vous invite à rejoindre son album</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="(T_ParseUserHelper.getCurrentUser()!.username!) sent you a friend request">
+        <source>(T_ParseUserHelper.getCurrentUser()!.username!) sent you a friend request</source>
+        <target>(T_ParseUserHelper.getCurrentUser()!.username!) vous a envoyé une requête d'amis</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="(T_User.selectedFriends.count) friend selected">
+        <source>(T_User.selectedFriends.count) friend selected</source>
+        <target>(T_User.selectedFriends.count) ami sélectionné</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="(T_User.selectedFriends.count) friends selected">
+        <source>(T_User.selectedFriends.count) friends selected</source>
+        <target>(T_User.selectedFriends.count) amis sélectionnés</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="@(user.username!) invited you to join (albumRequest.toAlbum!.title!)!">
+        <source>@(user.username!) invited you to join (albumRequest.toAlbum!.title!)!</source>
+        <target>@(user.username!) vous invite à rejoindre (albumRequest.toAlbum!.title!)!</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ADD FRIENDS">
+        <source>ADD FRIENDS</source>
+        <target>AJOUTER DES AMIS</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ADD NEW FRIENDS">
+        <source>ADD NEW FRIENDS</source>
+        <target>AJOUTER DE NOUVEAUX AMIS</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ALLOW NOTIFICATIONS">
+        <source>ALLOW NOTIFICATIONS</source>
+        <target>AUTORISER LES NOTIFICATIONS</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Accept">
+        <source>Accept</source>
+        <target>Accepter</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add by Username">
+        <source>Add by Username</source>
+        <target>Ajouter par nom d'utilisateur</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add from Address Book">
+        <source>Add from Address Book</source>
+        <target>Ajouter par le carnet d'adresse</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Album successfully created !">
+        <source>Album successfully created !</source>
+        <target>Album créé ! </target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="All your friends have already been invited   in this album ">
+        <source>All your friends have already been invited in this album </source>
+        <target>Tout vos amis ont déjà été invité à participer à cet album </target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Allow notifications">
+        <source>Allow notifications</source>
+        <target>AUTORISER LES NOTIFICATIONS</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Cancel">
+        <source>Cancel</source>
+        <target>Annuler</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Cannot Add Contact">
+        <source>Cannot Add Contact</source>
+        <target>Impossible d'ajouter le contact'</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Cannot create the album">
+        <source>Cannot create the album</source>
+        <target>Impossible de créer l'album.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Cannot sign in">
+        <source>Cannot sign in</source>
+        <target>Connexion impossible</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Change Settings">
+        <source>Change Settings</source>
+        <target>Changer les réglages</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Click to answer">
+        <source>Click to answer</source>
+        <target>Cliquez pour répondre</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create an album and share your photos!">
+        <source>Create an album and share your photos!</source>
+        <target>Créez un album et partagez vos photos !</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Creating">
+        <source>Creating</source>
+        <target>En cours de création</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Creating album ...">
+        <source>Creating album ...</source>
+        <target>Création de l'album...'</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Decline">
+        <source>Decline</source>
+        <target>Refuser</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Discover your story !">
+        <source>Discover your story !</source>
+        <target>Découvrez votre story</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Don't be ridiculous, this first name is too short 😉">
+        <source>Don't be ridiculous, this first name is too short 😉</source>
+        <target>Le prénom est trop court</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Don't be ridiculous, this last name is too short 😉">
+        <source>Don't be ridiculous, this last name is too short 😉</source>
+        <target>Le nom est trop court</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Download">
+        <source>Download</source>
+        <target>Télécharger</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="E-mail is required">
+        <source>E-mail is required</source>
+        <target>L'email est obligatoire'</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="E-mail should not be empty">
+        <source>E-mail should not be empty</source>
+        <target>L'email ne doit pas être vide'</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Error">
+        <source>Error</source>
+        <target>Erreur</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Error while testing your email">
+        <source>Error while testing your email</source>
+        <target>Erreur lors du test de votre email</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Error while testing your username">
+        <source>Error while testing your username</source>
+        <target>Erreur lors du test de votre nom d'utilisateur</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Firstname not long enough">
+        <source>Firstname not long enough</source>
+        <target>Le prénom est trop court</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Firstname should not be empty">
+        <source>Firstname should not be empty</source>
+        <target>Le prénom ne peut pas être vide</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Firstname too long">
+        <source>Firstname too long</source>
+        <target>Le prénom est trop long</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="I discovered a new awesome app! Download it on http://timeshot.co :)">
+        <source>I discovered a new awesome app! Download it on http://timeshot.co :)</source>
+        <target>J'ai découvert une nouvelle app de folie ! Télécharge là sur http://timeshot.co :)</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Invitation">
+        <source>Invitation</source>
+        <target>Invitation</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Invite some friends, it's more fun!">
+        <source>Invite some friends, it's more fun!</source>
+        <target>Invite quelques amis, c'est beaucoup plus drôle !</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Joining album">
+        <source>Joining album</source>
+        <target>Adhésion à l'album</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Let's share your first picture !">
+        <source>Let's share your first picture !</source>
+        <target>Partage ta première photo !</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Name not long enough">
+        <source>Name not long enough</source>
+        <target>Le nom est trop court</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Name should not be empty">
+        <source>Name should not be empty</source>
+        <target>Le nom ne doit pas être vide</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Name too long">
+        <source>Name too long</source>
+        <target>Le nom est trop long</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Network is not available ... ">
+        <source>Network is not available ... </source>
+        <target>Aucun réseau disponible...</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No contacts selected">
+        <source>No contacts selected</source>
+        <target>Aucun contact sélectionné</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No internet connection... Try again later">
+        <source>No internet connection... Try again later</source>
+        <target>Aucune connexion internet... Réessayez plus tard</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Nobody has been found ...">
+        <source>Nobody has been found ...</source>
+        <target>Personne n'a été trouvé'</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Nobody have been found ...">
+        <source>Nobody have been found ...</source>
+        <target>Personne n'a été trouvé</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="OK">
+        <source>OK</source>
+        <target>OK</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Oh noo ... You don't have any albums as for now ... ">
+        <source>Oh noo ... You don't have any albums as for now ... </source>
+        <target>Oh non ... Vous n'avez aucun album pour le moment ...</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Ohhh noo">
+        <source>Ohhh noo</source>
+        <target>Ohhh non</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Ok">
+        <source>Ok</source>
+        <target>Ok</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Oups!">
+        <source>Oups!</source>
+        <target>Oups!</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Password not long enough">
+        <source>Password not long enough</source>
+        <target>Le mot de passe est trop court</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Password should not be empty">
+        <source>Password should not be empty</source>
+        <target>Le mot de passe ne doit pas être vide</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Password too long">
+        <source>Password too long</source>
+        <target>Le mot de passe est trop long</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Passwords are not matching">
+        <source>Passwords are not matching</source>
+        <target>Les mots de passe ne correspondent pas</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Pick a photo from library">
+        <source>Pick a photo from library</source>
+        <target>Choisir une photo depuis la librairie</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Please check your network connection and try again !">
+        <source>Please check your network connection and try again !</source>
+        <target>Veuillez vérifier votre connexion internet et réessayer !</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Please confirm your new password">
+        <source>Please confirm your new password</source>
+        <target>Veuillez confirmer votre nouveau mot de passe</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Please enter your current password">
+        <source>Please enter your current password</source>
+        <target>Veuillez entrer votre mot de passe</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Please enter your new password">
+        <source>Please enter your new password</source>
+        <target>Veuillez entrer votre nouveau mot de passe</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Ready to discover your story !">
+        <source>Ready to discover your story !</source>
+        <target>Envie de découvrir votre story ?</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Remember the best moment of your album !">
+        <source>Remember the best moment of your album !</source>
+        <target>Souviens toi des meilleurs moments de ton album !</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Report">
+        <source>Report</source>
+        <target>Signaler</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Save error">
+        <source>Save error</source>
+        <target>Erreur lors de la sauvegarde</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Saved !">
+        <source>Saved !</source>
+        <target>Sauvegardé !</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Search a user!">
+        <source>Search a user!</source>
+        <target>Rechercher un utilisateur</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Search one of your contact!">
+        <source>Search one of your contact!</source>
+        <target>Rechercher un de vos contacts</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select some contacts to invite them!">
+        <source>Select some contacts to invite them!</source>
+        <target>Sélectionnez quelques contacts pour les inviter !</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select some friends to invite them !">
+        <source>Select some friends to invite them !</source>
+        <target>Sélectionnez quelques amis pour les inviter !</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select some friends to start !">
+        <source>Select some friends to start !</source>
+        <target>Sélectionnez quelques amis pour commencer !</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Settings">
+        <source>Settings</source>
+        <target>Réglages</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Take a photo with camera">
+        <source>Take a photo with camera</source>
+        <target>Prendre une photo avec la caméra</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The picture has been saved to your photos.">
+        <source>The picture has been saved to your photos.</source>
+        <target>La photo a été sauvegardée dans vos photos.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="There's a problem Captain">
+        <source>There's a problem Captain</source>
+        <target>Il y a un problème Capitaine !</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="This album is totally empty ... ">
+        <source>This album is totally empty ... </source>
+        <target>Cet album est complètement vide ...</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="This email is already used">
+        <source>This email is already used</source>
+        <target>Cet email est déjà utilisé</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="This username is already used">
+        <source>This username is already used</source>
+        <target>Ce nom d'utilisateur est déjà utilisé</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Try another username or invite contacts from your address book!">
+        <source>Try another username or invite contacts from your address book!</source>
+        <target>Essayez un autre nom d'utilisateur ou invitez des contacts depuis votre carnet d'adresse !</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Username and/or password incorect">
+        <source>Username and/or password incorect</source>
+        <target>Nom d'utilisateur ou mot de passe incorrect</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Username not long enough">
+        <source>Username not long enough</source>
+        <target>Nom d'utilisateur trop court</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Username should not be empty">
+        <source>Username should not be empty</source>
+        <target>Le nom d'utilisateur ne devrait pas être vide</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Username too long">
+        <source>Username too long</source>
+        <target>Le nom d'utilisateur est trop long</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Wait ...">
+        <source>Wait ...</source>
+        <target>Patientez ...</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="We're retrieving your albums">
+        <source>We're retrieving your albums</source>
+        <target>L'application charge vos albums</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="We're retrieving your friends">
+        <source>We're retrieving your friends</source>
+        <target>L'application charge vos amis</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="We're retrieving your photos">
+        <source>We're retrieving your photos</source>
+        <target>L'application charge vos photos</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You are not connected to the internet 😕. Please try again later. ">
+        <source>You are not connected to the internet 😕. Please try again later. </source>
+        <target>Vous n'êtes pas connecté à internet. Réessayez plus tard.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You can search by his full name or username.">
+        <source>You can search by his full name or username.</source>
+        <target>Vous pouvez chercher par son nom ou nom d'utilisateur</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You don't have any friends ... Please invite some friends and share your albums with them!">
+        <source>You don't have any friends ... Please invite some friends and share your albums with them!</source>
+        <target>Vous n'avez aucun amis ... Invitez-en quelques-uns et créez un album avec eux !</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You have disallowed notifications. Please go in your settings and allow notifications.">
+        <source>You have disallowed notifications. Please go in your settings and allow notifications.</source>
+        <target>Vous avez désactivé les notifications. Allez dans les réglages pour autoriser les notifications.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You have no friends yet 😟">
+        <source>You have no friends yet 😟</source>
+        <target>Vous n'avez encore aucun amis</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You have no notifications...">
+        <source>You have no notifications...</source>
+        <target>Vous n'avez aucune notification...</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You must be 13 years old at least 🎂">
+        <source>You must be 13 years old at least 🎂</source>
+        <target>Vous devez avoir au moins 13 ans</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You must give the app permission to add the contact first.">
+        <source>You must give the app permission to add the contact first.</source>
+        <target>Vous devez d'abord autoriser l'application à ajouter un contact</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You won't be able to post pictures again on that album">
+        <source>You won't be able to post pictures again on that album</source>
+        <target>Vous ne pourrez plus poster de nouvelles photos dans l'album</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your confirmation password does not match with your new password">
+        <source>Your confirmation password does not match with your new password</source>
+        <target>La confirmation du mot de passe ne correspond pas</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your current password is invalid">
+        <source>Your current password is invalid</source>
+        <target>Votre mot de passe est invalide</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your e-mail is not valid">
+        <source>Your e-mail is not valid</source>
+        <target>Votre adresse e-mail est invalide</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your email address is mandatory ✉️">
+        <source>Your email address is mandatory ✉️</source>
+        <target>L'email est obligatoire</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your email address is not valid ✉️">
+        <source>Your email address is not valid ✉️</source>
+        <target>Votre adresse email n'est pas valide</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your email address is used to identify you. No spam, we promise ❤️">
+        <source>Your email address is used to identify you. No spam, we promise ❤️</source>
+        <target>Votre adresse email est utilisée pour vous identifier. Pas de spam, c'est promis !</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your first name helps your friends to find you 😊">
+        <source>Your first name helps your friends to find you 😊</source>
+        <target>Votre prénom aide vos amis à vous retrouver</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your last name helps your friends to find you 😊">
+        <source>Your last name helps your friends to find you 😊</source>
+        <target>Votre nom aide vos amis à vous retrouver</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your password must be 8 characters at least">
+        <source>Your password must be 8 characters at least</source>
+        <target>Votre mot de passe doit contenir au moins 8 caractères</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="\n (albumRequest.fromUser!.username!) invited you to join his album (albumRequest.toAlbum!.title!).\n \nDo you want to have fun? 🎉">
+        <source>
+ (albumRequest.fromUser!.username!) invited you to join his album (albumRequest.toAlbum!.title!).
+ 
+Do you want to have fun? 🎉</source>
+        <target>
+            (albumRequest.fromUser!.username!) vous a invité à rejoindre son album (albumRequest.toAlbum!.title!).
+            
+            Prêt pour un album mémorable? 🎉</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="your story ...">
+        <source>your story ...</source>
+        <target>votre story</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+    </body>
   </file>
   <file original="TimeshotApp/Views/Base.lproj/Album.storyboard" source-language="en" datatype="plaintext" target-language="fr">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
     </header>
     <body>
       <trans-unit id="2yH-dR-kVJ.text">
@@ -737,7 +740,7 @@
   </file>
   <file original="TimeshotApp/Views/Base.lproj/Koloda.storyboard" source-language="en" datatype="plaintext" target-language="fr">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
     </header>
     <body>
       <trans-unit id="gP1-tw-JhG.segmentTitles[0]">
@@ -754,7 +757,7 @@
   </file>
   <file original="TimeshotApp/Views/Base.lproj/Login.storyboard" source-language="en" datatype="plaintext" target-language="fr">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
     </header>
     <body>
       <trans-unit id="2Jg-X8-dcw.placeholder">
@@ -856,7 +859,8 @@
         <source>Timeshot is funnier if you have some friends, to share with them.
 
 Do you want to invite people from your address book ?</source>
-        <target>Timeshot est plus drôle avec des amis. Voulez-vous inviter des contacts de votre carnet d'adressse à rejoindre Timeshot ?</target>
+        <target>Timeshot est plus drôle avec des amis.
+            Voulez-vous inviter des contacts de votre carnet d'adressse à rejoindre Timeshot ?</target>
         <note>Class = "UILabel"; text = "Timeshot is funnier if you have some friends, to share with them.\n\nDo you want to invite people from your address book ?"; ObjectID = "cFQ-ND-rx4";</note>
       </trans-unit>
       <trans-unit id="iKL-Ei-mew.placeholder">
@@ -928,7 +932,7 @@ Do you want to invite people from your address book ?</source>
   </file>
   <file original="TimeshotApp/Views/Base.lproj/Profile.storyboard" source-language="en" datatype="plaintext" target-language="fr">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
     </header>
     <body>
       <trans-unit id="1Xf-ec-09x.title">
@@ -938,7 +942,7 @@ Do you want to invite people from your address book ?</source>
       </trans-unit>
       <trans-unit id="1wM-CD-8J6.text">
         <source>First name</source>
-        <target>Prébom</target>
+        <target>Prénom</target>
         <note>Class = "UILabel"; text = "First name"; ObjectID = "1wM-CD-8J6";</note>
       </trans-unit>
       <trans-unit id="3tc-iw-Qsw.text">
@@ -1160,7 +1164,7 @@ Do you want to invite people from your address book ?</source>
   </file>
   <file original="TimeshotApp/Views/Login/Base.lproj/OnBoard.storyboard" source-language="en" datatype="plaintext" target-language="fr">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
     </header>
     <body>
       <trans-unit id="0xm-WM-CQi.normalTitle">

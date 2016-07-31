@@ -1,14 +1,95 @@
 /* No comment provided by engineer. */
+"
+ (albumRequest.fromUser!.username!) invited you to join his album (albumRequest.toAlbum!.title!).
+ 
+Do you want to have fun? 🎉" = "
+            (albumRequest.fromUser!.username!) vous a invité à rejoindre son album (albumRequest.toAlbum!.title!).
+            
+            Prêt pour un album mémorable? 🎉";
+
+/* No comment provided by engineer. */
 "  Photos  " = "  Photos  ";
 
 /* No comment provided by engineer. */
 "  Story  " = "  Story  ";
 
 /* No comment provided by engineer. */
+"(T_ParseUserHelper.getCurrentUser()!.username!) invited you to join his album" = "(T_ParseUserHelper.getCurrentUser()!.username!) vous invite à rejoindre son album";
+
+/* No comment provided by engineer. */
+"(T_ParseUserHelper.getCurrentUser()!.username!) sent you a friend request" = "(T_ParseUserHelper.getCurrentUser()!.username!) vous a envoyé une requête d'amis";
+
+/* No comment provided by engineer. */
+"(T_User.selectedFriends.count) friend selected" = "(T_User.selectedFriends.count) ami sélectionné";
+
+/* No comment provided by engineer. */
+"(T_User.selectedFriends.count) friends selected" = "(T_User.selectedFriends.count) amis sélectionnés";
+
+/* No comment provided by engineer. */
+"@(user.username!) invited you to join (albumRequest.toAlbum!.title!)!" = "@(user.username!) vous invite à rejoindre (albumRequest.toAlbum!.title!)!";
+
+/* No comment provided by engineer. */
+"ADD FRIENDS" = "AJOUTER DES AMIS";
+
+/* No comment provided by engineer. */
+"ADD NEW FRIENDS" = "AJOUTER DE NOUVEAUX AMIS";
+
+/* No comment provided by engineer. */
+"ALLOW NOTIFICATIONS" = "AUTORISER LES NOTIFICATIONS";
+
+/* No comment provided by engineer. */
+"Accept" = "Accepter";
+
+/* No comment provided by engineer. */
+"Add by Username" = "Ajouter par nom d'utilisateur";
+
+/* No comment provided by engineer. */
+"Add from Address Book" = "Ajouter par le carnet d'adresse";
+
+/* No comment provided by engineer. */
+"Album successfully created !" = "Album créé ! ";
+
+/* No comment provided by engineer. */
+"Allow notifications" = "AUTORISER LES NOTIFICATIONS";
+
+/* No comment provided by engineer. */
 "Cancel" = "Annuler";
 
 /* No comment provided by engineer. */
+"Cannot Add Contact" = "Impossible d'ajouter le contact'";
+
+/* No comment provided by engineer. */
+"Cannot create the album" = "Impossible de créer l'album.";
+
+/* No comment provided by engineer. */
 "Cannot sign in" = "Connexion impossible";
+
+/* No comment provided by engineer. */
+"Change Settings" = "Changer les réglages";
+
+/* No comment provided by engineer. */
+"Click to answer" = "Cliquez pour répondre";
+
+/* No comment provided by engineer. */
+"Create an album and share your photos!" = "Créez un album et partagez vos photos !";
+
+/* No comment provided by engineer. */
+"Creating" = "En cours de création";
+
+/* No comment provided by engineer. */
+"Creating album ..." = "Création de l'album...'";
+
+/* No comment provided by engineer. */
+"Decline" = "Refuser";
+
+/* No comment provided by engineer. */
+"Discover your story !" = "Découvrez votre story";
+
+/* No comment provided by engineer. */
+"Don't be ridiculous, this first name is too short 😉" = "Le prénom est trop court";
+
+/* No comment provided by engineer. */
+"Don't be ridiculous, this last name is too short 😉" = "Le nom est trop court";
 
 /* No comment provided by engineer. */
 "Download" = "Télécharger";
@@ -38,7 +119,19 @@
 "Firstname too long" = "Le prénom est trop long";
 
 /* No comment provided by engineer. */
+"I discovered a new awesome app! Download it on http://timeshot.co :)" = "J'ai découvert une nouvelle app de folie ! Télécharge là sur http://timeshot.co :)";
+
+/* No comment provided by engineer. */
+"Invitation" = "Invitation";
+
+/* No comment provided by engineer. */
+"Invite some friends, it's more fun!" = "Invite quelques amis, c'est beaucoup plus drôle !";
+
+/* No comment provided by engineer. */
 "Joining album" = "Adhésion à l'album";
+
+/* No comment provided by engineer. */
+"Let's share your first picture !" = "Partage ta première photo !";
 
 /* No comment provided by engineer. */
 "Name not long enough" = "Le nom est trop court";
@@ -53,16 +146,31 @@
 "Network is not available ... " = "Aucun réseau disponible...";
 
 /* No comment provided by engineer. */
+"No contacts selected" = "Aucun contact sélectionné";
+
+/* No comment provided by engineer. */
+"No internet connection... Try again later" = "Aucune connexion internet... Réessayez plus tard";
+
+/* No comment provided by engineer. */
+"Nobody has been found ..." = "Personne n'a été trouvé'";
+
+/* No comment provided by engineer. */
+"Nobody have been found ..." = "Personne n'a été trouvé";
+
+/* No comment provided by engineer. */
 "OK" = "OK";
 
 /* No comment provided by engineer. */
-"Oh noo ... You don't have any albums as for now ... " = "Oh noo ... Vous n'avez aucun album pour le moment ...";
+"Oh noo ... You don't have any albums as for now ... " = "Oh non ... Vous n'avez aucun album pour le moment ...";
 
 /* No comment provided by engineer. */
-"Ohhh noo" = "Ohhh noo";
+"Ohhh noo" = "Ohhh non";
 
 /* No comment provided by engineer. */
 "Ok" = "Ok";
+
+/* No comment provided by engineer. */
+"Oups!" = "Oups!";
 
 /* No comment provided by engineer. */
 "Password not long enough" = "Le mot de passe est trop court";
@@ -77,6 +185,27 @@
 "Passwords are not matching" = "Les mots de passe ne correspondent pas";
 
 /* No comment provided by engineer. */
+"Pick a photo from library" = "Choisir une photo depuis la librairie";
+
+/* No comment provided by engineer. */
+"Please check your network connection and try again !" = "Veuillez vérifier votre connexion internet et réessayer !";
+
+/* No comment provided by engineer. */
+"Please confirm your new password" = "Veuillez confirmer votre nouveau mot de passe";
+
+/* No comment provided by engineer. */
+"Please enter your current password" = "Veuillez entrer votre mot de passe";
+
+/* No comment provided by engineer. */
+"Please enter your new password" = "Veuillez entrer votre nouveau mot de passe";
+
+/* No comment provided by engineer. */
+"Ready to discover your story !" = "Envie de découvrir votre story ?";
+
+/* No comment provided by engineer. */
+"Remember the best moment of your album !" = "Souviens toi des meilleurs moments de ton album !";
+
+/* No comment provided by engineer. */
 "Report" = "Signaler";
 
 /* No comment provided by engineer. */
@@ -86,10 +215,31 @@
 "Saved !" = "Sauvegardé !";
 
 /* No comment provided by engineer. */
+"Search a user!" = "Rechercher un utilisateur";
+
+/* No comment provided by engineer. */
+"Search one of your contact!" = "Rechercher un de vos contacts";
+
+/* No comment provided by engineer. */
+"Select some contacts to invite them!" = "Sélectionnez quelques contacts pour les inviter !";
+
+/* No comment provided by engineer. */
+"Select some friends to invite them !" = "Sélectionnez quelques amis pour les inviter !";
+
+/* No comment provided by engineer. */
+"Select some friends to start !" = "Sélectionnez quelques amis pour commencer !";
+
+/* No comment provided by engineer. */
+"Settings" = "Réglages";
+
+/* No comment provided by engineer. */
+"Take a photo with camera" = "Prendre une photo avec la caméra";
+
+/* No comment provided by engineer. */
 "The picture has been saved to your photos." = "La photo a été sauvegardée dans vos photos.";
 
 /* No comment provided by engineer. */
-"There's a problem Captain" = "Il y a un problème Captain !";
+"There's a problem Captain" = "Il y a un problème Capitaine !";
 
 /* No comment provided by engineer. */
 "This album is totally empty ... " = "Cet album est complètement vide ...";
@@ -101,6 +251,9 @@
 "This username is already used" = "Ce nom d'utilisateur est déjà utilisé";
 
 /* No comment provided by engineer. */
+"Try another username or invite contacts from your address book!" = "Essayez un autre nom d'utilisateur ou invitez des contacts depuis votre carnet d'adresse !";
+
+/* No comment provided by engineer. */
 "Username and/or password incorect" = "Nom d'utilisateur ou mot de passe incorrect";
 
 /* No comment provided by engineer. */
@@ -110,7 +263,7 @@
 "Username should not be empty" = "Le nom d'utilisateur ne devrait pas être vide";
 
 /* No comment provided by engineer. */
-"Username too long" = "Le nom d'utilisateur est trop long'";
+"Username too long" = "Le nom d'utilisateur est trop long";
 
 /* No comment provided by engineer. */
 "Wait ..." = "Patientez ...";
@@ -125,5 +278,59 @@
 "We're retrieving your photos" = "L'application charge vos photos";
 
 /* No comment provided by engineer. */
+"You are not connected to the internet 😕. Please try again later. " = "Vous n'êtes pas connecté à internet. Réessayez plus tard.";
+
+/* No comment provided by engineer. */
+"You can search by his full name or username." = "Vous pouvez chercher par son nom ou nom d'utilisateur";
+
+/* No comment provided by engineer. */
+"You don't have any friends ... Please invite some friends and share your albums with them!" = "Vous n'avez aucun amis ... Invitez-en quelques-uns et créez un album avec eux !";
+
+/* No comment provided by engineer. */
+"You have disallowed notifications. Please go in your settings and allow notifications." = "Vous avez désactivé les notifications. Allez dans les réglages pour autoriser les notifications.";
+
+/* No comment provided by engineer. */
+"You have no friends yet 😟" = "Vous n'avez encore aucun amis";
+
+/* No comment provided by engineer. */
+"You have no notifications..." = "Vous n'avez aucune notification...";
+
+/* No comment provided by engineer. */
+"You must be 13 years old at least 🎂" = "Vous devez avoir au moins 13 ans";
+
+/* No comment provided by engineer. */
+"You must give the app permission to add the contact first." = "Vous devez d'abord autoriser l'application à ajouter un contact";
+
+/* No comment provided by engineer. */
+"You won't be able to post pictures again on that album" = "Vous ne pourrez plus poster de nouvelles photos dans l'album";
+
+/* No comment provided by engineer. */
+"Your confirmation password does not match with your new password" = "La confirmation du mot de passe ne correspond pas";
+
+/* No comment provided by engineer. */
+"Your current password is invalid" = "Votre mot de passe est invalide";
+
+/* No comment provided by engineer. */
 "Your e-mail is not valid" = "Votre adresse e-mail est invalide";
+
+/* No comment provided by engineer. */
+"Your email address is mandatory ✉️" = "L'email est obligatoire";
+
+/* No comment provided by engineer. */
+"Your email address is not valid ✉️" = "Votre adresse email n'est pas valide";
+
+/* No comment provided by engineer. */
+"Your email address is used to identify you. No spam, we promise ❤️" = "Votre adresse email est utilisée pour vous identifier. Pas de spam, c'est promis !";
+
+/* No comment provided by engineer. */
+"Your first name helps your friends to find you 😊" = "Votre prénom aide vos amis à vous retrouver";
+
+/* No comment provided by engineer. */
+"Your last name helps your friends to find you 😊" = "Votre nom aide vos amis à vous retrouver";
+
+/* No comment provided by engineer. */
+"Your password must be 8 characters at least" = "Votre mot de passe doit contenir au moins 8 caractères";
+
+/* No comment provided by engineer. */
+"your story ..." = "votre story";
 
