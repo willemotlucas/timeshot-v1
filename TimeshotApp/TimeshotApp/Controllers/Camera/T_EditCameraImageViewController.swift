@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Armchair
 
 class T_EditCameraImageViewController: UIViewController {
     
@@ -30,7 +31,9 @@ class T_EditCameraImageViewController: UIViewController {
         
         buttonNext.hidden = true
         buttonCancel.hidden = true
-
+        
+        Armchair.userDidSignificantEvent(true)
+        
         self.post.addPictureToPost(T_CameraHelper.screenShot(self.view))
         T_NetworkManager.sharedInstance.uploadPost(self.post, image: T_CameraHelper.screenShot(self.view))
                 

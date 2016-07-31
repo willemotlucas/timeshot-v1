@@ -2,13 +2,13 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="TimeshotApp/Base.lproj/LaunchScreen.storyboard" source-language="en" datatype="plaintext" target-language="fr">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
     </header>
     <body/>
   </file>
   <file original="TimeshotApp/Base.lproj/Main.storyboard" source-language="en" datatype="plaintext" target-language="fr">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
     </header>
     <body>
       <trans-unit id="Dgl-wx-G6S.normalTitle">
@@ -40,7 +40,7 @@
   </file>
   <file original="TimeshotApp/Info.plist" source-language="en" datatype="plaintext" target-language="fr">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
     </header>
     <body>
       <trans-unit id="CFBundleName">
@@ -55,7 +55,7 @@
   </file>
   <file original="TimeshotApp/Localizable.strings" source-language="en" datatype="plaintext" target-language="fr">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
     </header>
     <body>
       <trans-unit id="  Photos  ">
@@ -129,8 +129,7 @@
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All your friends have already been invited   in this album ">
-        <source>All your friends have already been invited in this album </source>
-        <target>Tout vos amis ont déjà été invité à participer à cet album </target>
+        <source>All your friends have already been invited   in this album </source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Allow notifications">
@@ -248,6 +247,11 @@
         <target>Le prénom est trop long</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Friends">
+        <source>Friends</source>
+        <target>Amis</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="I discovered a new awesome app! Download it on http://timeshot.co :)">
         <source>I discovered a new awesome app! Download it on http://timeshot.co :)</source>
         <target>J'ai découvert une nouvelle app de folie ! Télécharge là sur http://timeshot.co :)</target>
@@ -356,6 +360,11 @@
       <trans-unit id="Passwords are not matching">
         <source>Passwords are not matching</source>
         <target>Les mots de passe ne correspondent pas</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Pending requests">
+        <source>Pending requests</source>
+        <target>Demandes en attente</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Pick a photo from library">
@@ -623,7 +632,7 @@ Do you want to have fun? 🎉</source>
   </file>
   <file original="TimeshotApp/Views/Base.lproj/Album.storyboard" source-language="en" datatype="plaintext" target-language="fr">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
     </header>
     <body>
       <trans-unit id="2yH-dR-kVJ.text">
@@ -740,7 +749,7 @@ Do you want to have fun? 🎉</source>
   </file>
   <file original="TimeshotApp/Views/Base.lproj/Koloda.storyboard" source-language="en" datatype="plaintext" target-language="fr">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
     </header>
     <body>
       <trans-unit id="gP1-tw-JhG.segmentTitles[0]">
@@ -757,7 +766,7 @@ Do you want to have fun? 🎉</source>
   </file>
   <file original="TimeshotApp/Views/Base.lproj/Login.storyboard" source-language="en" datatype="plaintext" target-language="fr">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
     </header>
     <body>
       <trans-unit id="2Jg-X8-dcw.placeholder">
@@ -932,7 +941,7 @@ Do you want to invite people from your address book ?</source>
   </file>
   <file original="TimeshotApp/Views/Base.lproj/Profile.storyboard" source-language="en" datatype="plaintext" target-language="fr">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
     </header>
     <body>
       <trans-unit id="1Xf-ec-09x.title">
@@ -1164,7 +1173,7 @@ Do you want to invite people from your address book ?</source>
   </file>
   <file original="TimeshotApp/Views/Login/Base.lproj/OnBoard.storyboard" source-language="en" datatype="plaintext" target-language="fr">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
     </header>
     <body>
       <trans-unit id="0xm-WM-CQi.normalTitle">

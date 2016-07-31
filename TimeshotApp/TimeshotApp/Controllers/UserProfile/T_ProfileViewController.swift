@@ -42,7 +42,7 @@ class T_ProfileViewController: UIViewController {
     
     var friends: [T_User] = []
     var pendingRequests: [T_FriendRequest] = []
-    var sectionTitles = ["Pending requests", "Friends"]
+    var sectionTitles = [NSLocalizedString("Pending requests", comment: ""), NSLocalizedString("Friends", comment: "")]
     
     var albumRequests: [T_AlbumRequest] = []
     
