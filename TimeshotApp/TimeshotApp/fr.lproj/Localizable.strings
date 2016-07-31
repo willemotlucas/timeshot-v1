@@ -119,6 +119,9 @@ Do you want to have fun? 🎉" = "
 "Firstname too long" = "Le prénom est trop long";
 
 /* No comment provided by engineer. */
+"Friends" = "Amis";
+
+/* No comment provided by engineer. */
 "I discovered a new awesome app! Download it on http://timeshot.co :)" = "J'ai découvert une nouvelle app de folie ! Télécharge là sur http://timeshot.co :)";
 
 /* No comment provided by engineer. */
@@ -183,6 +186,9 @@ Do you want to have fun? 🎉" = "
 
 /* No comment provided by engineer. */
 "Passwords are not matching" = "Les mots de passe ne correspondent pas";
+
+/* No comment provided by engineer. */
+"Pending requests" = "Demandes en attente";
 
 /* No comment provided by engineer. */
 "Pick a photo from library" = "Choisir une photo depuis la librairie";
