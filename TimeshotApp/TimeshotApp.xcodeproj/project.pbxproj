@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		5D1D921A1CBA4D390085B70C /* T_EmailEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1D92191CBA4D390085B70C /* T_EmailEditionViewController.swift */; };
+		5D5CB5321D4E2B1D002322C1 /* T_CustomWalkthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5CB5311D4E2B1D002322C1 /* T_CustomWalkthroughView.swift */; };
+		5D5CB5331D4E3132002322C1 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D5CB5351D4E3132002322C1 /* Login.storyboard */; };
+		5D5CB5361D4E3137002322C1 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D5CB5381D4E3137002322C1 /* Profile.storyboard */; };
+		5D5CB5391D4E313D002322C1 /* Album.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D5CB53B1D4E313D002322C1 /* Album.storyboard */; };
+		5D5CB53C1D4E3143002322C1 /* Koloda.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D5CB53E1D4E3143002322C1 /* Koloda.storyboard */; };
+		5D5CB53F1D4E3149002322C1 /* OnBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D5CB5411D4E3149002322C1 /* OnBoard.storyboard */; };
 		5D64CA751CB96928005C6E43 /* T_FirstNameEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64CA741CB96928005C6E43 /* T_FirstNameEditionViewController.swift */; };
 		5D64CA771CB9806E005C6E43 /* T_LastNameEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64CA761CB9806E005C6E43 /* T_LastNameEditionViewController.swift */; };
 		5D64CA791CB986C2005C6E43 /* T_BirthdayEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64CA781CB986C2005C6E43 /* T_BirthdayEditionViewController.swift */; };
@@ -47,11 +53,6 @@
 		7D2420021CB6E20200F6548B /* T_StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2420011CB6E20200F6548B /* T_StoryViewController.swift */; };
 		7D2F539C1CB65DAB00AB9995 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D8699271C8F4A9D003BC1DC /* LaunchScreen.storyboard */; };
 		7D2F539E1CB67D8100AB9995 /* T_AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F539D1CB67D8100AB9995 /* T_AlbumViewController.swift */; };
-		7D2F53A71CB67D9000AB9995 /* T_AddFriendAlbumLiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F53A11CB67D9000AB9995 /* T_AddFriendAlbumLiveTableViewCell.swift */; };
-		7D2F53A81CB67D9000AB9995 /* T_AddFriendAlbumLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F53A21CB67D9000AB9995 /* T_AddFriendAlbumLiveViewController.swift */; };
-		7D2F53A91CB67D9000AB9995 /* T_AlbumLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F53A31CB67D9000AB9995 /* T_AlbumLiveViewController.swift */; };
-		7D2F53AA1CB67D9000AB9995 /* T_FriendsAlbumLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F53A41CB67D9000AB9995 /* T_FriendsAlbumLiveViewController.swift */; };
-		7D2F53AC1CB67D9000AB9995 /* T_PhotosAlbumLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F53A61CB67D9000AB9995 /* T_PhotosAlbumLiveViewController.swift */; };
 		7D30378C1CC7CB2E00D522E0 /* T_FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D30378B1CC7CB2E00D522E0 /* T_FriendsTableViewCell.swift */; };
 		7D30378E1CC7CBD900D522E0 /* T_FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D30378D1CC7CBD900D522E0 /* T_FriendsViewController.swift */; };
 		7D7FA8471CDFD34D003F70E1 /* T_AddFriendToAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7FA8461CDFD34D003F70E1 /* T_AddFriendToAlbumViewController.swift */; };
@@ -74,16 +75,12 @@
 		8A0526691D05D0A70065E217 /* T_OnboardContenairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0526671D05D0A70065E217 /* T_OnboardContenairViewController.swift */; };
 		8A6C38201CE0B80D0044A665 /* T_Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6C381F1CE0B80D0044A665 /* T_Vote.swift */; };
 		8A6C38221CE0BA3F0044A665 /* T_ParseVoteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6C38211CE0BA3F0044A665 /* T_ParseVoteHelper.swift */; };
-		8A6C38241CE0DBE70044A665 /* Koloda.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A6C38231CE0DBE70044A665 /* Koloda.storyboard */; };
 		8A6D85491CF9B24300DA9EEE /* T_LoginHomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6D85481CF9B24300DA9EEE /* T_LoginHomePageViewController.swift */; };
 		8A6F88C21CD6779300060C48 /* T_AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F88C11CD6779300060C48 /* T_AlertHelper.swift */; };
 		8A6F88C41CD69CB600060C48 /* T_SignUpContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F88C31CD69CB600060C48 /* T_SignUpContactViewController.swift */; };
-		8A76149E1CBEA8BA009CE926 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A76149D1CBEA8BA009CE926 /* Login.storyboard */; };
-		8A9AB6D91D0454DB006AA6EF /* OnBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A9AB6D81D0454DB006AA6EF /* OnBoard.storyboard */; };
 		8A9BE2071CD0FD8F0078924B /* T_ValidatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9BE2061CD0FD8F0078924B /* T_ValidatorHelper.swift */; };
 		8AB0F1C41CBFC71300605525 /* T_SignUpUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB0F1C31CBFC71300605525 /* T_SignUpUsernameViewController.swift */; };
 		8AB0F1C61CBFC7C300605525 /* T_SignUpPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB0F1C51CBFC7C300605525 /* T_SignUpPasswordViewController.swift */; };
-		8AE3B3341CE3709400734F7F /* T_KolodaBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE3B3331CE3709400734F7F /* T_KolodaBanner.swift */; };
 		8AE3B3381CE482A500734F7F /* KolodaBanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3B3371CE482A500734F7F /* KolodaBanner.xib */; };
 		8AE6C1571D05DF5600A6E26B /* T_PageTwoOnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE6C1561D05DF5600A6E26B /* T_PageTwoOnboardViewController.swift */; };
 		8AE6C1591D05DF6900A6E26B /* T_PageThreeOnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE6C1581D05DF6900A6E26B /* T_PageThreeOnboardViewController.swift */; };
@@ -103,8 +100,6 @@
 		B43C0E8F1CABF4E900EF51E9 /* T_CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C0E8B1CABF4E900EF51E9 /* T_CameraViewController.swift */; };
 		B43C0E901CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C0E8C1CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift */; };
 		B43C0E921CABF4E900EF51E9 /* T_EditCameraImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C0E8E1CABF4E900EF51E9 /* T_EditCameraImageViewController.swift */; };
-		B45977071CAAE7CA00D57BED /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B741C9ABAC500135920 /* Profile.storyboard */; };
-		B46B2B771C9ABADA00135920 /* Album.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46B2B761C9ABADA00135920 /* Album.storyboard */; };
 		B49D06421CDFD68E00D3F118 /* T_NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49D06411CDFD68E00D3F118 /* T_NetworkManager.swift */; };
 		B4CCCC2E1D1AE06500D01086 /* T_MultiAlbumStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CCCC2D1D1AE06500D01086 /* T_MultiAlbumStatus.swift */; };
 		B4CCCC301D1AE55C00D01086 /* T_AlbumButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CCCC2F1D1AE55C00D01086 /* T_AlbumButton.swift */; };
@@ -123,6 +118,12 @@
 		4770CD7F4BA867BF6C3AA239 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F9E238D3F9C0AE128133098 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D1D92191CBA4D390085B70C /* T_EmailEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_EmailEditionViewController.swift; sourceTree = "<group>"; };
+		5D5CB5311D4E2B1D002322C1 /* T_CustomWalkthroughView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_CustomWalkthroughView.swift; sourceTree = "<group>"; };
+		5D5CB5341D4E3132002322C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		5D5CB5371D4E3137002322C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
+		5D5CB53A1D4E313D002322C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Album.storyboard; sourceTree = "<group>"; };
+		5D5CB53D1D4E3143002322C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Koloda.storyboard; sourceTree = "<group>"; };
+		5D5CB5401D4E3149002322C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OnBoard.storyboard; sourceTree = "<group>"; };
 		5D64CA741CB96928005C6E43 /* T_FirstNameEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FirstNameEditionViewController.swift; sourceTree = "<group>"; };
 		5D64CA761CB9806E005C6E43 /* T_LastNameEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_LastNameEditionViewController.swift; sourceTree = "<group>"; };
 		5D64CA781CB986C2005C6E43 /* T_BirthdayEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_BirthdayEditionViewController.swift; sourceTree = "<group>"; };
@@ -165,11 +166,6 @@
 		7D241FFE1CB6D48100F6548B /* T_PhotosCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PhotosCollectionViewController.swift; sourceTree = "<group>"; };
 		7D2420011CB6E20200F6548B /* T_StoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_StoryViewController.swift; sourceTree = "<group>"; };
 		7D2F539D1CB67D8100AB9995 /* T_AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumViewController.swift; sourceTree = "<group>"; };
-		7D2F53A11CB67D9000AB9995 /* T_AddFriendAlbumLiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AddFriendAlbumLiveTableViewCell.swift; sourceTree = "<group>"; };
-		7D2F53A21CB67D9000AB9995 /* T_AddFriendAlbumLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AddFriendAlbumLiveViewController.swift; sourceTree = "<group>"; };
-		7D2F53A31CB67D9000AB9995 /* T_AlbumLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumLiveViewController.swift; sourceTree = "<group>"; };
-		7D2F53A41CB67D9000AB9995 /* T_FriendsAlbumLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendsAlbumLiveViewController.swift; sourceTree = "<group>"; };
-		7D2F53A61CB67D9000AB9995 /* T_PhotosAlbumLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PhotosAlbumLiveViewController.swift; sourceTree = "<group>"; };
 		7D30378B1CC7CB2E00D522E0 /* T_FriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		7D30378D1CC7CBD900D522E0 /* T_FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_FriendsViewController.swift; sourceTree = "<group>"; };
 		7D7FA8461CDFD34D003F70E1 /* T_AddFriendToAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AddFriendToAlbumViewController.swift; sourceTree = "<group>"; };
@@ -195,16 +191,12 @@
 		8A0526671D05D0A70065E217 /* T_OnboardContenairViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_OnboardContenairViewController.swift; sourceTree = "<group>"; };
 		8A6C381F1CE0B80D0044A665 /* T_Vote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_Vote.swift; sourceTree = "<group>"; };
 		8A6C38211CE0BA3F0044A665 /* T_ParseVoteHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ParseVoteHelper.swift; sourceTree = "<group>"; };
-		8A6C38231CE0DBE70044A665 /* Koloda.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Koloda.storyboard; sourceTree = "<group>"; };
 		8A6D85481CF9B24300DA9EEE /* T_LoginHomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_LoginHomePageViewController.swift; sourceTree = "<group>"; };
 		8A6F88C11CD6779300060C48 /* T_AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlertHelper.swift; sourceTree = "<group>"; };
 		8A6F88C31CD69CB600060C48 /* T_SignUpContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpContactViewController.swift; sourceTree = "<group>"; };
-		8A76149D1CBEA8BA009CE926 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		8A9AB6D81D0454DB006AA6EF /* OnBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoard.storyboard; sourceTree = "<group>"; };
 		8A9BE2061CD0FD8F0078924B /* T_ValidatorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ValidatorHelper.swift; sourceTree = "<group>"; };
 		8AB0F1C31CBFC71300605525 /* T_SignUpUsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpUsernameViewController.swift; sourceTree = "<group>"; };
 		8AB0F1C51CBFC7C300605525 /* T_SignUpPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_SignUpPasswordViewController.swift; sourceTree = "<group>"; };
-		8AE3B3331CE3709400734F7F /* T_KolodaBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_KolodaBanner.swift; sourceTree = "<group>"; };
 		8AE3B3371CE482A500734F7F /* KolodaBanner.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KolodaBanner.xib; sourceTree = "<group>"; };
 		8AE6C1561D05DF5600A6E26B /* T_PageTwoOnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PageTwoOnboardViewController.swift; sourceTree = "<group>"; };
 		8AE6C1581D05DF6900A6E26B /* T_PageThreeOnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_PageThreeOnboardViewController.swift; sourceTree = "<group>"; };
@@ -223,8 +215,6 @@
 		B43C0E8B1CABF4E900EF51E9 /* T_CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_CameraViewController.swift; sourceTree = "<group>"; };
 		B43C0E8C1CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_ChooseContactsAlbumCreationViewController.swift; sourceTree = "<group>"; };
 		B43C0E8E1CABF4E900EF51E9 /* T_EditCameraImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_EditCameraImageViewController.swift; sourceTree = "<group>"; };
-		B46B2B741C9ABAC500135920 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		B46B2B761C9ABADA00135920 /* Album.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Album.storyboard; sourceTree = "<group>"; };
 		B49D06411CDFD68E00D3F118 /* T_NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_NetworkManager.swift; sourceTree = "<group>"; };
 		B4CCCC2D1D1AE06500D01086 /* T_MultiAlbumStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_MultiAlbumStatus.swift; sourceTree = "<group>"; };
 		B4CCCC2F1D1AE55C00D01086 /* T_AlbumButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T_AlbumButton.swift; sourceTree = "<group>"; };
@@ -312,6 +302,7 @@
 		5DC361D81CBAFBE900B00064 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				5D5CB5311D4E2B1D002322C1 /* T_CustomWalkthroughView.swift */,
 				5DC361D91CBAFBE900B00064 /* T_CameraHelper.swift */,
 				5DC361DA1CBAFBE900B00064 /* T_ContactsHelper.swift */,
 				5DC361DB1CBAFBE900B00064 /* T_DesignHelper.swift */,
@@ -336,27 +327,6 @@
 				7D241FF81CB6D47500F6548B /* T_StoryCollectionViewCell.swift */,
 				7D30378B1CC7CB2E00D522E0 /* T_FriendsTableViewCell.swift */,
 				7D7FA8481CDFD50D003F70E1 /* T_AddToAlbumTableViewCell.swift */,
-			);
-			path = CustomTableViewCell;
-			sourceTree = "<group>";
-		};
-		7D2F539F1CB67D9000AB9995 /* AlbumLive */ = {
-			isa = PBXGroup;
-			children = (
-				7D2F53A01CB67D9000AB9995 /* CustomTableViewCell */,
-				7D2F53A21CB67D9000AB9995 /* T_AddFriendAlbumLiveViewController.swift */,
-				7D2F53A31CB67D9000AB9995 /* T_AlbumLiveViewController.swift */,
-				7D2F53A41CB67D9000AB9995 /* T_FriendsAlbumLiveViewController.swift */,
-				7D2F53A61CB67D9000AB9995 /* T_PhotosAlbumLiveViewController.swift */,
-				8AE3B3331CE3709400734F7F /* T_KolodaBanner.swift */,
-			);
-			path = AlbumLive;
-			sourceTree = "<group>";
-		};
-		7D2F53A01CB67D9000AB9995 /* CustomTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				7D2F53A11CB67D9000AB9995 /* T_AddFriendAlbumLiveTableViewCell.swift */,
 			);
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
@@ -465,7 +435,7 @@
 		8A9AB6D11D045470006AA6EF /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				8A9AB6D81D0454DB006AA6EF /* OnBoard.storyboard */,
+				5D5CB5411D4E3149002322C1 /* OnBoard.storyboard */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -515,7 +485,6 @@
 				8AFA26771CBF948100C09E17 /* Login */,
 				5D9FD1C21CBAE69A002204E8 /* T_HomePageViewController.swift */,
 				7D2F53AD1CB67D9D00AB9995 /* AlbumFinished */,
-				7D2F539F1CB67D9000AB9995 /* AlbumLive */,
 				B43C0E881CABF43D00EF51E9 /* Camera */,
 				5DB5A0201CA1AD1000AADC9F /* UserProfile */,
 				7DD0F9AA1C9DC68D00A856B9 /* Album */,
@@ -538,11 +507,11 @@
 			isa = PBXGroup;
 			children = (
 				8A9AB6D11D045470006AA6EF /* Login */,
-				8A76149D1CBEA8BA009CE926 /* Login.storyboard */,
-				B46B2B741C9ABAC500135920 /* Profile.storyboard */,
-				B46B2B761C9ABADA00135920 /* Album.storyboard */,
+				5D5CB5351D4E3132002322C1 /* Login.storyboard */,
+				5D5CB5381D4E3137002322C1 /* Profile.storyboard */,
+				5D5CB53B1D4E313D002322C1 /* Album.storyboard */,
 				7D8699221C8F4A9D003BC1DC /* Main.storyboard */,
-				8A6C38231CE0DBE70044A665 /* Koloda.storyboard */,
+				5D5CB53E1D4E3143002322C1 /* Koloda.storyboard */,
 				8AE3B3371CE482A500734F7F /* KolodaBanner.xib */,
 			);
 			path = Views;
@@ -671,19 +640,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B45977071CAAE7CA00D57BED /* Profile.storyboard in Resources */,
+				5D5CB5361D4E3137002322C1 /* Profile.storyboard in Resources */,
 				8AE3B3381CE482A500734F7F /* KolodaBanner.xib in Resources */,
 				7D2F539C1CB65DAB00AB9995 /* LaunchScreen.storyboard in Resources */,
 				7DD0F9B61C9EA0FB00A856B9 /* soiree.jpg in Resources */,
-				8A6C38241CE0DBE70044A665 /* Koloda.storyboard in Resources */,
+				5D5CB53C1D4E3143002322C1 /* Koloda.storyboard in Resources */,
 				7DD0F9B41C9EA0FB00A856B9 /* festival.jpg in Resources */,
 				7DD0F9B71C9EA0FB00A856B9 /* voyage.jpg in Resources */,
 				7DD0F9B51C9EA0FB00A856B9 /* mariage.jpg in Resources */,
-				8A9AB6D91D0454DB006AA6EF /* OnBoard.storyboard in Resources */,
+				5D5CB53F1D4E3149002322C1 /* OnBoard.storyboard in Resources */,
 				7D8699261C8F4A9D003BC1DC /* Assets.xcassets in Resources */,
 				7D8699241C8F4A9D003BC1DC /* Main.storyboard in Resources */,
-				8A76149E1CBEA8BA009CE926 /* Login.storyboard in Resources */,
-				B46B2B771C9ABADA00135920 /* Album.storyboard in Resources */,
+				5D5CB5331D4E3132002322C1 /* Login.storyboard in Resources */,
+				5D5CB5391D4E313D002322C1 /* Album.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +720,7 @@
 				5DE8FFF11CA325B1006BEBAE /* T_ContactTableViewCell.swift in Sources */,
 				8A6F88C21CD6779300060C48 /* T_AlertHelper.swift in Sources */,
 				7D7FA8471CDFD34D003F70E1 /* T_AddFriendToAlbumViewController.swift in Sources */,
+				5D5CB5321D4E2B1D002322C1 /* T_CustomWalkthroughView.swift in Sources */,
 				5D9FD1C31CBAE69A002204E8 /* T_HomePageViewController.swift in Sources */,
 				7DD0F9AE1C9DC6D700A856B9 /* T_AlbumFinishTableViewCell.swift in Sources */,
 				8AB0F1C41CBFC71300605525 /* T_SignUpUsernameViewController.swift in Sources */,
@@ -796,20 +766,15 @@
 				B41796821CE28E6B00DC35A8 /* SNSticker.swift in Sources */,
 				8AE6C1591D05DF6900A6E26B /* T_PageThreeOnboardViewController.swift in Sources */,
 				5D8638921CB8EDAA005CBC90 /* T_SearchUserTableViewCell.swift in Sources */,
-				7D2F53AC1CB67D9000AB9995 /* T_PhotosAlbumLiveViewController.swift in Sources */,
 				B43C0E901CABF4E900EF51E9 /* T_ChooseContactsAlbumCreationViewController.swift in Sources */,
 				B4CCCC321D1AE5E300D01086 /* T_ModalView.swift in Sources */,
 				5DC361E01CBAFBE900B00064 /* T_ParseUserHelper.swift in Sources */,
-				7D2F53A91CB67D9000AB9995 /* T_AlbumLiveViewController.swift in Sources */,
 				5DB5A02B1CA1AD1000AADC9F /* T_SettingsViewController.swift in Sources */,
-				7D2F53A71CB67D9000AB9995 /* T_AddFriendAlbumLiveTableViewCell.swift in Sources */,
 				8AFA267D1CBF94C900C09E17 /* T_SignUpInvitePeopleViewController.swift in Sources */,
 				8AF8FDEC1D0A161B00094462 /* T_AlbumRequestNotificationsTableViewCell.swift in Sources */,
 				8A6C38201CE0B80D0044A665 /* T_Vote.swift in Sources */,
 				B4EA9DD21CB52DE3003F5A75 /* T_User.swift in Sources */,
-				7D2F53A81CB67D9000AB9995 /* T_AddFriendAlbumLiveViewController.swift in Sources */,
 				7D30378E1CC7CBD900D522E0 /* T_FriendsViewController.swift in Sources */,
-				8AE3B3341CE3709400734F7F /* T_KolodaBanner.swift in Sources */,
 				B43C0E921CABF4E900EF51E9 /* T_EditCameraImageViewController.swift in Sources */,
 				5DB5A0351CA2879B00AADC9F /* T_SearchContactViewController.swift in Sources */,
 				5DC361E41CBAFBE900B00064 /* T_DesignHelper.swift in Sources */,
@@ -832,7 +797,6 @@
 				8A0526691D05D0A70065E217 /* T_OnboardContenairViewController.swift in Sources */,
 				7D241FF41CB6D39D00F6548B /* T_SliderViewController.swift in Sources */,
 				7D241FFB1CB6D47500F6548B /* T_PhotoCollectionViewCell.swift in Sources */,
-				7D2F53AA1CB67D9000AB9995 /* T_FriendsAlbumLiveViewController.swift in Sources */,
 				7D241FFF1CB6D48100F6548B /* T_AlbumFinishedViewController.swift in Sources */,
 				7DC8887E1CDB26CD001E552D /* T_SliderImageView.swift in Sources */,
 				8AFA26791CBF949200C09E17 /* T_LoginViewController.swift in Sources */,
@@ -842,6 +806,46 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		5D5CB5351D4E3132002322C1 /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D5CB5341D4E3132002322C1 /* Base */,
+			);
+			name = Login.storyboard;
+			sourceTree = "<group>";
+		};
+		5D5CB5381D4E3137002322C1 /* Profile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D5CB5371D4E3137002322C1 /* Base */,
+			);
+			name = Profile.storyboard;
+			sourceTree = "<group>";
+		};
+		5D5CB53B1D4E313D002322C1 /* Album.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D5CB53A1D4E313D002322C1 /* Base */,
+			);
+			name = Album.storyboard;
+			sourceTree = "<group>";
+		};
+		5D5CB53E1D4E3143002322C1 /* Koloda.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D5CB53D1D4E3143002322C1 /* Base */,
+			);
+			name = Koloda.storyboard;
+			sourceTree = "<group>";
+		};
+		5D5CB5411D4E3149002322C1 /* OnBoard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D5CB5401D4E3149002322C1 /* Base */,
+			);
+			name = OnBoard.storyboard;
+			sourceTree = "<group>";
+		};
 		7D8699221C8F4A9D003BC1DC /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

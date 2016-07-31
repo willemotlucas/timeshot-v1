@@ -1,0 +1,1213 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="TimeshotApp/Base.lproj/LaunchScreen.storyboard" source-language="en" datatype="plaintext" target-language="fr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
+    </header>
+    <body/>
+  </file>
+  <file original="TimeshotApp/Base.lproj/Main.storyboard" source-language="en" datatype="plaintext" target-language="fr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
+    </header>
+    <body>
+      <trans-unit id="Dgl-wx-G6S.normalTitle">
+        <source>CREATE ALBUM</source>
+        <note>Class = "UIButton"; normalTitle = "CREATE ALBUM"; ObjectID = "Dgl-wx-G6S";</note>
+      </trans-unit>
+      <trans-unit id="LSD-2Q-hGZ.title">
+        <source>Invite friends</source>
+        <note>Class = "UINavigationItem"; title = "Invite friends"; ObjectID = "LSD-2Q-hGZ";</note>
+      </trans-unit>
+      <trans-unit id="T6O-Gk-IHd.title">
+        <source>Back</source>
+        <note>Class = "UIBarButtonItem"; title = "Back"; ObjectID = "T6O-Gk-IHd";</note>
+      </trans-unit>
+      <trans-unit id="ldH-fI-IaR.normalTitle">
+        <source>INVITE FRIENDS</source>
+        <note>Class = "UIButton"; normalTitle = "INVITE FRIENDS"; ObjectID = "ldH-fI-IaR";</note>
+      </trans-unit>
+      <trans-unit id="mqY-Sq-bPr.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "mqY-Sq-bPr";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="TimeshotApp/Base.lproj/Main.storyboard" source-language="en" datatype="plaintext" target-language="fr">
+      <header>
+          <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
+      </header>
+      <body>
+          <trans-unit id="Dgl-wx-G6S.normalTitle">
+              <source>CREATE ALBUM</source>
+              <target>CREER UN ALBUM</target>
+              <note>Class = "UIButton"; normalTitle = "CREATE ALBUM"; ObjectID = "Dgl-wx-G6S";</note>
+          </trans-unit>
+          <trans-unit id="LSD-2Q-hGZ.title">
+              <source>Invite friends</source>
+              <target>Inviter des amis</target>
+              <note>Class = "UINavigationItem"; title = "Invite friends"; ObjectID = "LSD-2Q-hGZ";</note>
+          </trans-unit>
+          <trans-unit id="T6O-Gk-IHd.title">
+              <source>Back</source>
+              <target>Retour</target>
+              <note>Class = "UIBarButtonItem"; title = "Back"; ObjectID = "T6O-Gk-IHd";</note>
+          </trans-unit>
+          <trans-unit id="ldH-fI-IaR.normalTitle">
+              <source>INVITE FRIENDS</source>
+              <target>INVITER DES AMIS</target>
+              <note>Class = "UIButton"; normalTitle = "INVITE FRIENDS"; ObjectID = "ldH-fI-IaR";</note>
+          </trans-unit>
+          <trans-unit id="mqY-Sq-bPr.text">
+              <source>Label</source>
+              <target>Label</target>
+              <note>Class = "UILabel"; text = "Label"; ObjectID = "mqY-Sq-bPr";</note>
+          </trans-unit>
+      </body>
+  </file>
+  <file original="TimeshotApp/Info.plist" source-language="en" datatype="plaintext" target-language="fr">
+      <header>
+          <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
+      </header>
+      <body>
+          <trans-unit id="CFBundleName">
+              <source>$(PRODUCT_NAME)</source>
+              <target>$(PRODUCT_NAME)</target>
+          </trans-unit>
+          <trans-unit id="CFBundleShortVersionString">
+              <source>1.0</source>
+              <target>1.0</target>
+          </trans-unit>
+      </body>
+  </file>
+  <file original="TimeshotApp/Localizable.strings" source-language="en" datatype="plaintext" target-language="fr">
+      <header>
+          <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
+      </header>
+      <body>
+          <trans-unit id="  Photos  ">
+              <source>  Photos  </source>
+              <target>  Photos  </target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="  Story  ">
+              <source>  Story  </source>
+              <target>  Story  </target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="(T_ParseUserHelper.getCurrentUser()!.username!) invited you to join his album">
+              <source>(T_ParseUserHelper.getCurrentUser()!.username!) invited you to join his album</source>
+              <target>(T_ParseUserHelper.getCurrentUser()!.username!) vous invite à rejoindre son album</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="(T_ParseUserHelper.getCurrentUser()!.username!) sent you a friend request">
+              <source>(T_ParseUserHelper.getCurrentUser()!.username!) sent you a friend request</source>
+              <target>(T_ParseUserHelper.getCurrentUser()!.username!) vous a envoyé une requête d'amis</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="(T_User.selectedFriends.count) friend selected">
+              <source>(T_User.selectedFriends.count) friend selected</source>
+              <target>(T_User.selectedFriends.count) ami sélectionné</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="(T_User.selectedFriends.count) friends selected">
+              <source>(T_User.selectedFriends.count) friends selected</source>
+              <target>(T_User.selectedFriends.count) amis sélectionnés</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="@(user.username!) invited you to join (albumRequest.toAlbum!.title!)!">
+              <source>@(user.username!) invited you to join (albumRequest.toAlbum!.title!)!</source>
+              <target>@(user.username!) vous invite à rejoindre (albumRequest.toAlbum!.title!)!</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="ADD FRIENDS">
+              <source>ADD FRIENDS</source>
+              <target>AJOUTER DES AMIS</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="ADD NEW FRIENDS">
+              <source>ADD NEW FRIENDS</source>
+              <target>AJOUTER DE NOUVEAUX AMIS</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="ALLOW NOTIFICATIONS">
+              <source>ALLOW NOTIFICATIONS</source>
+              <target>AUTORISER LES NOTIFICATIONS</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Accept">
+              <source>Accept</source>
+              <target>Accepter</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Add by Username">
+              <source>Add by Username</source>
+              <target>Ajouter par nom d'utilisateur</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Add from Address Book">
+              <source>Add from Address Book</source>
+              <target>Ajouter par le carnet d'adresse</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Album successfully created !">
+              <source>Album successfully created!</source>
+              <target>L'album a été créé !'</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="All your friends have already been invited in this album ">
+              <source>All your friends have already been invited in this album</source>
+              <target>Tous vos amis ont déjà été invité à cet album</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Allow notifications">
+              <source>Allow notifications</source>
+              <target>AUTORISER LES NOTIFICATIONS</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Cancel">
+              <source>Cancel</source>
+              <target>Annuler</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Cannot Add Contact">
+              <source>Cannot Add Contact</source>
+              <target>Impossible d'ajouter le contact'</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Cannot create the album">
+              <source>Cannot create the album</source>
+              <target>Impossible de créer l'album'</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Cannot sign in">
+              <source>Cannot sign in</source>
+              <target>Connexion impossible</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Change Settings">
+              <source>Change Settings</source>
+              <target>Changer les réglages</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Click to answer">
+              <source>Click to answer</source>
+              <target>Cliquez pour répondre</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Create an album and share your photos!">
+              <source>Create an album and share your photos!</source>
+              <target>Créez un album et partagez vos photos !</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Creating album ...">
+              <source>Creating album ...</source>
+              <target>Création de l'album...'</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Decline">
+              <source>Decline</source>
+              <target>Refuser</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Don't be ridiculous, this first name is too short 😉">
+              <source>Don't be ridiculous, this first name is too short 😉</source>
+              <target>Le prénom est trop court</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Don't be ridiculous, this last name is too short 😉">
+              <source>Don't be ridiculous, this last name is too short 😉</source>
+              <target>Le nom est trop court</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Download">
+              <source>Download</source>
+              <target>Télécharger</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="E-mail is required">
+              <source>E-mail is required</source>
+              <target>L'email est obligatoire'</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="E-mail should not be empty">
+              <source>E-mail should not be empty</source>
+              <target>L'email ne doit pas être vide'</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Error">
+              <source>Error</source>
+              <target>Erreur</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Error while testing your email">
+              <source>Error while testing your email</source>
+              <target>Erreur lors du test de votre email</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Error while testing your username">
+              <source>Error while testing your username</source>
+              <target>Erreur lors du test de votre nom d'utilisateur</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Firstname not long enough">
+              <source>Firstname not long enough</source>
+              <target>Le prénom est trop court</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Firstname should not be empty">
+              <source>Firstname should not be empty</source>
+              <target>Le prénom ne peut pas être vide</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Firstname too long">
+              <source>Firstname too long</source>
+              <target>Le prénom est trop long</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="I discovered a new awesome app! Download it on http://timeshot.co :)">
+              <source>I discovered a new awesome app! Download it on http://timeshot.co :)</source>
+              <target>J'ai découvert une nouvelle app de folie ! Télécharge là sur http://timeshot.co :)</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Invitation">
+              <source>Invitation</source>
+              <target>Invitation</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Invite some friends, it's more fun!">
+              <source>Invite some friends, it's more fun!</source>
+              <target>Invite quelques amis, c'est beaucoup plus drôle !</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Joining album">
+              <source>Joining album</source>
+              <target>Adhésion à l'album</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Let's share your first picture !">
+              <source>Let's share your first picture !</source>
+              <target>Partage ta première photo !</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Name not long enough">
+              <source>Name not long enough</source>
+              <target>Le nom est trop court</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Name should not be empty">
+              <source>Name should not be empty</source>
+              <target>Le nom ne doit pas être vide</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Name too long">
+              <source>Name too long</source>
+              <target>Le nom est trop long</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Network is not available ... ">
+              <source>Network is not available ... </source>
+              <target>Aucun réseau disponible...</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="No contacts selected">
+              <source>No contacts selected</source>
+              <target>Aucun contact sélectionné</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="No internet connection... Try again later">
+              <source>No internet connection... Try again later</source>
+              <target>Aucune connexion internet... Réessayez plus tard</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Nobody has been found ...">
+              <source>Nobody has been found ...</source>
+              <target>Personne n'a été trouvé'</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Nobody have been found ...">
+              <source>Nobody has been found ...</source>
+              <target>Personne n'a été trouvé'</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="OK">
+              <source>OK</source>
+              <target>OK</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Oh noo ... You don't have any albums as for now ... ">
+              <source>Oh noo ... You don't have any albums as for now ... </source>
+              <target>Oh noo ... Vous n'avez aucun album pour le moment ...</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Ohhh noo">
+              <source>Ohhh noo</source>
+              <target>Ohhh noo</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Ok">
+              <source>Ok</source>
+              <target>Ok</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Oups!">
+              <source>Oups!</source>
+              <target>Oups!</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Password not long enough">
+              <source>Password not long enough</source>
+              <target>Le mot de passe est trop court</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Password should not be empty">
+              <source>Password should not be empty</source>
+              <target>Le mot de passe ne doit pas être vide</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Password too long">
+              <source>Password too long</source>
+              <target>Le mot de passe est trop long</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Passwords are not matching">
+              <source>Passwords are not matching</source>
+              <target>Les mots de passe ne correspondent pas</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Pick a photo from library">
+              <source>Pick a photo from library</source>
+              <target>Choisir une photo depuis la librairie</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Please check your network connection and try again !">
+              <source>Please check your network connection and try again !</source>
+              <target>Veuillez vérifier votre connexion internet et réessayer !</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Please confirm your new password">
+              <source>Please confirm your new password</source>
+              <target>Veuillez confirmer votre nouveau mot de passe</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Please enter your current password">
+              <source>Please enter your current password</source>
+              <target>Veuillez entrer votre mot de passe</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Please enter your new password">
+              <source>Please enter your new password</source>
+              <target>Veuillez entrer votre nouveau mot de passe</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Report">
+              <source>Report</source>
+              <target>Signaler</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Save error">
+              <source>Save error</source>
+              <target>Erreur lors de la sauvegarde</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Saved !">
+              <source>Saved !</source>
+              <target>Sauvegardé !</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Search a user!">
+              <source>Search a user!</source>
+              <target>Rechercher un utilisateur</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Search one of your contact!">
+              <source>Search one of your contact!</source>
+              <target>Rechercher un de vos contact</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Select some contacts to invite them!">
+              <source>Select some contacts to invite them!</source>
+              <target>Sélectionnez quelques contacts pour les inviter !</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Select some friends to invite them !">
+              <source>Select some friends to invite them !</source>
+              <target>Sélectionnez quelqus amis pour les inviter !</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Select some friends to start !">
+              <source>Select some friends to start !</source>
+              <target>Sélectionnez quelques amis pour commencer !</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Settings">
+              <source>Settings</source>
+              <target>Réglages</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Take a photo with camera">
+              <source>Take a photo with camera</source>
+              <target>Prendre une photo avec la caméra</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="The picture has been saved to your photos.">
+              <source>The picture has been saved to your photos.</source>
+              <target>La photo a été sauvegardée dans vos photos.</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="There's a problem Captain">
+              <source>There's a problem Captain</source>
+              <target>Il y a un problème Captain !</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="This album is totally empty ... ">
+              <source>This album is totally empty ... </source>
+              <target>Cet album est complètement vide ...</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="This email is already used">
+              <source>This email is already used</source>
+              <target>Cet email est déjà utilisé</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="This username is already used">
+              <source>This username is already used</source>
+              <target>Ce nom d'utilisateur est déjà utilisé</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Try another username or invite contacts from your address book!">
+              <source>Try another username or invite contacts from your address book!</source>
+              <target>Essayez un autre nom d'utilisateur ou invitez des contacts depuis votre carnet d'adresse !</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Username and/or password incorect">
+              <source>Username and/or password incorect</source>
+              <target>Nom d'utilisateur ou mot de passe incorrect</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Username not long enough">
+              <source>Username not long enough</source>
+              <target>Nom d'utilisateur trop court</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Username should not be empty">
+              <source>Username should not be empty</source>
+              <target>Le nom d'utilisateur ne devrait pas être vide</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Username too long">
+              <source>Username too long</source>
+              <target>Le nom d'utilisateur est trop long'</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Wait ...">
+              <source>Wait ...</source>
+              <target>Patientez ...</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="We're retrieving your albums">
+              <source>We're retrieving your albums</source>
+              <target>L'application charge vos albums</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="We're retrieving your friends">
+              <source>We're retrieving your friends</source>
+              <target>L'application charge vos amis</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="We're retrieving your photos">
+              <source>We're retrieving your photos</source>
+              <target>L'application charge vos photos</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="You are not connected to the internet 😕. Please try again later. ">
+              <source>You are not connected to the internet 😕. Please try again later. </source>
+              <target>Vous n'êtes pas connecté à internet. Réessayez plus tard.</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="You can search by his full name or username.">
+              <source>You can search by his full name or username.</source>
+              <target>Vous pouvez chercher par son nom ou nom d'utilisateur</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="You don't have any friends ... Please invite some friends and share your albums with them!">
+              <source>You don't have any friends ... Please invite some friends and share your albums with them!</source>
+              <target>Vous n'avez aucun amis ... Invitez-en quelques-uns et créez un album avec eux !</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="You have disallowed notifications. Please go in your settings and allow notifications.">
+              <source>You have disallowed notifications. Please go in your settings and allow notifications.</source>
+              <target>Vous avez désactivé les notifications. Allez dans les réglages pour autoriser les notifications.</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="You have no friends yet 😟">
+              <source>You have no friends yet 😟</source>
+              <target>Vous n'avez encore aucun amis</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="You have no notifications...">
+              <source>You have no notifications...</source>
+              <target>Vous n'avez aucune notification...</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="You must be 13 years old at least 🎂">
+              <source>You must be 13 years old at least 🎂</source>
+              <target>Vous devez avoir au moins 13 ans</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="You must give the app permission to add the contact first.">
+              <source>You must give the app permission to add the contact first.</source>
+              <target>Vous devez d'abord autoriser l'application à ajouter un contact</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Your confirmation password does not match with your new password">
+              <source>Your confirmation password does not match with your new password</source>
+              <target>La confirmation du mot de passe ne correspond pas</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Your current password is invalid">
+              <source>Your current password is invalid</source>
+              <target>Votre mot de passe est invalide</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Your e-mail is not valid">
+              <source>Your e-mail is not valid</source>
+              <target>Votre adresse e-mail est invalide</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Your email address is mandatory ✉️">
+              <source>Your email address is mandatory ✉️</source>
+              <target>L'email est obligatoire</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Your email address is not valid ✉️">
+              <source>Your email address is not valid ✉️</source>
+              <target>Votre adresse email n'est pas valide</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Your email address is used to identify you. No spam, we promise ❤️">
+              <source>Your email address is used to identify you. No spam, we promise ❤️</source>
+              <target>Votre adresse email est utilisé pour vous identifier. Pas de spam, c'est promis !</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Your first name helps your friends to find you 😊">
+              <source>Your first name helps your friends to find you 😊</source>
+              <target>Votre prénom aide vos amis à vous retrouver</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Your last name helps your friends to find you 😊">
+              <source>Your last name helps your friends to find you 😊</source>
+              <target>Votre nom aide vos amis à vous retrouver</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="Your password must be 8 characters at least">
+              <source>Your password must be 8 characters at least</source>
+              <target>Votre mot de passe doit contenir au moins 8 caractères</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+          <trans-unit id="\n (albumRequest.fromUser!.username!) invited you to join his album (albumRequest.toAlbum!.title!).\n \nDo you want to have fun? 🎉">
+              <source>
+                  (albumRequest.fromUser!.username!) invited you to join his album (albumRequest.toAlbum!.title!).
+                  
+                  Do you want to have fun? 🎉</source>
+              <target>
+                  (albumRequest.fromUser!.username!) vous invite à rejoindre (albumRequest.toAlbum!.title!).
+                  
+                  Voulez-vous le rejoindre ? 🎉</target>
+              <note>No comment provided by engineer.</note>
+          </trans-unit>
+      </body>
+  </file>
+  <file original="TimeshotApp/Views/Base.lproj/Album.storyboard" source-language="en" datatype="plaintext" target-language="fr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
+    </header>
+    <body>
+      <trans-unit id="2yH-dR-kVJ.text">
+        <source>Story</source>
+        <target>Story</target>
+        <note>Class = "UILabel"; text = "Story"; ObjectID = "2yH-dR-kVJ";</note>
+      </trans-unit>
+      <trans-unit id="3eh-Az-GBR.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "3eh-Az-GBR";</note>
+      </trans-unit>
+      <trans-unit id="ATc-MW-hEb.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "ATc-MW-hEb";</note>
+      </trans-unit>
+      <trans-unit id="BOm-DQ-rOA.title">
+        <source>dfdfdf</source>
+        <target>dfdfdf</target>
+        <note>Class = "UIBarButtonItem"; title = "dfdfdf"; ObjectID = "BOm-DQ-rOA";</note>
+      </trans-unit>
+      <trans-unit id="BSc-VT-xRH.text">
+        <source>LIVE</source>
+        <target>LIVE</target>
+        <note>Class = "UILabel"; text = "LIVE"; ObjectID = "BSc-VT-xRH";</note>
+      </trans-unit>
+      <trans-unit id="ErR-T4-DLi.title">
+        <source>Title</source>
+        <target>Titre</target>
+        <note>Class = "UINavigationItem"; title = "Title"; ObjectID = "ErR-T4-DLi";</note>
+      </trans-unit>
+      <trans-unit id="INL-ej-3yU.text">
+        <source>19h</source>
+        <target>19h</target>
+        <note>Class = "UILabel"; text = "19h"; ObjectID = "INL-ej-3yU";</note>
+      </trans-unit>
+      <trans-unit id="ScX-IW-r7d.normalTitle">
+        <source>INVITE FRIENDS TO THIS ALBUM</source>
+        <target>INVITER DES AMIS DANS CET ALBUM</target>
+        <note>Class = "UIButton"; normalTitle = "INVITE FRIENDS TO THIS ALBUM"; ObjectID = "ScX-IW-r7d";</note>
+      </trans-unit>
+      <trans-unit id="Sjx-fZ-T3m.text">
+        <source>fromUser</source>
+        <target>fromUser</target>
+        <note>Class = "UILabel"; text = "fromUser"; ObjectID = "Sjx-fZ-T3m";</note>
+      </trans-unit>
+      <trans-unit id="V49-ha-JG2.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "V49-ha-JG2";</note>
+      </trans-unit>
+      <trans-unit id="X4G-VO-E0b.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "X4G-VO-E0b";</note>
+      </trans-unit>
+      <trans-unit id="ZCC-2Q-9Y8.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "ZCC-2Q-9Y8";</note>
+      </trans-unit>
+      <trans-unit id="Zw1-Q8-or0.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "Zw1-Q8-or0";</note>
+      </trans-unit>
+      <trans-unit id="cKl-h6-V0s.title">
+        <source> </source>
+        <target> </target>
+        <note>Class = "UIBarButtonItem"; title = " "; ObjectID = "cKl-h6-V0s";</note>
+      </trans-unit>
+      <trans-unit id="e0w-ba-saM.title">
+        <source>Albums</source>
+        <target>Albums</target>
+        <note>Class = "UINavigationItem"; title = "Albums"; ObjectID = "e0w-ba-saM";</note>
+      </trans-unit>
+      <trans-unit id="gsl-hT-AWb.title">
+        <source>Invitation</source>
+        <target>Invitation</target>
+        <note>Class = "UINavigationItem"; title = "Invitation"; ObjectID = "gsl-hT-AWb";</note>
+      </trans-unit>
+      <trans-unit id="jMW-xz-nir.title">
+        <source>Cancel</source>
+        <target>Annuler</target>
+        <note>Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "jMW-xz-nir";</note>
+      </trans-unit>
+      <trans-unit id="qTP-s4-aW1.segmentTitles[0]">
+        <source>Photos</source>
+        <target>Photos</target>
+        <note>Class = "UISegmentedControl"; qTP-s4-aW1.segmentTitles[0] = "Photos"; ObjectID = "qTP-s4-aW1";</note>
+      </trans-unit>
+      <trans-unit id="qTP-s4-aW1.segmentTitles[1]">
+        <source>Friends</source>
+        <target>Participants</target>
+        <note>Class = "UISegmentedControl"; qTP-s4-aW1.segmentTitles[1] = "Friends"; ObjectID = "qTP-s4-aW1";</note>
+      </trans-unit>
+      <trans-unit id="qYc-SH-3ln.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "qYc-SH-3ln";</note>
+      </trans-unit>
+      <trans-unit id="rdt-tz-w3G.text">
+        <source>Hour</source>
+        <target>Heure</target>
+        <note>Class = "UILabel"; text = "Hour"; ObjectID = "rdt-tz-w3G";</note>
+      </trans-unit>
+      <trans-unit id="sSJ-nl-CdV.text">
+        <source>Remember the best moment of your album !</source>
+        <target>Revis les meilleurs moments de ton album !</target>
+        <note>Class = "UILabel"; text = "Remember the best moment of your album !"; ObjectID = "sSJ-nl-CdV";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="TimeshotApp/Views/Base.lproj/Koloda.storyboard" source-language="en" datatype="plaintext" target-language="fr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
+    </header>
+    <body>
+      <trans-unit id="gP1-tw-JhG.segmentTitles[0]">
+        <source>Photos</source>
+        <target>Photos</target>
+        <note>Class = "UISegmentedControl"; gP1-tw-JhG.segmentTitles[0] = "Photos"; ObjectID = "gP1-tw-JhG";</note>
+      </trans-unit>
+      <trans-unit id="gP1-tw-JhG.segmentTitles[1]">
+        <source>Friends</source>
+        <target>Participants</target>
+        <note>Class = "UISegmentedControl"; gP1-tw-JhG.segmentTitles[1] = "Friends"; ObjectID = "gP1-tw-JhG";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="TimeshotApp/Views/Base.lproj/Login.storyboard" source-language="en" datatype="plaintext" target-language="fr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
+    </header>
+    <body>
+      <trans-unit id="2Jg-X8-dcw.placeholder">
+        <source>Username</source>
+        <target>Nom d'utilisateur</target>
+        <note>Class = "UITextField"; placeholder = "Username"; ObjectID = "2Jg-X8-dcw";</note>
+      </trans-unit>
+      <trans-unit id="2h1-kF-BXl.placeholder">
+        <source>Confirm password</source>
+        <target>Confirmez le mot de passe</target>
+        <note>Class = "UITextField"; placeholder = "Confirm password"; ObjectID = "2h1-kF-BXl";</note>
+      </trans-unit>
+      <trans-unit id="Bzf-aw-um8.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "Bzf-aw-um8";</note>
+      </trans-unit>
+      <trans-unit id="Chz-WZ-hYU.normalTitle">
+        <source>CONTINUE</source>
+        <target>CONTINUER</target>
+        <note>Class = "UIButton"; normalTitle = "CONTINUE"; ObjectID = "Chz-WZ-hYU";</note>
+      </trans-unit>
+      <trans-unit id="Dfv-5C-o1o.placeholder">
+        <source>Username</source>
+        <target>Nom d'utilisateur</target>
+        <note>Class = "UITextField"; placeholder = "Username"; ObjectID = "Dfv-5C-o1o";</note>
+      </trans-unit>
+      <trans-unit id="FQW-Ei-j4t.normalTitle">
+        <source>CONTINUE</source>
+        <target>CONTINUER</target>
+        <note>Class = "UIButton"; normalTitle = "CONTINUE"; ObjectID = "FQW-Ei-j4t";</note>
+      </trans-unit>
+      <trans-unit id="J0J-YM-ICl.title">
+        <source>Search Contact Controller</source>
+        <target>Search Contact Controller</target>
+        <note>Class = "UIViewController"; title = "Search Contact Controller"; ObjectID = "J0J-YM-ICl";</note>
+      </trans-unit>
+      <trans-unit id="LdX-QM-Wu0.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "LdX-QM-Wu0";</note>
+      </trans-unit>
+      <trans-unit id="LgV-om-01x.title">
+        <source>Sign up</source>
+        <target>Inscription</target>
+        <note>Class = "UINavigationItem"; title = "Sign up"; ObjectID = "LgV-om-01x";</note>
+      </trans-unit>
+      <trans-unit id="MZY-cW-ajc.normalTitle">
+        <source>YES, I WANT!</source>
+        <target>Oui, je le veux !</target>
+        <note>Class = "UIButton"; normalTitle = "YES, I WANT!"; ObjectID = "MZY-cW-ajc";</note>
+      </trans-unit>
+      <trans-unit id="P3m-Zq-XfW.text">
+        <source>Your name is used by your friends to easily find you. Your email address will be used to identify you.</source>
+        <target>Votre nom sera utilisé par vos amis pour vous trouver facilement. Votre adresse e-mail pour vous identifier.</target>
+        <note>Class = "UILabel"; text = "Your name is used by your friends to easily find you. Your email address will be used to identify you."; ObjectID = "P3m-Zq-XfW";</note>
+      </trans-unit>
+      <trans-unit id="QFj-8f-udE.placeholder">
+        <source>Email</source>
+        <target>Email</target>
+        <note>Class = "UITextField"; placeholder = "Email"; ObjectID = "QFj-8f-udE";</note>
+      </trans-unit>
+      <trans-unit id="Rd3-BA-9Dk.normalTitle">
+        <source>SIGN IN</source>
+        <target>CONNEXION</target>
+        <note>Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "Rd3-BA-9Dk";</note>
+      </trans-unit>
+      <trans-unit id="WQ8-iK-WaL.title">
+        <source>Invite</source>
+        <target>Inviter</target>
+        <note>Class = "UIBarButtonItem"; title = "Invite"; ObjectID = "WQ8-iK-WaL";</note>
+      </trans-unit>
+      <trans-unit id="X0j-WT-VxT.title">
+        <source>Sign up</source>
+        <target>Inscription</target>
+        <note>Class = "UINavigationItem"; title = "Sign up"; ObjectID = "X0j-WT-VxT";</note>
+      </trans-unit>
+      <trans-unit id="Xpj-Ts-5Td.title">
+        <source>Sign up</source>
+        <target>Inscription</target>
+        <note>Class = "UINavigationItem"; title = "Sign up"; ObjectID = "Xpj-Ts-5Td";</note>
+      </trans-unit>
+      <trans-unit id="Xrb-Ev-Mkd.normalTitle">
+        <source>Policy Privacy</source>
+        <target>Politique de confidentialité</target>
+        <note>Class = "UIButton"; normalTitle = "Policy Privacy"; ObjectID = "Xrb-Ev-Mkd";</note>
+      </trans-unit>
+      <trans-unit id="Zoi-t6-Yri.placeholder">
+        <source>First Name</source>
+        <target>Prénom</target>
+        <note>Class = "UITextField"; placeholder = "First Name"; ObjectID = "Zoi-t6-Yri";</note>
+      </trans-unit>
+      <trans-unit id="cF5-mm-YAe.normalTitle">
+        <source>FINISH SIGN UP!</source>
+        <target>Terminer l'inscription</target>
+        <note>Class = "UIButton"; normalTitle = "FINISH SIGN UP!"; ObjectID = "cF5-mm-YAe";</note>
+      </trans-unit>
+      <trans-unit id="cFQ-ND-rx4.text">
+        <source>Timeshot is funnier if you have some friends, to share with them.
+
+Do you want to invite people from your address book ?</source>
+        <target>Timeshot est plus drôle avec des amis. Voulez-vous inviter des contacts de votre carnet d'adressse à rejoindre Timeshot ?</target>
+        <note>Class = "UILabel"; text = "Timeshot is funnier if you have some friends, to share with them.\n\nDo you want to invite people from your address book ?"; ObjectID = "cFQ-ND-rx4";</note>
+      </trans-unit>
+      <trans-unit id="iKL-Ei-mew.placeholder">
+        <source>Password</source>
+        <target>Mot de passe</target>
+        <note>Class = "UITextField"; placeholder = "Password"; ObjectID = "iKL-Ei-mew";</note>
+      </trans-unit>
+      <trans-unit id="jXh-Wv-KWl.title">
+        <source>Sign up</source>
+        <target>Inscription</target>
+        <note>Class = "UINavigationItem"; title = "Sign up"; ObjectID = "jXh-Wv-KWl";</note>
+      </trans-unit>
+      <trans-unit id="mJB-q0-hjB.placeholder">
+        <source>Name</source>
+        <target>Nom</target>
+        <note>Class = "UITextField"; placeholder = "Name"; ObjectID = "mJB-q0-hjB";</note>
+      </trans-unit>
+      <trans-unit id="o4i-0C-NWm.text">
+        <source>Your username is your unique idendity on Timeshot. You can't change it afterward!</source>
+        <target>Votre nom d'utilisateur est votre unique identité sur Timeshot, vous ne pourrez pas le changer !</target>
+        <note>Class = "UILabel"; text = "Your username is your unique idendity on Timeshot. You can't change it afterward!"; ObjectID = "o4i-0C-NWm";</note>
+      </trans-unit>
+      <trans-unit id="qFE-dH-Hwy.title">
+        <source>Sign up</source>
+        <target>Inscription</target>
+        <note>Class = "UINavigationItem"; title = "Sign up"; ObjectID = "qFE-dH-Hwy";</note>
+      </trans-unit>
+      <trans-unit id="qqY-8k-TNd.normalTitle">
+        <source>SIGN IN</source>
+        <target>INSCRIPTION</target>
+        <note>Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "qqY-8k-TNd";</note>
+      </trans-unit>
+      <trans-unit id="r7i-Kz-Djs.text">
+        <source>You will use this password to log on to Timeshot</source>
+        <target>Vous utiliserez le mot de passe pour vous connecter</target>
+        <note>Class = "UILabel"; text = "You will use this password to log on to Timeshot"; ObjectID = "r7i-Kz-Djs";</note>
+      </trans-unit>
+      <trans-unit id="sDc-Yh-379.title">
+        <source>Sign up</source>
+        <target>Inscription</target>
+        <note>Class = "UINavigationItem"; title = "Sign up"; ObjectID = "sDc-Yh-379";</note>
+      </trans-unit>
+      <trans-unit id="scJ-Lt-BDH.normalTitle">
+        <source>CGU</source>
+        <target>CGU</target>
+        <note>Class = "UIButton"; normalTitle = "CGU"; ObjectID = "scJ-Lt-BDH";</note>
+      </trans-unit>
+      <trans-unit id="smR-cO-3lU.normalTitle">
+        <source>CONTINUE</source>
+        <target>CONTINUER</target>
+        <note>Class = "UIButton"; normalTitle = "CONTINUE"; ObjectID = "smR-cO-3lU";</note>
+      </trans-unit>
+      <trans-unit id="wPp-Ya-1R4.title">
+        <source>Search a contact</source>
+        <target>Rechercher un contact</target>
+        <note>Class = "UINavigationItem"; title = "Search a contact"; ObjectID = "wPp-Ya-1R4";</note>
+      </trans-unit>
+      <trans-unit id="xDG-xP-gOG.normalTitle">
+        <source>SIGN UP WITH EMAIL</source>
+        <target>INSCRIPTION PAR EMAIL</target>
+        <note>Class = "UIButton"; normalTitle = "SIGN UP WITH EMAIL"; ObjectID = "xDG-xP-gOG";</note>
+      </trans-unit>
+      <trans-unit id="xei-eT-JSL.placeholder">
+        <source>Password</source>
+        <target>Mot de passe</target>
+        <note>Class = "UITextField"; placeholder = "Password"; ObjectID = "xei-eT-JSL";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="TimeshotApp/Views/Base.lproj/Profile.storyboard" source-language="en" datatype="plaintext" target-language="fr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
+    </header>
+    <body>
+      <trans-unit id="1Xf-ec-09x.title">
+        <source>Search Contact Navigation</source>
+        <target>Search Contact Navigation</target>
+        <note>Class = "UINavigationController"; title = "Search Contact Navigation"; ObjectID = "1Xf-ec-09x";</note>
+      </trans-unit>
+      <trans-unit id="1wM-CD-8J6.text">
+        <source>First name</source>
+        <target>Prébom</target>
+        <note>Class = "UILabel"; text = "First name"; ObjectID = "1wM-CD-8J6";</note>
+      </trans-unit>
+      <trans-unit id="3tc-iw-Qsw.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "3tc-iw-Qsw";</note>
+      </trans-unit>
+      <trans-unit id="4Eo-Tb-7cS.title">
+        <source>Search User Navigation</source>
+        <target>Search User Navigation</target>
+        <note>Class = "UINavigationController"; title = "Search User Navigation"; ObjectID = "4Eo-Tb-7cS";</note>
+      </trans-unit>
+      <trans-unit id="5Fm-u5-d7O.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "5Fm-u5-d7O";</note>
+      </trans-unit>
+      <trans-unit id="6hK-4M-IIa.segmentTitles[0]">
+        <source>Friends</source>
+        <target>Amis</target>
+        <note>Class = "UISegmentedControl"; 6hK-4M-IIa.segmentTitles[0] = "Friends"; ObjectID = "6hK-4M-IIa";</note>
+      </trans-unit>
+      <trans-unit id="6hK-4M-IIa.segmentTitles[1]">
+        <source>Notifications</source>
+        <target>Notifications</target>
+        <note>Class = "UISegmentedControl"; 6hK-4M-IIa.segmentTitles[1] = "Notifications"; ObjectID = "6hK-4M-IIa";</note>
+      </trans-unit>
+      <trans-unit id="9f7-7H-mi3.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "9f7-7H-mi3";</note>
+      </trans-unit>
+      <trans-unit id="48g-M3-62V.text">
+        <source>Last name</source>
+        <target>Nom</target>
+        <note>Class = "UILabel"; text = "Last name"; ObjectID = "48g-M3-62V";</note>
+      </trans-unit>
+      <trans-unit id="82G-qG-ty4.text">
+        <source>Click to answer</source>
+        <target>Cliquez pour répondre</target>
+        <note>Class = "UILabel"; text = "Click to answer"; ObjectID = "82G-qG-ty4";</note>
+      </trans-unit>
+      <trans-unit id="De6-3K-WSC.title">
+        <source>Invite</source>
+        <target>Inviter</target>
+        <note>Class = "UIBarButtonItem"; title = "Invite"; ObjectID = "De6-3K-WSC";</note>
+      </trans-unit>
+      <trans-unit id="DsJ-VR-23i.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "DsJ-VR-23i";</note>
+      </trans-unit>
+      <trans-unit id="Hu0-eQ-IfC.headerTitle">
+        <source>My account</source>
+        <target>Mon compte</target>
+        <note>Class = "UITableViewSection"; headerTitle = "My account"; ObjectID = "Hu0-eQ-IfC";</note>
+      </trans-unit>
+      <trans-unit id="Iqk-LG-TUb.title">
+        <source>Search Contact Controller</source>
+        <target>Search Contact Controller</target>
+        <note>Class = "UIViewController"; title = "Search Contact Controller"; ObjectID = "Iqk-LG-TUb";</note>
+      </trans-unit>
+      <trans-unit id="JAv-6p-YKF.title">
+        <source>Settings</source>
+        <target>Réglages</target>
+        <note>Class = "UINavigationItem"; title = "Settings"; ObjectID = "JAv-6p-YKF";</note>
+      </trans-unit>
+      <trans-unit id="JZA-M0-C4r.normalTitle">
+        <source>ADD NEW FRIENDS</source>
+        <target>AJOUTER DE NOUVEAUX AMIS</target>
+        <note>Class = "UIButton"; normalTitle = "ADD NEW FRIENDS"; ObjectID = "JZA-M0-C4r";</note>
+      </trans-unit>
+      <trans-unit id="KVh-hB-xB3.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "KVh-hB-xB3";</note>
+      </trans-unit>
+      <trans-unit id="Nrz-rF-aLh.text">
+        <source>Birthday</source>
+        <target>Anniversaire</target>
+        <note>Class = "UILabel"; text = "Birthday"; ObjectID = "Nrz-rF-aLh";</note>
+      </trans-unit>
+      <trans-unit id="S0g-ya-een.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "S0g-ya-een";</note>
+      </trans-unit>
+      <trans-unit id="Tj4-OJ-uZl.title">
+        <source>Email</source>
+        <target>Email</target>
+        <note>Class = "UINavigationItem"; title = "Email"; ObjectID = "Tj4-OJ-uZl";</note>
+      </trans-unit>
+      <trans-unit id="TxE-hJ-CNh.text">
+        <source>Detail</source>
+        <target>Détail</target>
+        <note>Class = "UILabel"; text = "Detail"; ObjectID = "TxE-hJ-CNh";</note>
+      </trans-unit>
+      <trans-unit id="ULD-D3-l0G.text">
+        <source>Detail</source>
+        <target>Détail</target>
+        <note>Class = "UILabel"; text = "Detail"; ObjectID = "ULD-D3-l0G";</note>
+      </trans-unit>
+      <trans-unit id="UfA-Dm-kea.placeholder">
+        <source>Your last name</source>
+        <target>Votre nom</target>
+        <note>Class = "UITextField"; placeholder = "Your last name"; ObjectID = "UfA-Dm-kea";</note>
+      </trans-unit>
+      <trans-unit id="W6O-u5-Gnt.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "W6O-u5-Gnt";</note>
+      </trans-unit>
+      <trans-unit id="Wd3-ev-mEg.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "Wd3-ev-mEg";</note>
+      </trans-unit>
+      <trans-unit id="XfD-Ui-7C0.text">
+        <source>Email</source>
+        <target>Email</target>
+        <note>Class = "UILabel"; text = "Email"; ObjectID = "XfD-Ui-7C0";</note>
+      </trans-unit>
+      <trans-unit id="Ydv-jr-hdb.title">
+        <source>Birthday</source>
+        <target>Anniversaire</target>
+        <note>Class = "UINavigationItem"; title = "Birthday"; ObjectID = "Ydv-jr-hdb";</note>
+      </trans-unit>
+      <trans-unit id="YoR-3T-WUr.title">
+        <source>First name</source>
+        <target>Prénom</target>
+        <note>Class = "UINavigationItem"; title = "First name"; ObjectID = "YoR-3T-WUr";</note>
+      </trans-unit>
+      <trans-unit id="aQR-MM-Hym.text">
+        <source>Detail</source>
+        <target>Détail</target>
+        <note>Class = "UILabel"; text = "Detail"; ObjectID = "aQR-MM-Hym";</note>
+      </trans-unit>
+      <trans-unit id="aym-dN-sme.placeholder">
+        <source>Your birthday</source>
+        <target>Votre anniversaire</target>
+        <note>Class = "UITextField"; placeholder = "Your birthday"; ObjectID = "aym-dN-sme";</note>
+      </trans-unit>
+      <trans-unit id="ce4-eN-hHe.normalTitle">
+        <source>LOG OUT</source>
+        <target>DECONNEXION</target>
+        <note>Class = "UIButton"; normalTitle = "LOG OUT"; ObjectID = "ce4-eN-hHe";</note>
+      </trans-unit>
+      <trans-unit id="czy-Jb-kC2.title">
+        <source>Last name</source>
+        <target>Nom</target>
+        <note>Class = "UINavigationItem"; title = "Last name"; ObjectID = "czy-Jb-kC2";</note>
+      </trans-unit>
+      <trans-unit id="g12-0N-Rsy.title">
+        <source>Search User Controller</source>
+        <target>Search User Controller</target>
+        <note>Class = "UIViewController"; title = "Search User Controller"; ObjectID = "g12-0N-Rsy";</note>
+      </trans-unit>
+      <trans-unit id="jhf-1I-4X8.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "jhf-1I-4X8";</note>
+      </trans-unit>
+      <trans-unit id="kK1-mQ-cSp.title">
+        <source>Search a contact</source>
+        <target>Search a contact</target>
+        <note>Class = "UINavigationItem"; title = "Search a contact"; ObjectID = "kK1-mQ-cSp";</note>
+      </trans-unit>
+      <trans-unit id="nVC-5b-BT3.title">
+        <source>Search a user</source>
+        <target>Search a user</target>
+        <note>Class = "UINavigationItem"; title = "Search a user"; ObjectID = "nVC-5b-BT3";</note>
+      </trans-unit>
+      <trans-unit id="oDv-vE-h6X.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "oDv-vE-h6X";</note>
+      </trans-unit>
+      <trans-unit id="qI5-eM-uYD.text">
+        <source>Detail</source>
+        <target>Détai</target>
+        <note>Class = "UILabel"; text = "Detail"; ObjectID = "qI5-eM-uYD";</note>
+      </trans-unit>
+      <trans-unit id="snE-qg-euw.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "snE-qg-euw";</note>
+      </trans-unit>
+      <trans-unit id="t0j-sm-1zh.text">
+        <source>Username</source>
+        <target>Nom d'utilisateur</target>
+        <note>Class = "UILabel"; text = "Username"; ObjectID = "t0j-sm-1zh";</note>
+      </trans-unit>
+      <trans-unit id="tGm-Pl-crw.title">
+        <source>Profile Controller</source>
+        <target>Profile Controller</target>
+        <note>Class = "UIViewController"; title = "Profile Controller"; ObjectID = "tGm-Pl-crw";</note>
+      </trans-unit>
+      <trans-unit id="tkM-Ac-oh1.placeholder">
+        <source>Your first name</source>
+        <target>Votre prénom</target>
+        <note>Class = "UITextField"; placeholder = "Your first name"; ObjectID = "tkM-Ac-oh1";</note>
+      </trans-unit>
+      <trans-unit id="wbC-gN-yDB.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "wbC-gN-yDB";</note>
+      </trans-unit>
+      <trans-unit id="xw2-Kj-zRs.placeholder">
+        <source>Your email address</source>
+        <target>Votre adresse email</target>
+        <note>Class = "UITextField"; placeholder = "Your email address"; ObjectID = "xw2-Kj-zRs";</note>
+      </trans-unit>
+      <trans-unit id="yks-uO-aPK.text">
+        <source>Detail</source>
+        <target>Détail</target>
+        <note>Class = "UILabel"; text = "Detail"; ObjectID = "yks-uO-aPK";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="TimeshotApp/Views/Login/Base.lproj/OnBoard.storyboard" source-language="en" datatype="plaintext" target-language="fr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3" build-num="7D175"/>
+    </header>
+    <body>
+      <trans-unit id="0xm-WM-CQi.normalTitle">
+        <source>Previous</source>
+        <target>Précédent</target>
+        <note>Class = "UIButton"; normalTitle = "Previous"; ObjectID = "0xm-WM-CQi";</note>
+      </trans-unit>
+      <trans-unit id="2W5-2v-vos.text">
+        <source>Save your time</source>
+        <target>Gagnez du temps</target>
+        <note>Class = "UILabel"; text = "Save your time"; ObjectID = "2W5-2v-vos";</note>
+      </trans-unit>
+      <trans-unit id="4dG-4B-jdL.text">
+        <source>Build your story</source>
+        <target>Consruisez votre story</target>
+        <note>Class = "UILabel"; text = "Build your story"; ObjectID = "4dG-4B-jdL";</note>
+      </trans-unit>
+      <trans-unit id="AXZ-Jb-3AQ.normalTitle">
+        <source>Next</source>
+        <target>Suivant</target>
+        <note>Class = "UIButton"; normalTitle = "Next"; ObjectID = "AXZ-Jb-3AQ";</note>
+      </trans-unit>
+      <trans-unit id="DeA-Mw-eey.text">
+        <source>All your photos albums are permanently stored on Timeshot</source>
+        <target>Toutes vos photos sont sauvegardées dans l'application</target>
+        <note>Class = "UILabel"; text = "All your photos albums are permanently stored on Timeshot"; ObjectID = "DeA-Mw-eey";</note>
+      </trans-unit>
+      <trans-unit id="Dpy-n0-A5Z.text">
+        <source>Most liked photos make up the story to give you a best of your event</source>
+        <target>Les photos les plus votées composent la story pour vous donner un best-of de votre événement</target>
+        <note>Class = "UILabel"; text = "Most liked photos make up the story to give you a best of your event"; ObjectID = "Dpy-n0-A5Z";</note>
+      </trans-unit>
+      <trans-unit id="Itm-Ag-sJs.text">
+        <source>Timeshot automatically gather all your friend's photos during you event</source>
+        <target>Timeshot regroupe automatiquement les photos de vos amis pendant un événement</target>
+        <note>Class = "UILabel"; text = "Timeshot automatically gather all your friend's photos during you event"; ObjectID = "Itm-Ag-sJs";</note>
+      </trans-unit>
+      <trans-unit id="Joy-Dj-Z1C.text">
+        <source>Relive your events</source>
+        <target>Revivez vos événements</target>
+        <note>Class = "UILabel"; text = "Relive your events"; ObjectID = "Joy-Dj-Z1C";</note>
+      </trans-unit>
+      <trans-unit id="jvO-Sa-WGe.normalTitle">
+        <source>Skip</source>
+        <target>Passer</target>
+        <note>Class = "UIButton"; normalTitle = "Skip"; ObjectID = "jvO-Sa-WGe";</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
