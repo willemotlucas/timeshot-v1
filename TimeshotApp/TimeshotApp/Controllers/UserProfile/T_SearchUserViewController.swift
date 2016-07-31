@@ -163,11 +163,11 @@ extension T_SearchUserViewController: UISearchBarDelegate {
 extension T_SearchUserViewController: DZNEmptyDataSetSource {
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         if self.searchBar.text!.isEmpty {
-            let str = "Search a user!"
+            let str = NSLocalizedString("Search a user!", comment: "")
             let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
             return NSAttributedString(string: str, attributes: attrs)
         } else {
-            let str = "Nobody have been found ..."
+            let str = NSLocalizedString("Nobody have been found ...", comment: "")
             let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
             return NSAttributedString(string: str, attributes: attrs)
         }
@@ -175,11 +175,11 @@ extension T_SearchUserViewController: DZNEmptyDataSetSource {
     
     func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         if self.searchBar.text!.isEmpty {
-            let str = "You can search by his full name or username."
+            let str = NSLocalizedString("You can search by his full name or username.", comment: "")
             let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
             return NSAttributedString(string: str, attributes: attrs)
         } else {
-            let str = "Try another username or invite contacts from your address book!"
+            let str = NSLocalizedString("Try another username or invite contacts from your address book!", comment: "")
             let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
             return NSAttributedString(string: str, attributes: attrs)
         }

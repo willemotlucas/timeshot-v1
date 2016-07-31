@@ -16,7 +16,7 @@ class T_EmailEditionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.helpTextLabel.text = "Your email address is used to identify you. No spam, we promise ❤️"
+        self.helpTextLabel.text = NSLocalizedString("Your email address is used to identify you. No spam, we promise ❤️", comment: "")
         self.helpTextLabel.numberOfLines = 3
         self.emailAddressTextField.text = self.emailAddress
         self.emailAddressTextField.becomeFirstResponder()

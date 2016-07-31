@@ -36,7 +36,7 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
     
     @IBAction func createAlbumButtonTapped(sender: AnyObject) {
         T_CameraViewController.instance.showCameraView()
-        T_CameraViewController.instance.freezeUI("Creating album ...")
+        T_CameraViewController.instance.freezeUI(NSLocalizedString("Creating album ...", comment: ""))
         T_Album.createAlbum(self.cover, duration: self.duration, albumTitle: self.albumTitle)
         self.presentingViewController?.dismissViewControllerAnimated(false, completion: nil)
     }
@@ -169,7 +169,7 @@ extension T_ChooseContactsAlbumCreationViewController : DZNEmptyDataSetSource {
     }
     
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: "You don't have any friends ... Please invite some friends and share your albums with them!")
+        return NSAttributedString(string: NSLocalizedString("You don't have any friends ... Please invite some friends and share your albums with them!", comment: ""))
     }
 
     func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {

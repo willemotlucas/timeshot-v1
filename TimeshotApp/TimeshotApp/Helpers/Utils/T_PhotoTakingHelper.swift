@@ -38,7 +38,7 @@ class T_PhotoTakingHelper: NSObject {
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         alertController.addAction(cancelAction)
         
-        let photoLibraryAction = UIAlertAction(title: "Pick a photo from library", style: .Default){
+        let photoLibraryAction = UIAlertAction(title: NSLocalizedString("Pick a photo from library", comment: ""), style: .Default){
             (action) in
             // Callback function (closure) called when user selects photo from library
             self.showImagePickerController(.PhotoLibrary)
@@ -47,7 +47,7 @@ class T_PhotoTakingHelper: NSObject {
         
         // If the hardware camera is not available (because the app is running on simulator) we do nothing
         if(UIImagePickerController.isCameraDeviceAvailable(.Rear)){
-            let cameraAction = UIAlertAction(title: "Take a photo with camera", style: .Default) {
+            let cameraAction = UIAlertAction(title: NSLocalizedString("Take a photo with camera", comment: ""), style: .Default) {
                 (action) in
                 self.showImagePickerController(.Camera)
             }

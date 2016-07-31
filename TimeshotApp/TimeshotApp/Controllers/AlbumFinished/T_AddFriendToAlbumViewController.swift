@@ -71,7 +71,7 @@ class T_AddFriendToAlbumViewController: UIViewController {
         self.createButton.tintColor = UIColor.blackColor()
         
         self.friendAddedLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
-        self.friendAddedLabel.text = "Select some friends to invite them !"
+        self.friendAddedLabel.text = NSLocalizedString("Select some friends to invite them !", comment: "")
         self.friendAddedLabel.sizeToFit()
         self.friendAddedLabel.backgroundColor = UIColor.clearColor()
         self.friendAddedLabel.textAlignment = .Left
@@ -219,7 +219,7 @@ extension T_AddFriendToAlbumViewController : UITableViewDataSource, UITableViewD
     func updateLabel()
     {
         if (T_User.selectedFriends.count == 0) {
-            self.friendAddedLabel.text = "Select some friends to start !"
+            self.friendAddedLabel.text = NSLocalizedString("Select some friends to start !", comment: "")
             self.friendAddedLabel.sizeToFit()
             if (self.bottomBar.items?.indexOf(self.createButton) != nil)
             {
@@ -229,11 +229,11 @@ extension T_AddFriendToAlbumViewController : UITableViewDataSource, UITableViewD
         else {
             if (T_User.selectedFriends.count == 1)
             {
-                self.friendAddedLabel.text = "\(T_User.selectedFriends.count) friend selected"
+                self.friendAddedLabel.text = NSLocalizedString("\(T_User.selectedFriends.count) friend selected", comment: "")
             }
             else
             {
-                self.friendAddedLabel.text = "\(T_User.selectedFriends.count) friends selected"
+                self.friendAddedLabel.text = NSLocalizedString("\(T_User.selectedFriends.count) friends selected", comment: "")
             }
             self.friendAddedLabel.sizeToFit()
             

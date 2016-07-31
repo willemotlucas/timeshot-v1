@@ -359,17 +359,17 @@ class T_CameraViewController: UIViewController {
     
     func unfreezeUI(success: Bool = true) {
         if(success) {
-            let alertController = UIAlertController(title: "Album successfully created !", message:
-                "Let's share your first picture !", preferredStyle: UIAlertControllerStyle.Alert)
+            let alertController = UIAlertController(title: NSLocalizedString("Album successfully created !", comment: ""), message:
+                NSLocalizedString("Let's share your first picture !", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Go !", style: UIAlertActionStyle.Default,handler: nil))
             
             self.presentViewController(alertController, animated: true, completion: nil)
         }
         else {
             self.showOverlayView()
-            let alertController = UIAlertController(title: "Cannot create the album", message:
-                "Please check your network connection and try again !", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+            let alertController = UIAlertController(title: NSLocalizedString("Cannot create the album", comment: ""), message:
+                NSLocalizedString("Please check your network connection and try again !", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: UIAlertActionStyle.Default,handler: nil))
             
             self.presentViewController(alertController, animated: true, completion: nil)
         }

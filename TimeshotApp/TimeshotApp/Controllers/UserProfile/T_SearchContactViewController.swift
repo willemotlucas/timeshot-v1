@@ -85,13 +85,13 @@ class T_SearchContactViewController: UIViewController {
     
     @IBAction func inviteButtonTapped(sender: UIBarButtonItem) {
         if self.contactsToInvite.isEmpty {
-            let alertController = UIAlertController(title: "No contacts selected", message:
-                "Select some contacts to invite them!", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+            let alertController = UIAlertController(title: NSLocalizedString("No contacts selected", comment: ""), message:
+                NSLocalizedString("Select some contacts to invite them!", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: UIAlertActionStyle.Default,handler: nil))
             self.presentViewController(alertController, animated: true, completion: nil)
         } else {
             let messageVC = MFMessageComposeViewController()
-            messageVC.body = "I discovered a new awesome app! Download it on http://timeshot.co :)";
+            messageVC.body = NSLocalizedString("I discovered a new awesome app! Download it on http://timeshot.co :)", comment: "");
             messageVC.recipients = self.contactsToInvite
             messageVC.messageComposeDelegate = self;
             self.presentViewController(messageVC, animated: false, completion: nil)
@@ -196,11 +196,11 @@ extension T_SearchContactViewController: UISearchBarDelegate {
 extension T_SearchContactViewController: DZNEmptyDataSetSource {
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         if self.searchBar.text!.isEmpty {
-            let str = "Search one of your contact!"
+            let str = NSLocalizedString("Search one of your contact!", comment: "")
             let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
             return NSAttributedString(string: str, attributes: attrs)
         } else {
-            let str = "Nobody have been found ..."
+            let str = NSLocalizedString("Nobody has been found ...", comment: "")
             let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
             return NSAttributedString(string: str, attributes: attrs)
         }
