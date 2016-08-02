@@ -74,6 +74,10 @@ class T_ChooseContactsAlbumCreationViewController: UIViewController, UITableView
         T_ParseUserHelper.getCurrentUser()?.getAllFriends({ (friends) in
             self.friendCells = friends
             self.tableView.reloadData()
+            
+            if self.friendCells.count == 0 {
+                self.createButton.titleLabel?.text = NSLocalizedString("CREATE ANYWAY", comment: "")
+            }
 
         })
     }

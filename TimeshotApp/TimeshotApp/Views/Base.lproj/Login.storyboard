@@ -201,7 +201,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="ZTK-vE-M9b" kind="show" id="d6p-7b-bhU"/>
+                                    <segue destination="ZTK-vE-M9b" kind="show" identifier="toPasswordView" id="d6p-7b-bhU"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your name is used by your friends to easily find you. Your email address will be used to identify you." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3m-Zq-XfW">
@@ -391,7 +391,7 @@ Do you want to invite people from your address book ?</string>
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <segue destination="1Xi-7U-vG8" kind="show" id="JMg-et-G4p"/>
+                                            <segue destination="1Xi-7U-vG8" kind="show" identifier="toInviteView" id="JMg-et-G4p"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -545,7 +545,7 @@ Do you want to invite people from your address book ?</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2209" y="1228"/>
+            <point key="canvasLocation" x="2261" y="1444"/>
         </scene>
         <!--Search Contact Controller-->
         <scene sceneID="fek-c2-mHl">

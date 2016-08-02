@@ -93,6 +93,7 @@ class T_SignUpEmailViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if sender === continueButton {
             if let signupPasswordView = segue.destinationViewController as? T_SignUpPasswordViewController {
+                print("prepare for segue")
                 let user = T_User()
                 user.email = emailTextField.text
                 user.firstName = firstNameTextField.text
@@ -103,6 +104,7 @@ class T_SignUpEmailViewController: UIViewController {
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        print("should perform segue")
         firstNameValidator.validate(firstNameTextField.text, context: nil)
         nameValidator.validate(nameTextField.text, context: nil)
         emailValidator.validate(emailTextField.text, context: nil)
@@ -120,6 +122,7 @@ class T_SignUpEmailViewController: UIViewController {
                     T_AlertHelper.alert( NSLocalizedString("Error", comment: ""), errors: [NSLocalizedString("This email is already used", comment: "")], viewController: self)
                 }
                 else {
+                    print("to password view")
                     self.performSegueWithIdentifier("toPasswordView", sender: sender)
                 }
             }
@@ -161,10 +164,6 @@ class T_SignUpEmailViewController: UIViewController {
             firstNameTextField.becomeFirstResponder()
         }
     }
-    
-    
-    
-    
 }
 
 extension T_SignUpEmailViewController: UITextFieldDelegate {
